@@ -1,4 +1,4 @@
-## Python 对并发编程的支持
+#  Python 对并发编程的支持
 
 1. **多线程: threading, 利用CPU和IO可以同时执行的原理,让CPU不会干巴巴等待IO完成**
 2. **多进程: multiprocessing, 利用多核CPU的能力，真正的并行执行任务**

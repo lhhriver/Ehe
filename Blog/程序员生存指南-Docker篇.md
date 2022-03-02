@@ -48,10 +48,11 @@ docker rmi -f IID
 
 ```shell
 # 导出本地镜像为tar文件
-docker image save nginx >/opt/nginx.tar.gz
+docker save nginx >/opt/nginx.tar.gz
+docker save -o KnowledgeDemo.tar knowledgedemo:v1
 
 # 从tar文件加载镜像
-docker image load -i /opt/nginx.tar.gz
+docker load -i /opt/nginx.tar.gz
 ```
 
 ## 启动容器
@@ -63,7 +64,7 @@ docker run -it --name="n1" 3fe2fe0dab2e /bin/bash
 # 启动守护式容器
 docker run -d -p 8080:80 --name="n1" nginx
 
-# 启动容器，并执行一个命令(执行的命令必须是前台持续性的，不能是执行完就结束的命令，否则容器就会推出）
+# 启动容器，并执行一个命令(执行的命令必须是前台持续性的，不能是执行完就结束的命令，否则容器就会退出）
 docker run -d -p 8080:80 --name="n1" nginx cd /usr1;python manager.py runserver 0.0.0.0:8080
 
 # 停止正在运行容器
@@ -121,14 +122,14 @@ docker rm -f 容器ID/名称
 ## 容器网络
 
 ```shell
-指定映射(docker 会自动添加一条iptables规则来实现端口映射)
+# 指定映射(docker 会自动添加一条iptables规则来实现端口映射)
     -p hostPort:containerPort
     -p ip:hostPort:containerPort 
     -p ip::containerPort(随机端口)
     -p hostPort:containerPort/udp
     -p 81:80 –p 443:443
 
-随机映射
+# 随机映射
     docker run -p 80（随机端口）
 ```
 
@@ -198,7 +199,7 @@ docker tag old_container_name xxx.com/new_container_name:latest
 
 **优点**：制作方便，只要进入容器，安装好环境，就可以制作一个新的镜像，并部署到其他环境。
 
-**缺点**：容器内新增的服务必须在启动后，再进入容器启动一次服务，但是可以通过启动时执行指定命令来解决这个问题
+**缺点**：容器内新增的服务必须在启动后，再进入容器启动一次服务，但是可以通过启动时执行指定命令来解决这个问题。
 
 ## 基于Dockerfile制作镜像
 
@@ -220,11 +221,11 @@ FROM centos:latest
 RUN cd /opt && mkdir code && yum install -y vim && yum install -y wget
 ```
 
-以上命令就是切换到/opt目录，创建一个code子目录，安装vim和wget
+以上命令就是切换到/opt目录，创建一个code子目录，安装vim和wget。
 
 - CMD命令
 
-使用镜像启动容器时默认的运行命令，如果在docker run的时候，在后面带上自定义命令，那么这个命令就会被替换掉，导致容器启动的时候不会执行，所以一般我们不用这个
+使用镜像启动容器时默认的运行命令，如果在docker run的时候，在后面带上自定义命令，那么这个命令就会被替换掉，导致容器启动的时候不会执行，所以一般我们不用这个。
 
 ```shell
 CMD ["/usr/sbin/sshd", "-D"]
@@ -232,7 +233,7 @@ CMD ["/usr/sbin/sshd", "-D"]
 
 - ENTRYPOINT
 
-和上面的CMD命令相似，但是不会被启动容器时的自定义命令替换掉，一定会执行；还有一个用法是在docker run后面的自定义命令可以作为ENTRYPOINT的命令参数传入
+和上面的CMD命令相似，但是不会被启动容器时的自定义命令替换掉，一定会执行；还有一个用法是在docker run后面的自定义命令可以作为ENTRYPOINT的命令参数传入。
 
 ```shell
 ENTRYPOINT ["/usr/sbin/sshd", "-D"]
@@ -240,7 +241,7 @@ ENTRYPOINT ["/usr/sbin/sshd", "-D"]
 
 - COPY命令
 
-从主机拷贝文件到容器中
+从主机拷贝文件到容器中。
 
 ```shell
 COPY init.sh /opt/
@@ -248,7 +249,7 @@ COPY init.sh /opt/
 
 - ADD命令
 
-和copy命令类似，拷贝文件到镜像中，但是对于压缩文件（含有tar的）拷贝过去会直接解压
+和copy命令类似，拷贝文件到镜像中，但是对于压缩文件（含有tar的）拷贝过去会直接解压。
 
 ```shell
 ADD xxx.tar.gz /var/www/html
@@ -256,7 +257,7 @@ ADD xxx.tar.gz /var/www/html
 
 - EXPOSE命令
 
-指定容器要对外暴露的端口
+指定容器要对外暴露的端口。
 
 ```shell
 EXPOSE 80
@@ -265,13 +266,13 @@ EXPOSE 3306
 
 - VOLUME命令
 
-在dockerfile中声明了VOLUME绑定目录并不会在容器启动的时候帮我们自动绑定目录，那么VOLUME和-v有什么区别呢？假设我们在dockerfile中声明了
+在dockerfile中声明了VOLUME绑定目录并不会在容器启动的时候帮我们自动绑定目录，那么VOLUME和-v有什么区别呢？假设我们在dockerfile中声明了。
 
 ```shell
 VOLUME ['/data', '/etc/proc']
 ```
 
-那么我们使用不同的命令启动时
+那么我们使用不同的命令启动时。
 
 ```shell
 # 如果在run容器的时候，没有指定-v，那么此时会创建一个匿名卷，并且绑定到/var/lib/docker/volumes（docker安装目录下的volumes中）
@@ -285,7 +286,7 @@ docker run -d -v ./data:/data -v ./proc:/etc/proc --name='cent1' my_centos
 
 - WORKDIR
 
-相当于cd命令，区别是在dockerfile中使用了WORKDIR后，在它下面的语句，工作目录都变成了WORKDIR指定的目录
+相当于cd命令，区别是在dockerfile中使用了WORKDIR后，在它下面的语句，工作目录都变成了WORKDIR指定的目录。
 
 ```shell
  WORKDIR /code
@@ -302,7 +303,7 @@ ENV MYSQL_USERNAME = 'root'
 ${MYSQL_USERNAME}
 ```
 
-下面给一个简单的dockerfile例子
+下面给一个简单的dockerfile例子。
 
 ```shell
 FROM centos:latest
@@ -448,5 +449,4 @@ mkdir KnowledgeDemo
 cd KnowledgeDemo/
 docker save -o KnowledgeDemo.tar knowledgedemo:v1
 ```
-
 
