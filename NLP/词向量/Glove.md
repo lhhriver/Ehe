@@ -16,6 +16,7 @@ GloVe的全称叫Global Vectors for Word Representation，它是一个基于**�
 > {“I like”,“like deep”,“deep learning”,“I like”,“like NLP”,“I enjoy”,“enjoy flying”}。
 
 我们可以得到一个**共现矩阵**(对称矩阵)：
+
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N03-Glove-20201214-201036-471817.png)
 
 中间的每个格子表示的是行和列组成的词组在词典中共同出现的次数，也就体现了**共现**的特性。
