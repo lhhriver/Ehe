@@ -1934,7 +1934,6 @@ def plot_metric(dfhistory, metric):
     plt.ylabel(metric)
     plt.legend(["train_"+metric])
     plt.show()
-
 ```
 
 ```python

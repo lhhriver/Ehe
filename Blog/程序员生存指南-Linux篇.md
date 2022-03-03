@@ -1,14 +1,12 @@
-# 程序员生存指南-Linux篇
+# 文件管理
 
-## 文件管理
-
-### awk
+## awk
 
 ```shell
 ps -ef | grep 'main' | awk '{print $2}'
 ```
 
-### cat
+## cat
 
 显示文件内容
 
@@ -19,7 +17,7 @@ cat /proc/meminfo
 
 - chattr
 
-### chgrp
+## chgrp
 
 修改文件或目录的所属组
 
@@ -27,7 +25,7 @@ cat /proc/meminfo
 chgrp admin file1 # 改变文件file1的所属组为adm
 ```
 
-### chmod	
+## chmod	
 
 修改权限
 
@@ -46,7 +44,7 @@ do
 done
 ```
 
-### chown	
+## chown	
 
 修改文件或目录的所有者
 
@@ -57,7 +55,7 @@ chown liuhh /etc/services
 - cksum
 - cmp
 
-### cp
+## cp
 
 复制文件或目录	
 
@@ -71,7 +69,7 @@ cp -rf /usr/local/KingSTD_1/*  /usr/local/webapps/KingSTD_2/    #将dir1下的�
 
 - cut
 
-### diff
+## diff
 
 diff 命令用于比较文件的差异。
 
@@ -86,7 +84,7 @@ diff log2014.log log2013.log
 - diffstat
 - file
 
-### find	
+## find	
 
 查找文件或目录
 
@@ -119,7 +117,7 @@ echo "clean ok..."
 - git
 - gitview
 
-### head
+## head
 
 查看文件的前N行
 
@@ -130,7 +128,7 @@ head -100 /etc/services
 - indent
 - less
 
-### ln
+## ln
 
 创建链接文件,目录只能创建软链接
 
@@ -139,7 +137,7 @@ ln -s  /etc/issue  /issue.soft # 创建文件/etc/issue的软链接/issue.soft
 ln /etc/issue  /issue.hard # 创建文件/etc/issue的硬链接/issue.hard
 ```
 
-### locate	
+## locate	
 
 查找文件或目录
 
@@ -169,7 +167,7 @@ more /etc/services
 - mtools
 - mtoolstest
 
-### mv
+## mv
 
 移动文件、更名	
 
@@ -186,7 +184,7 @@ mv file1 file2 file3 dir2  # 将文件file1、 file2 file3移动到目录dir2下
 - rhmask
 
 
-### rm
+## rm
 
 删除文件或目录	
 
@@ -195,7 +193,7 @@ rm he  # 删除文件he
 rm -r river # 删除目录river
 ```
 
-### scp
+## scp
 
 ```shell
 # 从106复制文件到92.8
@@ -210,7 +208,7 @@ scp /home/Anaconda3-5.0.1-Linux-x86_64.sh root@172.16.92.8:/home
 - slocate
 - split
 
-### tail	
+## tail	
 
 查看文件的后N行
 
@@ -222,7 +220,7 @@ tail -f ./logs/catalina.out
 - tee
 - tmpwatch
 
-### touch
+## touch
 
 创建空文件
 
@@ -235,7 +233,7 @@ touch  /river/student   # 创建空文件student
 - updatedb
 - whereis
 
-### which
+## which
 
 显示系统命令所在目录
 
@@ -243,7 +241,7 @@ touch  /river/student   # 创建空文件student
 which hive
 ```
 
-## 文档编辑
+# 文档编辑
 
 - col
 - colrm
@@ -257,7 +255,7 @@ which hive
 - fmt
 - fold
 
-### grep	
+## grep
 
 在文件中搜寻字串匹配的行并输出
 
@@ -302,7 +300,7 @@ python main.py $task > logs/$task.$dt.log
 - tr
 - uniq
 
-### wc
+## wc
 
 命令用于计算字数
 
@@ -329,7 +327,7 @@ wc testfile testfile_1 testfile_2   #统计三个文件的信息
 15 116 708 总用量                    # 三个文件总共的行数为15、单词数116、字节数708 
 ```
 
-## 文件传输
+# 文件传输
 
 - bye
 - ftp
@@ -347,9 +345,9 @@ wc testfile testfile_1 testfile_2   #统计三个文件的信息
 - uupick
 - uuto
 
-## 磁盘管理
+# 磁盘管理
 
-### cd
+## cd
 
 切换目录
 
@@ -368,18 +366,47 @@ source /etc/profile
 cd /home/dmp/script/py/AddressTranform /usr/bin/python3 main.py
 ```
 
-### df
+## df
 
 显示文件系统的磁盘使用情况，默认情况下df -k 将以字节为单位输出磁盘的使用量
 
 ```shell
 df -k
-df -h  #使用-h选项可以以更符合阅读习惯的方式显示磁盘使用量
 ```
+
+```
+[root@Ehe ~]# df -k
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/vda1       41147472 7434824  31809156  19% /
+devtmpfs          930368       0    930368   0% /dev
+tmpfs             941024       0    941024   0% /dev/shm
+tmpfs             941024     448    940576   1% /run
+tmpfs             941024       0    941024   0% /sys/fs/cgroup
+tmpfs             188208       0    188208   0% /run/user/0
+```
+
+
+
+```shell
+df -h  # 使用-h选项可以以更符合阅读习惯的方式显示磁盘使用量
+```
+
+```
+[root@Ehe ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1        40G  7.1G   31G  19% /
+devtmpfs        909M     0  909M   0% /dev
+tmpfs           919M     0  919M   0% /dev/shm
+tmpfs           919M  448K  919M   1% /run
+tmpfs           919M     0  919M   0% /sys/fs/cgroup
+tmpfs           184M     0  184M   0% /run/user/0
+```
+
+
 
 - dirs
 
-### du
+## du
 
 du命令用于显示目录或文件的大小。du会显示指定的目录或文件所占用的磁盘空间。
 
@@ -387,11 +414,27 @@ du命令用于显示目录或文件的大小。du会显示指定的目录或文�
 du -h --max-depth=1 /home
 ```
 
+```
+[root@Ehe ~]# du -h --max-depth=1 /
+4.0K	/srv
+4.0K	/mnt
+2.1G	/usr
+448K	/run
+4.6G	/home
+306M	/var
+2.5M	/root
+4.0K	/media
+132M	/boot
+7.1G	/
+```
+
+
+
 - edquota
 - eject
 - lndir
 
-### ls
+## ls
 
 显示目录文件
 
@@ -399,17 +442,40 @@ du -h --max-depth=1 /home
 ls -a # 显示所有文件，包括隐藏文件
 ls -l # 详细信息显示
 ls -al # 所有文件详细信息
+ls -r # 反向排序，倒序
+ls -t  # 按修改时间排序
 ```
 
 ```shell
-JAR_NAME=`ls | grep jar-with-dependencies`
+# 按修改时间反向的排序,即最新修改时间的放在最后面
+ls -rtl
 ```
+
+```
+[root@Ehe /]# ls -rtl
+total 60
+drwxr-xr-x.  2 root root  4096 Apr 11  2018 srv
+drwxr-xr-x.  2 root root  4096 Apr 11  2018 mnt
+drwxr-xr-x.  2 root root  4096 Apr 11  2018 media
+drwxr-xr-x. 19 root root  4096 Jul 11  2019 var
+drwx------.  2 root root 16384 Jul 11  2019 lost+found
+lrwxrwxrwx.  1 root root     7 Jul 11  2019 bin -> usr/bin
+lrwxrwxrwx.  1 root root     9 Jul 11  2019 lib64 -> usr/lib64
+lrwxrwxrwx.  1 root root     7 Jul 11  2019 lib -> usr/lib
+lrwxrwxrwx.  1 root root     8 Jul 11  2019 sbin -> usr/sbin
+drwxr-xr-x. 13 root root  4096 Jul 11  2019 usr
+dr-xr-xr-x.  5 root root  4096 Nov 30 15:19 boot
+dr-xr-xr-x  83 root root     0 Feb 18 10:58 proc
+dr-xr-xr-x  13 root root     0 Feb 18 10:59 sys
+```
+
+
 
 - mcd
 - mdeltree
 - mdu
 
-### mkdir
+## mkdir
 
 创建新目录
 
@@ -432,7 +498,7 @@ mkdir -p ${directory}/log/${loaddate}/
 - mrd
 - mzip
 
-### pwd
+## pwd
 
 当前工作目录
 
@@ -447,7 +513,7 @@ mkdir -p ${directory}/log/${loaddate}/
 - tree
 - umount
 
-## 磁盘维护
+# 磁盘维护
 
 - badblocks
 - cfdisk
@@ -481,7 +547,7 @@ mkdir -p ${directory}/log/${loaddate}/
 - symlinks
 - sync
 
-## 网络通讯
+# 网络通讯
 
 - apachectl
 - arpwatch
@@ -492,7 +558,7 @@ mkdir -p ${directory}/log/${loaddate}/
 - getty
 - httpd
 
-### ifconfig	
+## ifconfig	
 
 查看网络设置信息	
 
@@ -500,7 +566,7 @@ mkdir -p ${directory}/log/${loaddate}/
 ifconfig -a  # 查看网络设置信息
 ```
 
-### lsof
+## lsof
 
 lsof(list open files)是一个列出当前系统打开文件的工具。
 
@@ -530,7 +596,7 @@ lsof -i -U：显示所有打开的端口和UNIX domain文件
 - netconf
 - netconfig
 
-### netstat
+## netstat
 
 **netstat -tunlp** 用于显示 tcp，udp 的端口和进程等相关情况。
 
@@ -560,7 +626,7 @@ netstat -ntulp | grep 3306   //查看所有3306端口使用情况
 
 - newaliases
 
-### ping	
+## ping	
 
 测试网络连通性
 
@@ -588,24 +654,24 @@ ping 192.168.1.1
 - uustat
 - uux
 
-### wall	
+## wall	
 
 向所有用户广播信息
 
 
-### write	
+## write	
 
 向一个用户发信息
 
 - ytalk
 
-## 系统管理
+# 系统管理
 
 - adduser
 - chfn
 - chsh
 
-### date
+## date
 
 设置系统日期
 
@@ -618,7 +684,7 @@ date -d "-1 day" "+%Y-%m-%d" # 昨天 2019-12-21
 - exit
 - finger
 
-### free
+## free
 
 显示系统当前内存的使用情况，包括已用内存、可用内存和交换内存的情况，默认情况下free会以字节为单位输出内存的使用量
 
@@ -638,7 +704,7 @@ free -g
 - halt
 - id
 
-### kill
+## kill
 
 在查到端口占用的进程后，如果你要杀掉对应的进程可以使用 kill 命令：**kill -9 PID**
 
@@ -663,7 +729,7 @@ ps x | grep main_LabelCustomer | grep -v grep |awk '{print $1}'|xargs kill -9
 - nice
 - procinfo
 
-### ps
+## ps
 
 **用法**：ps aux 显示所有包含其他使用者的行程
 
@@ -684,7 +750,7 @@ ps aux|head -1; ps aux|grep -v PID|sort -rn -k +4|head
 
 - pstree
 
-### reboot	
+## reboot	
 
 重启系统
 
@@ -698,7 +764,7 @@ reboot
 - rwho
 - screen
 
-### shutdown
+## shutdown
 
 关机
 
@@ -715,7 +781,7 @@ shutdown -h now
 - swatch
 - tload
 
-### top
+## top
 
 top命令会显示当前系统中占用资源最多的一些进程
 
@@ -724,7 +790,7 @@ top命令会显示当前系统中占用资源最多的一些进程
 top -p 139
 ```
 
-### uname
+## uname
 
 uname可以显示一些重要的系统信息，例如内核名称、主机名、内核版本号、处理器类型之类的信息
 
@@ -742,7 +808,7 @@ uname -a
 - whoami
 - whois
 
-## 系统设置
+# 系统设置
 
 - alias
 - apmd
@@ -760,7 +826,7 @@ uname -a
 - enable
 - eval
 
-### export
+## export
 
 ```shell
 export PATH=/root/anaconda3/bin:$PATH
@@ -783,7 +849,7 @@ export PATH=/root/anaconda3/bin:$PATH
 - mouseconfig
 - ntsysv
 
-### passwd
+## passwd
 
 passwd用于在命令行修改密码
 
@@ -806,11 +872,11 @@ passwd用于在命令行修改密码
 - unalias
 - unset
 
-## 备份压缩
+# 备份压缩
 
 - ar
 
-### bunzip2	
+## bunzip2	
 
 解压缩
 
@@ -818,7 +884,7 @@ passwd用于在命令行修改密码
 bunzip2 -k file1.bz2
 ```
 
-### bzip2	
+## bzip2	
 
 压缩文件
 
@@ -831,7 +897,7 @@ bzip2 -k file1 # -k 产生压缩文件后保留原文件，压缩后文件格式
 - cpio
 - dump
 
-### gunzip	
+## gunzip	
 
 解压缩.gz的压缩文件
 
@@ -841,14 +907,14 @@ gunzip file1.gz
 
 - gzexe
 
-### gzip	
+## gzip	
 
 压缩文件（不能压缩目录）	
 
 - lha
 - restore
 
-### tar	
+## tar	
 
 打包目录
 
@@ -864,7 +930,7 @@ tar -zxvf dir1.tar.gz 解压
 
 - unarj
 
-### unzip	
+## unzip	
 
 解压.zip的压缩文件
 
@@ -875,7 +941,7 @@ unzip test.zip
 - uudecode
 - uuencode
 
-### zip	
+## zip	
 
 压缩文件或目录
 
@@ -898,7 +964,7 @@ unzip workspace.zip
 
 - zipinfo
 
-## 设备管理
+# 设备管理
 
 - dumpkeys
 - loadkeys
@@ -906,9 +972,9 @@ unzip workspace.zip
 - rdev
 - setleds
 
-## 其它
+# 其它
 
-### man
+## man
 
 获取帮助信息
 
@@ -916,7 +982,7 @@ unzip workspace.zip
 man ls
 ```
 
-### info	
+## info	
 
 获取帮助信息
 
@@ -924,7 +990,7 @@ man ls
 info ls
 ```
 
-### whatis	
+## whatis	
 
 获得索引的简短说明信息
 
@@ -932,7 +998,7 @@ info ls
 whatis ls
 ```
 
-### wget
+## wget
 
 使用wget从网上下载软件、音乐、视频
 
@@ -940,7 +1006,7 @@ whatis ls
 wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz
 ```
 
-### 输入/输出重定向
+## 输入/输出重定向
 
 1. 或>> 输出重定向
 
@@ -960,7 +1026,7 @@ wall < /etc/motd
 cp -R /usr /backup/usr.bak 2> /bak.error
 ```
 
-### 管道
+## 管道
 
 将一个命令的输出传送给另一个命令，作为另一个命令的输入。
 
@@ -968,7 +1034,7 @@ cp -R /usr /backup/usr.bak 2> /bak.error
 ls -l / | grep river | wc -l
 ```
 
-### 命令连接符
+## 命令连接符
 
 1. ； # 用；间隔的各命令按顺序依次执行。
 
@@ -977,7 +1043,7 @@ ls -l / | grep river | wc -l
 3. || # 前后命令的执行存在逻辑或关系，只有||前面的命令执行失败后，它后面的命令才被执行。
 
 
-### 命令替换符
+## 命令替换符
 
 将一个命令的输出作为另一个命令的参数。
 

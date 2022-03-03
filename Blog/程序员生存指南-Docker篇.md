@@ -1,4 +1,4 @@
-# 程序员生存指南-Docker篇
+# 镜像
 
 ## 获取镜像
 
@@ -54,152 +54,6 @@ docker save -o KnowledgeDemo.tar knowledgedemo:v1
 # 从tar文件加载镜像
 docker load -i /opt/nginx.tar.gz
 ```
-
-## 启动容器
-
-```shell
-# 启动交互式容器（/bin/sh、/bin/bash、bash），执行exit后容器就退出了，可以使用ctrl+p+q
-docker run -it --name="n1" 3fe2fe0dab2e /bin/bash
-
-# 启动守护式容器
-docker run -d -p 8080:80 --name="n1" nginx
-
-# 启动容器，并执行一个命令(执行的命令必须是前台持续性的，不能是执行完就结束的命令，否则容器就会退出）
-docker run -d -p 8080:80 --name="n1" nginx cd /usr1;python manager.py runserver 0.0.0.0:8080
-
-# 停止正在运行容器
-docker stop 容器ID/名称
-
-# 启动已经停止的容器
-docker start 容器ID/名称
-
-# 重启容器，不会使容器中已有的修改失效
-docker restart 容器ID/名称
-```
-
-## 进入容器
-
-```shell
-# 进入容器的已有交互界面，退出时应该使用ctrl+p+q，否则容器会关闭
-docker attach 容器ID
-
-# 进入当前运行容器，并创建一个新的交互式界面，退出时不会关闭容器（推荐做法）
-docker exec -it 容器ID|容器名称 /bin/bash
-
-# 不进入容器执行命令（查看根目录列表，并显示在控制台）
-docker exec 容器ID ls /
-  
-# 不进入容器，向容器中安装vim，并后台安装，不在前台展示
-docker exec -d 容器ID apt-get install vim
-```
-
-## 查询容器
-
-```shell
-# 查询当前正在运行的容器
-docker ps
-
-# 查询所有存在的容器，包括已退出的
-docker ps -a
-
-# 查询容器ID
-docker ps -q
-
-# 查询容器详细信息（端口映射、IP地址、磁盘绑定等信息）
-docker inspect 容器ID/名称 
-```
-
-## 删除容器
-
-```shell
-# 删除已退出的容器
-docker rm 容器ID/名称
-
-# 强制删除容器，包括正在运行的
-docker rm -f 容器ID/名称
-```
-
-## 容器网络
-
-```shell
-# 指定映射(docker 会自动添加一条iptables规则来实现端口映射)
-    -p hostPort:containerPort
-    -p ip:hostPort:containerPort 
-    -p ip::containerPort(随机端口)
-    -p hostPort:containerPort/udp
-    -p 81:80 –p 443:443
-
-# 随机映射
-    docker run -p 80（随机端口）
-```
-
-## 容器更新
-
-```shell
-# 以mysql的容器为例，容器名是mysql7，那命令就是
-docker update --restart=always   mysql7
-```
-
-## 容器其他操作
-
-```shell
-# 查看容器中正在运行的进程
-docker top 容器ID/名称
-
-# 拷贝文件或目录
-docker cp 宿主机目录/文件 容器ID:/usr1/test
-docker cp 容器ID:/usr1/test 宿主机目录/文件
-
-# 查询容器正在运行的日志
-docker logs 容器ID/名称
-
-# 实时显示容器中运行日志
-docker logs -f 容器ID/名称
-
-# 将容器实时日志输出到文件，可以配合ELK进行日志收集
-docker logs -f  testxx > /var/log/xxx.log 2>1&
-```
-
-## 容器持久化存储
-
-```shell
-# 挂载数据卷  -v 宿主机目录或文件:容器中目录或文件
-docker run -d -v ./test:/test --name='n1' nginx
-```
-
-## 数据卷容器
-
-```shell
-# 启动一个容器作为数据卷
-docker run -it --name "my_volumes" -v /opt/Volume/conf:/usr/local/nginx/conf nginx /bin/bash
-
-# 跳出容器
-ctrl p q
-
-# 使用上面的数据卷容器作为新容器的数据卷，相当于新容器挂载了/opt/Volume/conf目录
-docker run -d  -p 8085:80 --volumes-from  my_volumes --name "n85" nginx
-docker run -d  -p 8086:80 --volumes-from  my_volumes --name "n86" nginx
-```
-
-## 基于容器制作镜像
-
-```shell
-# 查询正在运行的容器
-docker ps
-
-# 将容器制作为镜像（如果要提交到私有镜像库，新镜像名称必须携带私有库的域名，例如：xxx.com
-docker commit 容器ID xxx.com/my_container:v1
-
-# 将容器提交到私有镜像库
-docker push xxx.com/my_container:v1
-
-# 修改镜像名称（想要将公共镜像推送到私有镜像库，必须修改其名称，前面加上私有库的域名）
-docker tag old_container_name xxx.com/new_container_name:latest
-```
-
-**优点**：制作方便，只要进入容器，安装好环境，就可以制作一个新的镜像，并部署到其他环境。
-
-**缺点**：容器内新增的服务必须在启动后，再进入容器启动一次服务，但是可以通过启动时执行指定命令来解决这个问题。
 
 ## 基于Dockerfile制作镜像
 
@@ -377,7 +231,161 @@ docker pull xx.xx.xx.xx:5000/nginx:latest
 
 
 
-## docker搭建jupyterlab开发环境
+##
+
+# 容器
+
+## 启动容器
+
+```shell
+# 启动交互式容器（/bin/sh、/bin/bash、bash），执行exit后容器就退出了，可以使用ctrl+p+q
+docker run -it --name="n1" 3fe2fe0dab2e /bin/bash
+
+# 启动守护式容器
+docker run -d -p 8080:80 --name="n1" nginx
+
+# 启动容器，并执行一个命令(执行的命令必须是前台持续性的，不能是执行完就结束的命令，否则容器就会退出）
+docker run -d -p 8080:80 --name="n1" nginx cd /usr1;python manager.py runserver 0.0.0.0:8080
+
+# 停止正在运行容器
+docker stop 容器ID/名称
+
+# 启动已经停止的容器
+docker start 容器ID/名称
+
+# 重启容器，不会使容器中已有的修改失效
+docker restart 容器ID/名称
+```
+
+## 进入容器
+
+```shell
+# 进入容器的已有交互界面，退出时应该使用ctrl+p+q，否则容器会关闭
+docker attach 容器ID
+
+# 进入当前运行容器，并创建一个新的交互式界面，退出时不会关闭容器（推荐做法）
+docker exec -it 容器ID|容器名称 /bin/bash
+
+# 不进入容器执行命令（查看根目录列表，并显示在控制台）
+docker exec 容器ID ls /
+  
+# 不进入容器，向容器中安装vim，并后台安装，不在前台展示
+docker exec -d 容器ID apt-get install vim
+```
+
+## 查询容器
+
+```shell
+# 查询当前正在运行的容器
+docker ps
+
+# 查询所有存在的容器，包括已退出的
+docker ps -a
+
+# 查询容器ID
+docker ps -q
+
+# 查询容器详细信息（端口映射、IP地址、磁盘绑定等信息）
+docker inspect 容器ID/名称 
+```
+
+## 删除容器
+
+```shell
+# 删除已退出的容器
+docker rm 容器ID/名称
+
+# 强制删除容器，包括正在运行的
+docker rm -f 容器ID/名称
+```
+
+## 容器网络
+
+```shell
+# 指定映射(docker 会自动添加一条iptables规则来实现端口映射)
+    -p hostPort:containerPort
+    -p ip:hostPort:containerPort 
+    -p ip::containerPort(随机端口)
+    -p hostPort:containerPort/udp
+    -p 81:80 –p 443:443
+
+# 随机映射
+    docker run -p 80（随机端口）
+```
+
+## 容器更新
+
+```shell
+# 以mysql的容器为例，容器名是mysql7，那命令就是
+docker update --restart=always   mysql7
+```
+
+## 容器其他操作
+
+```shell
+# 查看容器中正在运行的进程
+docker top 容器ID/名称
+
+# 拷贝文件或目录
+docker cp 宿主机目录/文件 容器ID:/usr1/test
+docker cp 容器ID:/usr1/test 宿主机目录/文件
+
+# 查询容器正在运行的日志
+docker logs 容器ID/名称
+
+# 实时显示容器中运行日志
+docker logs -f 容器ID/名称
+
+# 将容器实时日志输出到文件，可以配合ELK进行日志收集
+docker logs -f  testxx > /var/log/xxx.log 2>1&
+```
+
+## 容器持久化存储
+
+```shell
+# 挂载数据卷  -v 宿主机目录或文件:容器中目录或文件
+docker run -d -v ./test:/test --name='n1' nginx
+```
+
+## 数据卷容器
+
+```shell
+# 启动一个容器作为数据卷
+docker run -it --name "my_volumes" -v /opt/Volume/conf:/usr/local/nginx/conf nginx /bin/bash
+
+# 跳出容器
+ctrl p q
+
+# 使用上面的数据卷容器作为新容器的数据卷，相当于新容器挂载了/opt/Volume/conf目录
+docker run -d  -p 8085:80 --volumes-from  my_volumes --name "n85" nginx
+docker run -d  -p 8086:80 --volumes-from  my_volumes --name "n86" nginx
+```
+
+## 基于容器制作镜像
+
+```shell
+# 查询正在运行的容器
+docker ps
+
+# 将容器制作为镜像（如果要提交到私有镜像库，新镜像名称必须携带私有库的域名，例如：xxx.com
+docker commit 容器ID xxx.com/my_container:v1
+
+# 将容器提交到私有镜像库
+docker push xxx.com/my_container:v1
+
+# 修改镜像名称（想要将公共镜像推送到私有镜像库，必须修改其名称，前面加上私有库的域名）
+docker tag old_container_name xxx.com/new_container_name:latest
+```
+
+**优点**：制作方便，只要进入容器，安装好环境，就可以制作一个新的镜像，并部署到其他环境。
+
+**缺点**：容器内新增的服务必须在启动后，再进入容器启动一次服务，但是可以通过启动时执行指定命令来解决这个问题。
+
+
+
+# 实战
+
+## 搭建jupyterlab开发环境
 
 1. docker安装anaconda
 
@@ -416,7 +424,7 @@ conda install packagename
 
 
 
-## Docker实战
+## Docker实战案例
 
 ```shell
 # 下拉代码
