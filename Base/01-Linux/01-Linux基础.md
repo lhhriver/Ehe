@@ -13,7 +13,7 @@ x|执行权限|可以执行文件|可以进入目录
 
 
  目录 | 说明 
----- | ---- 
+:--: | ---- 
 /  	 |根目录
 /bin 	 |用户二进制文件
 /sbin 	 |系统二进制文件
@@ -110,7 +110,6 @@ netstat -an
 
 
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/01-Linux-20201215-231055-625176.png)
-
 
 
 

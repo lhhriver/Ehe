@@ -1,5 +1,4 @@
 # 示例
-
 $$
 F(x) = \frac{x_i}{3} + x_i^n + \sqrt{2^4} + \sqrt[n]{2} + \int_0^1{x^2}{\rm d}x
 $$
@@ -639,22 +638,22 @@ $  后面还有……
 
 
 
-| 符号            | LaTex命令   | 符号           | LaTex命令    | 符号      | LaTex命令   |
-| --------------- | ----------- | -------------- | ------------ | --------- | ----------- |
-| $ < $           | <           | $ > $          | >            | $ = $     | =           |
-| $ \le $         | \leq 或 \le | $\ge $         | \geq 或 \ge  | $\equiv$  | \equiv      |
-| $ \ll $         | \ll         | $\gg $         | \gg          | $\doteq$  | \doteq      |
-| $ \prec $       | \prec       | $\succ $       | \succ        | $\sim$    | \sim        |
-| $ \preceq $     | \preceq     | $\succeq $     | \succeq      | $\simeq$  | \simeq      |
-| $ \subset $     | \subset     | $\supset $     | \supset      | $\approx$ | \approx     |
-| $ \subseteq $   | \subseteq   | $\supseteq $   | \supseteq    | $\cong$   | \cong       |
-| $ \sqsubset $   | \sqsubset   | $\sqsupset $   | \sqsupset    | $\Join$   | \Join       |
+|      符号       | LaTex命令   |      符号      | LaTex命令    |   符号    | LaTex命令   |
+| :-------------: | ----------- | :------------: | ------------ | :-------: | ----------- |
+|      $ < $      | <           |     $ > $      | >            |   $ = $   | =           |
+|     $ \le $     | \leq 或 \le |     $\ge $     | \geq 或 \ge  | $\equiv$  | \equiv      |
+|     $ \ll $     | \ll         |     $\gg $     | \gg          | $\doteq$  | \doteq      |
+|    $ \prec $    | \prec       |    $\succ $    | \succ        |  $\sim$   | \sim        |
+|   $ \preceq $   | \preceq     |   $\succeq $   | \succeq      | $\simeq$  | \simeq      |
+|   $ \subset $   | \subset     |   $\supset $   | \supset      | $\approx$ | \approx     |
+|  $ \subseteq $  | \subseteq   |  $\supseteq $  | \supseteq    |  $\cong$  | \cong       |
+|  $ \sqsubset $  | \sqsubset   |  $\sqsupset $  | \sqsupset    |  $\Join$  | \Join       |
 | $ \sqsubseteq $ | \sqsubseteq | $\sqsupseteq $ | \sqsupseteq  | $\bowtie$ | \bowtie     |
-| $ \in $         | \in         | $\ni $         | \ni 或 \owns | $\propto$ | \propto     |
-| $ \vdash $      | \vdash      | $\dashv $      | \dashv       | $\models$ | \models     |
-| $ \mid $        | \mid        | $\parallel $   | \parallel    | $\perp$   | \perp       |
-| $ \smile $      | \smile      | $\frown $      | \frown       | $\asymp$  | \asymp      |
-| $ : $           | :           | $\notin $      | \notin       | $\neq$    | \neq  或 \n |
+|     $ \in $     | \in         |     $\ni $     | \ni 或 \owns | $\propto$ | \propto     |
+|   $ \vdash $    | \vdash      |   $\dashv $    | \dashv       | $\models$ | \models     |
+|    $ \mid $     | \mid        |  $\parallel $  | \parallel    |  $\perp$  | \perp       |
+|   $ \smile $    | \smile      |   $\frown $    | \frown       | $\asymp$  | \asymp      |
+|      $ : $      | :           |   $\notin $    | \notin       |  $\neq$   | \neq  或 \n |
 
 **Tips: **
 
@@ -664,218 +663,201 @@ $  后面还有……
 
 ## 二元运算符
 
-| 符号               | LaTex命令      | 符号                | LaTex命令        | 符号             | LaTex命令      |
-| ------------------ | -------------- | ------------------- | ---------------- | ---------------- | -------------- |
-| $ + $              | +              | $ - $               | -                |                  |                |
-| $ \pm $            | \pm            | $\mp $              | \mp              | $\triangleleft$  | \triangleleft  |
-| $ \cdot $          | \cdot          | $\div $             | \div             | $\triangleright$ | \triangleright |
-| $ \times $         | \times         | $\setminus $        | \setminus        | $\star$          | \star          |
-| $ \cup $           | \cup           | $\cap $             | \cap             | $\ast$           | \ast           |
-| $ \sqcup $         | \sqcup         | $\sqcap $           | \sqcap           | $\circ$          | \circ          |
-| $ \vee $           | \vee 或 \lor   | $\wedge $           | \wedge 或 \land  | $\bullet$        | \bullet        |
-| $ \oplus $         | \oplus         | $\ominus $          | \ominus          | $\diamond$       | \diamond       |
-| $ \odot $          | \odot          | $\oslash $          | \oslash          | $\uplus$         | \uplus         |
-| $ \otimes $        | \otimes        | $\bigcirc $         | \bigcirc         | $\amalg$         | \amalg         |
-| $ \bigtriangleup $ | \bigtriangleup | $\bigtriangledown $ | \bigtriangledown | $\dagger$        | \dagger        |
-| $ \lhd $           | \ldh           | $\rhd $             | \rhd             | $\ddagger$       | \ddagger       |
-| $ \unlhd $         | \unldh         | $\unrhd $           | \unrhd           | $\wr$            | \wr            |
+|        符号        | LaTex命令      |        符号         | LaTex命令        |       符号       | LaTex命令      |
+| :----------------: | -------------- | :-----------------: | ---------------- | :--------------: | -------------- |
+|       $ + $        | +              |        $ - $        | -                |                  |                |
+|      $ \pm $       | \pm            |       $\mp $        | \mp              | $\triangleleft$  | \triangleleft  |
+|     $ \cdot $      | \cdot          |       $\div $       | \div             | $\triangleright$ | \triangleright |
+|     $ \times $     | \times         |    $\setminus $     | \setminus        |     $\star$      | \star          |
+|      $ \cup $      | \cup           |       $\cap $       | \cap             |      $\ast$      | \ast           |
+|     $ \sqcup $     | \sqcup         |      $\sqcap $      | \sqcap           |     $\circ$      | \circ          |
+|      $ \vee $      | \vee 或 \lor   |      $\wedge $      | \wedge 或 \land  |    $\bullet$     | \bullet        |
+|     $ \oplus $     | \oplus         |     $\ominus $      | \ominus          |    $\diamond$    | \diamond       |
+|     $ \odot $      | \odot          |     $\oslash $      | \oslash          |     $\uplus$     | \uplus         |
+|    $ \otimes $     | \otimes        |     $\bigcirc $     | \bigcirc         |     $\amalg$     | \amalg         |
+| $ \bigtriangleup $ | \bigtriangleup | $\bigtriangledown $ | \bigtriangledown |    $\dagger$     | \dagger        |
+|      $ \lhd $      | \ldh           |       $\rhd $       | \rhd             |    $\ddagger$    | \ddagger       |
+|     $ \unlhd $     | \unldh         |      $\unrhd $      | \unrhd           |      $\wr$       | \wr            |
 
 ## 大运算符
 
-
-
-| 符号          | LaTex命令 | 符号          | LaTex命令  | 符号        | LaTex命令 |
-| ------------- | --------- | ------------- | ---------- | ----------- | --------- |
-| $ \sum $      | \sum      | $\bigcup $    | \bigcup    | $\bigvee$   | \bigvee   |
-| $ \prod $     | \prod     | $\bigcap $    | \bigcap    | $\bigwedge$ | \bigwedge |
-| $ \coprod $   | \coprod   | $\bigsqcup $  | \bigsqcup  | $\biguplus$ | \biguplus |
-| $ \int $      | \int      | $\oint $      | \oint      | $\bigodot$  | \bigodot  |
+|     符号      | LaTex命令 |     符号      | LaTex命令  |    符号     | LaTex命令 |
+| :-----------: | --------- | :-----------: | ---------- | :---------: | --------- |
+|   $ \sum $    | \sum      |  $\bigcup $   | \bigcup    |  $\bigvee$  | \bigvee   |
+|   $ \prod $   | \prod     |  $\bigcap $   | \bigcap    | $\bigwedge$ | \bigwedge |
+|  $ \coprod $  | \coprod   | $\bigsqcup $  | \bigsqcup  | $\biguplus$ | \biguplus |
+|   $ \int $    | \int      |   $\oint $    | \oint      | $\bigodot$  | \bigodot  |
 | $ \bigoplus $ | \bigoplus | $\bigotimes $ | \bigotimes |             |           |
 
 ## 箭头
 
-
-
-| 符号                   | LaTex命令           | 符号                   | LaTex命令           |
-| ---------------------- | ------------------- | ---------------------- | ------------------- |
-| $ \leftarrow $         | \leftarrow 或 \gets | $\longleftarrow $      | \longleftarrow      |
-| $ \rightarrow $        | \rightarrow 或 \to  | $\longrightarrow $     | \longrightarrow     |
-| $ \leftrightarrow $    | \leftrightarrow     | $\longleftrightarrow $ | \longleftrightarrow |
-| $ \Leftarrow $         | \Leftarrow          | $\Longleftarrow $      | \Longleftarrow      |
-| $ \Rightarrow $        | \Rightarrow         | $\Longrightarrow $     | \Longrightarrow     |
-| $ \Leftrightarrow $    | \Leftrightarrow     | $\Longleftrightarrow $ | \Longleftrightarrow |
-| $ \mapsto $            | \mapsto             | $\longmapsto $         | \longmapsto         |
-| $ \hookleftarrow $     | \hookleftarrow      | $\hookrightarrow $     | \hookrightarrow     |
-| $ \leftharpoonup $     | \leftharpoonup      | $\rightharpoonup $     | \rightharpoonup     |
-| $ \leftharpoondown $   | \leftharpoondown    | $\rightharpoondown $   | \rightharpoondown   |
-| $ \rightleftharpoons $ | \rightleftharpoons  | $\iff $                | \iff                |
-| $ \uparrow $           | \uparrow            | $\downarrow $          | \downarrow          |
-| $ \updownarrow $       | \updownarrow        | $\Uparrow $            | \Uparrow            |
-| $ \Downarrow $         | \Downarrow          | $\Updownarrow $        | \Updownarrow        |
-| $ \nearrow $           | \nearrow            | $\searrow $            | \searrow            |
-| $ \swarrow $           | \swarrow            | $\nwarrow $            | \nwarrow            |
-| $ \leadsto $           | \leadsto            |                        |                     |
+|          符号          | LaTex命令           |          符号          | LaTex命令           |
+| :--------------------: | ------------------- | :--------------------: | ------------------- |
+|     $ \leftarrow $     | \leftarrow 或 \gets |   $\longleftarrow $    | \longleftarrow      |
+|    $ \rightarrow $     | \rightarrow 或 \to  |   $\longrightarrow $   | \longrightarrow     |
+|  $ \leftrightarrow $   | \leftrightarrow     | $\longleftrightarrow $ | \longleftrightarrow |
+|     $ \Leftarrow $     | \Leftarrow          |   $\Longleftarrow $    | \Longleftarrow      |
+|    $ \Rightarrow $     | \Rightarrow         |   $\Longrightarrow $   | \Longrightarrow     |
+|  $ \Leftrightarrow $   | \Leftrightarrow     | $\Longleftrightarrow $ | \Longleftrightarrow |
+|      $ \mapsto $       | \mapsto             |     $\longmapsto $     | \longmapsto         |
+|   $ \hookleftarrow $   | \hookleftarrow      |   $\hookrightarrow $   | \hookrightarrow     |
+|   $ \leftharpoonup $   | \leftharpoonup      |   $\rightharpoonup $   | \rightharpoonup     |
+|  $ \leftharpoondown $  | \leftharpoondown    |  $\rightharpoondown $  | \rightharpoondown   |
+| $ \rightleftharpoons $ | \rightleftharpoons  |        $\iff $         | \iff                |
+|      $ \uparrow $      | \uparrow            |     $\downarrow $      | \downarrow          |
+|    $ \updownarrow $    | \updownarrow        |      $\Uparrow $       | \Uparrow            |
+|     $ \Downarrow $     | \Downarrow          |    $\Updownarrow $     | \Updownarrow        |
+|      $ \nearrow $      | \nearrow            |      $\searrow $       | \searrow            |
+|      $ \swarrow $      | \swarrow            |      $\nwarrow $       | \nwarrow            |
+|      $ \leadsto $      | \leadsto            |                        |                     |
 
 ## 定界符
 
-
-
-| 符号         | LaTex命令     | 符号           | LaTex命令     | 符号             | LaTex命令    |
-| ------------ | ------------- | -------------- | ------------- | ---------------- | ------------ |
-| $ ( $        | (             | $ ) $          | )             | $\uparrow$       | \uparrow     |
-| $ [ $        | [ 或 \lbrack  | $ ] $          | ] 或 \rbrack  | $\downarrow$     | \downarrow   |
-| $ \{ $       | \{ 或 \lbrace | $ \} $         | \} 或 \rbrace | $\updownarrow$   | \updownarrow |
-| $ \langle $  | \langle       | $ \rangle $    | \rangle       | $ \vert $        | \vert        |
-| $ \lfloor $  | \lfloor       | $ \rfloor $    | \rfloor       | $ \lceil $       | \lceil       |
-| $ / $        | /             | $ \backslash $ | \backslash    | $ \Updownarrow $ | \Updownarrow |
-| $ \Uparrow $ | \Uparrow      | $ \Downarrow $ | \Downarrow    | $ \Vert $        | \Vert        |
-| $ \rceil $   | \rceil        |                |               |                  |              |
+|     符号     | LaTex命令     |      符号      | LaTex命令     |       符号       | LaTex命令    |
+| :----------: | ------------- | :------------: | ------------- | :--------------: | ------------ |
+|    $ ( $     | (             |     $ ) $      | )             |    $\uparrow$    | \uparrow     |
+|    $ [ $     | [ 或 \lbrack  |     $ ] $      | ] 或 \rbrack  |   $\downarrow$   | \downarrow   |
+|    $ \{ $    | \{ 或 \lbrace |     $ \} $     | \} 或 \rbrace |  $\updownarrow$  | \updownarrow |
+| $ \langle $  | \langle       |  $ \rangle $   | \rangle       |    $ \vert $     | \vert        |
+| $ \lfloor $  | \lfloor       |  $ \rfloor $   | \rfloor       |    $ \lceil $    | \lceil       |
+|    $ / $     | /             | $ \backslash $ | \backslash    | $ \Updownarrow $ | \Updownarrow |
+| $ \Uparrow $ | \Uparrow      | $ \Downarrow $ | \Downarrow    |    $ \Vert $     | \Vert        |
+|  $ \rceil $  | \rceil        |                |               |                  |              |
 
 ## 大定界符
 
-| 符号            | LaTex命令   | 符号           | LaTex命令  | 符号          | LaTex命令   |
-| --------------- | ----------- | -------------- | ---------- | ------------- | ----------- |
-| $ \lgroup $     | \lgroup     | $ \rgroup $    | \rgroup    | $\lmoustache$ | \lmoustache |
+|      符号       | LaTex命令   |      符号      | LaTex命令  |     符号      | LaTex命令   |
+| :-------------: | ----------- | :------------: | :--------- | :-----------: | ----------- |
+|   $ \lgroup $   | \lgroup     |  $ \rgroup $   | \rgroup    | $\lmoustache$ | \lmoustache |
 | $ \arrowvert $  | \arrowvert  | $ \Arrowvert $ | \Arrowvert | $\bracevert$  | \bracevert  |
 | $ \rmoustache $ | \rmoustache |                |            |               |             |
 
 ## 其他字符
 
-
-
-| 符号             | LaTex命令     | 符号           | LaTex命令  | 符号          | LaTex命令 | 符号           | LaTex命令  |
-| ---------------- | ------------- | -------------- | ---------- | ------------- | --------- | -------------- | ---------- |
-| $ \dots $        | \dots         | $ \cdots $     | \cdots     | $ \vdots $    | \vdots    | $ \ddots $     | \ddtos     |
-| $ \hbar $        | \hbar         | $ \imath $     | \imath     | $ \jmath $    | \jmath    | $ \ell $       | \ell       |
-| $ \Re $          | \Re           | $ \Im $        | \Im        | $ \aleph $    | \aleph    | $ \wp $        | \wp        |
-| $ \forall $      | \forall       | $ \exists $    | \exists    | $ \mho $      | \mho      | $ \partial $   | \partial   |
-| $ ' $            | '             | $ \prime $     | \prime     | $ \emptyset $ | \emptyset | $ \infty $     | \infty     |
-| $ \nabla $       | \nabla        | $ \triangle $  | \triangle  | $ \Box $      | \Box      | $ \Diamond $   | \Diamond   |
-| $ \bot $         | \bot          | $ \top $       | \top       | $ \angle $    | \angle    | $ \surd $      | \surd      |
+|       符号       | LaTex命令     |      符号      | LaTex命令  |     符号      | LaTex命令 |      符号      | LaTex命令  |
+| :--------------: | ------------- | :------------: | ---------- | :-----------: | --------- | :------------: | ---------- |
+|    $ \dots $     | \dots         |   $ \cdots $   | \cdots     |  $ \vdots $   | \vdots    |   $ \ddots $   | \ddtos     |
+|    $ \hbar $     | \hbar         |   $ \imath $   | \imath     |  $ \jmath $   | \jmath    |    $ \ell $    | \ell       |
+|     $ \Re $      | \Re           |    $ \Im $     | \Im        |  $ \aleph $   | \aleph    |    $ \wp $     | \wp        |
+|   $ \forall $    | \forall       |  $ \exists $   | \exists    |   $ \mho $    | \mho      |  $ \partial $  | \partial   |
+|      $ ' $       | '             |   $ \prime $   | \prime     | $ \emptyset $ | \emptyset |   $ \infty $   | \infty     |
+|    $ \nabla $    | \nabla        | $ \triangle $  | \triangle  |   $ \Box $    | \Box      |  $ \Diamond $  | \Diamond   |
+|     $ \bot $     | \bot          |    $ \top $    | \top       |  $ \angle $   | \angle    |   $ \surd $    | \surd      |
 | $ \diamondsuit $ | \diamondsuit  | $ \heartsuit $ | \heartsuit | $ \clubsuit $ | \clubsuit | $ \spadesuit $ | \spadesuit |
-| $ \neg $         | \neg 或 \lnot | $ \flat $      | \flat      | $ \natural $  | \natural  | $ \sharp $     | \sharp     |
+|     $ \neg $     | \neg 或 \lnot |   $ \flat $    | \flat      | $ \natural $  | \natural  |   $ \sharp $   | \sharp     |
 
 ## 非数学符号
 
 
 
-| 符号         | LaTex命令 | 符号   | LaTex命令 | 符号         | LaTex命令  | 符号                | LaTex命令       |
-| ------------ | --------- | ------ | --------- | ------------ | ---------- | ------------------- | --------------- |
+|     符号     | LaTex命令 |  符号  | LaTex命令 |     符号     | LaTex命令  |        符号         | LaTex命令       |
+| :----------: | --------- | :----: | --------- | :----------: | ---------- | :-----------------: | --------------- |
 | $ \dagger $  | \dagger   | $ \S $ | \S        | $\copyright$ | \copyright | $ \textregistered $ | \textregistered |
-| $ \ddagger $ | \ddagger  | $ \P $ | \P        | $ \pounds $  | \pounds    | $ \% $              | \%              |
+| $ \ddagger $ | \ddagger  | $ \P $ | \P        | $ \pounds $  | \pounds    |       $ \% $        | \%              |
 
 ## AMS 定界符
 
 
 
-| 符号          | LaTex命令 | 符号          | LaTex命令 | 符号        | LaTex命令 | 符号          | LaTex命令 |
-| ------------- | --------- | ------------- | --------- | ----------- | --------- | ------------- | --------- |
+|     符号      | LaTex命令 |     符号      | LaTex命令 |    符号     | LaTex命令 |     符号      | LaTex命令 |
+| :-----------: | --------- | :-----------: | --------- | :---------: | --------- | :-----------: | --------- |
 | $ \ulcorner $ | \ulcorner | $ \urcorner $ | \urcorner | $\llcorner$ | \llcorner | $ \lrcorner $ | \llcorner |
-| $ \lvert $    | \lvert    | $ \rvert $    | \rvert    | $ \lVert $  | \lVert    | $ \rVert $    | \rVert    |
+|  $ \lvert $   | \lvert    |  $ \rvert $   | \rvert    | $ \lVert $  | \lVert    |  $ \rVert $   | \rVert    |
 
 ## AMS 希腊和希伯来字母
 
-| 符号         | LaTex命令 | 符号          | LaTex命令 | 符号    | LaTex命令 |
-| ------------ | --------- | ------------- | --------- | ------- | --------- |
+|     符号     | LaTex命令 |     符号      | LaTex命令 |  符号   | LaTex命令 |
+| :----------: | --------- | :-----------: | --------- | :-----: | --------- |
 | $ \digamma $ | \digamma  | $ \varkappa $ | \varkappa | $\beth$ | \beth     |
-| $ \gimel $   | \gimel    | $ \daleth $   | \daleth   |         |           |
+|  $ \gimel $  | \gimel    |  $ \daleth $  | \daleth   |         |           |
 
 ## AMS 二元关系
 
-| 符号                    | LaTex命令           | 符号             | LaTex命令    | 符号             | LaTex命令      |
-| ----------------------- | ------------------- | ---------------- | ------------ | ---------------- | -------------- |
-| $ \lessdot $            | \lessdot            | $ \gtrdot $      | \gtrdot      | $\doteqdot$      | \doteqdot      |
-| $ \leqslant $           | \leqslant           | $ \geqslant $    | \geqslant    | $\risingdotseq$  | \risingdotseq  |
-| $ \eqslantless $        | \eqslantless        | $ \eqslantgtr $  | \eqslantgtr  | $\fallingdotseq$ | \fallingdotseq |
-| $ \leqq $               | \leqq               | $ \geqq $        | \geqq        | $\eqcirc$        | \eqcirc        |
-| $ \lll $                | \lll 或 \llless     | $ \ggg $         | \ggg         | $\circeq$        | \circeq        |
-| $ \lesssim $            | \lesssim            | $ \gtrsim $      | \gtrsim      | $\triangleq$     | \triangleq     |
-| $ \lessapprox $         | \lessapprox         | $ \gtrapprox $   | \gtrapprox   | $\bumpeq$        | \bumpeq        |
-| $ \lessgtr $            | \lessgtr            | $ \gtrless $     | \gtrless     | $\Bumpeq$        | \Bumpeq        |
-| $ \lesseqgtr $          | \lesseqgtr          | $ \gtreqless $   | \gtreqless   | $\thicksim$      | \thicksim      |
-| $ \lesseqqgtr $         | \lesseqqgtr         | $ \gtreqqless $  | \gtreqqless  | $\thickapprox$   | \thickapprox   |
-| $ \preccurlyeq $        | \preccurlyeq        | $ \succcurlyeq $ | \succcurlyeq | $\approxeq$      | \approxeq      |
-| $ \curlyeqprec $        | \curlyeqprec        | $ \curlyeqsucc $ | \curlyeqsucc | $\backsim$       | \backsim       |
-| $ \precsim $            | \precsim            | $ \succsim $     | \succsim     | $\backsimeq$     | \backsimeq     |
-| $ \precapprox $         | \precapprox         | $ \succapprox $  | \succapprox  | $\vDash$         | \vDash         |
-| $ \subseteqq $          | \subseteqq          | $ \supseteqq $   | \supseteqq   | $\Vdash$         | \Vdash         |
-| $ \shortparallel $      | \shortparallel      | $ \Supset $      | \Supset      | $\Vvdash$        | \Vvdash        |
-| $ \blacktriangleleft $  | \blacktriangleleft  | $ \sqsupset $    | \sqsupset    | $\backepsilon$   | \backepsilon   |
-| $ \vartriangleright $   | \vartriangleright   | $ \because $     | \because     | $\varpropto$     | \varpropto     |
-| $ \blacktriangleright $ | \blacktriangleright | $ \Subset $      | \Subset      | $\between$       | \between       |
-| $ \trianglerighteq $    | \trianglerighteq    | $ \smallfrown $  | \smallfrown  | $\pitchfork$     | \pitchfork     |
-| $ \vartriangleleft $    | \vartriangleleft    | $ \shortmid $    | \shortmid    | $\smallsmile$    | \smallsmile    |
-| $ \trianglelefteq $     | \trianglelefteq     | $ \therefore $   | \therefore   | $\sqsubset$      | \sqsubset      |
-
+|          符号           | LaTex命令           |       符号       | LaTex命令    |       符号       | LaTex命令      |
+| :---------------------: | ------------------- | :--------------: | ------------ | :--------------: | -------------- |
+|      $ \lessdot $       | \lessdot            |   $ \gtrdot $    | \gtrdot      |   $\doteqdot$    | \doteqdot      |
+|      $ \leqslant $      | \leqslant           |  $ \geqslant $   | \geqslant    | $\risingdotseq$  | \risingdotseq  |
+|    $ \eqslantless $     | \eqslantless        | $ \eqslantgtr $  | \eqslantgtr  | $\fallingdotseq$ | \fallingdotseq |
+|        $ \leqq $        | \leqq               |    $ \geqq $     | \geqq        |    $\eqcirc$     | \eqcirc        |
+|        $ \lll $         | \lll 或 \llless     |     $ \ggg $     | \ggg         |    $\circeq$     | \circeq        |
+|      $ \lesssim $       | \lesssim            |   $ \gtrsim $    | \gtrsim      |   $\triangleq$   | \triangleq     |
+|     $ \lessapprox $     | \lessapprox         |  $ \gtrapprox $  | \gtrapprox   |    $\bumpeq$     | \bumpeq        |
+|      $ \lessgtr $       | \lessgtr            |   $ \gtrless $   | \gtrless     |    $\Bumpeq$     | \Bumpeq        |
+|     $ \lesseqgtr $      | \lesseqgtr          |  $ \gtreqless $  | \gtreqless   |   $\thicksim$    | \thicksim      |
+|     $ \lesseqqgtr $     | \lesseqqgtr         | $ \gtreqqless $  | \gtreqqless  |  $\thickapprox$  | \thickapprox   |
+|    $ \preccurlyeq $     | \preccurlyeq        | $ \succcurlyeq $ | \succcurlyeq |   $\approxeq$    | \approxeq      |
+|    $ \curlyeqprec $     | \curlyeqprec        | $ \curlyeqsucc $ | \curlyeqsucc |    $\backsim$    | \backsim       |
+|      $ \precsim $       | \precsim            |   $ \succsim $   | \succsim     |   $\backsimeq$   | \backsimeq     |
+|     $ \precapprox $     | \precapprox         | $ \succapprox $  | \succapprox  |     $\vDash$     | \vDash         |
+|     $ \subseteqq $      | \subseteqq          |  $ \supseteqq $  | \supseteqq   |     $\Vdash$     | \Vdash         |
+|   $ \shortparallel $    | \shortparallel      |   $ \Supset $    | \Supset      |    $\Vvdash$     | \Vvdash        |
+| $ \blacktriangleleft $  | \blacktriangleleft  |  $ \sqsupset $   | \sqsupset    |  $\backepsilon$  | \backepsilon   |
+|  $ \vartriangleright $  | \vartriangleright   |   $ \because $   | \because     |   $\varpropto$   | \varpropto     |
+| $ \blacktriangleright $ | \blacktriangleright |   $ \Subset $    | \Subset      |    $\between$    | \between       |
+|  $ \trianglerighteq $   | \trianglerighteq    | $ \smallfrown $  | \smallfrown  |   $\pitchfork$   | \pitchfork     |
+|  $ \vartriangleleft $   | \vartriangleleft    |  $ \shortmid $   | \shortmid    |  $\smallsmile$   | \smallsmile    |
+|   $ \trianglelefteq $   | \trianglelefteq     |  $ \therefore $  | \therefore   |   $\sqsubset$    | \sqsubset      |
 
 ## AMS 箭头
 
-
-
-| 符号                   | LaTex命令          | 符号                     | LaTex命令            | 符号               | LaTex命令        |
-| ---------------------- | ------------------ | ------------------------ | -------------------- | ------------------ | ---------------- |
-| $ \dashleftarrow $     | \dashleftarrow     | $ \leftleftarrows $      | \leftleftarrows      | $\leftrightarrows$ | \leftrightarrows |
-| $ \dashrightarrow $    | \dashrightarrow    | $ \rightrightarrows $    | \rightrightarrows    | $\rightleftarrows$ | \rightleftarrows |
-| $ \Lleftarrow $        | \Lleftarrow        | $ \twoheadleftarrow $    | \twoheadleftarrow    | $\leftarrowtail$   | \leftarrowtail   |
-| $ \Rrightarrow $       | \Rrightarrow       | $ \twoheadrightarrow $   | \twoheadrightarrow   | $\rightarrowtail$  | \rightarrowtail  |
-| $ \leftrightharpoons $ | \leftrightharpoons | $ \Lsh $                 | \Lsh                 | $\looparrowleft$   | \looparrowleft   |
-| $ \rightleftharpoons $ | \rightleftharpoons | $ \Rsh $                 | \Rsh                 | $\looparrowright$  | \looparrowright  |
-| $ \curvearrowleft $    | \curvearrowleft    | $ \circlearrowleft $     | \circlearrowleft     | $\upuparrows$      | \upuparrows      |
-| $ \curvearrowright $   | \curvearrowright   | $ \circlearrowright $    | \circlearrowright    | $\downdownarrows$  | \downdownarrows  |
-| $ \upharpoonleft $     | \upharpoonleft     | $ \rightsquigarrow $     | \rightsquigarrow     | $\multimap$        | \multimap        |
-| $ \upharpoonright $    | \upharpoonright    | $ \leftrightsquigarrow $ | \leftrightsquigarrow |                    |                  |
+|          符号          | LaTex命令          |           符号           | LaTex命令            |        符号        | LaTex命令        |
+| :--------------------: | ------------------ | :----------------------: | -------------------- | :----------------: | ---------------- |
+|   $ \dashleftarrow $   | \dashleftarrow     |   $ \leftleftarrows $    | \leftleftarrows      | $\leftrightarrows$ | \leftrightarrows |
+|  $ \dashrightarrow $   | \dashrightarrow    |  $ \rightrightarrows $   | \rightrightarrows    | $\rightleftarrows$ | \rightleftarrows |
+|    $ \Lleftarrow $     | \Lleftarrow        |  $ \twoheadleftarrow $   | \twoheadleftarrow    |  $\leftarrowtail$  | \leftarrowtail   |
+|    $ \Rrightarrow $    | \Rrightarrow       |  $ \twoheadrightarrow $  | \twoheadrightarrow   | $\rightarrowtail$  | \rightarrowtail  |
+| $ \leftrightharpoons $ | \leftrightharpoons |         $ \Lsh $         | \Lsh                 |  $\looparrowleft$  | \looparrowleft   |
+| $ \rightleftharpoons $ | \rightleftharpoons |         $ \Rsh $         | \Rsh                 | $\looparrowright$  | \looparrowright  |
+|  $ \curvearrowleft $   | \curvearrowleft    |   $ \circlearrowleft $   | \circlearrowleft     |   $\upuparrows$    | \upuparrows      |
+|  $ \curvearrowright $  | \curvearrowright   |  $ \circlearrowright $   | \circlearrowright    | $\downdownarrows$  | \downdownarrows  |
+|   $ \upharpoonleft $   | \upharpoonleft     |   $ \rightsquigarrow $   | \rightsquigarrow     |    $\multimap$     | \multimap        |
+|  $ \upharpoonright $   | \upharpoonright    | $ \leftrightsquigarrow $ | \leftrightsquigarrow |                    |                  |
 
 ## AMS 二元否定关系符和箭头
 
-
-
-| 符号              | LaTex命令      | 符号             | LaTex命令    | 符号                 | LaTex命令        | 符号                | LaTex命令         |
-| ----------------- | -------------- | ---------------- | ------------ | -------------------- | ---------------- | ------------------- | ----------------- |
-| $ \nless $        | \nless         | $ \lneq $        | \lneq        | $ \nleq $            | \nleq            | $\varsubsetneqq$    | \varsubsetneqq    |
-| $ \ngtr $         | \ngtr          | $ \gneq $        | \gneq        | $ \ngeq $            | \ngeq            | $\varsubsetneqq$    | \varsubsetneqq    |
-| $ \nleqslant $    | \nleqslant     | $ \lneqq $       | \lneqq       | $ \nmid $            | \nmid            | $\nsubseteqq$       | \nsubseteqq       |
-| $ \ngeqslant $    | \nngeqslantgtr | $ \gneqq $       | \gneqq       | $ \nparallel $       | \nparallel       | $\nsupseteqq$       | \nsupseteqq       |
-| $ \lvertneqq $    | \lvertneqq     | $ \nleqq $       | \nleqq       | $ \lnsim $           | \lnsim           | $\nshortmid$        | \nshortmid        |
-| $ \gvertneqq $    | \gvertneqq     | $ \ngeqq $       | \ngeqq       | $ \gnsim $           | \gnsim           | $\nshortparallel$   | \nshortparallel   |
-| $ \lnapprox $     | \lnapprox      | $ \nsim $        | \nsim        | $ \lnapprox $        | \lnapprox        | $\nprec$            | \nprec            |
-| $ \gnapprox $     | \gnapprox      | $ \ncong $       | \ncong       | $ \gnapprox $        | \gnapprox        | $\nsucc$            | \nsucc            |
-| $ \npreceq $      | \npreceq       | $ \nvdash $      | \nvdash      | $ \nVdash $          | \nVdash          | $\precneqq$         | \precneqq         |
-| $ \nsucceq $      | \nsucceq       | $ \nvDash $      | \nvDash      | $ \nVDash $          | \nVDash          | $\succneqq$         | \succneqq         |
-| $ \precnsim $     | \precnsim      | $ \precnapprox $ | \precnapprox | $ \subsetneq $       | \subsetneq       | $\ntriangleleft$    | \ntriangleleft    |
-| $ \succnsim $     | \succnsim      | $ \succnapprox $ | \succnapprox | $ \supsetneq $       | \supsetneq       | $\ntriangleright$   | \ntriangleright   |
-| $ \varsubsetneq $ | \varsubsetneq  | $ \nsubseteq $   | \nsubseteq   | $ \subsetneqq $      | \subsetneqq      | $\ntrianglelefteq$  | \ntrianglelefteq  |
-| $ \varsupsetneq $ | \varsupsetneq  | $ \nsupseteq $   | \nsupseteq   | $ \supsetneqq $      | \supsetneqq      | $\ntrianglerighteq$ | \ntrianglerighteq |
-| $ \nleftarrow $   | \nleftarrow    | $ \nrightarrow $ | \nrightarrow | $ \nleftrightarrow $ | \nleftrightarrow |                     |                   |
-| $ \nLeftarrow $   | \nLeftarrow    | $ \nRightarrow $ | \nRightarrow | $ \nLeftrightarrow $ | \nLeftrightarrow |                     |                   |
+|       符号        | LaTex命令      |       符号       | LaTex命令    |         符号         | LaTex命令        |        符号         | LaTex命令         |
+| :---------------: | -------------- | :--------------: | ------------ | :------------------: | ---------------- | :-----------------: | ----------------- |
+|    $ \nless $     | \nless         |    $ \lneq $     | \lneq        |      $ \nleq $       | \nleq            |  $\varsubsetneqq$   | \varsubsetneqq    |
+|     $ \ngtr $     | \ngtr          |    $ \gneq $     | \gneq        |      $ \ngeq $       | \ngeq            |  $\varsubsetneqq$   | \varsubsetneqq    |
+|  $ \nleqslant $   | \nleqslant     |    $ \lneqq $    | \lneqq       |      $ \nmid $       | \nmid            |    $\nsubseteqq$    | \nsubseteqq       |
+|  $ \ngeqslant $   | \nngeqslantgtr |    $ \gneqq $    | \gneqq       |    $ \nparallel $    | \nparallel       |    $\nsupseteqq$    | \nsupseteqq       |
+|  $ \lvertneqq $   | \lvertneqq     |    $ \nleqq $    | \nleqq       |      $ \lnsim $      | \lnsim           |    $\nshortmid$     | \nshortmid        |
+|  $ \gvertneqq $   | \gvertneqq     |    $ \ngeqq $    | \ngeqq       |      $ \gnsim $      | \gnsim           |  $\nshortparallel$  | \nshortparallel   |
+|   $ \lnapprox $   | \lnapprox      |    $ \nsim $     | \nsim        |    $ \lnapprox $     | \lnapprox        |      $\nprec$       | \nprec            |
+|   $ \gnapprox $   | \gnapprox      |    $ \ncong $    | \ncong       |    $ \gnapprox $     | \gnapprox        |      $\nsucc$       | \nsucc            |
+|   $ \npreceq $    | \npreceq       |   $ \nvdash $    | \nvdash      |     $ \nVdash $      | \nVdash          |     $\precneqq$     | \precneqq         |
+|   $ \nsucceq $    | \nsucceq       |   $ \nvDash $    | \nvDash      |     $ \nVDash $      | \nVDash          |     $\succneqq$     | \succneqq         |
+|   $ \precnsim $   | \precnsim      | $ \precnapprox $ | \precnapprox |    $ \subsetneq $    | \subsetneq       |  $\ntriangleleft$   | \ntriangleleft    |
+|   $ \succnsim $   | \succnsim      | $ \succnapprox $ | \succnapprox |    $ \supsetneq $    | \supsetneq       |  $\ntriangleright$  | \ntriangleright   |
+| $ \varsubsetneq $ | \varsubsetneq  |  $ \nsubseteq $  | \nsubseteq   |   $ \subsetneqq $    | \subsetneqq      | $\ntrianglelefteq$  | \ntrianglelefteq  |
+| $ \varsupsetneq $ | \varsupsetneq  |  $ \nsupseteq $  | \nsupseteq   |   $ \supsetneqq $    | \supsetneqq      | $\ntrianglerighteq$ | \ntrianglerighteq |
+|  $ \nleftarrow $  | \nleftarrow    | $ \nrightarrow $ | \nrightarrow | $ \nleftrightarrow $ | \nleftrightarrow |                     |                   |
+|  $ \nLeftarrow $  | \nLeftarrow    | $ \nRightarrow $ | \nRightarrow | $ \nLeftrightarrow $ | \nLeftrightarrow |                     |                   |
 
 ## AMS 二元运算符
 
-
-
-| 符号           | LaTex命令  | 符号            | LaTex命令   | 符号               | LaTex命令        |
-| -------------- | ---------- | --------------- | ----------- | ------------------ | ---------------- |
-| $ \dotplus $   | \dotplus   | $ \centerdot $  | \centerdot  | $\divideontimes$   | \divideontimes   |
-| $ \ltimes $    | \ltimes    | $ \rtimes $     | \rtimes     | $\smallsetminus$   | \smallsetminus   |
+|      符号      | LaTex命令  |      符号       | LaTex命令   |        符号        | LaTex命令        |
+| :------------: | ---------- | :-------------: | ----------- | :----------------: | ---------------- |
+|  $ \dotplus $  | \dotplus   | $ \centerdot $  | \centerdot  |  $\divideontimes$  | \divideontimes   |
+|  $ \ltimes $   | \ltimes    |   $ \rtimes $   | \rtimes     |  $\smallsetminus$  | \smallsetminus   |
 | $ \doublecup $ | \doublecup | $ \doublecap $  | \doublecap  | $\doublebarwedge$  | \doublebarwedge  |
-| $ \veebar $    | \veebar    | $ \barwedge $   | \barwedge   | $\circleddash$     | \circleddash     |
-| $ \boxplus $   | \boxplus   | $ \boxminus $   | \boxminus   | $\circledcirc$     | \circledcirc     |
-| $ \boxtimes $  | \boxtimes  | $ \boxdot $     | \boxdot     | $\rightthreetimes$ | \rightthreetimes |
+|  $ \veebar $   | \veebar    |  $ \barwedge $  | \barwedge   |   $\circleddash$   | \circleddash     |
+|  $ \boxplus $  | \boxplus   |  $ \boxminus $  | \boxminus   |   $\circledcirc$   | \circledcirc     |
+| $ \boxtimes $  | \boxtimes  |   $ \boxdot $   | \boxdot     | $\rightthreetimes$ | \rightthreetimes |
 | $ \intercal $  | \intercal  | $ \circledast $ | \circledast | $\leftthreetimes$  | \leftthreetimes  |
 | $ \curlyvee $  | \curlyvee  | $ \curlywedge $ | \curlywedge |                    |                  |
 
 ## AMS 其他符号
 
-
-
-| 符号              | LaTex命令     | 符号                   | LaTex命令          | 符号          | LaTex命令   |
-| ----------------- | ------------- | ---------------------- | ------------------ | ------------- | ----------- |
-| $ \hbar $         | \hbar         | $ \hslash $            | \hslash            | $\Bbbk$       | \Bbbk       |
-| $ \square $       | \square       | $ \blacksquare $       | \blacksquare       | $\circledS$   | \circledS   |
-| $ \vartriangle $  | \vartriangle  | $ \blacktriangle $     | \blacktriangle     | $\complement$ | \complement |
-| $ \triangledown $ | \triangledown | $ \blacktriangledown $ | \blacktriangledown | $\Game$       | \Game       |
-| $ \lozenge $      | \lozenge      | $ \blacklozenge $      | \blacklozenge      | $\bigstar$    | \bigstar    |
-| $ \angle $        | \angle        | $ \measuredangle $     | \measuredangle     |               |             |
-| $ \diagup $       | \diagup       | $ \diagdown $          | \diagdown          | $\backprime$  | \backprime  |
-| $ \nexists $      | \nexists      | $ \Finv $              | \Finv              | $\varnothing$ | \varnothing |
-| $ \eth $          | \eth          | $ \sphericalangle $    | \sphericalangle    | $\mho$        | \mho        |
+|       符号        | LaTex命令     |          符号          | LaTex命令          |     符号      | LaTex命令   |
+| :---------------: | :------------ | :--------------------: | ------------------ | :-----------: | ----------- |
+|     $ \hbar $     | \hbar         |      $ \hslash $       | \hslash            |    $\Bbbk$    | \Bbbk       |
+|    $ \square $    | \square       |    $ \blacksquare $    | \blacksquare       |  $\circledS$  | \circledS   |
+| $ \vartriangle $  | \vartriangle  |   $ \blacktriangle $   | \blacktriangle     | $\complement$ | \complement |
+| $ \triangledown $ | \triangledown | $ \blacktriangledown $ | \blacktriangledown |    $\Game$    | \Game       |
+|   $ \lozenge $    | \lozenge      |   $ \blacklozenge $    | \blacklozenge      |  $\bigstar$   | \bigstar    |
+|    $ \angle $     | \angle        |   $ \measuredangle $   | \measuredangle     |               |             |
+|    $ \diagup $    | \diagup       |     $ \diagdown $      | \diagdown          | $\backprime$  | \backprime  |
+|   $ \nexists $    | \nexists      |       $ \Finv $        | \Finv              | $\varnothing$ | \varnothing |
+|     $ \eth $      | \eth          |  $ \sphericalangle $   | \sphericalangle    |    $\mho$     | \mho        |
 

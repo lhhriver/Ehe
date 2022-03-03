@@ -60,8 +60,6 @@ tensor([[19., 25.],
 
 下面基于`corr2d`函数来实现一个自定义的二维卷积层。在构造函数`__init__`里我们声明`weight`和`bias`这两个模型参数。前向计算函数`forward`则是直接调用`corr2d`函数再加上偏差。
 
-
-
 ``` python
 class Conv2D(nn.Module):
     def __init__(self, kernel_size):

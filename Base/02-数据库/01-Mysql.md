@@ -5,7 +5,6 @@
 ```sql
 # 查看进程
 show processlist;
-
 show full processlist;
 ```
 

@@ -79,6 +79,12 @@ diff 以逐行的方式，比较文本文件的异同处。如果指定要比较
 diff log2014.log log2013.log 
 ```
 
+## md5sum
+
+```shell
+
+```
+
 
 
 - diffstat
@@ -482,7 +488,7 @@ dr-xr-xr-x  13 root root     0 Feb 18 10:59 sys
 参数：-p 确保目录名称存在，如果目录不存在的就新创建一个。
 
 ```shell
-mkdir river 创建目录river
+mkdir river # 创建目录river
 ```
 
 ```shell
@@ -619,9 +625,9 @@ tcp        0      0 0.0.0.0:8000            0.0.0.0:*               LISTEN      
 更多命令：
 
 ```shell
-netstat -ntlp   //查看当前所有tcp端口
-netstat -ntulp | grep 80   //查看所有80端口使用情况
-netstat -ntulp | grep 3306   //查看所有3306端口使用情况
+netstat -ntlp   # 查看当前所有tcp端口
+netstat -ntulp | grep 80   # 查看所有80端口使用情况
+netstat -ntulp | grep 3306   # 查看所有3306端口使用情况
 ```
 
 - newaliases
@@ -677,7 +683,6 @@ ping 192.168.1.1
 
 ```shell
 date
-
 date -d "-1 day" "+%Y-%m-%d" # 昨天 2019-12-21
 ```
 
@@ -919,8 +924,11 @@ gunzip file1.gz
 打包目录
 
 ```shell
-tar -zcvf dir1.tar.gz dir1   将目录dir1压缩成一个打包并压缩的文件
-tar -zxvf dir1.tar.gz 解压
+# 将目录dir1压缩成一个打包并压缩的文件
+tar -zcvf dir1.tar.gz dir1   
+
+# 解压
+tar -zxvf dir1.tar.gz 
 
     -c 产生.tar打包文件
     -v 显示详细信息
@@ -1006,7 +1014,7 @@ whatis ls
 wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz
 ```
 
-## 输入/输出重定向
+## 输入、输出重定向
 
 1. 或>> 输出重定向
 

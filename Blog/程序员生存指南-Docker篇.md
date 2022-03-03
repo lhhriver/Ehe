@@ -186,6 +186,26 @@ ENTRYPOINT ["/bin/bash", "init.sh"]
 docker build -t my_https://gitee.com/liuhuihe/Ehe/raw/master/images/centos:latest .
 ```
 
+## 基于容器制作镜像
+
+```shell
+# 查询正在运行的容器
+docker ps
+
+# 将容器制作为镜像（如果要提交到私有镜像库，新镜像名称必须携带私有库的域名，例如：xxx.com
+docker commit 容器ID xxx.com/my_container:v1
+
+# 将容器提交到私有镜像库
+docker push xxx.com/my_container:v1
+
+# 修改镜像名称（想要将公共镜像推送到私有镜像库，必须修改其名称，前面加上私有库的域名）
+docker tag old_container_name xxx.com/new_container_name:latest
+```
+
+**优点**：制作方便，只要进入容器，安装好环境，就可以制作一个新的镜像，并部署到其他环境。
+
+**缺点**：容器内新增的服务必须在启动后，再进入容器启动一次服务，但是可以通过启动时执行指定命令来解决这个问题。
+
 ## 搭建私有镜像库
 
 在很多企业中，都不能肆意的访问外网，那这样是不是docker就没法愉快的使用了呢？我们通常下载镜像都是从docker hub官方仓库下载的，如果在企业内部搭建一个私有镜像库，那是不是就能像外网一样使用docker了呢，docker官方为我们提供了非常简单的搭建私有库的方式：
@@ -360,26 +380,6 @@ ctrl p q
 docker run -d  -p 8085:80 --volumes-from  my_volumes --name "n85" nginx
 docker run -d  -p 8086:80 --volumes-from  my_volumes --name "n86" nginx
 ```
-
-## 基于容器制作镜像
-
-```shell
-# 查询正在运行的容器
-docker ps
-
-# 将容器制作为镜像（如果要提交到私有镜像库，新镜像名称必须携带私有库的域名，例如：xxx.com
-docker commit 容器ID xxx.com/my_container:v1
-
-# 将容器提交到私有镜像库
-docker push xxx.com/my_container:v1
-
-# 修改镜像名称（想要将公共镜像推送到私有镜像库，必须修改其名称，前面加上私有库的域名）
-docker tag old_container_name xxx.com/new_container_name:latest
-```
-
-**优点**：制作方便，只要进入容器，安装好环境，就可以制作一个新的镜像，并部署到其他环境。
-
-**缺点**：容器内新增的服务必须在启动后，再进入容器启动一次服务，但是可以通过启动时执行指定命令来解决这个问题。
 
 
 

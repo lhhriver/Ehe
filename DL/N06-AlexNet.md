@@ -548,4 +548,3 @@ with tf.Graph().as_default():
     2019-08-15 21:36:23.413310: Forward-backward across  1000 steps,165.719 +/- 5233.383 sec per batch 
     **************************************************
 
-
