@@ -197,6 +197,7 @@ mv file1 file2 file3 dir2  # 将文件file1、 file2 file3移动到目录dir2下
 ```shell
 rm he  # 删除文件he
 rm -r river # 删除目录river
+rm -rf chinese_text_classification/
 ```
 
 ## scp
@@ -327,11 +328,17 @@ wc testfile testfile_1 testfile_2   #统计三个文件的信息
 输出结果如下：
 
 ```
-3 92 598 testfile                    # 第一个文件行数为3、单词数92、字节数598  
-9 18 78 testfile_1                   # 第二个文件的行数为9、单词数18、字节数78  
-3 6 32 testfile_2                    # 第三个文件的行数为3、单词数6、字节数32  
-15 116 708 总用量                    # 三个文件总共的行数为15、单词数116、字节数708 
+3 92 598 testfile      # 第一个文件行数为3、单词数92、字节数598  
+9 18 78 testfile_1     # 第二个文件的行数为9、单词数18、字节数78  
+3 6 32 testfile_2       # 第三个文件的行数为3、单词数6、字节数32  
+15 116 708 总用量       # 三个文件总共的行数为15、单词数116、字节数708 
 ```
+
+```
+wc -l train.txt
+```
+
+
 
 # 文件传输
 

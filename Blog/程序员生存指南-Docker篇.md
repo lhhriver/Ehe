@@ -260,6 +260,8 @@ docker pull xx.xx.xx.xx:5000/nginx:latest
 ```shell
 # 启动交互式容器（/bin/sh、/bin/bash、bash），执行exit后容器就退出了，可以使用ctrl+p+q
 docker run -it --name="n1" 3fe2fe0dab2e /bin/bash
+docker run -itd --name centos7-fs centos:centos7
+docker run -p 9000:9000 --name inforextraction -dt ba3145eb99fe bash
 
 # 启动守护式容器
 docker run -d -p 8080:80 --name="n1" nginx
@@ -449,7 +451,7 @@ docker images
 docker ps | grep KnowledgeDemo
 
 # 提交代码，指定版本
-docker commit -a "leslie" -m "KnowledgeDemo" KnowledgeDemo knowledgedemo:v1
+docker commit -a "liu" -m "KnowledgeDemo" KnowledgeDemo knowledgedemo:v1
 
 # 保存为.tar文件
 cd /home/dockersave/
