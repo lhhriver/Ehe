@@ -47,9 +47,11 @@ conda deactivate
 
 
 
+```shell
 source activate fs_dev
 
 source deactivate
+```
 
 
 

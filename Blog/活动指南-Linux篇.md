@@ -222,6 +222,8 @@ scp /home/Anaconda3-5.0.1-Linux-x86_64.sh root@172.16.92.8:/home
 ```shell
 tail -100 /etc/services
 tail -f ./logs/catalina.out
+
+tail -100f nohup.out
 ```
 
 - tee
@@ -639,7 +641,7 @@ netstat -ntulp | grep 3306   # 查看所有3306端口使用情况
 
 - newaliases
 
-## ping	
+## ping
 
 测试网络连通性
 
@@ -840,9 +842,35 @@ uname -a
 
 ## export
 
+用于设置或显示环境变量。在 shell 中执行程序时，shell 会提供一组环境变量。export 可新增，修改或删除环境变量，供后续执行的程序使用。export 的效力仅限于该次登陆操作。
+
+语法：export \[-fnp\][变量名称]=[变量设置值]
+
+参数说明：
+
+- -f 　代表[变量名称]中为函数名称。
+- -n 　删除指定的变量。变量实际上并未删除，只是不会输出到后续指令的执行环境中。
+- -p 　列出所有的shell赋予程序的环境变量。
+
 ```shell
 export PATH=/root/anaconda3/bin:$PATH
+export LD_LIBRARY_PATH=/home/cao/gridsim-master-0811/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:../lib
 ```
+
+
+
+```shell
+vi /etc/profile   
+
+# 在文本的最后面添加以下内容 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/apr/lib   
+
+# 使profile生效
+source /etc/profile
+```
+
+
 
 - fbset
 - gpasswd
@@ -1019,6 +1047,12 @@ whatis ls
 
 ```shell
 wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz
+```
+
+## nohup
+
+```shell
+nohup /root/anaconda3/bin/python train_css.py &
 ```
 
 ## 输入、输出重定向
