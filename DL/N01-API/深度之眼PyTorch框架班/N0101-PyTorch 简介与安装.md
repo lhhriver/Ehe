@@ -1,7 +1,5 @@
 2017 年 1 月，FAIR（Facebook AI Research）发布了 PyTorch。PyTorch 是在 Torch 基础上用 python 语言重新打造的一款深度学习框架。Torch 是采用 Lua 语言为接口的机器学习框架，但是因为 Lua 语言较为小众，导致 Torch 学习成本高，因此知名度不高。
 
-
-
 # PyTorch 的发展
 
 - 2017 年 1 月正式发布 PyTorch。
@@ -10,7 +8,6 @@
 - 2019 年 5 月更新 1.1.0 版，支持 TensorBoard，增强可视化功能。
 - 2019 年 8 月更新 1.2.0 版，更新 Torchvision，torchaudio 和torchtext，支持更多功能。
 - 目前 PyTorch 有超越 Tensorflow 的趋势。
-- ...
 
 # PyTorch 优点
 
@@ -18,7 +15,6 @@
 - 代码简洁灵活，使用 nn.Module 封装使得网络搭建更加方便 。基于动态图机制，更加灵活。
 - 资源多，arXiv 中新论文的算法大多有 PyTorch 实现。
 - 开发者多，Github 上贡献者(Contributors)已经超过 1100+
-- ...
 
 # PyTorch 实现模型训练的 5 大要素
 
@@ -30,7 +26,7 @@
 2. **模型**：包括构建模型模块，组织复杂网络，初始化网络参数，定义网络层。 
 3. **损失函数**：包括创建损失函数，设置损失函数超参数，根据不同任务选择合适的损失函数。 
 4. **优化器**：包括根据梯度使用某种优化器更新参数，管理模型参数，管理多个参数组实现不同学习率，调整学习率。 
-5. **迭代训练**：组织上面 4 个模块进行反复训练。包括观察训练效果，绘制 Loss/ Accuracy 曲线，用 TensorBoard 进行可视化分析。
+5. **迭代训练**：组织上面 4 个模块进行反复训练。包括观察训练效果，绘制 Loss / Accuracy 曲线，用 TensorBoard 进行可视化分析。
 
 整个系列的学习都会围绕着这 5 个方面来展开。
 
@@ -97,8 +93,6 @@ cu92/torch-1.5.0%2Bcu92-cp37-cp37m-linux_x86_64.whl
 最后在`Python Interpreter`给当前项目选择刚刚创建的 Python 环境即可。
 
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-502418.png)
-
-
 
 如果安装的是 GPU 版本，安装完成之后可以使用`print(torch.cuda.is_available())`语句来查看安装好的 PyTorch 是否支持 GPU。这里我是用的是 CPU 版本。
 

@@ -1,4 +1,6 @@
-[本章代码](https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson1/tensor_introduce1.py)
+**本章代码**
+
+1. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson1/tensor_introduce1.py
 
 # Tensor 的概念
 
@@ -26,7 +28,7 @@ Tensor 中文为张量。张量的意思是一个多维数组，它是标量、�
 
 6. **dtype**: 张量的数据类型，如 torch.FloatTensor，torch.cuda.FloatTensor。
 7. **shape**: 张量的形状。如 (64, 3, 224, 224)
-8. **device**: 张量所在设备 (CPU/GPU)，GPU 是加速计算的关键
+8. **device**: 张量所在设备 (CPU/GPU)，GPU 是加速计算的关键。
 
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-525401.png)
 
@@ -92,7 +94,8 @@ tensor([[1., 1., 1.],
 代码示例：
 
 ```python
-arr = np.array([[1, 2, 3], [4, 5, 6]])
+arr = np.array([[1, 2, 3], 
+                [4, 5, 6]])
 t = torch.from_numpy(arr)
 
 # 修改 array，tensor 也会被修改
@@ -132,7 +135,7 @@ torch.zeros(*size,
             requires_grad=False)
 ```
 
-功能：根据 size 创建全 0 张量
+**功能**：根据 size 创建全 0 张量
 
 - size: 张量的形状
 - out: 输出的张量，如果指定了 out，那么`torch.zeros()`返回的张量和 out 指向的是同一个地址
@@ -176,7 +179,7 @@ torch.zeros_like(input,
                  memory_format=torch.preserve_format)
 ```
 
-功能：根据 input 形状创建全 0 张量
+**功能**：根据 input 形状创建全 0 张量
 
 - input: 创建与 input 同形状的全 0 张量
 - dtype: 数据类型
@@ -196,7 +199,7 @@ torch.full(size,
            requires_grad=False)
 ```
 
-功能：创建自定义数值的张量
+**功能**：创建自定义数值的张量
 
 - size: 张量的形状，如 (3,3)
 - fill_value: 张量中每一个元素的值
@@ -229,7 +232,7 @@ torch.arange(start=0,
              requires_grad=False)
 ```
 
-功能：创建等差的 1 维张量。注意区间为[start, end)。
+**功能**：创建等差的 1 维张量。注意区间为[start, end)。
 
 - start: 数列起始值
 - end: 数列结束值，开区间，取不到结束值
@@ -261,7 +264,7 @@ torch.linspace(start,
                requires_grad=False)
 ```
 
-功能：创建均分的 1 维张量。数值区间为 [start, end]
+**功能**：创建均分的 1 维张量。数值区间为 [start, end]
 
 - start: 数列起始值
 - end: 数列结束值
@@ -270,7 +273,6 @@ torch.linspace(start,
 代码示例：
 
 ```python
-# t = torch.linspace(2, 10, 5)
 t = torch.linspace(2, 10, 6)
 print(t)
 ```
@@ -295,7 +297,7 @@ torch.logspace(start,
                requires_grad=False)
 ```
 
-功能：创建对数均分的 1 维张量。数值区间为 [start, end]，底为 base。
+**功能**：创建对数均分的 1 维张量。数值区间为 [start, end]，底为 base。
 
 - start: 数列起始值
 - end: 数列结束值
@@ -305,15 +307,14 @@ torch.logspace(start,
 代码示例：
 
 ```python
-# t = torch.linspace(2, 10, 5)
-t = torch.linspace(2, 10, 6)
+t = torch.logspace(2, 10, 6)
 print(t)
 ```
 
 输出为：
 
 ```
-tensor([ 2.0000,  3.6000,  5.2000,  6.8000,  8.4000, 10.0000])
+tensor([1.0000e+02, 3.9811e+03, 1.5849e+05, 6.3096e+06, 2.5119e+08, 1.0000e+10])
 ```
 
 ### torch.eye()
@@ -328,7 +329,7 @@ torch.eye(n,
           requires_grad=False)
 ```
 
-功能：创建单位对角矩阵( 2 维张量)，默认为方阵
+**功能**：创建单位对角矩阵( 2 维张量)，默认为方阵
 
 - n: 矩阵行数。通常只设置 n，为方阵。
 - m: 矩阵列数
@@ -345,74 +346,77 @@ torch.normal(mean,
              out=None)
 ```
 
-功能：生成正态分布 (高斯分布)
+**功能**：生成正态分布 (高斯分布)
 
 - mean: 均值
 - std: 标准差
 
-有 4 种模式：
+有4种模式：
 
-1. mean 为标量，std 为标量。这时需要设置 size。
+`模式一`：mean 为标量，std 为标量。这时需要设置 size。
 
-	代码示例：
+代码示例：
 
-	```python
-	# mean：标量 std: 标量
-	# 这里需要设置 size
-	t_normal = torch.normal(0., 1., size=(4,))
-	print(t_normal)
-	```
+```python
+# mean：标量 std: 标量
+# 这里需要设置 size
+t_normal = torch.normal(0., 1., size=(4,))
+print(t_normal)
+```
 
-	输出为：
+输出为：
 
-	```
-	tensor([0.6614, 0.2669, 0.0617, 0.6213])
-	```
-2. mean 为标量，std 为张量
-3. mean 为张量，std 为标量
+```
+tensor([0.6614, 0.2669, 0.0617, 0.6213])
+```
 
-	代码示例：
+`模式二`：mean 为标量，std 为张量
 
-	```python
-	# mean：张量 std: 标量
-	mean = torch.arange(1, 5, dtype=torch.float)
-	std = 1
-	t_normal = torch.normal(mean, std)
-	print("mean:{}\nstd:{}".format(mean, std))
-	print(t_normal)
-	```
+`模式三`：mean 为张量，std 为标量
 
-	输出为：
+代码示例：
 
-	```
-	mean:tensor([1., 2., 3., 4.])
-	std:1
-	tensor([1.6614, 2.2669, 3.0617, 4.6213])
-	```
+```python
+# mean：张量 std: 标量
+mean = torch.arange(1, 5, dtype=torch.float)
+std = 1
+t_normal = torch.normal(mean, std)
+print("mean:{} \n std:{}".format(mean, std))
+print(t_normal)
+```
 
-	这 4 个数采样分布的均值不同，但是方差都是 1。
-4. mean 为张量，std 为张量
+输出为：
 
-	代码示例：
+```
+mean:tensor([1., 2., 3., 4.])
+std:1
+tensor([1.6614, 2.2669, 3.0617, 4.6213])
+```
 
-	```python
-	# mean：张量 std: 张量
-	mean = torch.arange(1, 5, dtype=torch.float)
-	std = torch.arange(1, 5, dtype=torch.float)
-	t_normal = torch.normal(mean, std)
-	print("mean:{}\n std:{}".format(mean, std))
-	print(t_normal)
-	```
+这 4 个数采样分布的均值不同，但是方差都是 1。
 
-	输出为：
+`模式一四`：mean 为张量，std 为张量
 
-	```
-	mean:tensor([1., 2., 3., 4.])
-	std:tensor([1., 2., 3., 4.])
-	tensor([1.6614, 2.5338, 3.1850, 6.4853])
-	```
+代码示例：
 
-	其中 1.6614 是从正态分布 N(1,1)中采样得到的，其他数字以此类推。
+```python
+# mean：张量 std: 张量
+mean = torch.arange(1, 5, dtype=torch.float)
+std = torch.arange(1, 5, dtype=torch.float)
+t_normal = torch.normal(mean, std)
+print("mean:{}\n std:{}".format(mean, std))
+print(t_normal)
+```
+
+输出为：
+
+```
+mean:tensor([1., 2., 3., 4.])
+std:tensor([1., 2., 3., 4.])
+tensor([1.6614, 2.5338, 3.1850, 6.4853])
+```
+
+其中 1.6614 是从正态分布 N(1,1)中采样得到的，其他数字以此类推。
 
 ### torch.randn() 和 torch.randn_like()
 
@@ -425,7 +429,7 @@ torch.randn(*size,
             requires_grad=False)
 ```
 
-功能：生成标准正态分布。
+**功能**：生成标准正态分布。
 
 - size: 张量的形状
 
@@ -440,7 +444,7 @@ torch.rand(*size,
            requires_grad=False)
 ```
 
-功能：在区间 [0, 1) 上生成均匀分布。
+**功能**：在区间 [0, 1) 上生成均匀分布。
 
 ### torch.randint() 和 torch.randint_like()
 
@@ -457,7 +461,7 @@ torch.rand(*size,
                requires_grad=False)
 ```
 
-功能：在区间 [low, high) 上生成整数均匀分布。
+**功能**：在区间 [low, high) 上生成整数均匀分布。
 
 - size: 张量的形状
 
@@ -472,9 +476,17 @@ torch.randperm(n,
                requires_grad=False)
 ```
 
-功能：生成从 0 到 n-1 的随机排列。常用于生成索引。
+**功能**：生成从 0 到 n-1 的随机排列。常用于生成索引。
 
 - n: 张量的长度
+
+```python
+ torch.randperm(10)
+```
+
+```
+tensor([4, 5, 8, 9, 0, 7, 3, 6, 2, 1])
+```
 
 ### torch.bernoulli()
 
@@ -493,3 +505,4 @@ torch.bernoulli(input,
 
 - [深度之眼PyTorch框架班](https://ai.deepshare.net/detail/p_5df0ad9a09d37_qYqVmt85/6)
 - [原文](https://blog.zhangxiann.com/202002052039/)
+

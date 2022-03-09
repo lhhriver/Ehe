@@ -1,4 +1,6 @@
-[本章代码](https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson2/rmb_classification/)
+**本章代码**
+
+1. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson2/rmb_classification/
 
 # 人民币 二分类
 
@@ -59,7 +61,11 @@ torch.utils.data.DataLoader(dataset,
 
 ## torch.utils.data.Dataset
 
-功能：Dataset 是抽象类，所有自定义的 Dataset 都需要继承该类，并且重写`__getitem()__`方法和`__len__()`方法 。`__getitem()__`方法的作用是接收一个索引，返回索引对应的样本和标签，这是我们自己需要实现的逻辑。`__len__()`方法是返回所有样本的数量。
+**功能**：Dataset 是抽象类，所有自定义的 Dataset 都需要继承该类，并且重写`__getitem()__`方法和`__len__()`方法 。
+
+- `__getitem()__`方法的作用是接收一个索引，返回索引对应的样本和标签，这是我们自己需要实现的逻辑。
+
+- `__len__()`方法是返回所有样本的数量。
 
 数据读取包含 3 个方面
 
@@ -70,7 +76,7 @@ torch.utils.data.DataLoader(dataset,
 这里的路径结构如下，有两类人民币图片：1 元和 100 元，每一类各有 100 张图片。
 
 - RMB_data
-	- 1
+	 - 1
 	- 100
 
 首先划分数据集为训练集、验证集和测试集，比例为 8:1:1。
@@ -78,15 +84,15 @@ torch.utils.data.DataLoader(dataset,
 数据划分好后的路径构造如下：
 
 - rmb_split
-	- train
-		- 1
-		- 100
-	- valid
-		- 1
-		- 100
-	- test
-		- 1
-		- 100
+     	- train
+     		- 1
+     		- 100
+     - valid
+           - 1
+          - 100
+     - test
+           - 1
+          - 100
 
 实现读取数据的 Dataset，编写一个`get_img_info()`方法，读取每一个图片的路径和对应的标签，组成一个元组，再把所有的元组作为 list 存放到`self.data_info`变量中，这里需要注意的是标签需要映射到 0 开始的整数: `rmb_label = {"1": 0, "100": 1}`。
 
