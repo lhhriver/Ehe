@@ -1,14 +1,16 @@
-# How to eat Pytorch in 20 days ?
+# Eat Pytorch in 20 days
 
-**《20天吃掉那只Pytorch》**
+`《20天吃掉那只Pytorch》`
 
-* 🚀 [github项目地址](https://github.com/lyhue1991/eat_pytorch_in_20_days)
-* 🐳 [和鲸专栏地址](https://www.kesci.com/home/column/5f2ac5d8af3980002cb1bc08) 
+*  [github项目地址](https://github.com/lyhue1991/eat_pytorch_in_20_days)
 
-**《30天吃掉那只TensorFlow2》**
+*  [和鲸专栏地址](https://www.kesci.com/home/column/5f2ac5d8af3980002cb1bc08) 
 
-* 🚀 [github项目地址](https://github.com/lyhue1991/eat_tensorflow2_in_30_days)
-* 🐳 [和鲸专栏地址](https://www.kesci.com/home/column/5d8ef3c3037db3002d3aa3a0) 
+`《30天吃掉那只TensorFlow2》`
+
+*  [github项目地址](https://github.com/lyhue1991/eat_tensorflow2_in_30_days)
+
+*  [和鲸专栏地址](https://www.kesci.com/home/column/5d8ef3c3037db3002d3aa3a0) 
 
 ## Pytorch or TensorFlow2
 
@@ -25,12 +27,6 @@
 1. **在工业界最重要的是模型落地，目前国内的大部分互联网企业只支持TensorFlow模型的在线部署，不支持Pytorch。** 并且工业界更加注重的是模型的高可用性，许多时候使用的都是成熟的模型架构，调试需求并不大。
 2. **研究人员最重要的是快速迭代发表文章，需要尝试一些较新的模型架构。而Pytorch在易用性上相比TensorFlow2有一些优势，更加方便调试。** 并且在2019年以来在学术界占领了大半壁江山，能够找到的相应最新研究成果更多。
 3. TensorFlow2和Pytorch实际上整体风格已经非常相似了，学会了其中一个，学习另外一个将比较容易。两种框架都掌握的话，能够参考的开源模型案例更多，并且可以方便地在两种框架之间切换。
-
-
-
-`本书的TensorFlow镜像教程`：
-
-🍊[《30天吃掉那只TensorFlow2》](https://github.com/lyhue1991/eat_tensorflow2_in_30_days)
 
 ## 本书面向读者
 
@@ -57,45 +53,11 @@
 
 本书在范例设计上尽可能简约化和结构化，增强范例易读性和通用性，大部分代码片段在实践中可即取即用。
 
-## 本书学习方案 
+## 本书学习方案
 
 **1. 学习计划**
 
 本书是作者利用工作之余大概3个月写成的，大部分读者应该在20天可以完全学会。预计每天花费的学习时间在30分钟到2个小时之间。当然，本书也非常适合作为Pytorch的工具手册在工程落地时作为范例库参考。
-
-**点击学习内容蓝色标题即可进入该章节。**
-
-
-|  日期  | 学习内容                                                     | 内容难度 | 预计学习时间 | 更新状态 |
-| :----: | :----------------------------------------------------------- | :------: | :----------: | :------: |
-| &nbsp; | [**一、Pytorch的建模流程**](./一、Pytorch的建模流程.md)      |    ⭐️     |    0hour     |    ✅     |
-|  day1  | [1-1,结构化数据建模流程范例](./1-1,结构化数据建模流程范例.md) |   ⭐️⭐️⭐️    |    1hour     |    ✅     |
-|  day2  | [1-2,图片数据建模流程范例](./1-2,图片数据建模流程范例.md)    |   ⭐️⭐️⭐️⭐️   |    2hour     |    ✅     |
-|  day3  | [1-3,文本数据建模流程范例](./1-3,文本数据建模流程范例.md)    |  ⭐️⭐️⭐️⭐️⭐️   |    2hour     |    ✅     |
-|  day4  | [1-4,时间序列数据建模流程范例](./1-4,时间序列数据建模流程范例.md) |  ⭐️⭐️⭐️⭐️⭐️   |    2hour     |    ✅     |
-| &nbsp; | [**二、Pytorch的核心概念**](./二、Pytorch的核心概念.md)      |    ⭐️     |    0hour     |    ✅     |
-|  day5  | [2-1,张量数据结构](./2-1,张量数据结构.md)                    |   ⭐️⭐️⭐️⭐️   |    1hour     |    ✅     |
-|  day6  | [2-2,自动微分机制](./2-2,自动微分机制.md)                    |   ⭐️⭐️⭐️    |    1hour     |    ✅     |
-|  day7  | [2-3,动态计算图](./2-3,动态计算图.md)                        |  ⭐️⭐️⭐️⭐️⭐️   |    2hour     |    ✅     |
-| &nbsp; | [**三、Pytorch的层次结构**](./三、Pytorch的层次结构.md)      |    ⭐️     |    0hour     |    ✅     |
-|  day8  | [3-1,低阶API示范](./3-1,低阶API示范.md)                      |   ⭐️⭐️⭐️⭐️   |    1hour     |    ✅     |
-|  day9  | [3-2,中阶API示范](./3-2,中阶API示范.md)                      |   ⭐️⭐️⭐️    |    1hour     |    ✅     |
-| day10  | [3-3,高阶API示范](./3-3,高阶API示范.md)                      |   ⭐️⭐️⭐️    |    1hour     |    ✅     |
-| &nbsp; | [**四、Pytorch的低阶API**](./四、Pytorch的低阶API.md)        |    ⭐️     |    0hour     |    ✅     |
-| day11  | [4-1,张量的结构操作](./4-1,张量的结构操作.md)                |  ⭐️⭐️⭐️⭐️⭐️   |    2hour     |    ✅     |
-| day12  | [4-2,张量的数学运算](./4-2,张量的数学运算.md)                |   ⭐️⭐️⭐️⭐️   |    1hour     |    ✅     |
-| day13  | [4-3,nn.functional和nn.Module](./4-3,nn.functional和nn.Module.md) |   ⭐️⭐️⭐️⭐️   |    1hour     |    ✅     |
-| &nbsp; | [**五、Pytorch的中阶API**](./五、Pytorch的中阶API.md)        |    ⭐️     |    0hour     |    ✅     |
-| day14  | [5-1,Dataset和DataLoader](./5-1,Dataset和DataLoader.md)      |  ⭐️⭐️⭐️⭐️⭐️   |    2hour     |    ✅     |
-| day15  | [5-2,模型层](./5-3,模型层.md)                                |   ⭐️⭐️⭐️    |    1hour     |    ✅     |
-| day16  | [5-3,损失函数](./5-4,损失函数.md)                            |   ⭐️⭐️⭐️    |    1hour     |    ✅     |
-| day17  | [5-4,TensorBoard可视化](./5-4,TensorBoard可视化.md)          |   ⭐️⭐️⭐️    |    1hour     |    ✅     |
-| &nbsp; | [**六、Pytorch的高阶API**](./六、Pytorch的高阶API.md)        |    ⭐️     |    0hour     |    ✅     |
-| day18  | [6-1,构建模型的3种方法](./6-1,构建模型的3种方法.md)          |   ⭐️⭐️⭐️⭐️   |    1hour     |    ✅     |
-| day19  | [6-2,训练模型的3种方法](./6-2,训练模型的3种方法.md)          |   ⭐️⭐️⭐️⭐️   |    1hour     |    ✅     |
-| day20  | [6-3,使用GPU训练模型](./6-3,使用GPU训练模型.md)              |   ⭐️⭐️⭐️⭐️   |    1hour     |    ✅     |
-
-
 
 **2. 学习环境**
 
@@ -132,11 +94,7 @@ torch version: 1.5.0
 [[2,1]]@[[-1],[2]] = 0
 ```
 
-## 鼓励和联系作者
 
-**如果本书对你有所帮助，想鼓励一下作者，记得给本项目加一颗星星star⭐️，并分享给你的朋友们喔😊!** 
-
-如果对本书内容理解上有需要进一步和作者交流的地方，欢迎在公众号"Python与算法之美"下留言。作者时间和精力有限，会酌情予以回复。也可以在公众号后台回复关键字：**加群**，加入读者交流群和大家讨论。
 
 # Pytorch的建模流程
 
@@ -4501,6 +4459,8 @@ import numpy as np
 import torch 
 ```
 
+#### torch.tensor
+
 ```python
 a = torch.tensor([1,2,3], dtype = torch.float)
 print(a)
@@ -4510,7 +4470,7 @@ print(a)
 tensor([1., 2., 3.])
 ```
 
-
+#### torch.arange
 
 ```python
 b = torch.arange(1,10,step = 2)
@@ -4521,7 +4481,7 @@ print(b)
 tensor([1, 3, 5, 7, 9])
 ```
 
-
+#### torch.linspace
 
 ```python
 c = torch.linspace(0.0, 2*3.14, 10)
@@ -4533,7 +4493,7 @@ tensor([0.0000, 0.6978, 1.3956, 2.0933, 2.7911, 3.4889, 4.1867, 4.8844, 5.5822,
         6.2800])
 ```
 
-
+#### torch.zeros
 
 ```python
 d = torch.zeros((3,3))
@@ -4546,7 +4506,7 @@ tensor([[0., 0., 0.],
         [0., 0., 0.]])
 ```
 
-
+#### torch.ones
 
 ```python
 a = torch.ones((3,3), dtype = torch.int)
@@ -4577,7 +4537,7 @@ tensor([[5., 5., 5.],
         [5., 5., 5.]])
 ```
 
-
+#### torch.rand
 
 ```python
 # 均匀随机分布
@@ -4591,7 +4551,7 @@ print(a)
 tensor([4.9626, 7.6822, 0.8848, 1.3203, 3.0742])
 ```
 
-
+#### torch.normal
 
 ```python
 #正态分布随机
@@ -4606,7 +4566,7 @@ tensor([[-1.3836,  0.2459, -0.1312],
         [ 0.5679, -0.6731, -1.2095]])
 ```
 
-
+#### torch.randn
 
 ```python
 #正态分布随机
@@ -4621,7 +4581,7 @@ tensor([[  8.7204,  13.9161,  -0.8323],
         [-11.3628,   1.8433,   4.4939]])
 ```
 
-
+#### torch.randperm
 
 ```python
 #整数随机排列
@@ -4634,21 +4594,28 @@ tensor([ 5, 15, 19, 10,  7, 17,  0,  4, 12, 16, 14, 13,  1,  3,  9,  6, 18,  2,
          8, 11])
 ```
 
-
+#### torch.eye
 
 ```python
 #特殊矩阵
 I = torch.eye(3,3) #单位矩阵
 print(I)
-
-t = torch.diag(torch.tensor([1,2,3])) #对角矩阵
-print(t)
 ```
 
 ```
 tensor([[1., 0., 0.],
         [0., 1., 0.],
         [0., 0., 1.]])
+```
+
+#### torch.diag
+
+```python
+t = torch.diag(torch.tensor([1,2,3])) #对角矩阵
+print(t)
+```
+
+```
 tensor([[1, 0, 0],
         [0, 2, 0],
         [0, 0, 3]])
@@ -4708,7 +4675,7 @@ tensor([6, 9, 3, 8, 4], dtype=torch.int32)
 
 
 ```python
-#第1行第3列
+# 第1行第3列
 print(t[1,3])
 print(t[1][3])
 ```
@@ -4721,7 +4688,7 @@ tensor(4, dtype=torch.int32)
 
 
 ```python
-#第1行至第3行
+# 第1行至第3行
 print(t[1:4,:])
 ```
 
@@ -4734,7 +4701,7 @@ tensor([[6, 4, 8, 4, 6],
 
 
 ```python
-#第1行至最后一行，第0列到最后一列每隔两列取一列
+# 第1行至最后一行，第0列到最后一列每隔两列取一列
 print(t[1:4,:4:2])
 ```
 
@@ -4747,7 +4714,7 @@ tensor([[6, 8],
 
 
 ```python
-#可以使用索引和切片修改部分元素
+# 可以使用索引和切片修改部分元素
 x = torch.tensor([[1,2],
                   [3,4]],
                  dtype = torch.float32,
@@ -4785,7 +4752,7 @@ tensor([[[ 0,  1,  2],
 
 
 ```python
-#省略号可以表示多个冒号
+# 省略号可以表示多个冒号
 print(a[...,1])
 ```
 
@@ -4855,7 +4822,7 @@ tensor([[[55, 95,  3, 18, 37, 30, 93],
          [70, 33, 25, 58, 24, 61, 59]]], dtype=torch.int32)
 ```
 
-
+#### torch.index_select
 
 ```python
 #抽取每个班级第0个学生，第5个学生，第9个学生的全部成绩
@@ -4912,12 +4879,12 @@ tensor([[[95, 18, 93],
          [33, 58, 59]]], dtype=torch.int32)
 ```
 
-
+#### torch.take
 
 ```python
-#抽取第0个班级第0个学生的第0门课程，第2个班级的第4个学生的第1门课程，第3个班级的第9个学生第6门课程成绩
-#take将输入看成一维数组，输出和index同形状
-s = torch.take(scores, torch.tensor([0*10*7+0,2*10*7+4*7+1,3*10*7+9*7+6]))
+# 抽取第0个班级第0个学生的第0门课程，第2个班级的第4个学生的第1门课程，第3个班级的第9个学生第6门课程成绩
+# take将输入看成一维数组，输出和index同形状
+s = torch.take(scores, torch.tensor([0*10*7 + 0, 2*10*7 + 4*7+1, 3*10*7+9*7+6]))
 s
 ```
 
@@ -4928,7 +4895,7 @@ array([[52, 82, 66, 55, 17, 86, 14],
        [46, 83, 70, 80, 90, 85, 17]], dtype=int32)>
 ```
 
-
+#### torch.masked_select
 
 ```python
 #抽取分数大于等于80分的分数（布尔索引）
@@ -4947,30 +4914,34 @@ torch.index_fill的选取元素逻辑和torch.index_select相同。
 
 torch.masked_fill的选取元素逻辑和torch.masked_select相同。
 
+#### torch.where
+
 
 ```python
-#如果分数大于60分，赋值成1，否则赋值成0
+# 如果分数大于60分，赋值成1，否则赋值成0
 ifpass = torch.where(scores>60,
                      torch.tensor(1),
                      torch.tensor(0))
 print(ifpass)
 ```
 
-
+#### torch.index_fill
 
 ```python
-#将每个班级第0个学生，第5个学生，第9个学生的全部成绩赋值成满分
+# 将每个班级第0个学生，第5个学生，第9个学生的全部成绩赋值成满分
 torch.index_fill(scores,
                  dim = 1,
                  index = torch.tensor([0,5,9]),
                  value = 100)
-#等价于 scores.index_fill(dim = 1,index = torch.tensor([0,5,9]),value = 100)
+# 等价于 scores.index_fill(dim = 1,index = torch.tensor([0,5,9]),value = 100)
 ```
 
+#### torch.masked_fill
+
 ```python
-#将分数小于60分的分数赋值成60分
+# 将分数小于60分的分数赋值成60分
 b = torch.masked_fill(scores,scores<60,60)
-#等价于b = scores.masked_fill(scores<60,60)
+# 等价于b = scores.masked_fill(scores<60,60)
 b
 ```
 
@@ -5011,11 +4982,11 @@ tensor([[[[126, 195],
           [177, 204]]]], dtype=torch.int32)
 ```
 
-
+#### torch.reshape
 
 ```python
 # 改成 （3,6）形状的张量
-b = a.view([3,6]) #torch.reshape(a,[3,6])
+b = a.view([3,6]) # torch.reshape(a,[3,6])
 print(b.shape)
 print(b)
 ```
@@ -5047,7 +5018,7 @@ tensor([[[[126, 195],
           [177, 204]]]], dtype=torch.int32)
 ```
 
-
+#### torch.squeeze
 
 如果张量在某个维度上只有一个元素，利用torch.squeeze可以消除这个维度。
 
@@ -5058,6 +5029,7 @@ a = torch.tensor([[1.0,2.0]])
 s = torch.squeeze(a)
 print(a)
 print(s)
+
 print(a.shape)
 print(s.shape)
 ```
@@ -5065,14 +5037,15 @@ print(s.shape)
 ```
 tensor([[1., 2.]])
 tensor([1., 2.])
+
 torch.Size([1, 2])
 torch.Size([2])
 ```
 
-
+#### torch.unsqueeze
 
 ```python
-#在第0维插入长度为1的一个维度
+# 在第0维插入长度为1的一个维度
 d = torch.unsqueeze(s,axis=0)  
 print(s)
 print(d)
@@ -5084,12 +5057,14 @@ print(d.shape)
 ```
 tensor([1., 2.])
 tensor([[1., 2.]])
+
 torch.Size([2])
 torch.Size([1, 2])
 ```
 
+#### torch.transpose
 
-torch.transpose可以交换张量的维度，torch.transpose常用于图片存储格式的变换上。
+torch.transpose可以`交换张量的维度`，torch.transpose常用于图片存储格式的变换上。
 
 如果是二维的矩阵，通常会调用矩阵的转置方法 matrix.t()，等价于 torch.transpose(matrix,0,1)。
 
@@ -5117,7 +5092,7 @@ torch.Size([100, 4, 256, 256])
 ```python
 matrix = torch.tensor([[1,2,3],[4,5,6]])
 print(matrix)
-print(matrix.t()) #等价于torch.transpose(matrix,0,1)
+print(matrix.t()) # 等价于torch.transpose(matrix,0,1)
 ```
 
 ```
@@ -5137,6 +5112,8 @@ tensor([[1, 4],
 
 torch.cat和torch.stack有略微的区别，torch.cat是连接，不会增加维度，而torch.stack是堆叠，会增加维度。
 
+#### torch.cat
+
 
 ```python
 a = torch.tensor([[1.0,2.0],
@@ -5153,28 +5130,13 @@ print(abc_cat)
 
 ```
 torch.Size([6, 2])
+
 tensor([[ 1.,  2.],
         [ 3.,  4.],
         [ 5.,  6.],
         [ 7.,  8.],
         [ 9., 10.],
         [11., 12.]])
-```
-
-```python
-abc_stack = torch.stack([a,b,c],axis = 0) #torch中dim和axis参数名可以混用
-print(abc_stack.shape)
-print(abc_stack)
-```
-
-```
-torch.Size([3, 2, 2])
-tensor([[[ 1.,  2.],
-         [ 3.,  4.]],
-        [[ 5.,  6.],
-         [ 7.,  8.]],
-        [[ 9., 10.],
-         [11., 12.]]])
 ```
 
 
@@ -5186,6 +5148,27 @@ torch.cat([a,b,c], axis = 1)
 ```
 tensor([[ 1.,  2.,  5.,  6.,  9., 10.],
         [ 3.,  4.,  7.,  8., 11., 12.]])
+```
+
+
+
+#### torch.stack
+
+```python
+abc_stack = torch.stack([a,b,c],axis = 0) # torch中dim和axis参数名可以混用
+print(abc_stack.shape)
+print(abc_stack)
+```
+
+```
+torch.Size([3, 2, 2])
+
+tensor([[[ 1.,  2.],
+         [ 3.,  4.]],
+        [[ 5.,  6.],
+         [ 7.,  8.]],
+        [[ 9., 10.],
+         [11., 12.]]])
 ```
 
 
@@ -5204,12 +5187,13 @@ tensor([[[ 1.,  2.],
          [11., 12.]]])
 ```
 
+#### torch.split
 
 torch.split是torch.cat的逆运算，可以指定分割份数平均分割，也可以通过指定每份的记录数量进行分割。
 
 ```python
 print(abc_cat)
-a,b,c = torch.split(abc_cat, split_size_or_sections = 2, dim = 0) #每份2个进行分割
+a,b,c = torch.split(abc_cat, split_size_or_sections = 2, dim = 0) # 每份2个进行分割
 print(a)
 print(b)
 print(c)
@@ -5217,7 +5201,7 @@ print(c)
 
 ```python
 print(abc_cat)
-p,q,r = torch.split(abc_cat,split_size_or_sections =[4,1,1],dim = 0) #每份分别为[4,1,1]
+p,q,r = torch.split(abc_cat,split_size_or_sections =[4,1,1],dim = 0) # 每份分别为[4,1,1]
 print(p)
 print(q)
 print(r)
@@ -5270,6 +5254,8 @@ tensor([[11., 12.]])
 import torch 
 import numpy as np 
 ```
+
+#### +   -    *   /    **
 
 ```python
 a = torch.tensor([[1.0,2],
@@ -5339,7 +5325,7 @@ tensor([[1.0000, 1.4142],
         [   nan, 2.0000]])
 ```
 
-
+#### %  //
 
 ```python
 a%3 #求模
@@ -5359,7 +5345,7 @@ tensor([[ 0.,  0.],
         [-1.,  1.]])
 ```
 
-
+#### >=
 
 ```python
 a>=2 # torch.ge(a,2)  #ge: greater_equal缩写
@@ -5370,7 +5356,7 @@ tensor([[False,  True],
         [False,  True]])
 ```
 
-
+#### &   |   ==
 
 ```python
 (a>=2)&(a<=3)
@@ -5403,7 +5389,7 @@ tensor([[False, False],
         [False, False]])
 ```
 
-
+#### torch.sqrt
 
 ```python
 torch.sqrt(a)
@@ -5429,7 +5415,7 @@ print(d)
 tensor([12., 21.])
 ```
 
-
+#### torch.max
 
 ```python
 print(torch.max(a,b))
@@ -5439,7 +5425,7 @@ print(torch.max(a,b))
 tensor([5., 8.])
 ```
 
-
+#### torch.min
 
 ```python
 print(torch.min(a,b))
@@ -5449,15 +5435,21 @@ print(torch.min(a,b))
 tensor([1., 6.])
 ```
 
+#### torch.round
 
+#### torch.floor
+
+#### torch.ceil
+
+#### torch.trunc
 
 ```python
 x = torch.tensor([2.6,-2.7])
 
-print(torch.round(x)) #保留整数部分，四舍五入
-print(torch.floor(x)) #保留整数部分，向下归整
-print(torch.ceil(x))  #保留整数部分，向上归整
-print(torch.trunc(x)) #保留整数部分，向0归整
+print(torch.round(x)) # 保留整数部分，四舍五入
+print(torch.floor(x)) # 保留整数部分，向下归整
+print(torch.ceil(x))  # 保留整数部分，向上归整
+print(torch.trunc(x)) # 保留整数部分，向0归整
 ```
 
 ```
@@ -5467,12 +5459,14 @@ tensor([ 3., -2.])
 tensor([ 2., -2.])
 ```
 
+#### torch.fmod
 
+#### torch.remainder
 
 ```python
 x = torch.tensor([2.6,-2.7])
-print(torch.fmod(x,2)) #作除法取余数 
-print(torch.remainder(x,2)) #作除法取剩余的部分，结果恒正
+print(torch.fmod(x,2)) # 作除法取余数 
+print(torch.remainder(x,2)) # 作除法取剩余的部分，结果恒正
 ```
 
 ```
@@ -5480,11 +5474,13 @@ tensor([ 0.6000, -0.7000])
 tensor([0.6000, 1.3000])
 ```
 
+#### torch.clamp
+
 ```python
 # 幅值裁剪
-x = torch.tensor([0.9,-0.8,100.0,-20.0,0.7])
-y = torch.clamp(x,min=-1,max = 1)
-z = torch.clamp(x,max = 1)
+x = torch.tensor([0.9, -0.8, 100.0, -20.0, 0.7])
+y = torch.clamp(x, min=-1, max = 1)
+z = torch.clamp(x, max = 1)
 print(y)
 print(z)
 ```
@@ -5498,32 +5494,41 @@ tensor([  0.9000,  -0.8000,   1.0000, -20.0000,   0.7000])
 
 ### 向量运算
 
-
 向量运算符只在一个特定轴上运算，将一个向量映射到一个标量或者另外一个向量。
 
+```python
+# 统计值
+a = torch.arange(1,10).float()
+```
+
+#### torch.sum
+
+```
+print(torch.sum(a))
+```
 
 ```python
-#统计值
-a = torch.arange(1,10).float()
-print(torch.sum(a))
+tensor(45.)
+```
+
+#### torch.mean
+
+```python
 print(torch.mean(a))
-print(torch.max(a))
-print(torch.min(a))
-print(torch.prod(a)) #累乘
-print(torch.std(a))  #标准差
-print(torch.var(a))  #方差
-print(torch.median(a)) #中位数
 ```
 
 ```
-tensor(45.)
 tensor(5.)
+```
+
+#### torch.max
+
+```python
+print(torch.max(a))
+```
+
+```
 tensor(9.)
-tensor(1.)
-tensor(362880.)
-tensor(2.7386)
-tensor(7.5000)
-tensor(5.)
 ```
 
 
@@ -5536,55 +5541,137 @@ print(torch.max(b,dim = 0))
 print(torch.max(b,dim = 1))
 ```
 
-
-
 ```
 tensor([[1., 2., 3.],
         [4., 5., 6.],
         [7., 8., 9.]])
+        
 torch.return_types.max(
 values=tensor([7., 8., 9.]),
 indices=tensor([2, 2, 2]))
+
 torch.return_types.max(
 values=tensor([3., 6., 9.]),
 indices=tensor([2, 2, 2]))
 ```
 
+#### torch.min
+
+```python
+print(torch.min(a))
+```
+
+```
+tensor(1.)
+```
+
+#### torch.prod
+
+```python
+print(torch.prod(a)) #累乘
+```
+
+```
+tensor(362880.)
+```
+
+#### torch.std
+
+```python
+print(torch.std(a))  #标准差
+```
+
+```
+tensor(2.7386)
+```
+
+#### torch.var
+
+```python
+print(torch.var(a))  #方差
+```
+
+```
+tensor(7.5000)
+```
+
+#### torch.median
 
 
 ```python
-#cum扫描
-a = torch.arange(1,10)
+print(torch.median(a)) #中位数
+```
 
+```
+tensor(5.)
+```
+
+#### torch.cumsum
+
+```python
+a = torch.arange(1,10)
 print(torch.cumsum(a,0))
-print(torch.cumprod(a,0))
-print(torch.cummax(a,0).values)
-print(torch.cummax(a,0).indices)
-print(torch.cummin(a,0))
 ```
 
 ```
 tensor([ 1,  3,  6, 10, 15, 21, 28, 36, 45])
+```
+
+#### torch.cumprod
+
+```python
+a = torch.arange(1,10)
+print(torch.cumprod(a,0))
+```
+
+```
 tensor([     1,      2,      6,     24,    120,    720,   5040,  40320, 362880])
+```
+
+#### torch.cummax
+
+```python
+a = torch.arange(1,10)
+print(torch.cummax(a,0).values)
+```
+
+```
 tensor([1, 2, 3, 4, 5, 6, 7, 8, 9])
+```
+
+
+
+```python
+a = torch.arange(1,10)
+print(torch.cummax(a,0).indices)
+```
+
+```
 tensor([0, 1, 2, 3, 4, 5, 6, 7, 8])
+```
+
+#### torch.cummin
+
+```python
+a = torch.arange(1,10)
+print(torch.cummin(a,0))
+```
+
+```
 torch.return_types.cummin(
 values=tensor([1, 1, 1, 1, 1, 1, 1, 1, 1]),
 indices=tensor([0, 0, 0, 0, 0, 0, 0, 0, 0]))
 ```
 
-
+#### torch.topk
 
 ```python
-#torch.sort和torch.topk可以对张量排序
+# torch.sort和torch.topk可以对张量排序
 a = torch.tensor([[9,7,8],
                   [1,3,2],
                   [5,6,4]]).float()
-print(torch.topk(a,2,dim = 0),"\n")
-print(torch.topk(a,2,dim = 1),"\n")
-print(torch.sort(a,dim = 1),"\n")
-
-#利用torch.topk可以在Pytorch中实现KNN算法
+print(torch.topk(a, 2, dim = 0))
+print(torch.topk(a, 2, dim = 1))
 ```
 
 ```
@@ -5601,7 +5688,18 @@ values=tensor([[9., 8.],
 indices=tensor([[0, 2],
         [1, 2],
         [1, 0]]))
+```
 
+#### torch.sort
+
+```python
+a = torch.tensor([[9,7,8],
+                  [1,3,2],
+                  [5,6,4]]).float()
+print(torch.sort(a,dim = 1))
+```
+
+```
 torch.return_types.sort(
 values=tensor([[7., 8., 9.],
         [1., 2., 3.],
@@ -5630,9 +5728,13 @@ indices=tensor([[1, 2, 0],
 - 矩阵分解
 - 等运算...
 
+#### torch.matmul
+
+#### torch.mm
+
 
 ```python
-#矩阵乘法
+# 矩阵乘法
 a = torch.tensor([[1,2],[3,4]])
 b = torch.tensor([[2,0],[0,2]])
 print(a@b)  #等价于torch.matmul(a,b) 或 torch.mm(a,b)
@@ -5643,10 +5745,10 @@ tensor([[2, 4],
         [6, 8]])
 ```
 
-
+#### .t()
 
 ```python
-#矩阵转置
+# 矩阵转置
 a = torch.tensor([[1.0,2],[3,4]])
 print(a.t())
 ```
@@ -5656,10 +5758,10 @@ tensor([[1., 3.],
         [2., 4.]])
 ```
 
-
+#### torch.inverse
 
 ```python
-#矩阵逆，必须为浮点类型
+# 矩阵逆，必须为浮点类型
 a = torch.tensor([[1.0,2],[3,4]])
 print(torch.inverse(a))
 ```
@@ -5669,10 +5771,10 @@ tensor([[-2.0000,  1.0000],
         [ 1.5000, -0.5000]])
 ```
 
-
+#### torch.trace
 
 ```python
-#矩阵求trace
+# 矩阵求trace
 a = torch.tensor([[1.0,2],[3,4]])
 print(torch.trace(a))
 ```
@@ -5681,11 +5783,12 @@ print(torch.trace(a))
 tensor(5.)
 ```
 
-
+#### torch.norm
 
 ```python
-#矩阵求范数
-a = torch.tensor([[1.0,2],[3,4]])
+# 矩阵求范数
+a = torch.tensor([[1.0,2],
+                  [3,4]])
 print(torch.norm(a))
 ```
 
@@ -5693,11 +5796,12 @@ print(torch.norm(a))
 tensor(5.4772)
 ```
 
-
+#### torch.det
 
 ```python
-#矩阵行列式
-a = torch.tensor([[1.0,2],[3,4]])
+# 矩阵行列式
+a = torch.tensor([[1.0,2],
+                  [3,4]])
 print(torch.det(a))
 ```
 
@@ -5705,14 +5809,15 @@ print(torch.det(a))
 tensor(-2.0000)
 ```
 
-
+#### torch.eig
 
 ```python
 #矩阵特征值和特征向量
-a = torch.tensor([[1.0,2],[-5,4]],dtype = torch.float)
+a = torch.tensor([[1.0,2],
+                  [-5,4]],dtype = torch.float)
 print(torch.eig(a, eigenvectors=True))
 
-#两个特征值分别是 -2.5+2.7839j, 2.5-2.7839j 
+# 两个特征值分别是 -2.5+2.7839j, 2.5-2.7839j 
 ```
 
 ```
@@ -5723,9 +5828,11 @@ eigenvectors=tensor([[ 0.2535, -0.4706],
         [ 0.8452,  0.0000]]))
 ```
 
+#### torch.qr
+
 ```python
-#矩阵QR分解, 将一个方阵分解为一个正交矩阵q和上三角矩阵r
-#QR分解实际上是对矩阵a实施Schmidt正交化得到q
+# 矩阵QR分解, 将一个方阵分解为一个正交矩阵q和上三角矩阵r
+# QR分解实际上是对矩阵a实施Schmidt正交化得到q
 
 a  = torch.tensor([[1.0,2.0],[3.0,4.0]])
 q,r = torch.qr(a)
@@ -5734,7 +5841,7 @@ print(r,"\n")
 print(q@r)
 ```
 
-
+#### torch.svd
 
 ```python
 #矩阵svd分解
@@ -5818,15 +5925,13 @@ tensor([[1, 2, 3],
         [3, 4, 5]])
 ```
 
-
-
-## nn.functional 和 nn.Module
+## nn.functional
 
 ```python
 import os
 import datetime
 
-#打印时间
+# 打印时间
 def printbar():
     nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print("\n"+"=========="*8 + "%s"%nowtime)
@@ -5834,10 +5939,6 @@ def printbar():
 #mac系统上pytorch和matplotlib在jupyter中同时跑需要更改环境变量
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE" 
 ```
-
-
-
-### nn.functional 和 nn.Module
 
 
 前面我们介绍了Pytorch的张量的结构操作和数学运算中的一些常用API。利用这些张量的API我们可以构建出神经网络相关的组件(如激活函数，模型层，损失函数)。
@@ -5865,7 +5966,7 @@ Pytorch和神经网络相关的功能组件大多都封装在 torch.nn模块下�
 * F.mse_loss
 * F.cross_entropy
 
-
+## nn.Module
 
 为了便于对参数进行管理，一般通过继承 nn.Module 转换成为类的实现形式，并直接封装在 nn 模块下。例如：
 
@@ -6062,45 +6163,40 @@ modules()方法和named_modules()方法较少使用，其功能可以通过多�
 
 ```python
 class Net(nn.Module):
-    
+
     def __init__(self):
         super(Net, self).__init__()
-        
-        self.embedding = nn.Embedding(num_embeddings = 10000,
-                                      embedding_dim = 3,
-                                      padding_idx = 1)
+
+        self.embedding = nn.Embedding(num_embeddings=10000, embedding_dim=3, padding_idx=1)
+
         self.conv = nn.Sequential()
-        self.conv.add_module("conv_1",nn.Conv1d(in_channels = 3,
-                                                out_channels = 16,
-                                                kernel_size = 5))
-        self.conv.add_module("pool_1",nn.MaxPool1d(kernel_size = 2))
-        self.conv.add_module("relu_1",nn.ReLU())
-        self.conv.add_module("conv_2",nn.Conv1d(in_channels = 16,
-                                                out_channels = 128,
-                                                kernel_size = 2))
-        self.conv.add_module("pool_2",nn.MaxPool1d(kernel_size = 2))
-        self.conv.add_module("relu_2",nn.ReLU())
-        
+        self.conv.add_module("conv_1", nn.Conv1d(in_channels=3, out_channels=16, kernel_size=5))
+        self.conv.add_module("pool_1", nn.MaxPool1d(kernel_size=2))
+        self.conv.add_module("relu_1", nn.ReLU())
+        self.conv.add_module("conv_2", nn.Conv1d(in_channels=16, out_channels=128, kernel_size=2))
+        self.conv.add_module("pool_2", nn.MaxPool1d(kernel_size=2))
+        self.conv.add_module("relu_2", nn.ReLU())
+
         self.dense = nn.Sequential()
-        self.dense.add_module("flatten",nn.Flatten())
-        self.dense.add_module("linear",nn.Linear(6144,1))
-        self.dense.add_module("sigmoid",nn.Sigmoid())
-        
-    def forward(self,x):
-        x = self.embedding(x).transpose(1,2)
+        self.dense.add_module("flatten", nn.Flatten())
+        self.dense.add_module("linear", nn.Linear(6144, 1))
+        self.dense.add_module("sigmoid", nn.Sigmoid())
+
+    def forward(self, x):
+        x = self.embedding(x).transpose(1, 2)
         x = self.conv(x)
         y = self.dense(x)
         return y
-    
+
 net = Net()
 ```
 
 ```python
 i = 0
 for child in net.children():
-    i+=1
-    print(child,"\n")
-print("child number",i)
+    i += 1
+    print(child, "\n")
+print("child number", i)
 ```
 
 ```
@@ -6129,9 +6225,9 @@ child number 3
 ```python
 i = 0
 for name, child in net.named_children():
-    i+=1
-    print(name,":",child,"\n")
-print("child number",i)
+    i += 1
+    print(name, ":", child, "\n")
+print("child number", i)
 ```
 
 ```
@@ -6160,9 +6256,9 @@ child number 3
 ```python
 i = 0
 for module in net.modules():
-    i+=1
+    i += 1
     print(module)
-print("module number:",i)
+print("module number:", i)
 ```
 
 ```
@@ -6213,11 +6309,11 @@ module number: 13
 下面我们通过named_children方法找到embedding层，并将其参数设置为不可训练(相当于冻结embedding层)。
 
 ```python
-children_dict = {name:module for name,module in net.named_children()}
+children_dict = {name: module for name, module in net.named_children()}
 
 print(children_dict)
 embedding = children_dict["embedding"]
-embedding.requires_grad_(False) #冻结其参数
+embedding.requires_grad_(False)  # 冻结其参数
 ```
 
 ```
@@ -6238,7 +6334,7 @@ embedding.requires_grad_(False) #冻结其参数
 
 
 ```python
-#可以看到其第一层的参数已经不可以被训练了。
+# 可以看到其第一层的参数已经不可以被训练了。
 for param in embedding.parameters():
     print(param.requires_grad)
     print(param.numel())
@@ -6253,7 +6349,8 @@ False
 
 ```python
 from torchkeras import summary
-summary(net,input_shape = (200,),input_dtype = torch.LongTensor)
+
+summary(net, input_shape=(200,), input_dtype=torch.LongTensor)
 # 不可训练参数数量增加
 ```
 
@@ -6993,8 +7090,6 @@ torch.nn中内置了非常丰富的各种模型层。它们都属于nn.Module的
 
 
 
-### 内置模型层
-
 ```python
 import numpy as np 
 import torch 
@@ -7004,65 +7099,65 @@ from torch import nn
 
 一些常用的内置模型层简单介绍如下。
 
-#### **基础层**
+### **基础层**
 
-##### nn.Linear
+#### nn.Linear
 
 **全连接层**。参数个数 = 输入层特征数× 输出层特征数(weight)＋ 输出层特征数(bias)
 
-##### nn.Flatten
+#### nn.Flatten
 
 **压平层**，用于将多维张量样本压成一维张量样本。
 
-##### nn.BatchNorm1d
+#### nn.BatchNorm1d
 
 **一维批标准化层**。通过线性变换将输入批次缩放平移到稳定的均值和标准差。可以增强模型对输入不同分布的适应性，加快模型训练速度，有轻微正则化效果。一般在激活函数之前使用。可以用afine参数设置该层是否含有可以训练的参数。
 
-##### nn.BatchNorm2d
+#### nn.BatchNorm2d
 
 **二维批标准化层**。
 
-##### nn.BatchNorm3d
+#### nn.BatchNorm3d
 
 **三维批标准化层**。
 
-##### nn.Dropout
+#### nn.Dropout
 
 **一维随机丢弃层**。一种正则化手段。
 
-##### nn.Dropout2d
+#### nn.Dropout2d
 
 **二维随机丢弃层**。
 
-##### nn.Dropout3d
+#### nn.Dropout3d
 
 **三维随机丢弃层**。
 
-##### nn.Threshold
+#### nn.Threshold
 
 **限幅层**。当输入大于或小于阈值范围时，截断之。
 
-##### nn.ConstantPad2d
+#### nn.ConstantPad2d
 
  **二维常数填充层**。对二维张量样本填充常数扩展长度。
 
-##### nn.ReplicationPad1d
+#### nn.ReplicationPad1d
 
  **一维复制填充层**。对一维张量样本通过复制边缘值填充扩展长度。
 
-##### nn.ZeroPad2d
+#### nn.ZeroPad2d
 
 **二维零值填充层**。对二维张量样本在边缘填充0值.
 
-##### nn.GroupNorm
+#### nn.GroupNorm
 
 **组归一化**。一种替代批归一化的方法，将通道分成若干组进行归一。不受batch大小限制，据称性能和效果都优于BatchNorm。
 
-##### nn.LayerNorm
+#### nn.LayerNorm
 
 **层归一化**。较少使用。
 
-##### nn.InstanceNorm2d
+#### nn.InstanceNorm2d
 
 **样本归一化**。较少使用。
 
@@ -7076,13 +7171,13 @@ https://zhuanlan.zhihu.com/p/34858971
 
 
 
-#### **卷积网络相关层**
+### **卷积网络相关层**
 
-##### nn.Conv1d
+#### nn.Conv1d
 
 **普通一维卷积**，常用于文本。**参数个数 = 输入通道数×卷积核尺寸(如3)×卷积核个数 + 卷积核尺寸(如3）**
 
-##### nn.Conv2d
+#### nn.Conv2d
 
 **普通二维卷积**，常用于图像。**参数个数 = 输入通道数×卷积核尺寸(如3乘3)×卷积核个数 + 卷积核尺寸(如3乘3)**
 
@@ -7091,62 +7186,62 @@ https://zhuanlan.zhihu.com/p/34858971
 * 当groups参数等于通道数时，相当于tensorflow中的二维深度卷积层tf.keras.layers.DepthwiseConv2D。
 	利用分组卷积和1乘1卷积的组合操作，可以构造相当于Keras中的二维深度可分离卷积层tf.keras.layers.SeparableConv2D。
 
-##### nn.Conv3d
+#### nn.Conv3d
 
 **普通三维卷积**，常用于视频。**参数个数 = 输入通道数×卷积核尺寸(如3乘3乘3)×卷积核个数 + 卷积核尺寸(如3乘3乘3)** 。
 
-##### nn.MaxPool1d
+#### nn.MaxPool1d
 
 **一维最大池化**。
 
-##### nn.MaxPool2d
+#### nn.MaxPool2d
 
 **二维最大池化**。一种下采样方式。没有需要训练的参数。
 
-##### nn.MaxPool3d
+#### nn.MaxPool3d
 
 **三维最大池化**。
 
-##### nn.AdaptiveMaxPool2d
+#### nn.AdaptiveMaxPool2d
 
 **二维自适应最大池化**。无论输入图像的尺寸如何变化，输出的图像尺寸是固定的。
 该函数的实现原理，大概是通过输入图像的尺寸和要得到的输出图像的尺寸来反向推算池化算子的padding,stride等参数。
 
-##### nn.FractionalMaxPool2d
+#### nn.FractionalMaxPool2d
 
 **二维分数最大池化**。普通最大池化通常输入尺寸是输出的整数倍。而分数最大池化则可以不必是整数。分数最大池化使用了一些随机采样策略，有一定的正则效果，可以用它来代替普通最大池化和Dropout层。
 
-##### nn.AvgPool2d
+#### nn.AvgPool2d
 
 **二维平均池化**。
 
-##### nn.AdaptiveAvgPool2d
+#### nn.AdaptiveAvgPool2d
 
 **二维自适应平均池化**。无论输入的维度如何变化，输出的维度是固定的。
 
-##### nn.ConvTranspose2d
+#### nn.ConvTranspose2d
 
 **二维卷积转置层，俗称反卷积层**。并非卷积的逆操作，但在卷积核相同的情况下，当其输入尺寸是卷积操作输出尺寸的情况下，卷积转置的输出尺寸恰好是卷积操作的输入尺寸。在语义分割中可用于上采样。
 
-##### nn.Upsample
+#### nn.Upsample
 
 **上采样层，操作效果和池化相反**。可以通过mode参数控制上采样策略为"nearest"最邻近策略或"linear"线性插值策略。
 
-##### nn.Unfold
+#### nn.Unfold
 
 **滑动窗口提取层**。其参数和卷积操作nn.Conv2d相同。实际上，卷积操作可以等价于nn.Unfold和nn.Linear以及nn.Fold的一个组合。
 
 * 其中nn.Unfold操作可以从输入中提取各个滑动窗口的数值矩阵，并将其压平成一维。利用nn.Linear将nn.Unfold的输出和卷积核做乘法后，再使用nn.Fold操作将结果转换成输出图片形状。
 
-##### nn.Fold
+#### nn.Fold
 
 **逆滑动窗口提取层**。
 
 
 
-#### **循环网络相关层**
+### **循环网络相关层**
 
-##### nn.Embedding
+#### nn.Embedding
 
 **嵌入层**。一种比Onehot更加有效的对离散特征进行编码的方法。一般用于将输入中的单词映射为稠密向量。嵌入层的参数需要学习。
 
@@ -7183,7 +7278,7 @@ torch.Size([2, 3, 4])
 
 embed输出的维度是[2,3,4],这就代表对于输入维度为2x3的词，每个词都被映射成了一个4维的向量。
 
-##### nn.LSTM
+#### nn.LSTM
 
 **长短记忆循环网络层【支持多层】**。最普遍使用的循环网络层。具有携带轨道，遗忘门，更新门，输出门。可以较为有效地缓解梯度消失问题，从而能够适用长期依赖问题。设置bidirectional = True时可以得到双向LSTM。需要注意的时，默认的输入和输出形状是(seq,batch,feature), 如果需要将batch维度放在第0维，则要设置batch_first参数设置为True。
 
@@ -7225,51 +7320,51 @@ embed输出的维度是[2,3,4],这就代表对于输入维度为2x3的词，每�
 
 
 
-##### nn.GRU
+#### nn.GRU
 
 **门控循环网络层【支持多层】**。LSTM的低配版，不具有携带轨道，参数数量少于LSTM，训练速度更快。
 
-##### nn.RNN
+#### nn.RNN
 
 **简单循环网络层【支持多层】**。容易存在梯度消失，不能够适用长期依赖问题。一般较少使用。
 
-##### nn.LSTMCell
+#### nn.LSTMCell
 
 **长短记忆循环网络单元**。和nn.LSTM在整个序列上迭代相比，它仅在序列上迭代一步。一般较少使用。
 
-##### nn.GRUCell
+#### nn.GRUCell
 
 **门控循环网络单元**。和nn.GRU在整个序列上迭代相比，它仅在序列上迭代一步。一般较少使用。
 
-##### nn.RNNCell
+#### nn.RNNCell
 
 **简单循环网络单元**。和nn.RNN在整个序列上迭代相比，它仅在序列上迭代一步。一般较少使用。
 
 
 
-#### **Transformer相关层**
+### **Transformer相关层**
 
-##### nn.Transformer
+#### nn.Transformer
 
 **Transformer网络结构**。Transformer网络结构是替代循环网络的一种结构，解决了循环网络难以并行，难以捕捉长期依赖的缺陷。它是目前NLP任务的主流模型的主要构成部分。Transformer网络结构由TransformerEncoder编码器和TransformerDecoder解码器组成。编码器和解码器的核心是MultiheadAttention多头注意力层。
 
-##### nn.TransformerEncoder
+#### nn.TransformerEncoder
 
 **Transformer编码器结构**。由多个 nn.TransformerEncoderLayer编码器层组成。
 
-##### nn.TransformerDecoder
+#### nn.TransformerDecoder
 
 Transformer解码器结构。由多个 nn.TransformerDecoderLayer解码器层组成。
 
-##### nn.TransformerEncoderLayer
+#### nn.TransformerEncoderLayer
 
 **Transformer的编码器层**。
 
-##### nn.TransformerDecoderLayer
+#### nn.TransformerDecoderLayer
 
 **Transformer的解码器层**。
 
-##### nn.MultiheadAttention
+#### nn.MultiheadAttention
 
 **多头注意力层**。
 
@@ -7410,16 +7505,41 @@ tensor(0.5493)
 
 常用的一些内置损失函数说明如下。
 
+#### nn.MSELoss
 
-* nn.MSELoss（**均方误差损失**，也叫做L2损失，用于回归）
-* nn.L1Loss （**L1损失**，也叫做绝对值误差损失，用于回归）
-* nn.SmoothL1Loss (**平滑L1损失**，当输入在-1到1之间时，平滑为L2损失，用于回归)
-* nn.BCELoss (**二元交叉熵**，用于二分类，输入已经过nn.Sigmoid激活，对不平衡数据集可以用weigths参数调整类别权重)
-* nn.BCEWithLogitsLoss (**二元交叉熵**，用于二分类，输入未经过nn.Sigmoid激活)
-* nn.CrossEntropyLoss (**交叉熵**，用于多分类，要求label为稀疏编码，输入未经过nn.Softmax激活，对不平衡数据集可以用weigths参数调整类别权重)
-* nn.NLLLoss (**负对数似然损失**，用于多分类，要求label为稀疏编码，输入经过nn.LogSoftmax激活)
-* nn.CosineSimilarity(**余弦相似度**，可用于多分类)
-* nn.AdaptiveLogSoftmaxWithLoss (**一种适合非常多类别且类别分布很不均衡的损失函数**，会自适应地将多个小类别合成一个cluster)
+**均方误差损失**，也叫做L2损失，用于回归
+
+#### nn.L1Loss 
+
+**L1损失**，也叫做绝对值误差损失，用于回归
+
+#### nn.SmoothL1Loss 
+
+**平滑L1损失**，当输入在-1到1之间时，平滑为L2损失，用于回归
+
+#### nn.BCELoss 
+
+**二元交叉熵**，用于二分类，输入已经过nn.Sigmoid激活，对不平衡数据集可以用weigths参数调整类别权重
+
+#### nn.BCEWithLogitsLoss 
+
+**二元交叉熵**，用于二分类，输入未经过nn.Sigmoid激活
+
+#### nn.CrossEntropyLoss 
+
+**交叉熵**，用于多分类，要求label为稀疏编码，输入未经过nn.Softmax激活，对不平衡数据集可以用weigths参数调整类别权重
+
+#### nn.NLLLoss 
+
+**负对数似然损失**，用于多分类，要求label为稀疏编码，输入经过nn.LogSoftmax激活
+
+#### nn.CosineSimilarity
+
+**余弦相似度**，可用于多分类
+
+#### nn.AdaptiveLogSoftmaxWithLoss 
+
+**一种适合非常多类别且类别分布很不均衡的损失函数**，会自适应地将多个小类别合成一个cluster
 
 
 
@@ -7458,14 +7578,14 @@ $$
 
 ```python
 class FocalLoss(nn.Module):
-    
-    def __init__(self,gamma=2.0,alpha=0.75):
+
+    def __init__(self, gamma=2.0, alpha=0.75):
         super().__init__()
         self.gamma = gamma
         self.alpha = alpha
 
-    def forward(self,y_pred,y_true):
-        bce = torch.nn.BCELoss(reduction = "none")(y_pred,y_true)
+    def forward(self, y_pred, y_true):
+        bce = torch.nn.BCELoss(reduction="none")(y_pred, y_true)
         p_t = (y_true * y_pred) + ((1 - y_true) * (1 - y_pred))
         alpha_factor = y_true * self.alpha + (1 - y_true) * (1 - self.alpha)
         modulating_factor = torch.pow(1.0 - p_t, self.gamma)
@@ -7474,24 +7594,24 @@ class FocalLoss(nn.Module):
 ```
 
 ```python
-#困难样本
-y_pred_hard = torch.tensor([[0.5],[0.5]])
-y_true_hard = torch.tensor([[1.0],[0.0]])
+# 困难样本
+y_pred_hard = torch.tensor([[0.5], [0.5]])
+y_true_hard = torch.tensor([[1.0], [0.0]])
 
-#容易样本
-y_pred_easy = torch.tensor([[0.9],[0.1]])
-y_true_easy = torch.tensor([[1.0],[0.0]])
+# 容易样本
+y_pred_easy = torch.tensor([[0.9], [0.1]])
+y_true_easy = torch.tensor([[1.0], [0.0]])
 
 focal_loss = FocalLoss()
 bce_loss = nn.BCELoss()
 
-print("focal_loss(hard samples):", focal_loss(y_pred_hard,y_true_hard))
-print("bce_loss(hard samples):", bce_loss(y_pred_hard,y_true_hard))
-print("focal_loss(easy samples):", focal_loss(y_pred_easy,y_true_easy))
-print("bce_loss(easy samples):", bce_loss(y_pred_easy,y_true_easy))
+print("focal_loss(hard samples):", focal_loss(y_pred_hard, y_true_hard))
+print("bce_loss(hard samples):", bce_loss(y_pred_hard, y_true_hard))
+print("focal_loss(easy samples):", focal_loss(y_pred_easy, y_true_easy))
+print("bce_loss(easy samples):", bce_loss(y_pred_easy, y_true_easy))
 
-#可见 focal_loss让容易样本的权重衰减到原来的 0.0005/0.1054 = 0.00474
-#而让困难样本的权重只衰减到原来的 0.0866/0.6931=0.12496
+# 可见 focal_loss让容易样本的权重衰减到原来的 0.0005/0.1054 = 0.00474
+# 而让困难样本的权重只衰减到原来的 0.0866/0.6931=0.12496
 
 # 因此相对而言，focal_loss可以衰减容易样本的权重。
 ```
@@ -7511,9 +7631,7 @@ FocalLoss的使用完整范例可以参考下面中`自定义L1和L2正则化项
 ### 自定义L1和L2正则化项
 
 
-通常认为L1 正则化可以产生稀疏权值矩阵，即产生一个稀疏模型，可以用于特征选择。
-
-而L2 正则化可以防止模型过拟合（overfitting）。一定程度上，L1也可以防止过拟合。
+通常认为L1 正则化可以产生稀疏权值矩阵，即产生一个稀疏模型，可以用于特征选择，而L2 正则化可以防止模型过拟合（overfitting）。一定程度上，L1也可以防止过拟合。
 
 下面以一个二分类问题为例，演示给模型的目标函数添加自定义L1和L2正则化项的方法。
 
@@ -7525,52 +7643,52 @@ FocalLoss的使用完整范例可以参考下面中`自定义L1和L2正则化项
 **1，准备数据**
 
 ```python
-import numpy as np 
-import pandas as pd 
+import numpy as np
+import pandas as pd
 from matplotlib import pyplot as plt
 import torch
 from torch import nn
 import torch.nn.functional as F
-from torch.utils.data import Dataset,DataLoader,TensorDataset
-import torchkeras 
-%matplotlib inline
-%config InlineBackend.figure_format = 'svg'
+from torch.utils.data import Dataset, DataLoader, TensorDataset
+import torchkeras
 
-#正负样本数量
-n_positive,n_negative = 200,6000
+% matplotlib inline
+% config InlineBackend.figure_format = 'svg'
 
-#生成正样本, 小圆环分布
-r_p = 5.0 + torch.normal(0.0,1.0,size = [n_positive,1]) 
-theta_p = 2*np.pi*torch.rand([n_positive,1])
-Xp = torch.cat([r_p*torch.cos(theta_p), r_p*torch.sin(theta_p)], axis = 1)
+# 正负样本数量
+n_positive, n_negative = 200, 6000
+
+# 生成正样本, 小圆环分布
+r_p = 5.0 + torch.normal(0.0, 1.0, size=[n_positive, 1])
+theta_p = 2 * np.pi * torch.rand([n_positive, 1])
+Xp = torch.cat([r_p * torch.cos(theta_p), r_p * torch.sin(theta_p)], axis=1)
 Yp = torch.ones_like(r_p)
 
-#生成负样本, 大圆环分布
-r_n = 8.0 + torch.normal(0.0,1.0,size = [n_negative,1]) 
-theta_n = 2*np.pi*torch.rand([n_negative,1])
-Xn = torch.cat([r_n*torch.cos(theta_n),r_n*torch.sin(theta_n)],axis = 1)
+# 生成负样本, 大圆环分布
+r_n = 8.0 + torch.normal(0.0, 1.0, size=[n_negative, 1])
+theta_n = 2 * np.pi * torch.rand([n_negative, 1])
+Xn = torch.cat([r_n * torch.cos(theta_n), r_n * torch.sin(theta_n)], axis=1)
 Yn = torch.zeros_like(r_n)
 
-#汇总样本
-X = torch.cat([Xp,Xn],axis = 0)
-Y = torch.cat([Yp,Yn],axis = 0)
+# 汇总样本
+X = torch.cat([Xp, Xn], axis=0)
+Y = torch.cat([Yp, Yn], axis=0)
 
-
-#可视化
-plt.figure(figsize = (6,6))
-plt.scatter(Xp[:,0],Xp[:,1],c = "r")
-plt.scatter(Xn[:,0],Xn[:,1],c = "g")
-plt.legend(["positive","negative"]);
+# 可视化
+plt.figure(figsize=(6, 6))
+plt.scatter(Xp[:, 0], Xp[:, 1], c="r")
+plt.scatter(Xn[:, 0], Xn[:, 1], c="g")
+plt.legend(["positive", "negative"]);
 ```
 
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_pytorch_in_20_days-20220302-125625-661941.png)
 
 ```python
-ds = TensorDataset(X,Y)
+ds = TensorDataset(X, Y)
 
-ds_train,ds_valid = torch.utils.data.random_split(ds,[int(len(ds)*0.7),len(ds)-int(len(ds)*0.7)])
-dl_train = DataLoader(ds_train,batch_size = 100,shuffle=True,num_workers=2)
-dl_valid = DataLoader(ds_valid,batch_size = 100,num_workers=2)
+ds_train, ds_valid = torch.utils.data.random_split(ds, [int(len(ds) * 0.7), len(ds) - int(len(ds) * 0.7)])
+dl_train = DataLoader(ds_train, batch_size=100, shuffle=True, num_workers=2)
+dl_valid = DataLoader(ds_valid, batch_size=100, num_workers=2)
 ```
 
 
@@ -7581,19 +7699,19 @@ dl_valid = DataLoader(ds_valid,batch_size = 100,num_workers=2)
 class DNNModel(torchkeras.Model):
     def __init__(self):
         super(DNNModel, self).__init__()
-        self.fc1 = nn.Linear(2,4)
-        self.fc2 = nn.Linear(4,8) 
-        self.fc3 = nn.Linear(8,1)
-        
-    def forward(self,x):
+        self.fc1 = nn.Linear(2, 4)
+        self.fc2 = nn.Linear(4, 8)
+        self.fc3 = nn.Linear(8, 1)
+
+    def forward(self, x):
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         y = nn.Sigmoid()(self.fc3(x))
         return y
-        
-model = DNNModel()
 
-model.summary(input_shape =(2,))
+
+model = DNNModel()
+model.summary(input_shape=(2,))
 ```
 
 ```
@@ -7621,45 +7739,49 @@ Estimated Total Size (MB): 0.000340
 
 ```python
 # 准确率
-def accuracy(y_pred,y_true):
-    y_pred = torch.where(y_pred>0.5,
-                         torch.ones_like(y_pred,dtype = torch.float32),
-                         torch.zeros_like(y_pred,dtype = torch.float32))
-    acc = torch.mean(1 - torch.abs(y_true-y_pred))
+def accuracy(y_pred, y_true):
+    y_pred = torch.where(y_pred > 0.5,
+                         torch.ones_like(y_pred, dtype=torch.float32),
+                         torch.zeros_like(y_pred, dtype=torch.float32))
+    acc = torch.mean(1 - torch.abs(y_true - y_pred))
     return acc
 
+
 # L2正则化
-def L2Loss(model,alpha):
+def L2Loss(model, alpha):
     l2_loss = torch.tensor(0.0, requires_grad=True)
     for name, param in model.named_parameters():
-        if 'bias' not in name: #一般不对偏置项使用正则
+        if 'bias' not in name:  # 一般不对偏置项使用正则
             l2_loss = l2_loss + (0.5 * alpha * torch.sum(torch.pow(param, 2)))
     return l2_loss
 
+
 # L1正则化
-def L1Loss(model,beta):
+def L1Loss(model, beta):
     l1_loss = torch.tensor(0.0, requires_grad=True)
     for name, param in model.named_parameters():
         if 'bias' not in name:
-            l1_loss = l1_loss +  beta * torch.sum(torch.abs(param))
+            l1_loss = l1_loss + beta * torch.sum(torch.abs(param))
     return l1_loss
 
+
 # 将L2正则和L1正则添加到FocalLoss损失，一起作为目标函数
-def focal_loss_with_regularization(y_pred,y_true):
-    focal = FocalLoss()(y_pred,y_true) 
-    l2_loss = L2Loss(model,0.001) #注意设置正则化项系数
-    l1_loss = L1Loss(model,0.001)
+def focal_loss_with_regularization(y_pred, y_true):
+    focal = FocalLoss()(y_pred, y_true)
+    l2_loss = L2Loss(model, 0.001)  # 注意设置正则化项系数
+    l1_loss = L1Loss(model, 0.001)
     total_loss = focal + l2_loss + l1_loss
     return total_loss
 
-model.compile(loss_func =focal_loss_with_regularization,
-              optimizer= torch.optim.Adam(model.parameters(),lr = 0.01),
-              metrics_dict={"accuracy":accuracy})
+
+model.compile(loss_func=focal_loss_with_regularization,
+              optimizer=torch.optim.Adam(model.parameters(), lr=0.01),
+              metrics_dict={"accuracy": accuracy})
 
 dfhistory = model.fit(30,
-                      dl_train = dl_train,
-                      dl_val = dl_valid,
-                      log_step_freq = 30)
+                      dl_train=dl_train,
+                      dl_val=dl_valid,
+                      log_step_freq=30)
 ```
 
 ```
@@ -7691,18 +7813,18 @@ Finished Training...
 
 ```python
 # 结果可视化
-fig, (ax1,ax2) = plt.subplots(nrows=1,ncols=2,figsize = (12,5))
-ax1.scatter(Xp[:,0],Xp[:,1], c="r")
-ax1.scatter(Xn[:,0],Xn[:,1],c = "g")
-ax1.legend(["positive","negative"]);
+fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2, figsize=(12, 5))
+ax1.scatter(Xp[:, 0], Xp[:, 1], c="r")
+ax1.scatter(Xn[:, 0], Xn[:, 1], c="g")
+ax1.legend(["positive", "negative"]);
 ax1.set_title("y_true");
 
-Xp_pred = X[torch.squeeze(model.forward(X)>=0.5)]
-Xn_pred = X[torch.squeeze(model.forward(X)<0.5)]
+Xp_pred = X[torch.squeeze(model.forward(X) >= 0.5)]
+Xn_pred = X[torch.squeeze(model.forward(X) < 0.5)]
 
-ax2.scatter(Xp_pred[:,0],Xp_pred[:,1],c = "r")
-ax2.scatter(Xn_pred[:,0],Xn_pred[:,1],c = "g")
-ax2.legend(["positive","negative"]);
+ax2.scatter(Xp_pred[:, 0], Xp_pred[:, 1], c="r")
+ax2.scatter(Xn_pred[:, 0], Xn_pred[:, 1], c="g")
+ax2.legend(["positive", "negative"]);
 ax2.set_title("y_pred");
 ```
 
@@ -7737,10 +7859,12 @@ Pytorch的优化器支持一种称之为Per-parameter options的操作，就是�
 weight_params = [param for name, param in model.named_parameters() if "bias" not in name]
 bias_params = [param for name, param in model.named_parameters() if "bias" in name]
 
-optimizer = torch.optim.SGD([{'params': weight_params, 'weight_decay':1e-5},
-                             {'params': bias_params, 'weight_decay':0}],
+optimizer = torch.optim.SGD([{'params': weight_params, 'weight_decay': 1e-5},
+                             {'params': bias_params, 'weight_decay': 0}],
                             lr=1e-2, momentum=0.9)
 ```
+
+## 优化器
 
 
 
@@ -7766,8 +7890,6 @@ Pytorch中利用TensorBoard可视化的大概过程如下：
 * 可视化原始图像： writer.add_image 或 writer.add_images
 * 可视化人工绘图： writer.add_figure
 
-
-
 ### 可视化模型结构
 
 ```python
@@ -7779,21 +7901,21 @@ from torchkeras import Model,summary
 
 ```python
 class Net(nn.Module):
-    
+
     def __init__(self):
         super(Net, self).__init__()
-        self.conv1 = nn.Conv2d(in_channels=3,out_channels=32,kernel_size = 3)
-        self.pool = nn.MaxPool2d(kernel_size = 2,stride = 2)
-        self.conv2 = nn.Conv2d(in_channels=32,out_channels=64,kernel_size = 5)
-        self.dropout = nn.Dropout2d(p = 0.1)
-        self.adaptive_pool = nn.AdaptiveMaxPool2d((1,1))
+        self.conv1 = nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3)
+        self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
+        self.conv2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5)
+        self.dropout = nn.Dropout2d(p=0.1)
+        self.adaptive_pool = nn.AdaptiveMaxPool2d((1, 1))
         self.flatten = nn.Flatten()
-        self.linear1 = nn.Linear(64,32)
+        self.linear1 = nn.Linear(64, 32)
         self.relu = nn.ReLU()
-        self.linear2 = nn.Linear(32,1)
+        self.linear2 = nn.Linear(32, 1)
         self.sigmoid = nn.Sigmoid()
-        
-    def forward(self,x):
+
+    def forward(self, x):
         x = self.conv1(x)
         x = self.pool(x)
         x = self.conv2(x)
@@ -7806,7 +7928,8 @@ class Net(nn.Module):
         x = self.linear2(x)
         y = self.sigmoid(x)
         return y
-        
+
+
 net = Net()
 print(net)
 ```
@@ -7867,22 +7990,22 @@ writer.close()
 
 ```python
 %load_ext tensorboard
-#%tensorboard --logdir ./data/tensorboard
+# %tensorboard --logdir ./data/tensorboard
 ```
 
 
 
 ```python
 from tensorboard import notebook
-#查看启动的tensorboard程序
+# 查看启动的tensorboard程序
 notebook.list() 
 ```
 
 ```python
-#启动tensorboard程序
+# 启动tensorboard程序
 notebook.start("--logdir ./data/tensorboard")
-#等价于在命令行中执行 tensorboard --logdir ./data/tensorboard
-#可以在浏览器中打开 http://localhost:6006/ 查看
+# 等价于在命令行中执行 tensorboard --logdir ./data/tensorboard
+# 可以在浏览器中打开 http://localhost:6006/ 查看
 ```
 
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_pytorch_in_20_days-20220302-125625-666555.png)
@@ -7898,21 +8021,23 @@ notebook.start("--logdir ./data/tensorboard")
 
 
 ```python
-import numpy as np 
-import torch 
+import numpy as np
+import torch
 from torch.utils.tensorboard import SummaryWriter
 
 # f(x) = a*x**2 + b*x + c的最小值
-x = torch.tensor(0.0,requires_grad = True) # x需要被求导
+x = torch.tensor(0.0, requires_grad=True)  # x需要被求导
 a = torch.tensor(1.0)
 b = torch.tensor(-2.0)
 c = torch.tensor(1.0)
 
-optimizer = torch.optim.SGD(params=[x],lr = 0.01)
+optimizer = torch.optim.SGD(params=[x], lr=0.01)
+
 
 def f(x):
-    result = a*torch.pow(x,2) + b*x + c 
-    return(result)
+    result = a * torch.pow(x, 2) + b * x + c
+    return (result)
+
 
 writer = SummaryWriter('./data/tensorboard')
 for i in range(500):
@@ -7920,12 +8045,12 @@ for i in range(500):
     y = f(x)
     y.backward()
     optimizer.step()
-    writer.add_scalar("x",x.item(),i) #日志中记录x在第step i 的值
-    writer.add_scalar("y",y.item(),i) #日志中记录y在第step i 的值
+    writer.add_scalar("x", x.item(), i)  # 日志中记录x在第step i 的值
+    writer.add_scalar("y", y.item(), i)  # 日志中记录y在第step i 的值
 
 writer.close()
-    
-print("y=",f(x).data,";","x=",x.data)
+
+print("y=", f(x).data, ";", "x=", x.data)
 ```
 
 ```
@@ -7945,20 +8070,21 @@ y= tensor(0.) ; x= tensor(1.0000)
 它能够观测张量值分布的直方图随训练步骤的变化趋势。
 
 ```python
-import numpy as np 
-import torch 
+import numpy as np
+import torch
 from torch.utils.tensorboard import SummaryWriter
 
 
 # 创建正态分布的张量模拟参数矩阵
-def norm(mean,std):
-    t = std*torch.randn((100,20))+mean
+def norm(mean, std):
+    t = std * torch.randn((100, 20)) + mean
     return t
 
+
 writer = SummaryWriter('./data/tensorboard')
-for step,mean in enumerate(range(-10,10,1)):
-    w = norm(mean,1)
-    writer.add_histogram("w",w, step)
+for step, mean in enumerate(range(-10, 10, 1)):
+    w = norm(mean, 1)
+    writer.add_histogram("w", w, step)
     writer.flush()
 writer.close()
 ```
@@ -7985,8 +8111,8 @@ writer.close()
 import torch
 import torchvision
 from torch import nn
-from torch.utils.data import Dataset,DataLoader
-from torchvision import transforms,datasets 
+from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms, datasets
 
 transform_train = transforms.Compose([transforms.ToTensor()])
 transform_valid = transforms.Compose([transforms.ToTensor()])
@@ -8054,19 +8180,18 @@ writer.close()
 import torch
 import torchvision
 from torch import nn
-from torch.utils.data import Dataset,DataLoader
-from torchvision import transforms,datasets 
-
+from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms, datasets
 
 transform_train = transforms.Compose([transforms.ToTensor()])
 transform_valid = transforms.Compose([transforms.ToTensor()])
 
 ds_train = datasets.ImageFolder("./data/cifar2/train/",
-                                transform = transform_train,
-                                target_transform= lambda t:torch.tensor([t]).float())
+                                transform=transform_train,
+                                target_transform=lambda t: torch.tensor([t]).float())
 ds_valid = datasets.ImageFolder("./data/cifar2/test/",
-                                transform = transform_train,
-                                target_transform= lambda t:torch.tensor([t]).float())
+                                transform=transform_train,
+                                target_transform=lambda t: torch.tensor([t]).float())
 
 print(ds_train.class_to_idx)
 ```
@@ -8149,22 +8274,22 @@ from torchkeras import summary
 
 ```python
 class Net(nn.Module):
-    
+
     def __init__(self):
         super(Net, self).__init__()
-        self.conv1 = nn.Conv2d(in_channels=3,out_channels=32,kernel_size = 3)
-        self.pool1 = nn.MaxPool2d(kernel_size = 2,stride = 2)
-        self.conv2 = nn.Conv2d(in_channels=32,out_channels=64,kernel_size = 5)
-        self.pool2 = nn.MaxPool2d(kernel_size = 2,stride = 2)
-        self.dropout = nn.Dropout2d(p = 0.1)
-        self.adaptive_pool = nn.AdaptiveMaxPool2d((1,1))
+        self.conv1 = nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3)
+        self.pool1 = nn.MaxPool2d(kernel_size=2, stride=2)
+        self.conv2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5)
+        self.pool2 = nn.MaxPool2d(kernel_size=2, stride=2)
+        self.dropout = nn.Dropout2d(p=0.1)
+        self.adaptive_pool = nn.AdaptiveMaxPool2d((1, 1))
         self.flatten = nn.Flatten()
-        self.linear1 = nn.Linear(64,32)
+        self.linear1 = nn.Linear(64, 32)
         self.relu = nn.ReLU()
-        self.linear2 = nn.Linear(32,1)
+        self.linear2 = nn.Linear(32, 1)
         self.sigmoid = nn.Sigmoid()
-        
-    def forward(self,x):
+
+    def forward(self, x):
         x = self.conv1(x)
         x = self.pool1(x)
         x = self.conv2(x)
@@ -8177,7 +8302,8 @@ class Net(nn.Module):
         x = self.linear2(x)
         y = self.sigmoid(x)
         return y
-        
+
+
 net = Net()
 print(net)
 ```
@@ -8244,17 +8370,17 @@ Estimated Total Size (MB): 0.578388
 
 ```python
 net = nn.Sequential()
-net.add_module("conv1",nn.Conv2d(in_channels=3,out_channels=32,kernel_size = 3))
-net.add_module("pool1",nn.MaxPool2d(kernel_size = 2,stride = 2))
-net.add_module("conv2",nn.Conv2d(in_channels=32,out_channels=64,kernel_size = 5))
-net.add_module("pool2",nn.MaxPool2d(kernel_size = 2,stride = 2))
-net.add_module("dropout",nn.Dropout2d(p = 0.1))
-net.add_module("adaptive_pool",nn.AdaptiveMaxPool2d((1,1)))
-net.add_module("flatten",nn.Flatten())
-net.add_module("linear1",nn.Linear(64,32))
-net.add_module("relu",nn.ReLU())
-net.add_module("linear2",nn.Linear(32,1))
-net.add_module("sigmoid",nn.Sigmoid())
+net.add_module("conv1", nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3))
+net.add_module("pool1", nn.MaxPool2d(kernel_size=2, stride=2))
+net.add_module("conv2", nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5))
+net.add_module("pool2", nn.MaxPool2d(kernel_size=2, stride=2))
+net.add_module("dropout", nn.Dropout2d(p=0.1))
+net.add_module("adaptive_pool", nn.AdaptiveMaxPool2d((1, 1)))
+net.add_module("flatten", nn.Flatten())
+net.add_module("linear1", nn.Linear(64, 32))
+net.add_module("relu", nn.ReLU())
+net.add_module("linear2", nn.Linear(32, 1))
+net.add_module("sigmoid", nn.Sigmoid())
 
 print(net)
 ```
@@ -8283,16 +8409,16 @@ Sequential(
 
 ```python
 net = nn.Sequential(
-    nn.Conv2d(in_channels=3,out_channels=32,kernel_size = 3),
-    nn.MaxPool2d(kernel_size = 2,stride = 2),
-    nn.Conv2d(in_channels=32,out_channels=64,kernel_size = 5),
-    nn.MaxPool2d(kernel_size = 2,stride = 2),
-    nn.Dropout2d(p = 0.1),
-    nn.AdaptiveMaxPool2d((1,1)),
+    nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.Dropout2d(p=0.1),
+    nn.AdaptiveMaxPool2d((1, 1)),
     nn.Flatten(),
-    nn.Linear(64,32),
+    nn.Linear(64, 32),
     nn.ReLU(),
-    nn.Linear(32,1),
+    nn.Linear(32, 1),
     nn.Sigmoid()
 )
 
@@ -8323,19 +8449,19 @@ Sequential(
 from collections import OrderedDict
 
 net = nn.Sequential(OrderedDict(
-          [("conv1",nn.Conv2d(in_channels=3,out_channels=32,kernel_size = 3)),
-            ("pool1",nn.MaxPool2d(kernel_size = 2,stride = 2)),
-            ("conv2",nn.Conv2d(in_channels=32,out_channels=64,kernel_size = 5)),
-            ("pool2",nn.MaxPool2d(kernel_size = 2,stride = 2)),
-            ("dropout",nn.Dropout2d(p = 0.1)),
-            ("adaptive_pool",nn.AdaptiveMaxPool2d((1,1))),
-            ("flatten",nn.Flatten()),
-            ("linear1",nn.Linear(64,32)),
-            ("relu",nn.ReLU()),
-            ("linear2",nn.Linear(32,1)),
-            ("sigmoid",nn.Sigmoid())
-          ])
-        )
+    [("conv1", nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3)),
+     ("pool1", nn.MaxPool2d(kernel_size=2, stride=2)),
+     ("conv2", nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5)),
+     ("pool2", nn.MaxPool2d(kernel_size=2, stride=2)),
+     ("dropout", nn.Dropout2d(p=0.1)),
+     ("adaptive_pool", nn.AdaptiveMaxPool2d((1, 1))),
+     ("flatten", nn.Flatten()),
+     ("linear1", nn.Linear(64, 32)),
+     ("relu", nn.ReLU()),
+     ("linear2", nn.Linear(32, 1)),
+     ("sigmoid", nn.Sigmoid())
+     ])
+)
 print(net)
 ```
 
@@ -8399,35 +8525,35 @@ Estimated Total Size (MB): 0.578388
 
 注意，在下面的范例中我们每次仅仅使用一种模型容器，但实际上这些模型容器的使用是非常灵活的，可以在一个模型中任意组合任意嵌套使用。
 
-
-
 #### nn.Sequential作为模型容器
 
 ```python
 class Net(nn.Module):
-    
+
     def __init__(self):
         super(Net, self).__init__()
         self.conv = nn.Sequential(
-            nn.Conv2d(in_channels=3,out_channels=32,kernel_size = 3),
-            nn.MaxPool2d(kernel_size = 2,stride = 2),
-            nn.Conv2d(in_channels=32,out_channels=64,kernel_size = 5),
-            nn.MaxPool2d(kernel_size = 2,stride = 2),
-            nn.Dropout2d(p = 0.1),
-            nn.AdaptiveMaxPool2d((1,1))
+            nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.Dropout2d(p=0.1),
+            nn.AdaptiveMaxPool2d((1, 1))
         )
         self.dense = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(64,32),
+            nn.Linear(64, 32),
             nn.ReLU(),
-            nn.Linear(32,1),
+            nn.Linear(32, 1),
             nn.Sigmoid()
         )
-    def forward(self,x):
+
+    def forward(self, x):
         x = self.conv(x)
         y = self.dense(x)
-        return y 
-    
+        return y
+
+
 net = Net()
 print(net)
 ```
@@ -8460,27 +8586,29 @@ Net(
 
 ```python
 class Net(nn.Module):
-    
+
     def __init__(self):
         super(Net, self).__init__()
         self.layers = nn.ModuleList([
-            nn.Conv2d(in_channels=3,out_channels=32,kernel_size = 3),
-            nn.MaxPool2d(kernel_size = 2,stride = 2),
-            nn.Conv2d(in_channels=32,out_channels=64,kernel_size = 5),
-            nn.MaxPool2d(kernel_size = 2,stride = 2),
-            nn.Dropout2d(p = 0.1),
-            nn.AdaptiveMaxPool2d((1,1)),
+            nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.Dropout2d(p=0.1),
+            nn.AdaptiveMaxPool2d((1, 1)),
             nn.Flatten(),
-            nn.Linear(64,32),
+            nn.Linear(64, 32),
             nn.ReLU(),
-            nn.Linear(32,1),
+            nn.Linear(32, 1),
             nn.Sigmoid()]
         )
-    def forward(self,x):
+
+    def forward(self, x):
         for layer in self.layers:
             x = layer(x)
         return x
-    
+
+
 net = Net()
 print(net)
 ```
@@ -8544,29 +8672,30 @@ Estimated Total Size (MB): 0.578388
 
 ```python
 class Net(nn.Module):
-    
+
     def __init__(self):
         super(Net, self).__init__()
         self.layers_dict = nn.ModuleDict(
-            {"conv1":nn.Conv2d(in_channels=3,out_channels=32,kernel_size = 3),
-             "pool": nn.MaxPool2d(kernel_size = 2,stride = 2),
-             "conv2":nn.Conv2d(in_channels=32,out_channels=64,kernel_size = 5),
-             "dropout": nn.Dropout2d(p = 0.1),
-             "adaptive":nn.AdaptiveMaxPool2d((1,1)),
+            {"conv1": nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3),
+             "pool": nn.MaxPool2d(kernel_size=2, stride=2),
+             "conv2": nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5),
+             "dropout": nn.Dropout2d(p=0.1),
+             "adaptive": nn.AdaptiveMaxPool2d((1, 1)),
              "flatten": nn.Flatten(),
-             "linear1": nn.Linear(64,32),
-             "relu":nn.ReLU(),
-             "linear2": nn.Linear(32,1),
+             "linear1": nn.Linear(64, 32),
+             "relu": nn.ReLU(),
+             "linear2": nn.Linear(32, 1),
              "sigmoid": nn.Sigmoid()
-              })
-        
-    def forward(self,x):
-        layers = ["conv1","pool","conv2","pool","dropout","adaptive",
-                  "flatten","linear1","relu","linear2","sigmoid"]
+             })
+
+    def forward(self, x):
+        layers = ["conv1", "pool", "conv2", "pool", "dropout", "adaptive",
+                  "flatten", "linear1", "relu", "linear2", "sigmoid"]
         for layer in layers:
             x = self.layers_dict[layer](x)
         return x
-    
+
+
 net = Net()
 print(net)
 ```
@@ -8640,11 +8769,11 @@ Pytorch通常需要用户编写自定义训练循环，训练循环的代码风�
 ### 准备数据
 
 ```python
-import torch 
-from torch import nn 
-from torchkeras import summary,Model 
+import torch
+from torch import nn
+from torchkeras import summary, Model
 
-import torchvision 
+import torchvision
 from torchvision import transforms
 ```
 
@@ -8684,18 +8813,18 @@ print(len(ds_valid))
 %matplotlib inline
 %config InlineBackend.figure_format = 'svg'
 
-#查看部分样本
-from matplotlib import pyplot as plt 
+# 查看部分样本
+from matplotlib import pyplot as plt
 
-plt.figure(figsize=(8,8)) 
+plt.figure(figsize=(8, 8))
 for i in range(9):
-    img,label = ds_train[i]
+    img, label = ds_train[i]
     img = torch.squeeze(img)
-    ax=plt.subplot(3,3,i+1)
+    ax = plt.subplot(3, 3, i + 1)
     ax.imshow(img.numpy())
-    ax.set_title("label = %d"%label)
+    ax.set_title("label = %d" % label)
     ax.set_xticks([])
-    ax.set_yticks([]) 
+    ax.set_yticks([])
 plt.show()
 ```
 
@@ -8712,16 +8841,16 @@ plt.show()
 
 ```python
 net = nn.Sequential()
-net.add_module("conv1",nn.Conv2d(in_channels=1,out_channels=32,kernel_size = 3))
-net.add_module("pool1",nn.MaxPool2d(kernel_size = 2,stride = 2))
-net.add_module("conv2",nn.Conv2d(in_channels=32,out_channels=64,kernel_size = 5))
-net.add_module("pool2",nn.MaxPool2d(kernel_size = 2,stride = 2))
-net.add_module("dropout",nn.Dropout2d(p = 0.1))
-net.add_module("adaptive_pool",nn.AdaptiveMaxPool2d((1,1)))
-net.add_module("flatten",nn.Flatten())
-net.add_module("linear1",nn.Linear(64,32))
-net.add_module("relu",nn.ReLU())
-net.add_module("linear2",nn.Linear(32,10))
+net.add_module("conv1", nn.Conv2d(in_channels=1, out_channels=32, kernel_size=3))
+net.add_module("pool1", nn.MaxPool2d(kernel_size=2, stride=2))
+net.add_module("conv2", nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5))
+net.add_module("pool2", nn.MaxPool2d(kernel_size=2, stride=2))
+net.add_module("dropout", nn.Dropout2d(p=0.1))
+net.add_module("adaptive_pool", nn.AdaptiveMaxPool2d((1, 1)))
+net.add_module("flatten", nn.Flatten())
+net.add_module("linear1", nn.Linear(64, 32))
+net.add_module("relu", nn.ReLU())
+net.add_module("linear2", nn.Linear(32, 10))
 
 print(net)
 ```
@@ -8775,16 +8904,18 @@ Estimated Total Size (MB): 0.569572
 
 ```python
 import datetime
-import numpy as np 
-import pandas as pd 
+import numpy as np
+import pandas as pd
 from sklearn.metrics import accuracy_score
 
-def accuracy(y_pred,y_true):
-    y_pred_cls = torch.argmax(nn.Softmax(dim=1)(y_pred),dim=1).data
-    return accuracy_score(y_true,y_pred_cls)
+
+def accuracy(y_pred, y_true):
+    y_pred_cls = torch.argmax(nn.Softmax(dim=1)(y_pred), dim=1).data
+    return accuracy_score(y_true, y_pred_cls)
+
 
 loss_func = nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(params=net.parameters(),lr = 0.01)
+optimizer = torch.optim.Adam(params=net.parameters(), lr=0.01)
 metric_func = accuracy
 metric_name = "accuracy"
 ```
@@ -8793,29 +8924,29 @@ metric_name = "accuracy"
 epochs = 3
 log_step_freq = 100
 
-dfhistory = pd.DataFrame(columns = ["epoch","loss",metric_name,"val_loss","val_"+metric_name]) 
+dfhistory = pd.DataFrame(columns=["epoch", "loss", metric_name, "val_loss", "val_" + metric_name])
 print("Start Training...")
 nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-print("=========="*8 + "%s"%nowtime)
+print("==========" * 8 + "%s" % nowtime)
 
-for epoch in range(1,epochs+1):  
+for epoch in range(1, epochs + 1):
 
     # 1，训练循环-------------------------------------------------
     net.train()
     loss_sum = 0.0
     metric_sum = 0.0
     step = 1
-    
-    for step, (features,labels) in enumerate(dl_train, 1):
-    
+
+    for step, (features, labels) in enumerate(dl_train, 1):
+
         # 梯度清零
         optimizer.zero_grad()
 
         # 正向传播求损失
         predictions = net(features)
-        loss = loss_func(predictions,labels)
-        metric = metric_func(predictions,labels)
-        
+        loss = loss_func(predictions, labels)
+        metric = metric_func(predictions, labels)
+
         # 反向传播求梯度
         loss.backward()
         optimizer.step()
@@ -8823,35 +8954,34 @@ for epoch in range(1,epochs+1):
         # 打印batch级别日志
         loss_sum += loss.item()
         metric_sum += metric.item()
-        if step%log_step_freq == 0:   
-            print(("[step = %d] loss: %.3f, "+metric_name+": %.3f") %
-                  (step, loss_sum/step, metric_sum/step))
-            
+        if step % log_step_freq == 0:
+            print(("[step = %d] loss: %.3f, " + metric_name + ": %.3f") %
+                  (step, loss_sum / step, metric_sum / step))
+
     # 2，验证循环-------------------------------------------------
     net.eval()
     val_loss_sum = 0.0
     val_metric_sum = 0.0
     val_step = 1
 
-    for val_step, (features,labels) in enumerate(dl_valid, 1):
+    for val_step, (features, labels) in enumerate(dl_valid, 1):
         with torch.no_grad():
             predictions = net(features)
-            val_loss = loss_func(predictions,labels)
-            val_metric = metric_func(predictions,labels)
+            val_loss = loss_func(predictions, labels)
+            val_metric = metric_func(predictions, labels)
 
         val_loss_sum += val_loss.item()
         val_metric_sum += val_metric.item()
 
     # 3，记录日志-------------------------------------------------
-    info = (epoch, loss_sum/step, metric_sum/step, 
-            val_loss_sum/val_step, val_metric_sum/val_step)
-    dfhistory.loc[epoch-1] = info
-    
+    info = (epoch, loss_sum / step, metric_sum / step,  val_loss_sum / val_step, val_metric_sum / val_step)
+    dfhistory.loc[epoch - 1] = info
+
     # 打印epoch级别日志
-    print(("\nEPOCH = %d, loss = %.3f,"+ metric_name + "  = %.3f, val_loss = %.3f, "+"val_"+ metric_name+" = %.3f") %info)
+    print(("\nEPOCH = %d, loss = %.3f," + metric_name + "  = %.3f, val_loss = %.3f, " + "val_" + metric_name + " = %.3f") % info)
     nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print("\n"+"=========="*8 + "%s"%nowtime)
-        
+    print("\n" + "==========" * 8 + "%s" % nowtime)
+
 print('Finished Training...')
 ```
 
@@ -8986,41 +9116,40 @@ model.metric_name = "accuracy"
 ```
 
 ```python
-def train_step(model,features,labels):
-    
+def train_step(model, features, labels):
     # 训练模式，dropout层发生作用
     model.train()
-    
+
     # 梯度清零
     model.optimizer.zero_grad()
-    
+
     # 正向传播求损失
     predictions = model(features)
-    loss = model.loss_func(predictions,labels)
-    metric = model.metric_func(predictions,labels)
+    loss = model.loss_func(predictions, labels)
+    metric = model.metric_func(predictions, labels)
 
     # 反向传播求梯度
     loss.backward()
     model.optimizer.step()
 
-    return loss.item(),metric.item()
+    return loss.item(), metric.item()
+
 
 @torch.no_grad()
-def valid_step(model,features,labels):
-    
+def valid_step(model, features, labels):
     # 预测模式，dropout层不发生作用
     model.eval()
-    
+
     predictions = model(features)
-    loss = model.loss_func(predictions,labels)
-    metric = model.metric_func(predictions,labels)
-    
+    loss = model.loss_func(predictions, labels)
+    metric = model.metric_func(predictions, labels)
+
     return loss.item(), metric.item()
 
 
 # 测试train_step效果
-features,labels = next(iter(dl_train))
-train_step(model,features,labels)
+features, labels = next(iter(dl_train))
+train_step(model, features, labels)
 ```
 
 ```
@@ -9030,51 +9159,49 @@ train_step(model,features,labels)
 
 
 ```python
-def train_model(model,epochs,dl_train,dl_valid,log_step_freq):
-
+def train_model(model, epochs, dl_train, dl_valid, log_step_freq):
     metric_name = model.metric_name
-    dfhistory = pd.DataFrame(columns = ["epoch","loss",metric_name,"val_loss","val_"+metric_name]) 
+    dfhistory = pd.DataFrame(columns=["epoch", "loss", metric_name, "val_loss", "val_" + metric_name])
     print("Start Training...")
     nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print("=========="*8 + "%s"%nowtime)
+    print("==========" * 8 + "%s" % nowtime)
 
-    for epoch in range(1,epochs+1):  
+    for epoch in range(1, epochs + 1):
         # 1，训练循环-------------------------------------------------
         loss_sum = 0.0
         metric_sum = 0.0
         step = 1
 
-        for step, (features,labels) in enumerate(dl_train, 1):
-            loss,metric = train_step(model,features,labels)
+        for step, (features, labels) in enumerate(dl_train, 1):
+            loss, metric = train_step(model, features, labels)
 
             # 打印batch级别日志
             loss_sum += loss
             metric_sum += metric
-            if step%log_step_freq == 0:   
-                print(("[step = %d] loss: %.3f, "+metric_name+": %.3f") %
-                      (step, loss_sum/step, metric_sum/step))
+            if step % log_step_freq == 0:
+                print(("[step = %d] loss: %.3f, " + metric_name + ": %.3f") %
+                      (step, loss_sum / step, metric_sum / step))
 
         # 2，验证循环-------------------------------------------------
         val_loss_sum = 0.0
         val_metric_sum = 0.0
         val_step = 1
 
-        for val_step, (features,labels) in enumerate(dl_valid, 1):
-            val_loss,val_metric = valid_step(model,features,labels)
+        for val_step, (features, labels) in enumerate(dl_valid, 1):
+            val_loss, val_metric = valid_step(model, features, labels)
             val_loss_sum += val_loss
             val_metric_sum += val_metric
 
         # 3，记录日志-------------------------------------------------
-        info = (epoch, loss_sum/step, metric_sum/step, 
-                val_loss_sum/val_step, val_metric_sum/val_step)
-        dfhistory.loc[epoch-1] = info
+        info = (epoch, loss_sum / step, metric_sum / step,  val_loss_sum / val_step, val_metric_sum / val_step)
+        dfhistory.loc[epoch - 1] = info
 
         # 打印epoch级别日志
-        print(("\nEPOCH = %d, loss = %.3f,"+ metric_name + \
-              "  = %.3f, val_loss = %.3f, "+"val_"+ metric_name+" = %.3f") 
-              %info)
+        print(("\nEPOCH = %d, loss = %.3f," + metric_name + \
+               "  = %.3f, val_loss = %.3f, " + "val_" + metric_name + " = %.3f")
+              % info)
         nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        print("\n"+"=========="*8 + "%s"%nowtime)
+        print("\n" + "==========" * 8 + "%s" % nowtime)
 
     print('Finished Training...')
     return dfhistory
@@ -9082,7 +9209,7 @@ def train_model(model,epochs,dl_train,dl_valid,log_step_freq):
 
 ```python
 epochs = 3
-dfhistory = train_model(model,epochs,dl_train,dl_valid,log_step_freq = 100)
+dfhistory = train_model(model, epochs, dl_train, dl_valid, log_step_freq=100)
 ```
 
 ```
@@ -9129,22 +9256,24 @@ class CnnModel(nn.Module):
     def __init__(self):
         super().__init__()
         self.layers = nn.ModuleList([
-            nn.Conv2d(in_channels=1,out_channels=32,kernel_size = 3),
-            nn.MaxPool2d(kernel_size = 2,stride = 2),
-            nn.Conv2d(in_channels=32,out_channels=64,kernel_size = 5),
-            nn.MaxPool2d(kernel_size = 2,stride = 2),
-            nn.Dropout2d(p = 0.1),
-            nn.AdaptiveMaxPool2d((1,1)),
+            nn.Conv2d(in_channels=1, out_channels=32, kernel_size=3),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.Dropout2d(p=0.1),
+            nn.AdaptiveMaxPool2d((1, 1)),
             nn.Flatten(),
-            nn.Linear(64,32),
+            nn.Linear(64, 32),
             nn.ReLU(),
-            nn.Linear(32,10)]
+            nn.Linear(32, 10)]
         )
-    def forward(self,x):
+
+    def forward(self, x):
         for layer in self.layers:
             x = layer(x)
         return x
-    
+
+
 model = torchkeras.Model(CnnModel())
 print(model)
 ```
@@ -9201,13 +9330,15 @@ Estimated Total Size (MB): 0.569572
 ```python
 from sklearn.metrics import accuracy_score
 
-def accuracy(y_pred,y_true):
+
+def accuracy(y_pred, y_true):
     y_pred_cls = torch.argmax(nn.Softmax(dim=1)(y_pred), dim=1).data
     return accuracy_score(y_true.numpy(), y_pred_cls.numpy())
 
-model.compile(loss_func = nn.CrossEntropyLoss(),
-              optimizer= torch.optim.Adam(model.parameters(),lr = 0.02),
-              metrics_dict={"accuracy":accuracy})
+
+model.compile(loss_func=nn.CrossEntropyLoss(),
+              optimizer=torch.optim.Adam(model.parameters(), lr=0.02),
+              metrics_dict={"accuracy": accuracy})
 ```
 
 ```python
@@ -9331,10 +9462,10 @@ from torch import nn
 ```python
 # 1，查看gpu信息
 if_cuda = torch.cuda.is_available()
-print("if_cuda=",if_cuda)
+print("if_cuda=", if_cuda)
 
 gpu_count = torch.cuda.device_count()
-print("gpu_count=",gpu_count)
+print("gpu_count=", gpu_count)
 ```
 
 ```
@@ -9346,12 +9477,12 @@ gpu_count= 1
 
 ```python
 # 2，将张量在gpu和cpu间移动
-tensor = torch.rand((100,100))
-tensor_gpu = tensor.to("cuda:0") # 或者 tensor_gpu = tensor.cuda()
+tensor = torch.rand((100, 100))
+tensor_gpu = tensor.to("cuda:0")  # 或者 tensor_gpu = tensor.cuda()
 print(tensor_gpu.device)
 print(tensor_gpu.is_cuda)
 
-tensor_cpu = tensor_gpu.to("cpu") # 或者 tensor_cpu = tensor_gpu.cpu() 
+tensor_cpu = tensor_gpu.to("cpu")  # 或者 tensor_cpu = tensor_gpu.cpu() 
 print(tensor_cpu.device)
 ```
 
@@ -9365,7 +9496,7 @@ cpu
 
 ```python
 # 3，将模型中的全部张量移动到gpu上
-net = nn.Linear(2,1)
+net = nn.Linear(2, 1)
 print(next(net.parameters()).is_cuda)
 net.to("cuda:0") # 将模型中的全部参数张量依次到GPU上，注意，无需重新赋值为 net = net.to("cuda:0")
 print(next(net.parameters()).is_cuda)
@@ -9382,7 +9513,7 @@ cuda:0
 
 ```python
 # 4，创建支持多个gpu数据并行的模型
-linear = nn.Linear(2,1)
+linear = nn.Linear(2, 1)
 print(next(linear.parameters()).device)
 
 model = nn.DataParallel(linear)
@@ -9392,7 +9523,7 @@ print(next(model.module.parameters()).device)
 #注意保存参数时要指定保存model.module的参数
 torch.save(model.module.state_dict(), "./data/model_parameter.pkl") 
 
-linear = nn.Linear(2,1)
+linear = nn.Linear(2, 1)
 linear.load_state_dict(torch.load("./data/model_parameter.pkl")) 
 ```
 
@@ -9424,10 +9555,10 @@ from torch import nn
 
 ```python
 # 使用cpu
-a = torch.rand((10000,200))
-b = torch.rand((200,10000))
+a = torch.rand((10000, 200))
+b = torch.rand((200, 10000))
 tic = time.time()
-c = torch.matmul(a,b)
+c = torch.matmul(a, b)
 toc = time.time()
 
 print(toc-tic)
@@ -9444,8 +9575,8 @@ cpu
 ```python
 # 使用gpu
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-a = torch.rand((10000,200), device = device) #可以指定在GPU上创建张量
-b = torch.rand((200,10000)) #也可以在CPU上创建张量后移动到GPU上
+a = torch.rand((10000, 200), device = device) #可以指定在GPU上创建张量
+b = torch.rand((200, 10000)) #也可以在CPU上创建张量后移动到GPU上
 b = b.to(device) #或者 b = b.cuda() if torch.cuda.is_available() else b 
 tic = time.time()
 c = torch.matmul(a,b)
@@ -9471,46 +9602,49 @@ cuda:0
 
 ```python
 # 准备数据
-n = 1000000 #样本数量
+n = 1000000  # 样本数量
 
-X = 10*torch.rand([n,2])-5.0  #torch.rand是均匀分布 
-w0 = torch.tensor([[2.0,-3.0]])
+X = 10 * torch.rand([n, 2]) - 5.0  # torch.rand是均匀分布 
+w0 = torch.tensor([[2.0, -3.0]])
 b0 = torch.tensor([[10.0]])
-Y = X@w0.t() + b0 + torch.normal( 0.0,2.0,size = [n,1])  # @表示矩阵乘法,增加正态扰动
+Y = X @ w0.t() + b0 + torch.normal(0.0, 2.0, size=[n, 1])  # @表示矩阵乘法,增加正态扰动
 ```
 
 ```python
 # 定义模型
-class LinearRegression(nn.Module): 
+class LinearRegression(nn.Module):
     def __init__(self):
         super().__init__()
         self.w = nn.Parameter(torch.randn_like(w0))
         self.b = nn.Parameter(torch.zeros_like(b0))
-        
-    #正向传播
-    def forward(self,x): 
-        return x@self.w.t() + self.b
-        
-linear = LinearRegression() 
+
+    # 正向传播
+    def forward(self, x):
+        return x @ self.w.t() + self.b
+
+
+linear = LinearRegression()
 ```
 
 ```python
 # 训练模型
-optimizer = torch.optim.Adam(linear.parameters(),lr = 0.1)
+optimizer = torch.optim.Adam(linear.parameters(), lr=0.1)
 loss_func = nn.MSELoss()
+
 
 def train(epoches):
     tic = time.time()
     for epoch in range(epoches):
         optimizer.zero_grad()
-        Y_pred = linear(X) 
-        loss = loss_func(Y_pred,Y)
-        loss.backward() 
+        Y_pred = linear(X)
+        loss = loss_func(Y_pred, Y)
+        loss.backward()
         optimizer.step()
-        if epoch%50==0:
-            print({"epoch":epoch,"loss":loss.item()})
+        if epoch % 50 == 0:
+            print({"epoch": epoch, "loss": loss.item()})
     toc = time.time()
-    print("time used:",toc-tic)
+    print("time used:", toc - tic)
+
 
 train(500)
 ```
@@ -9535,19 +9669,19 @@ time used: 5.4090576171875
 
 ```python
 # 准备数据
-n = 1000000 #样本数量
+n = 1000000  # 样本数量
 
-X = 10*torch.rand([n,2])-5.0  #torch.rand是均匀分布 
-w0 = torch.tensor([[2.0,-3.0]])
+X = 10 * torch.rand([n, 2]) - 5.0  # torch.rand是均匀分布 
+w0 = torch.tensor([[2.0, -3.0]])
 b0 = torch.tensor([[10.0]])
-Y = X@w0.t() + b0 + torch.normal( 0.0,2.0,size = [n,1])  # @表示矩阵乘法,增加正态扰动
+Y = X @ w0.t() + b0 + torch.normal(0.0, 2.0, size=[n, 1])  # @表示矩阵乘法,增加正态扰动
 
 # 移动到GPU上
-print("torch.cuda.is_available() = ",torch.cuda.is_available())
+print("torch.cuda.is_available() = ", torch.cuda.is_available())
 X = X.cuda()
 Y = Y.cuda()
-print("X.device:",X.device)
-print("Y.device:",Y.device)
+print("X.device:", X.device)
+print("Y.device:", Y.device)
 ```
 
 ```
@@ -9560,23 +9694,25 @@ Y.device: cuda:0
 
 ```python
 # 定义模型
-class LinearRegression(nn.Module): 
+class LinearRegression(nn.Module):
     def __init__(self):
         super().__init__()
         self.w = nn.Parameter(torch.randn_like(w0))
         self.b = nn.Parameter(torch.zeros_like(b0))
-    #正向传播
-    def forward(self,x): 
-        return x@self.w.t() + self.b
-        
-linear = LinearRegression() 
+
+    # 正向传播
+    def forward(self, x):
+        return x @ self.w.t() + self.b
+
+
+linear = LinearRegression()
 
 # 移动模型到GPU上
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 linear.to(device)
 
-#查看模型是否已经移动到GPU上
-print("if on cuda:",next(linear.parameters()).is_cuda)
+# 查看模型是否已经移动到GPU上
+print("if on cuda:", next(linear.parameters()).is_cuda)
 ```
 
 ```
@@ -9587,22 +9723,25 @@ if on cuda: True
 
 ```python
 # 训练模型
-optimizer = torch.optim.Adam(linear.parameters(),lr = 0.1)
+optimizer = torch.optim.Adam(linear.parameters(), lr=0.1)
 loss_func = nn.MSELoss()
+
 
 def train(epoches):
     tic = time.time()
     for epoch in range(epoches):
         optimizer.zero_grad()
-        Y_pred = linear(X) 
-        loss = loss_func(Y_pred,Y)
-        loss.backward() 
+        Y_pred = linear(X)
+        loss = loss_func(Y_pred, Y)
+        loss.backward()
         optimizer.step()
-        if epoch%50==0:
-            print({"epoch":epoch,"loss":loss.item()})
+
+        if epoch % 50 == 0:
+            print({"epoch": epoch, "loss": loss.item()})
     toc = time.time()
-    print("time used:",toc-tic)
-    
+    print("time used:", toc - tic)
+
+
 train(500)
 ```
 
@@ -9759,19 +9898,21 @@ Estimated Total Size (MB): 0.569572
 ```python
 from sklearn.metrics import accuracy_score
 
-def accuracy(y_pred,y_true):
-    y_pred_cls = torch.argmax(nn.Softmax(dim=1)(y_pred),dim=1).data
-    return accuracy_score(y_true.cpu().numpy(),y_pred_cls.cpu().numpy()) 
+
+def accuracy(y_pred, y_true):
+    y_pred_cls = torch.argmax(nn.Softmax(dim=1)(y_pred), dim=1).data
+    return accuracy_score(y_true.cpu().numpy(), y_pred_cls.cpu().numpy())
     # 注意此处要将数据先移动到cpu上，然后才能转换成numpy数组
+
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-model.compile(loss_func = nn.CrossEntropyLoss(),
-              optimizer= torch.optim.Adam(model.parameters(),lr = 0.02),
-              metrics_dict={"accuracy":accuracy},
-              device = device) # 注意此处compile时指定了device
+model.compile(loss_func=nn.CrossEntropyLoss(),
+              optimizer=torch.optim.Adam(model.parameters(), lr=0.02),
+              metrics_dict={"accuracy": accuracy},
+              device=device)  # 注意此处compile时指定了device
 
-dfhistory = model.fit(3,dl_train = dl_train, dl_val=dl_valid, log_step_freq=100) 
+dfhistory = model.fit(3, dl_train=dl_train, dl_val=dl_valid, log_step_freq=100)
 ```
 
 ```
@@ -9822,30 +9963,33 @@ Finished Training...
 **4. 评估模型**
 
 ```python
-%matplotlib inline
-%config InlineBackend.figure_format = 'svg'
+% matplotlib
+inline
+% config
+InlineBackend.figure_format = 'svg'
 
 import matplotlib.pyplot as plt
 
+
 def plot_metric(dfhistory, metric):
     train_metrics = dfhistory[metric]
-    val_metrics = dfhistory['val_'+metric]
+    val_metrics = dfhistory['val_' + metric]
     epochs = range(1, len(train_metrics) + 1)
     plt.plot(epochs, train_metrics, 'bo--')
     plt.plot(epochs, val_metrics, 'ro-')
-    plt.title('Training and validation '+ metric)
+    plt.title('Training and validation ' + metric)
     plt.xlabel("Epochs")
     plt.ylabel(metric)
-    plt.legend(["train_"+metric, 'val_'+metric])
+    plt.legend(["train_" + metric, 'val_' + metric])
     plt.show()
 ```
 
 ```python
-plot_metric(dfhistory,"loss")
+plot_metric(dfhistory, "loss")
 ```
 
 ```python
-plot_metric(dfhistory,"accuracy")
+plot_metric(dfhistory, "accuracy")
 ```
 
 ```python
@@ -9980,7 +10124,7 @@ class CnnModule(nn.Module):
             x = layer(x)  
         return x
 
-net = nn.DataParallel(CnnModule())  #Attention this line!!!
+net = nn.DataParallel(CnnModule())  # Attention this line!!!
 model = torchkeras.Model(net)
 
 model.summary(input_shape=(1,32,32))
@@ -9993,21 +10137,23 @@ model.summary(input_shape=(1,32,32))
 ```python
 from sklearn.metrics import accuracy_score
 
-def accuracy(y_pred,y_true):
+
+def accuracy(y_pred, y_true):
     y_pred_cls = torch.argmax(nn.Softmax(dim=1)(y_pred), dim=1).data
-    return accuracy_score(y_true.cpu().numpy(), y_pred_cls.cpu().numpy()) 
+    return accuracy_score(y_true.cpu().numpy(), y_pred_cls.cpu().numpy())
     # 注意此处要将数据先移动到cpu上，然后才能转换成numpy数组
 
+
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-model.compile(loss_func = nn.CrossEntropyLoss(),
-              optimizer= torch.optim.Adam(model.parameters(),lr = 0.02),
-              metrics_dict={"accuracy":accuracy},
-              device = device) # 注意此处compile时指定了device
+model.compile(loss_func=nn.CrossEntropyLoss(),
+              optimizer=torch.optim.Adam(model.parameters(), lr=0.02),
+              metrics_dict={"accuracy": accuracy},
+              device=device)  # 注意此处compile时指定了device
 
 dfhistory = model.fit(3,
-                      dl_train = dl_train, 
-                      dl_val=dl_valid, 
-                      log_step_freq=100) 
+                      dl_train=dl_train,
+                      dl_val=dl_valid,
+                      log_step_freq=100)
 ```
 
 ```
