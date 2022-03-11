@@ -29,6 +29,7 @@ Graph Neural Networks 简称 GNN，称为图神经网络，是深度学习中近
 ```python
 import torch
 from torch_geometric.data import Data
+
 # 由于是无向图，因此有 4 条边：(0 -> 1), (1 -> 0), (1 -> 2), (2 -> 1)
 edge_index = torch.tensor([[0, 1, 1, 2],
                            [1, 0, 2, 1]], dtype=torch.long)
@@ -108,6 +109,7 @@ def __init__(self, root=None, transform=None, pre_transform=None,
 	# 执行 self._download() 方法
 	if 'download' in self.__class__.__dict__.keys():
 		self._download()
+        
     # 执行 self._process() 方法
 	if 'process' in self.__class__.__dict__.keys():
 		self._process()
@@ -137,6 +139,7 @@ def _process(self):
 			'the pre-processed version of this dataset. If you really '
 			'want to make use of another pre-processing technique, make '
 			'sure to delete `{}` first.'.format(self.processed_dir))
+        
 	f = osp.join(self.processed_dir, 'pre_filter.pt')
 	if osp.exists(f) and torch.load(f) != __repr__(self.pre_filter):
 		warnings.warn(

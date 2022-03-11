@@ -1,4 +1,6 @@
-[本章代码](https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson7/finetune_resnet18.py)
+**本章代码**
+
+1. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson7/finetune_resnet18.py
 
 这篇文章主要介绍了模型的 Finetune。
 

@@ -1,8 +1,8 @@
-本章代码：
+**本章代码**
 
-- https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson6/bn_and_initialize.py
-- https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson6/bn_in_123_dim.py
-- https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson6/normallization_layers.py
+1. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson6/bn_and_initialize.py
+2. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson6/bn_in_123_dim.py
+3. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson6/normallization_layers.py
 
 这篇文章主要介绍了 Batch Normalization 的概念，以及 PyTorch 中的 1d/2d/3d Batch Normalization 实现。
 
@@ -261,7 +261,6 @@ iteration:1, 第二个特征的running var:0.48999999999999994
     running_mean=(1-momentum) \times pre_running_mean + momentum \times mean_t =(1-0.3) \times 0 + 0.3 \times 2 =0.6
     $$
     
-
 - 第二次 bn 层的均值计算：
     $$
     running_mean=(1-momentum) \times pre_running_mean + momentum \times mean_t =(1-0.3) \times 0.6 + 0.3 \times 2 =1.02

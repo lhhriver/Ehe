@@ -1,8 +1,8 @@
-本章代码：
+**本章代码**
 
-- https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson5/tensorboard_methods.py
-- https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson5/tensorboard_methods_2.py
-- https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson5/loss_acc_weights_grad.py
+1. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson5/tensorboard_methods.py
+2. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson5/tensorboard_methods_2.py
+3. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson5/loss_acc_weights_grad.py
 
 TensorBoard 是 TensorFlow 中强大的可视化工具，支持标量、文本、图像、音频、视频和 Embedding 等多种数据可视化。
 

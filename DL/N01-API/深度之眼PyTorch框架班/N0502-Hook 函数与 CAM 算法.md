@@ -1,8 +1,8 @@
-本章代码：
+**本章代码**
 
-- https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson5/hook_fmap_vis.py
-- https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson5/hook_methods.py
-- https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson5/weight_fmap_visualization.py
+1. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson5/hook_fmap_vis.py
+2. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson5/hook_methods.py
+3. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson5/weight_fmap_visualization.py
 
 这篇文章主要介绍了如何使用 Hook 函数提取网络中的特征图进行可视化，和 CAM(class activation map, 类激活图)
 

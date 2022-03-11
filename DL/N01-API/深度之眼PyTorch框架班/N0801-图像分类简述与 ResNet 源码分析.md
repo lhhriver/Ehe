@@ -1,4 +1,6 @@
-[本章代码](https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson8/resnet_inference.py)
+**本章代码**
+
+1. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson8/resnet_inference.py
 
 这篇文章主要介绍了 图像分类的 inference，其中会着重介绍 `ResNet`。
 

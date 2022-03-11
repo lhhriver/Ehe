@@ -1,4 +1,6 @@
-[本章代码](https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson2/transforms)
+**本章代码**
+
+1. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson2/transforms
 
 这篇主要分为几个部分介绍 transforms:
 

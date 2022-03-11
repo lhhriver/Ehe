@@ -1,8 +1,8 @@
-本章代码：
+**本章代码**
 
-- https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson6/L2_regularization.py
-- https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson6/dropout_layer.py
-- https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson6/dropout_regularization.py
+1. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson6/L2_regularization.py
+2. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson6/dropout_layer.py
+3. https://github.com/zhangxiann/PyTorch_Practice/blob/master/lesson6/dropout_regularization.py
 
 这篇文章主要介绍了正则化与偏差-方差分解，以及 PyTorch 中的 L2 正则项--weight decay
 
