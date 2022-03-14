@@ -97,8 +97,6 @@ $$
 # 用scikit-learn进行TF-IDF预处理
 
 
-
-
 ```python
 # 第一种方法是在用CountVectorizer类向量化之后，再调用TfidfTransformer类进行预处理。
 from sklearn.feature_extraction.text import TfidfTransformer
