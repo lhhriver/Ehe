@@ -32,6 +32,8 @@ chgrp admin file1 # 改变文件file1的所属组为adm
 ```shell
 chmod 764 /etc/services
 chmod g+w file1  # 赋予文件file1所属组写权限   <ugo+rwx>
+
+chmod 755 * -R
 ```
 
 ```shell
@@ -62,6 +64,7 @@ chown liuhh /etc/services
 ```shell
 cp file1 file2 dir1 # 将文件file1、file2复制到目录dir1
 cp -R dir1 dir2 # 将dir1下的所有文件及子目录复制到dir2
+cp -r  /home/Ehe/Files  /data/Ehe  # Files文件夹复制到Ehe目录下
 cp -rf Label_lvshou_fill_vertify /home/liuhuihe/workspace/code_run/  # 将一个文件夹复制到另一个文件夹下
 cp -rf /home/lhh/workspace/customer_risk_pro/*  /home/lhh/workspace/code_run/customer_risk_pro/
 cp -rf /usr/local/KingSTD_1/*  /usr/local/webapps/KingSTD_2/    #将dir1下的所有文件及子目录复制到dir2,覆盖
@@ -210,6 +213,7 @@ scp root@172.16.92.106:/home/Anaconda3-5.0.1-Linux-x86_64.sh /home
 
 # 106上面
 scp /home/Anaconda3-5.0.1-Linux-x86_64.sh root@172.16.92.8:/home
+scp -r /home/Ehe root@172.16.92.8:/home
 ```
 
 - slocate
@@ -498,6 +502,7 @@ dr-xr-xr-x  13 root root     0 Feb 18 10:59 sys
 
 ```shell
 mkdir river # 创建目录river
+mkdir -p  /home/blue/ssd/thinkit
 ```
 
 ```shell

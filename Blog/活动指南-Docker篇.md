@@ -351,6 +351,7 @@ docker top 容器ID/名称
 # 拷贝文件或目录
 docker cp 宿主机目录/文件 容器ID:/usr1/test
 docker cp 容器ID:/usr1/test 宿主机目录/文件
+docker cp json2/ e2e-finetune-env:/data/Ehe/json2/
 
 # 查询容器正在运行的日志
 docker logs 容器ID/名称
@@ -360,6 +361,9 @@ docker logs -f 容器ID/名称
 
 # 将容器实时日志输出到文件，可以配合ELK进行日志收集
 docker logs -f  testxx > /var/log/xxx.log 2>1&
+
+# 查看容器状态
+docker stats e2e-finetune-env
 ```
 
 ## 容器持久化存储
