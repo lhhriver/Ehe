@@ -11,6 +11,8 @@ $$
 
 $ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，行内公式示例} $
 
+
+
 ## 独立公式
 
 $$
@@ -70,7 +72,7 @@ $$
 
 ## 如何输入开方
 
-​		平方根的输入命令为 \sqrt ， n次方根的命令为 \sqrt[n]
+​		平方根的输入命令为 \sqrt， n次方根的命令为 \sqrt[n]
 
 | LaTex命令 |  显示结果  |  LaTex命令  |   显示结果    |   LaTex命令    |        显示结果         |
 | :-------: | :--------: | :---------: | :-----------: | :------------: | :---------------------: |
@@ -172,7 +174,8 @@ $$
 
 ## 大括号和行标的使用
 
-​		使用 \left和 \right来创建自动匹配高度的 (圆括号)，[方括号] 和 {花括号} 。
+使用 \left和 \right来创建自动匹配高度的 (圆括号)，[方括号] 和 {花括号} 。
+
 在每个公式末尾前使用\tag{行标}来实现行标。
 $$
 f\left(
@@ -230,8 +233,6 @@ $$
 
 ## 关系运算符
 
-
-
 |     显示     | 输入       |    显示     | 输入      |    显示    | 输入     |
 | :----------: | ---------- | :---------: | --------- | :--------: | -------- |
 |    $\pm$     | \pm        |  $\times$   | \times    |   $\div$   | \div     |
@@ -245,8 +246,6 @@ $$
 
 
 ## 集合运算符
-
-
 
 |    显示     | 输入      |    显示     | 输入      |
 | :---------: | :-------- | :---------: | :-------- |
@@ -262,8 +261,6 @@ $$
 
 ## 对数运算符
 
-
-
 |  显示  | 输入 |
 | :----: | :--- |
 | $\log$ | \log |
@@ -274,8 +271,6 @@ $$
 
 ## 戴帽符号
 
-
-
 |    显示     | 输入      |
 | :---------: | --------- |
 |  $\hat{y}$  | \hat{y}   |
@@ -285,8 +280,6 @@ $$
 
 
 ## 三角运算符
-
-
 
 |    显示    | 输入     |  显示  | 输入 |
 | :--------: | :------- | :----: | :--- |
@@ -300,8 +293,6 @@ $$
 
 ## 微积分运算符
 
-
-
 |   显示    | 输入    |   显示   | 输入   |
 | :-------: | :------ | :------: | :----- |
 | $\prime$  | \prime  | $\oint$  | \oint  |
@@ -310,11 +301,7 @@ $$
 | $\iiint$  | \iiint  | $\nabla$ | \nabla |
 | $\iiiint$ | \iiiint |          |        |
 
-
-
 ## 逻辑运算符
-
-
 
 |     显示     | 输入       |     显示      | 输入        |
 | :----------: | :--------- | :-----------: | :---------- |
@@ -323,11 +310,7 @@ $$
 |  $\forall$   | \forall    | $\not\subset$ | \not\subset |
 |  $\exists$   | \exists    |               |             |
 
-
-
 ## 箭头符号
-
-
 
 |       显示        | 输入            |       显示       | 输入           |
 | :---------------: | :-------------- | :--------------: | :------------- |
@@ -340,7 +323,7 @@ $$
 
 # 矩阵编辑
 
-​		矩阵命令中每一行以 \ 结束，矩阵的元素之间用 & 来分隔开。举例如下：
+矩阵命令中每一行以 \ 结束，矩阵的元素之间用 & 来分隔开。举例如下：
 
 ```
 $$
@@ -567,6 +550,7 @@ $\big(
 ```
 
 这是行内矩阵的Demo：
+
 $\big( 
     \begin{smallmatrix}
     1 & 2 & 3 \\
@@ -597,38 +581,38 @@ $
     \end{bmatrix} 
 $  后面还有……
 
+
+
 ***
 
 # LaTex 常用数学符号
 
 ## 数学模式重音符号
 
-
-
-| 符号          | LaTex命令 | 符号          | LaTex命令 | 符号            | LaTex命令     |
-| ------------- | --------- | ------------- | --------- | --------------- | ------------- |
-| $ \hat{a} $   | \hat{a}   | $ \check{a} $ | \check{a} | $ \tilde{a} $   | \tilde{a}     |
-| $ \grave{a} $ | \grave{a} | $\dot{a}$     | \dot{a}   | $\ddot{a}$      | \ddot{a}      |
-| $ \bar{a} $   | \bar{a}   | $\vec{a}$     | \vec{a}   | $\widehat{A}$   | \widehat{A}   |
-| $ \acute{a} $ | \acute{a} | $\breve{a}$   | \breve{a} | $\widetilde{A}$ | \widetilde{A} |
+|     符号      | LaTex命令 |     符号      | LaTex命令 |      符号       | LaTex命令     |
+| :-----------: | --------- | :-----------: | --------- | :-------------: | ------------- |
+|  $ \hat{a} $  | \hat{a}   | $ \check{a} $ | \check{a} |  $ \tilde{a} $  | \tilde{a}     |
+| $ \grave{a} $ | \grave{a} |   $\dot{a}$   | \dot{a}   |   $\ddot{a}$    | \ddot{a}      |
+|  $ \bar{a} $  | \bar{a}   |   $\vec{a}$   | \vec{a}   |  $\widehat{A}$  | \widehat{A}   |
+| $ \acute{a} $ | \acute{a} |  $\breve{a}$  | \breve{a} | $\widetilde{A}$ | \widetilde{A} |
 
 
 
 ## 希腊字母
 
-| 符号            | LaTex命令   | 符号          | LaTex命令 | 符号          | LaTex命令 | 符号            | LaTex命令   |
-| --------------- | ----------- | ------------- | --------- | ------------- | --------- | --------------- | ----------- |
-| $ \alpha $      | \alpha      | $ \theta $    | \theta    | $ o $         | o         | $ \upsilon $    | \upsilon    |
-| $ \beta $       | \beta       | $ \vartheta $ | \vartheta | $ \pi $       | \pi       | $ \phi $        | \phi        |
-| $ \gamma $      | \gamma      | $ \iota $     | \iota     | $ \varpi $    | \varpi    | $ \varphi $     | \varphi     |
-| $ \delta $      | \delta      | $ \kappa $    | \kappa    | $ \rho $      | \rho      | $ \chi $        | \chi        |
-| $ \epsilon $    | \epsilon    | $ \lambda $   | \lambda   | $ \varrho $   | \varrho   | $ \psi $        | \psi        |
-| $ \varepsilon $ | \varepsilon | $ \mu $       | \mu       | $ \sigma $    | \sigma    | $ \omega $      | \omega      |
-| $ \zeta $       | \zeta       | $ \nu $       | \nu       | $ \varsigma $ | \varsigma | $ \mathcal{O} $ | \mathcal{O} |
-| $ \eta $        | \eta        | $ \xi $       | \xi       | $ \tau $      | \tau      |                 |             |
-| $ \Gamma $      | \Gamma      | $ \Lambda $   | \Lambda   | $ \Sigma $    | \sigma    | $ \Psi $        | \Psi        |
-| $ \Delta $      | \Delta      | $ \Xi $       | \Xi       | $ \Upsilon $  | \Upsilon  | $ \Omega $      | \Omega      |
-| $ \Theta $      | \Theta      | $ \Pi $       | \Pi       | $ \Phi $      | \Phi      |                 |             |
+|      符号       | LaTex命令   |     符号      | LaTex命令 |     符号      | LaTex命令 |      符号       | LaTex命令   |
+| :-------------: | ----------- | :-----------: | --------- | :-----------: | --------- | :-------------: | ----------- |
+|   $ \alpha $    | \alpha      |  $ \theta $   | \theta    |     $ o $     | o         |  $ \upsilon $   | \upsilon    |
+|    $ \beta $    | \beta       | $ \vartheta $ | \vartheta |    $ \pi $    | \pi       |    $ \phi $     | \phi        |
+|   $ \gamma $    | \gamma      |   $ \iota $   | \iota     |  $ \varpi $   | \varpi    |   $ \varphi $   | \varphi     |
+|   $ \delta $    | \delta      |  $ \kappa $   | \kappa    |   $ \rho $    | \rho      |    $ \chi $     | \chi        |
+|  $ \epsilon $   | \epsilon    |  $ \lambda $  | \lambda   |  $ \varrho $  | \varrho   |    $ \psi $     | \psi        |
+| $ \varepsilon $ | \varepsilon |    $ \mu $    | \mu       |  $ \sigma $   | \sigma    |   $ \omega $    | \omega      |
+|    $ \zeta $    | \zeta       |    $ \nu $    | \nu       | $ \varsigma $ | \varsigma | $ \mathcal{O} $ | \mathcal{O} |
+|    $ \eta $     | \eta        |    $ \xi $    | \xi       |   $ \tau $    | \tau      |                 |             |
+|   $ \Gamma $    | \Gamma      |  $ \Lambda $  | \Lambda   |  $ \Sigma $   | \sigma    |    $ \Psi $     | \Psi        |
+|   $ \Delta $    | \Delta      |    $ \Xi $    | \Xi       | $ \Upsilon $  | \Upsilon  |   $ \Omega $    | \Omega      |
+|   $ \Theta $    | \Theta      |    $ \Pi $    | \Pi       |   $ \Phi $    | \Phi      |                 |             |
 
 **Tips: **
 
@@ -636,8 +620,6 @@ $  后面还有……
 2. 如果使用斜体大写希腊字母，再在大写希腊字母的LaTeX命令前加上var，例如 \varGamma 生成 $\varGamma$。
 
 ## 二元关系
-
-
 
 |      符号       | LaTex命令   |      符号      | LaTex命令    |   符号    | LaTex命令   |
 | :-------------: | ----------- | :------------: | ------------ | :-------: | ----------- |
@@ -757,8 +739,6 @@ $  后面还有……
 | $ \ddagger $ | \ddagger  | $ \P $ | \P        | $ \pounds $  | \pounds    |       $ \% $        | \%              |
 
 ## AMS 定界符
-
-
 
 |     符号      | LaTex命令 |     符号      | LaTex命令 |    符号     | LaTex命令 |     符号      | LaTex命令 |
 | :-----------: | --------- | :-----------: | --------- | :---------: | --------- | :-----------: | --------- |
