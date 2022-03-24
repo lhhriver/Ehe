@@ -584,7 +584,7 @@ CREATE p =(vic:Worker:Person{ name:'vic',title:"Developer" })-[:WORKS_AT]->(neo)
 RETURN p
 ```
 
-变量neo代表的节点没有任何属性，但是，其有一个ID值，通过ID值为该节点设置属性和标签
+变量neo代表的节点没有任何属性，但是，其有一个ID值，通过ID值为该节点设置属性和标签。
 
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-876237.png)
 

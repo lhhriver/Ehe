@@ -243,8 +243,16 @@ touch  /river/student   # 创建空文件student
 ```
 
 - umask
+
 - updatedb
-- whereis
+
+    
+
+## whereis
+
+在特定目录中查找符合条件的文件
+
+
 
 ## which
 
@@ -358,6 +366,17 @@ wc -l train.txt
 - lpr
 - lprm
 - ncftp
+
+## rz
+
+从客户端上传文件到服务端
+
+## sz
+
+从服务端发送文件到客户端
+
+
+
 - tftp
 - uucico
 - uucp
@@ -593,7 +612,8 @@ lsof(list open files)是一个列出当前系统打开文件的工具。
 lsof 查看端口占用语法格式：
 
 ```shell
-lsof -i:8080：查看8080端口占用
+# 查看8080端口占用
+lsof -i:8080 
 ```
 
 ```shell
@@ -769,7 +789,27 @@ ps aux|head -1; ps aux|grep -v PID|sort -rn -k +4|head
 
 - pstree
 
-## reboot	
+## pwdx
+
+**用法**：查看进程的启动路径
+
+```shell
+ps -ef | grep train
+pwdx 99080
+```
+
+```
+[root@localhost ~]# ps -ef | grep train
+root      22409  21936  0 22:56 pts/0    00:00:00 grep --color=auto train
+root      99080      1 15 Mar15 ?        21:29:16 /home/cao/anaconda3/bin/python train_css.py
+
+[root@localhost ~]# pwdx 99080
+99080: /home/cao/gridsim-master-0811
+```
+
+
+
+## reboot
 
 重启系统
 
@@ -966,6 +1006,7 @@ gunzip file1.gz
 ```shell
 # 将目录dir1压缩成一个打包并压缩的文件
 tar -zcvf dir1.tar.gz dir1   
+tar -zcvf ifly_mrcp.tar.gz mrcp/
 
 # 解压
 tar -zxvf dir1.tar.gz 

@@ -87,8 +87,6 @@ Attention(souce,Query) = \sum_{i=1}^{n}F(Query,Key_i)*Value_i
 $$
 F函数可以有很多，在Transformer中用的是点积。
 
-
-
 # 图解 Attention
 
 [本文翻译自](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/)，[原文](https://blog.zhangxiann.com/202009012011/)

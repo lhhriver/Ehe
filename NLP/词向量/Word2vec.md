@@ -1,5 +1,3 @@
-<center><font color=steel size=14>word2vec</font></center>
-
 # 简述
 
 word2vec是google在2013年推出的一个NLP工具，它的特点是将所有的词向量化，这样词与词之间就可以定量的去度量他们之间的关系，挖掘词之间的联系。
@@ -447,12 +445,12 @@ $$
         \begin{align}&f = \sigma(x_{w_0}^T\theta^{w_i})\\&
         g = (y_i-f)\eta\\&
         e = e + g\theta^{w_i}\\&
-\theta^{w_i}= \theta^{w_i} + gx_{w_0}\end{align}
+        \theta^{w_i}= \theta^{w_i} + gx_{w_0}\end{align}
         $$
         
     - c) 对于$context(w)$中的每一个词向量$x_k$(共$2c$个)进行更新：
         $$
-    x_k = x_k + e
+        x_k = x_k + e
         $$
 
     - d) 如果梯度收敛，则结束梯度迭代，否则回到步骤3继续迭代。

@@ -1,5 +1,3 @@
-<center><font color=steel size=14 face=雅黑>XLNET</font></center>
-
 谷歌大脑和 CMU 的论文《XLNet: Generalized Autoregressive Pretraining for Language Understanding》，于 2019 年发表于 NIPS，目前引用超 300 次。
 
 XLNet 是一个广义自回归预语言模型，它在 Transformer-XL 的基础上引入了**排列语言模型**（Permutation Language Model，以下简写 PLM），该方法可以很好解决自回归预编无法处理上下文建模的问题，最后用三倍于 BERT 的语料库进行预训练，并在 20 个 NLP 任务中屠榜。

@@ -1,4 +1,4 @@
-# Shell教程
+# 教程
 
 - Shell 是一个用 C 语言编写的程序，它是用户使用 Linux 的桥梁。Shell 既是一种命令语言，又是一种程序设计语言。
 - Shell 是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务。
@@ -14,35 +14,36 @@
 
 ## Shell 环境
 
-　　Shell 编程跟 JavaScript、php 编程一样，只要有一个能编写代码的文本编辑器和一个能解释执行的脚本解释器就可以了。
+Shell 编程跟 JavaScript、php 编程一样，只要有一个能编写代码的文本编辑器和一个能解释执行的脚本解释器就可以了。
 
-　　Linux 的 Shell 种类众多，常见的有：
+Linux 的 Shell 种类众多，常见的有：
 
 - Bourne Shell（/usr/bin/sh或/bin/sh）
+
 - Bourne Again Shell（/bin/bash）
 - C Shell（/usr/bin/csh）
 - K Shell（/usr/bin/ksh）
 - Shell for Root（/sbin/sh）
 
-　　本教程关注的是 Bash，也就是 Bourne Again Shell，由于易用和免费，Bash 在日常工作中被广泛使用。同时，Bash 也是大多数Linux 系统默认的 Shell。
+本教程关注的是 Bash，也就是 Bourne Again Shell，由于易用和免费，Bash 在日常工作中被广泛使用。同时，Bash 也是大多数Linux 系统默认的 Shell。
 
-　　在一般情况下，人们并不区分 Bourne Shell 和 Bourne Again Shell，所以，像 #!/bin/sh，它同样也可以改为 #!/bin/bash。
+在一般情况下，人们并不区分 Bourne Shell 和 Bourne Again Shell，所以，像 #!/bin/sh，它同样也可以改为 #!/bin/bash。
 
 
 > 第一个shell脚本
 
-　　打开文本编辑器(可以使用 vi/vim 命令来创建文件)，新建一个文件 test.sh，扩展名为 sh（sh代表shell），扩展名并不影响脚本执行，见名知意就好，如果你用 php 写 shell 脚本，扩展名就用 php 好了。
+打开文本编辑器(可以使用 vi/vim 命令来创建文件)，新建一个文件 test.sh，扩展名为 sh（sh代表shell），扩展名并不影响脚本执行，见名知意就好，如果你用 php 写 shell 脚本，扩展名就用 php 好了。
 
-　　输入一些代码，第一行一般是这样：
+输入一些代码，第一行一般是这样：
 
 ```shell
 #!/bin/bash
 echo "Hello World !"
 ```
 
-　　#! 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种 Shell。
+#! 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种 Shell。
 
-　　echo 命令用于向窗口输出文本。
+echo 命令用于向窗口输出文本。
 
 > 运行 Shell 脚本有两种方法：
 
@@ -51,25 +52,24 @@ echo "Hello World !"
 将上面的代码保存为 test.sh，并 cd 到相应目录：
 
 ```shell
-chmod +x ./test.sh  #使脚本具有执行权限
-./test.sh  #执行脚本
+chmod +x ./test.sh  # 使脚本具有执行权限
+./test.sh  # 执行脚本
 ```
 
 注意，一定要写成 ./test.sh，而不是 test.sh，运行其它二进制的程序也一样，直接写 test.sh，linux 系统会去 PATH 里寻找有没有叫 test.sh 的，而只有 /bin, /sbin, /usr/bin，/usr/sbin 等在 PATH 里，你的当前目录通常不在 PATH 里，所以写成 test.sh 是会找不到命令的，要用 ./test.sh 告诉系统说，就在当前目录找。
 
 2. 作为解释器参数
 
-　　这种运行方式是，直接运行解释器，其参数就是 shell 脚本的文件名，如：
+这种运行方式是，直接运行解释器，其参数就是 shell 脚本的文件名，如：
 
 ```shell
 /bin/sh test.sh
 /bin/php test.php
 ```
 
-　　这种方式运行的脚本，不需要在第一行指定解释器信息，写了也没用。
+这种方式运行的脚本，不需要在第一行指定解释器信息，写了也没用。
 
-
-# Shell变量
+# 变量
 
 ## 变量命名
 定义变量时，变量名不加美元符号（$，PHP语言中变量需要），如：
@@ -129,7 +129,7 @@ for skill in Ada Coffe Action Java; do
 done
 ```
 
-如果不给skill变量加花括号，写成echo "I am good at $skillScript"，解释器就会把$skillScript当成一个变量（其值为空），代码执行结果就不是我们期望的样子了。
+如果不给skill变量加花括号，写成echo "I am good at \$skillScript"，解释器就会把\$skillScript当成一个变量（其值为空），代码执行结果就不是我们期望的样子了。
 
 推荐给所有变量加上花括号，这是个好的编程习惯。
 
@@ -163,9 +163,9 @@ myUrl="http://www.runoob.com"
 
 >删除变量
 >
->使用 unset 命令可以删除变量。语法：
 
-unset variable_name
+使用 unset 命令可以删除变量。语法：unset variable_name
+
 变量被删除后不能再次使用。unset 命令不能删除只读变量。
 
 ```shell
@@ -186,7 +186,8 @@ echo $myUrl
 
 　　3) shell变量 shell变量是由shell程序设置的特殊变量。shell变量中有一部分是环境变量，有一部分是局部变量，这些变量保证了shell的正常运行
 
-## Shell 字符串
+## 字符串
+
 字符串是shell编程中最常用最有用的数据类型（除了数字和字符串，也没啥其它类型好用了），字符串可以用单引号，也可以用双引号，也可以不用引号。单双引号的区别跟PHP类似。
 
 > 单引号
@@ -206,8 +207,8 @@ str='this is a string'
 your_name='runoob'
 str="Hello, I know you are \"$your_name\"! \n"
 echo -e $str
-输出结果为：
 
+输出结果为：
 Hello, I know you are "runoob"! 
 ```
 
@@ -229,17 +230,21 @@ echo $greeting  $greeting_1
 greeting_2='hello, '$your_name' !'
 greeting_3='hello, ${your_name} !'
 echo $greeting_2  $greeting_3
-输出结果为：
+```
 
+```
+# 输出结果为：
 hello, runoob ! hello, runoob !
 hello, runoob ! hello, ${your_name} !
 ```
+
+
 
 >获取字符串长度
 
 ```shell
 string="abcd"
-echo ${#string} #输出 4
+echo ${#string} # 输出 4
 ```
 
 >提取子字符串
@@ -262,8 +267,7 @@ echo `expr index "$string" io`  # 输出 4
 
 注意： 以上脚本中 ` 是反引号，而不是单引号 '，不要看错了哦。
 
-
-## Shell 数组
+## 数组
 
 bash支持一维数组（不支持多维数组），并且没有限定数组的大小。
 
@@ -336,7 +340,7 @@ length=${#array_name[*]}
 lengthn=${#array_name[n]}
 ```
 
-## Shell 注释
+##  注释
 
 以 # 开头的行就是注释，会被解释器忽略。
 
@@ -389,7 +393,7 @@ EOF 也可以使用其他符号:
 !
 ```
 
-# Shell传递参数
+# 参数传递
 
 我们可以在执行 Shell 脚本时，向脚本传递参数，脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……
 
@@ -492,7 +496,7 @@ $ ./test.sh 1 2 3
 3
 ```
 
-# Shell数组
+# 数组
 
 数组中可以存放多个值。Bash Shell 只支持一维数组（不支持多维数组），初始化时不需要定义数组大小（与 PHP 类似）。
 
@@ -610,7 +614,7 @@ $ ./test.sh
 数组元素个数为: 4
 ```
 
-# Shell运算符
+# 运算符
 
 Shell 和其他编程语言一样，支持多种运算符，包括：
 
@@ -1036,7 +1040,7 @@ fi
 文件存在
 ```
 
-# Shell echo命令
+# echo命令
 
 Shell 的 echo 指令与 PHP 的 echo 指令类似，都是用于字符串的输出。命令格式：
 
@@ -1151,8 +1155,7 @@ echo `date`
 Thu Jul 24 10:08:46 CST 2014
 ```
 
-
-# Shell printf命令
+# printf命令
 
 上一章节我们学习了 Shell 的 echo 命令，本章节我们来学习 Shell 的另一个输出命令 printf。
 
@@ -1280,8 +1283,7 @@ $ printf "www.runoob.com \a"
 www.runoob.com $                  #不换行
 ```
 
-
-# Shell test命令
+# test命令
 
 Shell中的 test 命令用于检查某个条件是否成立，它可以进行数值、字符和文件三个方面的测试。
 
@@ -1409,7 +1411,7 @@ fi
 至少有一个文件存在!
 ```
 
-# Shell 流程控制
+# 流程控制
 
 和Java、PHP等语言不一样，sh的流程控制不可为空，如(以下为PHP流程控制写法)：
 
@@ -1880,7 +1882,7 @@ esac
 菜鸟教程
 ```
 
-# Shell 函数
+# 函数
 
 linux shell 可以用户定义函数，然后在shell脚本中可以随便调用。
 
@@ -2010,7 +2012,7 @@ funWithParam 1 2 3 4 5 6 7 8 9 34 73
 \$-	|显示Shell使用的当前选项，与set命令功能相同。
 \$?	|显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。
 
-# Shell 输入输出重定向
+# 输入输出重定向
 
 大多数 UNIX 系统命令从你的终端接受输入并将所产生的输出发送回​​到您的终端。一个命令通常从一个叫标准输入的地方读取输入，默认情况下，这恰好是你的终端。同样，一个命令通常将其输出写入到标准输出，默认情况下，这也是你的终端。
 
@@ -2225,7 +2227,7 @@ $ command > /dev/null 2>&1
 
 注意：0 是标准输入（STDIN），1 是标准输出（STDOUT），2 是标准错误输出（STDERR）。
 
-# Shell文件包含
+# 文件包含
 
 和其他语言一样，Shell 也可以包含外部脚本。这样可以很方便的封装一些公用的代码作为一个独立的文件。
 
@@ -2235,7 +2237,6 @@ Shell 文件包含的语法格式如下：
 . filename   # 注意点号(.)和文件名中间有一空格
 
 或
-
 source filename
 ```
 

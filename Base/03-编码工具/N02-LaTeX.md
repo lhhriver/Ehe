@@ -142,6 +142,7 @@ $$
 ## 如何输入累加、累乘运算
 
 使用 \sum_{下标表达式}^{上标表达式} {累加表达式}来输入一个累加。
+
 与之类似，使用 \prod \bigcup \bigcap来分别输入累乘、并集和交集。
 $$
 \sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R

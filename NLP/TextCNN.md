@@ -114,8 +114,6 @@ CNN 中常常会提到一个词channel, 图三 中 深红矩阵与 浅红矩阵 
 
 <center>图五 textCNN 实验</center>
 
-
-
 我们在这里也介绍一下论文中四个model 的不同
 
 - CNN-rand (单channel), 设计好 embedding_size 这个 Hyperparameter 后, 对不同单词的向量作随机初始化, 后续BP的时候作调整。
