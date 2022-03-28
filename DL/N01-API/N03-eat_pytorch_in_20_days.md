@@ -7184,6 +7184,7 @@ https://zhuanlan.zhihu.com/p/34858971
 * 通过调整dilation参数大于1，可以变成空洞卷积，增大卷积核感受野。
 * 通过调整groups参数不为1，可以变成分组卷积。分组卷积中不同分组使用相同的卷积核，显著减少参数数量。
 * 当groups参数等于通道数时，相当于tensorflow中的二维深度卷积层tf.keras.layers.DepthwiseConv2D。
+
 	利用分组卷积和1乘1卷积的组合操作，可以构造相当于Keras中的二维深度可分离卷积层tf.keras.layers.SeparableConv2D。
 
 #### nn.Conv3d
@@ -7447,13 +7448,10 @@ Pytorch中的损失函数一般在训练模型时候指定。
 注意Pytorch中内置的损失函数的参数和tensorflow不同，是y_pred在前，y_true在后，而Tensorflow是y_true在前，y_pred在后。
 
 1. 对于回归模型，通常使用的内置损失函数是**均方损失函数**nn.MSELoss 。
-2. 对于二分类模型，通常使用的是**二元交叉熵损失函数**nn.BCELoss (输入已经是sigmoid激活函数之后的结果) 
-	或者 nn.BCEWithLogitsLoss (输入尚未经过nn.Sigmoid激活函数) 。
-3. 对于多分类模型，一般推荐使用**交叉熵损失函数** nn.CrossEntropyLoss。
-	(y_true需要是一维的，是类别编码。y_pred未经过nn.Softmax激活。) 
+2. 对于二分类模型，通常使用的是**二元交叉熵损失函数**nn.BCELoss (输入已经是sigmoid激活函数之后的结果) ，或者 nn.BCEWithLogitsLoss (输入尚未经过nn.Sigmoid激活函数) 。
+3. 对于多分类模型，一般推荐使用**交叉熵损失函数** nn.CrossEntropyLoss。(y_true需要是一维的，是类别编码。y_pred未经过nn.Softmax激活。) 
 
-此外，如果多分类的y_pred经过了nn.LogSoftmax激活，可以使用nn.NLLLoss损失函数(The negative log likelihood loss)。
-这种方法和直接使用nn.CrossEntropyLoss等价。
+此外，如果多分类的y_pred经过了nn.LogSoftmax激活，可以使用nn.NLLLoss损失函数(The negative log likelihood loss)。这种方法和直接使用nn.CrossEntropyLoss等价。
 
 
 如果有需要，也可以自定义损失函数，自定义损失函数需要接收两个张量y_pred，y_true作为输入参数，并输出一个标量作为损失函数值。
@@ -7519,7 +7517,7 @@ tensor(0.5493)
 
 #### nn.BCELoss 
 
-**二元交叉熵**，用于二分类，输入已经过nn.Sigmoid激活，对不平衡数据集可以用weigths参数调整类别权重
+**二元交叉熵**，用于二分类，输入已经过nn.Sigmoid激活，对不平衡数据集可以用weigths参数调整类别权重。
 
 #### nn.BCEWithLogitsLoss 
 
@@ -7527,19 +7525,19 @@ tensor(0.5493)
 
 #### nn.CrossEntropyLoss 
 
-**交叉熵**，用于多分类，要求label为稀疏编码，输入未经过nn.Softmax激活，对不平衡数据集可以用weigths参数调整类别权重
+**交叉熵**，用于多分类，要求label为稀疏编码，输入未经过nn.Softmax激活，对不平衡数据集可以用weigths参数调整类别权重。
 
 #### nn.NLLLoss 
 
-**负对数似然损失**，用于多分类，要求label为稀疏编码，输入经过nn.LogSoftmax激活
+**负对数似然损失**，用于多分类，要求label为稀疏编码，输入经过nn.LogSoftmax激活。
 
 #### nn.CosineSimilarity
 
-**余弦相似度**，可用于多分类
+**余弦相似度**，可用于多分类。
 
 #### nn.AdaptiveLogSoftmaxWithLoss 
 
-**一种适合非常多类别且类别分布很不均衡的损失函数**，会自适应地将多个小类别合成一个cluster
+**一种适合非常多类别且类别分布很不均衡的损失函数**，会自适应地将多个小类别合成一个cluster。
 
 
 
