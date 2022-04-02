@@ -57,7 +57,7 @@ docker load -i /opt/nginx.tar.gz
 
 ## 基于Dockerfile制作镜像
 
-- FROM命令
+**FROM命令**
 
 ```shell
 FROM 镜像ID:标签
@@ -66,7 +66,7 @@ FROM 镜像ID:标签
 FROM centos:latest
 ```
 
-- RUN命令
+**RUN命令**
 
 ```shell
 # RUN 执行shell命令，多条命令使用&&连接，也可以使用多行RUN，但是docker镜像是分层制作的
@@ -77,50 +77,38 @@ RUN cd /opt && mkdir code && yum install -y vim && yum install -y wget
 
 以上命令就是切换到/opt目录，创建一个code子目录，安装vim和wget。
 
-- CMD命令
-
-使用镜像启动容器时默认的运行命令，如果在docker run的时候，在后面带上自定义命令，那么这个命令就会被替换掉，导致容器启动的时候不会执行，所以一般我们不用这个。
+**CMD命令**：使用镜像启动容器时默认的运行命令，如果在docker run的时候，在后面带上自定义命令，那么这个命令就会被替换掉，导致容器启动的时候不会执行，所以一般我们不用这个。
 
 ```shell
 CMD ["/usr/sbin/sshd", "-D"]
 ```
 
-- ENTRYPOINT
-
-和上面的CMD命令相似，但是不会被启动容器时的自定义命令替换掉，一定会执行；还有一个用法是在docker run后面的自定义命令可以作为ENTRYPOINT的命令参数传入。
+**ENTRYPOINT**：和上面的CMD命令相似，但是不会被启动容器时的自定义命令替换掉，一定会执行；还有一个用法是在docker run后面的自定义命令可以作为ENTRYPOINT的命令参数传入。
 
 ```shell
 ENTRYPOINT ["/usr/sbin/sshd", "-D"]
 ```
 
-- COPY命令
-
-从主机拷贝文件到容器中。
+**COPY命令**：从主机拷贝文件到容器中。
 
 ```shell
 COPY init.sh /opt/
 ```
 
-- ADD命令
-
-和copy命令类似，拷贝文件到镜像中，但是对于压缩文件（含有tar的）拷贝过去会直接解压。
+**ADD命令**：和copy命令类似，拷贝文件到镜像中，但是对于压缩文件（含有tar的）拷贝过去会直接解压。
 
 ```shell
 ADD xxx.tar.gz /var/www/html
 ```
 
-- EXPOSE命令
-
-指定容器要对外暴露的端口。
+**EXPOSE命令**：指定容器要对外暴露的端口。
 
 ```shell
 EXPOSE 80
 EXPOSE 3306
 ```
 
-- VOLUME命令
-
-在dockerfile中声明了VOLUME绑定目录并不会在容器启动的时候帮我们自动绑定目录，那么VOLUME和-v有什么区别呢？假设我们在dockerfile中声明了。
+**VOLUME命令**：在dockerfile中声明了VOLUME绑定目录并不会在容器启动的时候帮我们自动绑定目录，那么VOLUME和-v有什么区别呢？假设我们在dockerfile中声明了。
 
 ```shell
 VOLUME ['/data', '/etc/proc']
@@ -138,17 +126,13 @@ docker run -d -v ./data:/data -v ./proc:/etc/proc --name='cent1' my_centos
 
 所以如果一个镜像制作的时候使用了VOLUME，那么每次启动都会在宿主机上创建一个数据目录，如果这个目录里存在的东西很多，那么时间长了，我们就会发现宿主机上空间越来越小，即使你重启容器也不行。所以要了解这个性质，针对性的清理docker目录。
 
-- WORKDIR
-
-相当于cd命令，区别是在dockerfile中使用了WORKDIR后，在它下面的语句，工作目录都变成了WORKDIR指定的目录。
+**WORKDIR**：相当于cd命令，区别是在dockerfile中使用了WORKDIR后，在它下面的语句，工作目录都变成了WORKDIR指定的目录。
 
 ```shell
  WORKDIR /code
 ```
 
-- ENV
-
-在dockerfile中设置环境变量，主要为了在执行docker run的时候可以通过-e参数修改环境变量，这样也可以使镜像更加通用。例如MySQL安装时要指定用户名、密码、绑定IP，如果直接在容器里面安装，那么我们如果要修改的话，必须登录到容器中，进行修改重启。但是在dockerfile中指定了ENV变量，那么在docker run的时候就可以修改这些设置。
+**ENV**：在dockerfile中设置环境变量，主要为了在执行docker run的时候可以通过-e参数修改环境变量，这样也可以使镜像更加通用。例如MySQL安装时要指定用户名、密码、绑定IP，如果直接在容器里面安装，那么我们如果要修改的话，必须登录到容器中，进行修改重启。但是在dockerfile中指定了ENV变量，那么在docker run的时候就可以修改这些设置。
 
 ```shell
 ENV MYSQL_USERNAME = 'root'
@@ -157,7 +141,9 @@ ENV MYSQL_USERNAME = 'root'
 ${MYSQL_USERNAME}
 ```
 
-下面给一个简单的dockerfile例子。
+
+
+`dockerfile例子1：`
 
 ```shell
 FROM centos:latest
@@ -186,6 +172,33 @@ ENTRYPOINT ["/bin/bash", "init.sh"]
 docker build -t my_https://gitee.com/liuhuihe/Ehe/raw/master/images/centos:latest .
 ```
 
+
+
+`dockerfile例子2：`
+
+```dockerfile
+FROM centos:7
+MAINTAINER asr
+ENV MYPATH /home/ASR/Docker
+WORKDIR $MYPATH
+ADD jdk-8u171-linux-x64.tar.gz /home/ASR/Docker
+ADD apache-tomcat-9.0.35.20210702.tar.gz /home/ASR/Docker
+ADD redis-3.2.0.tar.gz /home
+ENV JAVA_HOME /home/jdk1.8.0_171
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV CATALINA_HOME /home/apache-tomcat-9.0.35
+ENV CATALINA_BASE /home/apache-tomcat-9.0.35
+ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin
+```
+
+在/home/ASR/Docker 目录下创建dockerfile文件，并使用docker build命令制作镜像
+
+```shell
+docker build -t online_base:v1.0 .
+```
+
+
+
 ## 基于容器制作镜像
 
 ```shell
@@ -200,6 +213,7 @@ docker push xxx.com/my_container:v1
 
 # 修改镜像名称（想要将公共镜像推送到私有镜像库，必须修改其名称，前面加上私有库的域名）
 docker tag old_container_name xxx.com/new_container_name:latest
+docker tag b03b74b01d97 redis:v1.0
 ```
 
 **优点**：制作方便，只要进入容器，安装好环境，就可以制作一个新的镜像，并部署到其他环境。

@@ -9036,11 +9036,12 @@ class Net(nn.Module):
             nn.ReLU(),
             nn.Linear(32,10)]
         )
+        
     def forward(self,x):
         for layer in self.layers:
             x = layer(x)
         return x
-    
+
 net = Net()
 print(net)
 ```

@@ -857,7 +857,23 @@ uname可以显示一些重要的系统信息，例如内核名称、主机名、
 uname -a
 ```
 
-- useradd
+## useradd
+
+命令用于建立用户帐号
+
+```shell
+# 添加一般用户
+useradd tt
+
+# 为添加的用户指定相应的用户组
+useradd -g root tt
+
+# 为新添加的用户指定home目录
+useradd -d /home/myd tt
+```
+
+
+
 - userconf
 - userdel
 - usermod
