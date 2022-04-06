@@ -1,6 +1,7 @@
 @echo off
+chcp 65001
 
-echo "--------------   [ Pull  Ehe ]   -------------" 
+echo "--------------   刘会河[ Pull  Ehe ]   -------------" 
 D:
 cd D:\Gitee\Ehe
 git pull origin master
