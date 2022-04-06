@@ -7,7 +7,11 @@ git pull origin master
 
 echo:
 git add .
+
+echo:
 git commit -m "update"
+
+echo:
 git push origin master
 
 echo:
@@ -18,7 +22,11 @@ git pull origin master
 
 echo:
 git add .
+
+echo:
 git commit -m "update"
+
+echo:
 git push origin master
 
 echo:
