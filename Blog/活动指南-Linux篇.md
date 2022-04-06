@@ -183,6 +183,9 @@ more /etc/services
 ```shell
 mv file1 file3 # 将当前目录下文件file1更名为file3
 mv file1 file2 file3 dir2  # 将文件file1、 file2 file3移动到目录dir2下
+
+# 移动文件夹
+mv jmeter /home/asr/online/rel_onlineasr/tools/
 ```
 
 - od
