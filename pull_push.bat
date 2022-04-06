@@ -1,6 +1,6 @@
 @echo off
 
-echo ">>>> pull and update Ehe <<<<" 
+echo "☆☆☆☆☆ pull and update Ehe ☆☆☆☆☆" 
 D:
 cd D:\Gitee\Ehe
 git pull origin master
@@ -15,7 +15,7 @@ echo:
 git push origin master
 
 echo:
-echo ">>>> pull and update DDU <<<<" 
+echo "☆☆☆☆☆ pull and update DDU ☆☆☆☆☆" 
 D:
 cd D:\Gitee\DDU
 git pull origin master
