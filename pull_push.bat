@@ -1,7 +1,7 @@
 @echo off
 
 
-echo "--------------   åˆ˜ä¼šæ²³[ Pull  Ehe ]   -------------" 
+echo "--------------   Áõ»áºÓ[ Pull  Ehe ]   -------------" 
 D:
 cd D:\Gitee\Ehe
 git pull origin master
