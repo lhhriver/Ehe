@@ -1,32 +1,38 @@
 @echo off
 
-echo "==============  Pull  Ehe  =============" 
+echo "==============  Update Ehe  ==============" 
 D:
 cd D:\Gitee\Ehe
-git pull origin master
 
 echo:
-echo "==============  Update Ehe  ==============" 
 git add .
 
 echo:
 git commit -m "update"
+
+
+echo "==============  Pull  Ehe  =============" 
+git pull origin master
 
 echo:
 git push origin master
 
-echo:
-echo "==============  Pull DDU  ==============" 
-D:
-cd D:\Gitee\DDU
-git pull origin master
 
 echo:
 echo "==============  Update DDU  ==============" 
+D:
+cd D:\Gitee\DDU
+
+
+echo:
 git add .
 
 echo:
 git commit -m "update"
+
+
+echo "==============  Pull DDU  ==============" 
+git pull origin master
 
 echo:
 git push origin master
