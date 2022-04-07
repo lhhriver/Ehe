@@ -1,6 +1,6 @@
 @echo off
 
-echo  ==============  Update Ehe  ==============
+echo ==============  Update Ehe  ==============
 D:
 cd D:\Gitee\Ehe
 
