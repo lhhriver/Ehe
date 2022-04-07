@@ -11,6 +11,7 @@ echo:
 git commit -m "update"
 
 
+echo:
 echo "==============  Pull  Ehe  =============" 
 git pull origin master
 
@@ -30,7 +31,7 @@ git add .
 echo:
 git commit -m "update"
 
-
+echo:
 echo "==============  Pull DDU  ==============" 
 git pull origin master
 
