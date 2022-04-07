@@ -1,8 +1,6 @@
-# 程序员生存指南-Git篇
+# Git常用命令
 
-## Git常用命令
-
-### git config
+## git config
 
 **用法**： git config –global user.name “[name]”
 
@@ -14,7 +12,7 @@ git config --global user.name "liuhuihe"
 git config --global user.email "lhhriver@163.com"
 ```
 
-### **git init**
+## **git init**
 
 **用法**： git init [repository name]
 
@@ -23,7 +21,7 @@ git config --global user.email "lhhriver@163.com"
 git init  /home/liuhuihe/DEMO
 ```
 
-### **git clone**
+## **git clone**
 
 **用法**： git clone [url]
 
@@ -33,7 +31,7 @@ git clone https://github.com/jalammar/jalammar.github.io.git
 git clone git@17.163.18.443:/home//src/nlp.git
 ```
 
-### **git add**
+## **git add**
 
 **用法**： git add [file]
 
@@ -49,7 +47,7 @@ git add test.py
 git add *
 ```
 
-### **git commit**
+## **git commit**
 
 **用法**： git commit -m “[ Type in the commit message]”
 
@@ -65,7 +63,7 @@ git commit -m "First Commit"
 git commit -a
 ```
 
-### git diff
+## git diff
 
 **用法**： git diff
 
@@ -88,7 +86,7 @@ git diff -staged
 git diff branch_2 branch_3
 ```
 
-### git reset
+## git reset
 
 **用法**： git reset [file]
 
@@ -111,7 +109,7 @@ git reset heliluya
 git reset -hard haliluya
 ```
 
-### git status
+## git status
 
 **用法**： git status
 
@@ -120,7 +118,7 @@ git reset -hard haliluya
 git status
 ```
 
-### git rm
+## git rm
 
 **用法**： git rm [file]
 
@@ -132,7 +130,7 @@ git rm test.py
 git rm -r --cached .idea
 ```
 
-### git log
+## git log
 
 **用法**： git log
 
@@ -148,7 +146,7 @@ git log
 git log -follow project_1
 ```
 
-### git show
+## git show
 
 **用法**： git show [commit]
 
@@ -157,7 +155,7 @@ git log -follow project_1
 git show dfgdfgs
 ```
 
-### git tag
+## git tag
 
 **用法**： git tag [commitID]
 
@@ -166,7 +164,7 @@ git show dfgdfgs
 git tag dfgsdfgsdfgsdf
 ```
 
-### **git branch**
+## **git branch**
 
 **用法**： git branch
 
@@ -195,7 +193,7 @@ git checkout -b dbg_lichen_star
 git branch -d branch_1
 ```
 
-### git checkout
+## git checkout
 
 **用法**： git checkout [branch name]
 
@@ -211,7 +209,7 @@ git checkout branch_2
 git checkout -b branch_4
 ```
 
-### git merge
+## git merge
 
 **用法**： git merge [branch name]
 
@@ -220,7 +218,7 @@ git checkout -b branch_4
 git merge branch_2
 ```
 
-### **git remote**
+## **git remote**
 
 **用法**： git remote add [variable name] [Remote Server Link]
 
@@ -229,7 +227,7 @@ git merge branch_2
 git remote add origin http://github.com/river
 ```
 
-### **git push**
+## **git push**
 
 **用法**： git push [variable name] master
 
@@ -265,7 +263,7 @@ git push origin  :branch_2
 git push origin --delete branch_2
 ```
 
-### **git pull**
+## **git pull**
 
 **用法**： git pull [Repository Link]
 
@@ -275,7 +273,7 @@ git pull https://github.com/river.git
 git pull origin master
 ```
 
-### git stash
+## git stash
 
 **用法**： git stash save
 
@@ -305,9 +303,9 @@ git stash list
 git stash drop stash@{0}
 ```
 
-##  git 实战
+#  git 实战
 
-### 代码提交
+## 代码提交
 
 ```shell
 # 提交暂存区到仓库区
@@ -329,7 +327,7 @@ git commit --amend -m [message]
 git commit --amend [file1] [file2] ...
 ```
 
-### 分支
+## 分支
 
 ```shell
 # 列出所有本地分支
@@ -363,7 +361,7 @@ git branch -d dev
 git push origin --delete dev
 ```
 
-### 查看信息
+## 查看信息
 
 ```shell
 # 显示有变更的文件
@@ -380,7 +378,7 @@ git reflog
 git diff
 ```
 
-### 远程同步
+## 远程同步
 
 ```shell
 # 下载远程仓库的所有变动
@@ -414,7 +412,7 @@ git push [remote] --force
 git push [remote] --all
 ```
 
-### 撤销
+## 撤销
 
 ```shell
 # 恢复暂存区的指定文件到工作区
@@ -443,7 +441,7 @@ git reset --hard 1094a   # 返回撤销的版本1094a...
 git reset HEAD readme.txt
 ```
 
-### 标签
+## 标签
 
 ```shell
 # 列出所有tag
@@ -474,7 +472,7 @@ git push [remote] --tags
 git checkout -b [branch] [tag]
 ```
 
-### 提交到服务器
+## 提交到服务器
 
 ```shell
 # 服务器
