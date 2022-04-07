@@ -1,12 +1,12 @@
 @echo off
 
-echo "==============¡¾Pull  Ehe¡¿=============" 
+echo "==============  Pull  Ehe  =============" 
 D:
 cd D:\Gitee\Ehe
 git pull origin master
 
 echo:
-echo "==============¡¾Update Ehe¡¿==============" 
+echo "==============  Update Ehe  ==============" 
 git add .
 
 echo:
@@ -16,13 +16,13 @@ echo:
 git push origin master
 
 echo:
-echo "==============¡¾Pull DDU¡¿==============" 
+echo "==============  Pull DDU  ==============" 
 D:
 cd D:\Gitee\DDU
 git pull origin master
 
 echo:
-echo "==============¡¾Update DDU¡¿==============" 
+echo "==============  Update DDU  ==============" 
 git add .
 
 echo:
