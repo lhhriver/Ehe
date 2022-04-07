@@ -1,6 +1,6 @@
 @echo off
 
-echo "==============  Update Eh88e  ==============" 
+echo "==============  Update Ehe  ==============" 
 D:
 cd D:\Gitee\Ehe
 
