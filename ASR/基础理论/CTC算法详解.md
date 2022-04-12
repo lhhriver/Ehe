@@ -5,7 +5,7 @@ Connectionist temporal classification简称CTC，翻译不太清楚，可以理�
 
 CTC的引入可以放宽了这种一一对应的限制要求，只需要一个输入序列和一个输出序列即可以训练。有两点好处：不需要对数据对齐和一一标注；CTC直接输出序列预测的概率，不需要外部的后处理。
 
-![image-20220412171636791](https://gitee.com/liuhuihEhe/raw/master/images/image-20220412171636791.png)
+![image-20220412171636791](https://gitee.com/liuhuihe/Ehe/raw/master/images/image-20220412171636791.png)
 
 如上图，传统的Framewise训练需要进行语音和音素发音的对齐，比如“s”对应的一整段语音的标注都是s；而CTC引入了blank（该帧没有预测值），“s”对应的一整段语音中只有一个spike（尖峰）被认为是s，其他的认为是blank。对于一段语音，CTC最后的输出是spike的序列，不关心每一个音素对应的时间长度。
 
