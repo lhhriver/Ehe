@@ -34,6 +34,7 @@ chmod 764 /etc/services
 chmod g+w file1  # 赋予文件file1所属组写权限   <ugo+rwx>
 
 chmod 755 * -R
+chmod -R +x Decoder
 ```
 
 ```shell
@@ -919,6 +920,8 @@ useradd -d /home/myd tt
 ```shell
 export PATH=/root/anaconda3/bin:$PATH
 export LD_LIBRARY_PATH=/home/cao/gridsim-master-0811/lib64
+export LD_LIBRARY_PATH=/home/asr/online/rel_onlineasr/Decoder/model/lib
+export LD_LIBRARY_PATH=/home/asr/online/rel_onlineasr/Decoder/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:../lib
 ```
 
