@@ -30,8 +30,6 @@ $$
 $$
 通常在解码时语义编码向量是固定的。**若要实现对齐机制，在解码时语义编码向量应该随着输入动态的变化**。鉴于此，《Neural Machine Translation By Jointly Learning To Align And Translate》提出来一种对齐机制，也就是**Attention机制**。
 
-  
-
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-853156.png)
 
 如上图示，论文中采用双向RNN来进行语义的编码，这不是重点，我们先不关注。其对齐机制整体思想是：**编码时，记下来每一个时刻的RNN编码输出$(h_1,h_2,h_3,..h_n)$；解码时，根据前一时刻的解码状态，即$y_{i-1}$，计算出来一组权重$(a_1,a_2,..a_n)$，这组权重决定了在当前的解码时刻，$(h_1,h_2,h_3,..h_n)$分别对解码的贡献。这样就实现了，编解码的对齐。**
@@ -67,15 +65,13 @@ $$
 
 那么，抽离编解码机制，Attention机制的本质是什么呢？我们下面来看看。
 
-
-
 # Attention机制的本质
 
 我们回想一下，引入Attention机制的本意，是为了在信息处理的时候，恰当的分配好”注意力“资源。那么，要分配好注意力资源，就需要给每个资源以不同的权重，Attention机制就是计算权重的过程。
 
 如下图所示:
 
- ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-857162.png)
+![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-857162.png)
 
 
 
@@ -102,8 +98,6 @@ Attention 被广泛用于序列到序列（seq2seq）模型，这是一种深度
 在神经机器翻译中，一个输入序列是指一连串的单词。类似地，输出也是一连串单词。
 
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-939898.gif)
-
-
 
 ## 进一步理解细节
 
