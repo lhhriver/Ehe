@@ -43,7 +43,7 @@ GPT 输入文本和位置 Embedding（采用使用 one-hot 编码），经过 12
 $$
 \begin{aligned}
 h_{0} &=U W_{e}+W_{p} \\
-h_{l} &=\text {transformer_block}\left(h_{l-1}\right) \quad \forall l \in[1, n] \\
+h_{l} &=\text {transformer-block}\left(h_{l-1}\right) \quad \forall l \in[1, n] \\
 P(u) &=\operatorname{softmax}\left(h_{n} W_{w}^{T}\right)
 \end{aligned}
 $$
@@ -81,6 +81,8 @@ $$
 针对这种情况，作者提出了一种**遍历式的方法**（traversal-style），将结构化输入转换成预训练模型可以处理得有序序列。
 
 对输入转换可以避免了兼容不同任务，防止对模型进行大量更改，所有的转换包括添加随机初始化的开始标记（<s\>）和结束标记(<e\>)。下图提供了一个可视化说明：
+
+![image-20220419142510453](https://gitee.com/liuhuihe/Ehe/raw/master/2022/image-20220419142510453.png)
 
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-GPT-20201214-201039-054796.jpg)
 
