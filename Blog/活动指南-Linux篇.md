@@ -1037,6 +1037,11 @@ tar -zxvf dir1.tar.gz
     -v 显示详细信息
     -f 指定压缩后的文件名指定压缩后的文件名
     -z 打包同时压缩
+    
+# 加压
+tar -zxvf apache-tomcat-9.0.35.20210702.tar.gz
+# 压缩
+tar -zcvf apache-tomcat-9.0.35.20210702.tar.gz apache-tomcat-9.0.35/
 ```
 
 - unarj

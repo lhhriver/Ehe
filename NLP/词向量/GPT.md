@@ -84,8 +84,6 @@ $$
 
 ![image-20220419142510453](https://gitee.com/liuhuihe/Ehe/raw/master/2022/image-20220419142510453.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-GPT-20201214-201039-054796.jpg)
-
 上图是对不同任务进行微调的输入转换。将所有的结构化输入转换为 Token 序列，然后使用预训练模型（Transformer）进行处理，最后使用线性和 Softmax 层完成特定的监督学习任务。
 
 对于文本蕴涵（Text Entailment）来说，作者将前提 p 和假设 h 令牌序列连接起来，并使用分隔符（$）分开。
@@ -121,7 +119,7 @@ $$
 
 #  Conclusion
 
-总结：GPT 是一种半监督学习，采用两阶段任务模型，通过使用无监督的 Pre-training 和有监督的 Fine-tuning 来实现强大的自然语言理解。在 Pre-training 中采用了 12 层的修改过的 Transformer Decoder 结构，在 Fine-tuning 中会根据不同任务提出不同的分微调方式，从而达到适配各类 NLP 任务的目的
+总结：GPT 是一种半监督学习，采用两阶段任务模型，通过使用无监督的 Pre-training 和有监督的 Fine-tuning 来实现强大的自然语言理解。在 Pre-training 中采用了 12 层的修改过的 Transformer Decoder 结构，在 Fine-tuning 中会根据不同任务提出不同的分微调方式，从而达到适配各类 NLP 任务的目的。
 
 GPT 与 ELMo 有很多相似的地方，比如说都采用了预训练的方式，但是 ELMo 是针对某一任务定制了一个架构，而 GPT 的目的在于适配多种任务；此外 ELMo 使用了 2 层的双向的 LSTM 结构而 GPT 使用了 12 层单向的 Transformer Dncoder 结构，更大的深度也加强了模型的学习能力（ELMo 不是不想用更深的，而是再深的话就学不动了）。
 
