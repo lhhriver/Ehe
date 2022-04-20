@@ -331,8 +331,10 @@ python main.py $task > logs/$task.$dt.log
 
 ```shell
 wc testfile           # testfile文件的统计信息  
+```
 
-3 92 598 testfile       # testfile文件的行数为3、单词数92、字节数598 
+```
+3 92 598 testfile       # testfile文件的行数为3、单词数92、字节数598
 ```
 
 其中，3 个数字分别表示testfile文件的行数、单词数，以及该文件的字节数。
@@ -340,7 +342,7 @@ wc testfile           # testfile文件的统计信息
 如果想同时统计多个文件的信息，例如同时统计testfile、testfile_1、testfile_2，可使用如下命令：
 
 ```shell
-wc testfile testfile_1 testfile_2   #统计三个文件的信息 
+wc testfile testfile_1 testfile_2   # 统计三个文件的信息 
 ```
 
 输出结果如下：
@@ -352,7 +354,7 @@ wc testfile testfile_1 testfile_2   #统计三个文件的信息
 15 116 708 总用量       # 三个文件总共的行数为15、单词数116、字节数708 
 ```
 
-```
+```shell
 wc -l train.txt
 ```
 
