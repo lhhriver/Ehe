@@ -4,13 +4,9 @@
 
 fastText结合了自然语言处理和机器学习中最成功的理念。这些包括了使用**词袋以及n-gram袋**表征语句，还有使用子词(subword)信息，并通过隐藏表征在类别间共享信息。我们另外**采用了一个softmax层级**(利用了类别不均衡分布的优势)来加速运算过程。
 
-
-
 # FastText原理
 
 fastText方法包含三部分，**模型架构，层次SoftMax和N-gram子词特征**。
-
-
 
 ## 模型架构
 
@@ -25,11 +21,9 @@ fastText的架构和word2vec中的CBOW的架构类似，因为它们的作者都
 word2vec中提供了两种针对大规模多分类问题的优化手段， **negative sampling 和 hierarchical softmax**。在优化中，negative sampling 只更新少量负面类，从而减轻了计算量。hierarchical softmax 将词库表示成前缀树，从树根到叶子的路径可以表示为一系列二分类器，一次多分类计算的复杂度从|V||V|降低到了树的高度。
 
 - **fastText模型架构**:
-    其中x1,x2,...,xN−1,xNx1,x2,...,xN−1,xN表示一个文本中的n-gram向量，每个特征是词向量的平均值。这和前文中提到的cbow相似，cbow用上下文去预测中心词，而此处用全部的n-gram去预测指定类别。
+    其中$x_1,x_2,...,x_{N−1},x_{N}$表示一个文本中的n-gram向量，每个特征是词向量的平均值。这和前文中提到的cbow相似，cbow用上下文去预测中心词，而此处用全部的n-gram去预测指定类别。
 
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/词向量-20220302-175243-888279.png)
-
-
 
 ## 层次SoftMax
 
@@ -39,13 +33,9 @@ fastText 也利用了类别（class）不均衡这个事实（一些类别出现
 
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/词向量-20220302-175243-904278.png)
 
-
-
 ## N-gram子词特征
 
 fastText 可以用于文本分类和句子分类。不管是文本分类还是句子分类，我们常用的特征是词袋模型。但词袋模型不能考虑词之间的顺序，因此 fastText 还加入了 N-gram 特征。在 fasttext 中，每个词被看做是 n-gram字母串包。为了区分前后缀情况，"<"， ">"符号被加到了词的前后端。除了词的子串外，词本身也被包含进了 n-gram字母串包。以 where 为例，n=3n=3 的情况下，其子串分别为<wh, whe, her, ere, re>，以及其本身 。
-
-
 
 #  fastText和word2vec的区别
 
