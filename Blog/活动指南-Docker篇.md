@@ -263,10 +263,6 @@ docker push xx.xx.xx.xx:5000/nginx:latest
 docker pull xx.xx.xx.xx:5000/nginx:latest
 ```
 
-
-
-##
-
 # 容器
 
 ## 启动容器
@@ -441,8 +437,6 @@ Token：123456789
 ```shell
 conda install packagename
 ```
-
-
 
 ## Docker实战案例
 
