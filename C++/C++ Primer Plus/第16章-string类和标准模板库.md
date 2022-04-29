@@ -30,21 +30,24 @@
 
 # 第16章-string类和标准模板库
 
-本章内容包括:
-标准C++ string类。
-模板auto ptr、unique_ ptr 和shared ptr。
-标准模板库( STL)。
-容器类。
-迭代器。
-函数对象( functor )。
-STL算法。
-模板initializer_ list。
+本章内容包括：
+
+- 标准C++ string类。
+- 模板auto ptr、unique_ ptr 和shared ptr。
+- 标准模板库( STL)。
+- 容器类。
+- 迭代器。
+- 函数对象( functor )。
+- STL算法。
+- 模板initializer_ list。
+
 至此您熟悉了C++可重用代码的目标，这样做的一一个很大的回报是可以重用别人编写的代码，这正是
 类库的用武之地。有很多商业C++类库，也有-些库是C++程序包自带的。例如，曾使用过的头文件ostream
 支持的输入/输出类。本章介绍-些其他可重用代码，它们将给编程工作带来快乐。
-本书前面介绍过string类，本章将更深入地讨论它;然后介绍“智能指针”模板类，它们让管理动态
-内存更容易;接下来介绍标准模板库(STL)， 它是一组用于处理各种容器对象的模板。STL演示了一种编
-程模式一泛 型编程;最后，本章将介绍C++11新增的模板initializer list, 它让您能够将初始化列表语法
+
+本书前面介绍过string类，本章将更深入地讨论它；然后介绍“智能指针”模板类，它们让管理动态
+内存更容易；接下来介绍标准模板库(STL)， 它是一组用于处理各种容器对象的模板。STL演示了一种编
+程模式一泛 型编程；最后，本章将介绍C++11新增的模板initializer list, 它让您能够将初始化列表语法
 用于STL对象。
 
 ## string类
@@ -52,6 +55,7 @@ STL算法。
 很多应用程序都需要处理字符串。C语言在string,h(在C++中为cstring)中提供了--系列的字符串函
 数，很多早期的C++实现为处理字符串提供了自己的类。第4章介绍了ANSI/ISO C++ string 类，而第12
 章创建了一个不大的String类，以说明设计表示字符串的类的某些方面。
+
 string 类是由头文件string支持的(注意，头文件string.h 和estring支持对C-风格字符串进行操纵的c
 库字符串函数，但不支持string类)。要使用类，关键在于知道它的公有接口，而string 类包含大量的方法，
 其中包括了若干构造函数，用于将字符串赋给变量、合并字符串、比较字符串和访问各个元素的重载运算
@@ -62,15 +66,18 @@ string 类是由头文件string支持的(注意，头文件string.h 和estring�
 先来看string 的构造函数。毕竟，对于类而言，最重要的内容之一是， 有哪些方法可用于创建其对象。
 程序清单16.1 使用了string 的7个构造函数(用ctor标识，这是传统C++中构造函数的缩写)。表16.1 简
 要地描述了这些构造函数，它首先使用顺序简要描述了程序清单16.1 使用的7个构造函数，然后列出了
-C++11新增的两个构造函数。使用构造函数时都进行了简化，即隐藏了这样一一个事实: string 实际上是模
+C++11新增的两个构造函数。使用构造函数时都进行了简化，即隐藏了这样一一个事实： string 实际上是模
 板具体化basic string<char>的 -一个typedef,同时省略了与内存管理相关的参数(这将在本章后面和附录F
-656
-C++ Primer Plus (第6版)中文版
 中讨论)。size_ type 是一一个依赖于实现的整型，是在头文件string中定义的。string 类将string:npos定义为
 字符串的最大长度，通常为unsigned int的最大值。另外，表格中使用缩写NBTS (null-terminated string)
 来表示以空字符结束的字符串一-传统的 C字符串。
-表16.1
-string类的构造函数
+
+
+
+表16.1string类的构造函数
+
+
+
 构造函数
 描i
 string(const char * s)
@@ -96,51 +103,53 @@ string(string && st) noexcept
 (移动构造函数)
 string(initializer_ list<char> il)
 这是C++11新增的，它将一个string对象初始化为初始化列表il中的字符
+
 程序清单16.1 str1.cpp
+
 // str1.cpp -- introducing the string class
 #include < iostream>
 #include <string>
 // using string constructors
 int main()
 using namespace std;
-string one("Lottery winner!");
+string one("Lottery winner!")；
 // ctor #1
-:out << one << endl ;
+:out << one << endl ；
 // overloaded <<
-string two20, $);
+string two20, $)；
 // ctor #2
-cout << two << endl ;
-string three (one) ;
+cout << two << endl ；
+string three (one) ；
 // ctor #3
-cout << three << endl ;
-one += " 0ops!" ;
+cout << three << endl ；
+one += " 0ops!" ；
 / overloaded +=
 cout <
-ne << endl ;
-two = "Sorry! That was ";
+ne << endl ；
+two = "Sorry! That was "；
 three[0] = 'P1
 string four;
 // ctor #4
 our = two + three;
 // overloaded +，=
 cout << four << endl
-char alls[] = "All's well that ends well" ;
+char alls[] = "All's well that ends well" ；
 string five(alls,20) 
 // ctor #5
-cout << five << "!\n";
-string six(alls+6, alls + 10) ;
+cout << five << "!\n"；
+string six(alls+6, alls + 10) ；
 // ctor #6
-string seven(&five[6]， &five[10]); // ctor #6 again
+string seven(&five[6]， &five[10])； // ctor #6 again
 cout << seven << "... \n"
-string eightifour, 7, 16) ;
+string eightifour, 7, 16) ；
 // ctor #7
 第16章string 类和标准模板库
-cout << eight << " in motion!" << endl ;
+cout << eight << " in motion!" << endl ；
 return 0;
-程序清单161中程序还使用了重载+=运算符，它将一一个字符串附加到另一个字符串的后面;重载的=
-运算符用于将一一个字符 串赋给另-一个字 符串;重载的<< 运算符用于显示string对象;重载的[ ]运算符用于
+程序清单161中程序还使用了重载+=运算符，它将一一个字符串附加到另一个字符串的后面；重载的=
+运算符用于将一一个字符 串赋给另-一个字 符串；重载的<< 运算符用于显示string对象；重载的[ ]运算符用于
 访问字符串中的各个字符。
-下面是程序清单16.1中程序的输出:
+下面是程序清单16.1中程序的输出：
 Lottery Winner!
 $$$$$$$$$$$$$$$$
 Lottery winner!
@@ -149,200 +158,265 @@ Sorry! That was Pottery Winner !
 All's well that ends !
 well, well...
 That was Pottery in motion!
+
 1.程序说明
+
 程序清单16.1中的程序首先演示了可以将string对象初始化为常规的C-风格字符串，然后使用重载
-的<<运算符来显示它:
-string one("Lottery Winner!");
+的<<运算符来显示它：
+
+string one("Lottery Winner!")；
 // ctor #1
-cout << one << endl ;
+cout << one << endl ；
 // overloaded <<
-接下来的构造函数将string对象two初始化为由20个$字符组成的字符串:
-string two(20, '$';
+
+接下来的构造函数将string对象two初始化为由20个$字符组成的字符串：
+
+```
+string two(20, '$'；
 // ctor #2
+```
+
 复制构造函数将string对象three初始化为string对象one:
-string three (one);
+
+string three (one)；
 // ctor #3
-重载的+=运算符将字符串“Oops!"附加到字符串one的后面:
+
+重载的+=运算符将字符串“Oops!"附加到字符串one的后面：
+
 // overloaded +=
+
 这里是将一一个 C-风格字符串附加到-一个 string 对象的后面。但+=运算符被多次重载，以便能够附加
-string对象和单个字符:
+string对象和单个字符：
+
 one += twO; // append a string object (not in program)
-one += 1 !';
+one += 1 !'；
 // append a type char value (not in program)
-同样，=运算符也被重载，以便可以将string对象、C-风格 字符串或char值赋给string对象: 
-two = "Sorry! That was "; // assign a C-style string
+
+同样，=运算符也被重载，以便可以将string对象、C-风格 字符串或char值赋给string对象： 
+
+two = "Sorry! That was "； // assign a C-style string
 two = one;
 // assign a string object (not in program)
-two = '?';
+two = '?'；
 // assign a Char value (not in program)
+
 重载[]运算符(就像第12章的String示例那样)使得可以使用数组表示法来访问string对象中的各个
-字符:
-three[0] = 'P';
-默认构造函数创建-一个以后可对其进行赋值的空字符串:
+字符：
+
+three[0] = 'P'；
+
+默认构造函数创建-一个以后可对其进行赋值的空字符串：
+
 string four;
 // ctor #4
 four = two + three;
 // overloaded +，
+
 第2行使用重载的+运算符创建了一个临时string对象，然后使用重载的=运算符将它赋给对象four.
 正如所预料的，+运算符将其两个操作数组合成一一个 string 对象。该运算符被多次重载，以便第二个操作数
 可以是string对象、C-风格字符串或char值。
-658
-C++ Primer Plus (第6版)中文版
-第5个构造函数将一一个 C风格字符串和-一个整数作为参数，其中的整数参数表示要复制多少个字符:
-char alls[] = "AIl's well that ends well";
-string five (alls,20);
+
+第5个构造函数将一一个 C风格字符串和-一个整数作为参数，其中的整数参数表示要复制多少个字符：
+
+char alls[] = "AIl's well that ends well"；
+string five (alls,20)；
 // ctor #5
+
 从输出可知，这里只使用了前20个字符(“All's well that ends”)来初始化five对象。正如表16.1 指出
 的，如果字符数超过了C-风格字符串的长度，仍将复制请求数目的字符。所以在上面的例子中，如果用40
 代替20,将导致15个无用字符被复制到five的结尾处(即构造函数将内存中位于字符串“All's well that ends
 well”后面的内容作为字符)。
-第6个构造函数有-一个模板参数:
-template<class Iter> string(Iter begin, Iter end);
+
+第6个构造函数有-一个模板参数：
+
+template<class Iter> string(Iter begin, Iter end)；
+
 begin和end将像指针那样，指向内存中两个位置(通常，begin 和end可以是迭代器一广 泛用于STL
 中的广义化指针)。构造函数将使用begin和end指向的位置之间的值，对string对象进行初始化。[begin, end)
 来自数学中，意味着包括begin,但不包括end在内的区间。也就是说，end指向被使用的最后-一个值后面
-的一个位置。请看下面的语句:
-string six(alls+6, alls + 10);
+的一个位置。请看下面的语句：
+
+string six(alls+6, alls + 10)；
 // ctor #6
-由于数组名相当于指针，所以alls + 6和alls +10的类型都是char*,因此使用模板时，将用类型char *
+
+由于数组名相当于指针，所以alls + 6和alls +10的类型都是char*，因此使用模板时，将用类型char *
 替换Iter。第-一个参数指向数组alls中的第一一个w,第二个参数指向第- 一个well后面的空格。因此，six 将
 被初始化为字符串“well”。 图16.1 说明了该构造函数的工作原理。
-Char allsl = "All's well that ends well" ;
-stringsiX8115+6 211 1);
+
+Char allsl = "All's well that ends well" ；
+stringsiX8115+6 211 1)；
 ange =
 alIs: A200 "022 0b0 0000 We220
 01234567891011121314151617 18192021222324 25
 six:日e
+
+
+
 图16.1使用区间的 string构造函数
+
 现在假设要用这个构造函数将对象初始化为另一个string 对象(假设为five) 的一部分内容，则下面
-的语句不管用:
-string seven(five + 6，five + 10) ;
+的语句不管用：
+
+string seven(five + 6，five + 10) ；
+
 原因在于，对象名(不同于数组名)不会被看作是对象的地址，因此five不是指针，所以five + 6
 是没有意义的。然而，five[6]是一个char值，所以&five[6]是--个地址，因此可被用作该构造函数的一
 个参数。
-string seven(&five[6]， &five[10]);// ctor #6 again
-第7个构造函数将-一个string对象的部分内容复制到构造的对象中:
-string eight(four, 7, 16);
+
+string seven(&five[6]， &five[10])；// ctor #6 again
+
+第7个构造函数将-一个string对象的部分内容复制到构造的对象中：
+
+string eight(four, 7, 16)；
 // ctor #7
+
 上述语句从four的第8个字符(位置7)开始，将16个字符复制到eight中。
+
+
+
 2.C++11新增的构造函数
+
 构造函数string (string && str)类似于复制构造函数，导致新创建的string为str 的副本。但与复制构
-第16章string 类和标准模板库
-659
 造函数不同的是，它不保证将str 视为const这种构造函数被称为移动构造函数(move constructor)。 在有
 些情况下，编译器可使用它而不是复制构造函数，以优化性能。第18章的“移动语义和右值引用”一节将
 讨论这个主题。
+
 构造函数string (initiaizer_ list<char> il)让您能够将列表初始化语法用于string 类。也就是说，它使得
-下面这样的声明是合法的:
-string piano man = {I'， 'i1，'s','2','t'};
-string comp_ lang {'I', 'i', 's', 'P'};
+下面这样的声明是合法的：
+
+string piano man = {I'， 'i1，'s'，'2'，'t'}；
+string comp_ lang {'I'， 'i'， 's'， 'P'}；
+
 就string类而言，这可能用处不大，因为使用C-风格字符串更容易，但确实实现了让列表初始化语法
 普遍实用的意图。本章后面将更深入地讨论模板initializer_ list.
 
 ### string 类输入
 
-对于类，很有帮助的另一点是，知道有哪些输入方式可用。对于C-风格字符串，有3种方式:
-char infol100] ;
+对于类，很有帮助的另一点是，知道有哪些输入方式可用。对于C-风格字符串，有3种方式：
+
+char infol100] ；
 cin >> info;
 // read a word
-cin.getline(info, 100); // read a line, discard \n
-cin.get (info, 100);
+cin.getline(info, 100)； // read a line, discard \n
+cin.get (info, 100)；
 // read a line, leave \n in queue
-对于string对象，有两种方式:
+
+对于string对象，有两种方式：
+
 string stuff;
 cin >> stuff;
 / read a word
-getline(cin, stuff) ;
+getline(cin, stuff) ；
 // read a line, discard \n
-两个版本的getine( )都有- 一个可选参数，用于指定使用哪个字符来确定输入的边界:
-cin. getline(info,100, ':');
-// read up to :， discard :
-getline(stuff, ':') ;
-// read up to :，discard:
+
+两个版本的getine( )都有- 一个可选参数，用于指定使用哪个字符来确定输入的边界：
+
+cin. getline(info,100, '：')；
+// read up to ：， discard ：
+getline(stuff, '：') ；
+// read up to ：，discard:
+
 在功能上，它们之间的主要区别在于，string 版本的getine( )将自动调整目标string对象的大小，使之
-刚好能够存储输入的字符:
-char fname [10];
-string Iname ;
-cin >> fname ;
+刚好能够存储输入的字符：
+
+char fname [10]；
+string Iname ；
+cin >> fname ；
 // could be a problem if input size > 9 characters
 cin >> Iname;
 / can read a very, very long word
-cin. getline(fname, 10); // may truncate input
-getline(cin, fname) ;
+cin. getline(fname, 10)； // may truncate input
+getline(cin, fname) ；
 // no truncation
+
 自动调整大小的功能让string版本的getline()不需要指定读取多少个字符的数值参数。
+
 在设计方面的一个区别是，读取C-风格字符串的函数是istream类的方法，而string版本是独立的函
-数。这就是对于C-风格字符串输入，cin是调用对象;而对于string对象输入，cin是-一个函数参数的原因。
-这种规则也适用于>>形式，如果使用函数形式来编写代码，这一点将显而易见:
-cin. operator>> (fname) ;
+数。这就是对于C-风格字符串输入，cin是调用对象；而对于string对象输入，cin是-一个函数参数的原因。
+这种规则也适用于>>形式，如果使用函数形式来编写代码，这一点将显而易见：
+
+cin. operator>> (fname) ；
 // ostream class method
 operator>> (cin, 1name)
 // regular funct ion
+
 下面更深入地探讨一下string输入函数。正如前面指出的，这两个函数都自动调整目标string的大小，
 使之与输入匹配。但也存在一些限制。 第一个限制因素是string 对象的最大允许长度，由常量string::npos 
-指定。这通常是最大的unsigned int值，因此对于普通的交互式输入，这不会带来实际的限制;但如果您试
+指定。这通常是最大的unsigned int值，因此对于普通的交互式输入，这不会带来实际的限制；但如果您试
 图将整个文件的内容读取到单个string 对象中，这可能成为限制因素。第二个限制因素是程序可以使用的
 内存量。
+
 string 版本的getine( )函数从输入中读取字符，并将其存储到目标string中，直到发生下列三种情况
 到达文件尾，在这种情况下，输入流的eofbit将被设置，这意味着方法fai( )和eof( )都将返回true;
-660
-C++ Primer Plus (第6版)中文版
-●遇到分界字符(默认为\n)， 在这种情况下，将把分界字符从输入流中刪除，但不存储它;
+
+●遇到分界字符(默认为\n)， 在这种情况下，将把分界字符从输入流中刪除，但不存储它；
 读取的字符数达到最大允许值( string::npos和可供分配的内存字节数中较小的-一个)，在这种情况
 下，将设置输入流的failbit, 这意味着方法fail( )将返回true.
+
 输入流对象有-一个统计系统，用于跟踪流的错误状态。在这个系统中，检测到文件尾后将设置eofbit
 寄存器，检测到输入错误时将设置failbit寄存器，出现无法识别的故障(如硬盘故障)时将设置badbit寄
 存器，一切顺利时将设置goodbit寄存器。第17章将更深入地讨论这一-点。
+
 string版本的operator>>( )函数的行为与此类似，只是它不断读取，直到遇到空白字符并将其留在输入
 队列中，而不是不断读取，直到遇到分界字符并将其丢弃。空白字符指的是空格、换行符和制表符，更普
 遍地说，是任何将其作为参数来调用isspace( )时，该函数返回ture 的字符。
+
 本书前面有多个控制台string 输入示例。由于用于string 对象的输入函数使用输入流，能够识别文件
 尾，因此也可以使用它们来从文件中读取输入。程序清单16.2是一个从文件中读取字符串的简短示例，它
 假设文件中包含用冒号字符分隔的字符串，并使用指定分界符的getline( )方法。然后，显示字符串并给它
 们编号，每个字符串占一行。
+
 程序清单16.2 strfile.cpp
+
 / strfile.cpp -- read strings from a file
 #include <iostream>
 #include <fstream
 #include <strings
 #include <cstdlib>
 int main()
-using namespace std ;
+using namespace std ；
 ifstream fin;
-fin. open("tobuy. txt") ;
+fin. open("tobuy. txt") ；
 if (fin.is_ _open() == false)
-cerr << "Can't open file. Bye. \n";
-exit (EXIT_ FAILURE) ;
+cerr << "Can't open file. Bye. \n"；
+exit (EXIT_ FAILURE) ；
 string item;
 int count = 0;
-getline(fin, item， :');
+getline(fin, item， ：')；
 while (fin) // while input is good
-++count ;
-cout << count <<": " << item << endl;
-getline(fin, item, ':');
-cout << "Done\n" ;
-fin. c1ose();
+++count ；
+cout << count <<"： " << item << endl;
+getline(fin, item, '：')；
+cout << "Done\n" ；
+fin. c1ose()；
 return 0;
-下面是文件tobuy.txt 的内容:
-sardines :chocolate ice cream:pop corn:leeks :
+
+下面是文件tobuy.txt 的内容：
+
+sardines :chocolate ice cream:pop corn:leeks ：
 cottage cheese:olive oi1 :butter: tofu;
-通常，对于程序要查找的文本文件，应将其放在可执行程序或项目文件所在的目录中;否则必须提供
-完整的路径名。在Windows系统中，C-风格字符串中的转义序列\表示-一个斜杠:
-fin. open ("C:\\CRP\\Progs\\tobuy. txt"); // file = c:\CPP\Progs\tobuy. txt
-第16章string 类和标准模板库
-661
-下面是程序清单16.2中程序的输出:
+
+通常，对于程序要查找的文本文件，应将其放在可执行程序或项目文件所在的目录中；否则必须提供
+完整的路径名。在Windows系统中，C-风格字符串中的转义序列\表示-一个斜杠：
+
+fin. open ("C:\\CRP\\Progs\\tobuy. txt")； // file = c:\CPP\Progs\tobuy. txt
+
+
+
+下面是程序清单16.2中程序的输出：
+
 1: sardines
 2: chocolate ice cream
 3: pop corn
-:: leeks
+：: leeks
 cottage cheese
 6: olive oil
 7: butter
 8: tofu
 9
 Done
-注意，将:指定为分界字符后，换行符将被视为常规字符。因此文件tobuy.txt中第一~行末尾的换 行符将
+
+注意，将：指定为分界字符后，换行符将被视为常规字符。因此文件tobuy.txt中第一~行末尾的换 行符将
 成为包含“cottage cheese”的字符串中的第一个字符。同样，第二行末尾的换行符是第9个输入字符串中
 唯一的内容。
 
@@ -350,69 +424,83 @@ Done
 
 现在，您知道可以使用不同方式来创建string对象、显示sting对象的内容、将数据读取和附加到string对
 象中、给string对象赋值以及将两个string 对象连结起来。除此之外，还能做些什么呢?
+
 可以比较字符串。String 类对全部6个关系运算符都进行了重载。如果在机器排列序列中，- 一个对象
-位于另一个对象的前面，则前者被视为小于后者。如果机器排列序列为ASCII码，则数字将小于大写字符,
+位于另一个对象的前面，则前者被视为小于后者。如果机器排列序列为ASCII码，则数字将小于大写字符，
 而大写字符小于小写字符。对于每个关系运算符，都以三种方式被重载，以便能够将sting对象与另-一个
-string对象、C-风格 字符串进行比较，并能够将C-风格字符串与string对象进行比较:
-string snakel ("cobra") ;
-string snake2 ("coral");
-char snake3[20] = "anaconda" ;
+string对象、C-风格 字符串进行比较，并能够将C-风格字符串与string对象进行比较：
+
+```
+string snakel ("cobra") ；
+string snake2 ("coral")；
+char snake3[20] = "anaconda" ；
 if (snake1 < snake 2)
-// operator< (const string &, const string &)
+// operator< (const string &， const string &)
 if (snake1 == snake3)
 ' operator== (const string &，const char *)
 if (snake3 != snake2)
-/ / operator!= (const char *, const string &)
-可以确定字符串的长度。size()和length()成员函数都返回字符串中的字符数:
+/ / operator!= (const char *， const string &)
+```
+
+可以确定字符串的长度。size()和length()成员函数都返回字符串中的字符数：
+
 if (snake1 .1ength() = snake2.size())
 cout << "Both strings have the same length. \n"
+
 为什么这两个函数完成相同的任务呢? length( )成员来自较早版本的string类，而size( )则是为提供STL
 兼容性而添加的。
+
 可以以多种不同的方式在字符串中搜索给定的子字符串或字符。表16.2简要地描述了find()方法的
 4个版本。如前所述，string:npos是字符串可存储的最大字符数，通常是无符号int或无符号long的最
 大取值。
-表16.2
-重载的find( )方法
+
+表16.2重载的find( )方法
+
 方法原型
+
 size type find(const string & str,
 从字符串的pos位置开始，查找子字符串str。 如果找到，则返回该子字符串首次出现时
 size type pos = 0)const
-其首字符的索引;否则，返回string :: npos
+其首字符的索引；否则，返回string ：: npos
 size_ type find(const char* s,
 从字符串的pos位置开始，查找子字符串s。如果找到，则返回该子字符串首次出现时
 size type pos = 0)const
-其首字符的索引;否则，返回string :: npos
-662
-C++ Primer Plus (第6版)中文版
+其首字符的索引；否则，返回string ：: npos
+
 续表
 方法原型
 猫述
 size type find(const char * s,
 从字符串的pos位置开始，查找s的前n个字符组成的子字符串。如果找到，则返回该
 size type pos=0, size type n)
-子字符串首次出现时其首字符的索引;否则，返回string :: npos
+子字符串首次出现时其首字符的索引；否则，返回string ：: npos
 size_ type find(char ch,
-从字符串的pos位置开始，查找字符ch。如果找到，则返回该字符首次出现的位置;否
+从字符串的pos位置开始，查找字符ch。如果找到，则返回该字符首次出现的位置；否
 size_ type pos = 0)const
-则，返回string :: npos
-string库还提供了相关的方法: rfind( )、find first _of( )、find last of( )、find first not of( )和
+则，返回string ：: npos
+string库还提供了相关的方法： rfind( )、find first _of( )、find last of( )、find first not of( )和
 find_ last not of( )，它们的重载函数特征标都与find( )方法相同。rfind( )方法查找子字符串或字符最后一次出
-现的位置; find first of( )方法在字符串中查找参数中任何-一个字符首次出现的位置。例如，下 面的语句返
-回r在“cobra”中的位置(即索引3)，因为这是“hark”中各个字母在“cobra”首次出现的位置:
-int where = snake1.find first of("hark");
+现的位置； find first of( )方法在字符串中查找参数中任何-一个字符首次出现的位置。例如，下 面的语句返
+回r在“cobra”中的位置(即索引3)，因为这是“hark”中各个字母在“cobra”首次出现的位置：
+int where = snake1.find first of("hark")；
+
 find last of( )方法的功能与此相同，只是它查找的是最后-次出现的位置。因此，下 面的语句返回a 
-在“cobra”中的位置:
-int where = snake1.last first of ("hark");
+在“cobra”中的位置：
+
+int where = snake1.last first of ("hark")；
 find first not of( )方法在字符串中查找第- 一个不包含在参数中的字符，因此下面的语句返回c在
 “cobra”中的位置，因为“hark” 中没有c:
-int where = snake1.find first not of ("hark");
+int where = snake1.find first not of ("hark")；
+
 在本章最后的练习中，您将了解find last not of()。
 还有很多其他的方法，这些方法足以创建-一个非图形版本的Hangman拼字游戏。该游戏将-系列的单
 词存储在-一个string对象数组中，然后随机选择一个单词，让人猜测单词的字母。如果猜错6次，玩家就
 输了。该程序使用find( )函数来检查玩家的猜测，使用+=运算符创建-一个string对象来记录玩家的错误猜
 测。为记录玩家猜对的情况，程序创建了一个单词，其长度与被猜的单词相同，但包含的是连字符。玩家
 猜对字符时，将用该字符替换相应的连字符。程序清单16.3 列出了该程序的代码。
+
 程序清单16.3 hangman.cpp
+
 // hangman.cpp -- some string methods
 #include <iostream>
 #include <string>
@@ -421,27 +509,25 @@ int where = snake1.find first not of ("hark");
 #include <cctyPe>
 using std::string;
 const int NUM = 26
-const string wordlist [NUM] = { "apiary", "beetle", "cereal",
-"danger", "ensign", "florid", "garage", "health", "insult" ,
-"jackal"，"keeper"， "loaner", "manage", "nonce", "onset",
-"plaid", "quilt", "remote", "stolid", "train"， "useful",
-"valid"，"whence", "xenon", "yearn", "zippy"};
+const string wordlist [NUM] = { "apiary"， "beetle"， "cereal"，
+"danger"， "ensign"， "florid"， "garage"， "health"， "insult" ，
+"jackal"，"keeper"， "loaner"， "manage"， "nonce"， "onset"，
+"plaid"， "quilt"， "remote"， "stolid"， "train"， "useful"，
+"valid"，"whence"， "xenon"， "yearn"， "zippy"}；
 int main()
 using std: :cout;
 using sta: :cin;
 using sta: :tolower;
-using std: :endl ;
-sta: :srand (std::time(0));
+using std: :endl ；
+sta: :srand (std::time(0))；
 Char play;
-cout << "Wil you play a word game? <y/n> ";
-第16章string 类和标准模板库
-66
+cout << "Wil you play a word game? <y/n> "；
 cin >> play;
-play = tolower (play);
+play = tolower (play)；
 while (play == 'y')
-string target = wordlist [std: :rand()号NUM] ;
-int length = target.length() ;
-string attempt (length, 1-') ;
+string target = wordlist [std: :rand()号NUM] ；
+int length = target.length() ；
+string attempt (length, 1-') ；
 string badchars;
 nt guesses
 cout <
@@ -449,46 +535,48 @@ cout <
 << " letters, and you guess \n"
 one letter at a time. You get " << guesses 
 guesses. \n"
-cout << "Your word: " << attempt << endl ;
+cout << "Your word: " << attempt << endl ；
 while (guesses > 0 && attempt != target)
-Char letter ;
+Char letter ；
 cout << "Guess a letter: "
-cin >> letter ;
-if (badchars. find (1etter) != string: :npos ,
+cin >> letter ；
+if (badchars. find (1etter) != string: :npos ，
 attempt. find(letter) != string: :npos)
-cout << "You already guessed that. Try again. \n";
-cont inue ;
-int 1oc = target. find (1etter) ; 
+cout << "You already guessed that. Try again. \n"；
+cont inue ；
+int 1oc = target. find (1etter) ； 
 if (1oc == string: :npos)
-cout << "Oh, bad guess! \n";
+cout << "Oh, bad guess! \n"；
 guesses;
 badchars += letter; // add to string
 else
 {
-cout << "Good guess! \n" ;
-attempt [loc] =letter ;
+cout << "Good guess! \n" ；
+attempt [loc] =letter ；
 // check if letter appears again
-loc = target. find(letter, 1oc + 1) ;
+loc = target. find(letter, 1oc + 1) ；
 while (1oc != string: :npos)
 attempt [loc] =letter;
-1oc = target. find(letter, loc + 1) ;
-cout << "Your word: " << attempt << endl ;
+1oc = target. find(letter, loc + 1) ；
+cout << "Your word: " << attempt << endl ；
 if (attempt != target)
 if (badchars .length() > 0)
-cout << "Bad choices: " << badchars << endl ;
-cout << guesses << " bad guesses left\n" ;
+cout << "Bad choices: " << badchars << endl ；
+cout << guesses << " bad guesses left\n" ；
 if (guesses > 0)
-cout《< "That's right!\n";
+cout《< "That's right!\n"；
 else
 664
 C++ Primer Plus (第6版)中文版
-cout << "Sorry, the word is " << target << ". \n";
-cout << "Will you play another? <y/n> ";
+cout << "Sorry, the word is " << target << ". \n"；
+cout << "Will you play another? <y/n> "；
 cin》> play;
-play = tolower(play) ;
-cout << "Bye\n";
+play = tolower(play) ；
+cout << "Bye\n"；
 return 0;
-程序清单16.3中程序的运行情况如下:
+
+程序清单16.3中程序的运行情况如下：
+
 Will you play a word game? <y/n> y
 Guess my secret word. It has 6 letters, and you guess
 one letter at a time. You get 6 wrong guesses .
@@ -529,41 +617,56 @@ Your word: apiary
 That's right!
 Will you play another? <y/n> n
 Bye
+
 程序说明
-在程序清单16.3 中，由于关系运算符被重载，因此可以像对待数值变量那样对待字符串:
-第16章string 类和标准模板库
+
+在程序清单16.3 中，由于关系运算符被重载，因此可以像对待数值变量那样对待字符串：
+
 while (guesses > 0 && attempt != target)
+
 与对C-风格字符串使用strcmp()相比，这样简单些。
+
 该程序使用find()来检查玩家以前是否猜过某个字符。如果是，则它要么位于badchars字符串(猜错)
-中，要么位于attempt字符串(猜对)中:
+中，要么位于attempt字符串(猜对)中：
+
 if (badchars. find(letter) != string: :npos 
 attempt. find(letter) != string: :npos) 
+
 npos变量是string类的静态成员，它的值是string对象能存储的最大字符数。由于索引从0开始，所
 以它比最大的索引值大1，因此可以使用它来表示没有查找到字符或字符串。
-该程序利用了这样一一个事实: +=运算符的某个重载版本使得能够将一- 个字符附加到字符串中:
+
+该程序利用了这样一一个事实： +=运算符的某个重载版本使得能够将一- 个字符附加到字符串中：
+
 badchars += letter; // append a char to a string object
-该程序的核心是从检查玩家选择的字符是否位于被猜测的单词中开始的:
-int loc = target. find(letter);
-如果loc是一个有效的值，则可以将该字母放置在答案字符串的相应位置:
+
+该程序的核心是从检查玩家选择的字符是否位于被猜测的单词中开始的：
+
+int loc = target. find(letter)；
+
+如果loc是一个有效的值，则可以将该字母放置在答案字符串的相应位置：
+
 attempt [loc]=letter;
+
 然而，由于字丹在被猜测的单词中可能出现多次，所以程序必须一一直进行检查。该程序使用了find( )
 的第二个可选参数，该参数可以指定从字符串什么位置开始搜索。因为字母是在位置loc找到的，所以下
 一次搜索应从loc+1开始。while 循环使搜索一直进行 下去，直到找不到该字符为止。如果loc位于字符串
 尾，则表明find( )没有找到该字符。
+
 // check if letter appears again
-loc = target. find(letter, 1oc + 1);
+loc = target. find(letter, 1oc + 1)；
 while (1oc != string: :npos)
 attempt [loc]=letter;
-loC = target. find(letter, loc + 1) ;
+loC = target. find(letter, loc + 1) ；
 
 ### string还提供了哪些功能
 
-string库提供了很多其他的工具，包括完成下述功能的函数:删除字符串的部分或全部内容、用-
+string库提供了很多其他的工具，包括完成下述功能的函数：删除字符串的部分或全部内容、用-
 个字符串的部分或全部内容替换另-一个字符串的部分或全部内容、将数据插入到字符串中或删除字符
 串中的数据、将一个字符串的部分或全部内容与另一-个字符串的部分或全部内容进行比较、从字符串
 中提取子字符串、将一个字符串中的内容复制到另一个字符串中、交换两个字符串的内容。这些函数
 中的大多数都被重载，以便能够同时处理C-风格字符串和string对象。附录F简要地介绍了string库
 中的函数。
+
 首先来看自动调整大小的功能。在程序清单16.3中，每当程序将--个字母附加到字符串末尾时将发生
 什么呢?不能仅仅将己有的字符串加大，因为相邻的内存可能被占用了。因此，可能需要分配-一个新的内
 存块，并将原来的内容复制到新的内存单元中。如果执行大量这样的操作，效率将非常低，因此很多C++
@@ -571,7 +674,9 @@ string库提供了很多其他的工具，包括完成下述功能的函数:删�
 内存块的大小，程序将分配一一个 大小为原来两倍的新内存块，以提供足够的增大空间，避免不断地分配新
 的内存块。方法capacity( )返回当前分配给字符串的内存块的大小，而reserve( )方法让您能够请求内存块
 的最小长度。程序清单16.4 是一个使用这些方法的示例。
+
 程序清单16.4 str2.cpp
+
 // str2.CPP -- capacity() and reserve ()
 #include <iostream>
 #include <string>
@@ -580,57 +685,66 @@ C++ Primer Plus(第6版)中文版
 int main()
 using namespace std;
 string emptyi
-string small = "bit";
-string larger = "Elephants are a girl's best friend";
+string small = "bit"；
+string larger = "Elephants are a girl's best friend"；
 out <
-cout << "\tempty: " << empty.size() << endl ;
-cout << "\tsmall: " << small.size() << endl ;
-out << "\tlarger: " << larger.size() << endl ;
-cout << "Capacities:\n" ;
-cout << "\tempty: "《< empty . capacity() << endl ;
-cout << "\tsmall: " << small . capacity() << endl ;
+cout << "\tempty: " << empty.size() << endl ；
+cout << "\tsmall: " << small.size() << endl ；
+out << "\tlarger: " << larger.size() << endl ；
+cout << "Capacities:\n" ；
+cout << "\tempty: "《< empty . capacity() << endl ；
+cout << "\tsmall: " << small . capacity() << endl ；
 cout << "\tlarger: " << larger .capacity() << endl;
-empty . reserve(50) ;
-cout << "Capacity after empty . reserve(50) :
+empty . reserve(50) ；
+cout << "Capacity after empty . reserve(50) ：
 << empty . capacity() << endl;
 return 0;
-下面是使用某种C++实现时，程序清单16.4中程序的输出:
+
+下面是使用某种C++实现时，程序清单16.4中程序的输出：
+
 Sizes:
 empty: 0
-small ::
+small ：:
 larger: 34
-Capacities :
+Capacities ：
 empty: 15
 small: 15
 larger: 4
-Capacity after empty . reserve(50): 63
+Capacity after empty . reserve(50)： 63
+
 注意，该实现使用的最小容量为15个字符，这比标准容量选择(16 的倍数)小1。其他实现可能做出
 不同的选择。
-如果您有string对象,但需要C风格字符串，该如何办呢?例如,您可能想打开一个其名称存储在string
-对象中的文件:
+
+如果您有string对象，但需要C风格字符串，该如何办呢?例如，您可能想打开一个其名称存储在string
+对象中的文件：
+
 string filename;
-cout << "Enter file name: " ;
+cout << "Enter file name: " ；
 cin >> filename;
-ofstream fout ;
-不幸的是，open( )方法要求使用一一个C_风格字符串作为参数;幸运的是，c str( )方法返回一个指
+ofstream fout ；
+
+不幸的是，open( )方法要求使用一一个C\_风格字符串作为参数；幸运的是，c str( )方法返回一个指
 向C-风格字符串的指针，该C-风格字符串的内容与用于调用cstr()方法的string对象相同。因此可以
-这样做:
-fout . open(filename.c_ str());
+这样做：
+
+fout . open(filename.c_ str())；
 
 ### 字符串种类
 
 本节将string 类看作是基于char类型的。事实上，正如前面指出的，string 库实际上是基于-一个模板
-类的:
+类的：
+
 template<class charT, class traits = char_ traits<charT>,
 class Allocator = allocator<charT>
 basic_ string
-模板basic string 有4个具体化，每个具体化都有-一个typedef名称:
-第16章string 类和标准模板库
-667
+
+模板basic string 有4个具体化，每个具体化都有-一个typedef名称：
+
 typedef basic_ string<char> string;
-typedef basic_ string<wchar t> wstring ;
+typedef basic_ string<wchar t> wstring ；
 typedef basic string<char16 t> u16string; // C++11
-typedef basic_ string<char32 t> u32string ; // C++11
+typedef basic_ string<char32 t> u32string ； // C++11
+
 这让您能够使用基于类型wchar t、char16 t、 char32 t和char的字符串。甚至可以开发某种类似字符
 的类，并对它使用basic string 类模板(只要它满足某些要求)。traits类描述关于选定字符类型的特定情况，
 如如何对值进行比较。对于wchar t、 char16 t、char32 t和char类型，有预定义的char ftraits 模板具体化，
@@ -640,132 +754,158 @@ typedef basic_ string<char32 t> u32string ; // C++11
 ## 智能指针模板类
 
 智能指针是行为类似于指针的类对象，但这种对象还有其他功能。本节介绍三个可帮助管理动态内存
-分配的智能指针模板。先来看需要哪些功能以及这些功能是如何实现的。请看下面的函数:
+分配的智能指针模板。先来看需要哪些功能以及这些功能是如何实现的。请看下面的函数：
+
 void remodel (std: :string & str)
-std: :string * ps = new std: :string(str) ;
+std: :string * ps = new std: :string(str) ；
 str = ps;
 return;
-您可能发现了其中的缺陷。每当调用时，该函数都分配堆中的内存，但从不收回,从而导致内存泄漏。
-您可能也知道解决之道一只要别忘了在return语句前添加下面的语句，以释放分配的内存即可:
+
+您可能发现了其中的缺陷。每当调用时，该函数都分配堆中的内存，但从不收回，从而导致内存泄漏。
+您可能也知道解决之道一只要别忘了在return语句前添加下面的语句，以释放分配的内存即可：
+
 delete ps;
+
 然而，但凡涉及“别忘了”的解决方法，很少是最佳的。因为您有时可能忘了，有时可能记住
 了，但可能在不经意间删除或注释掉了这些代码。即使确实没有忘记，也可能有问题。请看下面的
-变体:
+变体：
+
 void remodel (std: :string & str)
-std::string * ps = new std: :string(str) ;
+std::string * ps = new std: :string(str) ；
 if (weird thing())
-throw exception() ;
+throw exception() ；
 str = *ps
 delete pS;
 return;
+
 当出现异常时，delete将不被执行，因此也将导致内存泄漏。
+
 可以按第14章介绍的方式修复这种问题，但如果有更灵巧的解决方法就好了。来看一下需要些什么。
 当remodel( )这样的函数终止(不管是正常终止，还是由于出现了异常而终止)，本地变量都将从栈内存中
 删除一因此指针 ps占据的内存将被释放。如果ps指向的内存也被释放，那该有多好啊。如果ps有一个
-析构函数，该析构函数将在ps过期时释放它指向的内存。因此，ps 的问题在于，它只是一个常规指针,
+析构函数，该析构函数将在ps过期时释放它指向的内存。因此，ps 的问题在于，它只是一个常规指针，
 不是有析构函数的类对象。如果它是对象，则可以在对象过期时，让它的析构函数删除指向的内存。这正
 是auto ptr、 unique ptr 和shared ptr 背后的思想。模板auto ptr 是C++98提供的解决方案，C++11 已将其
-摒弃，并提供了另外两种解决方案。然而，虽然auto ptr 被摒弃，但它已使用了多年;同时，如果您的编
+摒弃，并提供了另外两种解决方案。然而，虽然auto ptr 被摒弃，但它已使用了多年；同时，如果您的编
 译器不支持其他两种解决方案，autoptr将是唯一的选择。
-668
-C++ Primer Plus(第6版)中文版
 
 ### 使用智能指针
 
 这三个智能指针模板(auto ptr. unique_ ptr 和shared ptr) 都定义了类似指针的对象，可以将new获得(直
 接或间接)的地址赋给这种对象。当智能指针过期时，其析构函数将使用delete 来释放内存。因此，如果将
-new返回的地址赋给这些对象，将无需记住稍后释放这些内存:在智能指针过期时，这些内存将自动被释放。
-图16.2说明了auto_ ptr 和常规指针在行为方面的差别; share ptr 和unique_ ptr 的行为与auto ptr 相同。
+new返回的地址赋给这些对象，将无需记住稍后释放这些内存：在智能指针过期时，这些内存将自动被释放。
+
+图16.2说明了auto_ ptr 和常规指针在行为方面的差别； share ptr 和unique_ ptr 的行为与auto ptr 相同。
+
 void demol()
 double Pd = new double; 11 #
 *pd= 25.5;
 return;
-#1.为pd和一个doubl e值分配存储空间，保存地址:
+
+#1.为pd和一个doubl e值分配存储空间，保存地址：
+
 od10000
 4000
 1 0000
-#2.将值复制到动态内存中:
+#2.将值复制到动态内存中：
 pd「 10000 7
 I 25.5
 10000
-#3.删除pd,值被保留在动态内存中:
+#3.删除pd,值被保留在动态内存中：
 25.5
 10000
 void demo2()
-auto_ ptr<double> ap(new double); 11 #
+auto_ ptr<double> ap(new double)； 11 #
 *ap = 25.5;
 return;
 11 #3
-#1.为ap和一个double值分配存储空间,保存地址:
+#1.为ap和一个double值分配存储空间，保存地址：
 ap 1 0080
 6000
 10080
-#2.将值复制到动态内存中:
+#2.将值复制到动态内存中：
 ap「10080]
 25.5
 6000
 1 0000
 #.删除ap, ap的析构函数释放动态内存。
+*
+
 图16.2常规指针与auto_ ptr
+
 要创建智能指针对象，必须包含头文件memory,该文件模板定义。然后使用通常的模板语法来实例
-化所需类型的指针。例如，模板autoptr包含如下构造函数:
+化所需类型的指针。例如，模板autoptr包含如下构造函数：
+
 template<class X> class auto ptr {
 public:
-explicit auto_ ptr(X* p =0) throw() ;
-第16章string 类和标准模板库
-669
-本书前面说过，throw( )意味着构造函数不会引发异常;与auto ptr -一样，throw(O也被摒弃。因此，请
+explicit auto_ ptr(X* p =0) throw() ；
+
+本书前面说过，throw( )意味着构造函数不会引发异常；与auto ptr -一样，throw(O也被摒弃。因此，请
 求X类型的auto ptr 将获得一一个指向X类型的auto_ ptr:
-auto_ ptr<double> pd(new double) ; // pd an auto_ ptr to double
+
+auto_ ptr<double> pd(new double) ； // pd an auto_ ptr to double
 // (use in place of double * pd)
-auto_ ptr<string> ps (new string); // ps an auto_ ptr to string
+auto_ ptr<string> ps (new string)； // ps an auto_ ptr to string
 // (use in place of string * ps
+
 new double是new返回的指针，指向新分配的内存块。它是构造函数auto_ ptr<double>的参数， 即对应
-于原型中形参p的实参。同样，newstring也是构造函数的实参。其他两种智能指针使用同样的语法:
-unique_ ptr<double> pdu (new double); // pdu an unique_ ptr to double
-shared ptr<string> pss (new string); // pss a shared ptr to string
-因此，要转换remodel()函数，应按下面3个步骤进行:
+于原型中形参p的实参。同样，newstring也是构造函数的实参。其他两种智能指针使用同样的语法：
+
+unique_ ptr<double> pdu (new double)； // pdu an unique_ ptr to double
+shared ptr<string> pss (new string)； // pss a shared ptr to string
+
+因此，要转换remodel()函数，应按下面3个步骤进行：
+
 l. 包含头文件memory;
-2.将指向string的指针替换为指向string的智能指针对象;
+
+2.将指向string的指针替换为指向string的智能指针对象；
+
 3.删除delete语句。
-下面是使用auto ptr 修改该函数的结果:
+
+下面是使用auto ptr 修改该函数的结果：
+
 void remodel (std: :string & str)
-std: :auto_ ptr<sta: :string> ps (new sta: :string(str));
+std: :auto_ ptr<sta: :string> ps (new sta: :string(str))；
 if (weird thing())
-throw exception() ;
+throw exception() ；
 str = *ps;
 / delete ps; NO LONGER NEEDED
 return;
+
 注意到智能指针模板位于名称空间std中。程序清单16.5是一个简单的程序，演示了如何使用全部三
 种智能指针。要编译该程序，您的编译器必须支持C++11新增的类share_ ptr 和unique_ ptr。 每个智能指针
 都放在一个代码块内，这样离开代码块时，指针将过期。Report 类使用方法报告对象的创建和销毁。
+
 程序清单16.5 smrtptrs.cpp
+
 / smrtptrs.CpP -- using three kinds of smart pointers
 // requires support of C++11 shared ptr and unique_ _ptr
 #include <iostream>
 #include <string>
 #include <memory>
 class Report
-private :
+private ：
 std: :string str;
 public:
-Report (const std: :string s) : str(s)
-{ std: :cout << "0bject created!\n"; }
-~Report() { std::cout 《< "Object deleted!\n"; }
-void comment() const { sta: :cout << str << "\n"; }
-};
+Report (const std: :string s) ： str(s)
+{ std: :cout << "0bject created!\n"； }
+~Report() { std::cout 《< "Object deleted!\n"； }
+void comment() const { sta: :cout << str << "\n"； }
+}；
 int main()
 670
 C++ Primer Plus (第6版)中文版.
-std: :auto_ ptr<Report> PS (new Report("using auto_ Ptr"));
-ps->comment() ; // use -> to invoke a member function
-std: : shared
-ptr<Report> ps (new Report ("using shared _ptr")) ;
-ps->comment () ;
+std: :auto_ ptr<Report> PS (new Report("using auto_ Ptr"))；
+ps->comment() ； // use -> to invoke a member function
+std: ： shared
+ptr<Report> ps (new Report ("using shared _ptr")) ；
+ps->comment () ；
 std: :unique_ ptr<Report> pS (new Report ("using unique_ Ptr")) i
-ps- >comment() ;
+ps- >comment() ；
 return 0;
-该程序的输出如下:
+
+该程序的输出如下：
+
 0bject created!
 using auto ptr
 Object deleted !
@@ -775,50 +915,62 @@ Object deleted!
 0bject created!
 using unique_ ptr
 0bject deleted!
+
 所有智能指针类都一一个explicit构造函数，该构造函数将指针作为参数。因此不需要自动将指针转换为
-智能指针对象: 
+智能指针对象： 
+
 shared_ ptr<double> pd;
 double *p_ reg = new double;
 pa=口reg;
 // not allowed (implicit conversion)
-od = shared ptr<double>(P_ reg) ;
+od = shared ptr<double>(P_ reg) ；
 // allowed (explicit conversion
 shared ptr<double> pshared = P reg; // not allowed (implicit conversion)
-shared ptr<double> pshared(D_ reg); // allowed (explicit conversion)
+shared ptr<double> pshared(D_ reg)； // allowed (explicit conversion)*
+
 由于智能指针模板类的定义方式，智能指针对象的很多方面都类似于常规指针。例如，如果ps是一个
 智能指针对象，则可以对它执行解除引用操作(* ps)、用它来访问结构成员(ps->puffndex)、将它赋给指
 向相同类型的常规指针。还可以将智能指针对象赋给另-一个同类型的智能指针对象，但将引起一个问题，
 这将在下一节进行讨论。
-但在此之前，先说说对全部三种智能指针都应避免的一点:
-string vacation("I wandered lonely as a cloud. ") ;
-shared_ ptr<string> pvac (&vacation) ; // NO!
+
+但在此之前，先说说对全部三种智能指针都应避免的一点：
+
+string vacation("I wandered lonely as a cloud. ") ；
+shared_ ptr<string> pvac (&vacation) ； // NO!
+
 pvac过期时，程序将把delete运算符用于非堆内存，这是错误的。
+
 就程序清单16.5演示的情况而言，三种智能指针都能满足要求，但情况并非总是这样简单。
 
 ### 有关智能指针的注意事项
 
 为何有三种智能指针呢?实际上有4种，但本书不讨论weak ptr。 为何摒弃auto ptr 呢?
-先来看下面的赋值语句:
-auto_ ptr<string> ps (new string("I reigned lonely as a cloud."));
+先来看下面的赋值语句：
+
+auto_ ptr<string> ps (new string("I reigned lonely as a cloud."))；
 auto_ ptr<string> vocation;
 vocation = ps;
+
 上述赋值语句将完成什么工作呢?如果ps和vocation是常规指针，则两个指针将指向同-一个string对
-第16章string 类和标准模板库
-671
-象。这是不能接受的，因为程序将试图删除同一个对象两次-
--次是ps过期时，另-次是vocation过期
-时。要避免这种问题，方法有多种。
+象。这是不能接受的，因为程序将试图删除同一个对象两次--次是ps过期时，另-次是vocation过期时。要避免这种问题，方法有多种。
+
 定义赋值运算符，使之执行深复制。这样两个指针将指向不同的对象，其中的一一个对象是另一一个
 对象的副本。
+
 建立所有权(ownership)概念，对于特定的对象，只能有-一个智能指针可拥有它，这样只有拥有
 对象的智能指针的构造函数会删除该对象。然后，让赋值操作转让所有权。这就是用于auto ptr
 和unique_ ptr 的策略，但unique_ ptr 的策略更严格。
+
 创建智能更高的指针，跟踪引用特定对象的智能指针数。这称为引用计数(reference counting)
-例如,赋值时，计数将加1,而指针过期时，计数将减1。仅当最后- -一个指针过期时,才调用delete.
+例如，赋值时，计数将加1,而指针过期时，计数将减1。仅当最后- -一个指针过期时，才调用delete.
 这是shared ptr 采用的策略。
+
 当然，同样的策略也适用于复制构造函数。
+
 每种方法都有其用途。程序清单166是一个不适合使用auto_ ptr 的示例。
+
 程序清单16.6 fowl.cpp
+
 // fowl.cpp -- auto_ ptr a poor choice
 
 ```
@@ -829,36 +981,40 @@ vocation = ps;
 int main()
 using namespace std;
 auto_ ptr<string> films[5] =
-auto_ ptr<string> (new string("Fowl Balls")) ,
+auto_ ptr<string> (new string("Fowl Balls")) ，
 auto_ ptr<string> (new string( "Duck walks"))
-auto_ ptr<string> (new string ("Chicken Runs")) ,
+auto_ ptr<string> (new string ("Chicken Runs")) ，
 auto_ ptr<string> (new string ("Turkey Errors")) ，
 auto_ ptr<string> (new string ("Goose Eggs"))
 auto_ ptr<string> pwin;
-pwin = films[2] ;// films[2] loses ownership
-cout << "The nominees for best avian baseball film are\n";
+pwin = films[2] ；// films[2] loses ownership
+cout << "The nominees for best avian baseball film are\n"；
 for(inti=0;i<5;i++)
 cout << *films[i] << endl;
-cout << "The winner is " << *pwin << "!\n";
-cin.get();
+cout << "The winner is " << *pwin << "!\n"；
+cin.get()；
 return 0;
 ```
 
-下面是该程序的输出:
+下面是该程序的输出：
+
 The nominees for best avian baseball film are
 Fowl Balls
 Duck walks
 Segmentation fault (core dumped)
+
 消息core dumped 表明，错误地使用auto_ ptr 可能导致问题( 这种代码的行为是不确定的，其行为可
 能随系统而异)。这里的问题在于，下面的语句将所有权从films[2]转让给pwin:
-pwin = films[2];
+
+pwin = films[2]；
 // fi1ms[2] loses ownership
-672
-C++ Primer Plus(第6版)中文版
+
 这导致films[2]不再引用该字符串。在auto_ ptr 放弃对象的所有权后，便可能使用它来访问该对象。当
 程序打印films[2]指向的字符串时，却发现这是一个空指针，这显然讨厌的意外。
+
 如果在程序清单16.6 中使用shared ptr 代替auto ptr (这要求编译器支持C++11新增的shared ptr
-类)，则程序将正常运行，其输出如下:
+类)，则程序将正常运行，其输出如下：
+
 The nominees for best avian baseball film are
 FowI Balls
 Duck walks
@@ -866,141 +1022,170 @@ Chicken Runs
 Turkey Errors
 Goose Eggs
 The winner is Chicken Runs !
-差别在于程序的如下部分:
+
+差别在于程序的如下部分：
+
 shared ptr<string> pwin;
-pwin = films[2];
+pwin = films[2]；
+
 这次pwin和films[2]指向同一个对象，而引用计数从1增加到2。在程序末尾，后声明的pwin首先调
 用其析构函数，该析构函数将引用计数降低到1。然后，shared ptr 数组的成员被释放，对filmsp[2]调用析
 构函数时，将引用计数降低到0，并释放以前分配的空间。
-因此使用shared ptr 时，程序清单16.6 运行正常;而使用auto ptr 时，该程序在运行阶段崩溃。如果
+
+因此使用shared ptr 时，程序清单16.6 运行正常；而使用auto ptr 时，该程序在运行阶段崩溃。如果
 使用unique ptr,结果将如何呢?与auto ptr - ~样，unique_ ptr 也采用所有权模型。但使用unique_ ptr 时，
-程序不会等到运行阶段崩溃，而在编译器因下述代码行出现错误:
-pwin = films[2];
+程序不会等到运行阶段崩溃，而在编译器因下述代码行出现错误：
+
+pwin = films[2]；
+
 显然，该进一步探索autoptr和unique_ptr之间的差别。
 
 ### unique_ ptr 为何优于auto ptr
 
-请看下面的语句:
-auto_ ptr<string> p1 (new string("auto"); //#1
+请看下面的语句：
+
+auto_ ptr<string> p1 (new string("auto")； //#1
 auto_ ptr<string> p2
 //#2
 p2 = p1;
 //#3
+
 在语句#了中，p2接管string 对象的所有权后，p1的所有权将被剥夺。前面说过，这是件好事，可防
-止p1和p2的析构函数试图删除同-一个对象;但如果程序随后试图使用p1,这将是件坏事，因为p1不再
+止p1和p2的析构函数试图删除同-一个对象；但如果程序随后试图使用p1,这将是件坏事，因为p1不再
 指向有效的数据。
-下面来看使用unique_ ptr 的情况:
-unique_ ptr<string> D3 (new string("auto"); //#4
+
+下面来看使用unique_ ptr 的情况：
+
+unique_ ptr<string> D3 (new string("auto")； //#4
 unique_ ptr<string> p4;
 //#5
 p4 = p3;
 //#6
+
 编译器认为语句#6非法，避免了p3不再指向有效数据的问题。因此，unique ptr 比auto ptr 更安全(编
 译阶段错误比潜在的程序崩溃更安全)。
-但有时候，将一一个智能指针赋给另一个并不会留下危险的悬挂指针。假设有如下函数定义:
+
+但有时候，将一一个智能指针赋给另一个并不会留下危险的悬挂指针。假设有如下函数定义：
+
 unique_ ptr<string> demo (const char * s)
-unique_ ptr<string> temp (new string(s)) ;
-return temp ;
-并假设编写了如下代码:
+unique_ ptr<string> temp (new string(s)) ；
+return temp ；
+
+并假设编写了如下代码：
+
 unique_ ptr<string> PS;
-ps = demo ("Uniquely special") ;
-第16章string 类和标准模板库
-673
+ps = demo ("Uniquely special") ；
+
 demo( )返回一个临时unique_ ptr, 然后ps接管了原本归返回的unique_ ptr 所有的对象，而返回的
 unique ptr 被销毁。这没有问题，因为ps拥有了string 对象的所有权。但这里的另一个好处是， demo( )返
 回的临时uniqueptr很快被销毁，没有机会使用它来访问无效的数据。换句话说，没有理由禁止这种赋值。
+
 神奇的是，编译器确实允许这种赋值!
+
 总之，程序试图将一个unique ptr 赋给另- 一个时，如果源unique ptr是个临时右值，编译器允许这样
-做;如果源uniqueptr将存在一段时间，编译器将禁止这样做:
+做；如果源uniqueptr将存在一段时间，编译器将禁止这样做：
+
 using namespace std;
-unique_ ptr< string> pul (new string "Hi ho!");
+unique_ ptr< string> pul (new string "Hi ho!")；
 unique_ ptr< string> pu2;
 pu2 = pul;
 //#1 not allowed
-unique_ ptr<string> pu3 ;
-pu3 = unique ptr<string>(new string "Yo!"); //#2 allowed
-语句#1将留下悬挂的unique_ ptr (pul),这可能导致危害。语句#2不会留下悬挂的unique. ptr,因为它
+unique_ ptr<string> pu3 ；
+pu3 = unique ptr<string>(new string "Yo!")； //#2 allowed
+
+语句#1将留下悬挂的unique_ ptr (pul)，这可能导致危害。语句#2不会留下悬挂的unique. ptr,因为它
 调用uniqueptr的构造函数，该构造函数创建的临时对象在其所有权转让给pu后就会被销毁。这种随情况
 而异的行为表明，unique_ ptr 优于允许两种赋值的auto ptr。 这也是禁止(只是一种建议，编译器并不禁止)
 在容器对象中使用auto ptr, 但允许使用unique ptr 的原因。如果容器算法试图对包含unique ptr 的容器执
-行类似于语句#1的操作，将导致编译错误;如果算法试图执行类似于语句#2的操作，则不会有任何问题。
+行类似于语句#1的操作，将导致编译错误；如果算法试图执行类似于语句#2的操作，则不会有任何问题。
 而对于auto_ptr,类似于语句#1的操作可能导致不确定的行为和神秘的崩溃。
+
 当然，您可能确实想执行类似于语句#1的操作。仅当以非智能的方式使用遗弃的智能指针(如解除引
-用时)，这种赋值才不安全。要安全地重用这种指针，可给它赋新值。C++有一个标准库函数std:move( ),
+用时)，这种赋值才不安全。要安全地重用这种指针，可给它赋新值。C++有一个标准库函数std:move( )，
 让您能够将-一个unique_ ptr赋给另一个。下 面是一个使用前述demo( )函数的例子，该函数返回-一个
-unique_ ptr<string> 对象:
+unique_ ptr<string> 对象：
+
 using namespace std;
 unique_ ptr<string> ps1, ps2;
-psl = demo ( "Uniquely special") ;
-ps2 = move (ps1) ;
+psl = demo ( "Uniquely special") ；
+ps2 = move (ps1) ；
 // enable ass ignment
-ps1 = demo(" and more") ;
-cout << *ps2 << *ps1 << endl ;
+ps1 = demo(" and more") ；
+cout << *ps2 << *ps1 << endl ；
+
 您可能会问，unique ptr如何能够区分安全和不安全的用法呢?答案是它使用了C++11 新增的移动构
 造函数和右值引用，这将在第18章讨论。
+
 相比于auto ptr, unique ptr 还有另一个优点。 它有-一 个可用于数组的变体。别忘了，必须将delete和
-new配对，将delete []和new [ ]配对。模板auto ptr 使用delete而不是delete [],因此只能与new -一起使用，
-而不能与new[]-起使用。但unique ptr 有使用new [ ]和delete [ ]的版本: 
-sta: :unique_ _ptr< double [] >pda (new double(5)); // will use delete []
-警告:使用new分配内存时，才能使用auto ptr 和shared ptr, 使用new [ ]分配内存时，不能使用它
+new配对，将delete []和new [ ]配对。模板auto ptr 使用delete而不是delete []，因此只能与new -一起使用，
+而不能与new[]-起使用。但unique ptr 有使用new [ ]和delete [ ]的版本： 
+
+sta: :unique_ _ptr< double [] >pda (new double(5))； // will use delete []
+
+
+警告：使用new分配内存时，才能使用auto ptr 和shared ptr, 使用new [ ]分配内存时，不能使用它
 们。不使用new分配内存时，不能使用auto ptr 或shared ptr; 不使用new或new []分配内存时，不能使用
 unique_ ptro
 
 ### 选择智能指针
 
 应使用哪种智能指针呢?如果程序要使用多个指向同一一个对象的指针，应选择sharedptr。这样的情况
-包括:有- - 个指针数组，并使用一些辅助指针来标识特定的元素，如最大的元素和最小的元素;两个对象
-包含都指向第三个对象的指针; STL容器包含指针。很多STL算法都支持复制和赋值操作，这些操作可用
+包括：有- - 个指针数组，并使用一些辅助指针来标识特定的元素，如最大的元素和最小的元素；两个对象
+包含都指向第三个对象的指针； STL容器包含指针。很多STL算法都支持复制和赋值操作，这些操作可用
 于shared ptr,但不能用于unique_ ptr (编译器发出警告)和auto ptr (行为不确定)。如果您的编译器没有
 提供shared_ ptr， 可使用Boost库提供的shared ptr。
+
 如果程序不需要多个指向同一一个对象的指针， 则可使用unique ptr。 如果函数使用new分配内存，并
-674
-C++ Primer Plus (第6版)中文版
 返回指向该内存的指针，将其返回类型声明为unique ptr是不错的选择。这样，所有权将转让给接受返回
 值的unique_ ptr, 而该智能指针将负责调用delete.可将unique_ ptr 存储到STL容器中，只要不调用将-一个
 unique ptr 复制或赋给另一一个的方法或算法(如sort( ))。例如，可在程序中使用类似于下面的代码段，这
-里假设程序包含正确的include和using语句:
+里假设程序包含正确的include和using语句：
+
 unique_ ptr<int> make_ int(int n)
-return unique_ ptr<int> (new int (n));
+return unique_ ptr<int> (new int (n))；
 void Show (unique_ ptr<int> & pi)
 // pass by reference
-cout<<*a<<↑↑;
+cout<<*a<<↑↑；
 int main()
-vector<unique_ ptr<int> > vp(size) ;
-for (int i = 0; i < vp.size(); i++)
-vp[i] = make_ int(rand() 号1000) ;
+vector<unique_ ptr<int> > vp(size) ；
+for (int i = 0; i < vp.size()； i++)
+vp[i] = make_ int(rand() 号1000) ；
 // copy temporary unique_ ptr
 vp . push back (make_ int (rand()号1000))
 // ok because arg is temporary
-for_ each (vp. begin()，vp.end(), show); // use for_ each()
+for_ each (vp. begin()，vp.end()， show)； // use for_ each()
+
 其中的push back( )调用没有问题，因为它返回-一个临时unique ptr,该unique ptr 被赋给vp中的一一个
 unique_ ptr。 另外，如果按值而不是按引用给show( )传递对象，for_ each( )语句将非法，因为这将导致使用
 一个来自vp的非临时unique_ ptr 初始化pi,而这是不允许的。前面说过，编译器将发现错误使用unique_ ptr
 的企图。
+
 在unique ptr 为右值时，可将其赋给shared ptr,这与将-一个 unique_ ptr 赋给另-一个需要满足的条件相
 同。与前面- ~样，在下面的代码中，make_ int( )的返回类型为unique ptr<int>:
-unique_ ptr<int> pup (make_ int (rand()号1000); // ok
-shared ptr<int> SPP (pup);
+
+unique_ ptr<int> pup (make_ int (rand()号1000)； // ok
+shared ptr<int> SPP (pup)；
 // not allowed, Pup an lvalue
-shared ptr<int> spr (make_ int (rand()号1000); // ok
+shared ptr<int> spr (make_ int (rand()号1000)； // ok
+
 模板shared ptr 包含一一个 显式构造函数，可用于将右值unique_ ptr 转换为shared ptr. shared ptr 将接管
 原来归unique ptr 所有的对象。
+
 在满足unique_ ptr 要求的条件时，也可使用auto ptr,但unique_ ptr 是更好的选择。如果您的编译器没
 有提供unique ptr,可考虑使用BOOST库提供的scoped ptr, 它与unique_ ptr 类似。
 
 ## 标准模板库
 
 STL提供了一组表示容器、迭代器、函数对象和算法的模板。容器是一个与数组类似的单元，可以
-存储若千个值。STL容器是同质的，即存储的值的类型相同;算法是完成特定任务(如对数组进行排序
-或在链表中查找特定值)的处方;迭代器能够用来遍历容器的对象，与能够遍历数组的指针类似，是广
-义指针;函数对象是类似于函数的对象，可以是类对象或函数指针(包括函数名，因为函数名被用作指
+存储若千个值。STL容器是同质的，即存储的值的类型相同；算法是完成特定任务(如对数组进行排序
+或在链表中查找特定值)的处方；迭代器能够用来遍历容器的对象，与能够遍历数组的指针类似，是广
+义指针；函数对象是类似于函数的对象，可以是类对象或函数指针(包括函数名，因为函数名被用作指
 针)。STL使得能够构造各种容器(包括数组、队列和链表)和执行各种操作( 包括搜索、排序和随机
 排列)
+
 Alex Stepanov和Meng Lee在Hewlett-Packard 实验室开发了STL,并于1994年发布其实现。ISO/ANSI
 C++委员会投票同意将其作为C++标准的组成部分。STL不是面向对象的编程，而是一种不同的编程模
 式一泛 型编程( generic programming)。 这使得STL在功能和方法方面都很有趣。关于STL的信息很
-第16章string 类和标准模板库
-675
 多，无法用一章的篇幅全部介绍，所以这里将介绍一些有 代表性的例子，并领会泛型编程方法的精神。先
 来看几个具体的例子，让您对容器、迭代器和算法有- -些感性的认识，然后再介绍底层的设计理念，并简
 要地介绍STL。附录G对各种STL方法和函数进行了总结。
@@ -1015,34 +1200,43 @@ C++委员会投票同意将其作为C++标准的组成部分。STL不是面向�
 即可以创建vector对象，将一一个 vector对象赋给另- - 个对象，使用[ ]运算符来访问vector元素。要使类成
 为通用的，应将它设计为模板类，STL正是这样做的一在头文 件vector (以前为vector.h) 中定义了一个
 vector模板。
+
 要创建vector 模板对象，可使用通常的<type>表示法来指出要使用的类型。另外，vector 模板使用动
-态内存分配，因此可以用初始化参数来指出需要多少矢量:
+态内存分配，因此可以用初始化参数来指出需要多少矢量：
 
 ```
 # include vector
 
 using namespace std;
-vector<int> ratings(5) ;
+vector<int> ratings(5) ；
 // a vector of 5 ints
 int n;
 cin》> n;
-vector<double> scores(n) ;
+vector<double> scores(n) ；
 // a vector of n doubles
 ```
 
-由于运算符[ ]被重载，因此创建vector 对象后，可以使用通常的数组表示法来访问各个元素:
+由于运算符[ ]被重载，因此创建vector 对象后，可以使用通常的数组表示法来访问各个元素：
+
 ratings[0] = 9;
 Eor(inti=0;i<n;i++)
 cout << scores[i] << endl;
+
 分配器
+
 与string 类相似，各种STL容器模板都接受一个可选的模板参数，该参数指定使用哪个分配器对象来
-管理内存。例如，vector 模板的开头与下面类似:
+管理内存。例如，vector 模板的开头与下面类似：
+
 template <class T，class Allocator = allocator<T> >
 class vector
+
 如果省略该模板参数的值，则容器模板将默认使用allocator<T>类。这个类使用new和delete。
+
 程序清单16.7 是-一个要求不高的应用程序，它使用了这个类。该程序创建了两个vector对象一-一个
 是int规范，另一个是string规范，它们都包含5个元素。
+
 程序清单16.7 vect1 .cpp
+
 // vect1.CPP -- introducing the vector template
 #include <iostream>
 #include <string>
@@ -1052,45 +1246,46 @@ int main()
 using std: :vector;
 using std: :string;
 using std::cin;
-using std: :cout ;
-676
-C++ Primer Plus (第6版)中文版
-vector<int> ratings (NUM) ;
+using std: :cout ；
+vector<int> ratings (NUM) ；
 vector<string> titles (NUM)
 cout << "You will do exactly as told. You will enter\n"
-<< NUM << " book titles and your ratings (0-10) .\n";
+<< NUM << " book titles and your ratings (0-10) .\n"；
 for(i=0;i<NUM;i++)
-cout << "Enter title #"<< i + 1 << ": ";
-getline (cin, titles[i]);
-cout << "Enter your rating (0-10): ";
-cin >> ratings[i] ;
-cin.get();
+cout << "Enter title #"<< i + 1 << "： "；
+getline (cin, titles[i])；
+cout << "Enter your rating (0-10)： "；
+cin >> ratings[i] ；
+cin.get()；
 cout << "Thank you. You entered the following: \n"
-<< "Rating\ tBook\n" ;
+<< "Rating\ tBook\n" ；
 for(=0;i<NUM;1++)
 cout << ratings[i] << "\t" << titles[i] << endl;
 }
 return 0;
-程序清单16.7中程序的运行情况如下:
+
+程序清单16.7中程序的运行情况如下：
+
 You will do exactly as told. You will enter
 5 book titles and your ratings (0-10).
 Enter title #1: The Cat Who Knew C++
-Enter your rating (0-10): 6
+Enter your rating (0-10)： 6
 Enter title #2: Felonious Felines
-Enter your rating (0-10) : 4
+Enter your rating (0-10) ： 4
 Enter title #3: Warlords of Wonk
-Enter your rating (0-10): 3
+Enter your rating (0-10)： 3
 Enter title #4: Don't Touch That Metaphor
-Enter your rating (0-10): 5
+Enter your rating (0-10)： 5
 Enter title #5: Panic 0riented Progr amming
-Enter your rating (0-10): 8
-Thank you. You entered the following :
+Enter your rating (0-10)： 8
+Thank you. You entered the following ：
 Rating Book
 The Cat Who Knew C++
 Felonious Felines
 warlords of Wonk
 Don't Touch That Metaphor
 Panic Oriented Programming
+
 该程序使用vector模板只是为方便创建动态分配的数组。下一节将介绍一个使用更多类方法的
 例子
 
@@ -1099,75 +1294,98 @@ Panic Oriented Programming
 除分配存储空间外，vector 模板还可以完成哪些任务呢?所有的STL容器都提供了一些基本方法，其
 中包括size( )一返回容器中元素数目、 swap()-交换两个容 器的内容、begin( )一返回- 一个指向容器
 中第一一个元素的迭代器、end( )一~返回 一个表示超过容器尾的迭代器。
+
 什么是迭代器?它是一个广义指针。事实上，它可以是指针，也可以是一一个可对其执行类似指针的操
 作一如解除引用 (如operator*( ))和递增( 如operator++( )) - 一
-的对象。稍后将知道，通过将指针广
-第16章string 类和标准模板库
-77
-义化为迭代器，让STL能够为各种不同的容器类(包括那些简单指针无法处理的类)提供统一-的接口。 每
+的对象。稍后将知道，通过将指针广义化为迭代器，让STL能够为各种不同的容器类(包括那些简单指针无法处理的类)提供统一-的接口。 每
 个容器类都定义了一个合适的迭代器，该迭代器的类型是一一个名为iterator的typedef,其作用域为整个类。
-例如，要为vector的double类型规范声明一个迭代器，可以这样做:
+
+例如，要为vector的double类型规范声明一个迭代器，可以这样做：
+
 vector<double>: :iterator pd; // pd an iterator
-假设scores 是-一个vector<double>对象: 
+
+假设scores 是-一个vector<double>对象： 
+
 vector<double> scores;
-则可以使用迭代器pd执行这样的操作: 
-pd = scores.begin(); // have pd point to the first element
+
+则可以使用迭代器pd执行这样的操作：
+
+pd = scores.begin()； // have pd point to the first element
 *pd = 22.3;
 // dereference pa and assign value to first element
 ++pd;
 // make pd point to the next element
+
 正如您看到的，迭代器的行为就像指针。顺便说一一句， 还有一一个C++11自动类型推断很有用的地方。
-例如，可以不这样做:
-vector<double>: :iterator pd = scores .begin() ;
-而这样做:
-auto pd = scores.begin(); // C++l1 automatic type deduction
+例如，可以不这样做：
+
+vector<double>: :iterator pd = scores .begin() ；
+
+而这样做：
+
+auto pd = scores.begin()； // C++l1 automatic type deduction
+
 回到前面的示例。什么是超过结尾( past-the-end)呢?它是一种迭代器，指向容器最后-一个元素后面
 的那个元素。这与C-风格字符串最后一个字符后面的空字符类似，只是空字符是一个值，而“超过结尾”
 是一个指向元素的指针(迭代器)。end( )成员函数标识超过结尾的位置。如果将迭代器设置为容器的第一
 个元素，并不断地递增，则最终它将到达容器结尾，从而遍历整个容器的内容。因此，如果scores 和pd
-的定义与前面的示例中相同，则可以用下面的代码来显示容器的内容:
-for (pd = scores.begin(); pd != scores. end(); pa++)
+的定义与前面的示例中相同，则可以用下面的代码来显示容器的内容：
+
+for (pd = scores.begin()； pd != scores. end()； pa++)
 cout << *pd < endl;;
+
 所有容器都包含刚才讨论的那些方法。vector 模板类也包含一些只有某些 STL容器才有的方法。
 push back( )是-一个方便的方法，它将元素添加到矢量末尾。这样做时，它将负责内存管理，增加矢量的长
-度，使之能够容纳新的成员。这意味着可以编写这样的代码:
+度，使之能够容纳新的成员。这意味着可以编写这样的代码：
+
 vector<double> scores; // create an empty vector
 double temp;
 while (cin >> temp && temp >= 0)
 scores .push_ back (temp)
-cout << "You entered " < scores.size() << " scores. \口";
+cout << "You entered " < scores.size() << " scores. \口"；
+
 每次循环都给scores 对象增加-一个 元素。在编写或运行程序时，无需了解元素的数目。只要能够取得
 足够的内存，程序就可以根据需要增加scores的长度。
+
 erase( )方法删除矢量中给定区间的元素。它接受两个迭代器参数，这些参数定义了要删除的区间。了
 解STL如何使用两个迭代器来定义区间至关重要。第一个迭代器 指向区间的起始处，第二个迭代器位于区
 间终止处的后-一个位置。例如，下 述代码删除第一个 和第- .个元素，即删除begin( )和begin( )+1指向的元
-素(由于vector提供了随机访问功能，因此vector类迭代器定义了诸如begin()+2等操作):
-scores. erase (scores.begin(), scores.begin() + 2);
+素(由于vector提供了随机访问功能，因此vector类迭代器定义了诸如begin()+2等操作)：
+
+scores. erase (scores.begin()， scores.begin() + 2)；
+
 如果it1和it2是迭代器，则STL文档使用[p1, p2)来表示从p1到p2 (不包括p2)的区间。因此，区
-间[begin( ), end( )]将包括集合的所有内容(参见图16.3)，而区间[p1, p1)为空。[ )表示法并不是C+ +的组成
+间[begin( )， end( )]将包括集合的所有内容(参见图16.3)，而区间[p1, p1)为空。[ )表示法并不是C+ +的组成
 部分，因此不能在代码中使用，而只能出现在文档中。
-注意:区间[it1, it2)由迭代器it1 和it2指定，其范围为it1到it2 (不包括it2 )。
+
+注意：区间[it1, it2)由迭代器it1 和it2指定，其范围为it1到it2 (不包括it2 )。
+
 insert( )方法的功能与erase( )相反。它接受3个迭代器参数，第一个参数指定了新元素的插入位置，第
 二个和第三个迭代器参数定义了被插入区间，该区间通常是另--一个容器对象的一部分。例如，下面的代码
-将矢量newv中除第一个元素外的所有元素插入到oldv矢量的第一一个元素前面:
-678
-C++ Primer Plus(第6版)中文版
+将矢量newv中除第一个元素外的所有元素插入到oldv矢量的第一一个元素前面：
+
 vector<int> old v;
-vector<int> new V ;
-o1d v. insert(old_ v.begin(), new v.begin( + 1, new v.end());
-间:
-L things . begin(), things . end() )
+vector<int> new V ；
+o1d v. insert(old_ v.begin()， new v.begin( + 1, new v.end())；
+间：
+L things . begin()， things . end() )
 00104 108 112 116 120 124 128 132 13
 things ,begin( )
 things. end( )
+
 图16.3 STL 的区间概念
+
 顺便说一句，对于这种情况，拥有超尾元素是非常方便的，因为这使得在矢量尾部附加元素非常简单。
 下面的代码将新元素插入到old.end()前面，即矢量最后-一个元素的后面。
-old_ v. insert(old_ v.end() ，new_ v.begin() + 1，new_ v.end()) ;
+
+old_ v. insert(old_ v.end() ，new_ v.begin() + 1，new_ v.end()) ；
+
 程序清单16.8 演示了size()、 begin( )、end( )、push back( )、erase( )和insert( )的用法。为简化数据处
 理，将程序清单16.7 中的rating和title组合成了-一个Review结构，并使用FillReview( )和ShowReview( )
 函数来输入和输出Review对象。
+
 程序清单16.8 vect2.cpp
+
 *
 
 ```
@@ -1180,62 +1398,62 @@ old_ v. insert(old_ v.end() ，new_ v.begin() + 1，new_ v.end()) ;
 struct Review
 std: :string title;
 int rating;
-bool FillReview (Review & rr) ;
-void ShowReview (const Review & rr) ;
+bool FillReview (Review & rr) ；
+void ShowReview (const Review & rr) ；
 int main()
 using std: :cout;
 using std: :vector;
-vector<Review> books ;
+vector<Review> books ；
 Review temp;
 while (FillReview (temp))
 第16章string 类和标准模板库
 679
-books . push back (temp) ;
-int num = books.size() ;
+books . push back (temp) ；
+int num = books.size() ；
 if (num > 0)
 out << "Thank you. You entered the following: \n"
-<< "Rating\tBook\n" ;
+<< "Rating\tBook\n" ；
 for(inti=0;i<num;i++)
-ShowReview (books[i]);
+ShowReview (books[i])；
 out << "Reprising: \n"
-<< "Rating\tBook\n" ;
-vector <Review>: : iterator pr
-for (pr = books. begin(); pr != books.end(); pr++)
-ShowReview(*pr) ;
-vector <Review> oldl ist (books) ;
+<< "Rating\tBook\n" ；
+vector <Review>: ： iterator pr
+for (pr = books. begin()； pr != books.end()； pr++)
+ShowReview(*pr) ；
+vector <Review> oldl ist (books) ；
 // COPY constructor used
 if (num > 3)
 // remove 2 items
-books. erase (books.begin() + 1，books.begin() + 3);
-cout << "After erasure: \n";
-or (pr = books .begin(); pr != books.end(); pr++)
-ShowReview(*pr) ;
+books. erase (books.begin() + 1，books.begin() + 3)；
+cout << "After erasure: \n"；
+or (pr = books .begin()； pr != books.end()； pr++)
+ShowReview(*pr) ；
 // insert 1 item
 books. insert (books . begin()，o1dlist.begin() + 1,
 oldlist . begin()
-2);
-cout << "After insertion:\n";
-for (pr = books.begin(); pr != books.end(); pr++)
-ShowReview(*pr) ;
-books . swap (old1ist) ;
-cout << "Swapping oldlist with books:\n";
-for (pr = books .begin(); pr != books.end(); pr++)
-ShowReview(*pr) ;
+2)；
+cout << "After insertion:\n"；
+for (pr = books.begin()； pr != books.end()； pr++)
+ShowReview(*pr) ；
+books . swap (old1ist) ；
+cout << "Swapping oldlist with books:\n"；
+for (pr = books .begin()； pr != books.end()； pr++)
+ShowReview(*pr) ；
 else
-cout << "Nothing entered, nothing gained. \n" ;
+cout << "Nothing entered, nothing gained. \n" ；
 return 0;
 bool FillReview(Review & rr)
-std::cout << "Enter book title (quit to quit): ";
-std: :getline (std: :cin,rr.title) ;
+std::cout << "Enter book title (quit to quit)： "；
+std: :getline (std: :cin,rr.title) ；
 if (rr.title == "quit")
-return false ;
-std: :cout << "Enter book rating: ";
+return false ；
+std: :cout << "Enter book rating: "；
 sta: :cin >> rr. rating;
 if (!std: :cin)
 return false;
 // get rid of rest of input line
 while (std::cin.get() != '
-continue ;
+continue ；
 return true;
 void ShowReview(const Review & rr)
 680
@@ -1244,17 +1462,18 @@ std::cout《< rr.rating < "\t"《< rr.title 《< std: :endl;
 ```
 
 *
-程序清单16.8中程序的运行情况如下:
-Enter book title (quit to quit): The Cat Who Knew Vectors
+程序清单16.8中程序的运行情况如下：
+
+Enter book title (quit to quit)： The Cat Who Knew Vectors
 Enter book rating: 5
-Enter book title (quit to quit): Candid Canines
+Enter book title (quit to quit)： Candid Canines
 Enter book rating: 7
-Enter book title (quit to quit): Warriors of Wonk
+Enter book title (quit to quit)： Warriors of Wonk
 Enter book rating: 4
-Enter book title (quit to quit) : Quantum Manners
+Enter book title (quit to quit) ： Quantum Manners
 Enter book rating: 8
-Enter book title (quit to quit): quit
-Thank you. You entered the following :
+Enter book title (quit to quit)： quit
+Thank you. You entered the following ：
 Rating Book
 he Cat Who Knew Vectors
 Candid Canines
@@ -1285,67 +1504,82 @@ Quantum Manners
 操作的方法吗?没有! STL从更广泛的角度定义了非成员(non-member) 函数来执行这些操作，即不是为
 每个容器类定义find()成员函数，而是定义了一个适用于所有容器类的非成员函数find()。这种设计理念
 省去了大量重复的工作。例如，假设有8个容器类，需要支持10种操作。如果每个类都有自己的成员函数，
-则需要定义80 (8*10) 个成员函数。但采用STL方式时，只需要定义10个非成员函数即可。在定义新的
+则需要定义80 (8\*10) 个成员函数。但采用STL方式时，只需要定义10个非成员函数即可。在定义新的
 容器类时，只要遵循正确的指导思想，则它也可以使用已有的10个非成员函数来执行查找、排序等操作。
 另一方面，即使有执行相同任务的非成员函数，STL 有时也会定义一个成员函数。这是因为对有些操
 作来说，类特定算法的效率比通用算法高，因此，vector的成员函数swap()的效率比非成员函数swap()
 高，但非成员函数让您能够交换两个类型不同的容器的内容。
-下面来看3个具有代表性的STL函数: for_ each( )、random shuffe( )和sort( )。for each( )函数可用于
+
+下面来看3个具有代表性的STL函数： for_ each( )、random shuffe( )和sort( )。for each( )函数可用于
 很多容器类，它接受3个参数。前两个是定义容器中区间的迭代器，最后- -一个是指向函数的指针(更普遍
-第16章string 类和标准模板库
-681
 地说，最后一个参数是一一个函数对象，函数对象将稍后介绍)。for_ each( )函数将被指向的函数应用于容器
-区间中的各个元素。被指向的函数不能修改容器元素的值。可以用for_each()函数来代替for循环。例如,
-可以将代码:
+区间中的各个元素。被指向的函数不能修改容器元素的值。可以用for_each()函数来代替for循环。例如，
+可以将代码：
+
 vector<Review>: :iterator Dr;
-for (pr = books. begin() ; pr != books.end() ; pr++)
-ShowReview(*pr) ;
-替换为:
-for_ each (books. begin()，books . end()，ShowReview) ;
+for (pr = books. begin() ； pr != books.end() ； pr++)
+ShowReview(*pr) ；
+替换为：
+for_ each (books. begin()，books . end()，ShowReview) ；
+
 这样可避免显式地使用迭代器变量。
+
 Random shuffe( )函数接受两个指定区间的迭代器参数，并随机排列该区间中的元素。例如，下面的
-语句随机排列books矢量中所有元素:
-random_ shuffle (books . begin()，books. end()) ;
+语句随机排列books矢量中所有元素：
+
+random_ shuffle (books . begin()，books. end()) ；
+
 与可用于任何容器类的for_each不同，该函数要求容器类允许随机访问，vector类可以做到这一点。
 sort()函数也要求容器支持随机访问。该函数有两个版本，第一个版本接受两个定义区间的迭代器参数，
 并使用为存储在容器中的类型元素定义的<运算符，对区间中的元素进行操作。例如，下面的语句按升序
-对coolstuff的内容进行排序，排序时使用内置的<运算符对值进行比较:
+对coolstuff的内容进行排序，排序时使用内置的<运算符对值进行比较：
+
 vector<int> coolstuff;
-sort (coolstuff .begin()，coolstuff.end()) ;
+sort (coolstuff .begin()，coolstuff.end()) ；
+
 如果容器元素是用户定义的对象，则要使用sort()，必须定义能够处理该类型对象的operator<()函数。
 例如，如果为Review提供了成员或非成员函数operator<()，则可以对包含Review对象的矢量进行排序。
-由于Review是一个结构，因此其成员是公有的，这样的非成员函数将为:
+由于Review是一个结构，因此其成员是公有的，这样的非成员函数将为：
+
 bool operator< (const Review & r1，const Review & r2)
 if (r1.title < r2.title)
 return true;
 else
 if (r1.title == r2.title && r1.rating < r2. rating)
-return true ;
+return true ；
 else
-return false ;
-有了这样的函数后，就可以对包含Review对象( 如books)的矢量进行排序了:
-sort (books . begin()，books.end());
+return false ；
+
+有了这样的函数后，就可以对包含Review对象( 如books)的矢量进行排序了：
+
+sort (books . begin()，books.end())；
+
 上述版本的operator<( )函数按title成员的字母顺序排序。如果title成员相同，则按照rating排序。然
 而，如果想按降序或是按rating (而不是tite)排序，该如何办呢?可以使用另一种格式的sort( )。它接受
 3个参数，前两个参数也是指定区间的迭代器，最后-一个参数是指向要使用的函数的指针(函数对象)，而
-不是用于比较的operator<()。 返回值可转换为bool, false 表示两个参数的顺序不正确。下 面是一个例子:
+不是用于比较的operator<()。 返回值可转换为bool, false 表示两个参数的顺序不正确。下 面是一个例子：
+
 bool WorseThan (const Review & r1，const Review & r2)
 if (r1.rating < r2. rating)
-return true ;
+return true ；
 else
 return false;
-有了这个函数后，就可以使用下面的语句将包含Review对象的books矢量按rating升序排列:
-sort (books . begin()，books . end()，WorseThan) ;
-682
-C++ Primer Plus (第6版)中文版
+
+有了这个函数后，就可以使用下面的语句将包含Review对象的books矢量按rating升序排列：
+
+sort (books . begin()，books . end()，WorseThan) ；
+
 注意，与operator<( )相比，WorseThan( )函数执行的对Review对象进行排序的工作不那么完整。如果
-两个对象的title成员相同，operator<( )函数将按rating进行排序,而WorseThan( )将它们视为相同。第一种
+两个对象的title成员相同，operator<( )函数将按rating进行排序，而WorseThan( )将它们视为相同。第一种
 排序称为全排序( total ordering)， 第二种排序称为完整弱排序( strict weak ordering)。在全排序中，如果
 a<b和b<a都不成立，则a和b必定相同。在完整弱排序中，情况就不是这样了。它们可能相同，也可能
 只是在某方面相同，如WorseThan( )示例中的rating 成员。所以在完整弱排序中，只能说它们等价，而不
 是相同。
+
 程序清单16.9 演示了这些STL函数的用法。
+
 程序清单16.9 vect3.cpp
+
 // vect3.cpp -- using STL funct ions
 #include <iostream>
 #include <string>
@@ -1355,34 +1589,34 @@ struct Review
 std: :string title;
 int rating;
 }
-bool operator< (const Review & r1, const Review & r2) ;
-bool worseThan (const Review & r1, const Review & r2) ;
-bool FilReview(Review & rr) ;
-void ShowReview (const Review & rr) ;
+bool operator< (const Review & r1, const Review & r2) ；
+bool worseThan (const Review & r1, const Review & r2) ；
+bool FilReview(Review & rr) ；
+void ShowReview (const Review & rr) ；
 int main()
 using namespace std;
 vector <Review> books;
-Review temp ;
+Review temp ；
 while (FillReview ( temp)
-books . push _back (temp) ; ,
+books . push _back (temp) ； ，
 if (books.size() > 0)
 cout << "Thank you. You entered the following
-< books.size() < " ratings : \n"
-<< "Rating\tBook\n" ;
-for each (books .begin(), books.end() ，ShowReview) ;
-sort (books .begin()，books.end()) ;
-cout < "Sorted by title: \nRating\tBook\n";
-for each (books.begin()，books.end() ，ShowReview) ;
-sort (books . begin(), books . end()，worseThan) ;
-cout << "Sorted by rating: \nRating\tBook\n" ;
-for_ each (books . begin()，books. end(l), ShowReview) ;
-random_ shuffle (books . begin()，books. end()) ;
-cout << "After shuffl ing: \nRat ing\tBook\n" ;
-for_ each (books .begin()，books . end()，ShowReview) ;
+< books.size() < " ratings ： \n"
+<< "Rating\tBook\n" ；
+for each (books .begin()， books.end() ，ShowReview) ；
+sort (books .begin()，books.end()) ；
+cout < "Sorted by title: \nRating\tBook\n"；
+for each (books.begin()，books.end() ，ShowReview) ；
+sort (books . begin()， books . end()，worseThan) ；
+cout << "Sorted by rating: \nRating\tBook\n" ；
+for_ each (books . begin()，books. end(l)， ShowReview) ；
+random_ shuffle (books . begin()，books. end()) ；
+cout << "After shuffl ing: \nRat ing\tBook\n" ；
+for_ each (books .begin()，books . end()，ShowReview) ；
 else
 cout << "No entries. " 
 第16章string 类和标准模板库
-cout << "Bye.\n";
+cout << "Bye.\n"；
 return 0;
 bool operator< (const Review & r1，const Review & 52)
 if (r1.title < r2. title)
@@ -1397,30 +1631,30 @@ return true;
 else
 return false;
 bool FillReview (Review & rr)
-std: :cout << "Enter book title (quit to quit) : ";
-sta: :getline(std: :cin,rr.title) ;
+std: :cout << "Enter book title (quit to quit) ： "；
+sta: :getline(std: :cin,rr.title) ；
 if (rr.title == "quit")
-return false ;
-std: :cout《"Enter book rating: ";
+return false ；
+std: :cout《"Enter book rating: "；
 std::cin >> rr. rating;
 if (!std: :cin)
 return false;
 // get rid of rest of input line
 while (std::cin.get() != \n')
-cont inue ;
+cont inue ；
 return true;
 void ShowReview (const Review & rr)
 std: :cout << rr.rating << "\t" << rr.title << std: :endl;
-程序清单16.9中程序的运行情况如下:
-Enter book title (quit to quit): The Cat Who Can Teach Xou weight Io8s
+程序清单16.9中程序的运行情况如下：
+Enter book title (quit to quit)： The Cat Who Can Teach Xou weight Io8s
 Enter book rating: 8
-Enter book title (quit to quit): The Dogs of Dharma
+Enter book title (quit to quit)： The Dogs of Dharma
 Enter book rating:
-Enter book title (quit to quit): The Wimps of Wonk
+Enter book title (quit to quit)： The Wimps of Wonk
 Enter book rating: 3
-Enter book title (quit to quit) : Farewell and Delete
+Enter book title (quit to quit) ： Farewell and Delete
 Enter book
-Enter book title (quit to quit): quit
+Enter book title (quit to quit)： quit
 Thank you. You entered the following 4 ratings:
 Rating Book
 684
@@ -1454,31 +1688,40 @@ Bye.
 ### 基于范围的for循环(C++11) 
 
 第5章说过，基于范围的for 循环是为用于STL而设计的。为复习该循环，下面是第5 章的第一个
-示例:
-double prices[5] = {4.99, 10.99, 6.87，7.99，8.49};
-for (double x : prices)
-cout << x << std: :endl ;
+示例：
+
+double prices[5] = {4.99, 10.99, 6.87，7.99，8.49}；
+for (double x ： prices)
+cout << x << std: :endl ；
+
 在这种for循环中，括号内的代码声明-一个类型与容器存储的内容相同的变量，然后指出了容器的
 名称。接下来，循环体使用指定的变量依次访问容器的每个元素。例如，对于下述摘自程序清单16.9的
-语句:
-for each (books . begin(), books . end()，ShowReview);
-可将其替换为下述基于范围的for循环:
-for (auto x : books) ShowReview (x) ;
+语句：
+
+for each (books . begin()， books . end()，ShowReview)；
+
+可将其替换为下述基于范围的for循环：
+
+for (auto x ： books) ShowReview (x) ；
+
 根据book的类型(vector<Review> )，编译器将推断出x的类型为Review,而循环将依次将books中
 的每个Review对象传递给ShowReview( )。
+
 不同于for_each()，基于范围的for循环可修改容器的内容，诀窍是指定-一个引用参数。例如，假设有
-如下函数:
-void InflateReview (Review &r) {r. rating++;}
-可使用如下循环对books的每个元素执行该函数:
-for (auto & x : books) InflateReview(x);
+如下函数：
+
+void InflateReview (Review &r) {r. rating++；}
+
+可使用如下循环对books的每个元素执行该函数：
+
+for (auto & x ： books) InflateReview(x)；
 
 ## 泛型编程
 
 有了一些使用STL的经验后，来看-看底层理念。STL 是-一种泛型编程( generic programming)。面向
-第16章string 类和标准模板库
-685
 对象编程关注的是编程的数据方面，而泛型编程关注的是算法。它们之间的共同点是抽象和创建可重用代
 码，但它们的理念绝然不同。
+
 泛型编程旨在编写独立于数据类型的代码。在C++中，完成通用程序的工具是模板。当然，模板使得
 能够按泛型定义函数或类，而STL通过通用算法更进了-步。模板让这一切成为可能，但必须对元素进行
 仔细地设计。为解模板和设计是如何协同工作的，来看--看需要迭代器的原因。
@@ -1487,59 +1730,76 @@ for (auto & x : books) InflateReview(x);
 
 理解迭代器是理解STL的关键所在。模板使得算法独立于存储的数据类型，而迭代器使算法独立于使
 用的容器类型。因此，它们都是STL通用方法的重要组成部分。
+
 为了解为何需要迭代器，我们来看如何为两种不同数据表示实现find函数，然后来看如何推广这种方
-法。首先看一个在double数组中搜索特定值的函数，可以这样编写该函数:
+法。首先看一个在double数组中搜索特定值的函数，可以这样编写该函数：
+
 double * find ar(double * ar, int n, const double & val) 
 for(inti=0;i<n;i++)
 f (ar[i] == val)
-return &ar[i] ;
+return &ar[i] ；
 return 0; // or, in C++11, return nullptr;
+
 如果函数在数组中找到这样的值，则返回该值在数组中的地址，否则返回一个空指针。该函数使用下
 标来遍历数组。可以用模板将这种算法推广到包含= =运算符的、任意类型的数组。尽管如此，这种算法仍
 然与一~种特定的数据结构(数组)关联在一起。
+
 下面来看搜索另- ~种数据结构一链表的情况 ( 第12章使用链表实现了Queue类)。链表由链接在一
-起的Node结构组成:
+起的Node结构组成：
+
+```
 struct Node
 double item;
 Node *口_ next;
-};
+}；
+```
+
 假设有一个指向链表第一一个 节点的指针，每个节点的p next指针都指向下一个节点，链表最后-一个节
-点的p next指针被设置为0，则可以这样编写find_ !( )函数:
+点的p next指针被设置为0，则可以这样编写find_ !( )函数：
+
 Node* find 11 (Node * head, const double & val)
 Node * start;
 for (start = head; start!= 0; start = start->p_ next)
 if (start->item == val)
 return start;
 return 0
+
 同样，也可以使用模板将这种算法推广到支持= =运算符的任何数据类型的链表。然而，这种算法也是
 与特定的数据结构一链表关联在一 -起 。
-从实现细节上看，这两个find函数的算法是不同的:一一个使 用数组索引来遍历元素，另一个则将start
-重置为start->p. next。但从广义上说，这两种算法是相同的:将值依次与容器中的每个值进行比较，直到
+
+从实现细节上看，这两个find函数的算法是不同的：一一个使 用数组索引来遍历元素，另一个则将start
+重置为start->p. next。但从广义上说，这两种算法是相同的：将值依次与容器中的每个值进行比较，直到
 找到匹配的为止。
+
 泛型编程旨在使用同一一个find函数来处理数组、链表或任何其他容器类型。即函数不仅独立于容器中
 存储的数据类型，而且独立于容器本身的数据结构。模板提供了存储在容器中的数据类型的通用表示，因
 此还需要遍历容器中的值的通用表示，迭代器正是这样的通用表示。
+
 要实现find函数，迭代器应具备哪些特征呢?下面是一个简短的列表。
-686
-C++ Primer Plus (第6版)中文版
+
 应能够对迭代器执行解除引用的操作，以便能够访问它引用的值。即如果p是一个迭代器，则应
 对*p进行定义。
+
 应能够将一个迭代器赋给另- 一个。即如果p和q都是迭代器， 则应对表达式p=q进行定义。
 应能够将-一个迭代器与另一个进行比较，看它们是否相等。即如果p和q都是迭代器，则应对
 p==q和p!=q进行定义。
+
 ●应能够使用迭代器遍历容器中的所有元素，这可以通过为迭代器p定义++p和p++来实现。
 迭代器也可以完成其他的操作，但有上述功能就足够了，至少对于find函数是如此。实际上，STL按
 功能的强弱定义了多种级别的迭代器，这将在后面介绍。顺便说一句，常规指针就能满足迭代器的要求，
-因此，可以这样重新编写find arr( )函数:
+因此，可以这样重新编写find arr( )函数：
+
 typedef double * iterator;
 iterator find ar(iterator ar, int n, const double & val)
 for(inti=0;i<n;i++,ar++)
 if (*ar == val)
 return ar;
 return 0;
+
 然后可以修改函数参数，使之接受两个指示区间的指针参数，其中的一一个指向数组的起始位置，另一
-个指向数组的超尾(程序清单7.8与此类似);同时函数可以通过返回尾指针，来指出没有找到要找的值。
-下面的find_ ar( )版本完成了这些修改:
+个指向数组的超尾(程序清单7.8与此类似)；同时函数可以通过返回尾指针，来指出没有找到要找的值。
+下面的find_ ar( )版本完成了这些修改：
+
 typedef double * iterator;
 iterator find ar (iterator begin, iterator end, const double & val)
 iterator ar;
@@ -1548,7 +1808,9 @@ for (ar = begin; ar != end; ar++)
 return ar;
 return en
 // indicates val not found
-对于find ( )函数，可以定义一个迭代器类，其中定义了运算符*和++:
+
+对于find ( )函数，可以定义一个迭代器类，其中定义了运算符*和++：
+
 struct Node
 double item;
 Node * P_ next;
@@ -1556,8 +1818,8 @@ class iterator
 Node * pt;
 public:
 i terator ()
-: pt(0) {}
-iterator (Node * pn) : p比(pn) {}
+： pt(0) {}
+iterator (Node * pn) ： p比(pn) {}
 double operator*() { return pt->item; }
 iterator& operator++()
 // for ++it
@@ -1568,52 +1830,69 @@ iterator operator++(int) // for it++
 687
 iterator tmp = *this;
 pt = pt->p next;
-return tmp ;
-operator==(), operator!=(), etc.
+return tmp ；
+operator==()， operator!=()， etc.
+*
+
 为区分++运算符的前缀版本和后缀版本，C++将operator++作为前缀版本，将operator++ (int) 作为后
-缀版本;其中的参数永远也不会被用到，所以不必指定其名称。
-这里重点不是如何定义iterator 类，而是有了这样的类后，第二个find函数就可以这样编写:
+缀版本；其中的参数永远也不会被用到，所以不必指定其名称。
+
+这里重点不是如何定义iterator 类，而是有了这样的类后，第二个find函数就可以这样编写：
+
 iterator find l1 (iterator head, const double & val)
-iterator start ;
+iterator start ；
 for (start = head; start!= 0; ++start)
 if (*start == val)
 return start;
 return (
+*
+
 这和find ar( )儿乎相同，差别在于如何谓词已到达最后一一个值。 find ar( )函数使用超尾迭代器，而
 find Il( )使用存储在最后一一个 节点中的空值。除了这种差别外，这两个函数完全相同。例如，可以要求链
 表的最后-一个元素后面还有-一个额外的元素，即让数组和链表都有超尾元素，并在迭代器到达超尾位置时
 结束搜索。这样，find ar( )和find 11( )检测数据尾的方式将相同，从而成为相同的算法。注意，增加超尾
 元素后，对迭代器的要求变成了对容器类的要求。
+
 STL遵循上面介绍的方法。首先，每个容器类(vector、 list、 deque 等)定义了相应的迭代器类型。对
-于其中的某个类，迭代器可能是指针;而对于另一个类，则可能是对象。不管实现方式如何，迭代器都将
+于其中的某个类，迭代器可能是指针；而对于另一个类，则可能是对象。不管实现方式如何，迭代器都将
 提供所需的操作，如*和++ (有些类需要的操作可能比其他类多)。其次，每个容器类都有一个超尾标记，
 当迭代器递增到超越容器的最后-一个值后，这个值将被赋给迭代器。每个容器类都有begin()和end()方法，
 它们分别返回-一个指向容器的第一- 个元素和超尾位置的迭代器。每个容器类都使用++操作，让迭代器从指
 向第一个元素逐步指向超尾位置，从而遍历容器中的每一一个元素。
+
 使用容器类时，无需知道其迭代器是如何实现的，也无需知道超尾是如何实现的，而只需知道它有迭
-代器，其begin( )返回-一个指向第一- 个元素的迭代器，end( )返回一个指向超尾位置的迭代器即可。例如,
-假设要打印vector<double>对象中的值，则可以这样做:
+代器，其begin( )返回-一个指向第一- 个元素的迭代器，end( )返回一个指向超尾位置的迭代器即可。例如，
+假设要打印vector<double>对象中的值，则可以这样做：
+
 vector<double>:
 iterator pr;
-for (pr = scores.begin(); pr != scores.end(); pr++)
+for (pr = scores.begin()； pr != scores.end()； pr++)
 cout << *pr << endl;
-其中，下面的代码行将pr的类型声明为vector<double 类的迭代器: 
+
+其中，下面的代码行将pr的类型声明为vector<double 类的迭代器：
+
 vector<double> class:
 vector<double>: :iterator pr
-如果要使用list<double> 类模板来存储分数，则代码如下:
+
+如果要使用list<double> 类模板来存储分数，则代码如下：
+
 1 ist<double>: :iterator pr;
-for (pr = scores .begin(); pr != scores.end(); pr++)
-cout << *pr << endl ;
+for (pr = scores .begin()； pr != scores.end()； pr++)
+cout << *pr << endl ；
+
 唯一不同的是pr的类型。因此，STL通过为每个类定义适当的迭代器，并以统一的风格 设计类，能够
 对内部表示绝然不同的容器，编写相同的代码。
-使用C+11新增的自动类型推断可进一步简化:对于矢量或列表，都可使用如下代码:
-for (auto pr = scores.begin(); pr != scores.end(); pr++)
-cout << *pr << endl ;
-688
-C++ Primer Plus (第6版)中文版
+
+使用C+11新增的自动类型推断可进一步简化：对于矢量或列表，都可使用如下代码：
+
+for (auto pr = scores.begin()； pr != scores.end()； pr++)
+cout << *pr << endl ；
+
 实际上，作为一种编程风格，最好避免直接使用迭代器，而应尽可能使用STL函数(如for each( ))
-来处理细节。也可使用C++11新增的基于范围的for循环:
-for (auto X : scores) cout << X << endl;
+来处理细节。也可使用C++11新增的基于范围的for循环：
+
+for (auto X ： scores) cout << X << endl;
+
 来总结一下STL方法。首先是处理容器的算法，应尽可能用通用的术语来表达算法，使之独立于数据
 类型和容器类型。为使通用算法能够适用于具体情况，应定义能够满足算法需求的迭代器，并把要求加到
 容器设计上。即基于算法的要求，设计基本迭代器的特征和容器特征。
@@ -1621,68 +1900,91 @@ for (auto X : scores) cout << X << endl;
 ### 迭代器类型
 
 不同的算法对迭代器的要求也不同。例如，查找算法需要定义+运算符，以便迭代器能够遍历整个容
-器;它要求能够读取数据，但不要求能够写数据(它只是查看数据，而并不修改数据)。而排序算法要求能
+器；它要求能够读取数据，但不要求能够写数据(它只是查看数据，而并不修改数据)。而排序算法要求能
 够随机访问，以便能够交换两个不相邻的元素。如果iter 是一一个迭代器， 则可以通过定义+运算符来实现随
 机访问，这样就可以使用像iter + 10这样的表达式了。另外，排序算法要求能够读写数据。
+
 STL定义了5种迭代器，并根据所需的迭代器类型对算法进行了描述。这5种迭代器分别是输入迭代
-器、输出迭代器、正向迭代器、双向迭代器和随机访问迭代器。例如，find( )的原型与下面类似:
+器、输出迭代器、正向迭代器、双向迭代器和随机访问迭代器。例如，find( )的原型与下面类似：
+
 template<class InputIterator, class T>
-InputIterator find (InputIterator first, InputIterator last, const T& value) ;
-这指出，这种算法需要- 一个输入迭代器。同样，下 面的原型指出排序算法需要-一个随机访问迭代器:
+InputIterator find (InputIterator first, InputIterator last, const T& value) ；
+
+这指出，这种算法需要- 一个输入迭代器。同样，下 面的原型指出排序算法需要-一个随机访问迭代器：
+
 t emplate<class RandomAccessIterator
-void sort (RandomAccessIterator first, RandomAccessIterator last) ;
+void sort (RandomAccessIterator first, RandomAccessIterator last) ；
+
 对于这5种迭代器，都可以执行解除引用操作(即为它们定义了*运算符)，也可进行比较，看其是相
 等(使用==运算符，可能被重载了)还是不相等(使用!=运算符，可能被重载了)。如果两个迭代器相同，
-则对它们执行解除引用操作得到的值将相同。即如果表达式iter1 == iter2为真，则下述表达式也为真: 
+则对它们执行解除引用操作得到的值将相同。即如果表达式iter1 == iter2为真，则下述表达式也为真：
+
 iter1 == iter2
 is true, then the following is also true:
 *iterl == *iter2
+
 当然，对于内置运算符和指针来说，情况也是如此。因此，这些要求将指导您如何对迭代器类重载这
 些运算符。下面来看迭代器的其他特征。
+
 1.输入迭代器
+
 术语“输入”是从程序的角度说的，即来自容器的信息被视为输入，就像来自键盘的信息对程序来
 说是输入一样。因此，输入迭代器可被程序用来读取容器中的信息。具体地说，对输入迭代器解除引用
 将使程序能够读取容器中的值，但不一定能让程序修改值。因此，需要输入迭代器的算法将不会修改容
 器中的值。
+
 输入迭代器必须能够访问容器中所有的值，这是通过支持++运算符(前缀格式和后缀格式)来实现
 的。如果将输入迭代器设置为指向容器中的第-一个元素，并不断将其递增，直到到达超尾位置，则它将
 依次指向容器中的每-一个元素。顺便说一一句， 并不能保证输入迭代器第二次遍历容器时，顺序不变。另
 外，输入迭代器被递增后，也不能保证其先前的值仍然可以被解除引用。基于输入迭代器的任何算法都
 应当是单通行(single-pass)的，不依赖于前一次遍历时的迭代器值，也不依赖于本次遍历中前面的迭代
 器值。
+
 注意，输入迭代器是单向迭代器，可以递增，但不能倒退。
+
 2.输出迭代器
+
 STL使用术语“输出”来指用于将信息从程序传输给容器的迭代器，因此程序的输出就是容器的输入。
 输出迭代器与输入迭代器相似，只是解除引用让程序能修改容器值，而不能读取。也许您会感到奇怪，能
 够写，却不能读。发送到显示器上的输出就是如此，cout可以修改发送到显示器的字符流，却不能读取屏
-第16章string 类和标准模板库
-689
 幕_上的内容。STL足够通用，其容器可以表示输出设备，因此容器也可能如此。另外，如果算法不用读取
 作容器的内容就可以修改它(如通过生成要存储的新值)，则没有理由要求它使用能够读取内容的迭代器。
-简而言之，对于单通行、只读算法，可以使用输入迭代器;而对于单通行、只写算法，则可以使用输
+简而言之，对于单通行、只读算法，可以使用输入迭代器；而对于单通行、只写算法，则可以使用输
 出迭代器。
+
 3.正向迭代器
+
 与输入迭代器和输出迭代器相似，正向迭代器只使用++运算符来遍历容器，所以它每次沿容器向前移
-动一个元素;然而，与输入和输出迭代器不同的是，它总是按相同的顺序遍历-系列值。另外，将正向迭
+动一个元素；然而，与输入和输出迭代器不同的是，它总是按相同的顺序遍历-系列值。另外，将正向迭
 代器递增后，仍然可以对前面的迭代器值解除引用(如果保存了它)，并可以得到相同的值。这些特征使得
 多次通行算法成为可能。
-正向迭代器既可以使得能够读取和修改数据，也可以使得只能读取数据:
+
+正向迭代器既可以使得能够读取和修改数据，也可以使得只能读取数据：
+
 int * pirw;
 // read-write iterator
 const int * pir; / / read-only iterator
+
 4.双向迭代器
+
 假设算法需要能够双向遍历容器，情况将如何呢?例如，reverse函数可以交换第-一个元素和最后-一个
 元素、将指向第一个元素的指针加1、将指向第二个元素的指针减1,并重复这种处理过程。双向迭代器具
 有正向迭代器的所有特性，同时支持两种(前缀和后缀)递减运算符。
 
+
+
 随机访问迭代器
+
 有些算法(如标准排序和二分检索)要求能够直接跳到容器中的任何- 一个元素，这叫做随机访问，需
 要随机访问迭代器。随机访问迭代器具有双向迭代器的所有特性，同时添加了支持随机访问的操作(如指
 针增加运算)和用于对元素进行排序的关系运算符。表16.3列出了除双向迭代器的操作外，随机访问迭代
 器还支持的操作。其中，X表示随机迭代器类型，T表示被指向的类型，a和b都是迭代器值，n为整数，
 r为随机迭代器变量或引用。
-表16.3
-随机访问迭代器操作
+
+表16.3随机访问迭代器操作
+
+
+
 表达
 描述
 a+ n
@@ -1700,21 +2002,22 @@ b-a
 a> b
 如果b<a,则为真
 a>= b
-如果!(a<b), 则为真
+如果!(a<b)， 则为真
 a<=b
-如果!(a>b), 则为真
+如果!(a>b)， 则为真
+
 像a+n这样的表达式仅当a和a+n都位于容器区间(包括超尾)内时才合法，
 
 ### 迭代器 层次结构
 
 您可能已经注意到，迭代器类型形成了一个层次结构。正向迭代器具有输入迭代器和输出迭代器的全
-部功能，同时还有自己的功能;双向迭代器具有正向迭代器的全部功能，同时还有自己的功能;随机访问
+部功能，同时还有自己的功能；双向迭代器具有正向迭代器的全部功能，同时还有自己的功能；随机访问
 迭代器具有正向迭代器的全部功能，同时还有自己的功能。表16.4 总结了主要的迭代器功能。其中，i为
-690
-C++ Primer Plus (第6版)中文版
 迭代器，n为整数。
-表16.4
-迭代器性能
+
+
+
+表16.4迭代器性能
 迭代器功能
 渝入
 输出
@@ -1768,13 +2071,15 @@ i-= n
 无
 根据特定迭代器类型编写的算法可以使用该种迭代器，也可以使用具有所需功能的任何其他迭代器。
 所以具有随机访问迭代器的容器可以使用为输入迭代器编写的算法。
+
 为何需要这么多迭代器呢?目的是为了在编写算法尽可能使用要求最低的迭代器，并让它适用于容器
 的最大区间。这样，通过使用级别最低的输入迭代器，find( )函数便可用于任何包含可读取值的容器。而
 sort( )函数由于需要随机访问迭代器，所以只能用于支持这种迭代器的容器。
+
 注意，各种迭代器的类型并不是确定的，而只是一种概念性描述。正如前面指出的，每个容器类都定
-义了一个类级typedef名称一iterator, 因此vector<int>类的迭代器类型为vector<int> :: interator. 然而，
+义了一个类级typedef名称一iterator, 因此vector<int>类的迭代器类型为vector<int> ：: interator. 然而，
 该类的文档将指出，矢量迭代器是随机访问迭代器，它允许使用基于任何迭代器类型的算法，因为随机访
-问迭代器具有所有迭代器的功能。同样，list<int类的迭代 器类型为list<int> :: iterator. STL实现了一个双
+问迭代器具有所有迭代器的功能。同样，list<int类的迭代 器类型为list<int> ：: iterator. STL实现了一个双
 向链表，它使用双向迭代器，因此不能使用基于随机访问迭代器的算法，但可以使用基于要求较低的迭代
 器的算法。
 
@@ -1786,160 +2091,212 @@ STL有若千个用C+语言无法表达的特性，如迭代器种类。因此，
 迭代器实现。STL文献使用术语概念(concept) 来描述一系列的要求。 因此，存在输入迭代器概念、正向
 迭代器概念，等等。顺便说~一句， 如果所设计的容器类需要迭代器，可考虑STL，它包含用于标准种类的
 迭代器模板。
+
 概念可以具有类似继承的关系。例如，双向迭代器继承了正向迭代器的功能。然而，不能将C++继承
 机制用于迭代器。例如，可以将正向迭代器实现为一个类， 而将双向迭代器实现为-一个常规指针。因此，
 对C++而言，这种双向迭代器是一~种内置类型，不能从类派生而来。然而，从概念上看，它确实能够继承。
 有些STL文献使用术语改进(refinement) 来表示这种概念上的继承，因此，双向迭代器是对正向迭代器
 概念的一-种改进。
+
 概念的具体实现被称为模型(model)。因此，指向int 的常规指针是一个随机访问迭代器模型，也是
 一个正向迭代器模型，因为它满足该概念的所有要求。
+
 1.将指针用作迭代器
+
 迭代器是广义指针，而指针满足所有的迭代器要求。迭代器是STL算法的接口，而指针是迭代器，因
 此STL算法可以使用指针来对基于指针的非STL容器进行操作。例如，可将STL算法用于数组。假设
-第16章string 类和标准模板库
-69
-Receipts是-一个double数组，并要按升序对它进行排序:
+Receipts是-一个double数组，并要按升序对它进行排序：
+
 const int SIZE = 100;
-double Receipts [SIZE] ;
+double Receipts [SIZE] ；
+
 STLsort()函数接受指向容器第一个元素的迭代器和指向超尾的迭代器作为参数。&Receipts[0](或
-Receipts)是第-一个 元素的地址，&Receipts[SIZE] (或Receipts + SIZE)是数组最后- 一个元素后面的元素的
-地址。因此，下面的函数调用对数组进行排序:
-sort (Receipts, Receipts + SIZE) ;
+Receipts)是第-一个 元素的地址，&Receipts[SIZE] (或Receipts + SIZE)是数组最后- 一个元素后面的元素的地址。因此，下面的函数调用对数组进行排序：
+
+sort (Receipts, Receipts + SIZE) ；
+
 C+ +确保了表达式Receipts + n是被定义的，只要该表达式的结果位于数组中。因此，C++支持将超尾
 概念用于数组，使得可以将STL算法用于常规数组。由于指针是迭代器，而算法是基于迭代器的，这使得
 可将STL算法用于常规数组。同样，可以将STL算法用于自己设计的数组形式，只要提供适当的迭代器
 (可以是指针，也可以是对象)和超尾指示器即可。
+
 copy(小ostream_ iterator 和istream iterator
+
 STL提供了-些预定义迭代器。为了解其中的原因，这里先介绍一些背景知识。 有一种算法(名为
 copy( ))可以将数据从一个容器复制到另-一个容器中。这种算法是以迭代器方式实现的，所以它可以从一
-种容器到另一~种容器进行复制，甚至可以在数组之间复制，因为可以将指向数组的指针用作迭代器。例如,
-下面的代码将-一个数组复制到-一个矢量中:
-intcasts10]={6,7,2,9,4，11,8，7,10，5};
+种容器到另一~种容器进行复制，甚至可以在数组之间复制，因为可以将指向数组的指针用作迭代器。例如，
+下面的代码将-一个数组复制到-一个矢量中：
+
+intcasts10]={6,7,2,9,4，11,8，7,10，5}；
 vector<int> dice [10]
-copy(casts, casts + 10, dice. begin()); // copy array to vector
+copy(casts, casts + 10, dice. begin())； // copy array to vector
+
 copy()的前两个迭代器参数表示要复制的范围，最后-一个迭代器参数表示要将第一-个元素复制到什么
 位置。前两个参数必须是(或最好是)输入迭代器，最后-一个 参数必须是(或最好是)输出迭代器。Copy( )
 函数将覆盖目标容器中已有的数据，同时目标容器必须足够大，以便能够容纳被复制的元素。因此，不能
-使用copy( )将数据放到空矢量中
-~至少，如果不采用本章后面将介绍的技巧，则不能这样做。
+使用copy( )将数据放到空矢量中~至少，如果不采用本章后面将介绍的技巧，则不能这样做。
+
 现在，假设要将信息复制到显示器上。如果有一个表示输出流的迭代器，则可以使用copy()。STL为
 这种迭代器提供了ostream_ iterator 模板。用STL的话说，该模板是输出迭代器概念的-一个模型，它也是一
 个适配器(adapter)--一个类或函数，可以将-一些其他接口转换为STL使用的接口。可以通过包含头文
-件iterator(以前为iterator.h)并作下面的声明来创建这种迭代器:
+件iterator(以前为iterator.h)并作下面的声明来创建这种迭代器：
+
 #include <iterator>
-ostream iterator<int, char> out_ iter (cout, " ") ;
+ostream iterator<int, char> out_ iter (cout, " ") ；
+
 out iter 迭代器现在是一一个接口， 让您能够使用cout来显示信息。第一一个模板参数 (这里为int)指出
-了被发送给输出流的数据类型;第二个模板参数(这里为char)指出了输出流使用的字符类型(另一个可
+了被发送给输出流的数据类型；第二个模板参数(这里为char)指出了输出流使用的字符类型(另一个可
 能的值是wchar t)。构造函数的第-一个参数(这里为cout) 指出了要使用的输出流，它也可以是用于文件
-输出的流(参见第17章);最后一个字符串参数是在发送给输出流的每个数据项后显示的分隔符。
-可以这样使用迭代器:
+输出的流(参见第17章)；最后一个字符串参数是在发送给输出流的每个数据项后显示的分隔符。
+
+可以这样使用迭代器：
+
+```
 *out iter++ = 15; // works like cout << 15 <
+```
+
 对于常规指针，这意味着将15赋给指针指向的位置，然后将指针加1。但对于该ostream _iterator, 这
 意味着将15和由空格组成的字符串发送到cout管理的输出流中，并为下-个输出操作做好了准备。可以
-将copy( )用于迭代器，如下所示: 
-copy(dice.begin(), aice.end(), out. iter); // copy vector to output stream 
+将copy( )用于迭代器，如下所示： 
+
+```
+copy(dice.begin()， aice.end()， out. iter)； // copy vector to output stream 
+```
+
+
+
 这意味着将dice容器的整个区间复制到输出流中，即显示容器的内容。
-也可以不创建命名的迭代器，而直接构建-一个匿名迭代器。即可以这样使用适配器:
-copY (dice.begin(), dice.end(), ostream_ iterator<int, char>(cout， " ") ) ;
+
+也可以不创建命名的迭代器，而直接构建-一个匿名迭代器。即可以这样使用适配器：
+
+copY (dice.begin()， dice.end()， ostream_ iterator<int, char>(cout， " ") ) ；
+
 iterator 头文件还定义了-一 个istream_ iterator 模板，使istream输入可用作迭代器接口。它是一一个输入迭
-692
-C++ Primer Plus (第6版)中文版
-代器概念的模型，可以使用两个istream iterator 对象来定义copy( )的输入范围: 
-copy (istream iterator<int, char> (cin),
+代器概念的模型，可以使用两个istream iterator 对象来定义copy( )的输入范围： 
+
+copy (istream iterator<int, char> (cin)，
 istream iterator<int, char>()，(
-e.begin()) ;
+e.begin()) ；
+
 与ostream iterator 相似，istream iterator 也使用两个模板参数。第-一个参数指出要读取的数据类型，
 第二个参数指出输入流使用的字符类型。使用构造函数参数cin意味着使用由cin管理的输入流，省略构造
 函数参数表示输入失败，因此上述代码从输入流中读取，直到文件结尾、类型不匹配或出现其他输入故障
 为止。
+
 2.其他有用的迭代器
+
 除了ostream iterator 和istream_ iterator 之外，头文件iterator还提供了其他一些专 用的预定义迭代器类
 型。它们是reverse_ iterator、 back insert iterator、 front insert iterator 和insert iterator。
+
 我们先来看reverse iterator的功能。对reverse_ iterator 执行递增操作将导致它被递减。为什么不直接
 对常规迭代器进行递减呢?主要原因是为了简化对已有的函数的使用。假设要显示dice容器的内容，正如
-刚才介绍的，可以使用copy( )和ostream_ iterator 来将内容复制到输出流中:
-copy (dice ,begin()，dice.end(), out_ iter); // display in forward order
+刚才介绍的，可以使用copy( )和ostream_ iterator 来将内容复制到输出流中：
+
+copy (dice ,begin()，dice.end()， out_ iter)； // display in forward order
+
 现在假设要反向打印容器的内容(可能您正在从事时间反演研究)。有很多方法都不管用，但与其在这
 里耽误工夫，不如来看看能够完成这种任务的方法。vector 类有一一个 名为rbegin( )的成员函数和-一个名为
 rend()的成员函数，前者返回-一个指向超尾的反向迭代器，后者返回一个指向第一个元素的反向迭代器。
-因为对迭代器执行递增操作将导致它被递减，所以可以使用下面的语句来反向显示内容:
-copy(dice . rbegin(), dice.rend(), out_ iter); // display in reverse order
+因为对迭代器执行递增操作将导致它被递减，所以可以使用下面的语句来反向显示内容：
+
+copy(dice . rbegin()， dice.rend()， out_ iter)； // display in reverse order
+
 甚至不必声明反向迭代器。
-注意: rbegin( )和end( )返回相同的值(超尾),但类型不同( reverse_ iterator 和iterator)。 同样，rend( )
+
+注意： rbegin( )和end( )返回相同的值(超尾)，但类型不同( reverse_ iterator 和iterator)。 同样，rend( )
 和begin( )也返回相同的值(指向第一个元素的迭代器)，但类型不同。
-必须对反向指针做一~种特殊补偿。 假设rp是-一个被初始化为dice.rbegin( )的反转指针。那么*p是什
+
+必须对反向指针做一~种特殊补偿。 假设rp是-一个被初始化为dice.rbegin( )的反转指针。那么\*p是什
 么呢?因为rbegin( )返回超尾，因此不能对该地址进行解除引用。同样，如果rend( )是第-个元素的位置，
 则copy( )必须提早-一个位置停止，因为区间的结尾处不包括在区间中。
+
 反向指针通过先递减，再解除引用解决了这两个问题。即*rp 将在*tp的当前值之前对迭代器执行解除
-引用。也就是说，如果rp指向位置6，则*rp 将是位置5的值，依次类推。程序清单16.10 演示了如何使用
+引用。也就是说，如果rp指向位置6，则\*rp 将是位置5的值，依次类推。程序清单16.10 演示了如何使用
 copy( )、istream 迭代器和反向迭代器。
+
 程序清单16.10 copyit.cpp
+
 // copyit.cpp -- copy() and iterators
 #include <iostream>
 #include <iterator>
 #include <vector>
 int main()
 using namespace std;
-intcasts[10]={6,7,2，9,4，11,8,7，10，5};
+intcasts[10]={6,7,2，9,4，11,8,7，10，5}；
 vector<int> dice(10)
 // copy from array to vector
-copy(casts, casts + 10， dice.begin()) ;
-cout << "Let the dice be cast!\n";
+copy(casts, casts + 10， dice.begin()) ；
+cout << "Let the dice be cast!\n"；
 第16章string 类和标准模板库
 693
 // create an ostream iterator
-ostream iterator<int, char> out_ iter (cout, " ") ;
+ostream iterator<int, char> out_ iter (cout, " ") ；
 // copy from vector to output
-copy(dice.begin(), dice.end(), out iter);
+copy(dice.begin()， dice.end()， out iter)；
 cout << endl;
-cout <<"Implicit use of reverse iterator. \n" ;
-copy (dice. rbegin(), dice.rend(), out_ iter) ;
+cout <<"Implicit use of reverse iterator. \n" ；
+copy (dice. rbegin()， dice.rend()， out_ iter) ；
 cout << endl;
-cout <<"Explicit use of reverse iterator. \n" ;
+cout <<"Explicit use of reverse iterator. \n" ；
 vector< int>: :reverse_ iterator ri
-for (ri = dice. rbegin(); ri != dice.rend(); ++ri)
-cout<<*ri<<1';
+for (ri = dice. rbegin()； ri != dice.rend()； ++ri)
+cout<<*ri<<1'；
 cout << endl;
 return 0;
-程序清单16.10中程序的输出如下:
+
+程序清单16.10中程序的输出如下：
+
 Let the dice be cast!
 672941187105
 Implicit use of reverse iterator .
 10781149 276
 Explicit use of reverse iterator .
 510781149276
+
 如果可以在显式声明迭代器和使用STL函数来处理内部问题(如通过将rbegin()返回值传递给函数)
 之间选择，请采用后者。后一种方法要做的工作较少，人为出错的机会也较少。
+
 另外三种迭代器(back_ insert iterator、 front_ insert iterator 和insert iterator) 也将提高STL算法的通用
 性。很多STL函数都与copy()相似，将结果发送到输出迭代器指示的位置。前面说过，下面的语句将值复
-制到从dice.begin( )开始的位置:
-copy(casts, casts + 10, dice . begin());
-这些值将覆盖dice中以前的内容，且该函数假设dice有足够的空间,能够容纳这些值，即copy()不能
+制到从dice.begin( )开始的位置：
+
+copy(casts, casts + 10, dice . begin())；
+
+这些值将覆盖dice中以前的内容，且该函数假设dice有足够的空间，能够容纳这些值，即copy()不能
 自动根据发送值调整目标容器的长度。程序清单16.10 考虑到了这种情况，将dice声明为包含10个元素。
-然而，如果预先并不知道dice的长度,该如何办呢?或者要将元素添加到dice 中，而不是覆盖已有的内容,
+然而，如果预先并不知道dice的长度，该如何办呢?或者要将元素添加到dice 中，而不是覆盖已有的内容，
 又该如何办呢?
+
 三种插入迭代器通过将复制转换为插入解决了这些问题。插入将添加新的元素，而不会覆盖已有的数
 据，并使用自动内存分配来确保能够容纳新的信息。backinsertiterator将元素插入到容器尾部，而
 front insert iterator 将元素插入到容器的前端。最后，insert iterator 将元素插入到insert iterator 构造函数的
 参数指定的位置前面。这三个插入迭代器都是输出容器概念的模型。
+
 这里存在一一些限制。 back insert iterator 只能用于允许在尾部快速插入的容器(快速插入指的是-一个时
 间固定的算法，将在本章后面的“容器概念”- 节做进一步讨论)， vector 类符合这种要求。front jinsert iterator
 只能用于允许在起始位置做时间固定插入的容器类型，vector 类不能满足这种要求，但queue 满足。
+
 insert iterator 没有这些限制，因此可以用它把信息插入到矢量的前端。然而，front_ insert iterator 对于那些
 支持它的容器来说，完成任务的速度更快。
-提示:可以用insert_iterator将复制数据的算法转换为插入数据的算法。
+
+提示：可以用insert_iterator将复制数据的算法转换为插入数据的算法。
+
 这些迭代器将容器类型作为模板参数，将实际的容器标识符作为构造函数参数。也就是说，要为名为
-dice的vector<int容器创建一个 back insert iterator, 可以这样做:
-back_ insert_ iterator<vector<int> > back_ iter(dice) ;
+dice的vector<int容器创建一个 back insert iterator, 可以这样做：
+
+back_ insert_ iterator<vector<int> > back_ iter(dice) ；
+
 必须声明容器类型的原因是，迭代器必须使用合适的容器方法。backinsertiterator的构造函数将假设
-69
-C++ Primer Plus (第6版)中文版
 传递给它的类型有-一个 push back( )方法。copy( )是一一个独立的函数，没有重新调整容器大小的权限。但前
 面的声明让back_ iter 能够使用方法vector<int>.:push back()， 该方法有这样的权限。
+
 声明front insert_ iterator 的方式与此相同。对于insert iterator 声明，还需一- 个指示插入位置的构造函
-数参数:
-insert_ iterator<vector<int> > insert_ iterldice, dice.begin() ) ;
+数参数：
+
+insert_ iterator<vector<int> > insert_ iterldice, dice.begin() ) ；
+
 程序清单16.11演示了这两种迭代器的用法，还使用foreach()而不是ostream迭代器进行输出。
+
 程序清单16.11 inserts.cpp
 // inserts.cpp -- copy() and insert iterators
 #include <iostream>
@@ -1947,92 +2304,100 @@ insert_ iterator<vector<int> > insert_ iterldice, dice.begin() ) ;
 #include <iterator>
 #include <vector>
 #include <algori thm>
-void output (const std::string & s) {std::cout 《< s << " ";}
+void output (const std::string & s) {std::cout 《< s << " "；}
 int main()
 using namespace std;
-string s1[4] = {"fine", "fish", "fashion", "fate"};
-string s2[2] = {"busy" ,
-"bats"};
-string s3[2] = {"silly"， "singers"};
-vector<string> words(4) ;
-copy(s1, s1 + 4, words . begin());
-for each (words .begin(), words . end(), 0utput);
+string s1[4] = {"fine"， "fish"， "fashion"， "fate"}；
+string s2[2] = {"busy" ，
+"bats"}；
+string s3[2] = {"silly"， "singers"}；
+vector<string> words(4) ；
+copy(s1, s1 + 4, words . begin())；
+for each (words .begin()， words . end()， 0utput)；
 cout << endl;
 // construct anonymous back_ insert_ iterator object
-copy(s2, s2 + 2，back_ insert_ iterator<vector<string> > (words)) ;
-for_ each (words . begin()，words .end(), output) ;
-cout << endl ;
+copy(s2, s2 + 2，back_ insert_ iterator<vector<string> > (words)) ；
+for_ each (words . begin()，words .end()， output) ；
+cout << endl ；
 // construct anonymous insert_
 itera
 ator object
-copy(s3, s3 + 2, insert_ iterator<vector<string> > (words ,
-words . begin())1 ;
-for each (words . begin()，words .end()，output);
+copy(s3, s3 + 2, insert_ iterator<vector<string> > (words ，
+words . begin())1 ；
+for each (words . begin()，words .end()，output)；
 cout << endl;
 return 0;
-程序清单16.11 中程序的输出如下:
+
+程序清单16.11 中程序的输出如下：
+
 fine fish fashion fate
 fine fish fashion fate busy bats
 silly singers fine fish fashion fate busy bats
+
 第一一个copy( )从s1中复制4个字符串到words中。这之所以可行，在某种程度上说是由于words被声明
 为能够存储4个字符串，这等于被复制的字符串数目。然后，back inset. iterator 将s2中的字符串插入到words
 数组的末尾，将words的长度增加到6个元素。最后，insert iterator 将s3中的两个字符串插入到words的第
 一个元素的前面， 将words的长度增加到8个元素。如果程序试图使用words.end( )和words.begin( )作为迭代
 器，将s2和s3复制到words中，words 将没有空间来存储新数据，程序可能会由于内存违规而异常终止。
+
 如果您被这些迭代器搞晕，则请记住，只要使用就会熟悉它们。另外还请记住，这些预定义迭代器提
 高了STL算法的通用性。因此，copy( )不仅可以将信息从一一个容器复制到另一个容器，还可以将信息从容
-第16章string 类和标准模板库
-695
 器复制到输出流，从输入流复制到容器中。还可以使用copy( )将信息插入到另一个容 器中。因此使用同一
 个函数可以完成很多工作。copy()只是是使用输出迭代器的若干STL函数之一，因此这些预定义迭代器也
 增加了这些函数的功能。
 
 ### 容器种类
 
-STL具有容器概念和容器类型。概念是具有名称(如容器、序列容器、关联容器等)的通用类别;容
+STL具有容器概念和容器类型。概念是具有名称(如容器、序列容器、关联容器等)的通用类别；容
 器类型是可用于创建具体容器对象的模板。以前的11个容器类型分别是deque、list、 queue、 priority_ queue、
-stack、vector、 map、multimap、 set、multiset 和bitset (本章不讨论bitset, 它是在比特级处理数据的容器);
+stack、vector、 map、multimap、 set、multiset 和bitset (本章不讨论bitset, 它是在比特级处理数据的容器)；
 C++11新增了forward list、 unordered map、unordered multimap、 unordered set 和unordered multiset, E
 不将bitset视为容器，而将其视为一种独立的类别。因为概念对类型进行了分类，下 面先讨论它们。
+
 1.容器概念
+
 没有与基本容器概念对应的类型，但概念描述了所有容器类都通用的元素。它是一个概念化的抽象基
 类一说它概念化，是因为容器类并不真正使用继承机制。换句话说，容器概念指定了所有STL容器类都
 必须满足的一- 系列要求。
+
 容器是存储其他对象的对象。被存储的对象必须是同一种类型的，它们可以是00P意义上的对象，也
 可以是内置类型值。存储在容器中的数据为容器所有，这意味着当容器过期时，存储在容器中的数据也将
 过期(然而，如果数据是指针的话，则它指向的数据并不一定过期)。
+
 不能将任何类型的对象存储在容器中，具体地说，类型必须是可复制构造的和可赋值的。基本类型满
-足这些要求;只要类定义没有将复制构造函数和赋值运算符声明为私有或保护的，则也满足这种要求。
-C++11改进了这些概念，添加了术语可复制插入(CopyInsertable) 和可移动插入(MoveInsertable), 但这
+足这些要求；只要类定义没有将复制构造函数和赋值运算符声明为私有或保护的，则也满足这种要求。
+C++11改进了这些概念，添加了术语可复制插入(CopyInsertable) 和可移动插入(MoveInsertable)， 但这
 里只进行简单的概述。
+
 基本容器不能保证其元素都按特定的顺序存储，也不能保证元素的顺序不变，但对概念进行改进后，
 则可以增加这样的保证。所有的容器都提供某些特征和操作。表16.5对-些通用特征进行了总结。其中，
-X表示容器类型，如vector; T表示存储在容器中的对象类型; a和b表示类型为X的值; r表示类型为
-X&的值; u表示类型为X的标识符(即如果X表示vector<int>,则u是一一个vector <int>对象)。
-表16.5
-一些基本的容器特征
+X表示容器类型，如vector; T表示存储在容器中的对象类型； a和b表示类型为X的值； r表示类型为
+X&的值； u表示类型为X的标识符(即如果X表示vector<int>,则u是一一个vector <int>对象)。
+
+表16.5一些基本的容器特征
+
 表达式
 返回类型
 说明
 复杂度
-X :: iterator
+X ：: iterator
 指向T的迭代器类型
 满足正向迭代器要求的任何迭代器
 编译时间
-X :: value type
+X ：: value type
 T的类型
 编译时间
 X u;
 创建-一个名为u的空容器
 固定
-X();
+X()；
 创建一-个匿名的空容器
 固定
-X u(a);
+X u(a)；
 调用复制构造函数后u== a
 线性
 Xu=a;
-作用同X u(a);
+作用同X u(a)；
 线性
 r= a;
 调用赋值运算符后r== a
@@ -2066,121 +2431,143 @@ a!= b
 可转换为bool
 返回!(a= =b)
 线性
-696
-C++ Primer Plus (第6版)中文版
-表165中的“复杂度”一列描述了执行操作所需的时间。这个表列出了3种可能性，从快到慢依次为:
-●编译时间;
-固定时间;
+
+表165中的“复杂度”一列描述了执行操作所需的时间。这个表列出了3种可能性，从快到慢依次为：
+
+●编译时间；
+
+固定时间；
+
 线性时间。
+
 如果复杂度为编译时间，则操作将在编译时执行，执行时间为0。固定复杂度意味着操作发生在运行
-阶段，但独立于对象中的元素数目。线性复杂度意味着时间与元素数目成正比。即如果a和b都是容器,
+阶段，但独立于对象中的元素数目。线性复杂度意味着时间与元素数目成正比。即如果a和b都是容器，
 则a== b具有线性复杂度，因为= =操作必须用于容器中的每个元素。实际上，这是最糟糕的情况。如果
 两个容器的长度不同，则不需要作任何的单独比较。
+
 固定时间和线性时间复杂度
+
 假设有一个装满大包裹的狭长盒子，包裹一字排开，而盒子只有一端是打开的。假设任务是从打开的
 一端取出一个包裹，则这将是一项固定时间任务。不管在打开的一端后面有10个还是1000 个包裹，都没
 有区别。
+
 现在假设任务是取出盒子中没有打开的一端的那个包裹，则这将是线性时间任务。如果盒子里有10
-个包裹，则必须取出10个包裹才能拿到封口端的那个包裹;如果有100个包裹，则必须取出100 个包裹。
+个包裹，则必须取出10个包裹才能拿到封口端的那个包裹；如果有100个包裹，则必须取出100 个包裹。
 假设是一个不知疲倦的工人来做，每次只能取出1个包裹，则需要取10次或更多。
+
 现在假设任务是取出任意一个包裹，则可能取出第一个包裹。然而，通常必须移动的包裹数目仍旧与
 容器中包裹的数目成正比，所以这种任务依然是线性时间复杂度。
+
 如果盒子各边都可打开，而不是狭长的，则这种任务的复杂度将是固定时间的，因为可以直接取出想
 要的包裹，而不用移动其他的包裹。
+
 时间复杂度概念描述了容器长度对执行时间的影响，而忽略了其他因素。如果超人从一端打开的盒子
 中取出包裹的速度比普通人快100倍，则他完成任务时，复杂度仍然是线性时间的。在这种情况下，他取
 出封闭盒子中包裹(一端打开，复杂度为线性时间)的速度将比普通人取出开放盒子中包裹( 复杂度为固
 定时间)要快，条件是盒子里没有太多的包裹。
+
 复杂度要求是STL特征，虽然实现细节可以隐藏，但性能规格应公开，以便程序员能够知道完成特定
 操作的计算成本。
 
+
+
 5. C++11 新增的容器要求
-  表16.6列出了C++11新增的通用容器要求。在这个表中，rv 表示类型为X的非常量右值，如函数的
-  返回值。另外，在表16.5中，要求X::iterator满足正向迭代器的要求，而以前只要求它不是输出迭代器。
-  表16.6
-  C++11新增的基本容器要求
-  表达式
-  返回类型
-  说明
-  复杂度
-  X u(v);
-  调用移动构造函数后，u的值与rv的原始值相同
-  线性
-  Xu=rV;
-  作用同X u(rv);
-  a=iv;
-  X&
-  调用移动赋值运算符后，u的值与rv的原始值相同
-  线性
-  a.cbegin( )
-  const iterator
-  返回指向容器第-一个元素的 const迭代器
-  固定
-  a.cend( )
-  const_ iterator
-  返回超尾值const迭代器
-  固定
-  复制构造和复制赋值以及移动构造和移动赋值之间的差别在于，复制操作保留源对象，而移动操作可
-  修改源对象，还可能转让所有权，而不做任何复制。如果源对象是临时的，移动操作的效率将高于常规复
-  制。第18章将更详细地介绍移动语义。
-  3.序列
-  可以通过添加要求来改进基本的容器概念。序列(sequence) 是一种重要的改进，因为7种STL
-  第16章string 类和标准模板库
-  697
-  容器类型(deque、 C++11 新增的forward_ list、 list、 queue、 priority_ queue、 stack 和vector)都是序
-  列(本书前面说过，队列让您能够在队尾添加元素，在队首删除元素。deque表示的双端队列允许在
-  两端添加和删除元素)。序列概念增加了迭代器至少是正向迭代器这样的要求，这保证了元素将按特
-  定顺序排列，不会在两次迭代之间发生变化。array也被归类到序列容器，虽然它并不满足序列的所
-  有要求。
-  序列还要求其元素按严格的线性顺序排列，即存在第一一个元素、 最后-一个元素， 除第- 一个元素和最后
-  -一个元素外，每个元素前后都分别有-一个元素。数组和链表都是序列，但分支结构(其中每个节点都指向
-  两个子节点)不是。
-  因为序列中的元素具有确定的顺序，因此可以执行诸如将值插入到特定位置、删除特定区间等操作。
-  表16.7列出了这些操作以及序列必须完成的其他操作。该表格使用的表示法与表16.5相同，此外，t表示
-  类型为T (存储在容器中的值的类型)的值，n表示整数，p、q、i和j表示迭代器。
-  表16.7
-  序列的要求
-  表达式
-  返回类型
-  说
-  明
-  X a(n, t);
-  声明一个名为a的由n个t值组成的序列
-  X(n,t)
-  创建一个由n个t值组成的匿名序列
-  X a(ij)
-  声明一个名为a的序列，并将其初始化为区间[i, j)的内容
-  X(i, j)
-  创建一一个匿 名序列，并将其初始化为区间[i, j)的内 容
-  a. insert(p, 0)
-  迭代器
-  将t插入到p的前面
-  a.insert(p, n, t)
-  void
-  将n个t插入到p的前面
-  a.insert(p, i,j)
-  void
-  将区间[i, j)中的元素插入到p的前面
-  a.erase(p)
-  迭代器
-  删除p指向的元素
-  a.erase(, q)
-  迭代器
-  删除区间[p, q)中 的元素
-  a.clear( )
-  void
-  等价于erase(begin( ), end( ))
-  因为模板类deque、list、 queue、 priority queue、stack 和vector都是序列概念的模型，所以它们都支持
-  表16.7所示的运算符。除此之外,这6个模型中的一些还可使用其他操作。在允许的情况下，它们的复杂
-  度为固定时间。表16.8列出了其他操作。
-  表16.8
-  序列的可选要求
-  表达式
-  返回类型
-  含义
-  容器
-  afont( )
-  T&
+
+表16.6列出了C++11新增的通用容器要求。在这个表中，rv 表示类型为X的非常量右值，如函数的
+返回值。另外，在表16.5中，要求X::iterator满足正向迭代器的要求，而以前只要求它不是输出迭代器。
+
+表16.6C++11新增的基本容器要求
+
+表达式
+返回类型
+说明
+复杂度
+X u(v)；
+调用移动构造函数后，u的值与rv的原始值相同
+线性
+Xu=rV;
+作用同X u(rv)；
+a=iv;
+X&
+调用移动赋值运算符后，u的值与rv的原始值相同
+线性
+a.cbegin( )
+const iterator
+返回指向容器第-一个元素的 const迭代器
+固定
+a.cend( )
+const_ iterator
+返回超尾值const迭代器
+固定
+
+复制构造和复制赋值以及移动构造和移动赋值之间的差别在于，复制操作保留源对象，而移动操作可
+修改源对象，还可能转让所有权，而不做任何复制。如果源对象是临时的，移动操作的效率将高于常规复
+制。第18章将更详细地介绍移动语义。
+
+3.序列
+
+可以通过添加要求来改进基本的容器概念。序列(sequence) 是一种重要的改进，因为7种STL
+容器类型(deque、 C++11 新增的forward_ list、 list、 queue、 priority_ queue、 stack 和vector)都是序
+列(本书前面说过，队列让您能够在队尾添加元素，在队首删除元素。deque表示的双端队列允许在
+两端添加和删除元素)。序列概念增加了迭代器至少是正向迭代器这样的要求，这保证了元素将按特
+定顺序排列，不会在两次迭代之间发生变化。array也被归类到序列容器，虽然它并不满足序列的所
+有要求。
+
+序列还要求其元素按严格的线性顺序排列，即存在第一一个元素、 最后-一个元素， 除第- 一个元素和最后
+-一个元素外，每个元素前后都分别有-一个元素。数组和链表都是序列，但分支结构(其中每个节点都指向
+两个子节点)不是。
+
+因为序列中的元素具有确定的顺序，因此可以执行诸如将值插入到特定位置、删除特定区间等操作。
+表16.7列出了这些操作以及序列必须完成的其他操作。该表格使用的表示法与表16.5相同，此外，t表示
+类型为T (存储在容器中的值的类型)的值，n表示整数，p、q、i和j表示迭代器。
+
+表16.7序列的要求
+
+表达式
+返回类型
+说
+明
+X a(n, t)；
+声明一个名为a的由n个t值组成的序列
+X(n,t)
+创建一个由n个t值组成的匿名序列
+X a(ij)
+声明一个名为a的序列，并将其初始化为区间[i, j)的内容
+X(i, j)
+创建一一个匿 名序列，并将其初始化为区间[i, j)的内 容
+a. insert(p, 0)
+迭代器
+将t插入到p的前面
+a.insert(p, n, t)
+void
+将n个t插入到p的前面
+a.insert(p, i,j)
+void
+将区间[i, j)中的元素插入到p的前面
+a.erase(p)
+迭代器
+删除p指向的元素
+a.erase(， q)
+迭代器
+删除区间[p, q)中 的元素
+a.clear( )
+void
+等价于erase(begin( )， end( ))
+
+因为模板类deque、list、 queue、 priority queue、stack 和vector都是序列概念的模型，所以它们都支持
+表16.7所示的运算符。除此之外，这6个模型中的一些还可使用其他操作。在允许的情况下，它们的复杂
+度为固定时间。表16.8列出了其他操作。
+
+
+
+表16.8序列的可选要求
+
+表达式
+返回类型
+含义
+容器
+afont( )
+T&
 
 abegin( )
 vector、list、 deque
@@ -2190,11 +2577,11 @@ aback( )
 vector、list、 dequ
 apush front(t)
 void
-ainsert(a.begin( ), t)
+ainsert(a.begin( )， t)
 ist、deque
 apush back(t)
 void
-ainsert(a.end( ), )
+ainsert(a.end( )， )
 vector、list、 deque
 apop_ front()
 void
@@ -2212,133 +2599,149 @@ aat(t)
 &
 *(abegin( )+ n)
 vector、deque
+
 表16.8有些需要说明的地方。首先，a[n]和 a.at(n)都返回一个指向容器中第n个元素(从0开始编号)
 的引用。它们之间的差别在于，如果n落在容器的有效区间外，则aat(n)将执行边界检查，并引发out of range
 异常。其次，可能有人会问，为何为list和deque定义了push front()， 而没有为vector定义?假设要将一
 个新值插入到包含100个元素的矢量的最前面。要腾出空间，必须将第99个元素移到位置100,然后把第
 98个元素移动到位置99,依此类推。这种操作的复杂度为线性时间，因为移动100个元素所需的时间为移
-698
-C++ Primer Plus (第6版)中文版
 动单个元素的100倍。但表16.8的操作被假设为仅当其复杂度为固定时间时才被实现。链表和双端队列的
 设计允许将元素添加到前端，而不用移动其他元素，所以它们可以以固定时间的复杂度来实现push front( )。
 图16.4说明了push front( )和push back( )。
-char word[4] = "cow";
+
+char word[4] = "cow"；
+
 下面详细介绍这7种序列容器类型。
-deque<char>dword (word, word+3) ;
+
+deque<char>dword (word, word+3) ；
 (1) vector
+
 前面介绍了多个使用vector 模板的例子，该模板是在vector
+
 dqword: 0w
+
 头文件中声明的。简单地说，vector 是数组的一种类表示，它
 提供了自动内存管理功能，可以动态地改变vector对象的长度，
-dqword. push_ front('s');
+dqword. push_ front('s')；
 并随着元素的添加和删除而增大和缩小。它提供了对元素的随
 机访问。在尾部添加和删除元素的时间是固定的，但在头部或
 dqword: SCow
 中间插入和删除元素的复杂度为线性时间。
 除序列外，vector 还是可反转容器(reversible container)
-dqword. push _back('l');
-概念的模型。这增加了两个类方法: rbegin( )和rend( )，前者返
+dqword. push _back('l')；
+概念的模型。这增加了两个类方法： rbegin( )和rend( )，前者返
 回一个指向反转序列的第-一个元素的迭代器，后者返回反转序
 dqword: SCOw1
 列的超尾迭代器。因此，如果dice是一一个 vector<int>容器，而
 图16.4 push front( )和push back( )
 Show(int)是显示一-个整数的函数，则下面的代码将首先正向显
-示dice的内容，然后反向显示:
-for_ each (dice.begin(), dice.end() ，Show) ;
+示dice的内容，然后反向显示：
+for_ each (dice.begin()， dice.end() ，Show) ；
 // display in order
-cout << endl ;
-for_ each(dice. rbegin(), dice.rend(), Show); // display in reversed order
+cout << endl ；
+for_ each(dice. rbegin()， dice.rend()， Show)； // display in reversed order
 cout << endl;
+
 这两种方法返回的迭代器都是类级类型reverse iterator。 对这样的迭代器进行递增，将导致它反向遍
 历可反转容器。
+
 vector模板类是最简单的序列类型，除非其他类型的特殊优点能够更好地满足程序的要求，否则应默
 认使用这种类型。
+
 (2) deque
+
 deque模板类(在deque头文件中声明)表示双端队列( double- ended queue)， 通常被简称为deque。
 在STL中，其实现类似于vector容器，支持随机访问。主要区别在于，从deque对象的开始位置插入和删
 除元素的时间是固定的，而不像vector中那样是线性时间的。所以，如果多数操作发生在序列的起始和结
 尾处，则应考虑使用deque数据结构。
+
 为实现在deque两端执行插入和删除操作的时间为固定的这一目的，deque对象的设计比vector对象
 更为复杂。因此，尽管二者都提供对元素的随机访问和在序列中部执行线性时间的插入和删除操作，
 vector容器执行这些操作时速度要快些。
+
 (3) list
+
 list模板类(在list头文件中声明)表示双向链表。除了第一一个和最后一个元素外，每个元素都与前后
 的元素相链接，这意味着可以双向遍历链表。list 和vector之间关键的区别在于，list 在链表中任- -位 置进
 行插入和删除的时间都是固定的(vector模板提供了除结尾处外的线性时间的插入和删除，在结尾处，它
 提供了固定时间的插入和删除)。因此，vector 强调的是通过随机访问进行快速访问，而list 强调的是元素
 的快速插入和删除。
+
 与vector相似，list 也是可反转容器。与vector不同的是，list 不支持数组表示法和随机访问。与矢量
-迭代器不同，从容器中插入或删除元素之后，链表迭代器指向元素将不变。我们来解释- --下这句话。例如,
+迭代器不同，从容器中插入或删除元素之后，链表迭代器指向元素将不变。我们来解释- --下这句话。例如，
 假设有一个指向vector 容器第5个元素的迭代器，并在容器的起始处插入一个元素。此时，必须移动其他
 所有元素，以便腾出位置，因此插入后，第5个元素包含的值将是以前第4个元素的值。因此，迭代器指
 向的位置不变，但数据不同。然后，在链表中插入新元素并不会移动已有的元素，而只是修改链接信息。
 指向某个元素的迭代器仍然指向该元素，但它链接的元素可能与以前不同。
-第16章string 类和标准模板库
-699
+
 除序列和可反转容器的函数外，list 模板类还包含了链表专用的成员函数。表16.9 列出了其中一些(有
 关STL方法和函数的完整列表，请参见附录G)。通常不必担心Alloc模板参数，因为它有默认值。
-表16.9
-list成员函数
-承数
-说明
+
+表16.9list成员函数
+
+承数说明
 将链表x与调用链表合并。两个链表必须已经排序。合并后的经过排序的链表保
 void merge(ist T, Alloo& x)
 存在调用链表中，x为空。这个函数的复杂度为线性时间
 void remove(const T & val)
 从链表中删除val的所有实例。这个函数的复杂度为线性时间
 void sort( )
-使用<运算符对链表进行排序; N个元素的复杂度为NlogN
+使用<运算符对链表进行排序； N个元素的复杂度为NlogN
 void splice(iterator pos, list<T, Alloo>x)
 将链表x的内容插入到pos的前面，x将为空。这个函数的的复杂度为固定时间
 void unique( )
 将连续的相同元素压缩为单个元素。这个函数的复杂度为线性时间
+
 程序清单16.12 演示了这些方法和insert( )方法(所有模拟序列的STL类都有这种方法)的用法。
+
 程序清单16.12 list.cpp
 // list.cpp -- using a list
 #include <iostream>
 #include <list>
 #include <iterator>
 #include <algori thm>
-void outint(int n) {std::cout < n << " ";}
+void outint(int n) {std::cout < n << " "；}
 int main()
 using namespace std;
-list<int> one(5， 2); // list of 5 2s
-int stuff[5] = {1,2,4,8, 6};
+list<int> one(5， 2)； // list of 5 2s
+int stuff[5] = {1,2,4,8, 6}；
 list<int> two;
-two. insert (two. begin() ,stuff, stuff + 5 );
-int more[6] = {6, 4, 2，4, 6, 5};
-list<int> three (two) ;
-three. insert (three.end()，more, more + 6) ;
-cout < "List one: ";
-for each(one . begin() , one.end(),，outint);
-cout << endl << "List twO: ";
-for_ each (two . begin()，two.end(), outint) ;
-cout << endl << "List three: ";
-for_ each (three.begin(), three.end(), outint) ;
-three. remove(2) ;
-cout << endl << "List three minus 2s: ";
-for_ each (three .begin(), three . end(), outint) ;
-three. splice(three.begin(), one);
-cout << endl << "List three after splice: ";
-for each(three .begin()，three.end(), outint);
+two. insert (two. begin() ,stuff, stuff + 5 )；
+int more[6] = {6, 4, 2，4, 6, 5}；
+list<int> three (two) ；
+three. insert (three.end()，more, more + 6) ；
+cout < "List one: "；
+for each(one . begin() ， one.end()，，outint)；
+cout << endl << "List twO: "；
+for_ each (two . begin()，two.end()， outint) ；
+cout << endl << "List three: "；
+for_ each (three.begin()， three.end()， outint) ；
+three. remove(2) ；
+cout << endl << "List three minus 2s: "；
+for_ each (three .begin()， three . end()， outint) ；
+three. splice(three.begin()， one)；
+cout << endl << "List three after splice: "；
+for each(three .begin()，three.end()， outint)；
 cout《< endl << "List one: "
-for_ each (one . begin()，one .end()，outint) ;
-three . unique();
-cout << endl << "List three after unique: ";
-for_ each (three . begin(), three.end(), outint) ;
-three.sort() ;
+for_ each (one . begin()，one .end()，outint) ；
+three . unique()；
+cout << endl << "List three after unique: "；
+for_ each (three . begin()， three.end()， outint) ；
+three.sort() ；
 700
 C++ Primer Plus (第6版)中文版
-three . unique() ;
-cout << endl << "List three after sort & unique: ";
-for_ each(three . begin()，three.end() ，outint) ;
-two . sort() ;
-three . merge (two) ;
-cout << endl << "Sorted two merged into three: ";
-for each(three.begin() ，three.end() ，outint) ;
-cout << endl ;
+three . unique() ；
+cout << endl << "List three after sort & unique: "；
+for_ each(three . begin()，three.end() ，outint) ；
+two . sort() ；
+three . merge (two) ；
+cout << endl << "Sorted two merged into three: "；
+for each(three.begin() ，three.end() ，outint) ；
+cout << endl ；
 return 0;
-下面是程序清单16.12中程序的输出:
+
+下面是程序清单16.12中程序的输出：
+
 List one:
 22222
 ListtwO:12486
@@ -2348,41 +2751,54 @@ List one:
 List three after unique:2 1486465
 Listthreeaftersort&unique:124568
 Sorted two merged into three: 1 1224456688
+
 (4)程序说明
+
 程序清单16.12 中程序使用了for each(算法和outint( )函数来显示列表。在C++11中，也可使用基于
-范围的for循环:
+范围的for循环：
+
 for (auto X
-three) cout << x << " ";
-insert( )和splice( )之间的主要区别在于: insert( )将原始区间的副本插入到目标地址，而splice( )则将原
+three) cout << x << " "；
+
+insert( )和splice( )之间的主要区别在于： insert( )将原始区间的副本插入到目标地址，而splice( )则将原
 始区间移到目标地址。因此，在one的内容与three合并后，one 为空。(splice( )方法还有其他原型，用于
 移动单个元素和元素区间)。splice( )方法执行后，迭代器仍有效。也就是说，如果将迭代器设置为指向one
 中的元素，则在splice( )将它重新定位到元素three 后，该迭代器仍然指向相同的元素。
+
 注意，unique( )只能将相邻的相同值压缩为单个值。程序执行three.unique( )后，three 中仍包含不相邻
 的两个4和两个6。但应用sort( )后再应用unique( )时，每个值将只占一个位置。
+
 还有非成员sort()函数(程序清单16.9)，但它需要随机访问迭代器。因为快速插入的代价是放弃随
 机访问功能，所以不能将非成员函数sort()用于链表。因此，这个类中包括了一个只能在类中使用的成
 员版本。
+
 (5) list 工具箱
+
 list方法组成了一个方便的工具箱。例如，假设有两个邮件列表要整理，则可以对每个列表进行排序，
 合并它们，然后使用unique()来删除重复的元素。
+
 sort( ) merge( )和unique( )方法还各自拥有接受另一一个 参数的版本，该参数用于指定用来比较元素的
 函数。同样，remove()方法也有一个接受另-一个参数的版本，该参数用于指定用来确定是否删除元素的函
 数。这些参数都是谓词函数，将稍后介绍。
+
 (6) forward list (C++11)
-C++11新增了容器类forward list, 它实现了单链表。在这种链表中,每个节点都只链接到下一一个节点，
+
+C++11新增了容器类forward list, 它实现了单链表。在这种链表中，每个节点都只链接到下一一个节点，
 而没有链接到前-一个节点。 因此forward list 只需要正向迭代器，而不需要双向迭代器。因此，不同于
 vector和list, forward ist 是不可反转的容器。相比于list, forward list 更简单、更紧凑，但功能也更少。
+
 (7) queue
+
 queue模板类(在头文件queue (以前为queue.h)中声明)是-一个适配器类。由前所述，ostream iterator
 模板就是一一个适配器，让输出流能够使用迭代器接口。同样，queue 模板让底层类(默认为deque) 展示典
-第16章string 类和标准模板库
-701
 型的队列接口。
+
 queue模板的限制比deque 更多。它不仅不允许随机访问队列元素，甚至不允许遍历队列。它把使用
 限制在定义队列的基本操作上，可以将元素添加到队尾、从队首删除元素、查看队首和队尾的值、检查元
 素数目和测试队列是否为空。表16.10 列出了这些操作。
-表16.10
-queue的操作
+
+表16.10queue的操作
+
 方法
 兑， 明
 bool empty( )const
@@ -2397,25 +2813,34 @@ void push(constT& x)
 在队尾插入x
 void pop( )
 删除队首元素
+
 注意，pop()是一个删除数据的方法，而不是检索数据的方法。如果要使用队列中的值，应首先使用
 front( )来检索这个值，然后使用pop( )将它从队列中删除。
+
 (8) priority queue
+
 priority_ queue 模板类(在queue头文件中声明)是另一一个适配器类，它支持的操作与queue相同。两
-者之间的主要区别在于，在priority_ _queue 中，最大的元素被移到队首(生活不总是公平的，队列也一=样)。
+者之间的主要区别在于，在priority__queue 中，最大的元素被移到队首(生活不总是公平的，队列也一=样)。
 内部区别在于，默认的底层类是vector。 可以修改用于确定哪个元素放到队首的比较方式，方法是提供- -
-个可选的构造函数参数:
+个可选的构造函数参数：_
+
 priority queue<int> Pq1;
 // default version
-priority_ queue<int> pq2 (greater<int>) ; // use greater<int> to order
+priority_ queue<int> pq2 (greater<int>) ； // use greater<int> to order
+
 greater<>( )函数是一一个预定义的函数对象，本章稍后将讨论它。
+
 (9) stack
+
 与queue相似，stack (在头文件stack--以 前为stack.h--中声明) 也是一个适配器类，它给底层类
 (默认情况下为vector) 提供了典型的栈接口。
+
 stack模板的限制比vector更多。它不仅不允许随机访问栈元素，甚至不允许遍历栈。它把使用限制在
 定义栈的基本操作上，即可以将压入推到栈顶、从栈顶弹出元素、查看栈顶的值、检查元素数目和测试栈
 是否为空。表16.11列出了这些操作。
-表16.11
-stack的操作
+
+表16.11stack的操作
+
 方江
 说明
 bool empty( )const
@@ -2428,239 +2853,292 @@ void push(const T& x)
 在栈顶部插入x
 void pop( )
 删除栈顶元素
+
 与queue相似，如果要使用栈中的值，必须首先使用top( )来检索这个值，然后使用pop( )将它从栈中
 删除
+
 (10) array (C++11)
+
 第4章介绍过，模板类array是否头文件array中定义的，它并非STL容器，因为其长度是固定的。因
-此，array没有定义调整容器大小的操作，如pushback()和insert(),但定义了对它来说有意义的成员函数，
+此，array没有定义调整容器大小的操作，如pushback()和insert()，但定义了对它来说有意义的成员函数，
 如operator 0 0和at( )。可将很多标准STL算法用于array对象，如copy( )和for_ each( )。
-702
-C++ Primer Plus (第6版)中文版
 
 ### 关联容 器
 
-关联容器( associative container)是对容器概念的另一个改进。关联容器将值与键关联在一起,并使用
+关联容器( associative container)是对容器概念的另一个改进。关联容器将值与键关联在一起，并使用
 键来查找值。例如，值可以是表示雇员信息(如姓名、地址、办公室号码、家庭电话和工作电话、健康计
 划等)的结构，而键可以是唯一-的员 工编号。为获取雇员信息，程序将使用键查找雇员结构。前面说过，
 对于容器x,表达式X::value_type通常指出了存储在容器中的值类型。对于关联容器来说，表达式
 X::key_ type 指出了键的类型。
+
 关联容器的优点在于，它提供了对元素的快速访问。与序列相似，关联容器也允许插入新元素，但不
 能指定元素的插入位置。原因是关联容器通常有用于确定数据放置位置的算法，以便能够快速检索信息。
 关联容器通常是使用某种树实现的。树是一一种数据结构，其根节点链接到-一个或两个节点，而这些节
-点又链接到一个或两个节点，从而形成分支结构。像链表- -样， 节点使得添加或删除数据项比较简单;但
+点又链接到一个或两个节点，从而形成分支结构。像链表- -样， 节点使得添加或删除数据项比较简单；但
 相对于链表，树的查找速度更快。
-STL提供了4种关联容器: set、 multiset. map和multimap。前两种是在头文件set ( 以前分别为set.h
+
+STL提供了4种关联容器： set、 multiset. map和multimap。前两种是在头文件set ( 以前分别为set.h
 和multiset.h)中定义的，而后两种是在头文件map (以前分别为map.h和multimap.h)中定义的。
+
 最简单的关联容器是set,其值类型与键相同，键是唯- -的， 这意味着集合中不会有多个相同的键。确
 实，对于set来说，值就是键。multiset类似于set,只是可能有多个值的键相同。例如，如果键和值的类型
 为int,则multiset对象包含的内容可以是1、2、2、2、3、5、7、7。
+
 在map中，值与键的类型不同，键是唯一的， 每个键只对应一个值。multimap 与map相似，只是一-
 个键可以与多个值相关联。
+
 有关这些类型的信息很多，无法在本章全部列出(但附录G列出了方法)，这里只介绍-一个使用set
 的简单例子和一个使用multimap的简单例子。
 
 1. set示例
-  STL set模拟了多个概念，它是关联集合，可反转，可排序，且键是唯- -的， 所以不能存储多个相同的
-  值。与vector和list相似，set也使用模板参数来指定要存储的值类型:
-  set<string A; // a set of string objects
-  第二个模板参数是可选的，可用于指示用来对键进行排序的比较函数或对象。默认情况下，将使用模
-  板less<> (稍后将讨论)。老式C++实现可能没有提供默认值，因此必须显式指定模板参数:
-  set<string, less<strng> > A; // older impl ementation
-  请看下面的代码:
-  const int N = 6;
-  string s1[N] = { "buffoon"，"thinkers"， "for"， "heavy"， "can"， "for"};
-  set<string> A(s1, s1 + N); // initialize set A using a range from array
-  ostream_ iterator<string, char> out (cout, " ");
-  COPY (A.begin(), A.end(), 0ut) ;
-  与其他容器相似，set也有-一个将迭代器区间作为参数的构造函数(参见表16.6)。这提供了-~种将集
-  合初始化为数组内容的简单方法。请记住，区间的最后一个元素是超尾，s1+N指向数组s1尾部后面的一
-  个位置。上述代码片 段的输出表明，键是唯一-的 (字符串“for” 在数组中出现了2次，但在集合中只出现
-  1次)，且集合被排序:
-  buffoon can for heavy thinkers
-  数学为集合定义了-一些标准操作，例如，并集包含两个集合合并后的内容。如果两个集合包含相同的
-  值，则这个值将在并集中只出现一~次， 这是因为键是唯一-的。 交集包含两个集合都有的元素。两个集合的
-  差是第-一个集合减去两个集合都有的元素。
-  STL提供了支持这些操作的算法。它们是通用函数，而不是方法，因此并非只能用于set对象。然而，
-  所有set对象都自动满足使用这些算法的先决条件，即容器是经过排序的。set union( )函数接受5个迭
-  第16章string 类和标准模板库
-  703
-  代器参数。前两个迭代器定义了第一个集合的区间，接下来的两个定义了第二个集合区间，最后-一个迭代
-  器是输出迭代器，指出将结果集合复制到什么位置。例如，要显示集合A和B的并集，可以这样做:
-  set_ union (A.begin()，A.end(), B.begin() ，B.end() ，
-  ostream iterator<string, char> out(cout, " ")) ;
-  假设要将结果放到集合C中，而不是显示它，则最后-一个参数应是一一个指向C的迭代器。显而易见的
-  选择是C.begin( )，但它不管用，原因有两个。首先，关联集合将键看作常量，所以C.begin( )返回的迭代
-  器是常量迭代器,不能用作输出迭代器。不直接使用C.begin( )的第二个原因是，与copy( )相似, set _union()
-  将覆盖容器中已有的数据，并要求容器有足够的空间容纳新信息。C是空的，不能满足这种要求。但前面
-  讨论的模板isert iterator 可以解决这两个问题。前面说过，它可以将复制转换为插入。另外，它还模拟了
-  输出迭代器概念，可以用它将信息写入容器。因此，可以创建- - 个匿名insert iterator, 将信息复制给C。
-  前面说过，其构造函数将容器名称和迭代器作为参数:
-  set_ union(A.begin(), A.end(), B.begin(), B.end() ,
-  insert_ iterator<set<string> >(C， c.begin()));
-  函数set intersection( )和set difference )分别查找交集和获得两个集合的差，它们的接口与set union( )相同。
-  两个有用的set方法是lower_ bound( )和upper_ bound( )。方法lower_ bound( )将键作为参数并返回-一个
-  迭代器，该迭代器指向集合中第- 一个不小于键参数的成员。同样，方法upper_ bound( )将键作为参数，并返
-  回一个迭代器，该迭代器指向集合中第一一个大于键参数的成员。例如，如果有一个字符串集合，则可以用
-  这些方法获得-一个 这样的区间，即包含集合中从“b”到“f” 的所有字符串。
-  因为排序决定了插入的位置，所以这种类包含只指定要插入的信息，而不指定位置的插入方法。例如，
-  如果A和B是字符串集合，则可以这样做: 
-  string s("tennis") ;
-  A. insert(s) ;
-  // insert a value
-  B. insert (A.begin(), A.end()); // insert a range
-  程序清单16.13 演示了集合的这些用途。
-  程序清单16.13 setops.cpp
-  // setops.cpp -- some set operat ions
-  #include <iostream>
-  #include <string>
-  #include <set>
-  #include <algorithm>
-  #include <iterator>
-  int main()
-  using namespace std;
-  const int N = 6;
-  string s1[N] = {"buffoon"， "thinkers", "for"， "heavy"， "can"， "for"} ;
-  string s2[N] = { "metal", "any", "food", "elegant", "deliver", "for"};
-  set<string> A(s1, s1 + N);
-  set<string> B(s2, s2 + N) ;
-  ostream_ iterator<string, char> out(cout, " ");
-  cout << "Set A: ";
-  copy (A.begin(), A.end(), out);
-  cout < endl ;
-  cout<<"SetB:";
-  copy(B.begin(), B.end(), 0ut) ;
-  cout << endl ;
-  704
-  C++ Primer Plus (第6版)中文版
-  cout << "Union of A and B:\n";
-  set_ union (A.begin(), A.end()，B.begin(), B.end(), 0ut) ;
-  cout << endl ;
-  out << "Intersection of A and B: \n";
-  set_ intersection (A. begin(), A.end(), B.begin(), B.end(), out) ;
-  cout << endl ;
-  cout << "Difference of A and B:\n";
-  set_ difference (A.begin(), A.end(), B.begin()，B.end(), 0ut) ;
-  cout << endl;
-  set<string> C
-  cout << "Set C:\n";
-  set union(A.begin(), A.end(), B.begin(), B.end(),
-  insert_ iterator<set<string> >(C， C.begin())) ;
-  copy(C.begin(), C.end(), 0ut) ;
-  cout << endl;
-  string s3 ("grngy") ;
-  C. insert (s3) ;
-  cout《< "Set C after insertion: \n";
-  copy(C. begin()，C.enda() ,out);
-  cout << endl ;
-  cout << "Showing a range: \n" ;
-  copy(C.lower bound("ghost") ,C.upper_ bound("spook"), out) ;
-  cout << endl;
-  return 0;
-  下面是程序清单16.13中程序的输出:
-  Set A: buffoon can for heavy thinkers
-  Set B: any deliver elegant food for metal
-  Union of A and B:
-  ny buffoon can deliver elegant food for heavy metal thinkers
-  Intersection of A and B:
-  Difference of A and B:
-  buffoon can heavy thinkers
-  set C:
-  any buffoon can deliver elegant food for heavy metal thinkers
-  Set C after insertion:
-  any buffoon can deliver elegant food for grungy heavy metal thinkers
-  Showing a range :
-  grungy heavy metal
-  和本章中大多数示例一样，程序清单16.13 在处理名称空间std时采取了偷懒的方式:
-  using namespace std;
-  这样做旨在简化表示方式。这些示例使用了名称空间std中非常多的元素,如果使用using声明或作用
-  域运算符，代码将变得混乱:
-  std: :set<std: :string> B(s2，s2 + N);
-  std: :ostream iterator<std: :string, Char> out (sta: :cout,
-  " ");
-  第16章string 类和标准模板库
-  70:
-  std: :cout << "Set A: ";
-  sta: :copy(A.begin()，A.end(), 0ut) ;
+
+STL set模拟了多个概念，它是关联集合，可反转，可排序，且键是唯- -的， 所以不能存储多个相同的
+值。与vector和list相似，set也使用模板参数来指定要存储的值类型：
+
+set<string A; // a set of string objects
+
+第二个模板参数是可选的，可用于指示用来对键进行排序的比较函数或对象。默认情况下，将使用模
+板less<> (稍后将讨论)。老式C++实现可能没有提供默认值，因此必须显式指定模板参数：
+
+set<string, less<strng> > A; // older impl ementation
+
+请看下面的代码：
+
+const int N = 6;
+string s1[N] = { "buffoon"，"thinkers"， "for"， "heavy"， "can"， "for"}；
+set<string> A(s1, s1 + N)； // initialize set A using a range from array
+ostream_ iterator<string, char> out (cout, " ")；
+COPY (A.begin()， A.end()， 0ut) ；
+
+与其他容器相似，set也有-一个将迭代器区间作为参数的构造函数(参见表16.6)。这提供了-~种将集
+合初始化为数组内容的简单方法。请记住，区间的最后一个元素是超尾，s1+N指向数组s1尾部后面的一
+个位置。上述代码片 段的输出表明，键是唯一-的 (字符串“for” 在数组中出现了2次，但在集合中只出现
+1次)，且集合被排序：
+
+buffoon can for heavy thinkers
+
+数学为集合定义了-一些标准操作，例如，并集包含两个集合合并后的内容。如果两个集合包含相同的
+值，则这个值将在并集中只出现一~次， 这是因为键是唯一-的。 交集包含两个集合都有的元素。两个集合的
+差是第-一个集合减去两个集合都有的元素。
+
+STL提供了支持这些操作的算法。它们是通用函数，而不是方法，因此并非只能用于set对象。然而，
+所有set对象都自动满足使用这些算法的先决条件，即容器是经过排序的。set union( )函数接受5个迭
+代器参数。前两个迭代器定义了第一个集合的区间，接下来的两个定义了第二个集合区间，最后-一个迭代
+器是输出迭代器，指出将结果集合复制到什么位置。例如，要显示集合A和B的并集，可以这样做：
+
+set_ union (A.begin()，A.end()， B.begin() ，B.end() ，
+ostream iterator<string, char> out(cout, " ")) ；
+
+假设要将结果放到集合C中，而不是显示它，则最后-一个参数应是一一个指向C的迭代器。显而易见的
+选择是C.begin( )，但它不管用，原因有两个。首先，关联集合将键看作常量，所以C.begin( )返回的迭代
+器是常量迭代器，不能用作输出迭代器。不直接使用C.begin( )的第二个原因是，与copy( )相似， set _union()
+将覆盖容器中已有的数据，并要求容器有足够的空间容纳新信息。C是空的，不能满足这种要求。但前面
+讨论的模板isert iterator 可以解决这两个问题。前面说过，它可以将复制转换为插入。另外，它还模拟了
+输出迭代器概念，可以用它将信息写入容器。因此，可以创建- - 个匿名insert iterator, 将信息复制给C。
+前面说过，其构造函数将容器名称和迭代器作为参数：
+
+```
+set_ union(A.begin()， A.end()， B.begin()， B.end() ，
+insert_ iterator<set<string> >(C， c.begin()))；
+```
+
+
+
+函数set intersection( )和set difference )分别查找交集和获得两个集合的差，它们的接口与set union( )相同。
+两个有用的set方法是lower_ bound( )和upper_ bound( )。方法lower_ bound( )将键作为参数并返回-一个
+迭代器，该迭代器指向集合中第- 一个不小于键参数的成员。同样，方法upper_ bound( )将键作为参数，并返
+回一个迭代器，该迭代器指向集合中第一一个大于键参数的成员。例如，如果有一个字符串集合，则可以用
+这些方法获得-一个 这样的区间，即包含集合中从“b”到“f” 的所有字符串。
+
+因为排序决定了插入的位置，所以这种类包含只指定要插入的信息，而不指定位置的插入方法。例如，
+如果A和B是字符串集合，则可以这样做： 
+
+string s("tennis") ；
+A. insert(s) ；
+// insert a value
+B. insert (A.begin()， A.end())； // insert a range
+
+程序清单16.13 演示了集合的这些用途。
+
+程序清单16.13 setops.cpp
+
+// setops.cpp -- some set operat ions
+#include <iostream>
+#include <string>
+#include <set>
+#include <algorithm>
+#include <iterator>
+int main()
+using namespace std;
+const int N = 6;
+string s1[N] = {"buffoon"， "thinkers"， "for"， "heavy"， "can"， "for"} ；
+string s2[N] = { "metal"， "any"， "food"， "elegant"， "deliver"， "for"}；
+set<string> A(s1, s1 + N)；
+set<string> B(s2, s2 + N) ；
+ostream_ iterator<string, char> out(cout, " ")；
+cout << "Set A: "；
+copy (A.begin()， A.end()， out)；
+cout < endl ；
+cout<<"SetB:"；
+copy(B.begin()， B.end()， 0ut) ；
+cout << endl ；
+704
+C++ Primer Plus (第6版)中文版
+cout << "Union of A and B:\n"；
+set_ union (A.begin()， A.end()，B.begin()， B.end()， 0ut) ；
+cout << endl ；
+out << "Intersection of A and B: \n"；
+set_ intersection (A. begin()， A.end()， B.begin()， B.end()， out) ；
+cout << endl ；
+cout << "Difference of A and B:\n"；
+set_ difference (A.begin()， A.end()， B.begin()，B.end()， 0ut) ；
+cout << endl;
+set<string> C
+cout << "Set C:\n"；
+set union(A.begin()， A.end()， B.begin()， B.end()，
+insert_ iterator<set<string> >(C， C.begin())) ；
+copy(C.begin()， C.end()， 0ut) ；
+cout << endl;
+string s3 ("grngy") ；
+C. insert (s3) ；
+cout《< "Set C after insertion: \n"；
+copy(C. begin()，C.enda() ,out)；
+cout << endl ；
+cout << "Showing a range: \n" ；
+copy(C.lower bound("ghost") ,C.upper_ bound("spook")， out) ；
+cout << endl;
+return 0;
+
+下面是程序清单16.13中程序的输出：
+
+Set A: buffoon can for heavy thinkers
+Set B: any deliver elegant food for metal
+Union of A and B:
+ny buffoon can deliver elegant food for heavy metal thinkers
+Intersection of A and B:
+Difference of A and B:
+buffoon can heavy thinkers
+set C:
+any buffoon can deliver elegant food for heavy metal thinkers
+Set C after insertion:
+any buffoon can deliver elegant food for grungy heavy metal thinkers
+Showing a range ：
+grungy heavy metal
+
+和本章中大多数示例一样，程序清单16.13 在处理名称空间std时采取了偷懒的方式：
+
+using namespace std;
+
+这样做旨在简化表示方式。这些示例使用了名称空间std中非常多的元素，如果使用using声明或作用
+域运算符，代码将变得混乱：
+
+std: :set<std: :string> B(s2，s2 + N)；
+std: :ostream iterator<std: :string, Char> out (sta: :cout,
+" ")；
+70:
+std: :cout << "Set A: "；
+sta: :copy(A.begin()，A.end()， 0ut) ；
 
 multimap 示例
+
 与set 相似，multimap 也是可反转的、经过排序的关联容器，但键和值的类型不同，且同一个键可能
 与多个值相关联。
+
 基本的multimap声明使用模板参数指定键的类型和存储的值类型。例如，下面的声明创建一一个
 multimap对象，其中键类型为int,存储的值类型为string:
+
 multimap< int, string> codes;
+
 第3个模板参数是可选的，指出用于对键进行排序的比较函数或对象。在默认情况下，将使用模板less<>
 (稍后将讨论)，该模板将键类型作为参数。老式C++实现可能要求显式指定该模板参数。
+
 为将信息结合在一起，实际的值类型将键类型和数据类型结合为一一对。为此，STL使用模板类
 pair<class T, class U>将这两种值存储到一一个对象中。如果keytype是键类型，而datatype是存储的数据类型，
 则值类型为pairconst keytype, datatype>。例如，前面声明的codes对象的值类型为pair<const int, string> 。
 例如，假设要用区号作为键来存储城市名(这恰好与codes声明-致，它将键类型声明为int,数据类
-型声明为string)，则一种方法是创建一一个 pair,再将它插入:
-pair<const int, string> item(213， "Los Angeles") ;
-codes. insert (item) ;
-也可使用-条语句创建匿名pair 对象并将它插入:
-codes . insert (pair<const int, string> (213, "LoS Angeles"));
+型声明为string)，则一种方法是创建一一个 pair,再将它插入：
+
+pair<const int, string> item(213， "Los Angeles") ；
+codes. insert (item) ；
+
+也可使用-条语句创建匿名pair 对象并将它插入：
+
+codes . insert (pair<const int, string> (213, "LoS Angeles"))；
+
 因为数据项是按键排序的，所以不需要指出插入位置。
-对于pair对象，可以使用first 和second成员来访问其两个部分了:
-pairconst int, string> item(213， "Los Angeles");
-cout << item.first << ↑<< item. second << endl ;
+对于pair对象，可以使用first 和second成员来访问其两个部分了：
+
+pairconst int, string> item(213， "Los Angeles")；
+cout << item.first << ↑<< item. second << endl ；
+
 如何获得有关multimap对象的信息呢?成员函数count()接受键作为参数，并返回具有该键的元素数
 目。成员函数lower_ bound( )和upper_ bound( )将键作为参数，且工作原理与处理set 时相同。成员函数
 equal range( )用键作为参数，且返回两 个迭代器，它们表示的区间与该键匹配。为返回两个值，该方法将
 它们封装在一一个pair对象中，这里pair的两个模板参数都是迭代器。例如，下面的代码打印codes对象中
-区号为718的所有城市:
+区号为718的所有城市：
+
+```
 pair<mult imap<KeyType, string>: :iterator,
 mul t imap<KeyType, string>: :iterator> range
-= codes . equal range (718);
-cout << "Cities with area code 718:\n";
+= codes . equal range (718)；
+cout << "Cities with area code 718:\n"；
 std: :mult imap<KeyType, std: :string>: :iterator it;
 for (it = range.first; it != range.second; ++it
-cout << (*it) . second << endl ;
-在声明中可使用C++11自动类型推断功能，这样代码将简化为如下所示:
-auto range = codes. equal range (718) ;
-cout << "Cities with area code 718: \n";
+cout << (*it) . second << endl ；
+```
+
+在声明中可使用C++11自动类型推断功能，这样代码将简化为如下所示：
+
+```
+auto range = codes. equal range (718) ；
+cout << "Cities with area code 718: \n"；
 for (auto it = range. first; it != range. second; ++it)
 cout << (*it) . second
-<< endl ;
-程序清单16.14 演示了上述大部分技术，它也使用typedef 来简化代码:
+<< endl ；
+```
+
+程序清单16.14 演示了上述大部分技术，它也使用typedef 来简化代码：
+
 程序清单16.14 multimap.cpp
+
 // multmap.Cpp -- use a multimap
 #include < iostream>
 #include <string>
-706
-C++ Primer Plus (第6版)中文版
 #include <map>
 #include <algori thm>
 typedef int KeyType;
 typedef std: :pair<const KeyType, sta: :string> Pair;
-typedef std: :multimap<KeyType, std: :string> MapCode ;
+typedef std: :multimap<KeyType, std: :string> MapCode ；
 int main()
 using namespace std;
-MapCode codes ;
-codes . insert (Pair(415，"San Francisco"));
-codes. insert (Pair (510，"0akland")) ;
-codes . insert (Pair(718，"Brooklyn")) ;
-codes . insert (Pair(718, "Staten Island")) ;
-codes . insert (Pair(415, "San Rafae1"));
-codes . insert (Pair(510，"Berkeley"));
+MapCode codes ；
+codes . insert (Pair(415，"San Francisco"))；
+codes. insert (Pair (510，"0akland")) ；
+codes . insert (Pair(718，"Brooklyn")) ；
+codes . insert (Pair(718, "Staten Island")) ；
+codes . insert (Pair(415, "San Rafae1"))；
+codes . insert (Pair(510，"Berkeley"))；
 cout << "Number of cities with area code 415: "
 << codes. count(415) << endl;
 cout《< "Number of cities with area code 718: "
-< codes. count (718) << endl ;
+< codes. count (718) << endl ；
 cout << "Number of cities with area code 510: "
-codes. count (510) << endl ;
-)ut << "Area Code City\n" ;
-for (it = codes . begin(); it != codes.end(); ++it)
+codes. count (510) << endl ；
+)ut << "Area Code City\n" ；
+for (it = codes . begin()； it != codes.end()； ++it)
 cout<<""<<(*it).first<<"
 << (*it) . second
-<< endl ;
-pair<MapCode: : iterator, MapCode: : iterator> range
-= codes. equal_ range (718) ;
-cout << "Cities with area code 718: \n";
+<< endl ；
+pair<MapCode: ： iterator, MapCode: ： iterator> range
+= codes. equal_ range (718) ；
+cout << "Cities with area code 718: \n"；
 for (it = range. first; it != range. second; ++it)
 cout << (*it) . second
-<< endl ;
+<< endl ；
 return 0;
-下面是程序清单16.14中程序的输出:
+
+下面是程序清单16.14中程序的输出：
+
 Number of cities with area code 415: 2
 Number of cities with area code 718: 2
 Number of cities with area code 510: 2
@@ -2693,7 +3171,8 @@ unordered set、 unordered multiset、 unordered map和unordered multimap, 将�
 
 很多STL算法都使用函数对象一也叫函数符 (functor)。 函数符是可以以函数方式与( )结合使用的
 任意对象。这包括函数名、指向函数的指针和重载了()运算符的类对象(即定义了函数operator()()的类)。
-例如，可以像这样定义一个类:
+例如，可以像这样定义一个类：
+
 class Linear
 private:
 double slope;
@@ -2702,22 +3181,37 @@ public:
 Linear (double sl_ = 1, double y_ = 0)
 slope(sl_ )，y0(y_ ) {}
 double operator() (double x) {return y0 + slope * x; }
-这样，重载的()运算符将使得能够像函数那样使用Linear对象:
+
+这样，重载的()运算符将使得能够像函数那样使用Linear对象：
+
+```
 Linear fl; 
-Linear f2(2.5，10.0);
-double y1 = f1(12.5); // right-hand side is f1.operator() (12.5)
-double y2 = f2(0.4) ;
+Linear f2(2.5，10.0)；
+double y1 = f1(12.5)； // right-hand side is f1.operator() (12.5)
+double y2 = f2(0.4) ；
+```
+
 其中y1将使用表达式0+ 1 * 12.5来计算，y2将使用表达式10.0+ 2.5 * 0.4来计算。在表达式y0 + slope
 *x中，y0和slope的值来自对象的构造函数，而x的值来自operator( )( )的参数。
-还记得函数for_ each 吗?它将指定的函数用于区间中的每个成员:
-for each (books . begin(), books.end(), ShowReview) ;
-通常，第3个参数可以是常规函数，也可以是函数符。实际上，这提出了一个问题:如何声明第3个
+还记得函数for_ each 吗?它将指定的函数用于区间中的每个成员：
+
+```
+for each (books . begin()， books.end()， ShowReview) ；
+```
+
+
+
+通常，第3个参数可以是常规函数，也可以是函数符。实际上，这提出了一个问题：如何声明第3个
 参数呢?不能把它声明为函数指针，因为函数指针指定了参数类型。由于容器可以包含任意类型，所以预
-先无法知道应使用哪种参数类型。STL通过使用模板解决了这个问题。for each的原型看.上去就像这样:
+先无法知道应使用哪种参数类型。STL通过使用模板解决了这个问题。for each的原型看.上去就像这样：
+
 template<class InputIterator, class Function>
-Eunction for_ each (InputIterator first， Inputiterator last, Function f) ;
-ShowReview( )的原型如下:
-void ShowReview(const Review &) ;
+Eunction for_ each (InputIterator first， Inputiterator last, Function f) ；
+
+ShowReview( )的原型如下：
+
+void ShowReview(const Review &) ；
+
 这样，标识符ShowReview的类型将为void(* )(const Review &)，这也是赋给模板参数Function的类型。
 对于不同的函数调用，Function 参数可以表示具有重载的( )运算符的类类型。最终，for_ each( )代码将具有
 -一个使用f( )的表达式。在ShowReview( )示例中，f是指向函数的指针，而f( )调用该函数。如果最后的
@@ -2726,34 +3220,46 @@ for_each()参数是-一个对象，则f()将是调用其重载的()运算符的�
 ### 函数符概念
 
 正如STL定义了容器和迭代器的概念一样， 它也定义了函数符概念。
-708
-C++ Primer Plus (第6版)中文版
+
 生成器(generator)是不用参数就可以调用的函数符。
+
 一元函数(unary function) 是用一个参数可以调用的函数符。
+
 ●二元函数(binaryfunction)是用两个参数可以调用的函数符。
+
 例如，提供给for_ each( )的函数符应当是一元函数， 因为它每次用于一一个容器元素。
-当然，这些概念都有相应的改进版:
-●返回bool值的--元函数是谓词(predicate);
+
+当然，这些概念都有相应的改进版：
+
+●返回bool值的--元函数是谓词(predicate)；
+
 ●返回 bool值的二元函数是二元谓词(binary predicate)。
+
 一些STL函数需要谓词参数或二元谓词参数。例如，程序清单16.9使用了sort( )的这样-一个版本，即
-将二元谓词作为其第3个参数:
-sool WorseThan (const Review & r1， const Review & r2) ;
-sort (books . begin()，books. end(), WorseThan) ;
+将二元谓词作为其第3个参数：
+
+sool WorseThan (const Review & r1， const Review & r2) ；
+sort (books . begin()，books. end()， WorseThan) ；
+
 list模板有-一个将谓词作为参数的remove_ if( )成员，该函数将谓词应用于区间中的每个元素，如果谓
-词返回true,则删除这些元素。例如，下 面的代码删除链表three中所有大于100的元素:
+词返回true,则删除这些元素。例如，下 面的代码删除链表three中所有大于100的元素：
+
 bool tooBig(int n){ return n > 100; }
 list<int> scores;
-scores. remove_ if (tooBig) ;
+scores. remove_ if (tooBig) ；
+
 最后这个例子演示了类函数符适用的地方。假没要删除另-一个链表中所有大于200的值。如果能将取
 舍值作为第二个参数传递给tooBig( )，则可以使用不同的值调用该函数，但谓词只能有一个参数。然而，
-如果设计一个TooBig类，则可以使用类成员而不是函数参数来传递额外的信息:
+如果设计一个TooBig类，则可以使用类成员而不是函数参数来传递额外的信息：
+
 template<class T>
 class TooBig
-private :
+private ：
 cutoff;
 public:
-TooBig(const T & t) : cutoff(t) {
+TooBig(const T & t) ： cutoff(t) {
 bool operator() (const T & v) { return v > cutoff; }
+
 这里，一 -一个值(V)作为函数参数传递，而第二个参数(cutoff) 是由类构造函数设置的。有了该定义
 后，就可以将不同的TooBig对象初始化为不同的取舍值，供调用remove_ if( )时使用。程序清单16.15 演
 示了这种技术。
@@ -2769,81 +3275,91 @@ bool operator() (const T & v) { return v > cutoff; }
 #include <algori thm>
 template<class T> // functor class defines operator() ()
 class TooBig
-private :
+private ：
 T cutoff;
 public:
-TooBig(const T & t) : cutoff(t) { }
+TooBig(const T & t) ： cutoff(t) { }
 bool operator() (const T & v) { return v > cutoff;}
 第16章string 类和标准模板库
 709
-void outint(int n) {sta: :cout << n << " ";}
+void outint(int n) {sta: :cout << n << " "；}
 int main()
 lsing std: :list;
 lsing std: :cout;
-sing std: :endl ;
-TooBig<int> f100(100); // limit = 100
-int vals[10] = {50， 100，90， 180，60, 210，415， 88， 188，201};
-list<int> yadayada (vals, vals + 10); // range constructor
-list<int> etcetera(vals, vals + 10) ;
+sing std: :endl ；
+TooBig<int> f100(100)； // limit = 100
+int vals[10] = {50， 100，90， 180，60, 210，415， 88， 188，201}；
+list<int> yadayada (vals, vals + 10)； // range constructor
+list<int> etcetera(vals, vals + 10) ；
 // C++11 can use the following instead
-/ list<int> yadayada = {50， 100， 90， 180， 60，210，415， 88， 188， 201};
+/ list<int> yadayada = {50， 100， 90， 180， 60，210，415， 88， 188， 201}；
 //
-list<int> etcetera {50， 100， 90， 180， 60， 210， 415， 88，188， 201};
-cout《< "Original lists: \n" ;
-for_ each (yadayada . begin()，yadayada.end(), outint) ;
-cout << endl ;
-for_ each (etcetera.begin()，etcetera.end() ，0utint) ;
-cout << endl ;
-yadayada. remove_ if (f100) ;
+list<int> etcetera {50， 100， 90， 180， 60， 210， 415， 88，188， 201}；
+cout《< "Original lists: \n" ；
+for_ each (yadayada . begin()，yadayada.end()， outint) ；
+cout << endl ；
+for_ each (etcetera.begin()，etcetera.end() ，0utint) ；
+cout << endl ；
+yadayada. remove_ if (f100) ；
 use a named function object
-etcetera. remove_ if (TooBig<int> (200));
+etcetera. remove_ if (TooBig<int> (200))；
 / construct a function object
-cout <<"Trimmed lists:\n";
-for_ each (yadayada . begin()，yadayada. end()，outint) ;
+cout <<"Trimmed lists:\n"；
+for_ each (yadayada . begin()，yadayada. end()，outint) ；
 cout << endl;
-for each (etcetera. begin(), etcetera. end(), outint) ;
+for each (etcetera. begin()， etcetera. end()， outint) ；
 cout << endl;
 return 0;
 ```
 
 一个函数符(f100)是一个声明的对象，而另一个函数符(TooBig<int>(200)) 是一一个匿名对象，它是
-由构造函数调用创建的。下面是程序清单16.15 中程序的输出:
+由构造函数调用创建的。下面是程序清单16.15 中程序的输出：
+
 0riginal lists:
 50100901806021041588188201
 50100901806021041588188201
 Trimmed lists:
 50100906088
 50100901806088188
-假设已经有了一个接受两个参数的模板函数:
+
+假设已经有了一个接受两个参数的模板函数：
+
 template <class T;
 bool tooBig(const T & val, const T & 1im)
 return val > lim;
 }
-则可以使用类将它转换为单个参数的函数对象:
+
+则可以使用类将它转换为单个参数的函数对象：
+
 template<class T>
 class TooBig2 
 private:
-T cutoff ;
+T cutoff ；
 public:
-TooBig2(const T & t) : cutoff(t) {}
-710
-C++ Primer Plus (第6版)中文版
-bool operator() (const T & v) { return tooBig<T>(v, cutoff); }
-即可以这样做:
-TooBig2<int> tB100(100) ;
+TooBig2(const T & t) ： cutoff(t) {}
+bool operator() (const T & v) { return tooBig<T>(v, cutoff)； }
+
+即可以这样做：
+
+TooBig2<int> tB100(100) ；
 int x;
 cin》> x;
 f (tB100(x)) // same as if (tooBig (x, 100))
+
 因此，调用tB100(x)相当于调用tooBig(x, 100)，但两个参数的函数被转换为单参数的函数对象，其中
 第二个参数被用于构建函数对象。简而言之，类函数符TooBig2是一个函数适配器，使函数能够满足不同
 的接口。
-在该程序清单中，可使用C++11的初始化列表功能来简化初始化。为此，可将如下代码:
-int vals10] = {50， 100, 90，180， 60, 210，415， 88, 188, 201};
-list<int> yadayada(vals, vals + 10); // range constructor
-list<int> etcetera(vals, vals + 10);
-替换为下述代码:
-list<int> yadayada = {50， 100, 90，180， 60，210，415， 88，188， 201};
-list<int> etcetera {50，100，90， 180， 60，210， 415，88， 188， 201};
+
+在该程序清单中，可使用C++11的初始化列表功能来简化初始化。为此，可将如下代码：
+
+int vals10] = {50， 100, 90，180， 60, 210，415， 88, 188, 201}；
+list<int> yadayada(vals, vals + 10)； // range constructor
+list<int> etcetera(vals, vals + 10)；
+
+替换为下述代码：
+
+list<int> yadayada = {50， 100, 90，180， 60，210，415， 88，188， 201}；
+list<int> etcetera {50，100，90， 180， 60，210， 415，88， 188， 201}；
 
 ### 预定义的函数符
 
@@ -2851,40 +3367,52 @@ STL定义了多个基本函数符，它们执行诸如将两个值相加、比�
 对象是为了支持将函数作为参数的STL函数。例如，考虑函数transform()。它有两个版本。第-一个版本接
 受4个参数，前两个参数是指定容器区间的迭代器(现在您应该已熟悉了这种方法)，第3个参数是指定将
 结果复制到哪里的迭代器，最后-一个参数是-一个函数符，它被应用于区间中的每个元素，生成结果中的新
-元素。例如，请看下面的代码:
+元素。例如，请看下面的代码：
+
 const int LIM = 5;
-double arr1[LIM] = {36, 39，42，45，48};
-vector<double> gr8(arr1, arrl + LIM) ;
-ostream iterator<double, Char> out(cout; " ");
-transform (gr8.begin()，gr8.end() ，out，sqrt) ;
+double arr1[LIM] = {36, 39，42，45，48}；
+vector<double> gr8(arr1, arrl + LIM) ；
+ostream iterator<double, Char> out(cout; " ")；
+transform (gr8.begin()，gr8.end() ，out，sqrt) ；
+
 上述代码计算每个元素的平方根，并将结果发送到输出流。目标迭代器可以位于原始区间中。例如，
 将上述示例中的out替换为gr8.begin()后，新值将覆盖原来的值。很明显，使用的函数符必须是接受单个
 参数的函数符。
+
 第2种版本使用一个接受两个参数的函数，并将该函数用于两个区间中元素。它用另一个参数(即第
 3个)标识第二个区间的起始位置。例如，如果m8是另一个vector<double>对象，mean (double, double)
-返回两个值的平均值，则下面的的代码将输出来自gr8和m8的值的平均值:
-transform(gr8.begin(), gr8.end(), m8.begin(), out, mean) ;
+返回两个值的平均值，则下面的的代码将输出来自gr8和m8的值的平均值：
+
+transform(gr8.begin()， gr8.end()， m8.begin()， out, mean) ；
+
 现在假设要将两个数组相加。不能将+作为参数，因为对于类型double来说，+是内置的运算符，而不
-是函数。可以定义一个将两个数相加的函数，然后使用它:
+是函数。可以定义一个将两个数相加的函数，然后使用它：
+
 double add(double x，double y) { return x + y; }
-transform(gr8.begin()，gr8.end() ，m8 .begin(), out, add) ;
+transform(gr8.begin()，gr8.end() ，m8 .begin()， out, add) ；
+
 然而，这样必须为每种类型单独定义-一个函数。更好的办法是定义一个模板(除非STL已经有一个
 模板了，这样就不必定义)。头文件functional (以前为function.h)定义了多个模板类函数对象，其中包
 括plus<>( )。
-可以用plus< >类来完成常规的相加运算:
-第16章string 类和标准模板库
-711
+
+可以用plus< >类来完成常规的相加运算：
+
 #include < functional>
 plus<double> add; // create a plus<double> object
-double y = add(2.2, 3.4); // using plus<double>: :operator() ()
-它使得将函数对象作为参数很方便:
-transform(gr8.begin(), gr8.end(), m8 .begin(), out, plus<double>() );
+double y = add(2.2, 3.4)； // using plus<double>: :operator() ()
+
+它使得将函数对象作为参数很方便：
+
+transform(gr8.begin()， gr8.end()， m8 .begin()， out, plus<double>() )；
+
 这里，代码没有创建命名的对象，而是用plus<double> 构造函数构造了-一个函数符，以完成相加运算
 (括号表示调用默认的构造函数，传递给transform( )的是构造出来的函数对象)。
+
 对于所有内置的算术运算符、关系运算符和逻辑运算符，STL 都提供了等价的函数符。表16.12列出
 了这些函数符的名称。它们可以用于处理C++内置类型或任何用户定义类型(如果重载了相应的运算符)。
-表16.12
-运算符和相应的函数符
+
+表16.12运算符和相应的函数符
+
 运算符
 相应的函数符
 
@@ -2914,41 +3442,53 @@ logical or
 logical not
 ```
 
-警告:老式C++实现使用函数符名times,而不是multiplieso
+警告：老式C++实现使用函数符名times,而不是multiplieso
 
 ### 自适应函数符和函数适配器
 
-表16.12列出的预定义函数符都是自适应的。实际上STL有5个相关的概念:自适应生成器(adaptable
+表16.12列出的预定义函数符都是自适应的。实际上STL有5个相关的概念：自适应生成器(adaptable
 generator)、自适应一元函数 ( adaptable unary function)、自适应二元函数(adaptable binary function)、自适
 应谓词(adaptable predicate)和自适应二元谓词(adaptable binary predicate )。
+
 使函数符成为自适应的原因是，它携带了标识参数类型和返回类型的typedef成员。这些成员分别是
 result type、 first argument type 和second argument type, 它们的作用是不言自明的。例如，plus<int>对象
 的返回类型被标识为plus<int>.:result type,这是int的typedef。
-函数符自适应性的意义在于:函数适配器对象可以使用函数对象，并认为存在这些typedef成员。例如，
+
+函数符自适应性的意义在于：函数适配器对象可以使用函数对象，并认为存在这些typedef成员。例如，
 接受一个自适应丽数符参数的函数可以使用resulttype成员来声明一个与函数的返回类型匹配的变量。
+
 STL提供了使用这些工具的函数适配器类。例如，假设要将矢量gr8的每个元素都增加2.5倍，则需
-要使用接受-一个一元函数参数的transform()版本，就像前面的例子那样:
-transform(gr8.begin(), gr8.end(), out, sqrt) ;
+要使用接受-一个一元函数参数的transform()版本，就像前面的例子那样：
+
+transform(gr8.begin()， gr8.end()， out, sqrt) ；
+
 multiplies( )函数符可以执行乘法运行，但它是二元函数。因此需要-一个函数适配器，将接受两个参数
-712
-C++ Primer Plus (第6版)中文版
 的函数符转换为接受1个参数的函数符。前面的TooBig2示例提供了一种方法， 但STL使用binder1st和
 binder2nd类自动完成这一过程， 它们将自适应二元函数转换为自适应一元函数。
+
 来看binder1st。假设有一个自适应二元函数对象f2()，则可以创建-一个 binderlst 对象，该对象与一个
-将被用作f2( )的第-一个参数的特定值(val) 相关联: 
+将被用作f2( )的第-一个参数的特定值(val) 相关联： 
+
 binderlst(f2，val) f1;
+
 这样，使用单个参数调用f1(x)时，返回的值与将val作为第一参数、将f1()的参数作为第二参数调用
 f2( )返回的值相同。即f1(x)等价于f2(val, x)，只是前者是一元函数，而不是二元函数。f2( )函数被适配。
 同样，仅当f2( )是一一个自适应函数时，这才能实现。
+
 看.上去有点麻烦。然而，STL提供了函数bind1st( )，以简化binder1st类的使用。可以问其提供用于构
 建binder1st对象的函数名称和值，它将返回-一个这种类型的对象。例如，要将二元函数multiplies( )转换为
-将参数乘以2.5的一元函数，则可以这样做:
+将参数乘以2.5的一元函数，则可以这样做：
+
 bindlst (multiplies<double>()，2.5)
-因此，将gr8中的每个元素与2.5相乘，并显示结果的代码如下:
+
+因此，将gr8中的每个元素与2.5相乘，并显示结果的代码如下：
+
 transform(gr8.begin()，gr8.end() ，out,
-bind1st (multiplies<double>(), 2.5));
+bind1st (multiplies<double>()， 2.5))；
+
 binder2nd类与此类似，只是将常数赋给第=二个参数，而不是第一一个参数。 它有一个名为bind2nd的助
 手函数，该函数的工作方式类似于bind1st.
+
 程序清单16.16 将一些最近的示例合并成了一个小程序。
 
 ```
@@ -2961,67 +3501,71 @@ binder2nd类与此类似，只是将常数赋给第=二个参数，而不是第�
 # include <algor i thm>
 
 #include <functional>
-void Show (double) ;
+void Show (double) ；
 const int LIM = 6;
 int main()
 using namespace std;
 double arr1 [LIM]
-{28, 29, 30，35，38, 59};
-double arr2[LIM] = {63， 65， 69, 75，80，99};
-vector<double> gr8(arr1, arr1 + LIM) ;
-vector<double> m8 (arr2, arr2 + LIM) ;
-cout . setf (ios_ base: :fixed) ;
-cout . precision(1) ;
-cout << "gr8:\t";
-for each(gr8.begin(), gr8.end()， Show) ;
+{28, 29, 30，35，38, 59}；
+double arr2[LIM] = {63， 65， 69, 75，80，99}；
+vector<double> gr8(arr1, arr1 + LIM) ；
+vector<double> m8 (arr2, arr2 + LIM) ；
+cout . setf (ios_ base: :fixed) ；
+cout . precision(1) ；
+cout << "gr8:\t"；
+for each(gr8.begin()， gr8.end()， Show) ；
 cout << endl;
-cout << "m8: \t";
-for each (m8.begin(), m8.end() ，Show) ;
-cout << endl ;
-vector<double> sum(LIM) ;
-transform(gr8. begin()，gr8.end()， m8 . begin(), sum. begin(),
-plus<double>()) ;
+cout << "m8: \t"；
+for each (m8.begin()， m8.end() ，Show) ；
+cout << endl ；
+vector<double> sum(LIM) ；
+transform(gr8. begin()，gr8.end()， m8 . begin()， sum. begin()，
+plus<double>()) ；
 cout << "sum:
-\t";
-for_ each(sum. begin()，sum. end()，Show) ;
+\t"；
+for_ each(sum. begin()，sum. end()，Show) ；
 第16章string 类和标准模板库
 713
-cout << endl ;
-vector<double> prod (LIM) ;
-transform(gr8. begin()，gr8.end(), prod. begin() ,
-bindlst (mul tiplies<double>()，2.5)) ;
-cout << "prod:\t" ;
-for each (prod. begin()，prod.end()，Show) ;
-out << endl ;
+cout << endl ；
+vector<double> prod (LIM) ；
+transform(gr8. begin()，gr8.end()， prod. begin() ，
+bindlst (mul tiplies<double>()，2.5)) ；
+cout << "prod:\t" ；
+for each (prod. begin()，prod.end()，Show) ；
+out << endl ；
 return
 void Show (double v)
 std:
-cout . width(6) ;
-sta::cout<<v<<↑↑;
+cout . width(6) ；
+sta::cout<<v<<↑↑；
 ```
 
-程序清单16.16中程序的输出如下:
-gr8 :
+程序清单16.16中程序的输出如下：
+
+gr8 ：
 28.029.030.035.038.059.o
 m8:
 63.0 65.0 69.0 75.0
 80.0 99.0
-sum :
+sum ：
 91.0 ' 94.0 99.0 110.0 118.0 158.0
-prod :
+prod ：
 70.0 72.5 75.0 87.5 95.0 147 . 5
+
 C++11提供了函数指针和函数符的替代品一-lambda 表达式，这将在第18 章讨论。
 
 ## 算法
 
-STL包含很多处理容器的非成员函数，前面已经介绍过其中的一些: sort( )、copy( )、find( )、
+STL包含很多处理容器的非成员函数，前面已经介绍过其中的一些： sort( )、copy( )、find( )、
 random_ shuffle( )、set _union( )、set_ intersection( )、set _difference( )和transform( )。可能已经注意到，它们
 的总体设计是相同的，都使用迭代器来标识要处理的数据区间和结果的放置位置。有些数还接受-一个函
 数对象参数，并使用它来处理数据。
-对于算法函数设计，有两个主要的通用部分。首先，它们都使用模板来提供泛型;其次，它们都使用
+
+对于算法函数设计，有两个主要的通用部分。首先，它们都使用模板来提供泛型；其次，它们都使用
 迭代器来提供访问容器中数据的通用表示。因此，copy()函数可用于将double值存储在数组中的容器、将
 string值存储在链表中的容器，也可用于将用户定义的对象存储在树结构中(如set所使用的)的容器。因
 为指针是一~种特 殊的迭代器，因此诸如copy( )等STL函数可用于常规数组。
+
 统一的容器设计使得不同类型的容器之间具有明显关系。例如，可以使用copy()将常规数组中的值复
 制到vector对象中，将vector对象中的值复制到list 对象中，将list 对象中的值复制到set对象中。可以用
 = =来比较不同类型的容器，如deque和vector.之所以能够这样做，是因为容器重载的= =运算符使用迭代
@@ -3029,63 +3573,80 @@ string值存储在链表中的容器，也可用于将用户定义的对象存�
 
 ### 算法组
 
-STL将算法库分成4组:
-非修改式序列操作;
-●修改式序列操作;
-排序和相关操作;
+STL将算法库分成4组：
+
+非修改式序列操作；
+
+●修改式序列操作；
+
+排序和相关操作；
+
 通用数字运算。
+
 前3组在头文件algorithm (以前为algo.h) 中描述，第4组是专用于数值数据的，有自己的头文件，
 称为numeric ( 以前它们也位于algol.h中)。
-714
-C++ Primer Plus(第6版)中文版
+
 非修改式序列操作对区间中的每个元素进行操作。这些操作不修改容器的内容。例如，find( )和
 for each( )就属于这一类。
+
 修改式序列操作也对区间中的每个元素进行操作。然而，顾名思义，它们可以修改容器的内容。可以
 修改值，也可以修改值的排列顺序。transform( ) random_ shuff1e( )和copy( )属于这一类。
+
 排序和相关操作包括多个排序函数(包括sort( ))和其他各种函数，包括集合操作。
+
 数字操作包括将区间的内容累积、计算两个容器的内部乘积、计算小计、计算相邻对象差的函数。通
 常，这些都是数组的操作特性，因此vector是最有可能使用这些操作的容器。
 
 ### 算法的通 用特征
 
 正如您多次看到的，STL函数使用迭代器和迭代器区间。从函数原型可知有关迭代器的假设。例如，
-copy( )函数的原型如下:
+copy( )函数的原型如下：
+
 template<class Inputiterator, class OutputIterator>
 OutputIterator copy (InputIterator first, InputIterator last,
-OutputIterator result) ;
+OutputIterator result) ；
+
 因为标识符InputIterator和Ouputterator都是模板参数，所以它们就像T和U一样。然而，STL文档
 使用模板参数名称来表示参数模型的概念。因此上述声明告诉我们，区间参数必须是输入迭代器或更高级
 别的迭代器，而指示结果存储位置的迭代器必须是输出迭代器或更高级别的迭代器。
+
 对算法进行分类的方式之一是按结 果放置的位置进行分类。有些算法就地完成工作，有些则创建拷贝。
-例如，在sort( )函数完成时，结果被存放在原始数据的位置上，因此，sort( )是就地算法(in-place algorithm);
+例如，在sort( )函数完成时，结果被存放在原始数据的位置上，因此，sort( )是就地算法(in-place algorithm)；
 而copy( )函数将结果发送到另一一个位置， 所以它是复制算法( copying algorithm)。transform( )函数可以以
-这两种方式完成工作。与copy( )相似，它使用输出迭代器指示结果的存储位置;与copy( )不同的是,
+这两种方式完成工作。与copy( )相似，它使用输出迭代器指示结果的存储位置；与copy( )不同的是，
 transform()允许输出迭代器指向输入区间，因此它可以用计算结果覆盖原来的值。
-有些算法有两个版本:就地版本和复制版本。STL 的约定是，复制版本的名称将以copy结尾。复制
-版本将接受一个额外的输出迭代器参数，该参数指定结果的放置位置。例如，函数replace( )的原型如下:
+
+有些算法有两个版本：就地版本和复制版本。STL 的约定是，复制版本的名称将以copy结尾。复制
+版本将接受一个额外的输出迭代器参数，该参数指定结果的放置位置。例如，函数replace( )的原型如下：
+
 template<class ForwardIterator, class T
 void replace (ForwardIterator first, ForwardIterator last,
-const T& old value, const T& new value) ;
+const T& old value, const T& new value) ；
+
 它将所有的old value 替换为new_ value, 这是就地发生的。由于这种算法同时读写容器元素，因此迭
-代器类型必须是Forwardterator或更高级别的。复制版本的原型如下:
+代器类型必须是Forwardterator或更高级别的。复制版本的原型如下：
+
 template<class InputIterator, class OutputIterator, class T>
 OutputIterator replace_ copy (InputIterator first, InputIterator Iast,
 OutputIterator result,
-const T& o1d value, const T& new value);
+const T& o1d value, const T& new value)；
+
 在这里，结果被复制到result指定的新位置，因此对于指定区间而言，只读输入迭代器足够了。
-注意，replace_ copy( )的返回类型为OutputIterator。对于复制算法，统~ -的约定是:返回一个迭代器,
+注意，replace_ copy( )的返回类型为OutputIterator。对于复制算法，统~ -的约定是：返回一个迭代器，
 该迭代器指向复制的最后-一个值后面的一一个位置。
-另一个常见的变体是:有些函数有这样的版本，即根据将函数应用于容器元素得到的结果来执行操作。
+
+另一个常见的变体是：有些函数有这样的版本，即根据将函数应用于容器元素得到的结果来执行操作。
 这些版本的名称通常以if 结尾。例如，如果将函数用于旧值时，返回的值为true, 则replace_ if( )将把旧值
-替换为新的值。下面是该函数的原型:
+替换为新的值。下面是该函数的原型：
+
 template<class ForwardIterator, class Predicate class T>
 void replace_ if (ForwardIterator first, ForwardIterator last,
-Predicate pred, const T& new_ value) ;
+Predicate pred, const T& new_ value) ；
+
 如前所述，谓词是返回bool值的一元函数。 还有-一个replace_ copy_ if( )版本，您不难知道其作用和
 原型。
+
 与InputIterator - =样，Predicate 也是模板参数名称，可以为T或U。然而，STL选择用Predicate来提
-第16章string 类和标准模板库
-15
 醒用户，实参应模拟Predicate概念。同样，STL 使用诸如Generator和BinaryPredicate等术语来指示必须
 模拟其他函数对象概念的参数。请记住，虽然文档可指出迭代器或函数符需求，但编译器不会对此进行检
 查。如果您使用了错误的迭代器，则编译器试图实例化模板时，将显示大量的错误消息。
@@ -3098,7 +3659,9 @@ string类虽然不是STL的组成部分，但设计它时考虑到了STL。例�
 排列方式。对于字符串，排列按照字母递增的顺序进行。如果成功，该算法返回ftrue; 如果区间已经处于
 最后的序列中，则该算法返回false。要得到区间内容的所有排列组合，应从最初的顺序开始，为此程序使
 用了STL算法sort( )。
+
 程序清单16.17 strgst1.cpp
+
 // strgstl.CPP -- applying the STL to a string
 #include <iostream>
 #include <string>
@@ -3106,18 +3669,20 @@ string类虽然不是STL的组成部分，但设计它时考虑到了STL。例�
 int main()
 using namespace std;
 string letters;
-cout << "Enter the letter grouping (quit to quit): ";
+cout << "Enter the letter grouping (quit to quit)： "；
 while (cin >》> letters && letters != "quit")
 cout << "Permutations of " << letters << endl;
-sort (letters.begin()，letters.end()) ;
-cout << letters << endl ;
+sort (letters.begin()，letters.end()) ；
+cout << letters << endl ；
 while (next_ permutation (letters . begin()，letters . end()))
 cout << letters << endl;
-cout << "Enter next sequence (quit to quit) : ";
-cout << "Done. \n";
-return 0 ;
-程序清单16.17 中程序的运行情况如下:
-Enter the letter grouping (quit to quit): awl
+cout << "Enter next sequence (quit to quit) ： "；
+cout << "Done. \n"；
+return 0 ；
+
+程序清单16.17 中程序的运行情况如下：
+
+Enter the letter grouping (quit to quit)： awl
 Permutations of awl
 alw
 awl
@@ -3126,70 +3691,77 @@ I1wa
 wa
 7s
 wI
-Enter next sequence (quit to quit): all
+Enter next sequence (quit to quit)： all
 Permutations of all
 al
 lal
 lla
-Enter next sequence (quit to quit): quit
+Enter next sequence (quit to quit)： quit
 Done .
-716
-C++ PrimerPlus (第6版)中文版
+
 注意，算法next permutation( )自动提供唯一-的排列组合， 这就是输出中“aw!" - -词的排列组合比“all"
 (它有重复的字母)的排列组合要多的原因。
 
 ### 函数和容器方法
 
-有时可以选择使用STL方法或STL函数。通常方法是更好的选择。首先，它更适合于特定的容器;
+有时可以选择使用STL方法或STL函数。通常方法是更好的选择。首先，它更适合于特定的容器；
 其次，作为成员函数，它可以使用模板类的内存管理工具，从而在需要时调整容器的长度。
+
 例如，假设有一个由数字组成的链表，并要删除链表中某个特定值(例如4)的所有实例。如果la是
-一个list<int对象，则可以使用链表的remove( )方法:
-la. remove(4); // remove all 4s from the list
+一个list<int对象，则可以使用链表的remove( )方法：
+
+la. remove(4)； // remove all 4s from the list
+
 调用该方法后，链表中所有值为4的元素都将被删除，同时链表的长度将被自动调整。
+
 还有一个名为remove( )的STL算法(见附录G)，它不是由对象调用，而是接受区间参数。因此，如
-果Ib是-一个list<int对象，则调用该函数的代码如下:
-remove (lb.begin(), lb.end(), 4);
+果Ib是-一个list<int对象，则调用该函数的代码如下：
+
+remove (lb.begin()， lb.end()， 4)；
+
 然而，由于该remove( )函数不是成员，因此不能调整链表的长度。它将没被删除的元素放在链表的开
 始位置，并返回一个指向新的超尾值的迭代器。这样，便可以用该迭代器来修改容器的长度。例如，可以
 使用链表的erase( )方法来删除一个区间， 该区间描述了链表中不再需要的部分。程序清单16.18 演示了这
 是如何进行的。
+
 程序清单16.18 listrmv.cpp
+
 // listrmv.cpp -- applying the STL to a string
 #include <iostream>
 #include <list>
 #include <algori thm>
-void Show (int) ; 
+void Show (int) ； 
 const int LIM = 1
 int main()
 using namespace std;
-intar[LIM]={4，5，4，2，2，3，4，8，1，4};
-list<int> la(ar, ar + LIM);
-list<int> Ib(la) ;
-cout << "Original list contents: \n\t";
-for each(la.begin(), la.end(), Show);
-cout << endl ;
-la. remove (4) ;
-cout << "After using the remove() method: \n" ;
-cout << "Ia:\t";
-for each(Ia. begin()，la. end()，Show);
+intar[LIM]={4，5，4，2，2，3，4，8，1，4}；
+list<int> la(ar, ar + LIM)；
+list<int> Ib(la) ；
+cout << "Original list contents: \n\t"；
+for each(la.begin()， la.end()， Show)；
+cout << endl ；
+la. remove (4) ；
+cout << "After using the remove() method: \n" ；
+cout << "Ia:\t"；
+for each(Ia. begin()，la. end()，Show)；
 cout << endl;
 list<int>: :iterator last;
-last = remove (Ib.begin(), lb.end(), 4);
-cout《< "After using the remove() function: \n" ;
+last = remove (Ib.begin()， lb.end()， 4)；
+cout《< "After using the remove() function: \n" ；
 cout
-for_ each(Ib.begin(), Ib. end(), Show) ;
-cout << endl ;
-Ib.erase(last, Ib.end()) ;
-cout << "After using the erase() method:\n";
-cout << "Ib:\t";
-for each(Ib. begin(), Ib.end(), Show) ;
-cout << endl ;
+for_ each(Ib.begin()， Ib. end()， Show) ；
+cout << endl ；
+Ib.erase(last, Ib.end()) ；
+cout << "After using the erase() method:\n"；
+cout << "Ib:\t"；
+for each(Ib. begin()， Ib.end()， Show) ；
+cout << endl ；
 第16章string 类和标准模板库
 717
 return 0;
 void Show(int v)
-std::cout<<v<<'';
-下面是程序清单16.18中程序的输出:
+std::cout<<v<<''；
+下面是程序清单16.18中程序的输出：
 Original list contents:
 4542234814
 After using the remove() method:
@@ -3198,8 +3770,10 @@ After using the remove() function:
 1b:522381481 4
 After using the erase() method:
 Ib:522381
+
 从中可知，remove( )方法将链表la从10个元素减少到6个元素。但对链表1b应用remove( )后，它仍然
 包含10个元素。最后4个元素可任意处理，因为其中每个元素要么为4,要么与已经移到链表开头的值相同。
+
 尽管方法通常更适合，但非方法函数更通用。正如您看到的，可以将它们用于数组、string 对象、STL
 容器，还可以用它们来处理混合的容器类型，例如，将矢量容器中的数据存储到链表或集合中。
 
@@ -3209,55 +3783,76 @@ STL是一个库，其组成部分被设计成协同工作。STL组件是工具�
 我们用一个例子说明。假设要编写-一个程序，让用户输入单词。希望最后得到一个按输入顺序排列的单词
 列表、一个按字母顺序排列的单词列表(忽略大小写)，并记录每个单词被输入的次数。出于简化的目的，
 假设输入中不包含数字和标点符号。
+
 输入和保存单词列表很简单。可以按程序清单16.8 和程序清单16.9 那样创建-一个vector<string>对象，
-并用pushback()将输入的单词添加到矢量中:
+并用pushback()将输入的单词添加到矢量中：
+
+```
 vector<string> words; 
 string input;
 while (cin 》input && input != "quit")
-words . push _back (input);
+words . push _back (input)；
+```
+
 如何得到按字母顺序排列的单词列表呢?可以使用sort( )，然后使用unique( )，但这种方法将覆盖原
-始数据，因为sort( )是就地算法。有-一种更简单的方法，可以避免这种问题:创建一一个 set <string>对象，然后
-将矢量中的单词复制( 使用插入迭代器)到集合中。集合自动对其内容进行排序，因此无需调用sort( );集
+始数据，因为sort( )是就地算法。有-一种更简单的方法，可以避免这种问题：创建一一个 set <string>对象，然后
+将矢量中的单词复制( 使用插入迭代器)到集合中。集合自动对其内容进行排序，因此无需调用sort( )；集
 合只允许同一一个键出现一次， 因此无需调用unique( )。这里要求忽略大小写，处理这种情况的方法之.-是使
 用transform( )而不是copy( )，将矢量中的数据复制到集合中。使用-个转换函数将字符串转换成小写形式。
+
 set<string> wordset;
-transform (words . begin(), words.end() ,
-insert_ iterator<set<string> > (wordset, wordset .begin())，ToLower) ;
+transform (words . begin()， words.end() ，
+insert_ iterator<set<string> > (wordset, wordset .begin())，ToLower) ；
+
 ToLower( )函数很容易编写，只需使用transform( )将tolower( )函数应用于字符串中的各个元素，并将
 字符串用作源和目标。记住，string 对象也可以使用STL函数。将字符串按引用传递和返回意味着算法不
-必复制字符串，而可以直接操作原始字符串。下面是函数ToLower( )的代码:
+必复制字符串，而可以直接操作原始字符串。下面是函数ToLower( )的代码：
+
 string & ToLower(string & st)
-transform(st.begin(), st.end()， st .begin()，tolower) ;
+transform(st.begin()， st.end()， st .begin()，tolower) ；
 return st
-718
-C++ PrimerPlus (第6版)中文版
+
 一个可能出现的问题是:tolower()函数被定义为inttolower(int)，而一些编译器希望函数与元素类型
-(即char)匹配。一种解决方法是，使用toLower代替tolower,并提供下面的定义:
-char toIower(char ch) { return tolower(ch); }
+(即char)匹配。一种解决方法是，使用toLower代替tolower,并提供下面的定义：
+
+char toIower(char ch) { return tolower(ch)； }
+
 要获得每个单词在输入中出现的次数，可以使用count()函数。它将--个区间和-一个值作为参数，并返
 回这个值在区间中出现的次数。可以使用vector 对象来提供区间，并使用set 对象来提供要计算其出现次
 数的单词列表。即对于集合中的每个词，都计算它在矢量中出现的次数。要将单词与其出现的次数关联起
 来，可将单词和计数作为pair<const string, int>对象存储在map对象中。单词将作为键(只出现一一次)，计
-数作为值。这可以通过-一个循环来完成:
+数作为值。这可以通过-一个循环来完成：
+
 map<string, int> wordmap;
 set<string>: :iterator si;
-for (si = wordset.begin(); si != wordset.end(); si++)
-wordmap. insert (pair<string, int>(*si, count (words .begin() ,
-words. .end()，*si)));
-map类有- 一个有趣的特征:可以用数组表示法(将键用作索引)来访问存储的值。例如，wordmap"'the"]
+for (si = wordset.begin()； si != wordset.end()； si++)
+wordmap. insert (pair<string, int>(*si, count (words .begin() ，
+words. .end()，*si)))；
+
+map类有- 一个有趣的特征：可以用数组表示法(将键用作索引)来访问存储的值。例如，wordmap"'the"]
 表示与键“the”相关联的值，这里是字符串“the”出现的次数。因为wordset 容器保存了wordmap使用的
-全部键，所以可以用下面的代码来存储结果，这是一种更具吸引力的方法: 
-or (si = wordset.begin(); si != wordset.end(); si++)
-wordmap[*si] = count (words . begin(), words.end(), *si) ;
+全部键，所以可以用下面的代码来存储结果，这是一种更具吸引力的方法： 
+
+```
+or (si = wordset.begin()； si != wordset.end()； si++)
+wordmap[*si] = count (words . begin()， words.end()， *si) ；
+```
+
 因为si指向wordset容器中的一一个字符串，所以*si是-一个字符串，可以用作wordmap的键。上述代
 码将键和值都放到wordmap映象中。
-同样，也可以使用数组表示法来报告结果:
-for (si = wordset.begin() ; si != wordset.end() ; si++)
-cout << *si << ": " << wordmap[*si] << endl ;
+
+同样，也可以使用数组表示法来报告结果：
+
+for (si = wordset.begin() ； si != wordset.end() ； si++)
+cout << *si << "： " << wordmap[*si] << endl ；
+
 如果键无效，则对应的值将为0。
+
 程序清单16.19 把这些想法组合在一起，同时包含了用于显示3个容器(包含输入内容的矢量、包含
 单词列表的集合和包含单词计数的映象)内容的代码。
+
 程序清单16.19 usealgo.cpp
+
 //usealgo.CPP -- using several STL elements
 #include <iostream>
 #include <string>
@@ -3268,44 +3863,46 @@ cout << *si << ": " << wordmap[*si] << endl ;
 #include <algorithm>
 #include <cctyPe>
 using namespace std;
-char toLower (char ch) { return tolower(ch) ; }
-string & ToLower(string & st) ;
-void display (const string & s) ;
+char toLower (char ch) { return tolower(ch) ； }
+string & ToLower(string & st) ；
+void display (const string & s) ；
 int main()
-vector<string> words ;
-cout << "Enter words (enter quit to quit) :\n";
+vector<string> words ；
+cout << "Enter words (enter quit to quit) ：\n"；
 string input;
 while (cin >> input && input != "quit")
 第16章string 类和标准模板库
 719
-words . push back (1nput) ;
-cout << "You entered the following words: \n" ;
-for each (words.begin()，words.end(), display) ;
-cout << endl ;
+words . push back (1nput) ；
+cout << "You entered the following words: \n" ；
+for each (words.begin()，words.end()， display) ；
+cout << endl ；
 // place words in set, converting to lowercase
-set<string> wordset ;
-transform (words .begin()，words .end() ,
-insert_ iterator<set<string> > (wordset, wordset.begin()) ,
-cout << "\nAphabetic list of words: \n" ;
-for each (wordset . begin()，wordset . end(), display);
+set<string> wordset ；
+transform (words .begin()，words .end() ，
+insert_ iterator<set<string> > (wordset, wordset.begin()) ，
+cout << "\nAphabetic list of words: \n" ；
+for each (wordset . begin()，wordset . end()， display)；
 cout << endl;
 / place word and frequency in map
 map<string, int> wordmap;
 set<string>: :iterator si;
-for (si = wordset. begin(); si != wordset.end() ; si++)
-wordmap[*si] = count (words .begin()，words.end() ，*si) ;
+for (si = wordset. begin()； si != wordset.end() ； si++)
+wordmap[*si] = count (words .begin()，words.end() ，*si) ；
 // display map contents
-cout << "\nWord frequency: \n" ;
-for (si = wordset . begin() ; .si != wordset.end() ; si++)
-cout << *si << ": "<< wordmap[*si] << endl ;
+cout << "\nWord frequency: \n" ；
+for (si = wordset . begin() ； .si != wordset.end() ； si++)
+cout << *si << "： "<< wordmap[*si] << endl ；
 return 0;
 string & ToLower (string & st)
-transform(st.begin(), st.end(), st.begin() ，toIower) ;
+transform(st.begin()， st.end()， st.begin() ，toIower) ；
 return st;
 void display(const string & s)
-cout<<s<<"";
-程序清单16.19中程序的运行情况如下:
-Enter words (enter quit to quit) :
+cout<<s<<""；
+
+程序清单16.19中程序的运行情况如下：
+
+Enter words (enter quit to quit) ：
 The dog saw the cat and thought the cat fat
 The cat thought the cat perfect
 quit
@@ -3324,7 +3921,9 @@ perfect: 1
 saw: 1
 he: 5
 thought: 2
+
 这里的寓意在于，使用STL时应尽可能减少要编写的代码。STL通用、灵活的设计将节省大量工作。
+
 另外，STL设计者就是非常关心效率的算法人员，算法是经过仔细选择的，并且是内联的。
 
 ## 其他库
@@ -3332,95 +3931,136 @@ thought: 2
 C++还提供了其他一些类库，它们比本章讨论前面的例子更为专用。例如，头文件complex为复数提
 供了类模板complex,包含用于foat、long和longdouble的具体化。这个类提供了标准的复数运算及能够
 处理复数的标准函数。C++11 新增的头文件random提供了更多的随机数功能。
+
 第14章介绍了头文件valarray提供的模板类valarrayo这个类模板被设计成用于表示数值数组，支持
 各种数值数组操作，例如将两个数组的内容相加、对数组的每个元素应用数学函数以及对数组进行线性代
 数运算。
 
 ### vector、 valarray 和array
 
-您可能会问，C++为何提供三个数组模板: vector、 valarray 和array。这些类是由不同的小组开发的，
+您可能会问，C++为何提供三个数组模板： vector、 valarray 和array。这些类是由不同的小组开发的，
 用于不同的目的。vector模板类是一一个容器类和算法系统的一部分，它支持面向容器的操作，如排序、插
 入、重新排列、搜索、将数据转移到其他容器中等。而valarray类模板是面向数值计算的，不是STL的一
 部分。例如，它没有push back( )和inser( )方法，但为很多数学运算提供了-一个简单、直观的接口。最后，
 array是为替代内置数组而设计的，它通过提供更好、更安全的接口，让数组更紧凑，效率更高。Array 表
 示长度固定的数组，因此不支持push back( )和insert()， 但提供了多个STL方法，包括begin()、end( )、
-rbegin( )和rend(),这使得很容易将STL算法用于array对象。
-例如，假设有如下声明:
-vector<double> vedl (10)，ved2(10), ved3(10) ;
+rbegin( )和rend()，这使得很容易将STL算法用于array对象。
+
+例如，假设有如下声明：
+
+vector<double> vedl (10)，ved2(10)， ved3(10) ；
 array<double, 10> vodl, vod2, vod3
-valarray<double> vadl (10)，vad2(10)， vad3 (10) ;
+valarray<double> vadl (10)，vad2(10)， vad3 (10) ；
+
 同时，假设ved1、ved2、vodl、vod2、vad1和vad2都有合适的值。要将两个数组中第-一个元素的和
-赋给第三个数组的第一一个元素，使用vector类时，可以这样做:
-transform (ved1.begin()，vedl.end(), ved2 . begin(), ved3. begin(),
-plus<double>());
-对于array类，也可以这样做:
-transform (vod1 . begin(), vodl .end(), vod2.begin() ，vod3 . begin()，
-plus<double>());
-然而，valarray 类重载了所有算术运算符，使其能够用于valarray 对象，因此您可以这样做:
+赋给第三个数组的第一一个元素，使用vector类时，可以这样做：
+
+transform (ved1.begin()，vedl.end()， ved2 . begin()， ved3. begin()，
+plus<double>())；
+
+对于array类，也可以这样做：
+
+transform (vod1 . begin()， vodl .end()， vod2.begin() ，vod3 . begin()，
+plus<double>())；
+
+然而，valarray 类重载了所有算术运算符，使其能够用于valarray 对象，因此您可以这样做：
+
 vad3 = vadl + vad2;
 // + overloaded
-同样，下面的语句将使vad3中每个元素都是vad1和vad2中相应元素的乘积:
-vad3 = vadl * vad2 ;
+
+同样，下面的语句将使vad3中每个元素都是vad1和vad2中相应元素的乘积：
+
+vad3 = vadl * vad2 ；
 // * overloaded
-要将数组中每个元素的值扩大2.5倍，STL方法如下:
-transform (ved3.begin(), ved3 . end(), ved3 .begin(),
-bindlst (multiplies<double>(), 2.5)) ;
+
+要将数组中每个元素的值扩大2.5倍，STL方法如下：
+
+transform (ved3.begin()， ved3 . end()， ved3 .begin()，
+bindlst (multiplies<double>()， 2.5)) ；
+
 valarray类重载了将valarray 对象乘以一个值的运算符，还重载了各种组合赋值运算符，因此可以采取
-第16章string 类和标准模板库
-721
-下列两种方法之一:
+下列两种方法之一：
+
+```
 vad3 = 2.5 * vad3;
 // * overloaded
 vad3 *= 2.5;
 // *= overloaded
+```
+
 假设您要计算数组中每个元素的自然对数，并将计算结果存储到另-一个数组的相应元素中，STL方法
-如下:
-transform(vedI . begin()，ved . end(), ved3 .begin(),
-1og) ;
+如下：
+
+transform(vedI . begin()，ved . end()， ved3 .begin()，
+1og) ；
+
 valarray 类重载了这种数学函数，使之接受-一个valarray参数，并返回一个valarray对象，因此您可以
-这样做:
-vad3 = log (vadl) ;
+这样做：
+
+vad3 = log (vadl) ；
 // log() overloaded
-也可以使用apply( )方法，该方法也适用于非重载函数:
-vad3 = vadl.appl1y(log) ;
+
+也可以使用apply( )方法，该方法也适用于非重载函数：
+
+vad3 = vadl.appl1y(log) ；
+
 方法apply( )不修改调用对象，而是返回-一个包含结果的新对象。
-执行多步计算时，valarray 接口的简单性将更为明显:
-vad3 = 10.0* ((vad1 + vad2) / 2.0 + vadl * cos (vad2)) ;
+
+执行多步计算时，valarray 接口的简单性将更为明显：
+
+vad3 = 10.0* ((vad1 + vad2) / 2.0 + vadl * cos (vad2)) ；
+
 有关使用STL vector来完成上述计算的代码留给您去完成。
+
 valarray 类还提供了方法sum( ) (计算valarray对象中所有元素的和)、size( ) (返回元素数)、max() (返
 回最大的元素值)和min( ) (返回最小的元素值)。
+
 正如您看到的，对于数学运算而言，valarray 类提供了比vector更清晰的表示方式，但通用性更低。
+
 valarray类确实有一一个 resize( )方法，但不能像使用vector 的push back时那样自动调整大小。没有支持插
 入、排序、搜索等操作的方法。总之，与vector 类相比，valarray 类关注的东西更少，但这使得它的接口
 更简单。
+
 valarray的接口更简单是否意味着性能更高呢?在大多数情况下，答案是否定的。简单表示法通常是
 使用类似于您处理常规数组时使用的循环实现的。然而，有些硬件设计允许在执行矢量操作时，同时将一
 个数组中的值加载到一~组寄存器中，然后并行地进行处理。从原则上说，valarray 操作也可以实现成利用
 这样的设计。
+
 可以将STL功能用于valarray对象吗?通过回答这个问题，可以快速地复习一些STL原理。假设有一
-个包含10个元素的valarray<double>对象:
-valarray<double> vad(10) ;
+个包含10个元素的valarray<double>对象：
+
+valarray<double> vad(10) ；
+
 使用数字填充该数组后，能够将STL sor( )函数用于该数组吗? valarray 类没有begin( )和end( )方法，
-因此不能将它们用作指定区间的参数:
-sort (vad. begin()，vad.end()); // NO, no begin()，end()
+因此不能将它们用作指定区间的参数：
+
+sort (vad. begin()，vad.end())； // NO, no begin()，end()
+
 另外，vad是一一个对象，而不是指针，因此不能像处理常规数组那样，使用vad和vad+10作为区间
-参数，即下面的代码不可行:
-sort(vad, vad + 10); // NO, vad an object, not an address
-可以使用地址运算符:
-sort (&vad[0], &vad[10]); // maybe?
+参数，即下面的代码不可行：
+
+sort(vad, vad + 10)； // NO, vad an object, not an address
+
+可以使用地址运算符：
+
+sort (&vad[0]， &vad[10])； // maybe?
+
 但valarray没有定义下标超过尾部一个元素的行为。这并不一定意味着使用&vadp[10]不可行。事实
-上，使用6种编译器测试上述代码时，都是可行的;但这确实意味着可能不可行。为让上述代码不可行,
+上，使用6种编译器测试上述代码时，都是可行的；但这确实意味着可能不可行。为让上述代码不可行，
 需要-一个不太可 能出现的条件，如让数组与预留给堆的内存块相邻。然而，如果3.85亿的交易命悬于您的
 代码，您可能不想冒代码出现问题的风险。
+
 为解决这种问题，C++11 提供了接受valarray对象作为参数的模板函数begin( )和end( )。因此，您将
-使用begin(vad)而不是vad.begin。这些函数返回的值满足STL区间需求:
-sort (begin(vad)，end(vad)); // C++11 fix!
-722
-C++ PrimerPlus (第6版)中文版
+使用begin(vad)而不是vad.begin。这些函数返回的值满足STL区间需求：
+
+sort (begin(vad)，end(vad))； // C++11 fix!
+
 程序清.单16.20演示了vector和valarray类各自的优势。它使用vector的pushback()方法和自动调整
 大小的功能来收集数据，然后对数字进行排序后，将它们从vector 对象复制到一一个同样大小的valarray 对
 象中，再执行一些数学运算。
+
 程序清单16.20 valvect.cpp
+
 // valvect.CPP -- comparing vector and valarray
 #include <iostream>
 #include <valarray>
@@ -3428,36 +4068,38 @@ C++ PrimerPlus (第6版)中文版
 #include <algor ithm>
 int main()
 using namespace std;
-vector<double> data ;
+vector<double> data ；
 double temp;
-cout << "Enter numbers (<=0 to quit) : \n";
+cout << "Enter numbers (<=0 to quit) ： \n"；
 while (cin >》> temp && temp > 0)
-data.push back (temp) ;
-sort (data. begin()，data.end()) ;
-int size = data.size() ;
-valarray<double> numbers(size) ;
+data.push back (temp) ；
+sort (data. begin()，data.end()) ；
+int size = data.size() ；
+valarray<double> numbers(size) ；
 or(i=0;i<size;i++
-numbers[i] = data[i] ;
-valarray<double> sq_ rts(size) ;
-sq rts = sqrt (numbers) ;
-valarray<double> results(size) ;
+numbers[i] = data[i] ；
+valarray<double> sq_ rts(size) ；
+sq rts = sqrt (numbers) ；
+valarray<double> results(size) ；
 results = numbers + 2.0 * sq rts;
-cout.setflios_ base: :fixed) ;
-cout . precision(4) ;
+cout.setflios_ base: :fixed) ；
+cout . precision(4) ；
 for(i=0;i<size;i++)
-cout . width(8);
-cout << numbers[i] < ": ";
-cout. wiath(8) ;
+cout . width(8)；
+cout << numbers[i] < "： "；
+cout. wiath(8) ；
 cout << results[i] << endl;
-cout << "done\n" ;
-return 0 ;
-下面是程序清单16.20中程序的运行情况:
-Enter numbers (<=0 to quit) :
+cout << "done\n" ；
+return 0 ；
+
+下面是程序清单16.20中程序的运行情况：
+
+Enter numbers (<=0 to quit) ：
 3.31.8 5.2 10 14.4 21.6 26.9 0
 1.8000:
 3.3000:
 6.9332
-5.2000 :
+5.2000 ：
 
 7607
 10.0000:
@@ -3466,23 +4108,28 @@ Enter numbers (<=0 to quit) :
 21.6000: 30.8952
 26.9000: 37 .2730
 done
-第16章string 类和标准模板库
-723
+
 除前面讨论的外，valarray 类还有很多其他特性。例如，如果numbers是一个 valarray<double>对象，
 则下面的语句将创建一一个 bool数组，其中vbool[j]被设置为numbers[ij]> 9的值，即true或false:
+
 valarray<bool> vbool = numbers > 9;
-还有扩展的下标指定版本，来看其中的一一个一-slice 类。slice类对象可用作数组索引,在这种情况下，
-它表的不是一一个值而是一组值。slice 对象被初始化为三个整数值:起始索引、索引数和跨距。起始索引是
+
+还有扩展的下标指定版本，来看其中的一一个一-slice 类。slice类对象可用作数组索引，在这种情况下，
+它表的不是一一个值而是一组值。slice 对象被初始化为三个整数值：起始索引、索引数和跨距。起始索引是
 第一个被选中的元素的索引，索引数指出要选择多少个元素，跨距表示元素之间的间隔。例如，slice(1, 4, 3)
 创建的对象表示选择4个元素，它们的索引分别是1、4、7和10。也就是说，从起始索引开始，加上跨距
 得到下一个元素的索引，依此类推，直到选择了4个元素。如果varint 是一一个valarray<int对象，则下面
 的语句将把第1、4、7、10 个元素都设置为10:
+
 varint [slice(1,4,3)] = 10; // set selected elements to 10
+
 这种特殊的下标指定功能让您能够使用-一个-~维valarray对象来表示二维数据。例如，假设要表示一
 个4行3列的数组，可以将信息存储在-一个包含12 个元素的valarray对象中，然后使用一个slice(0, 3, 1)
-对象作为下标，来表示元素0、1和2，即第1行。同样，下标 slice(, 4, 3)表示元素0、3、6和9,即第一
+对象作为下标，来表示元素0、1和2，即第1行。同样，下标 slice(， 4, 3)表示元素0、3、6和9,即第一
 列。程序清单16.21 演示了slice 的一-些特性。
+
 程序清单16.21 vslice.cpp
+
 // vslice.CPP -- using valarray slices 
 #include <iostream>
 #include <valarray>
@@ -3490,104 +4137,130 @@ varint [slice(1,4,3)] = 10; // set selected elements to 10
 const int SIZE = 12;
 typedef std: :valarray<int> vint;
 // simplify declarations
-void show(const vint & v，int cols);
+void show(const vint & v，int cols)；
 int main()
 using std: :slice;
 // from <valarray>
 using std: :cout;
-vint valint (SIZE) ;
+vint valint (SIZE) ；
 //thinkofas4rowsof3
 int i
 for(i=0;i<SIZE;++i)
 valint[i] = std::rand() 号10;
-cout << "Original array: \n";
-show (valint，3);
+cout << "Original array: \n"；
+show (valint，3)；
 // show in
 columns
-vint vcol (valint [slice(1,4,3)]); // extract 2nd column
-cout << "Second column: \n" ;
-show(vcol, 1) ;
+vint vcol (valint [slice(1,4,3)])； // extract 2nd column
+cout << "Second column: \n" ；
+show(vcol, 1) ；
 // show in 1 col
 I umn
-vint vrow (valint [slice(3,3,1)]); // extract 2nd row
-cout << "Second row:\n";
-show (vrow, 3);
+vint vrow (valint [slice(3,3,1)])； // extract 2nd row
+cout << "Second row:\n"；
+show (vrow, 3)；
 valint[slice(2,4,3)] = 10;
 1/ assign to 2nd column
-cout << "Set last column to 10:\n";
-show (valint, 3) ;
-cout << "Set first column to sum of next two: \n";
+cout << "Set last column to 10:\n"；
+show (valint, 3) ；
+cout << "Set first column to sum of next two: \n"；
 // + not defined for slices, so convert to valarray<int>
 valint[slice(0,4,3)] = vint (valint[slice(1,4,3)])
- vint (valint [slice(2,4,3)]) ;
-show (valint, 3);
+ vint (valint [slice(2,4,3)]) ；
+show (valint, 3)；
 return 0;
 72
 C++ Primer Plus (第6版)中文版
 void show(const vint & v，int cols)
-using sta: :cout ;
-lsing std: :endl ;
-int 1im = v.size();
+using sta: :cout ；
+lsing std: :endl ；
+int 1im = v.size()；
 for(inti=0;i<lim;++i)
-cout . width(3) ;
-cout << v[i] ;
+cout . width(3) ；
+cout << v[i] ；
 if(i号cols==cols-1)
-cout << endl ;
+cout << endl ；
 else
-cout<<1!;
+cout<<1!；
 if (1im 号cols != 0)
-cout << endl ;
-对于valarray对象( 如valint)和单个int 元素(如valint[1])，定义了运算符+;但正如程序清单16.21
+cout << endl ；
+
+对于valarray对象( 如valint)和单个int 元素(如valint[1])，定义了运算符+；但正如程序清单16.21
 指出的，对于使用slice下标指定的valarray单元，如valint[slice(1, 4, 3)，并没有定义运算符+。因此程序
-使用slice指定的元素创建-一个完整的valint 对象，以便能够执行加法运算: 
+使用slice指定的元素创建-一个完整的valint 对象，以便能够执行加法运算： 
+
 vint (valint [slice(1,4,3)]) // calls a slice-based constructor
+
 valarray类提供了用于这种目的的构造函数。
-下面是程序清单16.21中程序的运行情况:
+
+下面是程序清单16.21中程序的运行情况：
+
 Original array:
-Second column :
+Second column ：
 Second row:
 290
 Set last column to 10:
 31(
 2910
-Set first column to sum of next two :
+Set first column to sum of next two ：
 13
 了1
 19910
+
 由于元素值是使用rand()设置的，因此不同的rand()实现将设置不同的值。
+
 另外，使用gslice类可以表示多维下标，但上述内容应足以让您对valarray 有- -定 了解。
-16.7.2模板 initializer_ list (C++11)
-模板initializer list 是C++11新增的。您可使用初始化列表语法将STL容器初始化为一系列值:
-第16章string 类和标准模板库
-725
-sta: :vector<double> payments {45.99, 39.23，19.95， 89.01};
+
+### 模板 initializer_ list (C++11)
+
+模板initializer list 是C++11新增的。您可使用初始化列表语法将STL容器初始化为一系列值：
+
+sta: :vector<double> payments {45.99, 39.23，19.95， 89.01}；
+
 这将创建一一个包含 4个元素的容器，并使用列表中的4个值来初始化这些元素。这之所以可行，是因
 为容器类现在包含将initializer list<T> 作为参数的构造函数。例如，vector<double> 包含一个将
-initializer_ list<double>作 为参数的构造函数，因此上述声明与下面的代码等价:
-std: :vector<double> payments({45.99, 39.23， 19.95， 89.01}) ;
+initializer_ list<double>作 为参数的构造函数，因此上述声明与下面的代码等价：
+
+std: :vector<double> payments({45.99, 39.23， 19.95， 89.01}) ；
+
 这里显式地将列表指定为构造函数参数。
-通常，考虑到C++11新增的通用初始化语法，可使用表示法{}而不是0来调用类构造函数:
-shared ptr<double> pd {new double}; // ok to use {} instead of ()
-但如果类也有接受initializer_ list 作为参数的构造函数，这将带来问题:
-sta: :vector<int> vi{10};
+
+通常，考虑到C++11新增的通用初始化语法，可使用表示法{}而不是0来调用类构造函数：
+
+shared ptr<double> pd {new double}； // ok to use {} instead of ()
+
+但如果类也有接受initializer_ list 作为参数的构造函数，这将带来问题：
+
+sta: :vector<int> vi{10}；
 / ??
+
 这将调用哪个构造函数呢?
-std: :vector<int> vi(10);
+
+std: :vector<int> vi(10)；
 // case A: 10 uninitialized elements
-sta: :vector<int> vi({I0}); // case B: 1 element set to 10
+sta: :vector<int> vi({I0})； // case B: 1 element set to 10
+
 答案是，如果类有接受initializer_ list 作为参数的构造函数，则使用语法{}将调用该构造函数。因此在
 这个示例中，对应的是情形B。
-所有initializer. list 元素的类型都必须相同，但编译器将进行必要的转换:
-std: :vector<double> payments {45.99， 39.23， 19，89};
-// same as sta: :vector<double> payments {45.99， 39.23， 19.0， 89.0};
+
+所有initializer. list 元素的类型都必须相同，但编译器将进行必要的转换：
+
+std: :vector<double> payments {45.99， 39.23， 19，89}；
+// same as sta: :vector<double> payments {45.99， 39.23， 19.0， 89.0}；
+
 在这里，由于vector的元素类型为double,因此列表的类型为initializer_ list<double>, 所以19 和89
 被转换为double.
-但不能进行隐式的窄化转换:
-std::vector<int> values = {10, 8，5.5}; // narrowing，compile-time error
+
+但不能进行隐式的窄化转换：
+
+std::vector<int> values = {10, 8，5.5}； // narrowing，compile-time error
+
 在这里，元素类型为int,不能隐式地将5.5转换为int。
+
 除非类要用于处理长度不同的列表，否则让它提供接受initializer_list作为参数的构造函数没有意义。
 例如，对于存储固定数目值的类，您不想提供接受initializer_ list 作为参数的构造函数。在下面的声明中，
-类包含三个数据成员，因此没有提供initializer_ list 作为参数的构造函数:
+类包含三个数据成员，因此没有提供initializer_ list 作为参数的构造函数：
+
 class Position
 private:
 int X;
@@ -3595,65 +4268,76 @@ int Y;
 nt z;
 public:
 Position(int XX = 0, int YY = 0, int zz = 0)
-x(xx), y(yy), z(zz)
+x(xx)， y(yy)， z(zz)
 // no initializer_ list constructor
-};
-这样，使用语法{}时将调用构造函数Position(int, int, int):
-Position A = {20， -3}; // uses Position(20,-3,0)
-16.7.3使 用initializer_ _list
+}；
+
+这样，使用语法{}时将调用构造函数Position(int, int, int)：
+
+Position A = {20， -3}； // uses Position(20,-3,0)
+
+### 使用initializer__list
+
 要在代码中使用initializer list 对象，必须包含头文件initializer list. 这个模板类包含成员函数begin( )
 和end( )，您可使用这些函数来访问列表元素。它还包含成员函数size()，该函数返回元素数。程序清
 单16.22 是一一个简单的initializer. list 使用示例，它要求编译器支持C++11新增的initializer list。
-726
-C++ Primer Plus (第6版)中文版
+
 程序清单16.22 ilist.cpp
+
 // ilist.cpp -- use initializer_ list (C++11 feature)
 #include < iostream>
 #include <initializer list>
-double sum(std: : initializer_ 1 ist<double> il) ;
-double average (const std: :initializer_ list<double> & ril) ;
+double sum(std: ： initializer_ 1 ist<double> il) ；
+double average (const std: :initializer_ list<double> & ril) ；
 int main()
 using std: :cout;
 cout << "List 1: sum = " << sum({2,3,4})
-average({2,3,4}) << \n' ;
-std: :initializer_ list<double> dl = {1.1, 2.2，3.3， 4.4，5.5};
+average({2,3,4}) << \n' ；
+std: :initializer_ list<double> dl = {1.1, 2.2，3.3， 4.4，5.5}；
 cout << "List 2: sum = " << sum (dl)
 ave
-average(dl) << \n' ;
-d1 = {16.0, 25.0，36.0, 40.0， 64.0};
+average(dl) << \n' ；
+d1 = {16.0, 25.0，36.0, 40.0， 64.0}；
 cout << "List 3: sum = " << sum(dl)
-<<", ave = " << average(dl) << \n';
+<<"， ave = " << average(dl) << \n'；
 return O;
 double sum(sta: :initializer_ list<double> il)
 double tot = 0;
-for (auto 口= il.begin(); 口!=il.end(); D++)
+for (auto 口= il.begin()； 口!=il.end()； D++)
 tot += *p;
 return tot;
-double average (const std: : initializer list<double> & ril)
+double average (const std: ： initializer list<double> & ril)
 double tot = 0
-int n = ril.size();
+int n = ril.size()；
 double ave = 0.0;
 if(n>0)
-for (auto 口= ril.begin(); 口!=ril.end(); P++)
+for (auto 口= ril.begin()； 口!=ril.end()； P++)
 tot += *P;
 ave=tot/n;
-return ave ;
-该程序的输出如下:
+return ave ；
+
+该程序的输出如下：
+
 List1:sum=9,ave=3
 List 2: Sum = 16.5， ave = 3.3
 List 3: sum = 181， ave = 36.2
+
 程序说明
+
 可按值传递initializer_ list 对象，也可按引用传递，如sum()和average(所示。这种对象本身很小，通
-第16章string 类和标准模板库
-727
 常是两个指针(一个指向开头，一个指向末尾的下-一个元素)，也可能是-一个指针和-一个表示元素数的整
 数，因此采用的传递方式不会带来重大的性能影响。STL按值传递它们。
+
 函数参数可以是initializer_ list 字面量，如{2, 3, 4}，也可以是initializer_ list 变量，如dl。
-initializer_ list 的迭代器类型为const,因此您不能修改initializer_ list 中的值:
+initializer_ list 的迭代器类型为const,因此您不能修改initializer_ list 中的值：
+
 *d1.begin() = 2011.6;
 // not allowed
+
 但正如程序清单16.22 演示的，可以将一个 initializer list 赋给另- - 个initializer list:
-dl = {16.0，25.0，36.0， 40.0， 64.0}; // allowed
+
+dl = {16.0，25.0，36.0， 40.0， 64.0}； // allowed
+
 然而，提供initializerlist类的初衷旨在让您能够将一系列值传递给构造函数或其他函数。
 
 ## 总结
@@ -3662,67 +4346,75 @@ C++提供了- ~组功能强大的库，这些库提供了很多常见编程问�
 string 类为将字符串作为对象来处理提供了一种方 便的方法。string 类提供了自动内存管理功能以及众多处
 理字符串的方法和函数。例如，这些方法和函数让您能够合并字符串、将一个字符串插入到另一个字符串
 中、反转字符串、在字符串中搜索字符或子字符串以及执行输入和输出操作。
+
 诸如auto_ptr以及C++11新增的shared_ptr和unique_ptr等智能指针模板使得管理由new分配的内存
 更容易。如果使用这些智能指针(而不是常规指针)来保存new返回的地址，则不必在以后使用删除运算
 符。智能指针对象过期时，其析构丽数将自动调用delete运算符。
+
 STL是一个容器类模板、迭代器类模板、函数对象模板和算法函数模板的集合，它们的设计是一-致
-的，都是基于泛型编程原则的。算法通过使用模板，从而独立于所存储的对象的类型;通过使用迭代器接
+的，都是基于泛型编程原则的。算法通过使用模板，从而独立于所存储的对象的类型；通过使用迭代器接
 口，从而独立于容器的类型。迭代器是广义指针。
+
 STL使用术语“概念”来描述一组要求。 例如，正向迭代器的概念包含这样的要求，即正向迭代器能
 够被解除引用，以便读写，同时能够被递增。概念真正的实现方式被称为概念的“模型”。例如，正向迭代
 器概念可以是常规指针或导航链表的对象。基于其他概念的概念叫作“改进”。例如，双向迭代器是正向迭
 代器概念的改进。
+
 诸如vector 和set等容器类是容器概念(如容器、序列和关联容器)的模型。STL定义了多种容器类
-模板: vector. deque、list. set、multiset. map、 multimap 和bitset;还定义了适配器类模板queue、priority_ queue
+模板： vector. deque、list. set、multiset. map、 multimap 和bitset;还定义了适配器类模板queue、priority_ queue
 和stack;这些类让底层容器类能够提供适配器类模板名称所建议的特性接口。因此，stack虽然在默认情
 况下是基于vector 的，但仍只允许在栈顶进行插入和删除。C++11 新增了forward list、 unordered set、
 unordered multiset、 unordered map和unordered multimap.
+
 有些算法被表示为容器类方法，但大量算法都被表示为通用的、非成员函数，这是通过将迭代器作为
-容器和算法之间的接口得以实现的。这种方法的一- 个优点是:只需一一个诸 如for_ each( )或copy( )这样的函
-数，而不必为每种容器提供-一个版本;另一个优点是: STL 算法可用于非STL容器，如常规数组、string
+容器和算法之间的接口得以实现的。这种方法的一- 个优点是：只需一一个诸 如for_ each( )或copy( )这样的函
+数，而不必为每种容器提供-一个版本；另一个优点是： STL 算法可用于非STL容器，如常规数组、string
 对象、array对象以及您设计的秉承STL迭代器和容器规则的任何类。
+
 容器和算法都是由其提供或需要的迭代器类型表征的。应当检查容器是否具备支持算法要求的迭代器
-概念。例如，for each( )算法使用一一个输入迭代器， 所有的STL容器类类型都满足其最低要求;而sort( )
+概念。例如，for each( )算法使用一一个输入迭代器， 所有的STL容器类类型都满足其最低要求；而sort( )
 则要求随机访问迭代器，并非所有的容器类都支持这种迭代器。如果容器类不能满足特定算法的要求，则
 可能提供一个专用的方法。例如，list 类包含一个基于双向迭代器的sort( )方法，因此它可以使用该方法，
 而不是通用函数。
-STL还提供了函数对象(函数符),.函数对象是重载了( )运算符(即定义了operator( )( )方法)的类。
+
+STL还提供了函数对象(函数符)，.函数对象是重载了( )运算符(即定义了operator( )( )方法)的类。
+
 可以使用函数表示法来调用这种类的对象，同时可以携带额外的信息。自适应函数符有typedef语句，这种
 语句标识了函数符的参数类型和返回类型。这些信息可供其他组件(如函数适配器)使用。
+
 通过表示常用的容器类型，并提供各种使用高效算法实现的常用操作(全部是通用的方式实现的)，
-28
-C++ Primer Plus(第6版)中文版
 STL提供了一个非常好的可重用代码源。可以直接使用STL工具来解决编程问题，也可以把它们作为基本
 部件，来构建所需的解决方案。
+
 模板类complex和valarray支持复数和数组的数值运算。
 
 ## 复习题
 
-1.考虑下面的类声明:
+1.考虑下面的类声明：
 class RQ1
 private:
 char * st;
 // points to C-style string
 public:
-RQ1() { st = new char [1]; strcpy(st,""); }
+RQ1() { st = new char [1]； strcpy(st,"")； }
 RQ1 (const char
 ，s)
-{st = new char [strlen(s) + 1]; strcpy(st, s); }
+{st = new char [strlen(s) + 1]； strcpy(st, s)； }
 RQ1 (const RQ1 & rq)
-{st = new char [strlen(rq.st) + 1]; strcpy(st, rq.st); }
-~RQ1() {delete [] st};
-RQ & operator= (const RQ & rq);
+{st = new char [strlen(rq.st) + 1]； strcpy(st, rq.st)； }
+~RQ1() {delete [] st}；
+RQ & operator= (const RQ & rq)；
 // more stuff
 }
 将它转换为使用string对象的声明。哪些方法不再需要显式定义?
 2.在易于使用方面，指出string对象至少两个优于C风格字符串的地方。
 3.编写一个函数，用string对象作为参数，将string对象转换为全部大写。
 4.从概念上或语法上说，下面哪个不是正确使用auto ptr 的方法(假设已经包含了所需的头文件) ? 
-auto_ ptr<int> pia(new int[20]);
-auto_ ptr<string> (new string) ;
+auto_ ptr<int> pia(new int[20])；
+auto_ ptr<string> (new string) ；
 int rigue = 7;
-auto_ ptr<int>pr (&rigue) ;
-auto_ ptr dbl (new double) ;
+auto_ ptr<int>pr (&rigue) ；
+auto_ ptr dbl (new double) ；
 5.如果可以生成-一个存储高尔夫球棍(而不是数字)的栈，为何它(从概念上说)是一个坏的高尔夫
 袋子?
 6.为什么说对于逐洞记录高尔夫成绩来说，set 容器是糟糕的选择?
@@ -3734,12 +4426,11 @@ auto_ ptr dbl (new double) ;
 分能够轻松修复吗?如果可以，如何修复呢?
 11.假设有程序清单16.15所示的函数符TooBig,下面的代码有何功能?赋给bo的是什么值?
 bool
-bo = TooBig<int>(10) (15);
+bo = TooBig<int>(10) (15)；
 
 ## 编程练习
 
-1.回文指的是顺读和逆读都一样的字符串。例如，“tot” 和“otto” 都是简短的回文。编写- -个程序,
-第16章string 类和标准模板库
+1.回文指的是顺读和逆读都一样的字符串。例如，“tot” 和“otto” 都是简短的回文。编写- -个程序，
 让用户输入字符串，并将字符串引用传递给一个 bool函数。如果字符串是回文，该函数将返回true,否则
 返回false。此时，不要担心诸如大小写、空格和标点符号这些复杂的问题。即这个简单的版本将拒绝“Otto"
 和“Madam, I'm Adam”。请查看附录F中的字符串方法列表，以简化这项任务。
@@ -3751,44 +4442,42 @@ bo = TooBig<int>(10) (15);
 数组。这样便可以使用pushback()将数据文件中的单词复制到vector<string对象中，并使用size()来确定
 单词列表的长度。由于程序应该每次从文件中读取- -个单词，因此应使用运算符>>而不是getine()。文件
 中包含的单词应该用空格、制表符或换行符分隔。
-4.编写一个具有老式风格接口的函数，其原型如下:
-int reduce(long ar], int n);
+4.编写一个具有老式风格接口的函数，其原型如下：
+int reduce(long ar]， int n)；
 实参应是数组名和数组中的元素个数。该函数对数组进行排序，删除重复的值，返回缩减后数组中的
 元素数目。请使用STL函数编写该函数(如果决定使用通用的unique()数，请注意它将返回结果区间的
 结尾)。使用一个小程序测试该函数。
-5.问题与编程练习4相同，但要编写一个模板函数:
+5.问题与编程练习4相同，但要编写一个模板函数：
 template <class T>
-int reduce(T ar[]， int n) ;
+int reduce(T ar[]， int n) ；
 在一个使用long实例和string实例的小程序中测试该函数。
 6.使用STL queue模板类而不是第12章的Queue类，重新编写程序清单12.12所示的示例。
 7.彩票卡是一个常见的游戏。卡片.上是带编号的圆点，其中-一些圆点被随机选中。编写一个lotto( )
 函数，它接受两个参数。第-一个参数是彩票卡上圆点的个数，第二个参数是随机选择的圆点个数。该函数
-返回一个vector<int对象，其中包含(按排列后的顺序)随机选择的号码。例如，可以这样使用该函数:
+返回一个vector<int对象，其中包含(按排列后的顺序)随机选择的号码。例如，可以这样使用该函数：
 vector<int> winners;
 winners = Lotto(51,6)
 这样将把一一个矢量赋给winner,该矢量包含1~51中随机选定的6个数字。注意，仅仅使用rand( )无
-法完成这项任务，因它会生成重复的值。提示:让函数创建--个包含所有可能值的矢量，使用
+法完成这项任务，因它会生成重复的值。提示：让函数创建--个包含所有可能值的矢量，使用
 random shuffle( )，然后通过打乱后的矢量的第一个值来获取值。 编写-个小程序来测试这个函数。
 8.Mat和Pat希望邀请他们的朋友来参加派对。他们要编写-一个程序完成下面的任务。
 ●让 Mat输入他朋友的姓名列表。姓名存储在-一个容器中，然后按排列后的顺序显示出来。
 让Pat输入她朋友的姓名列表。姓名存储在另-一个容器中，然后按排列后的顺序显示出来。
 ●创建第三个容器， 将两个列表合并，删除重复的部分，并显示这个容器的内容。
-9.相对于数组，在链表中添加和删除元素更容易，但排序速度更慢。这就引出了一种可能性:相对于
+9.相对于数组，在链表中添加和删除元素更容易，但排序速度更慢。这就引出了一种可能性：相对于
 使用链表算法进行排序，将链表复制到数组中，对数组进行排序，再将排序后的结果复制到链表中的速度
-可能更快;但这也可能占用更多的内存。请使用如下方法检验上述假设。
+可能更快；但这也可能占用更多的内存。请使用如下方法检验上述假设。
 a. 创建大型vector<int>对象vi0, 并使用rand( )给它提供初始值。
 b.创建vector<int对象vi和list<int>对象li,它们的长度都和初始值与vi0 相同。
 c.计算使用STL算法sort( )对vi进行排序所需的时间，再计算使用list的方法sor( )对li 进行排序所
 需的时间。
-d.将li重置为排序的vi0的内容，并计算执行如下操作所需的时间:将li的内容复制到vi中，对vi
+d.将li重置为排序的vi0的内容，并计算执行如下操作所需的时间：将li的内容复制到vi中，对vi
 进行排序，并将结果复制到i中。
 要计算这些操作所需的时间，可使用ctime库中的clock()。正如程序清单5.14演示的，可使用下面的
-语句来获取开始时间:
-clock_ t start = clock() ;
-730
-C++ Primer Plus (第6版)中文版
-再在操作结束后使用下面的语句获取经过了多长时间:
-clock_ t end = clock();
+语句来获取开始时间：
+clock_ t start = clock() ；
+再在操作结束后使用下面的语句获取经过了多长时间：
+clock_ t end = clock()；
 cout << (double) (end - start) /CLOCKS_ PER_ SEC;
 这种测试并非绝对可靠，因为结果取决于很多因素，如可用内存量、是否支持多处理以及数组(列表)
 的长度(随着要排序的元素数增加，数组相对于列表的效率将更明显)。另外，如果编译器提供了默认生成
@@ -3798,9 +4487,9 @@ cout << (double) (end - start) /CLOCKS_ PER_ SEC;
 a.在结构Review中添加成员price.
 b.不使用vector<Review>来存储输入，而使用vector<shared ptr<Review>>。 别忘了，必须使用new
 返回的指针来初始化shared ptr。
-c. 在输入阶段结束后，使用一个循环让用户选择如下方式之一显示书籍:按原始顺序显示、按字丹表
+c. 在输入阶段结束后，使用一个循环让用户选择如下方式之一显示书籍：按原始顺序显示、按字丹表
 顺序显示、按评级升序显示、按评级降序显示、按价格升序显示、按价格降序显示、退出。
-下面是一种可能的解决方案:获取输入后，再创建一一个 shared ptr矢量，并用原始数组初始化它。分
+下面是一种可能的解决方案：获取输入后，再创建一一个 shared ptr矢量，并用原始数组初始化它。分
 义一个对指向结构的指针进行比较的operator <()函数，并使用它对第二个矢量进行排序，让其中的
 shared ptr 按其指向的对象中的书名排序。重复上述过程，创建按rating和price排序的shared ptr 矢量。
-请注意，通过使用rbegin(和rend(),可避免创建按相反的顺序排列的shared ptr 矢量。
+请注意，通过使用rbegin(和rend()，可避免创建按相反的顺序排列的shared ptr 矢量。
