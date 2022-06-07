@@ -1,0 +1,1 @@
+attrib -s -a -h -r E:\WorkSpace
