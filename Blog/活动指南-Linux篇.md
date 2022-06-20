@@ -1059,7 +1059,7 @@ unzip test.zip
 - uudecode
 - uuencode
 
-## zip	
+## zip
 
 压缩文件或目录
 
