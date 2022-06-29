@@ -455,6 +455,8 @@ tmpfs           184M     0  184M   0% /run/user/0
 du命令用于显示目录或文件的大小。du会显示指定的目录或文件所占用的磁盘空间。
 
 ```shell
+cd / && du -h -x --max-depth=1
+
 du -h --max-depth=1 /home
 ```
 
