@@ -1,0 +1,1992 @@
+# 基础篇
+
+CMake是一个开源、跨平台的编译、测试和打包工具，它使用比较简单的语言描述编译、安装的过程，输出Makefile或者project文件，再去执行构建。
+
+在使用IDE开发软件的过程中，代码的编译和构建一般是使用IDE自带的编译工具和环境进行编译，开发者参与的并不算多。如果想要控制构建的细节，则需要开发者自己定义构建的过程。
+
+本文主要介绍以下内容：
+
+1. 编译构建相关的核心概念及它们之间的关系。
+2. CMake的一般使用流程。
+3. 一个简单的实例。
+
+## **核心概念**
+
+### **gcc、make和cmake**
+
+**gcc（GNU Compiler Collection）**将源文件**编译（Compile）**成可执行文件或者库文件；
+
+而当需要编译的东西很多时，需要说明先编译什么，后编译什么，这个过程称为**构建（Build）**。常用的工具是**make**，对应的定义构建过程的文件为**Makefile**；
+
+而编写Makefile对于大型项目又比较复杂，通过**CMake**就可以使用更加简洁的语法定义构建的流程，CMake定义构建过程的文件为**CMakeLists.txt**。
+
+它们的大致关系如下图：
+
+![img](D:\Gitee\Ehe\2022\v2-3ecb8a9d9cc86895b3ab639ce3ff0418_720w.jpg)
+
+这里的GCC只是示例，也可以是其他的编译工具。这里的Bin表示目标文件，可以是可执行文件或者库文件。
+
+## **CMake一般使用流程**
+
+CMake提供cmake、ctest和cpack三个命令行工具分别负责**构建**、**测试**和**打包**。本文主要介绍cmake命令。
+
+使用cmake一般流程为：
+
+1. **生成构建系统**（buildsystem，比如make工具对应的Makefile）。
+2. 执行构建（比如make），**生成目标文件**。
+3. **执行**测试、安装或打包。
+
+本文先介绍前面两个步骤。
+
+### **生成构建系统**
+
+通过`cmake`命令生成构建系统。通过`cmake --help`可以看到cmake命令支持的详细参数，常用的参数如下：
+
+| 参数 | 含义                                                       |
+| :--: | ---------------------------------------------------------- |
+|  -S  | 指定**源文件根目录**，必须包含一个CMakeLists.txt文件       |
+|  -B  | 指定**构建目录**，构建生成的中间文件和目标文件的生成路径   |
+|  -D  | 指定**变量**，格式为-D <var>=<value>，-D后面的空格可以省略 |
+
+比如，指明使用当前目录作为源文件目录，其中包含`CMakeLists.txt`文件；使用build目录作为构建目录；设定变量`CMAKE_BUILD_TYPE`的值为`Debug`，变量`AUTHOR`的值为`RealCoolEngineer`：
+
+```cmake
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DAUTHOR=RealCoolEngineer
+```
+
+使用-D设置的变量在CMakeLists.txt中生效，可以设置cmake的内置支持的一些变量控制构建的行为；当然也可以使用自定义的变量，在CMakeLists.txt中自行判断做不同的处理。
+
+### **执行构建**
+
+使用`cmake --build [<dir> | --preset <preset>]`执行构建。
+
+这里要指定的目录就是生成构建系统时指定的构建目录。常用的参数如下：
+
+|          参数          | 含义                                         |
+| :--------------------: | -------------------------------------------- |
+|        --target        | 指定构建目标代替默认的构建目标，可以指定多个 |
+| --parallel/-j [<jobs>] | 指定构建目标时使用的进程数                   |
+
+在这一步，如果使用的是make构建工具，则可以在构建目录下直接使用make命令。
+
+## **CMake应用示例**
+
+### **一个简单的例子**
+
+下面使用cmake编译一个c语言的hello world程序。创建一个项目文件夹`cmake-template`，目录结构如下：
+
+```text
+cmake-template
+├── CMakeLists.txt
+└── src
+    └── c
+        └── main.c
+```
+
+main.c内容如下：
+
+```c
+// @Author: Farmer
+// @Date: 2021-4-24
+
+#include <stdio.h>
+
+int main(void) {
+  printf("Hello CMake!");
+
+  return 0;
+}
+```
+
+CMakeLists.txt的内容如下：
+
+```cmake
+cmake_minimum_required(VERSION 3.12)
+project(cmake_template VERSION 1.0.0 LANGUAGES C CXX)
+
+add_executable(demo src/c/main.c)
+```
+
+该CMakeLists.txt声明了需要使用的cmake的最低版本；项目的名字、版本以及编译语言；最后一句定义了通过源文件main.c生成可执行文件demo。
+
+### **生成构建系统**
+
+在`cmake-template`目录下，执行以下命令：
+
+```text
+cmake -B build
+```
+
+执行完成后，在项目的根目录下会创建build目录，可以看到其中生成了`Makefile`文件。
+
+### **执行构建**
+
+还是在`cmake-template`目录下，执行以下命令：
+
+```cmake
+cmake --build build
+```
+
+因为使用的是make工具，所以也可以在build目录直接执行make命令：
+
+```cmake
+cd build && make && cd -
+```
+
+执行完成后，可以在build目录下看到已经生成可执行文件`demo`，执行demo：
+
+```text
+➜ cmake-template # ./build/demo
+Hello CMake!
+```
+
+上面演示了一个CMake的简单demo，着重介绍CMake的使用流程和命令。 下一篇文章会介绍CMake常用的核心语法和更加复杂的demo。
+
+本文示例代码上传到开源仓库： [FarmerLi / cmake-template](https://link.zhihu.com/?target=https%3A//gitee.com/RealCoolEngineer/cmake-template)
+
+# 核心语法篇
+
+本文是深入CMakeLists.txt之前的前导文章，介绍CMake语言的核心概念，以及常用的CMake脚本命令，以及对CMake的语法能有比较好的认知和实践基础。
+
+在前一篇文章中介绍了CMake的核心概念，使用的一般流程，并通过一个实例讲解了CMake命令行工具之一的cmake命令的使用方法。
+
+在开始深入如何编写完备的`CMakeLists.txt`之前，先了解下CMake的语言和它的组织方式对后续内容的理解是很有帮助的。本文将会介绍以下内容：
+
+1. CMake语言的核心概念。
+2. CMake常用脚本命令及示例。
+
+## **CMake语法核心概念**
+
+下面介绍的内容，可以只先有一些概念，不求甚解，在后续需要深入的时候查看文档即可。
+
+CMake的命令有不同类型，包括**脚本命令、项目配置命令和测试命令**，细节可以查看官网**[cmake-commands](https://link.zhihu.com/?target=https%3A//cmake.org/cmake/help/v3.20/manual/cmake-commands.7.html)**。
+
+CMake语言在项目配置中组织为三种源文件类型：
+
+1. **目录**：CMakeLists.txt，针对的是一个目录，描述如何针对目录（Source tree）生成构建系统，会用到项目配置命令；
+2. **脚本**：<script>.cmake，就是一个CMake语言的脚本文件，可使用`cmake -P`直接执行，只能包含脚本命令；
+3. **模块**：<module>.cmake，实现一些模块化的功能，可以被前面两者包含，比如`include(CTest)`启用测试功能。
+
+### **注释**
+
+行注释使用"#"；
+
+块注释使用"#[[Some comments can be multi lines or in side the command]]"。
+
+比如:
+
+```cmake
+# Multi line comments follow
+#[[
+Author: FarmerLi
+Date: 2021-4-27
+]]
+```
+
+### **变量**
+
+CMake中使用`set`和`unset`命令设置或者取消设置变量。CMake中有以下常用变量类型。
+
+#### **一般变量**
+
+设置的变量可以是字符串，数字或者列表（直接设置多个值，或者使用分号隔开的字符串格式为"v1;v2;v3"），比如：
+
+```cmake
+# Set variable
+set(AUTHOR_NAME Farmer)
+set(AUTHOR "Farmer Li")
+set(AUTHOR Farmer\ Li)
+
+# Set list
+set(SLOGAN_ARR To be)   # Saved as "To;be"
+set(SLOGAN_ARR To;be)
+set(SLOGAN_ARR "To;be")
+
+set(NUM 30)   # Saved as string, but can compare with other number string
+set(FLAG ON)  # Bool value
+```
+
+主要有以下要点：
+
+1. 如果要设置的变量值包含空格，则需要使用双引号或者使用"\"转义，否则可以省略双引号；
+2. 如果设置多个值或者字符串值的中间有";"，则保存成list，同样是以";"分割的字符串；
+3. 变量可以被list命令操作，单个值的变量相当于只有一个元素的列表；
+4. 引用变量：`${<variable>}`，在`if()`条件判断中可以简化为只用变量名`<variable>`。
+
+#### **Cache变量**
+
+Cache变量（缓存条目，cache entries）的作用主要是为了**提供用户配置选项**，如果用户没有指定，则使用默认值，设置方法如下：
+
+```cmake
+# set(<variable> <value>... CACHE <type> <docstring> [FORCE])
+set(CACHE_VAR "Default cache value" CACHE STRING "A sample for cache variable")
+```
+
+**要点**：
+
+1. 主要为了提供可配置变量，比如编译开关；
+2. 引用CACHE变量：`$CACHE{<varialbe>}`。
+
+Cache变量会被保存在构建目录下的CMakeCache.txt中，缓存起来之后是不变的，除非重新配置更新。
+
+#### **环境变量**
+
+修改当前处理进程的环境变量，设置和引用格式为：
+
+```cmake
+# set(ENV{<variable>} [<value>])
+set(ENV{ENV_VAR} "$ENV{PATH}")
+message("Value of ENV_VAR: $ENV{ENV_VAR}")
+```
+
+和CACHE变量类似，要引用环境变量，格式为：`$ENV{<variable>}`。
+
+### **条件语句**
+
+支持的语法有：
+
+1. 字符串比较，比如：**STREQUAL、STRLESS、STRGREATER**等；
+2. 数值比较，比如：**EQUAL、LESS、GREATER**等；
+3. 布尔运算，**AND、OR、NOT**；
+4. 路径判断，比如：**EXISTS、IS_DIRECTORY、IS_ABSOLUTE**等；
+5. 版本号判断；等等；
+6. 使用小括号可以组合多个条件语句，比如：**(cond1) AND (cond2 OR (cond3))**。
+
+
+
+对于**常量**：
+
+1. ON、YES、TRUE、Y和非0值均被视为`True`；
+2. 0、OFF、NO、FALSE、N、IGNORE、空字符串、NOTFOUND、及以"-NOTFOUND"结尾的字符串均视为`False`。
+
+对于**变量**，只要**其值不是常量中为`False`的情形，则均视为`True`**。
+
+
+
+## **常用的脚本命令**
+
+有了前面的总体概念，下面掌握一些常用的CMake命令，对于CMake脚本编写就可以有不错的基础。
+
+### **消息打印**
+
+前面已经有演示，即`message`命令，其实就是打印log，用来打印不同信息，常用命令格式为：
+
+```cmake
+message([<mode>] "message text" ...)
+```
+
+其中`mode`就相当于打印的等级，常用的有这几个选项：
+
+1. 空或者`NOTICE`：比较重要的信息，如前面演示中的格式。
+2. DEBUG：调试信息，主要针对开发者。
+3. STATUS：项目使用者可能比较关心的信息，比如提示当前使用的编译器。
+4. WARNING：CMake警告，不会打断进程。
+5. SEND_ERROR：CMake错误，会继续执行，但是会跳过生成构建系统。
+6. FATAL_ERROR：CMake致命错误，会终止进程。
+
+### **条件分支**
+
+这里以`if()/elseif()/else()/endif()`举个例子，for/while循环也是类似的：
+
+```cmake
+set(EMPTY_STR "")
+if (NOT EMPTY_STR AND FLAG AND NUM LESS 50 AND NOT NOT_DEFINE_VAR)
+    message("The first if branch...")
+elseif (EMPTY_STR)
+    message("EMPTY_STR is not empty")
+else ()
+    message("All other case")
+endif()
+```
+
+### **列表操作**
+
+`list`也是CMake的一个命令，有很多有用的子命令，比较常用的有：
+
+1. `APPEND`，往列表中添加元素；
+2. `LENGTH`，获取列表元素个数；
+3. `JOIN`，将列表元素用指定的分隔符连接起来；
+
+示例如下：
+
+```cmake
+set(SLOGAN_ARR To be)   # Saved as "To;be"
+set(SLOGAN_ARR To;be)
+set(SLOGAN_ARR "To;be")
+set(WECHAT_ID_ARR Real Cool Eengineer)
+list(APPEND SLOGAN_ARR a)                # APPEND sub command
+list(APPEND SLOGAN_ARR ${WECHAT_ID_ARR}) # Can append another list
+list(LENGTH SLOGAN_ARR SLOGAN_ARR_LEN)   # LENGTH sub command
+# Convert list "To;be;a;Real;Cool;Engineer"
+# To string "To be a Real Cool Engineer"
+list(JOIN SLOGAN_ARR " " SLOGEN_STR)
+message("Slogen list length: ${SLOGAN_ARR_LEN}")
+message("Slogen list: ${SLOGAN_ARR}")
+message("Slogen list to string: ${SLOGEN_STR}\n")
+```
+
+对于列表常用的操作，list命令都基本实现了，需要其他功能直接查阅官方文档即可。
+
+### **文件操作**
+
+CMake的`file`命令支持的操作比较多，可以**读写、创建或复制文件和目录、计算文件hash、下载文件、压缩文件**等等。 使用的语法都比较类似，以笔者常用的递归遍历文件为例，下面是获取src目录下两个子目录内所有c文件的列表的示例：
+
+```cmake
+file(GLOB_RECURSE ALL_SRC
+        src/module1/*.c
+        src/module2/*.c
+        )
+```
+
+`GLOB_RECURSE`表示执行递归查找，查找目录下所有符合指定正则表达式的文件。
+
+### **配置文件生成**
+
+使用`configure_file`命令可以将配置文件模板中的特定内容替换，生成目标文件。 输入文件中的内容`@VAR@`或者`${VAR}`在输出文件中将被对应的变量值替换。 使用方式为：
+
+```cmake
+set(VERSION 1.0.0)
+configure_file(version.h.in "${PROJECT_SOURCE_DIR}/version.h")
+```
+
+假设`version.in.h`的内容为：
+
+```text
+#define VERSION "@VERSION@"
+```
+
+那么生成的`version.h`的内容为：
+
+```text
+#define VERSION "1.0.0"
+```
+
+### **执行系统命令**
+
+使用`execute_process`命令可以执行一条或者顺序执行多条系统命令，对于需要使用系统命令获取一些变量值是有用的。比如获取当前仓库最新提交的commit的commit id：
+
+```cmake
+execute_process(COMMAND bash "-c" "git rev-parse --short HEAD" OUTPUT_VARIABLE COMMIT_ID)
+```
+
+### **查找库文件**
+
+通过`find_library`在指定的路径和相关默认路径下查找指定名字的库，常用的格式如下：
+
+```cmake
+find_library (<VAR> name1 [path1 path2 ...])
+```
+
+找到的库就可以被其他target使用，表明依赖关系。
+
+### **include其他模块**
+
+`include`命令将cmake文件或者模块加载并执行。比如：
+
+```cmake
+include(CPack) # 开启打包功能
+include(CTest) # 开启测试相关功能
+```
+
+CMake自带有很多有用的模块，可以看看官网的链接：**[cmake-modules](https://link.zhihu.com/?target=https%3A//cmake.org/cmake/help/latest/manual/cmake-modules.7.html)**，对支持的功能稍微有所了解，后续有需要再细看文档。
+
+当然，如果感兴趣，也可以直接看CMake安装路径下的目录`CMake\share\cmake-<version>\Modules`中的模块源文件。
+
+文中的示例代码均共享在开源仓库：[https://gitee.com/RealCoolEngineer/cmake-template](https://link.zhihu.com/?target=https%3A//gitee.com/RealCoolEngineer/cmake-template)，当前commit id：`f8f3948`。
+
+关于CMake脚本源文件的示例位于路径：`cmake/script_demo.cmake`，可以使用`cmake -P cmake/script_demo.cmake`执行查看结果; 关于配置文件生成的操作在项目根目录的CMakeLists.txt中也有示例。
+
+# CMakeLists.txt完全指南
+
+CMake通过CMakeLists.txt配置项目的构建系统，配合使用cmake命令行工具生成构建系统并执行编译、测试，相比于手动编写构建系统（如Makefile）要高效许多。对于C/C++项目开发，非常值得学习掌握。
+
+本文将会介绍如何书写一个完备的`CMakeLists.txt`文件，满足一般项目的基础构建要求，CMake的语法将会更多介绍项目配置命令，主要有以下内容：
+
+1. 设置一些自定义编译控制开关和自定义编译变量控制编译过程。
+2. 根据不同编译类型配置不同的编译选项和链接选项。
+3. 添加头文件路径、编译宏等常规操作。
+4. 编译生成不同类型的目标文件，包括可执行文件、静态链接库和动态链接库。
+5. 安装、打包和测试。
+
+## **基础配置**
+
+下面先介绍一些CMake项目通常都需要进行的配置。下面介绍的内容以`make`作为构建工具作为示例。
+
+下面的示例代码可以在开源项目**[cmake-template](https://link.zhihu.com/?target=https%3A//gitee.com/RealCoolEngineer/cmake-template)**中查看（当前commit id：`c7c6b15`）。 
+
+### **设置项目版本和生成version.h**
+
+一般来说，项目一般需要设置一个版本号，方便进行版本的发布，也可以根据版本对问题或者特性进行追溯和记录。
+
+通过project命令配置项目信息，如下：
+
+```cmake
+project(CMakeTemplate VERSION 1.0.0 LANGUAGES C CXX)
+```
+
+第一个字段是项目名称；通过`VERSION`指定版本号，格式为`main.minor.patch.tweak`，并且CMake会将对应的值分别赋值给以下变量（如果没有设置，则为空字符串）：
+
+```cmake
+PROJECT_VERSION, <PROJECT-NAME>_VERSION
+PROJECT_VERSION_MAJOR, <PROJECT-NAME>_VERSION_MAJOR
+PROJECT_VERSION_MINOR, <PROJECT-NAME>_VERSION_MINOR
+PROJECT_VERSION_PATCH, <PROJECT-NAME>_VERSION_PATCH
+PROJECT_VERSION_TWEAK, <PROJECT-NAME>_VERSION_TWEAK
+```
+
+因此，结合前一篇文章提到的`configure_file`命令，可以配置自动生成版本头文件，将头文件版本号定义成对应的宏，或者定义成接口，方便在代码运行的时候了解当前的版本号。
+
+比如:
+
+```cmake
+configure_file(src/c/cmake_template_version.h.in "${PROJECT_SOURCE_DIR}/src/c/cmake_template_version.h")
+```
+
+假如`cmake_template_version.h.in`内容如下：
+
+```text
+#define CMAKE_TEMPLATE_VERSION_MAJOR @CMakeTemplate_VERSION_MAJOR@
+#define CMAKE_TEMPLATE_VERSION_MINOR @CMakeTemplate_VERSION_MINOR@
+#define CMAKE_TEMPLATE_VERSION_PATCH @CMakeTemplate_VERSION_PATCH@
+```
+
+执行cmake配置构建系统后，将会自动生成文件：`cmake_template_version.h`，其中`@<var-name>@`将会被替换为对应的值：
+
+```text
+#define CMAKE_TEMPLATE_VERSION_MAJOR 1
+#define CMAKE_TEMPLATE_VERSION_MINOR 0
+#define CMAKE_TEMPLATE_VERSION_PATCH 0
+```
+
+### **指定编程语言版本**
+
+为了在不同机器上编译更加统一，最好指定语言的版本，比如声明C使用`c99`标准，C++使用`c++11`标准：
+
+```text
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 11)
+```
+
+这里设置的变量都是`CMAKE_`开头(包括`project`命令自动设置的变量)，这类变量都是CMake的内置变量，正是通过修改这些变量的值来配置CMake构建的行为。
+
+> `CMAKE_`、`_CMAKE`或者以下划线开头后面加上任意CMake命令的变量名都是CMake保留的。
+
+### **配置编译选项**
+
+通过命令`add_compile_options`命令可以为所有编译器配置编译选项（同时对多个编译器生效）； 通过设置变量`CMAKE_C_FLAGS`可以配置c编译器的编译选项； 而设置变量`CMAKE_CXX_FLAGS`可配置针对c++编译器的编译选项。 比如：
+
+```text
+add_compile_options(-Wall -Wextra -pedantic -Werror)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pipe -std=c99")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -std=c++11")
+```
+
+### **配置编译类型**
+
+通过设置变量`CMAKE_BUILD_TYPE`来配置编译类型，可设置为：`Debug`、`Release`、`RelWithDebInfo`、`MinSizeRel`等，比如：
+
+```text
+set(CMAKE_BUILD_TYPE Debug)
+```
+
+当然，更好的方式应该是在执行`cmake`命令的时候通过参数`-D`指定：
+
+```text
+cmake -B build -DCMAKE_BUILD_TYPE=Debug
+```
+
+如果设置编译类型为`Debug`，那么对于c编译器，CMake会检查是否有针对此编译类型的编译选项`CMAKE_C_FLAGS_DEBUG`，如果有，则将它的配置内容加到`CMAKE_C_FLAGS`中。
+
+可以针对不同的编译类型设置不同的编译选项，比如对于`Debug`版本，开启调试信息，不进行代码优化：
+
+```text
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -g -O0")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
+```
+
+对于`Release`版本，不包含调试信息，优化等级设置为2：
+
+```text
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O2")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
+```
+
+### **添加全局宏定义**
+
+通过命令`add_definitions`可以添加全局的宏定义，在源码中就可以通过判断不同的宏定义实现相应的代码逻辑。用法如下：
+
+```text
+add_definitions(-DDEBUG -DREAL_COOL_ENGINEER)
+```
+
+### **添加include目录**
+
+通过命令`include_directories`来设置头文件的搜索目录，比如：
+
+```text
+include_directories(src/c)
+```
+
+## **编译目标文件**
+
+一般来说，编译目标(target)的类型一般有静态库、动态库和可执行文件。 这时编写`CMakeLists.txt`主要包括两步：
+
+1. 编译：确定编译目标所需要的源文件
+2. 链接：确定链接的时候需要依赖的额外的库
+
+下面以开源项目(cmake-template)来演示。项目的目录结构如下：
+
+```text
+./cmake-template
+├── CMakeLists.txt
+├── src
+│   └── c
+│       ├── cmake_template_version.h
+│       ├── cmake_template_version.h.in
+│       ├── main.c
+│       └── math
+│           ├── add.c
+│           ├── add.h
+│           ├── minus.c
+│           └── minus.h
+└── test
+    └── c
+        ├── test_add.c
+        └── test_minus.
+```
+
+项目的构建任务为：
+
+1. 将math目录编译成静态库，命名为math
+2. 编译main.c为可执行文件demo，依赖math静态库
+3. 编译test目录下的测试程序，可以通过命令执行所有的测试
+4. 支持通过命令将编译产物安装及打包
+
+### **编译静态库**
+
+这一步需要将项目目录路径`src/c/math`下的源文件编译为静态库，那么需要获取编译此静态库需要的文件列表，可以使用`set`命令，或者`file`命令来进行设置。比如：
+
+```text
+file(GLOB_RECURSE MATH_LIB_SRC
+        src/c/math/*.c
+        )
+add_library(math STATIC ${MATH_LIB_SRC})
+```
+
+使用`file`命令获取`src/c/math`目录下所有的`*.c`文件，然后通过`add_library`命令编译名为`math`的静态库，库的类型是第二个参数`STATIC`指定的。
+
+> 如果指定为`SHARED`则编译的就是动态链接库。
+
+### **编译可执行文件**
+
+通过`add_executable`命令来往构建系统中添加一个可执行构建目标，同样需要指定编译需要的源文件。但是对于可执行文件来说，有时候还会依赖其他的库，则需要使用`target_link_libraries`命令来声明构建此可执行文件需要链接的库。
+
+在示例项目中，`main.c`就使用了`src/c/math`下实现的一些函数接口，所以依赖于前面构建的`math`库。所以在`CMakeLists.txt`中添加以下内容：
+
+```text
+add_executable(demo src/c/main.c)
+target_link_libraries(demo math)
+```
+
+第一行说明编译可执行文件`demo`需要的源文件（可以指定多个源文件，此处只是以单个文件作为示例）；第二行表明对`math`库存在依赖。
+
+此时可以在项目的根目录下执行构建和编译命令，并执行demo:
+
+```text
+➜ # cmake -B cmake-build
+➜ # cmake --build cmake-build
+➜ # ./cmake-build/demo
+Hello CMake!
+10 + 24 = 34
+40 - 96 = -56
+```
+
+## **安装和打包**
+
+### **安装**
+
+对于安装来说，其实就是要指定当前项目在执行安装时，需要安装什么内容:
+
+1. 通过`install`命令来说明需要安装的内容及目标路径；
+2. 通过设置`CMAKE_INSTALL_PREFIX`变量说明安装的路径；
+3. `3.15`往后的版本可以使用`cmake --install --prefix <install-path>`覆盖指定安装路径。
+
+比如，在示例项目中，把`math`和`demo`两个目标按文件类型安装：
+
+```text
+install(TARGETS math demo
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
+```
+
+这里通过`TARGETS`参数指定需要安装的目标列表；参数`RUNTIME DESTINATION`、`LIBRARY DESTINATION`、`ARCHIVE DESTINATION`分别指定可执行文件、库文件、归档文件分别应该安装到安装目录下个哪个子目录。
+
+如果指定`CMAKE_INSTALL_PREFIX`为`/usr/local`，那么`math`库将会被安装到路径`/usr/local/lib/`目录下；而`demo`可执行文件则在`/usr/local/bin`目录下。
+
+> `CMAKE_INSTALL_PREFIX`在不同的系统上有不同的默认值，使用的时候最好显式指定路径。
+
+同时，还可以使用`install`命令安装头文件：
+
+```text
+file(GLOB_RECURSE MATH_LIB_HEADERS src/c/math/*.h)
+install(FILES ${MATH_LIB_HEADERS} DESTINATION include/math)
+```
+
+假如将安装到当前项目的`output`文件夹下，可以执行：
+
+```text
+➜ # cmake -B cmake-build -DCMAKE_INSTALL_PREFIX=./output
+➜ # cmake --build cmake-build
+➜ # cd cmake-build && make install && cd -
+Install the project...
+-- Install configuration: ""
+-- Installing: .../cmake-template/output/lib/libmath.a
+-- Installing: .../gitee/cmake-template/output/bin/demo
+-- Installing: .../gitee/cmake-template/output/include/math/add.h
+-- Installing: .../gitee/cmake-template/output/include/math/minus.h
+```
+
+可以看到安装了前面`install`命令指定要安装的文件，并且不同类型的目标文件安装到不同子目录。
+
+### **打包**
+
+要使用打包功能，需要执行`include(CPack)`启用相关的功能，在执行构建编译之后使用`cpack`命令行工具进行打包安装；对于make工具，也可以使用命令`make package`。
+
+打包的内容就是`install`命令安装的内容，关键需要设置的变量有：
+
+|                          |                                                              |
+| ------------------------ | ------------------------------------------------------------ |
+| CPACK_GENERATOR          | 打包使用的压缩工具，比如"ZIP"                                |
+| CPACK_OUTPUT_FILE_PREFIX | 打包安装的路径前缀                                           |
+| CPACK_INSTALL_PREFIX     | 打包压缩包的内部目录前缀                                     |
+| CPACK_PACKAGE_FILE_NAME  | 打包压缩包的名称，由CPACK_PACKAGE_NAME、CPACK_PACKAGE_VERSION、CPACK_SYSTEM_NAME三部分构成 |
+
+比如：
+
+```text
+include(CPack)
+set(CPACK_GENERATOR "ZIP")
+set(CPACK_PACKAGE_NAME "CMakeTemplate")
+set(CPACK_SET_DESTDIR ON)
+set(CPACK_INSTALL_PREFIX "")
+set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+```
+
+假如: `CPACK_OUTPUT_FILE_PREFIX`设置为`/usr/local/package`； `CPACK_INSTALL_PREFIX`设置为`real/cool/engineer`； `CPACK_PACKAGE_FILE_NAME`设置为`CMakeTemplate-1.0.0`； 那么执行打包文件的生成路径为：
+
+```text
+/usr/local/package/CMakeTemplate-1.0.0.zip
+```
+
+解压这个包得到的目标文件则会位于路径下：
+
+```text
+/usr/local/package/real/cool/engineer/
+```
+
+此时重新执行构建，使用`cpack`命令执行打包：
+
+```text
+➜ # cmake -B cmake-build -DCPACK_OUTPUT_FILE_PREFIX=`pwd`/output
+➜ # cmake --build cmake-build
+➜ # cd cmake-build && cpack && cd -
+CPack: Create package using ZIP
+CPack: Install projects
+CPack: - Run preinstall target for: CMakeTemplate
+CPack: - Install project: CMakeTemplate
+CPack: Create package
+CPack: - package: /Users/Farmer/gitee/cmake-template/output/CMakeTemplate-1.0.0-Darwin.zip generated.
+```
+
+`cpack`有一些参数是可以覆盖`CMakeLists.txt`设置的参数的，比如这里的`-G`参数就会覆盖变量`CPACK_GENERATOR`，具体细节可使用`cpack --help`查看。
+
+## **四 测试**
+
+CMake的测试功能使用起来有几个步骤：
+
+1. `CMakeLists.txt`中通过命令`enable_testing()`或者`include(CTest)`来启用测试功能；
+2. 使用`add_test`命令添加测试样例，指定测试的名称和测试命令、参数；
+3. 构建编译完成后使用`ctest`命令行工具运行测试。
+
+为了控制是否开启测试，可使用`option`命令设置一个开关，在开关打开时才进行测试，比如：
+
+```text
+option(CMAKE_TEMPLATE_ENABLE_TEST "Whether to enable unit tests" ON)
+if (CMAKE_TEMPLATE_ENABLE_TEST)
+    message(STATUS "Unit tests enabled")
+    enable_testing()
+endif()
+```
+
+> 这里为了方便后续演示，暂时是默认开启的。
+
+### **编写测试程序**
+
+在此文的示例代码中，针对`add.c`和`minus.c`实现了两个测试程序，它们的功能是类似的，接受三个参数，用第一和第二个计算两个参数的和或者差，判断是否和第三个参数相等，如`test_add.c`的代码为：
+
+```text
+// @Author: Farmer Li, 公众号: 很酷的程序员/RealCoolEngineer
+// @Date: 2021-05-10
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "math/add.h"
+
+int main(int argc, char* argv[]) {
+  if (argc != 4) {
+    printf("Usage: test_add v1 v2 expected\n");
+    return 1;
+  }
+
+  int x = atoi(argv[1]);
+  int y = atoi(argv[2]);
+  int expected = atoi(argv[3]);
+  int res = add_int(x, y);
+
+  if (res != expected) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+```
+
+这里需要注意的是，对于测试程序来说，如果返回值非零，则表示测试失败。
+
+### **添加测试**
+
+接下来先使用`add_executable`命令生成测试程序，然后使用`add_test`命令添加单元测试：
+
+```text
+add_executable(test_add test/c/test_add.c)
+add_executable(test_minus test/c/test_minus.c)
+target_link_libraries(test_add math)
+target_link_libraries(test_minus math)
+add_test(NAME test_add COMMAND test_add 10 24 34)
+add_test(NAME test_minus COMMAND test_minus 40 96 -56)
+```
+
+### **执行测试**
+
+现在重新执行`cmake`命令更新构建系统，执行构建，再执行测试：
+
+```text
+➜ # cmake -B cmake-build
+➜ # cmake --build cmake-build
+➜ # cd cmake-build && ctest && cd -
+Test project /Users/Farmer/gitee/cmake-template/cmake-build
+    Start 1: test_add
+1/2 Test #1: test_add .........................   Passed    0.00 sec
+    Start 2: test_minus
+2/2 Test #2: test_minus .......................   Passed    0.01 sec
+
+100% tests passed, 0 tests failed out of 2
+```
+
+使用`ctest -VV`则可以看到更加详细的测试流程和结果。
+
+> 在CMake 3.20往后的版本中，`ctest`可以使用`--test-dir`指定测试执行目录。
+
+至此，一个较为完备的`CMakeLists.txt`就开发完成了。
+
+> 原文首发于公众号：**很酷的程序员**，欢迎关注留言，共同进步
+
+
+
+# 模块化及库依赖
+
+> 当项目比较大的时候，往往需要将代码划分为几个模块，可能还会分离出部分通用模块，在多个项目之间同时使用；当然，也可能是依赖开源的第三方库，在项目中包含第三方源代码或者编译好的库文件。本文将会介绍CMake中如何模块化地执行编译，以及指定目标对相应库文件的依赖。
+
+在上一篇文章中，笔者介绍了一个比较完备的`CMakeists.txt`该如何书写。往期文章可以查看专栏：[CMake实践应用专题](https://www.zhihu.com/column/c_1369781372333240320)
+
+但是上一篇文章介绍的`CMakeLists.txt`一般是在项目初期的样子，随着项目代码原来越多，或者功能越来越多，代码可能会分化出不同的功能模块，并且有一些可能是多个项目通用的模块，这时为了更好地管理各个模块，可以为每个模块都编写一个`CMakeLists.txt`文件，然后在父级目录中对不同编译目标按需添加依赖。
+
+本文着重介绍下面的内容：
+
+1. 模块化管理构建系统(add_subdirectory)
+2. 导入编译好的目标文件
+3. 添加库依赖
+
+## **模块化构建**
+
+在前面的文章中介绍过，`CMakeLists.txt`是定义一个目录（Source Tree）的构建系统的，所以对于模块化构建，其实就是分别为每一个子模块目录编写一个`CMakeLists.txt`，在其父目录中“导入”子目录的构建系统生成对应的目标，以便在父目录中使用。
+
+下面仍以开源项目：**[https://gitee.com/RealCoolEngineer/cmake-template](https://link.zhihu.com/?target=https%3A//gitee.com/RealCoolEngineer/cmake-template)**为例，基于上一篇文章的状态进行修改，本文对应的commit id为：`4bfb85b`。
+
+假设项目目录结构如下：
+
+```text
+./cmake-template
+├── CMakeLists.txt
+├── src
+│   └── c
+│       ├── cmake_template_version.h
+│       ├── cmake_template_version.h.in
+│       ├── main.c
+│       └── math
+│           ├── add.c
+│           ├── add.h
+│           ├── minus.c
+│           └── minus.h
+└── test
+    └── c
+        ├── test_add.c
+        └── test_minus.c
+```
+
+现在的编译任务为：
+
+1. 将math目录视为子模块，为其单独定义构建系统
+2. 整个项目依赖math模块的编译结果，生成其他目标文件
+
+### **1 定义子目录的构建系统**
+
+只要是定义目录的构建系统，都是在此目录下创建一个`CMakeLists.txt`文件，其结构和语法在上一篇文章已经介绍的比较详细。
+
+因为主要进行模块的编译工作，所以一般只需要编译构建库文件（静态库或者动态库），以及针对该库对外提供接口的一些单元测试即可，所以可以写的比较简单一些。
+
+在`src/math`目录下新建`CMakeLists.txt`文件，内容如下：
+
+```text
+cmake_minimum_required(VERSION 3.12)
+project(CMakeTemplateMath VERSION 0.0.1 LANGUAGES C CXX)
+
+aux_source_directory(. MATH_SRC)
+message("MATH_SRC: ${MATH_SRC}")
+
+add_library(math STATIC ${MATH_SRC})
+```
+
+如上代码所示，对于子目录（模块），一般也有自己的`project`命令，同时如果有需要，也可以指定自己的版本号。
+
+这里使用了一个此前没有提到的命令：`aux_source_directory`，该命令可以搜索指定目录（第一个参数）下的所有源文件，将源文件的列表保存到指定的变量（第二个参数）。
+
+### **2 包含子目录**
+
+通过命令`add_subdirectory`包含一个子目录的构建系统，其命令格式如下：
+
+```text
+add_subdirectory(source_dir [binary_dir] [EXCLUDE_FROM_ALL])
+```
+
+其中`source_dir`就是要包含的目标目录，该目录下必须存在一个`CMakeLists.txt`文件，一般为相对于当前`CMakeLists.txt`的目录路径，当然也可以是绝对路径；
+
+`binary_dir`是可选的参数，用于指定子构建系统输出文件的路径，相对于当前的`Binary tree`，同样也可以是绝对路径。 一般情况下，`source_dir`是当前目录的子目录，那么`binary_dir`的值为不做任何相对路径展开的`source_dir`；但是如果`source_dir`不是当前目录的子目录，则必须指定`binary_dir`，这样CMake才知道要将子构建系统的相关文件生成在哪个目录下。
+
+如果指定了`EXCLUDE_FROM_ALL`选项，在**子路径下的目标默认不会被包含到父路径的`ALL`目标里**，并且也会被排除在IDE工程文件之外。但是，如果在父级项目显式声明依赖子目录的目标文件，那么对应的目标文件还是会被构建以满足父级项目的依赖需求。
+
+综上，可以修改`cmake-template`项目根目录下的`CMakeLists.txt`文件，将原来的如下内容：
+
+```text
+# Build math lib
+add_library(math STATIC ${MATH_LIB_SRC})
+```
+
+修改为：
+
+```text
+add_subdirectory(src/c/math)
+```
+
+构建的静态库的名字依旧是`math`，所以在编译`demo`目标时，链接的库的名字不用修改：
+
+```text
+# Build demo executable
+add_executable(demo src/c/main.c)
+target_link_libraries(demo math)
+```
+
+此时构建和编译的命令没有任何改变：
+
+```text
+➜ cmake-template # cmake -B cmake-build
+➜ cmake-template # cmake --build cmake-build
+```
+
+上面的命令指定父项目的生成路径（Binary tree）为`cmake-build`，那么子模块（math）的生成路径为`cmake-build/src/c/math`，也就是说`binary_dir`为`src/c/math`，等同于`source_dir`。
+
+## **导入编译好的目标文件**
+
+在前面介绍的命令`add_subdirectory`其实是相当于通过源文件来构建项目所依赖的目标文件，但是CMake也可以通过命令来导入已经编译好的目标文件。
+
+### **导入库文件**
+
+使用`add_library`命令，通过指定`IMPORTED`选项表明这是一个导入的库文件，通过设置其属性指明其路径：
+
+```text
+add_library(math STATIC IMPORTED)
+set_property(TARGET math PROPERTY
+             IMPORTED_LOCATION "./lib/libmath.a")
+```
+
+对于库文件的路径，也可以使用`find_library`命令来查找，比如在`lib`目录下查找`math`的Realse和Debug版本：
+
+```text
+find_library(LIB_MATH_DEBUG mathd HINTS "./lib")
+find_library(LIB_MATH_RELEASE math HINTS "./lib")
+```
+
+对于不同的编译类型，可以通过`IMPORTED_LOCATION_<CONFIG>`来指明不同编译类型对应的库文件路径：
+
+```text
+add_library(math STATIC IMPORTED GLOBAL)
+set_target_properties(math PROPERTIES
+  IMPORTED_LOCATION "${LIB_MATH_RELEASE}"
+  IMPORTED_LOCATION_DEBUG "${LIB_MATH_DEBUG}"
+  IMPORTED_CONFIGURATIONS "RELEASE;DEBUG"
+)
+```
+
+导入成功以后，就可以将该库链接到其他目标上，但是**导入的目标不可以被`install`**。
+
+这里以导入静态库为例，导入动态库或其他类型也是类似的操作，只需要将文件类型`STATIC`修改成对应的文件类型即可。
+
+### **导入可执行文件**
+
+这个不是那么常用，为了文章完整性，顺便提一下。是和导入库文件类似的：
+
+```text
+add_executable(demo IMPORTED)
+set_property(TARGET demo PROPERTY
+             IMPORTED_LOCATION "./bin/demo")
+```
+
+## **库依赖**
+
+这里主要着重介绍一下`target_link_libraries`命令的几个关键字：
+
+1. **PRIVATE**
+2. **INTERFACE**
+3. **PUBLIC**
+
+这三个关键字的主要作用是指定的是目标文件依赖项的使用范围（scope），所以可以专门了解一下。
+
+假设某个项目中存在两个动态链接库：动态链接库`liball.so`、动态链接库`libsub.so`。
+
+对于**PRIVATE**关键字，使用的情形为：`liball.so`**使用**了`libsub.so`，但是`liball.so`并**不对外暴露**`libsub.so`的接口：
+
+```text
+target_link_libraries(all PRIVATE sub)
+target_include_directories(all PRIVATE sub)
+```
+
+对于**INTERFACE**关键字，使用的情形为：`liball.so`**没有使用**`libsub.so`，但是`liball.so`**对外暴露**`libsub.so`的接口，也就是`liball.so`的头文件包含了`libsub.so`的头文件，在其它目标使用`liball.so`的功能的时候，可能必须要使用`libsub.so`的功能：
+
+```text
+target_link_libraries(all INTERFACE sub)
+target_include_directories(all INTERFACE sub)
+```
+
+对于**PUBLIC**关键字（**PUBLIC=PRIVATE+INTERFACE**），使用的情形为：`liball.so`**使用**了`libsub.so`，并且`liball.so`**对外暴露**了`libsub.so`的接口：
+
+```text
+target_link_libraries(all PUBLIC sub)
+target_include_directories(all PUBLIC sub)
+```
+
+这里的内容可以有个大概了解即可，随着后续深入使用，自然会水到渠成。
+
+> 原文首发于公众号：**很酷的程序员**，欢迎关注留言，共同进步
+
+
+
+# 集成gtest进行单元测试
+
+
+
+> 编写代码有bug是很正常的，通过编写完备的单元测试，可以及时发现问题，并且在后续的代码改进中持续观测是否引入了新的bug。对于追求质量的程序员，为自己的代码编写全面的单元测试是必备的基础技能，在编写单元测试的时候也能复盘自己的代码设计，是提高代码质量极为有效的手段。
+
+在本系列前序的文章中已经介绍了CMake很多内容，本文是针对单元测试的外延。本系列更多精彩文章敬请关注公众号【很酷的程序员】的话题：**CMake**。
+
+本文主要介绍以下几个方面的内容：
+
+1. 何为单元测试
+2. 何为gtest
+3. 怎么使用gtest
+4. 怎么运行测试
+
+本文仍以开源项目：**[https://gitee.com/RealCoolEngineer/cmake-template](https://link.zhihu.com/?target=https%3A//gitee.com/RealCoolEngineer/cmake-template)**为例，后续示例代码基于上一篇文章的状态进行修改，本文对应的commit id为：`c9f1c21`。
+
+## **单元测试是什么？**
+
+**单元测试（Unit Testing）**，一般指对软件中的最小可测试单元进行检查和验证。最小可测试单元可以是指一个函数、一次调用过程、一个类等，不同的语言可能有不同的测试方法，暂时不必深究。
+
+对于C/C++语言，单元测试一般是针对一个函数而言，单元测试的目的就是**检测目标函数在所有可能的输入下，函数的执行过程和输出是否符合预期**。可以说，单元测试是颗粒度最小的测试，对于软件开发而言，保证每个小的函数执行正确，才能保证利用这些小模块组合起来的系统能够正常工作。
+
+和测试相关的另外一个重要概念是**测试用例(Test Case)**。百度百科给的定义是，测试用例是对一项特定的软件产品进行测试任务的描述，体现测试方案、方法、技术和策略，包括测试目标、测试环境、输入数据、测试步骤、预期结果、测试脚本等。
+
+这个定义是比较广泛的，对于单元测试来说，就是测试在不同输入下，目标函数（模块）的预期执行过程和输出（返回值），每个不同的情形可以有一个或多个测试用例。**编写测试用例需要尽量覆盖所有输入情况（尤其是边界值、特殊值、异常值）**。比如下列函数：
+
+```text
+int fibo(int i) {
+  if (i == 1 || i == 2) {
+    return 1;
+  }
+
+  return fibo(i - 1) + fibo(i - 2);
+}
+```
+
+这个函数是为了实现斐波那契数列，所以输入可以分为几类，就可以覆盖所有情况：
+
+1. 小于等于0的整数
+2. 1和2
+3. 大于2的整数
+
+对应地，可以设置以下测试用例：
+
+1. 输入0，期望值是0
+2. 输入1，期望值是1
+3. 输入2，期望值是1
+4. 输入3，期望值是2
+5. 输入4，期望值是3
+
+可以比较明显地发现，如果输入是小于等于0的整数，这个函数就一直递归下去了。这也是开发过程中需要注意的，代码（功能）的使用者并不一定会遵循常规的思维（斐波那契数列不可能输入负数），**开发者只能相信自己的代码，不要对输入有任何假设**。
+
+> 上述test case在cmake-template项目的`test/c/test_gtest_demo.cc`中有示例
+
+## **gtest简介**
+
+`Google Test`是Google开源的一个跨平台的C++单元测试框架，简称`gtest`，它提供了非常丰富的测试断言、判断宏，极大方便开发者编写测试用例的流程，也是很多开源项目使用的测试框架。
+
+在前面介绍CMake的测试功能时，每个单元测试都是一个可执行文件，实现了`main`函数，在`CMakeLists.txt`中使用`add_test`命令来添加测试用例：
+
+```text
+enable_testing()
+add_executable(test_add test/c/test_add.c)
+add_executable(test_minus test/c/test_minus.c)
+target_link_libraries(test_add math)
+target_link_libraries(test_minus math)
+
+add_test(NAME test_add COMMAND test_add 10 24 34)
+add_test(NAME test_minus COMMAND test_minus 40 96 -56)
+```
+
+通过使用`gtest`可以简化这个流程，让开发者可以专注在测试用例的书写上，而不用手动编写大量的`main`函数，以及一些判断输出是否符合预期的附加代码。
+
+## **集成gtest**
+
+### **将gtest源码加入项目**
+
+`gtest`是一个开源的框架，代码位于github仓库：**[google/googletest](https://link.zhihu.com/?target=https%3A//github.com/google/googletest)**，本文介绍直接将`gtest`加入到项目中，通过`CMake`编译使用。
+
+首先在项目根目录新建一个`third_party`目录，下载源码的最新release版本，并解压：
+
+```text
+➜ # mkdir third_party
+➜ # cd third_party
+➜ # wget https://codeload.github.com/google/googletest/zip/refs/tags/release-1.10.0
+➜ # unzip googletest-release-1.10.0.zip
+```
+
+### **将gtest添加为子模块**
+
+修改项目根目录的`CMakeLists.txt`文件，使用上一篇文章介绍的命令`add_subdirectory`，在开启单元测试时，添加`gtest`为子模块，并将对应头文件路径添加进来：
+
+```text
+enable_testing()
+add_subdirectory(third_party/googletest-release-1.10.0)
+include_directories(third_party/googletest-release-1.10.0/googletest/include)
+```
+
+此时执行命令：
+
+```text
+➜ # cmake -B cmake-build
+➜ # cmake --build cmake-build
+```
+
+可以看到构建目录下多了一个目录`cmake-build/third_party/googletest-release-1.10.0`，并且`gtest`编译生成了4个新的库文件（`gtest`子模块的编译目标，位于目录`cmake-build/lib`下）：
+
+1. libgtest.a
+2. libgtest_main.a
+3. libgmock.a
+4. libgmock_main.a
+
+其中`libgtest.a`提供单元测试相关的功能，`libgtest_main.a`提供单元测试的主入口，只有链接该库，测试用例就会编译成可执行文件；两个`mock`库也是类似的，主要提供数据库交互，网络连接等方面的模拟测试，这不是本文的重点。
+
+此时就可以在链接其他目标时直接使用`gtest`的这4个编译目标（target）。
+
+### **编写测试用例**
+
+接下来直接修改先前的两个测试用例源文件，实现相同的测试功能：
+
+1. test/c/test_add.c
+2. test/c/test_minus.c
+
+因为使用的是C++测试框架，所以上述两个源文件修改为`.cc`后缀。
+
+在源文件中include头文件`gtest/gtest.h`，使用`gtest`测试用例定义宏来定义测试用例：
+
+```text
+TEST(test_case_name, test_name) {}
+```
+
+一个`test_case_name`下面可以包含多个不同（`test_name`）的测试。
+
+`test/c/test_add.cc`内容为：
+
+```text
+#include "gtest/gtest.h"
+#include "math/add.h"
+
+TEST(TestAddInt, test_add_int_1) {
+  int res = add_int(10, 24);
+  EXPECT_EQ(res, 34);
+}
+```
+
+`test/c/test_minus.cc`内容为：
+
+```text
+#include "gtest/gtest.h"
+#include "math/minus.h"
+
+TEST(TestMinusInt, test_minus_int_1) {
+  int res = minus_int(40, 96);
+  EXPECT_EQ(res, -56);
+}
+```
+
+显而易见，测试用例的代码量比之前少了很多，而且更加可读，更加专业。
+
+这里使用了一个判断值相等的断言`EXPECT_EQ`，`gtest`中的断言分成两大类：
+
+1. **`ASSERT_\*`系列：如果检测失败就直接退出**当前函数
+2. **`EXPECT_\*`系列：如果检测失败发出提示，并继续**往下执行
+
+`gtest`有很多类似的宏用来判断数值的关系、判断条件的真假、判断字符串的关系。 对于**条件判断**可以使用：
+
+```text
+ASSERT_TRUE(condition);  // 判断条件是否为真
+ASSERT_FALSE(condition); // 判断条件是否为假
+```
+
+对于**数值比较**可以使用：
+
+```text
+ASSERT_EQ(val1, val2); // 判断是否相等
+ASSERT_NE(val1, val2); // 判断是否不相等
+ASSERT_LT(val1, val2); // 判断是否小于
+ASSERT_LE(val1, val2); // 判断是否小于等于
+ASSERT_GT(val1, val2); // 判断是否大于
+ASSERT_GE(val1, val2); // 判断是否大于等于
+```
+
+对于**字符串比较**可以使用：
+
+```text
+ASSERT_STREQ(str1,str2); // 判断字符串是否相等
+ASSERT_STRNE(str1,str2); // 判断字符串是否不相等
+ASSERT_STRCASEEQ(str1,str2); // 判断字符串是否相等，忽视大小写
+ASSERT_STRCASENE(str1,str2); // 判断字符串是否不相等，忽视大小写
+```
+
+### **添加测试用例**
+
+书写好测试用例源文件后，需要修改项目根目录的`CMakeLists.txt`：
+
+```text
+enable_testing()
+add_subdirectory(third_party/googletest-release-1.10.0)
+include_directories(third_party/googletest-release-1.10.0/googletest/include)
+set(GTEST_LIB gtest gtest_main)
+
+add_executable(test_add test/c/test_add.cc)
+add_executable(test_minus test/c/test_minus.cc)
+target_link_libraries(test_add math gtest gtest_main)
+target_link_libraries(test_minus math gtest gtest_main)
+
+add_test(NAME test_add COMMAND test_add)
+add_test(NAME test_minus COMMAND test_minus)
+```
+
+对于一个单元测试来说，添加的步骤为：
+
+1. 使用`add_executable`添加测试目标
+2. 使用`target_link_libraries`为测试目标添加依赖`gtest`和`gtest_main`
+3. 使用`add_test`添加到项目，以便可以使用`ctest`命令执行测试
+
+需要注意的不同就是，依旧将单元测试的源文件编译为可执行文件，并且链接的时候链接了`gtest`和`gtest_main`。必须要链接`gtest_main`库，才能给单元测试添加main函数主入口，否则在链接的时候将会报错。
+
+### **运行测试**
+
+在前面的文章中已经介绍过了，在构建编译完成后，进入构建目录，使用`ctest`命令执行测试即可。 笔者常用的命令为：
+
+```text
+make test CTEST_OUTPUT_ON_FAILURE=TRUE GTEST_COLOR=TRUE
+# 或者
+GTEST_COLOR=TRUE ctest --output-on-failure
+```
+
+指定`--output-on-failure`或者设置`CTEST_OUTPUT_ON_FAILURE`变量为`TRUE`，让单元测试失败时输出具体信息，而`GTEST_COLOR`设置为`TRUE`可以让输出带有颜色，可以在详细输出模式下（-VV）更快找到错误的输出（如果有失败的测试）。
+
+上面即为在`CMake`项目中引入`gtest`框架的示例，关于`gtest`更多的信息可以阅读`gtest`的官方文档：
+
+1. **[GoogleTest Primer](https://link.zhihu.com/?target=https%3A//google.github.io/googletest/primer.html)**
+2. **[GoogleTest User's Guide](https://link.zhihu.com/?target=https%3A//google.github.io/googletest/)**
+
+这里的单元测试也只是作为示例，在真实的项目中，单元测试的编写往往更加复杂，而且这也还只是提高的软件鲁棒性中的一环，追求极致还需要更多努力。
+
+> 原文首发于公众号：**很酷的程序员**，欢迎关注留言，共同进步
+
+
+
+# 安装和打包
+
+> 为了方便使用项目编译的目标文件，快速部署到目标目录，可以使用CMake的安装功能；如果需要对外发布，提供头文件、库文件、或者demo的压缩包则可以使用CMake的打包功能。
+
+在本系列前序的文章中已经介绍了CMake很多内容，在`CMake应用：CMakeLists.txt完全指南`一文中简略介绍了安装和打包，本文会更加深入地介绍CMake的安装和打包功能。本系列更多精彩文章敬请关注公众号【很酷的程序员】的话题：**CMake**。
+
+本文主要介绍以下几个方面的内容：
+
+1. 安装库文件、可执行文件和所需要对外提供的头文件
+2. 将需要安装的文件打包成压缩包
+3. 编译构建脚本编写
+
+本文会先介绍相关命令和知识点，如果想先实践，可直接跳到最后一部分。
+
+## **安装**
+
+### **install命令**
+
+安装使用`install`命令，用于指定一个项目的安装规则。其命令格式如下：
+
+```text
+install(TARGETS <target>... [...])
+install({FILES | PROGRAMS} <file>... [...])
+install(DIRECTORY <dir>... [...])
+install(SCRIPT <file> [...])
+install(CODE <code> [...])
+install(EXPORT <export-name> [...])
+```
+
+以上命令概述显示`install`命令可以安装的目标类型：构建目标、文件、程序、目录等，对应的关键字后面跟上对应要安装的目标。
+
+安装不同的目标的时候，有一些通用的关键字，下面着重介绍几个最常使用的。
+
+#### **DESTINATION**
+
+很好理解，就是安装对象的目标安装路径，可以是绝对路径，也可以是相对路径，如果是相对路径，则认为是相对于`CMAKE_INSTALL_PREFIX`的，所以可以配置`CMAKE_INSTALL_PREFIX`指定安装目录。
+
+因为`cpack`并不支持绝对路径，所以建议还是不要使用绝对路径，当然，除非这是开发者自己确切的目的。
+
+#### **CONFIGURATIONS**
+
+**为不同的配置设置不同的安装规则**。假如对`Debug`和`Release`两个配置不同的安装路径，代码示例如下：
+
+```text
+install(TARGETS target
+        CONFIGURATIONS Debug
+        RUNTIME DESTINATION Debug/bin)
+install(TARGETS target
+        CONFIGURATIONS Release
+        RUNTIME DESTINATION Release/bin)
+```
+
+#### **PERMISSIONS**
+
+**设置安装目标的权限**，接受的参数是一个权限关键字列表，比如：
+
+```text
+install(TARGETS target
+        RUNTIME PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE)
+```
+
+### **安装构建目标**
+
+**安装构建目标**的命令格式为：
+
+```text
+install(TARGETS static_lib shared_lib exe
+            RUNTIME DESTINATION bin
+            LIBRARY DESTINATION lib
+            ARCHIVE DESTINATION lib)
+```
+
+命令第一个参数`TARGETS`指定需要安装的构建目标的列表，可以是静态库文件、动态库文件、可执行文件；安装时常常按照文件类型安装到不同的子目录，比如库文件放在`lib`目录，可执行文件放在`bin`目录。
+
+针对不同文件类型，比如（`RUNTIME`, `ARCHIVE`, `LIBRARY`，`PUBLIC_HEADER`），可以分开进行配置，比如分别指定安装路径（`DESTINATION`）、设置文件权限（`PERMISSIONS`）；如果不是在某个类别下的单独配置，那么就是针对所有类型。
+
+值得一提的是，`ARCHIVE`一般是指静态库，`LIBRARY`则是指共享库，在不同平台上，略有差异，实际应用感觉不符合预期时查看一下官方文档即可，问题不大。
+
+### **安装目录**
+
+安装一个目录，一般用于将头文件安装到目标路径。 在实际使用中，一般把需要安装的头文件放到一个特定目录下，然后直接安装整个目录即可，比如：
+
+```text
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/"
+      DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+```
+
+更加完备的命令格式为：
+
+```text
+install(DIRECTORY dirs...
+        TYPE <type> | DESTINATION <dir>
+        [FILES_MATCHING]
+        [[PATTERN <pattern> | REGEX <regex>]
+         [EXCLUDE] [PERMISSIONS permissions...]]
+```
+
+#### **TYPE/DESTINATION**
+
+安装目录必须执行安装的目录类型`TYPE`或者安装的目标路径`DESTINATION`，但是又不可以同时指定；可以使用`TYPE`指定安装的目录中的文件类型，然后CMake会自动按照类型分配安装目录，不同类型对应的安装路径如下图：
+
+![img](D:\Gitee\Ehe\2022\v2-6916aafb864affe08f92c13cd3a9a35b_720w.jpg)
+
+当然，开发者也可以选择只使用`DESTINATION`显式指定安装的目录。
+
+#### **FILES_MATCHING**
+
+安装目录的时候默认会安装所有的文件，如果使用`FILES_MATCHING`关键字（在第一个`PATTERN`或者`REGEX`之前），则表示必须要满足对应的模式或者正则的文件才能被安装。
+
+比如，如果目录下源文件和头文件混在一起，但是只想安装其中的头文件，则可以这样写：
+
+```text
+install(DIRECTORY src/ DESTINATION include/
+        FILES_MATCHING PATTERN "*.h")
+```
+
+#### **PATTERN/REGEX**
+
+`PATTERN`表示文件名完全匹配才会被安装，而`REGEX`则是通过正则表达式匹配目标安装文件（针对目标文件的全路径）；在这两个表达式后面还可以加上`EXCLUDE`表示反选，或者使用`PERMISSIONS`指定匹配的目标文件的权限。
+
+### **安装文件**
+
+和安装目录类似，只不过是安装的是文件列表，核心的参数也是类似的；需要使用`TYPE`指定文件类型，自行推断安装目录，或者使用`DESTINATION`显式指定安装目录。命令格式为：
+
+```text
+install(<FILES|PROGRAMS> files...
+        TYPE <type> | DESTINATION <dir>
+```
+
+`FILES`和`PROGRAMS`的不同之处在于文件的默认权限，前者是一般文件，而后者为可执行文件，默认有可执行权限，包括：`OWNER_EXECUTE`，`GROUP_EXECUTE`和`WORLD_EXECUTE`。
+
+### **自定义安装脚本**
+
+使用install命令还可以在安装的时候执行自定义的脚本，使用的命令格式为：
+
+```text
+install([[SCRIPT <file>] [CODE <code>]]
+        [COMPONENT <component>] [EXCLUDE_FROM_ALL] [...])
+```
+
+`SCRIPT`指定安装时需要执行的脚本；`CODE`指定的是CMake的命令，也在安装期间执行，比如：
+
+```text
+install(CODE "MESSAGE(\"Sample install message.\")")
+```
+
+### **执行安装**
+
+在构建编译完成之后，可以使用命令执行安装：
+
+```text
+cmake --build . --target install
+# 或者针对make构建工具
+make install
+```
+
+更加优雅的方法是在`cmake`3.15版本往后，使用`cmake --install`命令：
+
+```text
+cmake --install . --prefix "../output"
+```
+
+`--install`指定构建目录；`--prefix`指定安装路径，覆盖安装路径变量`CMAKE_INSTALL_PREFIX`。
+
+## **打包**
+
+### **CPack**
+
+要使用打包功能，需要执行`include(CPack)`启用相关的功能。
+
+`include(CPack)`会在构建路径(Build tree)下生成两个`cpack`的配置文件，`CPackConfig.cmake`和`CPackSourceConfig.cmake`，其实也就对应了两个构建目标：`package`和`package_source`；
+
+配合`cpack`命令，使用`-G`参数指定生成器，常用的有`ZIP`、`TGZ`、`7Z`等，可以同时指定多个，格式也是CMake语法中的列表，例如其默认值`"STGZ;TGZ"`；`--config`参数可以指定打包配置文件，比如：
+
+```text
+cpack -G TGZ --config CPackConfig.cmake
+cpack -G TGZ --config CPackSourceConfig.cmake
+```
+
+当然也可以使用`cmake`命令：
+
+```text
+cmake --build . --target package
+cmake --build . --target package_source
+```
+
+如果使用`make`作为构建工具，可以简单地执行:
+
+```text
+make package
+make package_source
+```
+
+### **CMake打包相关的内置变量**
+
+打包的内容就是`install`命令安装的内容，以目标打包（`CPackConfig.cmake`）为例，主要的相关变量有：
+
+| 变量                     | 含义                                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| CPACK_GENERATOR          | 打包使用的压缩工具，比如"ZIP"；cpack命令的-G参数会覆盖此设置 |
+| CPACK_OUTPUT_CONFIG_FILE | 配置文件，默认为CPackConfig.cmake                            |
+| CPACK_OUTPUT_FILE_PREFIX | 打包安装的路径前缀。如果是相对路径，则是相对于构建目录       |
+| CPACK_INSTALL_PREFIX     | 打包压缩包的内部目录前缀                                     |
+| CPACK_PACKAGE_FILE_NAME  | 打包压缩包的名称，由CPACK_PACKAGE_NAME、CPACK_PACKAGE_VERSION、CPACK_SYSTEM_NAME三部分构成 |
+
+需要特别注意的是：以上**变量的设置需要在`include(CPack)`语句之前**。
+
+> Before including this CPack module in your CMakeLists.txt file, there are a variety of variables that can be set to customize the resulting installers.
+
+其中`CPACK_PACKAGE_NAME`默认为项目名称，`CPACK_PACKAGE_VERSION`默认为项目版本号，它们的默认值都是对应`project`命令所设置的值；但是如果没有指定版本号，则会是CMake的默认值。
+
+假如: `CPACK_OUTPUT_FILE_PREFIX`设置为`/usr/local/package`； `CPACK_INSTALL_PREFIX`设置为`RealCoolEngineer`； `CPACK_PACKAGE_FILE_NAME`设置为`CMakeTemplate-1.0.0`； 那么执行打包文件的生成路径为：
+
+```text
+/usr/local/package/CMakeTemplate-1.0.0.zip
+```
+
+解压这个包得到的目标文件则会位于路径下：
+
+```text
+/usr/local/package/CMakeTemplate-1.0.0/RealCoolEngineer/
+```
+
+> 对于源文件打包，相关的变量名基本是对应地以`CPACK_SOURCE_`开头，细节可以查看官方文档。
+
+## **实践**
+
+本文仍以开源项目：**[https://gitee.com/RealCoolEngineer/cmake-template](https://link.zhihu.com/?target=https%3A//gitee.com/RealCoolEngineer/cmake-template)**为例，本文对应的commit id为：`5713908`。
+
+在项目根目录中的CMakeLists.txt文件中，使用安装和打包的语句为：
+
+```text
+# Install
+install(TARGETS math demo
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        PUBLIC_HEADER DESTINATION include)
+file(GLOB_RECURSE MATH_LIB_HEADERS src/c/math/*.h)
+install(FILES ${MATH_LIB_HEADERS} DESTINATION include/math)
+
+# Package
+set(CPACK_GENERATOR "ZIP")
+set(CPACK_SET_DESTDIR ON)  # 支持指定安装目录
+set(CPACK_INSTALL_PREFIX "RealCoolEngineer")
+include(CPack)
+```
+
+安装打包的内容为项目构建目标可执行文件`demo`，静态库`math`，以及`math`库对应的头文件。
+
+### **构建脚本**
+
+为了方便，笔者通常将构建的命令编写为脚本，在脚本内指定文件的安装、打包的目标目录（CMake参数）。
+
+下面针对`cmake-template`的一个示范，将目标文件安装并打包到项目根目录下的`output`目录：
+
+```text
+#!/bin/bash
+
+set -euf -o pipefail
+
+BUILD_DIR="cmake-build"
+INSTALL_DIR=$(pwd)/output
+rm -rf "${BUILD_DIR}"
+
+# Configure
+BUILD_TYPE=Debug
+cmake -B "${BUILD_DIR}" \
+    -DCMAKE_INSTALL_PREFIX="${INSTALL_DIR}" \
+    -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
+    -DCPACK_OUTPUT_FILE_PREFIX="${INSTALL_DIR}"
+
+# Build
+cmake --build "${BUILD_DIR}"
+
+cd "${BUILD_DIR}"
+# Test
+make test CTEST_OUTPUT_ON_FAILURE=TRUE GTEST_COLOR=TRUE
+# GTEST_COLOR=TRUE ctest --output-on-failure
+
+# Install
+# cmake --build . --target install
+# cmake --install . --prefix "../output" # After cmake 3.15
+make install
+
+# Package
+# cmake --build . --target package
+make package
+
+cd -
+```
+
+以上便是关于安装和打包的介绍，关于构建脚本开头`set`命令的几个参数，可参看往期这篇文章：
+
+[很酷的程序员：编写安全的shell脚本1 赞同 · 0 评论文章![img](D:\Gitee\Ehe\2022\v2-e38f18cb0c22d2bf01a5c905f0647e42_180x120.jpg)](https://zhuanlan.zhihu.com/p/360880840)
+
+> 原文首发于公众号：**很酷的程序员**，欢迎关注留言，共同进步
+
+发布于 2021-06-01 21:56
+
+# 从编译过程理解CMake
+
+
+
+> CMake和编译的过程是有对应关系的，理解了编译构建的过程，可以更加理解CMake的相关命令；理解其目的和用途，自然也就可以更好地运用CMake。
+
+对GCC编译的过程做了一个概述。
+
+本文作为这篇文章的姊妹篇，依旧以GCC为例，在对GCC编译过程有一定了解的基础上，来进一步理解CMake如何通过CMakeLists.txt定义项目的编译构建过程。
+
+## **编译构建的框架**
+
+在**GCC编译过程概述**一文中，主要介绍了源文件如何编译成机器码`.o`文件，以及最后链接器怎么链接相关库文件得到最后的可执行文件。
+
+其实，对于构建的每一个目标，都是树形的结构，以本系列的开源项目**[https://gitee.com/RealCoolEngineer/cmake-template](https://link.zhihu.com/?target=https%3A//gitee.com/RealCoolEngineer/cmake-template)**为例(当前commit id: `ca0e593`)，构建目标、源文件/`.o`文件和`.a`文件之间构成一棵"构建树"（Build Tree）：
+
+![img](D:\Gitee\Ehe\2022\v2-47c50d195fe338ce6beb8c9541b69a16_720w.jpg)
+
+对于最终的可执行文件(demo)来说，必须能够找到所有需要的函数的实现，这些实现可能包含在单个`.o`文件（demo.o，crtn.o等等）、或者打包好的库文件（其实就是`.o`文件的集合，比如libmath.a，libm.a），所以它会是构建树的根。
+
+对于一些库文件（模块）来说，它可以是最终可执行文件构建树的子树，也有对应的构建产物(比如这里的`libmath.a`)。
+
+而对于构建树的叶子节点，其实都对应到具体的源文件，只是说有时候是预编译好的第三方库或者系统库。而源文件如果开源，开发者可以选择自己从源码编译（比如这个项目中的gtest，就是从源码编译出来的，在单元测试可执行文件的构建树里，叶子节点就是gtest开源的源码）。
+
+> 在CMake官网有关于Build Tree的定义，可以查看链接：[https://cmake.org/cmake/help/latest/manual/cmake.1.html#introduction-to-cmake-buildsystems](https://link.zhihu.com/?target=https%3A//cmake.org/cmake/help/latest/manual/cmake.1.html%23introduction-to-cmake-buildsystems)
+> 注意重在理解其含义而非形式
+
+## **GCC编译过程和CMake命令之间的关联**
+
+GCC的编译的具体过程其实是**通过`gcc`命令的参数进行控制的，这些参数的作用就和CMake的命令有对应的关系**。
+
+在**GCC编译过程概述**文中，介绍了`gcc`命令的常用参数（下面补充了`-D`和`-O`）：
+
+![img](D:\Gitee\Ehe\2022\v2-f03d8e0e28adeda3250301feecd21511_720w.jpg)
+
+GCC的编译过程大概是：
+
+1. **预处理**：将源文件处理为.ii/.i，处理各种预处理指令，如`#include`、`#ifdef`、`#if`等等，同时也会清除注释；
+2. **编译**：将`.ii/.i`处理为`.S/.asm`，即机器语言的汇编文件；
+3. **汇编**：将`.asm/.S`处理为`.o`，把汇编文件变成机器码；
+4. **链接**：将各种依赖的静态/动态库文件、`.o`文件、启动文件链接成最终的可执行文件或者共享库文件。
+
+其实`gcc`命令的参数是针对不同的编译阶段的，下面分阶段介绍`gcc`参数和CMake命令的对应关系。
+
+### **预处理**
+
+在预处理阶段，主要处理各种宏，开发的过程中往往会通过`#ifdef`来判断是否定义了对应的宏，来灵活地切换不同代码，比如：
+
+```text
+#ifdef UPPER_CASE
+#define name "REAL_COOL_ENGINEER"
+#else
+#define name "real_cool_engineer"
+```
+
+这个时候，如果需要使用大写的版本，就可以使用`gcc`的`-D`参数：
+
+```text
+gcc -DUPPER_CASE ...
+```
+
+而在CMake中，可以使用命令：
+
+```text
+add_definitions(-DUPPER_CASE)
+```
+
+### **编译**
+
+在编译的时候，需要把源文件处理成机器代码，主要有两个方面：
+
+1. 对于源文件里面的代码具体怎样进行编译
+2. 源文件内部调用的外部函数怎么查找
+
+**对于第一点**，就是各种编译选项，有很多类型：
+
+1. 编译警告选项，比如`-Wall`、`-Wextra`
+2. 代码优化选项，比如：`-O0`、`-Ofast`
+3. 调试选项，比如：`-g`、`-fvar-tracking`
+4. 预处理选项，比如：`-M`、`-MP`
+5. 代码生成选项，比如：`-fPIC`、`-fPIE`
+6. 等等，还有针对不同语言特有的选项
+
+所有的选项在GNU GCC官网上有详细的介绍，参见：**[Option-Summary](https://link.zhihu.com/?target=https%3A//gcc.gnu.org/onlinedocs/gcc/Option-Summary.html)**。
+
+**对于第二点**，在源文件内部，调用的外部函数是在头文件中声明的，所以通过`#include`的头文件编译器必须能够找到，这个时候需要使用`-I`参数指定头文件的查找路径，以确保编译器可以找到源文件所使用的头文件。
+
+在使用`gcc`命令时，选项直接作为参数传递即可，比如：
+
+```text
+gcc -c xxx.c -Os -g -Wall -Wextra -pedantic -Werror -o xxx.o -Isrc/c
+```
+
+那么在CMake中，可以：
+
+1. 使用`add_compile_options`命令指定编译选项
+2. 使用`include_directories`命令指定头文件搜索路径
+
+因此上面的`gcc`命令的效果等同于：
+
+```text
+add_compile_options(-Os -g -Wall -Wextra -pedantic -Werror)
+include_directories(src/c)
+add_library(xxx STATIC xxx.c)
+```
+
+需要注意的是，因为CMake的构建目标必须是库或者可执行文件，所以并没有命令仅生成`.o`文件，所以这里使用`add_library`代替。
+
+### **链接**
+
+链接需要做的就是把最终目标依赖的东西都组装起来。
+
+对于这里的可执行文件来说，先从`demo.o`的main函数开始，链接整个程序执行过程中需要的所有函数的实现；不同实现可能在不同的`.o`文件或者库文件内，通过头文件声明的函数名，在`.o`和`.a`文件里面查找需要的实现；如果找不到，就会引发一个链接错误。
+
+对于项目内部的构建目标库文件及其他的`.o`文件，在链接的时候直接使用即可，而对于外部的第三方库或者系统的库文件，则需要使用`-L`和`-l`参数来告知链接器。
+
+和编译一样的，除了`-L`和`-l`，链接器也还有很多其他参数`比如：
+
+```text
+-pie -pthread -r -s  -static  -static-pie
+```
+
+详细的参数介绍详见：**[Link-Options](https://link.zhihu.com/?target=https%3A//gcc.gnu.org/onlinedocs/gcc/Link-Options.html%23Link-Options)**。
+
+对应地，CMake对应可以使用的命令为：
+
+1. 对于`-L`，使用`link_directories`或者`target_link_directories`命令
+2. 对于`-l`，使用`link_libraries`或者`target_link_libraries`命令
+3. 指定链接器的选项，使用`add_link_options`或者`target_link_options`命令
+
+> 上述命令中，以`target_`开头的是针对特定的目标进行设置，否则是针对所有的目标。
+
+假设目标程序使用了外部库文件`/usr/lib/libmath.a`就可以使用命令：
+
+```text
+gcc demo.c -L/usr/lib -lmath -pthread
+```
+
+对应地，CMake使用的命令应该是：
+
+```text
+add_link_options(-pthread)
+add_executable(demo demo.c)
+link_directories(/usr/lib)
+target_link_libraries(demo math)
+```
+
+## **总结**
+
+最后，使用一个表格总结一下本文的核心内容。 GCC编译过程使用的`gcc`参数和`CMake`命令之间的对应关系表：
+
+![img](D:\Gitee\Ehe\2022\v2-50fe7e1b02eb0bdc91f07cfe73d2afaa_720w.jpg)
+
+# 合并静态库的最佳实践
+
+> 在实际项目中，往往需要将一些基础库或者算法库发布出去，但是不同项目可能需要用到不同的子模块，此时为了保持简洁，可能需要合并多个静态库为一个。
+
+在笔者的实际工作中，合并静态库的需求还是有的，而且大多数时候都是基于CMake的项目，所以希望能够基于不同配置，自动合并多个模块的静态库为一个，方便发布版本和管理。本文介绍的就是如何在CMake工程中，优雅地完成多个静态库目标的合并。
+
+本文仍以本系列的开源项目**[cmake-template](https://link.zhihu.com/?target=https%3A//gitee.com/RealCoolEngineer/cmake-template)**为例(当前commit id: `9015193`)。
+
+## **合并静态库的方法**
+
+**静态库其实就是一些源文件被编译成对应机器代码文件（`.o`文件）的集合**。
+
+在Linux系统中，通过`ar`命令可以对静态库进行各种操作，在`MacOS`下可以使用`libtool`工具。有以下几种不同的合并静态库的方法。
+
+### **方法1**
+
+先使用`ar`把静态库拆解为多个`.o`文件：
+
+```text
+ar x liba.a
+ar x libb.a
+```
+
+再把所有的`.o`文件打包为一个静态库：
+
+```text
+ar crs libmerge.a *.o
+```
+
+参数解释：
+
+1. `x`：拆解静态库文件为其包含的内容
+2. `c`：封装`.o`文件为静态库文件
+3. `r`：覆盖同名库文件或者新创建目标库文件
+4. `s`：相当于对结果执行一次`ranlib`，为静态库的内容添加索引，提高访问效率
+
+### **方法2**
+
+当然，还有更加简洁的命令：
+
+```text
+ar crsT libmerge.a liba.a libb.a
+```
+
+参数`T`表示将后续所有静态库中的`.o`文件打包到第一个参数指定的静态库文件中，如果不加该参数，得到的将会是后面几个`.a`文件的集合。可以使用命令`ar -t`查看打包的内容，诸君手动一试便知。
+
+> MacOS下的`ar`命令和Linux的有所不同，此法不适用于MacOS。
+
+### **方法3**
+
+**使用`MRI`脚本**。
+
+首先编写一个`MRI`脚本，比如`merge.mri`：
+
+```text
+create libmerge.a
+addlib liba.a 
+addlib libb.a
+save
+end
+```
+
+然后使用命令：
+
+```text
+ar -M < merge.mri
+```
+
+> MacOS下面的的`ar`命令并没有`-M`参数，所以此法也不适用于MacOS系统。
+
+### **方法4**
+
+此方法针对MacOS系统，在MacOS系统下可以使用`libtool`命令：
+
+```text
+libtool -static -o libmerge.a liba.a libb.a
+```
+
+> 在Linux下也有`libtool`工具，但是用法和MacOS也是不一致的，所以此法不适用于Linux。
+
+## **基于CMake合并静态库**
+
+在示例项目`cmake-template`中，源码目录下有两个子目录：`src/math`和`src/nn`，分别编译得到两个静态库目标`libmath.a`和`libnn.a`。
+
+现在在项目根目录下的`CMakeLists.txt`中：通过`add_custom_command`命令配合`add_custom_target`命令，将`libmath.a`和`libnn.a`合并为`libmerge.a`；并将合并的静态库文件导入使用。
+
+### **合并静态库**
+
+这里使用了CMake的内置变量`APPLE`，如果是`MacOS`系统，`APPLE`会被设置为`true`，以此来确定要使用`libtool`还是`ar`。
+
+合并静态库实现代码如下：
+
+```text
+# Merge library
+if (APPLE)
+    add_custom_command(OUTPUT libmerge.a
+    COMMAND libtool -static -o libmerge.a $<TARGET_FILE:math> $<TARGET_FILE:nn>
+    DEPENDS math nn)
+else()
+    add_custom_command(OUTPUT libmerge.a
+    COMMAND ar crsT libmerge.a $<TARGET_FILE:math> $<TARGET_FILE:nn>
+    DEPENDS math nn)
+endif()
+add_custom_target(_merge ALL DEPENDS libmerge.a)
+```
+
+代码解释：
+
+1. `OUTPUT`：指定输出文件名称（会被标记为**GENERATED**）
+2. `COMMAND`：后面跟的就是要执行的命令，这里就和在shell中执行命令差不多
+3. `DEPENDS`：表明依赖的目标
+4. `add_custom_target`指明的目标依赖于合并操作的输出（`libmerge.a`），而合并操作需要依赖目标`math`和`nn`，所以在这两个目标文件生成以后，就会去执行合并操作
+
+需要注意的是，合并静态库的时候需要知道每个静态库的路径，在CMake中，目标静态库`math`的路径可以使用生成器表达式`$<TARGET_FILE:math>`获取。
+
+但是还有另外一种情况，如果是使用`find_library`查找到的静态库，比如：
+
+```text
+find_library(LIB_C c HINTS ${SEARCH_PATH})
+```
+
+这时`DEPENDS`中就不用加上`c`，而`${LIB_C}`就是该库的路径了。
+
+### **导入合并的静态库并使用**
+
+现在把合并的静态库导入，并在链接`demo`可执行程序时使用。
+
+代码实现如下：
+
+```text
+add_library(merge STATIC IMPORTED GLOBAL)
+set_target_properties(merge PROPERTIES
+    IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/libmerge.a
+)
+
+# Build demo executable
+add_executable(demo src/c/main.c)
+target_link_libraries(demo PRIVATE merge)
+```
+
+因为`libmerge.a`是命令`add_custom_command`指定的输出，所以它会标记为是自动生成的文件（**GENERATED**）。
+
+链接`demo`的时候依赖导入的静态库`merge`，而`merge`的`IMPORTED_LOCATION`指定的这个文件是自动生成的，所以CMake就知道需要等`libmerge.a`生成之后才能开始链接`demo`。
+
+如果没有`add_custom_target`那一行，执行编译构建会报错，由此也可见一斑：
+
+```text
+make[2]: *** No rule to make target `libmerge.a', needed by `demo'
+```
+
+以上便是CMake下合并静态库的实践，欢迎交流指正。
+
+
+
+# 生成器表达式
+
+> CMake的生成器表达式不算是特别常用，但是有一些场景可能是必须要使用的；或者在针对不同编译类型设置不同编译参数的时候可以巧妙应用，从而减少配置代码。
+
+生成器表达式听起来稍微有点复杂，但是其实只需要掌握一些常用的功能就能够有所裨益，至于更加复杂的写法，在需要的时候研究一下即可。本文主要介绍下生成器表达式的概念、种类、和常用的一些生成器表达式。
+
+## **概述**
+
+生成器表达式简单来说就是**在CMake生成构建系统的时候根据不同配置动态生成特定的内容**。比如：
+
+1. 条件链接，如针对同一个编译目标，debug版本和release版本链接不同的库文件
+2. 条件定义，如针对不同编译器，定义不同的宏
+
+所以可以看到，其中的要点是**条件**，之所以需要自动生成，那绝大多数时候肯定是因为开发者无法提前确定某些配置，不能提前确定那往往就是有条件的。
+
+生成器表达式的格式形如`$<...>`，可以嵌套，可以用在很多构建目标的属性设置和特定的CMake命令中。值得强调的是，生成表达式被展开是在生成构建系统的时候，所以不能通过解析配置CMakeLists.txt阶段的`message`命令打印，文末会介绍其调试方法。
+
+## **常用的生成器表达式**
+
+### **布尔生成器表达式**
+
+#### **逻辑运算符**
+
+逻辑运算很多语言都是需要的，CMake生成器表达式中有这些：
+
+1. `$<BOOL:string>`：如果字符串为空、`0`；不区分大小写的`FALSE`、`OFF`、`N`、`NO`、`IGNORE`、`NOTFOUND`；或者区分大小写以`-NOTFOUND`结尾的字符串，则为0，否则为1
+2. `$<AND:conditions>`：逻辑与，`conditons`是以逗号分割的条件列表
+3. `$<OR:conditions>`：逻辑或，`conditons`是以逗号分割的条件列表
+4. `$<NOT:condition>`：逻辑非
+
+> 一般来说，条件是列表的，都是使用逗号进行分割，后面不再赘述。
+
+#### **字符串比较**
+
+1. `$<STREQUAL:string1,string2>`：判断字符串是否相等
+2. `$<EQUAL:value1,value2>`：判断数值是否相等
+3. `$<IN_LIST:string,list>`：判断`string`是否包含在`list`中，`list`使用分号分割
+
+> 注意这里的`list`是在逗号后面的列表，所以其内容需要使用分号分割。
+
+#### **变量查询**
+
+这个会是比较常用的，在实际使用的时候会根据不同CMake内置变量生成不同配置，核心就在于“判断”：
+
+1. `$<TARGET_EXISTS:target>`：判断目标是否存在
+2. `$<CONFIG:cfgs>`：判断编译类型配置是否包含在`cfgs`列表（比如"release,debug"）中；不区分大小写
+3. `$<PLATFORM_ID:platform_ids>`：判断CMake定义的平台ID是否包含在`platform_ids`列表中
+4. `$<COMPILE_LANGUAGE:languages>`：判断编译语言是否包含在`languages`列表中
+
+### **字符串值生成器表达式**
+
+请注意，前面都是铺垫，这里才是使用生成器表达式的主要目的：**生成特定的字符串**。 比如官方的例子：基于编译器ID指定include目录：
+
+```text
+include_directories(/usr/include/$<CXX_COMPILER_ID>/)
+```
+
+根据编译器的类型，`$<CXX_COMPILER_ID>`会被替换成对应的ID（比如“GNU”、“Clang”）。
+
+#### **条件表达式**
+
+这便是本文的核心了，主要有两个格式：
+
+1. `$<condition:true_string>`：如果条件为真，则结果为`true_string`，否则为空
+2. `$<IF:condition,str1,str2>`：如果条件为真，则结果为`str1`，否则为`str2`
+
+这里的条件一般情况下就是前面介绍的**布尔生成器表达式**。 比如要根据编译类型指定不同的编译选项，可以像下面这样：
+
+```text
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -g -O0")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O2")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
+```
+
+但是使用生成器表达式可以简化成：
+
+```text
+add_compile_options("$<$<CONFIG:Debug>:-g;-O0>")
+add_compile_options($<$<CONFIG:Release>:-O2>)
+```
+
+> 如果需要指定多个编译选项，必须使用双引号把生成器表达式包含起来，且选项之间使用分号。
+
+后面这个方法适用于设置一些对所有编译器（取决于项目编译语言）都通用的编译选项，而需要设置一些编译器特有的选项时，通过设置指定编译器的编译选项（前一种方法）更加简洁明了。
+
+> 当然，可以用表达式判断编译器ID设置不同编译选项，不过明显有些为了用而用，这是没必要的。
+
+#### **转义字符**
+
+这比较好理解，因为有一些字符有特殊含义，所以可能需要转义，比如常用的`$<COMMA>`和`$<SEMICOLON>`，分别表示`,`和`;`。
+
+#### **字符串操作**
+
+常用的有`$<LOWER_CASE:string>`、`$<UPPER_CASE:string>`用于转换大小写。
+
+#### **获取变量值**
+
+获取变量的值和前文提到的变量查询很类似，前面说的变量查询是判断是否存在于指定列表中或者等于指定值。语法格式是类似的，以`CONFIG`为例：
+
+1. 获取变量值：`$<CONFIG>`
+2. 判断是否存在于列表中：`$<CONFIG:cfgs>`
+
+详见：**[Variable Queries](https://link.zhihu.com/?target=https%3A//cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html%23id2)**。
+
+#### **编译目标查询**
+
+这里的查询是指获取编译目标（通过`add_executable()`、`add_library()`命令生成的）相关的一些信息，包括：
+
+1. `$<TARGET_FILE:tgt>`：获取编译目标的文件路径
+2. `$<TARGET_FILE_NAME:tgt>`：获取编译目标的文件名
+3. `$<TARGET_FILE_BASE_NAME:tgt>`：获取编译目标的基础名字，也就是文件名去掉前缀和扩展名
+
+官网有更多详细介绍，有其他需要可以阅读：**[target-dependent-queries](https://link.zhihu.com/?target=https%3A//cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html%23target-dependent-queries)**。
+
+> 在本专题前一篇文章中介绍合并静态库的时候，就用到`$<TARGET_FILE:tgt>`去获取静态库的路径。
+
+### **调试**
+
+调试可以通过输出到文件的方式，在`cmake`执行完之后去检查是否符合预期，比如：
+
+```cmake
+file(GENERATE OUTPUT "./generator_test.txt" CONTENT "$<$<CONFIG:Debug>:-g;-O0>,$<PLATFORM_ID>\n")
+```
+
+在MacOS中执行`cmake`，得到的结果如下：
+
+```cmake
+# cmake -B cmake-build -DCMAKE_BUILD_TYPE=Debug
+...
+# cat cmake-build/generator_test.txt
+-g;-O0,Darwin
+```
+
+如果不想写文件，也可以添加一个自定义目标，比如：
+
+```cmake
+add_custom_target(gentest COMMAND ${CMAKE_COMMAND} -E echo "\"$<$<CONFIG:Debug>:-g;-O0>,$<PLATFORM_ID>\"")
+```
+
+> 注意这里需要双引号转义，确保生成器表达式展开之后是字符串。
+
+在执行`cmake`之后，可以使用`make gentest`输出到生成器表达式的内容：
+
+```text
+# cd cmake-build && make gentest
+-g;-O0,Darwin
+Built target gentest
+```
