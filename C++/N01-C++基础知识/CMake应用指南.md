@@ -436,7 +436,7 @@ PROJECT_VERSION_TWEAK, <PROJECT-NAME>_VERSION_TWEAK
 
 因此，结合前一篇文章提到的`configure_file`命令，可以配置自动生成版本头文件，将头文件版本号定义成对应的宏，或者定义成接口，方便在代码运行的时候了解当前的版本号。
 
-比如:
+比如：
 
 ```cmake
 configure_file(src/c/cmake_template_version.h.in "${PROJECT_SOURCE_DIR}/src/c/cmake_template_version.h")
@@ -469,13 +469,13 @@ set(CMAKE_CXX_STANDARD 11)
 
 这里设置的变量都是`CMAKE_`开头(包括`project`命令自动设置的变量)，这类变量都是CMake的内置变量，正是通过修改这些变量的值来配置CMake构建的行为。
 
-> `CMAKE_`、`_CMAKE`或者以下划线开头后面加上任意CMake命令的变量名都是CMake保留的。
+`CMAKE_`、`_CMAKE`或者以下划线开头后面加上任意CMake命令的变量名都是CMake保留的。
 
 ### **配置编译选项**
 
 通过命令`add_compile_options`命令可以为所有编译器配置编译选项（同时对多个编译器生效）； 通过设置变量`CMAKE_C_FLAGS`可以配置c编译器的编译选项； 而设置变量`CMAKE_CXX_FLAGS`可配置针对c++编译器的编译选项。 比如：
 
-```text
+```cmake
 add_compile_options(-Wall -Wextra -pedantic -Werror)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pipe -std=c99")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -std=c++11")
@@ -566,16 +566,14 @@ include_directories(src/c)
 
 这一步需要将项目目录路径`src/c/math`下的源文件编译为静态库，那么需要获取编译此静态库需要的文件列表，可以使用`set`命令，或者`file`命令来进行设置。比如：
 
-```text
-file(GLOB_RECURSE MATH_LIB_SRC
-        src/c/math/*.c
-        )
+```cmake
+file(GLOB_RECURSE MATH_LIB_SRC  src/c/math/*.c)
 add_library(math STATIC ${MATH_LIB_SRC})
 ```
 
 使用`file`命令获取`src/c/math`目录下所有的`*.c`文件，然后通过`add_library`命令编译名为`math`的静态库，库的类型是第二个参数`STATIC`指定的。
 
-> 如果指定为`SHARED`则编译的就是动态链接库。
+如果指定为`SHARED`则编译的就是动态链接库。
 
 ### **编译可执行文件**
 
@@ -583,7 +581,7 @@ add_library(math STATIC ${MATH_LIB_SRC})
 
 在示例项目中，`main.c`就使用了`src/c/math`下实现的一些函数接口，所以依赖于前面构建的`math`库。所以在`CMakeLists.txt`中添加以下内容：
 
-```text
+```cmake
 add_executable(demo src/c/main.c)
 target_link_libraries(demo math)
 ```
@@ -613,7 +611,7 @@ Hello CMake!
 
 比如，在示例项目中，把`math`和`demo`两个目标按文件类型安装：
 
-```text
+```cmake
 install(TARGETS math demo
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
@@ -624,11 +622,11 @@ install(TARGETS math demo
 
 如果指定`CMAKE_INSTALL_PREFIX`为`/usr/local`，那么`math`库将会被安装到路径`/usr/local/lib/`目录下；而`demo`可执行文件则在`/usr/local/bin`目录下。
 
-> `CMAKE_INSTALL_PREFIX`在不同的系统上有不同的默认值，使用的时候最好显式指定路径。
+`CMAKE_INSTALL_PREFIX`在不同的系统上有不同的默认值，使用的时候最好显式指定路径。
 
 同时，还可以使用`install`命令安装头文件：
 
-```text
+```cmake
 file(GLOB_RECURSE MATH_LIB_HEADERS src/c/math/*.h)
 install(FILES ${MATH_LIB_HEADERS} DESTINATION include/math)
 ```
@@ -1536,9 +1534,7 @@ cd -
 
 # 从编译过程理解CMake
 
-
-
-> CMake和编译的过程是有对应关系的，理解了编译构建的过程，可以更加理解CMake的相关命令；理解其目的和用途，自然也就可以更好地运用CMake。
+CMake和编译的过程是有对应关系的，理解了编译构建的过程，可以更加理解CMake的相关命令；理解其目的和用途，自然也就可以更好地运用CMake。
 
 对GCC编译的过程做了一个概述。
 
@@ -1558,8 +1554,8 @@ cd -
 
 而对于构建树的叶子节点，其实都对应到具体的源文件，只是说有时候是预编译好的第三方库或者系统库。而源文件如果开源，开发者可以选择自己从源码编译（比如这个项目中的gtest，就是从源码编译出来的，在单元测试可执行文件的构建树里，叶子节点就是gtest开源的源码）。
 
-> 在CMake官网有关于Build Tree的定义，可以查看链接：[https://cmake.org/cmake/help/latest/manual/cmake.1.html#introduction-to-cmake-buildsystems](https://link.zhihu.com/?target=https%3A//cmake.org/cmake/help/latest/manual/cmake.1.html%23introduction-to-cmake-buildsystems)
-> 注意重在理解其含义而非形式
+在CMake官网有关于Build Tree的定义，可以查看链接：[https://cmake.org/cmake/help/latest/manual/cmake.1.html#introduction-to-cmake-buildsystems](https://link.zhihu.com/?target=https%3A//cmake.org/cmake/help/latest/manual/cmake.1.html%23introduction-to-cmake-buildsystems)
+注意重在理解其含义而非形式
 
 ## **GCC编译过程和CMake命令之间的关联**
 
@@ -1689,7 +1685,7 @@ target_link_libraries(demo math)
 
 # 合并静态库的最佳实践
 
-> 在实际项目中，往往需要将一些基础库或者算法库发布出去，但是不同项目可能需要用到不同的子模块，此时为了保持简洁，可能需要合并多个静态库为一个。
+在实际项目中，往往需要将一些基础库或者算法库发布出去，但是不同项目可能需要用到不同的子模块，此时为了保持简洁，可能需要合并多个静态库为一个。
 
 在笔者的实际工作中，合并静态库的需求还是有的，而且大多数时候都是基于CMake的项目，所以希望能够基于不同配置，自动合并多个模块的静态库为一个，方便发布版本和管理。本文介绍的就是如何在CMake工程中，优雅地完成多个静态库目标的合并。
 
@@ -1871,7 +1867,7 @@ make[2]: *** No rule to make target `libmerge.a', needed by `demo'
 3. `$<OR:conditions>`：逻辑或，`conditons`是以逗号分割的条件列表
 4. `$<NOT:condition>`：逻辑非
 
-> 一般来说，条件是列表的，都是使用逗号进行分割，后面不再赘述。
+一般来说，条件是列表的，都是使用逗号进行分割，后面不再赘述。
 
 #### **字符串比较**
 
@@ -1879,7 +1875,7 @@ make[2]: *** No rule to make target `libmerge.a', needed by `demo'
 2. `$<EQUAL:value1,value2>`：判断数值是否相等
 3. `$<IN_LIST:string,list>`：判断`string`是否包含在`list`中，`list`使用分号分割
 
-> 注意这里的`list`是在逗号后面的列表，所以其内容需要使用分号分割。
+注意这里的`list`是在逗号后面的列表，所以其内容需要使用分号分割。
 
 #### **变量查询**
 
@@ -1923,11 +1919,11 @@ add_compile_options("$<$<CONFIG:Debug>:-g;-O0>")
 add_compile_options($<$<CONFIG:Release>:-O2>)
 ```
 
-> 如果需要指定多个编译选项，必须使用双引号把生成器表达式包含起来，且选项之间使用分号。
+如果需要指定多个编译选项，必须使用双引号把生成器表达式包含起来，且选项之间使用分号。
 
 后面这个方法适用于设置一些对所有编译器（取决于项目编译语言）都通用的编译选项，而需要设置一些编译器特有的选项时，通过设置指定编译器的编译选项（前一种方法）更加简洁明了。
 
-> 当然，可以用表达式判断编译器ID设置不同编译选项，不过明显有些为了用而用，这是没必要的。
+当然，可以用表达式判断编译器ID设置不同编译选项，不过明显有些为了用而用，这是没必要的。
 
 #### **转义字符**
 

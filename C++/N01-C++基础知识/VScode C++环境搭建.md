@@ -507,3 +507,15 @@ add_executable(cmake_task main.cpp swap.cpp)
 }
 ```
 
+# 小技巧
+
+## Code Runner设置
+
+1. 设置 --> 拓展 --> C/C++ Runner
+2. 搜索：Executor Map
+3. 在settings.json中编辑
+
+```json
+"cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt && del $dir$fileNameWithoutExt.exe",
+```
+
