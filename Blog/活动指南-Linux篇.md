@@ -455,6 +455,16 @@ tmpfs           184M     0  184M   0% /run/user/0
 du命令用于显示目录或文件的大小。du会显示指定的目录或文件所占用的磁盘空间。
 
 ```shell
+du -sh data
+```
+
+```
+20G data
+```
+
+
+
+```shell
 cd / && du -h -x --max-depth=1
 
 du -h --max-depth=1 /home
@@ -541,7 +551,19 @@ mkdir -p ${directory}/log/${loaddate}/
 - mlabel
 - mmd
 - mmount
-- mount
+
+## mount
+
+用于挂载Linux系统外的文件
+
+```shell
+# 将/dev/hda1 挂在/data之下
+mkdir /data
+mount /dev/hda1 /data
+```
+
+
+
 - mrd
 - mzip
 
@@ -558,7 +580,20 @@ mkdir -p ${directory}/log/${loaddate}/
 - rmt
 - stat
 - tree
-- umount
+
+## umount
+
+可卸除目前挂在Linux目录中的文件系统
+
+```shell
+# 直接卸载
+umount /data1/img
+
+# 提示被占用，使用强制卸载
+umount -f /data1/img
+```
+
+
 
 # 磁盘维护
 
@@ -568,13 +603,77 @@ mkdir -p ${directory}/log/${loaddate}/
 - e2fsck
 - ext2ed
 - fdformat
-- fdisk
+
+## fdisk
+
+```shell
+fdisk -l
+```
+
+```
+Disk /dev/sdb: 2399.9 GB, 2399913639936 bytes, 4687331328 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 262144 bytes / 262144 bytes
+Disk label type: gpt
+Disk identifier: 5C7A6AB0-9B4B-4287-86DE-DD0DBB118819
+
+#         Start          End    Size  Type            Name
+ 1         2048   4687329279    2.2T  Linux LVM       
+
+Disk /dev/sda: 479.6 GB, 479559942144 bytes, 936640512 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 262144 bytes / 262144 bytes
+Disk label type: dos
+Disk identifier: 0x000c4bb9
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sda1            2048        6143        2048   83  Linux
+/dev/sda2   *        6144     1030143      512000   83  Linux
+/dev/sda3         1030144   936640511   467805184   8e  Linux LVM
+
+Disk /dev/mapper/centos-root: 2861.8 GB, 2861761036288 bytes, 5589377024 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 262144 bytes / 262144 bytes
+
+Disk /dev/mapper/centos-swap: 17.2 GB, 17179869184 bytes, 33554432 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 262144 bytes / 262144 bytes
+```
+
+
+
 - fsck
 - fsck.ext2
 - fsck.minix
 - fsconf
 - hdparm
 - losetup
+
+## lsblk
+
+查看系统检测的硬盘，列出块设备信息（df -h不能看到的卷）
+
+```shell
+lsblk
+```
+
+```
+NAME            MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda               8:0    0 446.6G  0 disk 
+├─sda1            8:1    0     2M  0 part 
+├─sda2            8:2    0   500M  0 part /boot
+└─sda3            8:3    0 446.1G  0 part 
+  ├─centos-root 253:0    0   2.6T  0 lvm  /
+  └─centos-swap 253:1    0    16G  0 lvm  [SWAP]
+sdb               8:16   0   2.2T  0 disk 
+└─sdb1            8:17   0   2.2T  0 part 
+  └─centos-root 253:0    0   2.6T  0 lvm  /
+```
+
 - mbadblocks
 - mformat
 - mkbootdisk
@@ -1092,6 +1191,43 @@ unzip workspace.zip
 - rdev
 - setleds
 
+## lscpu
+
+```shell
+lscpu
+```
+
+```
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                64
+On-line CPU(s) list:   0-63
+Thread(s) per core:    2
+Core(s) per socket:    16
+Socket(s):             2
+NUMA node(s):          2
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 85
+Model name:            Intel(R) Xeon(R) Silver 4216 CPU @ 2.10GHz
+Stepping:              7
+CPU MHz:               799.932
+CPU max MHz:           3200.0000
+CPU min MHz:           800.0000
+BogoMIPS:              4200.00
+Virtualization:        VT-x
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              1024K
+L3 cache:              22528K
+NUMA node0 CPU(s):     0-15,32-47
+NUMA node1 CPU(s):     16-31,48-63
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr...
+```
+
+
+
 # 其它
 
 ## man
@@ -1176,4 +1312,59 @@ ls -l / | grep river | wc -l
 ```shell
 ls -l `which touch`
 ```
+
+# 情景任务
+
+## CPU
+
+```shell
+lscpu
+```
+
+```
+总核数 = 物理CPU个数 x 每个物理CPU的核数
+逻辑CPU个数 = 物理CPU个数 x 每个物理CPU的核数 x 超线程数
+```
+
+1. 查看物理 CPU 个数
+
+```shell
+cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l
+```
+
+2. 查看每个物理 CPU 核数
+
+```shell
+cat /proc/cpuinfo | grep "cpu cores" | sort | uniq
+```
+
+3. 查看每个物理 CPU 核心上的逻辑处理个数
+
+```shell
+cat /proc/cpuinfo | grep 'siblings' | sort | uniq
+```
+
+4. 查看总线程数 | 查看逻辑 CPU 的个数
+
+```shell
+cat /proc/cpuinfo | grep "processor"| wc -l
+```
+
+## 内存
+
+1. 查看内存信息
+
+```shell
+cat /proc/meminfo
+```
+
+## 系统版本
+
+```shell
+cat /etc/redhat-release
+lsb_release -a
+cat /etc/issue
+```
+
+## 磁盘挂载
 
