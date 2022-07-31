@@ -1,8 +1,8 @@
 @echo off
 
 echo ==============  Update Ehe  ==============
-D:
-cd D:\Gitee\Ehe
+G:
+cd G:\LocalSpace\Gitee\Ehe
 
 echo:
 git add .
@@ -21,8 +21,8 @@ git push origin master
 
 echo:
 echo ==============  Update DDU  ==============
-D:
-cd D:\Gitee\DDU
+G:
+cd G:\LocalSpace\Gitee\DDU
 
 echo:
 git add .
