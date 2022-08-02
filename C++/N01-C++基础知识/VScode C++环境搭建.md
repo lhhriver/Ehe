@@ -139,6 +139,10 @@ g++ -g main.cpp swap.cpp -o my_multi_swap
 
 ![image-20220718142936868](D:\Gitee\Ehe\2022\image-20220718142936868.png)
 
+
+
+---
+
 **调试：**
 
 1. 命令行方式
