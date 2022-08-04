@@ -238,8 +238,6 @@ OpenAI Transformer 为我们提供了一个基于 Transformer 的可以微调的
 
 BERT 预训练的第 2 个任务是两个句子的分类任务。在上图中，tokenization 这一步被简化了，因为 BERT 实际上使用了 WordPieces 作为 token，而不是使用单词本身。在 WordPiece 中，有些词会被拆分成更小的部分。
 
-
-
 # BERT 在不同任务上的应用
 
 BERT 的论文展示了 BERT 在多种任务上的应用。
