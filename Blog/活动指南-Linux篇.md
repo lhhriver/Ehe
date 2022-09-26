@@ -17,7 +17,7 @@ cat /proc/meminfo
 
 - chattr
 
-## chgrp
+## **chgrp**
 
 修改文件或目录的所属组
 
@@ -280,11 +280,12 @@ which hive
 - fmt
 - fold
 
-## grep
+## **grep**
 
 在文件中搜寻字串匹配的行并输出
 
 ```shell
+grep -n -r "linedetail" ./*
 grep ftp /etc/services
 ```
 
@@ -325,7 +326,7 @@ python main.py $task > logs/$task.$dt.log
 - tr
 - uniq
 
-## wc
+## **wc**
 
 命令用于计算字数
 
@@ -356,6 +357,7 @@ wc testfile testfile_1 testfile_2   # 统计三个文件的信息
 
 ```shell
 wc -l train.txt
+wc -l ./*
 ```
 
 
@@ -450,11 +452,12 @@ tmpfs           184M     0  184M   0% /run/user/0
 
 - dirs
 
-## du
+## **du**
 
 du命令用于显示目录或文件的大小。du会显示指定的目录或文件所占用的磁盘空间。
 
 ```shell
+# 查看文件夹大小
 du -sh data
 ```
 
@@ -535,7 +538,7 @@ dr-xr-xr-x  13 root root     0 Feb 18 10:59 sys
 
 创建新目录
 
-参数：-p 确保目录名称存在，如果目录不存在的就新创建一个。
+**参数**：-p 确保目录名称存在，如果目录不存在的就新创建一个。
 
 ```shell
 mkdir river # 创建目录river
@@ -570,6 +573,8 @@ mount /dev/hda1 /data
 ## pwd
 
 当前工作目录
+
+
 
 - quota
 - quotacheck
@@ -712,7 +717,7 @@ sdb               8:16   0   2.2T  0 disk
 ifconfig -a  # 查看网络设置信息
 ```
 
-## lsof
+## **lsof**
 
 lsof(list open files)是一个列出当前系统打开文件的工具。
 
@@ -743,7 +748,7 @@ lsof -i -U：显示所有打开的端口和UNIX domain文件
 - netconf
 - netconfig
 
-## netstat
+## **netstat**
 
 **netstat -tunlp** 用于显示 tcp，udp 的端口和进程等相关情况。
 

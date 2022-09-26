@@ -268,11 +268,11 @@ GSQL > USE GRAPH social
 Using graph 'social'
 GSQL > BEGIN
 GSQL > CREATE LOADING JOB load_social FOR GRAPH social {
-GSQL >    DEFINE FILENAME file1="/home/tigergraph/person.csv";
-GSQL >    DEFINE FILENAME file2="/home/tigergraph/friendship.csv";
+GSQL > DEFINE FILENAME file1="/home/tigergraph/person.csv";
+GSQL > DEFINE FILENAME file2="/home/tigergraph/friendship.csv";
 GSQL >
-GSQL >    LOAD file1 TO VERTEX person VALUES ($"name", $"name", $"age", $"gender", $"state") USING header="true", separator=",";
-GSQL >    LOAD file2 TO EDGE friendship VALUES ($0, $1, $2) USING header="true", separator=",";
+GSQL > LOAD file1 TO VERTEX person VALUES ($"name", $"name", $"age", $"gender", $"state") USING header="true", separator=",";
+GSQL > LOAD file2 TO EDGE friendship VALUES ($0, $1, $2) USING header="true", separator=",";
 GSQL > }
 GSQL > END
 The job load_social is created.
@@ -289,7 +289,7 @@ RUN LOADING JOB load_social
 
 结果显示如下
 
-```text
+```sql
 #GSQL shell
 GSQL > run loading job load_social
 [Tip: Use "CTRL + C" to stop displaying the loading status update, then use "SHOW LOADING STATUS jobid" to track the loading progress again]
