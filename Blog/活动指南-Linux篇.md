@@ -207,6 +207,33 @@ rm -r river # 删除目录river
 rm -rf chinese_text_classification/
 ```
 
+## rmdir
+
+全拼 remove empty directories，功能是删除空目录
+
+```shell
+rmdir he  # he为空目录
+```
+
+## mkdir
+
+创建新目录
+
+**参数**：-p 确保目录名称存在，如果目录不存在的就新创建一个。
+
+```shell
+mkdir river # 创建目录river
+mkdir -p  /home/blue/ssd/thinkit
+```
+
+```shell
+directory=/home/dmp/lixiaoli/yjk_dm
+loaddate=`date -d "-1 day" "+%Y-%m-%d"`
+mkdir -p ${directory}/log/${loaddate}/
+```
+
+
+
 ## scp
 
 ```shell
@@ -324,11 +351,36 @@ python main.py $task > logs/$task.$dt.log
 - sort
 - spell
 - tr
-- uniq
+
+## uniq
+
+用于检查及**删除**文本文件中**重复出现**的行列，一般与 sort 命令结合使用。
+
+**命令参数：**
+
+- **-c或--count 在每列旁边显示该行重复出现的次数。（常用，比如netstat分析的时候，看不同端口的time_wait数量）**
+- -d或--repeated 仅显示重复出现的行列。
+- -u或--unique 仅显示出一次的行列。
+
+```shell
+uniq -c test.text
+```
+
+
 
 ## **wc**
 
-命令用于计算字数
+统计指定文件中的字节数、字数、行数，并将统计结果显示输出。如果没有给出文件名，则从标准输入读取。
+
+**命令参数：**
+
+- -c 统计字节数。
+
+- **-l 统计行数。常用。**
+
+- -m 统计字符数。这个标志不能与 -c 标志一起使用。
+
+- -w 统计字数。一个字被定义为由空白、跳格或换行字符分隔的字符串。
 
 ```shell
 wc testfile           # testfile文件的统计信息  
@@ -534,23 +586,6 @@ dr-xr-xr-x  13 root root     0 Feb 18 10:59 sys
 - mdeltree
 - mdu
 
-## mkdir
-
-创建新目录
-
-**参数**：-p 确保目录名称存在，如果目录不存在的就新创建一个。
-
-```shell
-mkdir river # 创建目录river
-mkdir -p  /home/blue/ssd/thinkit
-```
-
-```shell
-directory=/home/dmp/lixiaoli/yjk_dm
-loaddate=`date -d "-1 day" "+%Y-%m-%d"`
-mkdir -p ${directory}/log/${loaddate}/
-```
-
 - mlabel
 - mmd
 - mmount
@@ -581,7 +616,7 @@ mount /dev/hda1 /data
 - quotaoff
 - quotaon
 - repquota
-- rmdir
+
 - rmt
 - stat
 - tree
@@ -709,7 +744,11 @@ sdb               8:16   0   2.2T  0 disk
 - getty
 - httpd
 
-## ifconfig	
+## ifup
+
+## ifdown
+
+## ifconfig
 
 查看网络设置信息	
 
@@ -789,15 +828,30 @@ ping 192.168.1.1
 - ppp-off
 - pppsetup
 - pppstats
+
+## route
+
 - samba
 - setserial
 - shapecfg
 - smbclient
 - smbd
+
+## ss
+
+## ssh
+
 - statserial
 - talk
-- tcpdump
-- telnet
+
+## tcpdump
+
+命令行的抓包工具
+
+
+
+## telnet
+
 - testparm
 - traceroute
 - tty
@@ -961,6 +1015,8 @@ top命令会显示当前系统中占用资源最多的一些进程
 top -p 139
 ```
 
+
+
 ## uname
 
 uname可以显示一些重要的系统信息，例如内核名称、主机名、内核版本号、处理器类型之类的信息
@@ -987,7 +1043,9 @@ useradd -d /home/myd tt
 
 
 - userconf
-- userdel
+
+## userdel
+
 - usermod
 - vlock
 - w

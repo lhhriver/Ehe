@@ -50,17 +50,19 @@ $$
 
 
 
-| LaTex命令 | 显示结果 | LaTex命令 | 显示结果 |   LaTex命令    |     显示结果      |
-| :-------: | :------: | :-------: | :------: | :------------: | :---------------: |
-|   a_{1}   | $a_{1}$  |   x^{2}   | $x^{2}$  | \sum_{i=1}^{N} | $\sum_{i=1}^{N} $ |
+|   LaTex命令    | 显示结果         |
+| :------------: | :--------------- |
+|     a_{1}      | $a_{1}$          |
+|     x^{2}      | $x^{2}$          |
+| \sum_{i=1}^{N} | $\sum_{i=1}^{N}$ |
 
 ## 如何输入分数
 
-​		通常使用 \frac {分子} {分母}命令产生一个分数\frac {分子} {分母}，分数可嵌套。
+通常使用 \frac {分子} {分母}命令产生一个分数\frac {分子} {分母}，分数可嵌套。
 
-​		便捷情况可直接输入 \frac ab来快速生成一个\frac ab。
+便捷情况可直接输入 \frac ab来快速生成一个\frac ab。
 
-​		如果分式很复杂，亦可使用 分子 \over 分母 命令，此时分数仅有一层。
+如果分式很复杂，亦可使用 分子 \over 分母 命令，此时分数仅有一层。
 $$
 \frac{a-1}{b-1} \quad and \quad {a+1\over b+1}
 $$
@@ -74,9 +76,11 @@ $$
 
 平方根的输入命令为 \sqrt， n次方根的命令为 \sqrt[n]
 
-| LaTex命令 |  显示结果  |  LaTex命令  |   显示结果    |   LaTex命令    |        显示结果         |
-| :-------: | :--------: | :---------: | :-----------: | :------------: | :---------------------: |
-| \sqrt{x}  | $\sqrt{x}$ | \sqrt[n]{4} | $\sqrt[n]{4}$ | \sqrt{x^2+y^2} | $ \sqrt{x^2+\sqrt{y}} $ |
+|   LaTex命令    | 显示结果                |
+| :------------: | :---------------------- |
+|    \sqrt{x}    | $\sqrt{x}$              |
+|  \sqrt[n]{4}   | $\sqrt[n]{4}$           |
+| \sqrt{x^2+y^2} | $ \sqrt{x^2+\sqrt{y}} $ |
 
 
 
@@ -92,8 +96,7 @@ $$
 ```
 
 $$
-\underbrace{1+2+3+\cdots+100}_{100}
-\tag{2-2}
+\underbrace{1+2+3+\cdots+100}_{100}  \tag{2-2}
 $$
 
 ## 如何输入省略号
@@ -108,21 +111,24 @@ $$
 
 使用 \vec{矢量}来自动产生一个矢量。也可以使用 \overrightarrow等命令自定义字母上方的符号。
 
-$$
-\vec{a} \cdot \vec{b}=0
-$$
+|                       LaTex命令                        | 显示结果                                                 |
+| :----------------------------------------------------: | -------------------------------------------------------- |
+|                \vec{a} \cdot \vec{b}=0                 | $\vec{a} \cdot \vec{b}=0$                                |
+|                   \overleftarrow{xy}                   | $\overleftarrow{xy} $                                    |
+|                \overleftrightarrow{xy}                 | $\overleftrightarrow{xy} $                               |
+|                  \overrightarrow{xy}                   | $\overrightarrow{xy}$                                    |
+| \overleftarrow{xy} \quad and \quad \overrightarrow{xy} | $\overleftarrow{xy} \quad and \quad \overrightarrow{xy}$ |
 
-$$
-\overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \overrightarrow{xy}
-$$
+
 
 ## 上下水平线
 
 命令 \overline 和 \underline 在表达式的上、下方画出水平线。比如：
 
-|   LaTex命令    |      显示结果      |    LaTex命令    |      显示结果       |
-| :------------: | :----------------: | :-------------: | :-----------------: |
-| \overline{x+y} | $ \overline{x+y} $ | \underline{x+y} | $ \underline{x+y} $ |
+|        公式         | LaTex命令       |
+| :-----------------: | :-------------- |
+| $ \overline{x+y} $  | \overline{x+y}  |
+| $ \underline{x+y} $ | \underline{x+y} |
 
 
 
@@ -130,13 +136,19 @@ $$
 
 使用 \int_积分下限^积分上限 {被积表达式} 来输入一个积分。
 
-$$
-\int_0^1 {x^2} {\rm d}x
-$$
+|           公式            | LaTex命令               |
+| :-----------------------: | :---------------------- |
+| $\int_0^1 {x^2} {\rm d}x$ | \int_0^1 {x^2} {\rm d}x |
+
+
 
 ## 如何输入极限运算
 
-使用\lim_{变量 \to 表达式} 表达式 来输入一个极限。如有需求，可以更改 \to 符号至任意符号。
+使用\lim_{变量 \to 表达式} 表达式来输入一个极限。如有需求，可以更改 \to 符号至任意符号。
+
+```
+\lim_{n \to +\infty} \frac{1}{n(n+1)} \quad and \quad \lim_{0\leftarrow{n}} \frac{1}{n(n+1)}
+```
 
 $$
 \lim_{n \to +\infty} \frac{1}{n(n+1)} \quad and \quad \lim_{0\leftarrow{n}} \frac{1}{n(n+1)}
@@ -146,6 +158,12 @@ $$
 使用 \sum_{下标表达式}^{上标表达式} {累加表达式}来输入一个累加。
 
 与之类似，使用 \prod \bigcup \bigcap来分别输入累乘、并集和交集。
+
+```
+\sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R 
+```
+
+
 $$
 \sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R
 $$
@@ -174,9 +192,9 @@ $$
 
 ## 大括号和行标的使用
 
-使用 \left和 \right来创建自动匹配高度的 (圆括号)，[方括号] 和 {花括号} 。
+使用 **\left**和 **\right**来创建自动匹配高度的 (圆括号)，[方括号] 和 {花括号} 。
 
-在每个公式末尾前使用\tag{行标}来实现行标。
+在每个公式末尾前使用**\tag{行标}**来实现行标。
 $$
 f\left(
    \left[ 
@@ -199,53 +217,68 @@ $$
 $$
 f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2} \right)
 $$
-​	有时候要用\left.或\right.进行匹配而不显示本身。
+​	有时候要用**\left.**或**\right.**进行匹配而不显示本身。
 $$
 \left. \frac{{\rm d}u} {{\rm d}x} \right| _{x=0}
 $$
 
 ## 偏导
 
+```
+\frac {\partial^{2}y} {\partial x^{2}}
+```
+
 $$
 \frac {\partial^{2}y} {\partial x^{2}}
 $$
 
+## 字体
 
+| 格式 |                  公式                  | LaTex命令                            |
+| :--: | :------------------------------------: | ------------------------------------ |
+| 加粗 | $\boldsymbol{H}^T \boldsymbol{R}^{-1}$ | \boldsymbol{H}^T \boldsymbol{R}^{-1} |
+|      |       $\int_0^1 {x^2} {\rm d}x$        | \int_0^1 {x^2} {\rm d}x              |
+|      |         $\int_0^1 {x^2} {d}x$          | \int_0^1 {x^2} {d}x                  |
 
 ## 其他
 
-其他，比如 分数可以用 \frac 命令， 求和可以用 \sum 命令， 乘积运算可以用 \prod 生成， 积分可以用 \int 命令。部分示例如下：
+其他，比如 分数可以用 **\frac** 命令， 求和可以用 **\sum** 命令， 乘积运算可以用 **\prod** 生成， 积分可以用 **\int** 命令。部分示例如下：
 
-| LaTex命令       | 显示结果          | LaTex命令         | 显示结果            | LaTex命令         | 显示结果             |
-| --------------- | ----------------- | ----------------- | ------------------- | ----------------- | -------------------- |
-| \sum            | $\sum$            | \int              | $\int$              | \sum_{i=1}^{N}    | $\sum_{i=1}^{N} $    |
-| \int_{a}^{b}    | $\int_{a}^{b}$    | \prod             | $\prod$             | \iint             | $\iint $             |
-| \prod_{i=1}^{N} | $\prod_{i=1}^{N}$ | \iint_{a}^{b}     | $\iint_{a}^{b}$     | \bigcup           | $\bigcup $           |
-| \bigcap         | $\bigcap$         | \bigcup_{i=1}^{N} | $\bigcup_{i=1}^{N}$ | \bigcap_{i=1}^{N} | $\bigcap_{i=1}^{N} $ |
-| \sqrt[3]{2}     | $\sqrt[3]{2}$     | \sqrt{3}          | $\sqrt{3}$          | x_{3}             | $ x_{3} $            |
-| \lim_{x \to 0}  | $\lim_{x \to 0}$  | \frac{1}{2}       | $\frac{1}{2}$       |                   |                      |
-
-
+|         公式         | LaTex命令         |
+| :------------------: | ----------------- |
+|        $\sum$        | \sum              |
+|  $\sum_{i=1}^{N} $   | \sum_{i=1}^{N}    |
+|        $\int$        | \int              |
+|    $\int_{a}^{b}$    | \int_{a}^{b}      |
+|       $\iint $       | \iint             |
+|   $\iint_{a}^{b}$    | \iint_{a}^{b}     |
+|       $\prod$        | \prod             |
+|  $\prod_{i=1}^{N}$   | \prod_{i=1}^{N}   |
+|      $\bigcup $      | \bigcup           |
+| $\bigcup_{i=1}^{N}$  | \bigcup_{i=1}^{N} |
+|      $\bigcap$       | \bigcap           |
+| $\bigcap_{i=1}^{N} $ | \bigcap_{i=1}^{N} |
+|   $\lim_{x \to 0}$   | \lim_{x \to 0}    |
 
 # 运算符
 
 ## 关系运算符
 
-|     显示     | 输入       |    显示     | 输入      |    显示    | 输入     |
-| :----------: | ---------- | :---------: | --------- | :--------: | -------- |
-|    $\pm$     | \pm        |  $\times$   | \times    |   $\div$   | \div     |
-|    $\mid$    | \mid       |   $\nmid$   | \nmid     |  $\cdot$   | \cdot    |
-|   $\circ$    | \circ      |   $\ast$    | \ast      | $\bigodot$ | \bigodot |
-| $\bigotimes$ | \bigotimes | $\bigoplus$ | \bigoplus |   $\leq$   | \leq     |
-|    $\geq$    | \geq       |   $\neq$    | \neq      | $\approx$  | \approx  |
-|   $\equiv$   | \equiv     |   $\sum$    | \sum      |  $\prod$   | \prod    |
-|  $\coprod$   | \coprod    |             |           |            |          |
+|     显示     | 输入       |    显示     | 输入      |    显示    | 输入      |
+| :----------: | ---------- | :---------: | --------- | :--------: | --------- |
+|    $\pm$     | \pm        |  $\times$   | \times    |   $\div$   | \div      |
+|    $\mid$    | **\mid**   |   $\nmid$   | \nmid     |  $\cdot$   | **\cdot** |
+|   $\circ$    | \circ      |   $\ast$    | \ast      | $\bigodot$ | \bigodot  |
+| $\bigotimes$ | \bigotimes | $\bigoplus$ | \bigoplus |   $\leq$   | **\leq**  |
+|    $\geq$    | **\geq**   |   $\neq$    | **\neq**  | $\approx$  | \approx   |
+|   $\equiv$   | \equiv     |   $\sum$    | \sum      |  $\prod$   | \prod     |
+|  $\coprod$   | \coprod    |             |           |            |           |
 
 ## 集合运算符
 
 |    显示     | 输入      |    显示     | 输入      |
 | :---------: | :-------- | :---------: | :-------- |
-| $\emptyset$ | \emptyset |    $\in$    | \in       |
+| $\emptyset$ | \emptyset |    $\in$    | **\in**   |
 |  $\notin$   | \notin    |  $\subset$  | \subset   |
 |  $\supset$  | \supset   | $\subseteq$ | \subseteq |
 | $\supseteq$ | \supseteq |  $\bigcap$  | \bigcap   |
@@ -281,13 +314,13 @@ $$
 
 ## 微积分运算符
 
-|   显示    | 输入    |   显示   | 输入   |
-| :-------: | :------ | :------: | :----- |
-| $\prime$  | \prime  | $\oint$  | \oint  |
-|  $\int$   | \int    |  $\lim$  | \lim   |
-|  $\iint$  | \iint   | $\infty$ | \infty |
-| $\iiint$  | \iiint  | $\nabla$ | \nabla |
-| $\iiiint$ | \iiiint |          |        |
+|   显示    | 输入     |   显示   | 输入       |
+| :-------: | :------- | :------: | :--------- |
+| $\prime$  | \prime   | $\oint$  | \oint      |
+|  $\int$   | **\int** |  $\lim$  | \lim       |
+|  $\iint$  | \iint    | $\infty$ | **\infty** |
+| $\iiint$  | \iiint   | $\nabla$ | \nabla     |
+| $\iiiint$ | \iiiint  |          |            |
 
 ## 逻辑运算符
 
@@ -333,7 +366,9 @@ $$
 
 上述矩阵显示的不是很美观，可以给矩阵加上括号，加括号的方式有多种。
 
-## 带括号的矩阵 \left \right
+## 带括号的矩阵 
+
+1. **\left \right**
 
 ```
 $$
@@ -381,7 +416,9 @@ $$
 \right ] \tag{3-3}
 $$
 
-## 带括号的矩阵 \bmatrix \Bmatrix
+---
+
+2. **\bmatrix \Bmatrix**
 
 ```
 $$
@@ -425,7 +462,9 @@ $$
  \tag{3-5}
 $$
 
-## 带括号的矩阵 \vmatrix \Vmatrix
+---
+
+3. **\vmatrix \Vmatrix**
 
 ```
 $$
@@ -471,7 +510,15 @@ $$
 
 ## 带省略号的矩阵
 
-如果矩阵元素太多，可以用 \cdots $\cdots$  \ddots $\ddots$ \vdots $\vdots$ 等省略符号来定义矩阵。
+如果矩阵元素太多，可以用省略符号来定义矩阵。
+
+|  省略号  | LaTex命令 |
+| :------: | --------- |
+| $\cdots$ | \cdots    |
+| $\ddots$ | \ddots    |
+| $\vdots$ | \vdots    |
+
+
 
 ```
 $$
@@ -527,8 +574,7 @@ $$
 
 
 ```
-这是行内矩阵的Demo：
-$\big( 
+这是行内矩阵的Demo：$\big( 
     \begin{smallmatrix}
     1 & 2 & 3 \\
     4 & 5 & 6 \\
@@ -537,9 +583,7 @@ $\big(
  \big)$  后面还有……
 ```
 
-这是行内矩阵的Demo：
-
-$\big( 
+这是行内矩阵的Demo：$\big( 
     \begin{smallmatrix}
     1 & 2 & 3 \\
     4 & 5 & 6 \\
@@ -550,24 +594,20 @@ $\big(
 或者：
 
 ```
-这是行内矩阵的Demo：
-$ 
+这是行内矩阵的Demo：$
     \begin{bmatrix}
     1 & 2 & 3 \\
     4 & 5 & 6 \\
     7 & 8 & 9
-    \end{bmatrix} 
-$  后面还有……
+    \end{bmatrix} $  ，还行吧。
 ```
 
-这是行内矩阵的Demo：
-$ 
+这是行内矩阵的Demo：$
     \begin{bmatrix}
     1 & 2 & 3 \\
     4 & 5 & 6 \\
     7 & 8 & 9
-    \end{bmatrix} 
-$  后面还有……
+    \end{bmatrix} $  ，还行吧。
 
 
 
@@ -604,7 +644,7 @@ $  后面还有……
 
 **Tips: **
 
-1. 如果使用大写的希腊字母，把命令的首字母变成大写即可，例如 \Gamma 输出的是  $\Gamma$ 。
+1. 如果使用大写的希腊字母，把命令的首字母变成大写即可，例如 \Gamma 输出的是$\Gamma$ 。
 2. 如果使用斜体大写希腊字母，再在大写希腊字母的LaTeX命令前加上var，例如 \varGamma 生成 $\varGamma$。
 
 ## 二元关系
@@ -720,7 +760,7 @@ $  后面还有……
 |     符号     | LaTex命令 |  符号  | LaTex命令 |     符号     | LaTex命令  |        符号         | LaTex命令       |
 | :----------: | --------- | :----: | --------- | :----------: | ---------- | :-----------------: | --------------- |
 | $ \dagger $  | \dagger   | $ \S $ | \S        | $\copyright$ | \copyright | $ \textregistered $ | \textregistered |
-| $ \ddagger $ | \ddagger  | $ \P $ | \P        | $ \pounds $  | \pounds    |       $ \% $        | \%              |
+| $ \ddagger $ | \ddagger  | $ \P $ | \P        |  $\pounds$   | \pounds    |       $ \% $        | \%              |
 
 ## AMS 定界符
 
