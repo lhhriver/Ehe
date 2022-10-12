@@ -273,6 +273,13 @@ git pull https://github.com/river.git
 git pull origin master
 ```
 
+```shell
+# 强行拉取覆盖本地
+git fetch --all && git reset --hard origin/master && git pull
+```
+
+
+
 ## git stash
 
 **用法**： git stash save

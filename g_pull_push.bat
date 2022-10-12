@@ -1,8 +1,8 @@
 @echo off
 
 echo ==============  Update Ehe  ==============
-G:
-cd G:\LocalSpace\Gitee\Ehe
+D:
+cd D:\Gitee\Ehe
 
 echo:
 git add .

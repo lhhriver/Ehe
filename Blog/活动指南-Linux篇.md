@@ -207,6 +207,22 @@ rm -r river # 删除目录river
 rm -rf chinese_text_classification/
 ```
 
+
+
+按日期删除文件
+
+```shell
+find /home/studies -mtime +10 -name "*.*" -exec rm -Rf {} \;
+```
+
+* /home/studies ：准备要进行清理的任意目录
+* -mtime：标准语句写法
+* ＋10：查找10天前的文件，这里用数字代表天数，＋30表示查找30天前的文件
+* "*.*"：希望查找的数据类型，"\*.jpg"表示查找扩展名为jpg的所有文件，"\*"表示查找所有文件
+* -exec：固定写法
+* rm -rf：强制删除文件，包括目录
+* {} \; ：固定写法，一对大括号+空格+/+;
+
 ## rmdir
 
 全拼 remove empty directories，功能是删除空目录
