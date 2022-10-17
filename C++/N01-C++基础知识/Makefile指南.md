@@ -6,7 +6,7 @@
 
 因为， makefile 关系到了整个工程的编译规则。一个工程中的源文件不计其数， 并且按类型、功能、 模块分别放在若干个目录中， makefile 定义了一系列的规则来指定， 哪些文件需要先编译， 哪些文件需要后编译， 哪些文件需要重新编译， 甚至于进行更复杂的功能操作， 因为makefile 就像一个 Shell 脚本 一样，其中也可以执行操作系统的命令。
 
-makefile 带来的好处就是——**自动化编译**，一旦写好， 只需要一个 make 命令， 整个工程完全自 动编译， 极大的提高了软件开发的效率。 make 是一个命令工具， 是一个解释 makefile 中指令的命令工 具， 一般来说， 大多数的 IDE 都有这个命令， 比如： Delphi 的 make，Visual C++ 的 nmake，Linux 下 GNU 的 make。可见， makefile 都成为了一种在工程方面的编译方法。
+makefile 带来的好处就是——**自动化编译**，一旦写好， 只需要一个 make 命令， 整个工程完全自 动编译， 极大的提高了软件开发的效率。 make 是一个命令工具， 是一个解释 makefile 中指令的命令工 具， 一般来说， 大多数的 IDE 都有这个命令， 比如：Delphi 的 make，Visual C++ 的 nmake，Linux 下 GNU 的 make。可见， makefile 都成为了一种在工程方面的编译方法。
 
 现在讲述如何写 makefile 的文章比较少， 这是我想写这篇文章的原因。当然， 不同产商的 make 各不相同， 也有不同的语法， 但其本质都是在“文件依赖性”上做文章， 这里， 我仅对 GNU 的 make 进行讲述， 我的环境是 RedHat Linux 8.0，make 的版本是 3.80。毕竟， 这个make 是应用最为广泛的， 也是用得最多的。而且其还是最遵循于 IEEE 1003.2-1992 标准的(POSIX.2 )。
 
@@ -18,7 +18,7 @@ makefile 带来的好处就是——**自动化编译**，一旦写好， 只需
 
 **编译时**， 编译器需要的是语法的正确， 函数与变量的声明的正确。对于后者， 通常是你需要告诉编译器头文件的所在位置（头文件中应该只是声明， 而定义应该放在 C/C++ 文件中），只要所有的语法正确， 编译器就可以编译出中间目标文件。一般来说， 每个源文件都应该对应于一个中间目标文件( .o 文 件或 .obj 文件)。
 
-**链接时**， 主要是链接函数和全局变量。所以， 我们可以使用这些中间目标文件( .o 文件或 .obj 文 件) 来链接我们的应用程序。链接器并不管函数所在的源文件， 只管函数的中间目标文件(Object File)， 在大多数时候， 由于源文件太多， 编译生成的中间目标文件太多， 而在链接时需要明显地指出中间目标文件名， 这对于编译很不方便。所以， 我们要给中间目标文件打个包， 在 Windows 下这种包叫“库文件”(Library File)，也就是 .lib 文件，在 UNIX 下，是 Archive File，也就是 .a 文件。
+**链接时**， 主要是链接函数和全局变量。所以， 我们可以使用这些中间目标文件( .o 文件或 .obj 文 件) 来链接我们的应用程序。链接器并不管函数所在的源文件， 只管函数的中间目标文件(Object File)， 在大多数时候， 由于源文件太多， 编译生成的中间目标文件太多， 而在链接时需要明显地指出中间目标文件名， 这对于编译很不方便。所以， 我们要给中间目标文件打个包， ① 在 Windows 下这种包叫“库文件”(Library File)，也就是 .lib 文件，② 在 UNIX 下，是 Archive File，也就是 .a 文件。
 
 总结一下， 源文件首先会生成中间目标文件， 再由中间目标文件生成执行文件。在编译时， 编译器只检测程序语法和函数、变量是否被声明。如果函数未被声明， 编译器会给出一个警告， 但可以生成 Object File。而在链接程序时， 链接器会在所有的 Object File 中找寻函数的实现， 如果找不到， 那到就会报链接错误码(Linker Error)，在 VC 下， 这种错误一般是： Link 2001 错误，意思说是说， 链接器未能找到函数的实现。你需要指定函数的 Object File。
 
@@ -33,7 +33,7 @@ make 命令执行时，需要一个 makefile 文件，以告诉 make 命令需�
 3. 如果这个工程的头文件被改变了， 那么我们需要编译引用了这几个头文件的 c 文件， 并链接目标程序。
 
 
-只要我们的 makefile 写得够好， 所有的这一切， 我们只用一个 make 命令就可以完成， make 命令会自动智能地根据当前的文件修改的情况来确定哪些文件需要重编译， 从而自动编译所需要的文件和链接 目标程序。
+只要我们的 makefile 写得够好， 所有的这一切， 我们只用一个 make 命令就可以完成， make 命令会自动智能地根据当前的文件修改的情况来确定哪些文件需要重编译， 从而自动编译所需要的文件和链接目标程序。
 
 ## makefile的规则
 
@@ -60,27 +60,27 @@ target ... : prerequisites ...
 正如前面所说， 如果一个工程有 3 个头文件和 8 个 c 文件， 为了完成前面所述的那三个规则， 我们的 makefile 应该是下面的这个样子的。
 
 ```makefile
-edit : main.o kbd.o command.o display.o insert.o search.o files.o utils.o
+edit: main.o kbd.o command.o display.o insert.o search.o files.o utils.o
 	cc -o edit main.o kbd.o command.o display.o insert.o search.o files.o utils.o
 
-main.o : main.c defs.h
+main.o: main.c defs.h
 	cc -c main.c
-kbd.o : kbd.c defs.h command.h
+kbd.o: kbd.c defs.h command.h
 	cc -c kbd.c
-command.o : command.c defs.h command.h
+command.o: command.c defs.h command.h
 	cc -c command.c
-display.o : display.c defs.h buffer.h
+display.o: display.c defs.h buffer.h
 	cc -c display.c
-insert.o : insert.c defs.h buffer.h
+insert.o: insert.c defs.h buffer.h
 	cc -c insert.c
-search.o : search.c defs.h buffer.h
+search.o: search.c defs.h buffer.h
 	cc -c search.c
-files.o : files.c defs.h buffer.h command.h
+files.o: files.c defs.h buffer.h command.h
 	cc -c files.c
-utils.o : utils.c defs.h
+utils.o: utils.c defs.h
 	cc -c utils.c
 	
-clean :
+clean:
 	rm edit main.o kbd.o command.o display.o insert.o search.o files.o utils.o
 ```
 
@@ -94,7 +94,7 @@ clean :
 
 在定义好依赖关系后， 后续的那一行定义了如何生成目标文件的操作系统命令， 一定要以一个 **Tab 键作为开头**。记住， make 并不管命令是怎么工作的， 他只管执行所定义的命令。 **make 会比较 targets 文件和 prerequisites 文件的修改日期， 如果 prerequisites 文件的日期要比 targets 文件的日期要新， 或者 target 不存在的话，那么， make 就会执行后续定义的命令**。
 
-这里要说明一点的是， clean 不是一个文件， 它只不过是一个动作名字， 有点像 c 语言中的 label 一 样， 其冒号后什么也没有， 那么， make 就不会自动去找它的依赖性， 也就不会自动执行其后所定义的命令。要执行其后的命令， 就要在 make 命令后明显的指出这个label 的名字。这样的方法非常有用， 我们可以在一个 makefile 中定义不用的编译或是和编译无关的命令，比如程序的打包，程序的备份，等等。
+这里要说明一点的是， clean 不是一个文件， 它只不过是一个动作名字， 有点像 c 语言中的 label 一 样， 其冒号后什么也没有， 那么， make 就不会自动去找它的依赖性， 也就不会自动执行其后所定义的命令。要执行其后的命令， 就要在 make 命令后明显的指出这个label的名字。这样的方法非常有用， 我们可以在一个 makefile 中定义不用的编译或是和编译无关的命令，比如程序的打包，程序的备份，等等。
 
 ## make 是如何工作的
 
@@ -243,7 +243,7 @@ Makefile 里主要包含了五个东西：显式规则、隐晦规则、变量�
     - 一个是在一个 Makefile 中引用另一个 Makefile，就像 C 语言中的 include 一样； 
     - 另一个是指根据某些情况指定 Makefile 中的有效部分， 就像 C 语言中的预编译 \#if 一样；
     - 还有就是定义一个多行的命令。
-5. **注释**。 Makefile 中只有行注释， 和 UNIX 的 Shell 脚本一样， 其注释是用 \# 字符， 这个就像 C/C++ 中的 // 一样。如果你要在你的 Makefile 中使用 \# 字符，可以用反斜杠进行转义，如： \\# 。
+5. **注释**：Makefile 中只有行注释， 和 UNIX 的 Shell 脚本一样， 其注释是用 \# 字符， 这个就像 C/C++ 中的 // 一样。如果你要在你的 Makefile 中使用 \# 字符，可以用反斜杠进行转义，如： \\# 。
 
 最后，还值得一提的是，在 Makefile 中的命令，必须要以 Tab 键开始。
 
