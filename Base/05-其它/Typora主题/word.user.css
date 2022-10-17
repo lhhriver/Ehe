@@ -1,0 +1,93 @@
+/* Based on Sublime Text's Monokai theme */
+
+.cm-s-inner.CodeMirror { background: #272822; color: #f8f8f2; }
+
+.cm-s-inner div.CodeMirror-selected { background: #49483E; }
+
+.cm-s-inner .CodeMirror-line::selection, .cm-s-inner .CodeMirror-line > span::selection, .cm-s-inner .CodeMirror-line > span > span::selection { background: rgba(73, 72, 62, .99); }
+
+.cm-s-inner .CodeMirror-line::-moz-selection, .cm-s-inner .CodeMirror-line > span::-moz-selection, .cm-s-inner .CodeMirror-line > span > span::-moz-selection { background: rgba(73, 72, 62, .99); }
+
+.cm-s-inner .CodeMirror-gutters { background: #272822; border-right: 0px; }
+
+.cm-s-inner .CodeMirror-guttermarker { color: white; }
+
+.cm-s-inner .CodeMirror-guttermarker-subtle { color: #d0d0d0; }
+
+.cm-s-inner .CodeMirror-linenumber { color: #d0d0d0; }
+
+.cm-s-inner .CodeMirror-cursor { border-left: 1px solid #f8f8f0; }
+
+.cm-s-inner span.cm-comment { color: #75715e; }
+
+.cm-s-inner span.cm-atom { color: #ae81ff; }
+
+.cm-s-inner span.cm-number { color: #ae81ff; }
+
+.cm-s-inner span.cm-property, .cm-s-inner span.cm-attribute { color: #a6e22e; }
+
+.cm-s-inner span.cm-keyword { color: #f92672; }
+
+.cm-s-inner span.cm-builtin { color: #66d9ef; }
+
+.cm-s-inner span.cm-string { color: #e6db74; }
+
+.cm-s-inner span.cm-variable { color: #f8f8f2; }
+
+.cm-s-inner span.cm-variable-2 { color: #9effff; }
+
+.cm-s-inner span.cm-variable-3 { color: #66d9ef; }
+
+.cm-s-inner span.cm-def { color: #fd971f; }
+
+.cm-s-inner span.cm-bracket { color: #f8f8f2; }
+
+.cm-s-inner span.cm-tag { color: #f92672; }
+
+.cm-s-inner span.cm-header { color: #ae81ff; }
+
+.cm-s-inner span.cm-link { color: #ae81ff; }
+
+.cm-s-inner span.cm-error { background: #f92672; color: #f8f8f0; }
+
+/*.cm-s-inner .CodeMirror-activeline-background { background: #373831; }*/
+
+.cm-s-inner .CodeMirror-matchingbracket {
+
+  text-decoration: underline;
+
+  color: white !important;
+
+}
+
+/**apply to code fences with plan text**/
+
+.md-fences {
+  background-color: #272822;
+  color: #f8f8f2;
+  border: none;
+  font-size: 18px; /*代码块字号*/
+}
+
+.md-fences .code-tooltip {
+  background-color: #272822;  
+}
+
+/*代码块字体*/
+textarea {
+    font-family: Consolas
+}
+
+.CodeMirror div.CodeMirror-cursor {
+    border-left: 2px solid #b8bfc6;  /*光标*/
+    z-index: 3;
+}
+
+/*
+.CodeMirror-selectedtext,
+.CodeMirror-selected {
+    background: #4a89dc;
+    color: #fff !important;
+    text-shadow: none;
+}
+*/

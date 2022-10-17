@@ -135,10 +135,13 @@
   --color-Gray:  #808080 ;   /*灰色*/
   --color-DimGray:  #696969 ;   /*暗淡的灰色*/
   --color-Black:  #000000 ;   /*纯黑*/
+  --tb-bg-color: #92CDDC; /*表头颜色*/
 
   
   --bg-color: var(--color-White); /*主页面背景色*/
   --text-color: var(--color-Black); /*主页面字体颜色*/
+  
+  --table-bg-color: var(--tb-bg-color); /*主页面字体颜色*/
   
   --search-select-bg-color: var(--color-Blue); /**/
   --search-select-text-color: var(--color-Black);
@@ -155,40 +158,40 @@
 
 
 html { /*设置正文字体*/
-  font-family: Microsoft Yahei;
-  font-size: 22px;  /*正文字体大小, 会自动调整到偏好设置字体大小*/
-  text-align:left; /*文本两端对齐：justify*/
+  font-family: Simsun, Microsoft Yahei;
+  font-size: 16px;  /*正文字体大小, 会自动调整到偏好设置字体大小22px*/
+  text-align:justify; /*文本两端对齐：justify   left*/
 }
 
 body { /*设置正文行高、背景色等*/
-  font-family: Microsoft Yahei;
+  font-family: Simsun,Microsoft Yahei;
   line-height: 150%;  /*行高 160*/
 }
 
 #write {
-  max-width: 90%;  /*主页面宽度比例*/
+  max-width: 724px;  /*主页面宽度比例 90%   595：A4   */
   counter-reset: h1
 }
 
 /* 水平分隔线 ***/
 hr {
   border: none;
-  border-top:3px dashed var(--color-Red);
+  border-top:1.5px dashed var(--color-Black);
   height: 1px; /*两线间距*/
 }
 
 
 textarea {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Simsun,"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 
 /* 块/段落引用 */
 blockquote {
   position: relative;
-  color: var(--color-Purple);  /*引用字体颜色*/
+  color: var(--color-Black);  /*引用字体颜色*/
   font-weight: 400;
-  border-left: 5px solid var(--color-Red);
+  border-left: 3px solid var(--color-Black);
   padding-left: 1em;
   margin: 1em 3em 1em 2em;
 }
@@ -196,15 +199,15 @@ blockquote {
 
 /*ul无序列表 */
 ul {
-  color: var(--color-DarkGreen);   /*列表字体颜色*/
-  font-family: Microsoft Yahei;
+  color: var(--color-Black);   /*列表字体颜色*/
+  font-family: Simsun,Microsoft Yahei;
   /*list-style: disc;*/
 }
 
 /* ol有序列表*/
 ol {
-  color: var(--color-Green);   /*列表字体颜色*/
-  font-family: Microsoft Yahei;
+  color: var(--color-Black);   /*列表字体颜色*/
+  font-family: Simsun,Microsoft Yahei;
   list-style: decimal;
 }
 
@@ -221,7 +224,7 @@ strong {
 
 /*`  `*/
 code {
-  font-family: Microsoft Yahei;
+  font-family: Simsun,Microsoft Yahei;
   background-color: var(--color-Yellow);
   font-size: 24;
   color: var(--color-Blue);
@@ -241,56 +244,55 @@ sub, sup {
 
 /*table----------------------------------------------------------------------------*/
 table {
-	border: solid 1px var(--color-Blue);
+	border: solid 1px var(--color-Black);
 	margin-bottom: 20px
 }
 
 /*表头*/
 table th {
-  color: var(--color-Blue);
-  font-weight: 800;
-  background-color: var(--color-Wheat);
+  color: var(--color-Black);
+  font-size:18px;
+  font-weight: bolder;
+  background-color: var(--table-bg-color);
   
-  padding: 8px;
+  padding: 2.2px;
   line-height: 1.5rem;
-  border: 1px solid var(--color-Red); 
+  border: 1px solid var(--color-Black); 
 }
 
 table td {
-	padding: 8px;
-	line-height: 1.5rem;
-	border: 1px solid var(--color-Red); 
+	padding: 2px;
+	line-height: 1.rem;
+	border: 1px solid var(--color-Black); 
 }
 
 table tr:nth-child(even) {
-  background: var(--color-LightYellow);  /*隔行背景色*/
+  background: var(--color-white);  /*隔行背景色*/
 }
 
 h1, h2{
-  font-size: 24px;
+  font-size: 20px;
   width: auto;
-  font-family: Microsoft Yahei;
+  font-family: Simsun,Microsoft Yahei;
   -webkit-font-smoothing: initial;
   line-height: 1.35; 
   margin: 30px 0px 10px 0px;
-  font-weight: 600;
-  color: var(--color-Gray);  /*标题颜色 DarkGreen*/
+  font-weight: bolder;
+  color: var(--color-Black);  /*标题颜色 DarkGreen*/
   font-variant-numeric: lining-nums;
-  border-top: 1px solid #eee;  /*下划线*/
 }
 
 
 h3, h4, h5, h6 {
-  font-size: 22px;
+  font-size: 20px;
   width: auto;
-  font-family: Microsoft Yahei;
+  font-family: Simsun,Microsoft Yahei;
   -webkit-font-smoothing: initial;
   line-height: 1.35; 
   margin: 30px 0px 10px 0px;
-  font-weight: 600;
-  color: var(--color-Gray);  /*标题颜色*/
+  font-weight: bolder;
+  color: var(--color-Black);  /*标题颜色*/
   font-variant-numeric: lining-nums;
-  border-top: 1px solid #eee;  /* 下划线*/
 }
 
 
@@ -321,14 +323,15 @@ h5 {
 /* 标题输入之前格式 */
 #write h1::before,
 #write h2::before {
-	color: var(--color-Blue);
+	color: var(--color-Black);
     border: inherit;
     border-radius: inherit;
     position: inherit;
     left:initial;
     float: none;
     top:initial;
-    font-size: 24px;
+    font-size: 18px;
+	font-weight: 800;
     padding-left: inherit;
     padding-right: inherit;
     vertical-align: inherit;
@@ -341,14 +344,15 @@ h5 {
 #write h4::before,
 #write h5::before,
 #write h6::before {
-	color: var(--color-Gray);
+	color: var(--color-Black);
     border: inherit;
     border-radius: inherit;
     position: inherit;
     left:initial;
     float: none;
     top:initial;
-    font-size: 24px;
+    font-size: 18px;
+	font-weight: 800;
     padding-left: inherit;
     padding-right: inherit;
     vertical-align: inherit;

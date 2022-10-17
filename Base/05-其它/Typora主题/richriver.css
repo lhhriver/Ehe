@@ -137,20 +137,42 @@
   --color-Black:  #000000 ;   /*纯黑*/
 
   
-  --bg-color: var(--color-White); /*主页面背景色*/
-  --text-color: var(--color-Black); /*主页面字体颜色*/
+  --bg-color: #1e1e1e; /*主页面背景色*/
+  --text-color: #d4d4d4; /*主页面字体颜色*/
   
   --search-select-bg-color: var(--color-Blue); /**/
   --search-select-text-color: var(--color-Black);
   
   /* Side Bar */
-  --side-bar-bg-color: var(-color-Blue);
+  --side-bar-bg-color: #1e1e1e;
   --side-bar-fg-color: var(--color-Black);
   
   --item-hover-bg-color: var(--color-Khaki);  /*大纲背景色*/
   --item-hover-text-color: var(--color-White);
   
   --sidebar-width: 300px;
+  
+  /*新增*/
+
+    --select-text-bg-color:#4a89dc;
+
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px solid #555;
+
+    --active-file-bg-color: rgb(34, 34, 34);
+    --active-file-border-color: #8d8df0;
+
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: white;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
+
+    --rawblock-edit-panel-bd: #333;
+    --search-select-bg-color: #428bca;
 }
 
 
@@ -158,37 +180,41 @@ html { /*设置正文字体*/
   font-family: Microsoft Yahei;
   font-size: 22px;  /*正文字体大小, 会自动调整到偏好设置字体大小*/
   text-align:left; /*文本两端对齐：justify*/
+  -webkit-font-smoothing: antialiased;  /*这个属性可以使页面上的字体抗锯齿,使用后字体看起来会更清晰*/
 }
 
+html,
 body { /*设置正文行高、背景色等*/
   font-family: Microsoft Yahei;
   line-height: 150%;  /*行高 160*/
+  background: var(--bg-color);
+  fill: currentColor;
 }
 
 #write {
   max-width: 90%;  /*主页面宽度比例*/
-  counter-reset: h1
+  counter-reset: h1;
 }
 
 /* 水平分隔线 ***/
 hr {
   border: none;
-  border-top:3px dashed var(--color-Red);
+  border-top:3px dashed #9cdcfe;
   height: 1px; /*两线间距*/
 }
 
 
 textarea {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Microsoft Yahei,"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 
 /* 块/段落引用 */
 blockquote {
   position: relative;
-  color: var(--color-Purple);  /*引用字体颜色*/
+  color: #dcdcaa;  /*引用字体颜色*/
   font-weight: 400;
-  border-left: 5px solid var(--color-Red);
+  border-left: 5px solid #9cdcfe;
   padding-left: 1em;
   margin: 1em 3em 1em 2em;
 }
@@ -196,14 +222,14 @@ blockquote {
 
 /*ul无序列表 */
 ul {
-  color: var(--color-DarkGreen);   /*列表字体颜色*/
+  color: #b5cea8;   /*列表字体颜色*/
   font-family: Microsoft Yahei;
   /*list-style: disc;*/
 }
 
 /* ol有序列表*/
 ol {
-  color: var(--color-Green);   /*列表字体颜色*/
+  color: #9cdcfe;   /*列表字体颜色*/
   font-family: Microsoft Yahei;
   list-style: decimal;
 }
@@ -211,20 +237,19 @@ ol {
 
 /*强调文本*/
 strong {
-	color: var(--color-Blue);
+	color: #179fff;
 	font-weight: 800;  /*bolder*/
-	text-shadow: 2px 2px 8px var(--color-FloralWhite);   /* 阴影 */
+	/* text-shadow: 2px 2px 8px var(--color-White);   阴影 */
 }
-
 
 
 
 /*`  `*/
 code {
   font-family: Microsoft Yahei;
-  background-color: var(--color-Yellow);
+  background-color: #6a9955;
   font-size: 24;
-  color: var(--color-Blue);
+  color: #d4d4d4;
   padding: 2px 2px;
   font-style: normal;
   font-weight: 800;
@@ -241,29 +266,35 @@ sub, sup {
 
 /*table----------------------------------------------------------------------------*/
 table {
-	border: solid 1px var(--color-Blue);
+	max-width: 100%;
+    width: 100%;
+	border-collapse: collapse;
+    border-spacing: 0;
+	border: solid 1px #4ec9b0;
 	margin-bottom: 20px
 }
 
 /*表头*/
 table th {
-  color: var(--color-Blue);
+  color: #179fff;
   font-weight: 800;
-  background-color: var(--color-Wheat);
+  background-color: #1e1e1e1e;
   
   padding: 8px;
   line-height: 1.5rem;
-  border: 1px solid var(--color-Red); 
+  border: 1px solid #4ec9b0; 
+  vertical-align: middle;
 }
 
 table td {
 	padding: 8px;
 	line-height: 1.5rem;
-	border: 1px solid var(--color-Red); 
+	border: 1px solid #4ec9b0; 
 }
 
 table tr:nth-child(even) {
-  background: var(--color-LightYellow);  /*隔行背景色*/
+  background: #1e1e1e1e;  /*隔行背景色*/
+  vertical-align: middle;
 }
 
 h1, h2{
@@ -272,11 +303,11 @@ h1, h2{
   font-family: Microsoft Yahei;
   -webkit-font-smoothing: initial;
   line-height: 1.35; 
-  margin: 30px 0px 10px 0px;
+  margin: 30px 1px 10px 0px;
   font-weight: 600;
-  color: var(--color-Gray);  /*标题颜色 DarkGreen*/
+  color: #6a9955;  /*标题颜色 DarkGreen*/
   font-variant-numeric: lining-nums;
-  border-top: 1px solid #eee;  /*下划线*/
+  border-top: 1px solid #ce9178;  /*下划线*/
 }
 
 
@@ -286,11 +317,11 @@ h3, h4, h5, h6 {
   font-family: Microsoft Yahei;
   -webkit-font-smoothing: initial;
   line-height: 1.35; 
-  margin: 30px 0px 10px 0px;
+  margin: 30px 1px 10px 0px;
   font-weight: 600;
-  color: var(--color-Gray);  /*标题颜色*/
+  color: #6a9955;  /*标题颜色*/
   font-variant-numeric: lining-nums;
-  border-top: 1px solid #eee;  /* 下划线*/
+  border-top: 1.5px solid #ce9178;  /* 下划线*/
 }
 
 
@@ -321,7 +352,7 @@ h5 {
 /* 标题输入之前格式 */
 #write h1::before,
 #write h2::before {
-	color: var(--color-Blue);
+	color: #ce9178;
     border: inherit;
     border-radius: inherit;
     position: inherit;
@@ -341,7 +372,7 @@ h5 {
 #write h4::before,
 #write h5::before,
 #write h6::before {
-	color: var(--color-Gray);
+	color: #ce9178;
     border: inherit;
     border-radius: inherit;
     position: inherit;
