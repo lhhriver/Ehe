@@ -191,7 +191,7 @@
 |         **:set nu<br />:set nonu**         | 设定与取消行号                                               |
 |             **:syntax enable**             | 语法高亮                                                     |
 |               **:set wrap**                | warp：自动换行，nowrap：不自动换行                           |
-|             **:set incsearch**             | 逐步搜索模式,对当前键入的字符进行查找,不必等输入完成         |
+|             **:set incsearch**             | 逐步搜索模式，对当前键入的字符进行查找，不必等输入完成       |
 |            **:set ignorecase**             | 忽略大小写                                                   |
 | :set list<br />:set nolist<br />:set list! | list：显示非可见字符<br />nolist：隐藏不可见字符<br />list!：切换显示或隐藏不可见字符 |
 |     :set hlsearch<br />:set nohlsearch     | hlsearch 就是 high light search(高亮度搜寻)。 这个就是设定是否将搜寻的字符串反白的设定值。默认值是 hlsearch |
