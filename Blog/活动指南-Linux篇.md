@@ -440,6 +440,45 @@ wc -l train.txt
 wc -l ./*
 ```
 
+## locale 
+
+```shell
+# 查看支持的编码
+locale -a
+```
+
+
+
+## iconv
+
+编码转换
+
+```shell
+# 临时解决方法将当前文件强制使用 UTF-8 显示，在终端输入命令
+cat cimse_cmd_01.log | iconv -f gb18030 -t utf-8 -c | more
+cat ./logs/cimse_cmd_rxRatio_0.2.log | iconv -f gb18030 -t utf-8 -c | more
+```
+
+
+
+```shell
+# 将文件GBK编码转换为UTF-8
+#源文件：fnote.txt　　编码：GBK
+#目标文件：tnote.txt　　编码：UTF-8
+
+iconv -f gbk -t utf-8 -c fnote.txt -o tnote.txt
+iconv -f gb18030 -t utf-8 -c cimse_cmd_rxRatio_1.0.log -o pro_cimse_cmd_rxRatio_1.0.log
+```
+
+
+
+```shell
+# 把 fnote.txt 文件中的“穿越”文本提取，并且把编码从GBK转码为UTF-8保存
+
+cat fnote.txt | iconv -f gbk -t utf-8 -c | grep "穿越" > text.out
+cat fnote.txt | iconv -f gbk -t utf-8 -c | more
+```
+
 
 
 # 文件传输
@@ -1427,6 +1466,11 @@ nohup /root/anaconda3/bin/python train_css.py &
 
 ```shell
 ls -l /tmp > /river/he
+
+# 将单引号中的语句写入到 /etc/profile 文件，追加
+echo 'export LANG="zh_CN.UTF-8"'  >> /etc/proflile
+#重新加载 profile 文件（使之立即生效）
+source /etc/profile
 ```
 
 2. < 输入重定向

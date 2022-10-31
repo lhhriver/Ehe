@@ -448,6 +448,7 @@ git clone git@172:/home/git/src/nlp/diaodu/KnowledgeDemo
 # 使用已有镜像生成新的容器：KnowledgeDemo
 docker images
 docker run -p 2530:9001 --name KnowledgeDemo -dt f255141a932f bash
+docker run -dit -p 9002:9000 -p 9000:22 -p 27520:14240 --name tigergraph_ts 67aef4827076
 
 # 进入开启容器，复制代码到容器里面
 docker exec -ti KnowledgeDemo bash
