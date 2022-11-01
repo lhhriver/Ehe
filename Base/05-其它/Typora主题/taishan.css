@@ -188,10 +188,12 @@ blockquote {
   position: relative;
   color: var(--color-Purple);  /*引用字体颜色*/
   font-weight: 400;
-  border-left: 5px solid var(--color-Red);
-  padding-left: 1em;
-  margin: 1em 3em 1em 2em;
+  border: 3px dashed var(--color-Red);
+  border-radius: 10px;
+  padding: 0.5em;
+  margin: 2em 2em 2em 2em;
 }
+
 
 
 /*ul无序列表 */

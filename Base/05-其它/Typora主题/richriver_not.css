@@ -1,0 +1,386 @@
+:root {
+  --color-LightPink: #ffb6c1; /*浅粉红*/
+  --color-Pink: #ffc0cb; /*粉红*/
+  --color-Crimson: #dc143c; /*猩红*/
+  --color-LavenderBlush: #fff0f5; /*脸红的淡紫色*/
+  --color-PaleVioletRed: #db7093; /*苍白的紫罗兰红色*/
+  --color-HotPink: #ff69b4; /*热情的粉红*/
+  --color-DeepPink: #ff1493; /*深粉色*/
+  --color-MediumVioletRed: #c71585; /*适中的紫罗兰红色*/
+  --color-Orchid: #da70d6; /*兰花的紫色*/
+  --color-Thistle: #d8bfd8; /*蓟*/
+  --color-plum: #dda0dd; /*李子*/
+  --color-Violet: #ee82ee; /*紫罗兰*/
+  --color-Magenta: #ff00ff; /*洋红*/
+  --color-Fuchsia: #ff00ff; /*灯笼海棠(紫红色)*/
+  --color-DarkMagenta: #8b008b; /*深洋红色*/
+  --color-Purple: #800080; /*紫色*/
+  --color-MediumOrchid: #ba55d3; /*适中的兰花紫*/
+  --color-DarkVoilet: #9400d3; /*深紫罗兰色*/
+  --color-DarkOrchid: #9932cc; /*深兰花紫*/
+  --color-Indigo: #4b0082; /*靛青*/
+  --color-BlueViolet: #8a2be2; /*深紫罗兰的蓝色*/
+  --color-MediumPurple: #9370db; /*适中的紫色*/
+  --color-MediumSlateBlue: #7b68ee; /*适中的板岩暗蓝灰色*/
+  --color-SlateBlue: #6a5acd; /*板岩暗蓝灰色*/
+  --color-DarkSlateBlue: #483d8b; /*深岩暗蓝灰色*/
+  --color-Lavender: #e6e6fa; /*熏衣草花的淡紫色*/
+  --color-GhostWhite: #f8f8ff; /*幽灵的白色*/
+  --color-Blue: #0000ff; /*纯蓝*/
+  --color-MediumBlue: #0000cd; /*适中的蓝色*/
+  --color-MidnightBlue: #191970; /*午夜的蓝色*/
+  --color-DarkBlue: #00008b; /*深蓝色*/
+  --color-Navy: #000080; /*海军蓝*/
+  --color-RoyalBlue: #4169e1; /*皇军蓝*/
+  --color-CornflowerBlue: #6495ed; /*矢车菊的蓝色*/
+  --color-LightSteelBlue: #b0c4de; /*淡钢蓝*/
+  --color-LightSlateGray: #778899; /*浅石板灰*/
+  --color-SlateGray: #708090; /*石板灰*/
+  --color-DoderBlue: #1e90ff; /*道奇蓝*/
+  --color-AliceBlue: #f0f8ff; /*爱丽丝蓝*/
+  --color-SteelBlue: #4682b4; /*钢蓝*/
+  --color-LightSkyBlue: #87cefa; /*淡蓝色*/
+  --color-SkyBlue: #87ceeb; /*天蓝色*/
+  --color-DeepSkyBlue: #00bfff; /*深天蓝*/
+  --color-LightBLue: #add8e6; /*淡蓝*/
+  --color-PowDerBlue: #b0e0e6; /*火药蓝*/
+  --color-CadetBlue: #5f9ea0; /*军校蓝*/
+  --color-Azure: #f0ffff; /*蔚蓝色*/
+  --color-LightCyan: #e1ffff; /*淡青色*/
+  --color-PaleTurquoise: #afeeee; /*苍白的绿宝石*/
+  --color-Cyan: #00ffff; /*青色*/
+  --color-Aqua: #00ffff; /*水绿色*/
+  --color-DarkTurquoise: #00ced1; /*深绿宝石*/
+  --color-DarkSlateGray: #2f4f4f; /*深石板灰*/
+  --color-DarkCyan: #008b8b; /*深青色*/
+  --color-Teal: #008080; /*水鸭色*/
+  --color-MediumTurquoise: #48d1cc; /*适中的绿宝石*/
+  --color-LightSeaGreen: #20b2aa; /*浅海洋绿*/
+  --color-Turquoise: #40e0d0; /*绿宝石*/
+  --color-Auqamarin: #7fffaa; /*绿玉\碧绿色*/
+  --color-MediumAquamarine: #00fa9a; /*适中的碧绿色*/
+  --color-MediumSpringGreen: #f5fffa; /*适中的春天的绿色*/
+  --color-MintCream: #00ff7f; /*薄荷奶油*/
+  --color-SpringGreen: #3cb371; /*春天的绿色*/
+  --color-SeaGreen: #2e8b57; /*海洋绿*/
+  --color-Honeydew: #f0fff0; /*蜂蜜*/
+  --color-LightGreen: #90ee90; /*淡绿色*/
+  --color-PaleGreen: #98fb98; /*苍白的绿色*/
+  --color-DarkSeaGreen: #8fbc8f; /*深海洋绿*/
+  --color-LimeGreen: #32cd32; /*酸橙绿*/
+  --color-Lime: #00ff00; /*酸橙色*/
+  --color-ForestGreen: #228b22; /*森林绿*/
+  --color-Green: #008000; /*纯绿*/
+  --color-DarkGreen: #006400; /*深绿色*/
+  --color-Chartreuse: #7fff00; /*查特酒绿*/
+  --color-LawnGreen: #7cfc00; /*草坪绿*/
+  --color-GreenYellow: #adff2f; /*绿黄色*/
+  --color-OliveDrab: #556b2f; /*橄榄土褐色*/
+  --color-Beige: #6b8e23; /*米色(浅褐色)*/
+  --color-LightGoldenrodYellow: #fafad2; /*浅秋麒麟黄*/
+  --color-Ivory: #fffff0; /*象牙*/
+  --color-LightYellow: #ffffe0; /*浅黄色*/
+  --color-Yellow: #ffff00; /*纯黄*/
+  --color-Olive: #808000; /*橄榄*/
+  --color-DarkKhaki: #bdb76b; /*深卡其布*/
+  --color-LemonChiffon: #fffacd; /*柠檬薄纱*/
+  --color-PaleGodenrod: #eee8aa; /*灰秋麒麟*/
+  --color-Khaki: #f0e68c; /*卡其布*/
+  --color-Gold: #ffd700; /*金*/
+  --color-Cornislk: #fff8dc; /*玉米色*/
+  --color-GoldEnrod: #daa520; /*秋麒麟*/
+  --color-FloralWhite: #fffaf0; /*花的白色*/
+  --color-OldLace: #fdf5e6; /*老饰带*/
+  --color-Wheat: #f5deb3; /*小麦色*/
+  --color-Moccasin: #ffe4b5; /*鹿皮鞋*/
+  --color-Orange: #ffa500; /*橙色*/
+  --color-PapayaWhip: #ffefd5; /*番木瓜*/
+  --color-BlanchedAlmond: #ffebcd; /*漂白的杏仁*/
+  --color-NavajoWhite: #ffdead; /*Navajo白*/
+  --color-AntiqueWhite: #faebd7; /*古代的白色*/
+  --color-Tan: #d2b48c; /*晒黑*/
+  --color-BrulyWood: #deb887; /*结实的树*/
+  --color-Bisque: #ffe4c4; /*(浓汤)乳脂,番茄等*/
+  --color-DarkOrange: #ff8c00; /*深橙色*/
+  --color-Linen: #faf0e6; /*亚麻布*/
+  --color-Peru: #cd853f; /*秘鲁*/
+  --color-PeachPuff: #ffdab9; /*桃色*/
+  --color-SandyBrown: #f4a460; /*沙棕色*/
+  --color-Chocolate: #d2691e; /*巧克力*/
+  --color-SaddleBrown: #8b4513; /*马鞍棕色*/
+  --color-SeaShell: #fff5ee; /*海贝壳*/
+  --color-Sienna: #a0522d; /*黄土赭色*/
+  --color-LightSalmon: #ffa07a; /*浅鲜肉(鲑鱼)色*/
+  --color-Coral: #ff7f50; /*珊瑚*/
+  --color-OrangeRed: #ff4500; /*橙红色*/
+  --color-DarkSalmon: #e9967a; /*深鲜肉(鲑鱼)色*/
+  --color-Tomato: #ff6347; /*番茄*/
+  --color-MistyRose: #ffe4e1; /*薄雾玫瑰*/
+  --color-Salmon: #fa8072; /*鲜肉(鲑鱼)色*/
+  --color-Snow: #fffafa; /*雪*/
+  --color-LightCoral: #f08080; /*淡珊瑚色*/
+  --color-RosyBrown: #bc8f8f; /*玫瑰棕色*/
+  --color-IndianRed: #cd5c5c; /*印度红*/
+  --color-Red: #ff0000; /*纯红*/
+  --color-Brown: #a52a2a; /*棕色*/
+  --color-FireBrick: #b22222; /*耐火砖*/
+  --color-DarkRed: #8b0000; /*深红色*/
+  --color-Maroon: #800000; /*栗色*/
+  --color-White: #ffffff; /*纯白*/
+  --color-WhiteSmoke: #f5f5f5; /*白烟*/
+  --color-Gainsboro: #dcdcdc; /*Gainsboro*/
+  --color-LightGrey: #d3d3d3; /*浅灰色*/
+  --color-Silver: #c0c0c0; /*银白色*/
+  --color-DarkGray: #a9a9a9; /*深灰色*/
+  --color-Gray: #808080; /*灰色*/
+  --color-DimGray: #696969; /*暗淡的灰色*/
+  --color-Black: #000000; /*纯黑*/
+
+
+  /*=====================================================================*/
+  --bg-color: #1e1e1e; /*主页面背景色*/
+  --text-color: #d4d4d4; /*主页面字体颜色*/
+
+  /* Side Bar */
+  --side-bar-bg-color: #1e1e1e; /*Sidebar整体的背景颜色*/
+  --side-bar-fg-color: #000000;
+  --sidebar-width: 300px;
+
+  --select-text-bg-color: #4a89dc;
+
+  --control-text-color: #b7b7b7; /*Sidebar未选中文件名的颜色*/
+  --control-text-hover-color: #eee;
+  --window-border: 1px solid #555;
+
+  --active-file-bg-color: #252526; /*Sidebar选中文件的背景颜色*/
+  --active-file-text-color: #179fff; /*Sidebar选中文件的字体颜色*/
+  --active-file-border-color: #15ac8e;
+
+  --item-hover-bg-color: #252526; /*大纲选中背景色*/
+  --item-hover-text-color: #179fff;
+  --primary-color: #6dc1e7;
+
+  --rawblock-edit-panel-bd: #333;
+  --search-select-bg-color: #428bca;
+  --search-select-text-color: #000000;
+}
+
+html {
+  /*设置正文字体*/
+  font-family: Microsoft Yahei;
+  font-size: 22px; /*正文字体大小, 会自动调整到偏好设置字体大小*/
+  text-align: justify; /*文本两端对齐：justify*/
+  -webkit-font-smoothing: antialiased; /*这个属性可以使页面上的字体抗锯齿,使用后字体看起来会更清晰*/
+}
+
+html,
+body {
+  /*设置正文行高、背景色等*/
+  font-family: Microsoft Yahei;
+  line-height: 150%; /*行高 160*/
+  background: var(--bg-color);
+  fill: currentColor;
+  color: var(--text-color);
+}
+
+#write {
+  max-width: 90%; /*主页面宽度比例*/
+  margin: 0 auto;
+  padding: 20px;
+  padding-bottom: 100px;
+  counter-reset: h1;
+}
+
+a {
+  color: #dcdcaa;
+}
+
+/* 水平分隔线 ***/
+hr {
+  border: none;
+  border-top: 3px dashed #9cdcfe;
+  height: 1px; /*两线间距*/
+}
+
+textarea {
+  font-family: Microsoft Yahei, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* 块/段落引用 */
+blockquote {
+  position: relative;
+  color: #8b8b6e; /*引用字体颜色*/
+  font-weight: 400;
+  border: 2px dashed #9cdcfe;
+  border-radius: 10px;
+  padding: 0.5em;
+  margin: 2em 2em 3em 2em; /*上右下左*/
+}
+
+/*ul无序列表 */
+ul {
+  color: #5c9c39; /*列表字体颜色*/
+  font-family: Microsoft Yahei;
+  /*list-style: disc;*/
+  margin-left: 0;
+}
+
+/* ol有序列表*/
+ol {
+  color: #009900; /*列表字体颜色*/
+  font-family: Microsoft Yahei;
+  list-style: decimal;
+  margin-left: 0;
+}
+
+/*强调文本*/
+strong {
+  color: #179fff;
+  font-weight: 1000; /*bolder*/
+  /*font-size: 20px ;*/
+  /* text-shadow: 2px 2px 8px var(--color-White);   阴影 */
+}
+
+/* 修改高亮文本的属性 */
+mark {
+  background: #ffeb11;
+  color: #4e4b4b;
+}
+
+/*侧边栏标题显示样式*/
+.outline-h1 > .outline-item > .outline-label,
+.outline-h2 > .outline-item > .outline-label,
+.outline-h3 > .outline-item > .outline-label,
+.outline-h4 > .outline-item > .outline-label,
+.outline-h5 > .outline-item > .outline-label,
+.outline-h6 > .outline-item > .outline-label,
+.outline-h7 > .outline-item > .outline-label {
+    color:#6a9955;
+    font-size: 14px ;
+    font-weight: 400; 
+  }
+
+/*侧边栏选中标题显示样式*/
+.outline-h1 > .outline-item-active > .outline-label,
+.outline-h2 > .outline-item-active > .outline-label,
+.outline-h3 > .outline-item-active > .outline-label,
+.outline-h4 > .outline-item-active > .outline-label,
+.outline-h5 > .outline-item-active > .outline-label,
+.outline-h6 > .outline-item-active > .outline-label,
+.outline-h7 > .outline-item-active > .outline-label {
+    color:#179fff;
+    font-size: 16px ;
+    font-weight: 600; 
+  }
+
+
+/*图片设置*/
+img {
+  /*四周圆弧大小*/
+  border-radius: 12px;
+  background-color: #1e1e1e;
+}
+
+/*`  `*/
+code {
+  font-family: Microsoft Yahei;
+  background-color: #4d4e50;
+  font-size: 20px;
+  color: #dcdcaa;
+  /*border: 0px solid #37373d;*/
+  border-radius: 6px;
+  padding: 0.5px 3px 0.5px 3px;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* 统一上标和下标 */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+}
+
+/*table----------------------------------------------------------------------------*/
+table {
+  max-width: 100%;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: solid 3px #3c3c3c; /*表格边框颜色*/
+  margin-bottom: 20px;
+}
+
+/*表头*/
+table th {
+  color: #179fff;
+  font-weight: 800;
+  font-size: 20px;
+  background-color: #1a1919;
+
+  padding: 8px;
+  line-height: 130%;
+  border: 1px solid #3c3c3c;
+  vertical-align: middle;
+}
+
+table td {
+  padding: 8px;
+  font-size: 16px;
+  line-height: 110%;
+  border: 0.5px solid #3c3c3c;
+}
+
+table tr:nth-child(even) {
+  background: #252526; /*隔行背景色*/
+  vertical-align: middle;
+}
+
+h1 {
+  font-size: 24px;
+  width: auto;
+  font-family: Microsoft Yahei;
+  -webkit-font-smoothing: initial;
+  line-height: 1.35;
+  margin: 50px 1px 10px 0px;
+  font-weight: 600;
+  color: #6a9955; /*标题颜色 DarkGreen*/
+  font-variant-numeric: lining-nums;
+  border-top: 3px solid #3c3c3c; /*下划线*/
+  padding: 0em 0 0 0;
+}
+
+h2 {
+  font-size: 22px;
+  width: auto;
+  font-family: Microsoft Yahei;
+  -webkit-font-smoothing: initial;
+  line-height: 1.35;
+  margin: 50px 1px 10px 0px;
+  font-weight: 600;
+  color: #6a9955; /*标题颜色 DarkGreen*/
+  font-variant-numeric: lining-nums;
+  border-top: 1px solid #3c3c3c; /*下划线*/
+  padding: 0em 0 0 0;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: 20px;
+  width: auto;
+  font-family: Microsoft Yahei;
+  -webkit-font-smoothing: initial;
+  line-height: 1.35;
+  margin: 40px 1px 10px 0px;
+  font-weight: 600;
+  color: #6a9955; /*标题颜色*/
+  font-variant-numeric: lining-nums;
+  border-top: 1.5px solid #3c3c3c; /* 下划线*/
+}
+
+
+

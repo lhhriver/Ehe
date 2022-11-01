@@ -465,7 +465,6 @@ cat ./logs/cimse_cmd_rxRatio_0.2.log | iconv -f gb18030 -t utf-8 -c | more
 # 将文件GBK编码转换为UTF-8
 #源文件：fnote.txt　　编码：GBK
 #目标文件：tnote.txt　　编码：UTF-8
-
 iconv -f gbk -t utf-8 -c fnote.txt -o tnote.txt
 iconv -f gb18030 -t utf-8 -c cimse_cmd_rxRatio_1.0.log -o pro_cimse_cmd_rxRatio_1.0.log
 ```
@@ -582,6 +581,19 @@ du -sh data
 
 ```
 20G data
+```
+
+
+
+```shell
+# 查看当前文件夹下所有文件大小
+du -h
+
+# 查看指定文件/文件夹大小
+du -h test.txt
+
+# 当前文件夹下所有文件总大小
+du -sh *
 ```
 
 
@@ -832,11 +844,68 @@ sdb               8:16   0   2.2T  0 disk
 - apachectl
 - arpwatch
 - cu
+
+## curl
+
+curl命令是一个利用URL规则在命令行下工作的文件传输工具。它支持文件的上传和下载，所以是综合传输工具，但按传统，习惯称curl为下载工具。作为一款强力工具，curl支持包括HTTP、HTTPS、ftp等众多协议，还支持POST、cookies、认证、从指定偏移处下载部分文件、用户代理字符串、限速、文件大小、进度条等特征。
+
+```shell
+# 文件下载
+curl URL --silent ->将下载文件输出到终端，所有下载的数据都被写入到stdout
+curl http://test.com/index.html  -O ->将index.html下载到当前文件夹中
+curl http://test.com -o filename.html --progress ->将输出内容保存到指定文件中，并显示进度
+curl URL --limit-rate 50k	->限制curl的下载速度
+curl URL --max-filesize bytes ->指定可下载的最大文件大小
+curl URL -v	->查看详细信息
+
+# 断点续传
+curl URL/File -C 偏移量 ->从特定的文件偏移处继续下载,或者下载部分文件
+curl -C - URL		   ->自动判断续传位置
+
+# 用curl设置cookies
+curl http://test.com --cookie "user=root;pass=126" ->多个cookie使用分号分隔
+curl URL --cookie-jar cookie_file ->将cookie另存为一个文件
+
+# 用curl设置用户代理字符串
+# 有些网站访问会提示只能使用IE浏览器来访问，这是因为这些网站设置了检查用户代理，
+# 可以使用curl把用户代理设置为IE，这样就可以访问了。使用--user-agent或者-A选项
+curl URL --user-agent "Mozilla/5.0" ->设置使用IE访问
+curl URL -A "Mozilla/5.0"           ->设置使用IE访问
+
+# 设置请求头
+curl -H "Host:man.linuxde.net" -H "accept-language:zh-cn" URL
+
+# 用curl进行认证
+curl -u user:pwd http://man.linuxde.net
+curl -u user http://man.linuxde.net
+
+
+# 只打印响应头部信息
+curl -I http://test.com
+curl -head http://test.com
+
+# 使用-X
+# POST请求
+curl localhost:9999/api/daizhige/article -X POST -d "title=123&content=xdw"
+curl http://test.com -X POST -H "Content-Type:application/json" -d '{"title":"123","content":"dw"}'
+
+# 上传文件-F "file=@文件地址"
+curl http://test.com -F "file=@/Users/fungleo/Downloads/401.png" -H "token: 222" -v
+
+# 请求https
+curl http://test.com -X POST -H "Content-Type:application/json" -d '{"title":"123","content":"dw"}' -k
+
+```
+
+
+
 - dip
 - dnsconf
 - efax
 - getty
 - httpd
+
+
 
 ## ifup
 
@@ -1318,7 +1387,10 @@ tar -zcvf apache-tomcat-9.0.35.20210702.tar.gz apache-tomcat-9.0.35/
 解压.zip的压缩文件
 
 ```shell
-unzip test.zip
+unzip test.zip 				->将test.zip解压到当前文件下
+unzip -n test.zip -d /tmp 	->将test.zip解压到/tmp目录下，并且不要覆盖已有文件
+unzip -v test.zip			->查看test.zip内容，但不解压
+unzip -o test.zip -d tmp/	->将test.zip解压到/tmp目录下，并且覆盖已有文件
 ```
 
 - uudecode
@@ -1329,7 +1401,7 @@ unzip test.zip
 压缩文件或目录
 
 ```shell
-zip services.zip /etc/services   # 压缩文件
+zip services.zip /etc/services.txt   # 压缩文件
 zip -r test.zip /test  # 压缩目录
 ```
 
@@ -1564,4 +1636,82 @@ cat /etc/issue
 ```
 
 ## 磁盘挂载
+
+## 环境变量
+
+### 设置环境变量
+
+1. 在/etc/profile中设置
+
+用vim在文件/etc/profile文件中增加变量，该变量将会对Linux下所有用户有效，并且是“永久的”。
+
+```shell
+# vi /etc/profile 
+export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib
+
+# 注：修改文件后要想马上生效还要运行 source /etc/profile 不然只能在下次重进此用户时生效。
+```
+
+2. 在用户目录下的.bash_profile文件中
+
+用vim在用户目录下的.bash_profile文件中增加变量，改变量仅会对当前用户有效，并且是“永久的”。
+
+```shell
+vim/home/guok/.bash.profile
+export CLASSPATH=./JAVAHOME/lib;JAVA_HOME/jre/lib 
+
+# 注：修改文件后要想马上生效还要运行 source /home/guok/.bash_profile
+```
+
+3. 直接运行export命令定义变量
+
+这种方法只对当前shell(BASH)有效(临时的)。
+
+```shell
+export LD_LIBRARY_PATH=../lib:$LD_LIBRARY_PATH
+```
+
+### 查看环境变量
+
+1. 使用echo命令查看单个环境变量
+
+```shell
+echo $PATH 
+```
+
+2. 使用env查看所有环境变量
+
+```shell
+env 
+```
+
+3. 使用set查看所有环境变量
+
+```shell
+set 
+```
+
+
+
+### 删除环境变量
+
+```shell
+unset  TEST #删除环境变量TEST
+```
+
+也可以进入/etc/profile文件进行删除
+
+### 常用的环境变量
+
+```
+PATH 决定了shell将到哪些目录中寻找命令或程序 
+HOME 当前用户主目录 
+HISTSIZE　历史记录数 
+LOGNAME 当前用户的登录名 
+HOSTNAME　指主机的名称 
+SHELL 当前用户Shell类型 
+LANGUGE 　语言相关的环境变量，多语言可以修改此环境变量 
+MAIL　当前用户的邮件存放目录 
+PS1　基本提示符，对于root用户是#，对于普通用户是$
+```
 
