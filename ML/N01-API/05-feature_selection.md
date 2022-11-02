@@ -61,8 +61,9 @@ class sklearn.feature_selection.SelectKBest(score_func=<function f_classif>, k=1
 >SelectPercentile 用于保留统计得分最高的  比例的特征，其原型为：
 
 ```python
-class sklearn.feature_selection.SelectPercentile(score_func=<function f_classif>,
-percentile=10)
+class sklearn.feature_selection.SelectPercentile(
+    score_func=<function f_classif>,
+    percentile=10)
 ```
 - score_func：一个函数，用于给出统计指标。参考SelectKBest  。
 - percentile：一个整数，指定要保留最佳的百分之几的特征，如10表示保留最佳的百分之十的特征
