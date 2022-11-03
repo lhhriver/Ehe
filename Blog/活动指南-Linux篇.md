@@ -79,24 +79,52 @@ diff 命令用于比较文件的差异。
 
 diff 以逐行的方式，比较文本文件的异同处。如果指定要比较目录，则 diff 会比较目录中相同文件名的文件，但不会比较其中子目录。
 
+> "|"表示前后2个文件内容有不同
+>
+> "<"表示后面文件比前面文件少了1行内容
+>
+> ">"表示后面文件比前面文件多了1行内容
+
 ```shell
 diff log2014.log log2013.log 
 ```
 
 ## md5sum
 
-```shell
+用于计算和校验文件的MD5值。常常被用来验证网络文件传输的完整性，防止文件被人篡改。在日常工作当中，我们可以用来判断系统中的重要文件是否被篡改。
 
+```shell
+md5sum log.txt
 ```
 
 
 
 - diffstat
-- file
+
+## file
+
+通过file指令，我们得以辨识该文件的类型
+
+```shell
+# 显示文件类型
+file install.log
+```
+
+```
+install.log: UTF-8 Unicode text
+```
+
+
 
 ## find	
 
 查找文件或目录
+
+> UNIX/Linux文件系统每个文件都有三种时间戳：
+>
+> - 访问时间（-atime/天，-amin/分钟）：用户最近一次访问时间。
+> - 修改时间（-mtime/天，-mmin/分钟）：文件最后一次修改时间。
+> - 变化时间（-ctime/天，-cmin/分钟）：文件数据元（例如权限等）最后一次修改时间。
 
 ```shell
 find /etc -name init #在目录/etc中查找文件init
@@ -149,10 +177,21 @@ ln /etc/issue  /issue.hard # 创建文件/etc/issue的硬链接/issue.hard
 
 ## locate	
 
-查找文件或目录
+查找文件或目录，locate命令和slocate命令都用来查找文件或目录。
+
+locate命令其实是find -name的另一种写法，但是要比后者快得多，原因在于它不搜索具体目录，而是搜索一个数据库/var/lib/locatedb，这个数据库中含有本地所有文件信息。Linux系统自动创建这个数据库，并且每天自动更新一次，所以使用locate命令查不到最新变动过的文件。为了避免这种情况，可以在使用locate之前，先使用updatedb命令，手动更新数据库。
 
 ```shell
 locate ls  # 列出所有跟file相关的文件
+
+# 搜索etc目录下所有以sh开头的文件：
+locate /etc/sh
+
+# 搜索用户主目录下，所有以m开头的文件：
+locate ~/m
+
+# 搜索用户主目录下，所有以m开头的文件，并且忽略大小写
+locate -i ~/m
 ```
 
 - lsattr
@@ -319,6 +358,7 @@ which hive
 - egrep
 - ex
 - expr
+
 - fgrep
 - fmt
 - fold
@@ -328,7 +368,9 @@ which hive
 在文件中搜寻字串匹配的行并输出
 
 ```shell
+# 在多级目录中对文本进行递归搜索
 grep -n -r "linedetail" ./*
+
 grep ftp /etc/services
 ```
 
@@ -634,6 +676,9 @@ ls -l # 详细信息显示
 ls -al # 所有文件详细信息
 ls -r # 反向排序，倒序
 ls -t  # 按修改时间排序
+
+# 显示递归文件
+ls -R
 ```
 
 ```shell
@@ -649,11 +694,6 @@ drwxr-xr-x.  2 root root  4096 Apr 11  2018 mnt
 drwxr-xr-x.  2 root root  4096 Apr 11  2018 media
 drwxr-xr-x. 19 root root  4096 Jul 11  2019 var
 drwx------.  2 root root 16384 Jul 11  2019 lost+found
-lrwxrwxrwx.  1 root root     7 Jul 11  2019 bin -> usr/bin
-lrwxrwxrwx.  1 root root     9 Jul 11  2019 lib64 -> usr/lib64
-lrwxrwxrwx.  1 root root     7 Jul 11  2019 lib -> usr/lib
-lrwxrwxrwx.  1 root root     8 Jul 11  2019 sbin -> usr/sbin
-drwxr-xr-x. 13 root root  4096 Jul 11  2019 usr
 dr-xr-xr-x.  5 root root  4096 Nov 30 15:19 boot
 dr-xr-xr-x  83 root root     0 Feb 18 10:58 proc
 dr-xr-xr-x  13 root root     0 Feb 18 10:59 sys
@@ -1378,6 +1418,12 @@ tar -zxvf dir1.tar.gz
 tar -zxvf apache-tomcat-9.0.35.20210702.tar.gz
 # 压缩
 tar -zcvf apache-tomcat-9.0.35.20210702.tar.gz apache-tomcat-9.0.35/
+
+tar -tf test.tar			# 列出test.tar中为所有文件
+tar -xzvf test.tar.gz 		# 解压test.tar.gz文件
+tar -xf test.tar 			# 解压test.tar文件
+tar -xjvf test.tar.bz2   	# 解压 .tar.bz2
+tar –xZvf test.tar.Z   		# 解压 .tar.Z
 ```
 
 - unarj
@@ -1528,9 +1574,47 @@ wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz
 
 ## nohup
 
+nohup命令用于不挂断地运行命令（关闭当前session不会中断改程序，只能通过kill等命令删除）。
+使用nohup命令提交作业，如果使用nohup命令提交作业，那么在缺省情况下该作业的所有输出都被重定向到一个名为nohup.out的文件中，除非另外指定了输出文件。
+
 ```shell
 nohup /root/anaconda3/bin/python train_css.py &
 ```
+
+
+
+
+
+​    
+
+**示例：**
+
+```shell
+nohup command > myout.file 2>&1 & echo $! > command.pid
+```
+> bash中：
+>
+> - 0 代表STDIN_FILENO 标准输入（一般是键盘），
+>
+> - 1 代表STDOUT_FILENO 标准输出（一般是显示屏，准确的说是用户终端控制台），
+>
+> - 2 三代表STDERR_FILENO (标准错误（出错信息输出）。
+>
+>
+> 
+>
+> - \> 直接把内容生成到指定文件，会覆盖原来文件中的内容[ls > test.txt]
+>     \>> 尾部追加，不会覆盖原有内容 [ls >> test.txt]
+>     < 将指定文件的内容作为前面命令的参数[cat < text.sh]
+
+
+> &：用于后台执行程序，但是关闭当前session程序也会结束.
+>
+> 2>&1：就是用来将标准错误2重定向到标准输出1中的。此处1前面的&就是为了让bash将1解释成标准输出而不是文件1。至于最后一个&，则是让bash在后台执行。
+>
+> /dev/null 2>&1：则表示吧标准输出和错误输出都放到这个“黑洞”，表示什么也不输出。
+
+
 
 ## 输入、输出重定向
 
