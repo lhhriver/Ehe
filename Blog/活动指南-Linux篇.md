@@ -75,15 +75,13 @@ cp -rf /usr/local/KingSTD_1/*  /usr/local/webapps/KingSTD_2/    #将dir1下的�
 
 ## diff
 
-diff 命令用于比较文件的差异。
+diff 命令用于比较文件的差异。diff 以逐行的方式，比较文本文件的异同处。如果指定要比较目录，则 diff 会比较目录中相同文件名的文件，但不会比较其中子目录。
 
-diff 以逐行的方式，比较文本文件的异同处。如果指定要比较目录，则 diff 会比较目录中相同文件名的文件，但不会比较其中子目录。
-
-> "|"表示前后2个文件内容有不同
+> "|" 表示前后2个文件内容有不同
 >
-> "<"表示后面文件比前面文件少了1行内容
+> "<" 表示后面文件比前面文件少了1行内容
 >
-> ">"表示后面文件比前面文件多了1行内容
+> ">" 表示后面文件比前面文件多了1行内容
 
 ```shell
 diff log2014.log log2013.log 
@@ -127,7 +125,7 @@ install.log: UTF-8 Unicode text
 > - 变化时间（-ctime/天，-cmin/分钟）：文件数据元（例如权限等）最后一次修改时间。
 
 ```shell
-find /etc -name init #在目录/etc中查找文件init
+find /etc -name init # 在目录/etc中查找文件init
 find / -size +204800 # 在根目录下查找大于200MB的文件
 find / -user sam # 在根目录下查找所有者为sam的文件
 find /etc -ctime -1  # 在/etc下查找24小时内被修改过属性的文件和目录
@@ -168,7 +166,7 @@ head -100 /etc/services
 
 ## ln
 
-创建链接文件,目录只能创建软链接
+创建链接文件，目录只能创建软链接
 
 ```shell
 ln -s  /etc/issue  /issue.soft # 创建文件/etc/issue的软链接/issue.soft
@@ -679,6 +677,9 @@ ls -t  # 按修改时间排序
 
 # 显示递归文件
 ls -R
+
+# 显示完整路径
+ls $(pwd)/*
 ```
 
 ```shell

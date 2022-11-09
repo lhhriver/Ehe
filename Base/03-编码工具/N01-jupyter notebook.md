@@ -541,6 +541,14 @@ IFrame('https://www.baidu.com' , width=800, height=800)
 
 # 表格
 
+# 设置
+
+```python
+# 多输出
+from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = 'all'
+```
+
 
 
 # win10 自启动
