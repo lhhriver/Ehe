@@ -764,6 +764,7 @@ mount /dev/hda1 /data
 ```shell
 tree -f
 tree -f -i
+tree -L 2
 ```
 
 
@@ -1576,6 +1577,7 @@ wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz
 ## nohup
 
 nohup命令用于不挂断地运行命令（关闭当前session不会中断改程序，只能通过kill等命令删除）。
+
 使用nohup命令提交作业，如果使用nohup命令提交作业，那么在缺省情况下该作业的所有输出都被重定向到一个名为nohup.out的文件中，除非另外指定了输出文件。
 
 ```shell
@@ -1583,10 +1585,6 @@ nohup /root/anaconda3/bin/python train_css.py &
 ```
 
 
-
-
-
-​    
 
 **示例：**
 
@@ -1720,13 +1718,17 @@ lsb_release -a
 cat /etc/issue
 ```
 
+
+
 ## 磁盘挂载
+
+
 
 ## 环境变量
 
 ### 设置环境变量
 
-1. 在/etc/profile中设置
+1. **在/etc/profile中设置**
 
 用vim在文件/etc/profile文件中增加变量，该变量将会对Linux下所有用户有效，并且是“永久的”。
 
@@ -1737,24 +1739,26 @@ export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib
 # 注：修改文件后要想马上生效还要运行 source /etc/profile 不然只能在下次重进此用户时生效。
 ```
 
-2. 在用户目录下的.bash_profile文件中
+2. **在用户目录下的.bash_profile文件中**
 
 用vim在用户目录下的.bash_profile文件中增加变量，改变量仅会对当前用户有效，并且是“永久的”。
 
 ```shell
-vim/home/guok/.bash.profile
+vim /home/Ehe/.bash_profile
 export CLASSPATH=./JAVAHOME/lib;JAVA_HOME/jre/lib 
 
-# 注：修改文件后要想马上生效还要运行 source /home/guok/.bash_profile
+# 注：修改文件后要想马上生效还要运行 source /home/Ehe/.bash_profile
 ```
 
-3. 直接运行export命令定义变量
+3. **直接运行export命令定义变量**
 
-这种方法只对当前shell(BASH)有效(临时的)。
+这种方法只对当前shell（BASH）有效（临时的）。
 
 ```shell
 export LD_LIBRARY_PATH=../lib:$LD_LIBRARY_PATH
 ```
+
+
 
 ### 查看环境变量
 
@@ -1781,10 +1785,12 @@ set
 ### 删除环境变量
 
 ```shell
-unset  TEST #删除环境变量TEST
+unset  TEST     # 删除环境变量TEST
 ```
 
 也可以进入/etc/profile文件进行删除
+
+
 
 ### 常用的环境变量
 

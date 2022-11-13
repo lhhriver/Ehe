@@ -1,4 +1,6 @@
+```
 # 深度学习简介
+```
 
 # 预备知识
 
@@ -27,7 +29,7 @@ Jupyter Notebook 已迅速成为数据分析，机器学习的必备工具。因
 
 安装好后，我们使用以下命令打开一个jupyter notebook:
 ``` shell
-jupyter notebook 
+jupyter notebook
 ```
 这时在浏览器打开 http://localhost:8888 （通常会自动打开）位于当前目录的jupyter服务。
 
@@ -50,18 +52,18 @@ conda list | grep torch
 
 在深度学习中，我们通常会频繁地对数据进行操作。作为动手学深度学习的基础，本节将介绍如何对内存中的数据进行操作。
 
-在PyTorch中，`torch.Tensor`是存储和变换数据的主要工具。如果你之前用过NumPy，你会发现`Tensor`和NumPy的多维数组非常类似。然而，`Tensor`提供GPU计算和自动求梯度等更多功能，这些使`Tensor`更加适合深度学习。 
+在PyTorch中，torch.Tensor是存储和变换数据的主要工具。如果你之前用过NumPy，你会发现Tensor和NumPy的多维数组非常类似。然而，Tensor提供GPU计算和自动求梯度等更多功能，这些使Tensor更加适合深度学习。 
 > "tensor"这个单词一般可译作“张量”，张量可以看作是一个多维数组。标量可以看作是0维张量，向量可以看作1维张量，矩阵可以看作是二维张量。
 
-### 创建`Tensor`
+### 创建Tensor
 
-我们先介绍`Tensor`的最基本功能，即`Tensor`的创建。
+我们先介绍Tensor的最基本功能，即Tensor的创建。
 
 首先导入PyTorch：
 ``` python
 import torch
 ```
-然后我们创建一个5x3的未初始化的`Tensor`：
+然后我们创建一个5x3的未初始化的Tensor：
 ``` python
 x = torch.empty(5, 3)
 print(x)
@@ -74,7 +76,7 @@ tensor([[ 0.0000e+00,  1.5846e+29,  0.0000e+00],
         [ 0.0000e+00,  0.0000e+00,  0.0000e+00],
         [ 0.0000e+00,  1.5846e+29, -2.4336e+02]])
 ```
-创建一个5x3的随机初始化的`Tensor`:
+创建一个5x3的随机初始化的Tensor:
 ``` python
 x = torch.rand(5, 3)
 print(x)
@@ -87,7 +89,7 @@ tensor([[0.4963, 0.7682, 0.0885],
         [0.6323, 0.3489, 0.4017],
         [0.0223, 0.1689, 0.2939]])
 ```
-创建一个5x3的long型全0的`Tensor`:
+创建一个5x3的long型全0的Tensor:
 ``` python
 x = torch.zeros(5, 3, dtype=torch.long)
 print(x)
@@ -109,7 +111,7 @@ print(x)
 ```
 tensor([5.5000, 3.0000])
 ```
-还可以通过现有的`Tensor`来创建，此方法会默认重用输入`Tensor`的一些属性，例如数据类型，除非自定义数据类型。
+还可以通过现有的Tensor来创建，此方法会默认重用输入Tensor的一些属性，例如数据类型，除非自定义数据类型。
 ``` python
 x = x.new_ones(5, 3, dtype=torch.float64)  # 返回的tensor默认具有相同的torch.dtype和torch.device
 print(x)
@@ -144,7 +146,7 @@ torch.Size([5, 3])
 ```
 > 注意：返回的torch.Size其实就是一个tuple, 支持所有tuple的操作。
 
-还有很多函数可以创建`Tensor`，去翻翻官方API就知道了，下表给了一些常用的作参考。
+还有很多函数可以创建Tensor，去翻翻官方API就知道了，下表给了一些常用的作参考。
 
 |函数|功能|
 |:---:|:---:|
@@ -163,7 +165,7 @@ torch.Size([5, 3])
 
 ### 操作
 
-本小节介绍`Tensor`的各种操作。
+本小节介绍Tensor的各种操作。
 #### 算术操作
 
 在PyTorch中，同一种操作可能有很多种形式，下面用加法作为例子。
@@ -189,7 +191,8 @@ torch.Size([5, 3])
     y.add_(x)
     print(y)
     ```
-    > **注：PyTorch操作inplace版本都有后缀`_`, 例如`x.copy_(y), x.t_()`**
+
+> **注：PyTorch操作inplace版本都有后缀`_`, 例如`x.copy_(y), x.t_()`**
 
 以上几种形式的输出均为：
 ```
@@ -201,7 +204,7 @@ tensor([[ 1.3967,  1.0892,  0.4369],
 ```
 #### 索引
 
-我们还可以使用类似NumPy的索引操作来访问`Tensor`的一部分，需要注意的是：**索引出来的结果与原数据共享内存，也即修改一个，另一个会跟着修改。** 
+我们还可以使用类似NumPy的索引操作来访问Tensor的一部分，需要注意的是：**索引出来的结果与原数据共享内存，也即修改一个，另一个会跟着修改。** 
 ``` python
 y = x[0, :]
 y += 1
@@ -225,7 +228,7 @@ tensor([1.6035, 1.8110, 0.9549])
 这里不详细介绍，用到了再查官方文档。
 #### 改变形状
 
-用`view()`来改变`Tensor`的形状：
+用`view()`来改变Tensor的形状：
 ``` python
 y = x.view(15)
 z = x.view(-1, 5)  # -1所指的维度可以根据其他维度的值推出来
@@ -236,7 +239,8 @@ print(x.size(), y.size(), z.size())
 torch.Size([5, 3]) torch.Size([15]) torch.Size([3, 5])
 ```
 
-**注意`view()`返回的新`Tensor`与源`Tensor`虽然可能有不同的`size`，但是是共享`data`的，也即更改其中的一个，另外一个也会跟着改变。(顾名思义，view仅仅是改变了对这个张量的观察角度，内部数据并未改变)**
+**注意`view()`返回的新Tensor与源Tensor虽然可能有不同的`size`，但是是共享`data`的，也即更改其中的一个，另外一个也会跟着改变。(顾名思义，view仅仅是改变了对这个张量的观察角度，内部数据并未改变)**
+
 ``` python
 x += 1
 print(x)
@@ -358,13 +362,14 @@ print(id(y) == id_before) # True
 
 > 注：虽然`view`返回的`Tensor`与源`Tensor`是共享`data`的，但是依然是一个新的`Tensor`（因为`Tensor`除了包含`data`外还有一些其他属性），二者id（内存地址）并不一致。
 
-### `Tensor`和NumPy相互转换
+### Tensor和NumPy相互转换
 
 我们很容易用`numpy()`和`from_numpy()`将`Tensor`和NumPy中的数组相互转换。但是需要注意的一点是：
 **这两个函数所产生的的`Tensor`和NumPy中的数组共享相同的内存（所以他们之间的转换很快），改变其中一个时另一个也会改变！！！**
+
 > 还有一个常用的将NumPy中的array转换成`Tensor`的方法就是`torch.tensor()`, 需要注意的是，此方法总是会进行数据拷贝（就会消耗更多的时间和空间），所以返回的`Tensor`和原来的数据不再共享内存。
 
-#### `Tensor`转NumPy
+#### Tensor转NumPy
 
 使用`numpy()`将`Tensor`转换成NumPy数组:
 ``` python
@@ -383,7 +388,7 @@ tensor([1., 1., 1., 1., 1.]) [1. 1. 1. 1. 1.]
 tensor([2., 2., 2., 2., 2.]) [2. 2. 2. 2. 2.]
 tensor([3., 3., 3., 3., 3.]) [3. 3. 3. 3. 3.]
 ```
-#### NumPy数组转`Tensor`
+#### NumPy数组转Tensor
 
 使用`from_numpy()`将NumPy数组转换成`Tensor`:
 ``` python
@@ -416,7 +421,7 @@ print(a, c)
 [4. 4. 4. 4. 4.] tensor([3., 3., 3., 3., 3.], dtype=torch.float64)
 ```
 
-### `Tensor` on GPU
+### Tensor on GPU
 
 用方法`to()`可以将`Tensor`在CPU和GPU（需要硬件支持）之间相互移动。
 ``` python
@@ -447,7 +452,7 @@ if torch.cuda.is_available():
 
 下面通过一些例子来理解这些概念。  
 
-### `Tensor`
+### Tensor
 
 创建一个`Tensor`并设置`requires_grad=True`:
 ``` python
@@ -580,9 +585,12 @@ tensor([[1., 1.],
 ```
 
 > 现在我们解释2.3.1节留下的问题，为什么在`y.backward()`时，如果`y`是标量，则不需要为`backward()`传入任何参数；否则，需要传入一个与`y`同形的`Tensor`?
-简单来说就是为了避免向量（甚至更高维张量）对张量求导，而转换成标量对张量求导。举个例子，假设形状为 `m x n` 的矩阵 X 经过运算得到了 `p x q` 的矩阵 Y，Y 又经过运算得到了 `s x t` 的矩阵 Z。那么按照前面讲的规则，dZ/dY 应该是一个 `s x t x p x q` 四维张量，dY/dX 是一个 `p x q x m x n`的四维张量。问题来了，怎样反向传播？怎样将两个四维张量相乘？？？这要怎么乘？？？就算能解决两个四维张量怎么乘的问题，四维和三维的张量又怎么乘？导数的导数又怎么求，这一连串的问题，感觉要疯掉…… 
-为了避免这个问题，我们**不允许张量对张量求导，只允许标量对张量求导，求导结果是和自变量同形的张量**。所以必要时我们要把张量通过将所有张量的元素加权求和的方式转换为标量，举个例子，假设`y`由自变量`x`计算而来，`w`是和`y`同形的张量，则`y.backward(w)`的含义是：先计算`l = torch.sum(y * w)`，则`l`是个标量，然后求`l`对自变量`x`的导数。
-[参考](https://zhuanlan.zhihu.com/p/29923090)
+>
+> 简单来说就是为了避免向量（甚至更高维张量）对张量求导，而转换成标量对张量求导。举个例子，假设形状为 `m x n` 的矩阵 X 经过运算得到了 `p x q` 的矩阵 Y，Y 又经过运算得到了 `s x t` 的矩阵 Z。那么按照前面讲的规则，dZ/dY 应该是一个 `s x t x p x q` 四维张量，dY/dX 是一个 `p x q x m x n`的四维张量。问题来了，怎样反向传播？怎样将两个四维张量相乘？？？这要怎么乘？？？就算能解决两个四维张量怎么乘的问题，四维和三维的张量又怎么乘？导数的导数又怎么求，这一连串的问题，感觉要疯掉…… 
+>
+> 为了避免这个问题，我们**不允许张量对张量求导，只允许标量对张量求导，求导结果是和自变量同形的张量**。所以必要时我们要把张量通过将所有张量的元素加权求和的方式转换为标量，举个例子，假设`y`由自变量`x`计算而来，`w`是和`y`同形的张量，则`y.backward(w)`的含义是：先计算`l = torch.sum(y * w)`，则`l`是个标量，然后求`l`对自变量`x`的导数。
+>
+> [参考](https://zhuanlan.zhihu.com/p/29923090)
 
 来看一些实际例子。
 ``` python
@@ -666,7 +674,8 @@ tensor([100.], requires_grad=True)
 tensor([2.])
 ```
 
-----------
+
+
 > 注: 本文主要参考[PyTorch官方文档](https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html#sphx-glr-beginner-blitz-autograd-tutorial-py)，与[原书同一节](https://zh.d2l.ai/chapter_prerequisite/autograd.html)有很大不同。
 
 

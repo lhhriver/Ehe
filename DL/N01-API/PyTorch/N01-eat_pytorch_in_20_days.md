@@ -3026,7 +3026,7 @@ import torch
 from torch import nn
 
 
-#样本数量
+# 样本数量
 n = 400
 
 # 生成测试用数据集
@@ -3041,7 +3041,7 @@ Y = X@w0 + b0 + torch.normal(0.0, 2.0, size=[n,1])  # @表示矩阵乘法,增加
 %matplotlib inline
 %config InlineBackend.figure_format = 'svg'
 
-plt.figure(figsize = (12,5))
+plt.figure(figsize = (12, 5))
 ax1 = plt.subplot(121)
 ax1.scatter(X[:,0].numpy(),Y[:,0].numpy(), c = "b",label = "samples")
 ax1.legend()
@@ -3107,7 +3107,7 @@ class LinearRegression:
         self.w = torch.randn_like(w0, requires_grad=True)
         self.b = torch.zeros_like(b0, requires_grad=True)
         
-    #正向传播
+    # 正向传播
     def forward(self,x): 
         return x@self.w + self.b
 

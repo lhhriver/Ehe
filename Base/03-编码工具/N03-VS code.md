@@ -15,7 +15,34 @@
 
 
 
+# 远程环境配置
 
+## 远程服务器免密登录
+
+1. 生成本地秘钥：ssh-keygen，连敲几下回车。
+
+```
+目录：C:\Users\lhhriver\.ssh
+公钥：id_rsa.pub
+私钥：id_rsa
+```
+
+2. 将公钥拷贝到服务器.ssh文件夹内：如：/root/.ssh
+
+3. 将公钥写入文件：cat id_rsa.pub >> authorized_keys
+
+4. vscode安装Remote-SSH插件。
+
+5. 配置：C:\Users\lhhriver\\.ssh\config
+
+    ```
+    Host 133
+      User root
+      HostName 172.16.128.133
+      IdentityFile C:\Users\lhhriver\.ssh\id_rsa
+    ```
+
+    
 
 # 附录
 
