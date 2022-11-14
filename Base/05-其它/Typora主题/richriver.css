@@ -47,14 +47,14 @@ body {
 
 #write {
   max-width: 90%; /*主页面宽度比例*/
-  max-width: 860px;
+  /*max-width: 860px;*/
   margin: 0 auto;
   padding: 20px;
   padding-bottom: 100px;
   counter-reset: h1;
 }
 
-
+/*
 @media only screen and (min-width: 1400px) {
 	#write {
 		max-width: 1024px;
@@ -66,7 +66,7 @@ body {
 		max-width: 1200px;
 	}
 }
-
+*/
 
 a {
   color: #dcdcaa;
@@ -75,9 +75,10 @@ a {
 /* 水平分隔线 ***/
 hr {
   border: none;
-  border-top: 3px dashed #9cdcfe;
-  height: 1px; /*两线间距*/
+  border-top: 2px dashed #8392a5;
+  height: 2px; /*两线间距*/
 }
+
 
 textarea {
   font-family: Microsoft Yahei, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -94,7 +95,9 @@ blockquote {
   margin: 2em 2em 3em 2em; /*上右下左*/
 }
 
-
+p {
+    margin: 16px 0px 16px 0px;
+}
 
 /*ul无序列表 */
 ul {
@@ -106,7 +109,7 @@ ul {
 
 /* ol有序列表*/
 ol {
-  color: #9a9a9a; /*列表字体颜色*/
+  color: #8392a5; /*列表字体颜色*/
   font-family: Microsoft Yahei;
   list-style: decimal;
   margin-left: 0;
@@ -158,6 +161,7 @@ img {
   /*四周圆弧大小*/
   border-radius: 12px;
   background-color: #1e1e1e;
+  /*max-width:80%; 500px*/
 }
 
 /*`  `*/
@@ -167,11 +171,11 @@ code {
   font-size: 20px;
   color: #dcdcaa;
   /*border: 0px solid #37373d;*/
-  border-radius: 6px;
+  border-radius: 3px;
   padding: 0.5px 3px 0.5px 3px;
   font-style: normal;
-  font-weight: 400;
-  margin: 0;
+  font-weight: 1000;
+  margin: 0px 1px 0px 1px;;
 }
 
 /* 统一上标和下标 */
