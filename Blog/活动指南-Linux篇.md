@@ -412,6 +412,9 @@ sed -i 's/原字符串/新字符串/' ab.txt
 
 # 对于文件第3行，把匹配上的所有字符串进行替换
 sed -i '3s/原字符串/新字符串/g' ab.txt
+
+# 替换带/的字符串
+sed -i s#data1#home/tigergraph#g *
 ```
 
 
