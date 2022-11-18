@@ -1134,10 +1134,29 @@ free -g
 kill -9 26993
 ```
 
+
+
 ```shell
 # 根据名字包含来kill
 ps x | grep main_LabelCustomer | grep -v grep |awk '{print $1}'|xargs kill -9
 ```
+
+
+
+```shell
+#!/bin/sh
+
+processname='server'
+PROCESS=`ps -ef|grep $processname | grep -v grep | grep -v PPID | awk '{ print $2}'`
+
+for i in $PROCESS
+   do
+   echo "Kill the $1 process [ $i ]"
+   kill -9 $i
+done
+```
+
+
 
 - last
 - lastb
