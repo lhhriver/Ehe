@@ -69,9 +69,11 @@ torch.tensor(data,
 ```python
 arr = np.ones((3, 3))
 print("ndarray的数据类型：", arr.dtype)
+
 # 创建存放在 GPU 的数据
 # t = torch.tensor(arr, device='cuda')
-t= torch.tensor(arr)
+
+t = torch.tensor(arr)
 print(t)
 ```
 
@@ -137,11 +139,11 @@ torch.zeros(*size,
 
 **功能**：根据 size 创建全 0 张量
 
-- size: 张量的形状
-- out: 输出的张量，如果指定了 out，那么`torch.zeros()`返回的张量和 out 指向的是同一个地址
+- size: 张量的形状。
+- out: **输出的张量，如果指定了 out，那么torch.zeros()返回的张量和 out 指向的是同一个地址**。
 - layout: 内存中布局形式，有 strided，sparse_coo 等。当是稀疏矩阵时，设置为 sparse_coo 可以减少内存占用。
-- device: 所在设备，cuda/cpu
-- requires_grad: 是否需要梯度
+- device: 所在设备，cuda/cpu。
+- requires_grad: 是否需要梯度。
 
 代码示例：
 
@@ -162,9 +164,11 @@ print(id(t), id(out_t), id(t) == id(out_t))
 tensor([[0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]]) 
+        
  tensor([[0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]])
+        
 2984903203072 2984903203072 True
 ```
 
@@ -203,6 +207,8 @@ torch.full(size,
 
 - size: 张量的形状，如 (3,3)
 - fill_value: 张量中每一个元素的值
+
+
 
 代码示例：
 
@@ -370,7 +376,15 @@ print(t_normal)
 tensor([0.6614, 0.2669, 0.0617, 0.6213])
 ```
 
+
+
 `模式二`：mean 为标量，std 为张量
+
+```
+
+```
+
+
 
 `模式三`：mean 为张量，std 为标量
 
@@ -381,6 +395,7 @@ tensor([0.6614, 0.2669, 0.0617, 0.6213])
 mean = torch.arange(1, 5, dtype=torch.float)
 std = 1
 t_normal = torch.normal(mean, std)
+
 print("mean:{} \n std:{}".format(mean, std))
 print(t_normal)
 ```
@@ -390,12 +405,15 @@ print(t_normal)
 ```
 mean:tensor([1., 2., 3., 4.])
 std:1
+
 tensor([1.6614, 2.2669, 3.0617, 4.6213])
 ```
 
 这 4 个数采样分布的均值不同，但是方差都是 1。
 
-`模式一四`：mean 为张量，std 为张量
+
+
+`模式四`：mean 为张量，std 为张量
 
 代码示例：
 
@@ -418,6 +436,8 @@ tensor([1.6614, 2.5338, 3.1850, 6.4853])
 
 其中 1.6614 是从正态分布 N(1,1)中采样得到的，其他数字以此类推。
 
+
+
 ### torch.randn() 和 torch.randn_like()
 
 ```python
@@ -433,6 +453,8 @@ torch.randn(*size,
 
 - size: 张量的形状
 
+
+
 ### torch.rand() 和 torch.rand_like()
 
 ```python
@@ -445,6 +467,8 @@ torch.rand(*size,
 ```
 
 **功能**：在区间 [0, 1) 上生成均匀分布。
+
+
 
 ### torch.randint() 和 torch.randint_like()
 
@@ -464,6 +488,8 @@ torch.rand(*size,
 **功能**：在区间 [low, high) 上生成整数均匀分布。
 
 - size: 张量的形状
+
+
 
 ### torch.randperm()
 
@@ -497,9 +523,11 @@ torch.bernoulli(input,
                 out=None)
 ```
 
-功能：以 input 为概率，生成伯努利分布 (0-1 分布，两点分布)
+**功能**：以 input 为概率，生成伯努利分布 (0-1 分布，两点分布)
 
 - input: 概率值
+
+
 
 **参考资料**
 

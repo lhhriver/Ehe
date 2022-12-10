@@ -21,7 +21,7 @@
 
 ## json.dumps()
 
-将Python对象编码成json字符串
+（1）将Python对象编码成json字符串
 
 ```python
 import json
@@ -40,7 +40,7 @@ print(json.dumps(data))
 
 
 
-**json.dumps()过程中的中文显示**
+（2）**json.dumps()过程中的中文显示**
 
 ```python
 import json
@@ -68,7 +68,7 @@ print(val)
 ```python
 import json
 
-data = {'a':'test','b':100}
+data = {'a':'test', 'b':100}
 
 # 先将Python对象编码成json字符串
 a = json.dumps(data)
@@ -94,8 +94,8 @@ import json
 
 data = {
     'key1':'test',
-    'a':[1,2,3,4],
-    'b':(1,2,3)
+    'a':[1, 2, 3, 4],
+    'b':(1, 2, 3)
 }
 
 with open('json_test.txt','w+') as f:
@@ -119,14 +119,14 @@ import json
 
 data = {
     'key1':'test',
-    'a':[1,2,3,4],
-    'b':(1,2,3)
+    'a':[1, 2, 3, 4],
+    'b':(1, 2, 3)
 }
 
-with open('json_test.txt','w+') as f:
-    json.dump(data,f)
+with open('json_test.txt', 'w+') as f:
+    json.dump(data, f)
 
-with open('json_test.txt','r+') as f:
+with open('json_test.txt', 'r+') as f:
     print(json.load(f))
 ```
 

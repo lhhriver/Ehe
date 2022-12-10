@@ -51,8 +51,6 @@
 
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-473048.png)
 
-
-
 - 接着添加中科大镜像或者清华镜像，在安装库的时候实现加速下载。
 
 ## 安装 PyTorch
