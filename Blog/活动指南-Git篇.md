@@ -7,7 +7,7 @@
 **用法**： git config –global user.email “[email address]”
 
 ```shell
-# 此命令分别设置要与提交一起使用的作者姓名和电子邮件地址。
+# 此命令分别设置要与提交一起使用的作者姓名和电子邮件地址
 git config --global user.name "liuhuihe"
 git config --global user.email "lhhriver@163.com"
 ```
@@ -17,7 +17,7 @@ git config --global user.email "lhhriver@163.com"
 **用法**： git init [repository name]
 
 ```shell
-# 此命令用于启动新的存储库。
+# 此命令用于启动新的存储库
 git init  /home/liuhuihe/DEMO
 ```
 
@@ -26,7 +26,7 @@ git init  /home/liuhuihe/DEMO
 **用法**： git clone [url]
 
 ```shell
-# 此命令用于从现有URL获取存储库。
+# 此命令用于从现有URL获取存储库
 git clone https://github.com/jalammar/jalammar.github.io.git
 git clone git@17.163.18.443:/home//src/nlp.git
 ```
@@ -36,14 +36,14 @@ git clone git@17.163.18.443:/home//src/nlp.git
 **用法**： git add [file]
 
 ```shell
-# 此命令将文件添加到暂存区域。
+# 此命令将文件添加到暂存区域
 git add test.py
 ```
 
 **用法**： git add *
 
 ```shell
-# 此命令将一个或多个添加到暂存区域。
+# 此命令将一个或多个添加到暂存区域
 git add *
 ```
 
