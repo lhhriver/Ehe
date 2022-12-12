@@ -21,9 +21,6 @@ docker pull centos
 # 查询本机的所有镜像，并显示详细信息
 docker images
 
-# 查询本机的所有镜像，只显示镜像ID
-docker images -q 
-
 # 查看镜像的详细信息（对外端口、容器启动时执行的命令、环境变量、工作目录等等）
 docker inspect ID/name:tag
 ```
@@ -34,14 +31,14 @@ docker inspect ID/name:tag
 # 删除指定镜像
 docker rmi  IID 
 
+# 强制删除镜像（一些相互依赖的镜像通过上面的命令无法删除）
+docker rmi -f IID
+
 # 删除所有镜像
 docker rmi `docker images -q`
 
 # 同上
 docker rmi $(docker images -q)
-
-# 强制删除镜像（一些相互依赖的镜像通过上面的命令无法删除）
-docker rmi -f IID
 ```
 
 ## 导入导出镜像
@@ -66,16 +63,19 @@ FROM 镜像ID:标签
 FROM centos:latest
 ```
 
+
+
 **RUN命令**
 
 ```shell
 # RUN 执行shell命令，多条命令使用&&连接，也可以使用多行RUN，但是docker镜像是分层制作的
-# 在dockerfile中每一条执行命令都创建一层，所以我们尽量创建少的层，把能够合并的命令放在一
-# 层中
+# 在dockerfile中每一条执行命令都创建一层，所以我们尽量创建少的层，把能够合并的命令放在一层中
 RUN cd /opt && mkdir code && yum install -y vim && yum install -y wget
 ```
 
 以上命令就是切换到/opt目录，创建一个code子目录，安装vim和wget。
+
+
 
 **CMD命令**：使用镜像启动容器时默认的运行命令，如果在docker run的时候，在后面带上自定义命令，那么这个命令就会被替换掉，导致容器启动的时候不会执行，所以一般我们不用这个。
 
@@ -83,11 +83,15 @@ RUN cd /opt && mkdir code && yum install -y vim && yum install -y wget
 CMD ["/usr/sbin/sshd", "-D"]
 ```
 
+
+
 **ENTRYPOINT**：和上面的CMD命令相似，但是不会被启动容器时的自定义命令替换掉，一定会执行；还有一个用法是在docker run后面的自定义命令可以作为ENTRYPOINT的命令参数传入。
 
 ```shell
 ENTRYPOINT ["/usr/sbin/sshd", "-D"]
 ```
+
+
 
 **COPY命令**：从主机拷贝文件到容器中。
 
@@ -95,11 +99,15 @@ ENTRYPOINT ["/usr/sbin/sshd", "-D"]
 COPY init.sh /opt/
 ```
 
+
+
 **ADD命令**：和copy命令类似，拷贝文件到镜像中，但是对于压缩文件（含有tar的）拷贝过去会直接解压。
 
 ```shell
 ADD xxx.tar.gz /var/www/html
 ```
+
+
 
 **EXPOSE命令**：指定容器要对外暴露的端口。
 
@@ -107,6 +115,8 @@ ADD xxx.tar.gz /var/www/html
 EXPOSE 80
 EXPOSE 3306
 ```
+
+
 
 **VOLUME命令**：在dockerfile中声明了VOLUME绑定目录并不会在容器启动的时候帮我们自动绑定目录，那么VOLUME和-v有什么区别呢？假设我们在dockerfile中声明了。
 
@@ -126,11 +136,15 @@ docker run -d -v ./data:/data -v ./proc:/etc/proc --name='cent1' my_centos
 
 所以如果一个镜像制作的时候使用了VOLUME，那么每次启动都会在宿主机上创建一个数据目录，如果这个目录里存在的东西很多，那么时间长了，我们就会发现宿主机上空间越来越小，即使你重启容器也不行。所以要了解这个性质，针对性的清理docker目录。
 
+
+
 **WORKDIR**：相当于cd命令，区别是在dockerfile中使用了WORKDIR后，在它下面的语句，工作目录都变成了WORKDIR指定的目录。
 
 ```shell
  WORKDIR /code
 ```
+
+
 
 **ENV**：在dockerfile中设置环境变量，主要为了在执行docker run的时候可以通过-e参数修改环境变量，这样也可以使镜像更加通用。例如MySQL安装时要指定用户名、密码、绑定IP，如果直接在容器里面安装，那么我们如果要修改的话，必须登录到容器中，进行修改重启。但是在dockerfile中指定了ENV变量，那么在docker run的时候就可以修改这些设置。
 
@@ -168,8 +182,8 @@ ENTRYPOINT ["/bin/bash", "init.sh"]
 在当前目录下创建dockerfile文件，并使用docker build命令制作镜像
 
 ```shell
-# -t 后面是新的镜像标签， .表示使用当前目录下的dockerfile文件
-docker build -t my_https://gitee.com/liuhuihe/Ehe/raw/master/images/centos:latest .
+# -t后面是新的镜像标签， .表示使用当前目录下的dockerfile文件
+docker build -t my_images:v1 .
 ```
 
 
@@ -207,6 +221,7 @@ docker ps
 
 # 将容器制作为镜像（如果要提交到私有镜像库，新镜像名称必须携带私有库的域名，例如：xxx.com
 docker commit 容器ID xxx.com/my_container:v1
+docker commit KnowledgeDemo knowledgedemo:v1
 
 # 将容器提交到私有镜像库
 docker push xxx.com/my_container:v1
@@ -300,7 +315,7 @@ docker exec -it 容器ID|容器名称 /bin/bash
 
 # 不进入容器执行命令（查看根目录列表，并显示在控制台）
 docker exec 容器ID ls /
-  
+
 # 不进入容器，向容器中安装vim，并后台安装，不在前台展示
 docker exec -d 容器ID apt-get install vim
 ```
@@ -342,14 +357,14 @@ docker rm -f 容器ID/名称
     -p 81:80 –p 443:443
 
 # 随机映射
-    docker run -p 80（随机端口）
+docker run -p 80（随机端口）
 ```
 
 ## 容器更新
 
 ```shell
 # 以mysql的容器为例，容器名是mysql7，那命令就是
-docker update --restart=always   mysql7
+docker update --restart=always mysql7
 ```
 
 ## 容器其他操作
@@ -390,7 +405,7 @@ docker run -d -v ./test:/test --name='n1' nginx
 docker run -it --name "my_volumes" -v /opt/Volume/conf:/usr/local/nginx/conf nginx /bin/bash
 
 # 跳出容器
-ctrl p q
+ctrl+p+q
 
 # 使用上面的数据卷容器作为新容器的数据卷，相当于新容器挂载了/opt/Volume/conf目录
 docker run -d  -p 8085:80 --volumes-from  my_volumes --name "n85" nginx
@@ -451,8 +466,8 @@ docker run -p 2530:9001 --name KnowledgeDemo -dt f255141a932f bash
 docker run -dit -p 9002:9000 -p 9000:22 -p 27520:14240 --name tigergraph_ts 67aef4827076
 
 # 进入开启容器，复制代码到容器里面
-docker exec -ti KnowledgeDemo bash
 docker cp KnowledgeDemo KnowledgeDemo:/home/nlp
+docker exec -ti KnowledgeDemo bash
 
 # 进去容器，运行脚本
 docker exec -ti KnowledgeDemo bash
