@@ -40,10 +40,17 @@ git clone git@17.163.18.443:/home//src/nlp.git
 git add test.py
 ```
 
+**用法**：git add .
+
+```shell
+# 此命令将一个或多个添加到暂存区域，并且会根据.gitignore做过滤
+git add . 
+```
+
 **用法**： git add *
 
 ```shell
-# 此命令将一个或多个添加到暂存区域
+# 此命令将一个或多个添加到暂存区域，会忽略.gitignore把任何文件都加入
 git add *
 ```
 
@@ -68,21 +75,21 @@ git commit -a
 **用法**： git diff
 
 ```shell
-# 此命令显示尚未暂存的文件差异。
+# 此命令显示尚未暂存的文件差异
 git diff
 ```
 
 **用法**：git diff –staged
 
 ```shell
-# 此命令显示暂存区域中的文件与当前最新版本之间的差异。
+# 此命令显示暂存区域中的文件与当前最新版本之间的差异
 git diff -staged
 ```
 
 **用法**： git diff [first branch] [second branch]
 
 ```shell
-# 该命令显示了上述两个分支之间的差异。
+# 该命令显示了上述两个分支之间的差异
 git diff branch_2 branch_3
 ```
 
@@ -91,21 +98,21 @@ git diff branch_2 branch_3
 **用法**： git reset [file]
 
 ```shell
-#此命令取消暂存文件，但保留文件内容。 
+# 此命令取消暂存文件，但保留文件内容
 git reset site.css
 ```
 
 **用法**： git reset [commit]
 
 ```shell
-# 此命令在指定的提交后撤消所有提交，并在本地保留更改。
+# 此命令在指定的提交后撤消所有提交，并在本地保留更改
 git reset heliluya
 ```
 
 **用法**： git reset –hard [commit] 
 
 ```shell
-# 此命令将丢弃所有历史记录，并返回到指定的提交。
+# 此命令将丢弃所有历史记录，并返回到指定的提交
 git reset -hard haliluya
 ```
 
@@ -114,7 +121,7 @@ git reset -hard haliluya
 **用法**： git status
 
 ```shell
-# 该命令列出了所有必须提交的文件。
+# 该命令列出了所有必须提交的文件
 git status
 ```
 
@@ -123,7 +130,7 @@ git status
 **用法**： git rm [file]
 
 ```shell
-# 此命令从你的工作目录中删除文件，然后进行删除。
+# 此命令从你的工作目录中删除文件，然后进行删除
 git rm test.py
 
 # 删除缓存区文件，再提交可以删除远程文件，本地不受影响
