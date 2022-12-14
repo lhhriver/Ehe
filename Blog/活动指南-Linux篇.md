@@ -703,6 +703,20 @@ dr-xr-xr-x  83 root root     0 Feb 18 10:58 proc
 dr-xr-xr-x  13 root root     0 Feb 18 10:59 sys
 ```
 
+```shell
+# 统计文件夹下文件的个数
+ls -l | grep "^-" | wc -l
+
+# 统计文件夹下文件个数，包括子文件
+ls -lR | grep "^-" | wc -l
+
+# 统计文件夹下目录的个数
+ls -l | grep "^d" | wc -l
+
+# 统计文件夹下目录个数，包括子目录
+ls -lR | grep "^d" | wc -l
+```
+
 
 
 - mcd
