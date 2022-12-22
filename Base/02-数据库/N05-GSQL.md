@@ -949,6 +949,56 @@ CREATE QUERY A_print_info(/* Parameters here */) FOR GRAPH gsql_EMS {
 
 ```
 
+## 数据生成
+
+create_GXPF_example_schema.gsql
+
+```c++
+/*
+1、创建数据库GXPF_example
+2、创建schema，共42个节点类型、150个关系类型
+*/
+// clear graph store -HARD
+
+typedef tuple<caFromBus int, caToBus int, violFromBus int, violToBus int, violation_perc double, edgeID int, edgename string (50), device_type string (50), volt string (50), from_bus_name string (50), to_bus_name string (50), CA_bridge int> ca_linedetail
+typedef tuple< caFrom int, caTo int, pfViolFrom uint, pfViolTo uint, pfViolTpye int, pfViolFrom_Name string (50), pfViolTo_Name string (50), line_Q1 double, pfSeverity double, edgeID int, vio_type string (50)> ca_pf_detail
+
+typedef tuple< v double,  t string (50)> carbon_hist_info
+typedef tuple< p double,  q double, est_p double,  est_q double, t string (50)> meas_hist_info
+
+// docker:/home/tigergraph/tigergraph/tmp/gsql/codegen/udt
+// 创建数据库
+// create graph GXPF_example()
+USE GRAPH graph_ts
+DROP JOB create_GXPF_example_schema
+CREATE SCHEMA_CHANGE JOB create_GXPF_example_schema FOR GRAPH graph_ts {
+
+    ADD VERTEX from_node (
+        PRIMARY_ID id int, f_id int, value_f double;)
+        
+    ADD VERTEX to_node (
+        PRIMARY_ID id int, t_id int, value_t double);
+
+    ADD UNDIRECTED edge ft_edge(from from_node, to to_node, value_e double);
+}
+
+RUN SCHEMA_CHANGE JOB create_GXPF_example_schema
+```
+
+insert_data.gsql
+
+```c++
+CREATE QUERY insert_data(/* Parameters here */) FOR GRAPH graph_ts { 
+  FOREACH i in range [1, 1000010] DO
+      insert into from_node VALUES(10000000 + i, 10000000 + i, 1.1);
+      insert into to_node VALUES(20000000 + i, 20000000 + i, 1.2);
+      insert into ft_edge VALUES(10000000 + i, 20000000 + i, 1.12);
+  END;
+}
+```
+
+
+
 ## 数据查看
 
 ### 节点数据查看
