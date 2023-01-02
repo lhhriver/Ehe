@@ -49,8 +49,7 @@ pd.DataFrame(dict)  # 导入Python字典 (dict) 里面的数据，其中key是�
 
 ```python
 with open('CREAT_data.txt', encoding='utf-8') as f:
-    df = pd.read_table(f, dtype={'住院号': str}, 
-                       sep='|', index_col=0, low_memory=False)
+    df = pd.read_table(f, dtype={'住院号': str}, sep='|', index_col=0, low_memory=False)
 ```
 
 
@@ -113,8 +112,6 @@ df.head()
     </tr>
   </tbody>
 </table>
-
-
 
 
 
