@@ -43,6 +43,12 @@ docker rmi $(docker images -q)
 
 ## 导入导出镜像
 
+load 和 save 是搭配使用的，主要用来直接操作镜像，而 import 是和 export 搭配使用的，主要是用来操作容器的。
+
+- docker save：将一个镜像导出为文件，再使用docker load命令将文件导入为一个镜像，会保存该镜像的的所有历史记录。比docker export命令导出的文件大，很好理解，因为会保存镜像的所有历史记录。
+
+- docker export：将一个容器导出为文件，再使用docker import 命令将容器导入成为一个新的镜像，但是相比docker save命令，容器文件会丢失所有元数据和历史记录，仅保存容器当时的状态，相当于虚拟机快照。
+
 ```shell
 # 导出本地镜像为tar文件
 docker save nginx >/opt/nginx.tar.gz
@@ -51,6 +57,22 @@ docker save -o KnowledgeDemo.tar knowledgedemo:v1
 # 从tar文件加载镜像
 docker load -i /opt/nginx.tar.gz
 ```
+
+
+
+启动export与import命令导出导入的镜像必须加/bin/bash或者其他/bin/sh，否则会报错
+
+```shell
+# 导出容器
+docker export -o "tigergraph_gd.tar" tigergraph_gd
+
+# 导入容器文件为镜像
+docker import tigergraph_gd.tar tigergraph_gd:latest
+
+docker run -dit -p 9003:9000 -p 9012:22 -p 27529:14240 --name tigergraph_gd tigergraph_gd:latest /bin/bash
+```
+
+
 
 ## 基于Dockerfile制作镜像
 
@@ -486,5 +508,90 @@ cd /home/dockersave/
 mkdir KnowledgeDemo
 cd KnowledgeDemo/
 docker save -o KnowledgeDemo.tar knowledgedemo:v1
+```
+
+
+
+## Linux系统下离线安装docker
+
+1、获取docker安装文件，官方地址如下：[链接](https://download.docker.com/linux/static/stable/x86_64/docker-19.03.9.tgz)
+
+2、将下载的安装文件进行解压
+
+```shell
+tar zxvf docker-19.03.9.tgz
+```
+
+3、将上述解压后文件（docker文件夹）全部移动至/usr/bin目录下（必须）
+
+```shell
+cp -p docker/* /usr/bin
+```
+
+4、将docker注册为service，步骤如下：
+
+① 输入如下命令：
+
+```shell
+vim /usr/lib/systemd/system/docker.service
+```
+
+② 复制下面内容至docker.service，内容如下：
+
+```shell
+[Unit]
+Description=Docker Application Container Engine
+Documentation=http://docs.docker.com
+After=network.target docker.socket
+[Service]
+Type=notify
+EnvironmentFile=-/run/flannel/docker
+WorkingDirectory=/usr/local/bin
+ExecStart=/usr/bin/dockerd \
+                -H tcp://0.0.0.0:4243 \
+                -H unix:///var/run/docker.sock \
+                --selinux-enabled=false \
+                --log-opt max-size=1g
+ExecReload=/bin/kill -s HUP $MAINPID
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+# Uncomment TasksMax if your systemd version supports it.
+# Only systemd 226 and above support this version.
+# TasksMax=infinity
+TimeoutStartSec=0
+# set delegate yes so that systemd does not reset the cgroups of docker containers
+Delegate=yes
+# kill only the docker process, not all processes in the cgroup
+KillMode=process
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
+```
+
+5、重新加载docker配置文件
+
+```shell
+systemctl daemon-reload
+```
+
+6、启动docker
+
+```shell
+systemctl start docker
+```
+
+7、设置docker开机启动
+
+```shell
+systemctl enable docker
+```
+
+8、查看docker是否安装成功
+
+```shell
+docker version
 ```
 

@@ -756,6 +756,8 @@ mount /dev/hda1 /data
 - rmt
 - stat
 
+
+
 ## tree
 
 用于以树状图形式列出目录内容。包括所有文件、子目录及子目录里的目录和文件
@@ -809,6 +811,8 @@ umount -f /data1/img
 - ext2ed
 - fdformat
 
+
+
 ## fdisk
 
 ```shell
@@ -857,6 +861,8 @@ I/O size (minimum/optimal): 262144 bytes / 262144 bytes
 - fsconf
 - hdparm
 - losetup
+
+
 
 ## lsblk
 
@@ -910,26 +916,26 @@ curl命令是一个利用URL规则在命令行下工作的文件传输工具。�
 
 ```shell
 # 文件下载
-curl URL --silent ->将下载文件输出到终端，所有下载的数据都被写入到stdout
-curl http://test.com/index.html  -O ->将index.html下载到当前文件夹中
-curl http://test.com -o filename.html --progress ->将输出内容保存到指定文件中，并显示进度
-curl URL --limit-rate 50k	->限制curl的下载速度
-curl URL --max-filesize bytes ->指定可下载的最大文件大小
-curl URL -v	->查看详细信息
+curl URL --silent # 将下载文件输出到终端，所有下载的数据都被写入到stdout
+curl http://test.com/index.html  -O # 将index.html下载到当前文件夹中
+curl http://test.com -o filename.html --progress # 将输出内容保存到指定文件中，并显示进度
+curl URL --limit-rate 50k	# 限制curl的下载速度
+curl URL --max-filesize bytes # 指定可下载的最大文件大小
+curl URL -v	# 查看详细信息
 
 # 断点续传
-curl URL/File -C 偏移量 ->从特定的文件偏移处继续下载,或者下载部分文件
-curl -C - URL		   ->自动判断续传位置
+curl URL/File -C 偏移量 # 从特定的文件偏移处继续下载,或者下载部分文件
+curl -C - URL		   # 自动判断续传位置
 
 # 用curl设置cookies
-curl http://test.com --cookie "user=root;pass=126" ->多个cookie使用分号分隔
-curl URL --cookie-jar cookie_file ->将cookie另存为一个文件
+curl http://test.com --cookie "user=root;pass=126" # 多个cookie使用分号分隔
+curl URL --cookie-jar cookie_file # 将cookie另存为一个文件
 
 # 用curl设置用户代理字符串
 # 有些网站访问会提示只能使用IE浏览器来访问，这是因为这些网站设置了检查用户代理，
 # 可以使用curl把用户代理设置为IE，这样就可以访问了。使用--user-agent或者-A选项
-curl URL --user-agent "Mozilla/5.0" ->设置使用IE访问
-curl URL -A "Mozilla/5.0"           ->设置使用IE访问
+curl URL --user-agent "Mozilla/5.0" # 设置使用IE访问
+curl URL -A "Mozilla/5.0"           # 设置使用IE访问
 
 # 设置请求头
 curl -H "Host:man.linuxde.net" -H "accept-language:zh-cn" URL
@@ -953,7 +959,6 @@ curl http://test.com -F "file=@/Users/fungleo/Downloads/401.png" -H "token: 222"
 
 # 请求https
 curl http://test.com -X POST -H "Content-Type:application/json" -d '{"title":"123","content":"dw"}' -k
-
 ```
 
 
@@ -1073,6 +1078,8 @@ ssh root@10.1.1.5
 - statserial
 - talk
 
+
+
 ## tcpdump
 
 命令行的抓包工具
@@ -1089,9 +1096,13 @@ ssh root@10.1.1.5
 - uustat
 - uux
 
+
+
 ## wall	
 
 向所有用户广播信息
+
+
 
 
 ## write	
@@ -1100,11 +1111,15 @@ ssh root@10.1.1.5
 
 - ytalk
 
+
+
 # 系统管理
 
 - adduser
 - chfn
 - chsh
+
+
 
 ## date
 
@@ -1117,6 +1132,8 @@ date -d "-1 day" "+%Y-%m-%d" # 昨天 2019-12-21
 
 - exit
 - finger
+
+
 
 ## free
 
@@ -1137,6 +1154,8 @@ free -g
 - groupmod
 - halt
 - id
+
+
 
 ## kill
 
@@ -1181,6 +1200,8 @@ done
 - newgrp
 - nice
 - procinfo
+
+
 
 ## ps
 
