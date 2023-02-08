@@ -502,7 +502,7 @@ cat cimse_cmd_01.log | iconv -f gb18030 -t utf-8 -c | more
 cat ./logs/cimse_cmd_rxRatio_0.2.log | iconv -f gb18030 -t utf-8 -c | more
 ```
 
-
+latin1
 
 ```shell
 # 将文件GBK编码转换为UTF-8
@@ -1332,6 +1332,15 @@ useradd -d /home/myd tt
 - chroot
 - clear
 - clock
+
+## systemctl
+
+```shell
+# 关闭防火墙
+systemctl stop firewalld.service
+```
+
+
 
 ## crontab
 
