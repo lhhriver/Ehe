@@ -1,6 +1,6 @@
 @echo off
 
-echo ==============  Update Ehe  ==============
+echo ==============  Update Ehe  =========================================
 D:
 cd D:\Gitee\Ehe
 
@@ -20,7 +20,7 @@ git push origin master
 
 
 echo:
-echo ==============  Update DDU  ==============
+echo ==============  Update DDU  ========================================
 D:
 cd D:\Gitee\DDU
 
@@ -36,6 +36,26 @@ git pull origin master
 
 echo:
 git push origin master
+
+
+echo:
+echo ==============  Update DeepRed  ======================================
+D:
+cd D:\Gitee\DeepRed
+
+echo:
+git add .
+
+echo:
+git commit -m "update"
+
+echo:
+echo ==============  Pull DeepRed  ==============
+git pull origin master
+
+echo:
+git push origin master
+
 
 echo:
 pause
