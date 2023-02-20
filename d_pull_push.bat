@@ -58,4 +58,22 @@ git push origin master
 
 
 echo:
+echo ==============  Update ICEhe  ======================================
+D:
+cd D:\Gitee\ICEhe
+
+echo:
+git add .
+
+echo:
+git commit -m "update"
+
+echo:
+echo ==============  Pull ICEhe  ==============
+git pull origin master
+
+echo:
+git push origin master
+
+echo:
 pause
