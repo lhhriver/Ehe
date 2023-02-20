@@ -181,7 +181,7 @@ Neo4j服务器具有一个集成的浏览器，在启动neo4j服务之后，可�
 
 下面我通过一个示例，演示如何通过Cypher命令，创建两个节点和两个关系。
 
-```
+```cypher
 CREATE (n:Person { name: 'Andres', title: 'Developer' }) return n;
 CREATE (n:Person { name: 'Vic', title: 'Developer' }) return n;
 match(n:Person{name:"Vic"}),(m:Person{name:"Andres"}) create (n)-[r:Friend]->(m) return r;
@@ -505,7 +505,7 @@ return n;
 
 **1，创建没有任何属性的关系**
 
-```
+```cypher
 MATCH (a:Person),(b:Movie)
 WHERE a.name = 'Robert Zemeckis' AND b.title = 'Forrest Gump'
 CREATE (a)-[r:DIRECTED]->(b)
@@ -516,7 +516,7 @@ RETURN r;
 
 **2，创建关系，并设置关系的属性**
 
-```
+```cypher
 MATCH (a:Person),(b:Movie)
 WHERE a.name = 'Tom Hanks' AND b.title = 'Forrest Gump'
 CREATE (a)-[r:ACTED_IN { roles:['Forrest'] }]->(b)
@@ -537,7 +537,7 @@ RETURN r;
 
 示例脚本返回跟Movie标签有关系的所有节点
 
-```
+```cypher
 match(n)--(m:Movie) 
 return n;
 ```
@@ -546,7 +546,7 @@ return n;
 
 **2，查询有向关系的节点**
 
-```
+```cypher
 MATCH (:Person { name: 'Tom Hanks' })-->(movie)
 RETURN movie;
 ```
@@ -555,7 +555,7 @@ RETURN movie;
 
 **3，为关系命名，通过[r]为关系定义一个变量名，通过函数type获取关系的类型**
 
-```
+```cypher
 MATCH (:Person { name: 'Tom Hanks' })-[r]->(movie)
 RETURN r,type(r);
 ```
@@ -564,7 +564,7 @@ RETURN r,type(r);
 
 **4，查询特定的关系类型，通过[Variable:RelationshipType{Key:Value}]指定关系的类型和属性**
 
-```
+```cypher
 MATCH (:Person { name: 'Tom Hanks' })-[r:ACTED_IN{roles:'Forrest'}]->(movie)
 RETURN r,type(r);
 ```
@@ -579,7 +579,7 @@ set子句，用于对更新节点的标签和实体的属性；remove子句用�
 
 由于Path是由节点和关系构成的，当路径中的关系或节点不存在时，Neo4j会自动创建；
 
-```
+```cypher
 CREATE p =(vic:Worker:Person{ name:'vic',title:"Developer" })-[:WORKS_AT]->(neo)<-[:WORKS_AT]-(michael:Worker:Person { name: 'Michael',title:"Manager" })
 RETURN p
 ```
@@ -592,7 +592,7 @@ RETURN p
 
 通过节点的ID获取节点，Neo4j推荐通过where子句和ID函数来实现。
 
-```
+```cypher
 match (n)
 where id(n)=7
 set n.name = 'neo'
@@ -601,7 +601,7 @@ return n;
 
 **3，为节点增加标签**
 
-```
+```cypher
 match (n)
 where id(n)=7
 set n:Company
@@ -612,7 +612,7 @@ return n;
 
 **4，为关系增加属性**
 
-```
+```cypher
 match (n)<-[r]-(m)
 where id(n)=7 and id(m)=8
 set r.team='Azure'
@@ -627,28 +627,28 @@ return n;
 
 **1，通过id函数，返回节点或关系的ID**
 
-```
+```cypher
 MATCH (:Person { name: 'Oliver Stone' })-[r]->(movie)
 RETURN id(r);
 ```
 
 **2，通过type函数，查询关系的类型**
 
-```
+```cypher
 MATCH (:Person { name: 'Oliver Stone' })-[r]->(movie)
 RETURN type(r);
 ```
 
 **3，通过lables函数，查询节点的标签**
 
-```
+```cypher
 MATCH (:Person { name: 'Oliver Stone' })-[r]->(movie)
 RETURN lables(movie);
 ```
 
 **4，通过keys函数，查看节点或关系的属性键**
 
-```
+```cypher
 MATCH (a)
 WHERE a.name = 'Alice'
 RETURN keys(a)
@@ -656,7 +656,7 @@ RETURN keys(a)
 
 **5，通过properties()函数，查看节点或关系的属性**
 
-```
+```cypher
 CREATE (p:Person { name: 'Stefan', city: 'Berlin' })
 RETURN properties(p)
 ```
@@ -708,7 +708,7 @@ Cypher语言支持变长路径的模式，变长路径的表示方式是：[*N..
 
 路径可以指定（assign）给一个变量，该变量是路径变量，用于引用查询路径。
 
-```
+```cypher
 p = (a)-[*3..5]->(b)
 ```
 
@@ -720,7 +720,7 @@ p = (a)-[*3..5]->(b)
 
 查询模式是：查找跟Filipa有关系的人，路径长度为1或2，查询的结果是："Dilshad"和"Anders"
 
-```
+```cypher
 MATCH (me)-[:KNOWS*1..2]-(remote_friend)
 WHERE me.name = 'Filipa'
 RETURN remote_friend.name
@@ -766,7 +766,7 @@ RETURN remote_friend.name
 
 在C#中引用驱动程序的命名空间：
 
-```
+```cypher
 using Neo4j.Driver.V1;
 ```
 
@@ -2036,7 +2036,7 @@ set子句用于更新节点的标签，向节点和关系中添加属性
 
 **1，向节点或关系中添加属性**
 
-```
+```cypher
 MATCH (n { name: 'Andres' })
 SET n.surname = 'Taylor'
 RETURN n.name, n.surname
@@ -2046,7 +2046,7 @@ RETURN n.name, n.surname
 
 如果设置属性的值是NULL，相当于把该属性从节点或关系中移除
 
-```
+```cypher
 MATCH (n { name: 'Andres' })
 SET n.name = NULL RETURN n.name, n.age
 ```
@@ -2055,7 +2055,7 @@ SET n.name = NULL RETURN n.name, n.age
 
 把一个节点的属性复制给另一个节点
 
-```
+```cypher
 MATCH (at { name: 'Andres' }),(pn { name: 'Peter' })
 SET at = pn
 RETURN at.name, at.age, at.hungry, pn.name, pn.age
@@ -2063,21 +2063,21 @@ RETURN at.name, at.age, at.hungry, pn.name, pn.age
 
 **4，从Map中添加属性**
 
-```
+```cypher
 MATCH (p { name: 'Peter' })
 SET p += { hungry: TRUE , position: 'Entrepreneur' }
 ```
 
 **5，在一条set子句中添加多个属性**
 
-```
+```cypher
 MATCH (n { name: 'Andres' })
 SET n.position = 'Developer', n.surname = 'Taylor'
 ```
 
 **6，向节点中添加标签**
 
-```
+```cypher
 MATCH (n { name: 'Stefan' })
 SET n:German
 RETURN n.name, labels(n) AS labels
@@ -2085,7 +2085,7 @@ RETURN n.name, labels(n) AS labels
 
 **7，向节点中添加多个标签**
 
-```
+```cypher
 MATCH (n { name: 'Emil' })
 SET n:Swedish:Bossman
 RETURN n.name, labels(n) AS labels
@@ -2099,7 +2099,7 @@ RETURN n.name, labels(n) AS labels
 
 默认情况下，Neo4j不允许存在值为null的属性；如果属性不存在，那么返回该属性的值是null。
 
-```
+```cypher
 MATCH (a { name: 'Andres' })
 REMOVE a.age
 RETURN a.name, a.age
@@ -2107,7 +2107,7 @@ RETURN a.name, a.age
 
 **2，移除节点的标签**
 
-```
+```cypher
 MATCH (n { name: 'Peter' })
 REMOVE n:German
 RETURN n.name, labels(n)
@@ -2117,7 +2117,7 @@ RETURN n.name, labels(n)
 
 当节点的标签为空时，labels(n)函数返回空的list
 
-```
+```cypher
 MATCH (n { name: 'Peter' })
 REMOVE n:German:Swedish
 RETURN n.name, labels(n)
@@ -2131,7 +2131,7 @@ RETURN n.name, labels(n)
 
 对路径中匹配的所有节点，添加marked属性，并设置属性值为TRUE
 
-```
+```cypher
 MATCH p =(begin)-[*]->(END )
 WHERE begin.name = 'A' AND END .name = 'D'
 FOREACH (n IN nodes(p)| SET n.marked = TRUE )
@@ -2173,7 +2173,7 @@ all()表示所有的元素都满足条件，any()表示至少一个元素满足�
 
 例如，ALL谓词表示，在路径中，所有节点都必须具有age属性，并且age属性值都必须大于30：
 
-```
+```cypher
 MATCH p =(a)-[*1..3]->(b)
 WHERE a.name = 'Alice' AND b.name = 'Daniel' AND ALL (x IN nodes(p) WHERE x.age > 30)
 RETURN p
@@ -2181,7 +2181,7 @@ RETURN p
 
 ANY谓词表示，节点的array属性中至少有一个元素值是one：
 
-```
+```cypher
 MATCH (a)
 WHERE a.name = 'Eskil' AND ANY (x IN a.array WHERE x = 'one')
 RETURN a.name, a.array
@@ -2189,7 +2189,7 @@ RETURN a.name, a.array
 
 NONE谓词表示，在路径中，没有节点的age属性等于25
 
-```
+```cypher
 MATCH p =(n)-[*1..3]->(b)
 WHERE n.name = 'Alice' AND NONE (x IN nodes(p) WHERE x.age = 25)
 RETURN p
@@ -2197,7 +2197,7 @@ RETURN p
 
 SINGLE谓词表示，在路径中，只有一个节点的eyes属性是blue：
 
-```
+```cypher
 MATCH p =(n)-->(b)
 WHERE n.name = 'Alice' AND SINGLE (var IN nodes(p) WHERE var.eyes = 'blue')
 RETURN p
@@ -2242,7 +2242,7 @@ RETURN type(r), startNode(r), endNode(r)
 
 例如，节点的array属性，
 
-```
+```cypher
 MATCH (a)
 WHERE a.name = 'Eskil'
 RETURN a.array, head(a.array), last(a.array), size(a.array)
@@ -2259,7 +2259,7 @@ RETURN a.array, head(a.array), last(a.array), size(a.array)
 
 例如，统计路径列表中的元素数量：
 
-```
+```cypher
 MATCH (a)
 WHERE a.name = 'Alice'
 RETURN size((a)-->()-->()) AS fof
@@ -2277,7 +2277,7 @@ RETURN size((a)-->()-->()) AS fof
 
 在聚合计算中，可以引用分组键来对查询的结果进行分组聚合，例如，在return子句中，如果表达式不是聚合函数，那么该表达式是分组key，下面的表达式是按照type(r)分组，计算每个分组中记录的数量。
 
-```
+```cypher
 RETURN type(r), count(*)
 ```
 
@@ -2289,13 +2289,13 @@ RETURN type(r), count(*)
 
 extract函数的作用是从列表中抽取值，
 
-```
+```cypher
 extract(variable IN list | expression)
 ```
 
 根据抽取的值组装成一个列表，返回一个列表：
 
-```
+```cypher
 MATCH p =(a)-->(b)-->(c)
 WHERE a.name = 'Alice' AND b.name = 'Bob' AND c.name = 'Daniel'
 RETURN extract(n IN nodes(p)| n.age) AS extracted
@@ -2305,13 +2305,13 @@ RETURN extract(n IN nodes(p)| n.age) AS extracted
 
 filter函数用于对列表中的元素进行过滤，
 
-```
+```cypher
 filter(variable IN list WHERE predicate)
 ```
 
 把过滤后的元素组成一个了表，返回该列表：
 
-```
+```cypher
 MATCH (a)
 WHERE a.name = 'Eskil'
 RETURN a.array, filter(x IN a.array WHERE size(x)= 3)
@@ -2326,7 +2326,7 @@ RETURN a.array, filter(x IN a.array WHERE size(x)= 3)
 
 
 
-```
+```cypher
 MATCH (a)
 WHERE a.name = 'Alice'
 RETURN labels(a),keys(a)
@@ -2342,7 +2342,7 @@ RETURN nodes(p), relationships(p)
 
 range()函数，用于生成一个有序的序列，reverse()函数把原始列表的元素进行倒置
 
-```
+```cypher
 range(start, end [, step])
 reverse(list)
 ```
@@ -2351,13 +2351,13 @@ reverse(list)
 
 reduce()函数应用在列表上，对列表中的每个元素e进行迭代计算，在元素e上运行表达式（expression），把当前的结果存储在累加器中，进行迭代计算，并返回最终计算的标量结果：
 
-```
+```cypher
 reduce(accumulator = initial, e IN list | expression)
 ```
 
 例如，初始的age值是0，对路径p中的所有节点，计算各个节点的age值的和：
 
-```
+```cypher
 MATCH p =(a)-->(b)-->(c)
 WHERE a.name = 'Alice' AND b.name = 'Bob' AND c.name = 'Daniel'
 RETURN reduce(totalAge = 0, n IN nodes(p)| totalAge + n.age) AS reduction

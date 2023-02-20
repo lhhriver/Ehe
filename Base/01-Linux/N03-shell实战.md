@@ -44,7 +44,7 @@
 
 ## 进程
 
-> 查看进程
+### 查看进程
 
 ```shell
 ps auxw|head -1;ps auxw|sort -rn -k4|head -10
@@ -52,7 +52,7 @@ ps auxw|head -1;ps auxw|sort -rn -k4|head -10
 ps auxw|head -1;ps auxw|grep 'Label_lvshou_text'|sort -rn -k4
 ```
 
-> kill进程
+### kill进程
 
 ```shell
 #!/bin/bash
@@ -93,7 +93,15 @@ exit 1
 fi
 ```
 
+## 查看服务启动情况
 
+```shell
+while ["$(gadmin status | grep "Down")" != "" -o "$(gadmin status | grep "Warmup")" != "" ]
+do
+    echo "restarting"
+    sleep 2
+done
+```
 
 
 

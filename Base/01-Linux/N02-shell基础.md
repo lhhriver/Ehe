@@ -1,16 +1,24 @@
 # 教程
 
-- Shell 是一个用 C 语言编写的程序，它是用户使用 Linux 的桥梁。Shell 既是一种命令语言，又是一种程序设计语言。
-- Shell 是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务。
-- Ken Thompson 的 sh 是第一种 Unix Shell，Windows Explorer 是一个典型的图形界面 Shell。
+Shell 是一个用 C 语言编写的程序，它是用户使用 Linux 的桥梁。Shell 既是一种命令语言，又是一种程序设计语言。
+
+Shell 是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务。
+
+Ken Thompson 的 sh 是第一种 Unix Shell，Windows Explorer 是一个典型的图形界面 Shell。
 
 [Shell 在线工具](https://www.runoob.com/try/runcode.php?filename=helloworld&type=bash)
 
+
+
 ## Shell 脚本
 
-- Shell 脚本（shell script），是一种为 shell 编写的脚本程序。
-- 业界所说的 shell 通常都是指 shell 脚本，但读者朋友要知道，shell 和 shell script 是两个不同的概念。
-- 由于习惯的原因，简洁起见，本文出现的 "shell编程" 都是指 shell 脚本编程，不是指开发 shell 自身。
+Shell 脚本（shell script），是一种为 shell 编写的脚本程序。
+
+业界所说的 shell 通常都是指 shell 脚本，但读者朋友要知道，shell 和 shell script 是两个不同的概念。
+
+由于习惯的原因，简洁起见，本文出现的 "shell编程" 都是指 shell 脚本编程，不是指开发 shell 自身。
+
+
 
 ## Shell 环境
 
@@ -29,8 +37,7 @@ Linux 的 Shell 种类众多，常见的有：
 
 在一般情况下，人们并不区分 Bourne Shell 和 Bourne Again Shell，所以，像 #!/bin/sh，它同样也可以改为 #!/bin/bash。
 
-
-> 第一个shell脚本
+### 第一个shell脚本
 
 打开文本编辑器(可以使用 vi/vim 命令来创建文件)，新建一个文件 test.sh，扩展名为 sh（sh代表shell），扩展名并不影响脚本执行，见名知意就好，如果你用 php 写 shell 脚本，扩展名就用 php 好了。
 
@@ -45,7 +52,9 @@ echo "Hello World !"
 
 echo 命令用于向窗口输出文本。
 
-> 运行 Shell 脚本有两种方法：
+
+
+运行 Shell 脚本有两种方法：
 
 1. 作为可执行程序
 
@@ -64,10 +73,11 @@ chmod +x ./test.sh  # 使脚本具有执行权限
 
 ```shell
 /bin/sh test.sh
-/bin/php test.php
 ```
 
 这种方式运行的脚本，不需要在第一行指定解释器信息，写了也没用。
+
+
 
 # 变量
 
@@ -78,7 +88,7 @@ chmod +x ./test.sh  # 使脚本具有执行权限
 your_name="runoob.com"
 ```
 
-注意，变量名和等号之间不能有空格，这可能和你熟悉的所有编程语言都不一样。同时，变量名的命名须遵循如下规则：
+**注意**：**变量名和等号之间不能有空格**，这可能和你熟悉的所有编程语言都不一样。同时，变量名的命名须遵循如下规则：
 
 - 命名只能使用英文字母，数字和下划线，首个字符不能以数字开头。
 - 中间不能有空格，可以使用下划线（_）。
@@ -111,7 +121,7 @@ for file in $(ls /etc)
 
 以上语句将 /etc 下目录的文件名循环出来。
 
->使用变量
+### 使用变量
 
 使用一个定义过的变量，只要在变量名前面加美元符号即可，如：
 
@@ -142,9 +152,11 @@ your_name="alibaba"
 echo $your_name
 ```
 
-这样写是合法的，但注意，第二次赋值的时候不能写$your_name="alibaba"，使用变量的时候才加美元符（$）。
+这样写是合法的，但注意，第二次赋值的时候不能写\$your_name="alibaba"，使用变量的时候才加美元符（$）。
 
->只读变量
+
+
+### 只读变量
 
 使用 readonly 命令可以将变量定义为只读变量，只读变量的值不能被改变。
 
@@ -161,8 +173,7 @@ myUrl="http://www.runoob.com"
 /bin/sh: NAME: This variable is read only.
 ```
 
->删除变量
->
+### 删除变量
 
 使用 unset 命令可以删除变量。语法：unset variable_name
 
@@ -175,22 +186,21 @@ unset myUrl
 echo $myUrl
 ```
 
-
->变量类型
+### 变量类型
 
 运行shell时，会同时存在三种变量：
 
-　　1) 局部变量 局部变量在脚本或命令中定义，仅在当前shell实例中有效，其他shell启动的程序不能访问局部变量。
+     　　1) 局部变量：局部变量在脚本或命令中定义，仅在当前shell实例中有效，其他shell启动的程序不能访问局部变量。
+     　　2) 环境变量：所有的程序，包括shell启动的程序，都能访问环境变量，有些程序需要环境变量来保证其正常运行。必要的时候shell脚本也可以定义环境变量。
+     　　3) shell变量：shell变量是由shell程序设置的特殊变量。shell变量中有一部分是环境变量，有一部分是局部变量，这些变量保证了shell的正常运行
 
-　　2) 环境变量 所有的程序，包括shell启动的程序，都能访问环境变量，有些程序需要环境变量来保证其正常运行。必要的时候shell脚本也可以定义环境变量。
 
-　　3) shell变量 shell变量是由shell程序设置的特殊变量。shell变量中有一部分是环境变量，有一部分是局部变量，这些变量保证了shell的正常运行
 
 ## 字符串
 
-字符串是shell编程中最常用最有用的数据类型（除了数字和字符串，也没啥其它类型好用了），字符串可以用单引号，也可以用双引号，也可以不用引号。单双引号的区别跟PHP类似。
+字符串是shell编程中最常用最有用的数据类型（除了数字和字符串，也没啥其它类型好用了），**字符串可以用单引号，也可以用双引号，也可以不用引号**。单双引号的区别跟PHP类似。
 
-> 单引号
+### 单引号
 
 ```shell
 str='this is a string'
@@ -201,7 +211,7 @@ str='this is a string'
 - 单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的；
 - 单引号字串中不能出现单独一个的单引号（对单引号使用转义符后也不行），但可成对出现，作为字符串拼接使用。
 
->双引号
+### 双引号
 
 ```shell
 your_name='runoob'
@@ -218,7 +228,8 @@ Hello, I know you are "runoob"!
 - 双引号里可以出现转义字符
 
 
-> 拼接字符串
+
+### 拼接字符串
 
 ```shell
 your_name="runoob"
@@ -226,6 +237,7 @@ your_name="runoob"
 greeting="hello, "$your_name" !"
 greeting_1="hello, ${your_name} !"
 echo $greeting  $greeting_1
+
 # 使用单引号拼接
 greeting_2='hello, '$your_name' !'
 greeting_3='hello, ${your_name} !'
@@ -240,14 +252,16 @@ hello, runoob ! hello, ${your_name} !
 
 
 
->获取字符串长度
+### 获取字符串长度
 
 ```shell
 string="abcd"
 echo ${#string} # 输出 4
 ```
 
->提取子字符串
+
+
+### 提取子字符串
 
 以下实例从字符串第 2 个字符开始截取 4 个字符：
 
@@ -256,7 +270,9 @@ string="runoob is a great site"
 echo ${string:1:4} # 输出 unoo
 ```
 
->查找子字符串
+
+
+### 查找子字符串
 
 查找字符 i 或 o 的位置(哪个字母先出现就计算哪个)：
 
@@ -267,15 +283,19 @@ echo `expr index "$string" io`  # 输出 4
 
 注意： 以上脚本中 ` 是反引号，而不是单引号 '，不要看错了哦。
 
+
+
 ## 数组
 
 bash支持一维数组（不支持多维数组），并且没有限定数组的大小。
 
 类似于 C 语言，数组元素的下标由 0 开始编号。获取数组中的元素要利用下标，下标可以是整数或算术表达式，其值应大于或等于 0。
 
->定义数组
 
-在 Shell 中，用括号来表示数组，数组元素用"空格"符号分割开。定义数组的一般形式为：
+
+### 定义数组
+
+在 Shell 中，**用括号来表示数组，数组元素用"空格"符号分割开**。定义数组的一般形式为：
 
 ```shell
 数组名=(值1 值2 ... 值n)
@@ -307,7 +327,7 @@ array_name[n]=valuen
 
 可以不使用连续的下标，而且下标的范围没有限制。
 
->读取数组
+### 读取数组
 
 读取数组元素值的一般格式是：
 
@@ -327,15 +347,17 @@ valuen=${array_name[n]}
 echo ${array_name[@]}
 ```
 
->获取数组的长度
+### 获取数组的长度
 
 获取数组长度的方法与获取字符串长度的方法相同，例如：
 
 ```shell
 # 取得数组元素的个数
 length=${#array_name[@]}
+
 # 或者
 length=${#array_name[*]}
+
 # 取得数组单个元素的长度
 lengthn=${#array_name[n]}
 ```
@@ -366,7 +388,8 @@ lengthn=${#array_name[n]}
 
 每一行加个#符号太费力了，可以把这一段要注释的代码用一对花括号括起来，定义成一个函数，没有地方调用这个函数，这块代码就不会执行，达到了和注释一样的效果。
 
->多行注释
+**多行注释**
+
 多行注释还可以使用以下格式：
 
 ```shell
@@ -397,7 +420,6 @@ EOF 也可以使用其他符号:
 
 我们可以在执行 Shell 脚本时，向脚本传递参数，脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……
 
->实例
 以下实例我们向脚本传递三个参数，并分别输出，其中 $0 为执行的文件名：
 
 ```shell
@@ -427,10 +449,8 @@ Shell 传递参数实例！
 另外，还有几个特殊字符用来处理参数：
 
 
-
-
 参数处理|说明
-:-:|:-:
+:-:|:--
 \$#|传递到脚本的参数个数
 \$\*|以一个单字符串显示所有向脚本传递的参数。如"\$\*"用「"」括起来的情况、以"\$1 \$2 … \$n"的形式输出所有参数。
 \$\$|脚本运行的当前进程ID号
@@ -462,7 +482,7 @@ Shell 传递参数实例！
 传递的参数作为一个字符串显示：1 2 3
 ```
 
-$* 与 $@ 区别：
+\$* 与 \$@ 区别：
 
 - 相同点：都是引用所有参数。
 - 不同点：只有在双引号中体现出来。假设在脚本运行时写了三个参数 1、2、3，，则 " * " 等价于 "1 2 3"（传递了一个参数），而 "@" 等价于 "1" "2" "3"（传递了三个参数）。
@@ -488,17 +508,23 @@ done
 ```shell
 $ chmod +x test.sh 
 $ ./test.sh 1 2 3
+```
+
+```
 -- $* 演示 ---
 1 2 3
+
 -- $@ 演示 ---
 1
 2
 3
 ```
 
+
+
 # 数组
 
-数组中可以存放多个值。Bash Shell 只支持一维数组（不支持多维数组），初始化时不需要定义数组大小（与 PHP 类似）。
+数组中可以存放多个值。Bash Shell 只支持一维数组（不支持多维数组），初始化时不需要定义数组大小。
 
 与大部分编程语言类似，数组元素的下标由0开始。
 
@@ -508,12 +534,10 @@ Shell 数组用括号来表示，元素用"空格"符号分割开，语法格式
 array_name=(value1 ... valuen)
 ```
 
->实例
+实例
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
 
 my_array=(A B "C" D)
 ```
@@ -526,7 +550,7 @@ array_name[1]=value1
 array_name[2]=value2
 ```
 
->读取数组
+## 读取数组
 
 读取数组元素值的一般格式是：
 
@@ -534,12 +558,10 @@ array_name[2]=value2
 ${array_name[index]}
 ```
 
->实例
+实例
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
 
 my_array=(A B "C" D)
 
@@ -554,20 +576,23 @@ echo "第四个元素为: ${my_array[3]}"
 ```shell
 $ chmod +x test.sh 
 $ ./test.sh
+```
+
+```
 第一个元素为: A
 第二个元素为: B
 第三个元素为: C
 第四个元素为: D
 ```
 
->获取数组中的所有元素
+
+
+## 获取数组中的所有元素
 
 使用@ 或 * 可以获取数组中的所有元素，例如：
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
 
 my_array[0]=A
 my_array[1]=B
@@ -583,11 +608,16 @@ echo "数组的元素为: ${my_array[@]}"
 ```shell
 $ chmod +x test.sh 
 $ ./test.sh
+```
+
+```
 数组的元素为: A B C D
 数组的元素为: A B C D
 ```
 
->获取数组的长度
+
+
+## 获取数组的长度
 
 获取数组长度的方法与获取字符串长度的方法相同，例如：
 
@@ -610,9 +640,14 @@ echo "数组元素个数为: ${#my_array[@]}"
 ```shell
 $ chmod +x test.sh 
 $ ./test.sh
+```
+
+```
 数组元素个数为: 4
 数组元素个数为: 4
 ```
+
+
 
 # 运算符
 
@@ -650,7 +685,9 @@ echo "两数之和为 : $val"
 两点注意：
 
 - 表达式和运算符之间要有空格，例如 2+2 是不对的，必须写成 2 + 2，这与我们熟悉的大多数编程语言不一样。
-- 完整的表达式要被 ` ` 包含，注意这个字符不是常用的单引号，在 Esc 键下边。
+- 完整的表达式要被 \` \` 包含，注意这个字符不是常用的单引号，在 Esc 键下边。
+
+
 
 ## 算术运算符
 
@@ -658,11 +695,11 @@ echo "两数之和为 : $val"
 
 运算符|	说明|	举例
 :-:|:-:|:--
-\+	|加法	|`expr \$a + \$b` 结果为 30。
-\-	|减法	|`expr \$a - \$b` 结果为 -10。
-\*	|乘法	|`expr \$a \* \$b` 结果为  200。
-/	|除法	|`expr \$b / \$a` 结果为 2。
-%	|取余	|`expr \$b % \$a` 结果为 0。
+\+	|加法	|`expr $a + $b` 结果为 30。
+\-	|减法	|`expr $a - $b` 结果为 -10。
+\*	|乘法	|`expr $a \* $b` 结果为  200。
+/	|除法	|`expr $b / $a` 结果为 2。
+%	|取余	|`expr $b % $a` 结果为 0。
 =	|赋值	|a=\$b 将把变量 b 的值赋给 a。
 ==	|相等|用于比较两个数字，相同则返回 true。	[ \$a == \$b ] 返回 false。
 !=	|不相等|用于比较两个数字，不相同则返回 true。	[ \$a != \$b ] 返回 true。
@@ -720,6 +757,8 @@ a 不等于 b
 - 在 MAC 中 shell 的 expr 语法是：$((表达式))，此处表达式中的 "*" 不需要转义符号 "\" 。
 
 
+
+
 ## 关系运算符
 
 关系运算符只支持数字，不支持字符串，除非字符串的值是数字。
@@ -728,17 +767,15 @@ a 不等于 b
 
 运算符|说明|举例
 :---:|:---|:---
-\-eq	|检测两个数是否相等，相等返回 true。	|[ \$a -eq \$b ] 返回 false。
-\-ne	|检测两个数是否不相等，不相等返回 true。	|[ \$a -ne \$b ] 返回 true。
-\-gt	|检测左边的数是否大于右边的，如果是，则返回 true。	|[ \$a -gt \$b ] 返回 false。
-\-lt	|检测左边的数是否小于右边的，如果是，则返回 true。	|[ \$a -lt \$b ] 返回 true。
--ge	|检测左边的数是否大于等于右边的，如果是，则返回 true。	|[ $a -ge \$b ] 返回 false。
--le	|检测左边的数是否小于等于右边的，如果是，则返回 true。	|[ \$a -le \$b ] 返回 true。
+\-eq	|检测两个数是否**相等**，相等返回 true。	|[ \$a -eq \$b ] 返回 false。
+\-ne	|检测两个数是否**不相等**，不相等返回 true。	|[ \$a -ne \$b ] 返回 true。
+\-gt	|检测左边的数是否**大于**右边的，如果是，则返回 true。	|[ \$a -gt \$b ] 返回 false。
+\-lt	|检测左边的数是否**小于**右边的，如果是，则返回 true。	|[ \$a -lt \$b ] 返回 true。
+-ge	|检测左边的数是否**大于等于**右边的，如果是，则返回 true。	|[ $a -ge \$b ] 返回 false。
+-le	|检测左边的数是否**小于等于**右边的，如果是，则返回 true。	|[ \$a -le \$b ] 返回 true。
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
 
 a=10
 b=20
@@ -749,30 +786,35 @@ then
 else
    echo "$a -eq $b: a 不等于 b"
 fi
+
 if [ $a -ne $b ]
 then
    echo "$a -ne $b: a 不等于 b"
 else
    echo "$a -ne $b : a 等于 b"
 fi
+
 if [ $a -gt $b ]
 then
    echo "$a -gt $b: a 大于 b"
 else
    echo "$a -gt $b: a 不大于 b"
 fi
+
 if [ $a -lt $b ]
 then
    echo "$a -lt $b: a 小于 b"
 else
    echo "$a -lt $b: a 不小于 b"
 fi
+
 if [ $a -ge $b ]
 then
    echo "$a -ge $b: a 大于或等于 b"
 else
    echo "$a -ge $b: a 小于 b"
 fi
+
 if [ $a -le $b ]
 then
    echo "$a -le $b: a 小于或等于 b"
@@ -799,9 +841,9 @@ fi
 
 运算符|	说明|	举例
 :--:|:--|:--
-!	|非运算，表达式为 true 则返回 false，否则返回 true。	|[ ! false ] 返回 true。
--o	|或运算，有一个表达式为 true 则返回 true。	|[ \$a -lt 20 -o \$b -gt 100 ] 返回 true。
--a	|与运算，两个表达式都为 true 才返回 true。	|[ \$a -lt 20 -a \$b -gt 100 ] 返回 false。
+!	|**非**运算，表达式为 true 则返回 false，否则返回 true。	|[ ! false ] 返回 true。
+-o	|**或**运算，有一个表达式为 true 则返回 true。	|[ \$a -lt 20 -o \$b -gt 100 ] 返回 true。
+-a	|**与**运算，两个表达式都为 true 才返回 true。	|[ \$a -lt 20 -a \$b -gt 100 ] 返回 false。
 
 ```shell
 #!/bin/bash
@@ -817,18 +859,21 @@ then
 else
    echo "$a == $b: a 等于 b"
 fi
+
 if [ $a -lt 100 -a $b -gt 15 ]
 then
    echo "$a 小于 100 且 $b 大于 15 : 返回 true"
 else
    echo "$a 小于 100 且 $b 大于 15 : 返回 false"
 fi
+
 if [ $a -lt 100 -o $b -gt 100 ]
 then
    echo "$a 小于 100 或 $b 大于 100 : 返回 true"
 else
    echo "$a 小于 100 或 $b 大于 100 : 返回 false"
 fi
+
 if [ $a -lt 5 -o $b -gt 100 ]
 then
    echo "$a 小于 5 或 $b 大于 100 : 返回 true"
@@ -853,12 +898,10 @@ fi
 |运算符	|说明	|举例|
 |:---:|:---|:---|
 |&&	|逻辑的 AND	|[[ \$a -lt 100 && ​\$b -gt 100 ]] 返回 false|
-| ||	|
+| \|\| |逻辑的  OR| [[ \$a -lt 100 && \$b -gt 100 ]] 返回 true |
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
 
 a=10
 b=20
@@ -899,8 +942,6 @@ $	|检测字符串是否为空，不为空返回 true。	|[ $a ] 返回 true。
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
 
 a="abc"
 b="efg"
@@ -911,24 +952,28 @@ then
 else
    echo "$a = $b: a 不等于 b"
 fi
+
 if [ $a != $b ]
 then
    echo "$a != $b : a 不等于 b"
 else
    echo "$a != $b: a 等于 b"
 fi
+
 if [ -z $a ]
 then
    echo "-z $a : 字符串长度为 0"
 else
    echo "-z $a : 字符串长度不为 0"
 fi
+
 if [ -n "$a" ]
 then
    echo "-n $a : 字符串长度不为 0"
 else
    echo "-n $a : 字符串长度为 0"
 fi
+
 if [ $a ]
 then
    echo "$a : 字符串不为空"
@@ -947,6 +992,8 @@ abc != efg : a 不等于 b
 abc : 字符串不为空
 ```
 
+
+
 ## 文件测试运算符
 
 文件测试运算符用于检测 Unix 文件的各种属性。
@@ -957,8 +1004,8 @@ abc : 字符串不为空
 :---:|:---|:---
 -b file	|检测文件是否是块设备文件，如果是，则返回 true。	|[ -b \$file ] 返回 false。
 -c file	|检测文件是否是字符设备文件，如果是，则返回 true。	|[ -c \$file ] 返回 false。
--d file	|检测文件是否是目录，如果是，则返回 true。	|[ -d \$file ] 返回 false。
--f file	|检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。	[ -f \$file ] 返回 true。
+-d file	|检测文件**是否是目录**，如果是，则返回 true。	|[ -d \$file ] 返回 false。
+-f file	|检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。	[ -f \$file ] 返回 true。|
 -g file	|检测文件是否设置了 SGID 位，如果是，则返回 true。	|[ -g \$file ] 返回 false。
 -k file	|检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。	|[ -k \$file ] 返回 false。
 -p file	|检测文件是否是有名管道，如果是，则返回 true。	|[ -p \$file ] 返回 false。
@@ -966,7 +1013,7 @@ abc : 字符串不为空
 -r file	|检测文件是否可读，如果是，则返回 true。	|[ -r \$file ] 返回 true。
 -w file	|检测文件是否可写，如果是，则返回 true。	|[ -w \$file ] 返回 true。
 -x file	|检测文件是否可执行，如果是，则返回 true。	|[ -x \$file ] 返回 true。
--s file	|检测文件是否为空（文件大小是否大于0），不为空返回 true。	[ -s \$file ] 返回 true。
+-s file	|检测文件是否为空（文件大小是否大于0），不为空返回 true。	[ -s \$file ] 返回 true。|
 -e file	|检测文件（包括目录）是否存在，如果是，则返回 true。	|[ -e \$file ] 返回 true。
 
 
@@ -990,36 +1037,42 @@ then
 else
    echo "文件不可读"
 fi
+
 if [ -w $file ]
 then
    echo "文件可写"
 else
    echo "文件不可写"
 fi
+
 if [ -x $file ]
 then
    echo "文件可执行"
 else
    echo "文件不可执行"
 fi
+
 if [ -f $file ]
 then
    echo "文件为普通文件"
 else
    echo "文件为特殊文件"
 fi
+
 if [ -d $file ]
 then
    echo "文件是个目录"
 else
    echo "文件不是个目录"
 fi
+
 if [ -s $file ]
 then
    echo "文件不为空"
 else
    echo "文件为空"
 fi
+
 if [ -e $file ]
 then
    echo "文件存在"
@@ -1050,7 +1103,7 @@ echo string
 
 您可以使用echo实现更复杂的输出格式控制。
 
->1.显示普通字符串:
+1. 显示普通字符串:
 
 ```shell
 echo "It is a test"
@@ -1062,7 +1115,7 @@ echo "It is a test"
 echo It is a test
 ```
 
->2.显示转义字符
+2. 显示转义字符
 
 ```shell
 echo "\"It is a test\""
@@ -1076,7 +1129,7 @@ echo "\"It is a test\""
 
 同样，双引号也可以省略
 
->3.显示变量
+3. 显示变量
 
 read 命令从标准输入中读取一行,并把输入行的每个字段的值指定给 shell 变量
 
@@ -1094,7 +1147,7 @@ OK                     #标准输入
 OK It is a test        #输出
 ```
 
->4.显示换行
+4. 显示换行
 
 ```shell
 echo -e "OK! \n" # -e 开启转义
@@ -1109,7 +1162,7 @@ OK!
 It is a test
 ```
 
->5.显示不换行
+5. 显示不换行
 
 ```shell
 #!/bin/sh
@@ -1123,13 +1176,13 @@ echo "It is a test"
 OK! It is a test
 ```
 
->6.显示结果定向至文件
+6. 显示结果定向至文件
 
 ```shell
 echo "It is a test" > myfile
 ```
 
-7.原样输出字符串，不进行转义或取变量(用单引号)
+7. 原样输出字符串，不进行转义或取变量(用单引号)
 
 ```shell
 echo '$name\"'
@@ -1141,7 +1194,7 @@ echo '$name\"'
 $name\"
 ```
 
->8.显示命令执行结果
+8. 显示命令执行结果
 
 ```shell
 echo `date`
@@ -1163,7 +1216,9 @@ printf 命令模仿 C 程序库（library）里的 printf() 程序。
 
 printf 由 POSIX 标准所定义，因此使用 printf 的脚本比使用 echo 移植性好。
 
-printf 使用引用文本或空格分隔的参数，外面可以在 printf 中使用格式化字符串，还可以制定字符串的宽度、左右对齐方式等。默认 printf 不会像 echo 自动添加换行符，我们可以手动添加 \n。
+printf 使用引用文本或空格分隔的参数，外面可以在 printf 中使用格式化字符串，还可以制定字符串的宽度、左右对齐方式等。
+
+默认 printf 不会像 echo 自动添加换行符，我们可以手动添加 \n。
 
 printf 命令的语法：
 
@@ -1184,12 +1239,10 @@ Hello, Shell
 $
 ```
 
-接下来,我来用一个脚本来体现printf的强大功能：
+接下来，我来用一个脚本来体现printf的强大功能：
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
  
 printf "%-10s %-8s %-4s\n" 姓名 性别 体重kg  
 printf "%-10s %-8s %-4.2f\n" 郭靖 男 66.1234 
@@ -1206,7 +1259,7 @@ printf "%-10s %-8s %-4.2f\n" 郭芙 女 47.9876
 郭芙     女      47.99
 ```
 
-%s %c %d %f都是格式替代符
+**%s %c %d %f** 都是格式替代符
 
 %-10s 指一个宽度为10个字符（-表示左对齐，没有则表示右对齐），任何字符都会被显示在10个字符宽的字符内，如果不足则自动以空格填充，超过也会将内容全部显示出来。
 
@@ -1216,8 +1269,6 @@ printf "%-10s %-8s %-4.2f\n" 郭芙 女 47.9876
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
  
 # format-string为双引号
 printf "%d %s\n" 1 "abc"
@@ -1253,7 +1304,7 @@ j
  and 0
 ```
 
->printf的转义序列
+**printf的转义序列**
 
 
 序列|	说明
@@ -1287,7 +1338,7 @@ www.runoob.com $                  #不换行
 
 Shell中的 test 命令用于检查某个条件是否成立，它可以进行数值、字符和文件三个方面的测试。
 
->数值测试
+## 数值测试
 
 参数|说明
 :---:|:---:
@@ -1302,6 +1353,7 @@ Shell中的 test 命令用于检查某个条件是否成立，它可以进行数
 ```shell
 num1=100
 num2=100
+
 if test $[num1] -eq $[num2]
 then
     echo '两个数相等！'
@@ -1333,7 +1385,7 @@ echo "result 为： $result"
 result 为： 11
 ```
 
->字符串测试
+## 字符串测试
 
 |参数	|说明|
 |:--:|:--|
@@ -1346,6 +1398,7 @@ result 为： 11
 ```shell
 num1="ru1noob"
 num2="runoob"
+
 if test $num1 = $num2
 then
     echo '两个字符串相等!'
@@ -1360,7 +1413,7 @@ fi
 两个字符串不相等!
 ```
 
->文件测试
+## 文件测试
 
  参数 | 说明 
 :---: | :--- 
@@ -1379,6 +1432,7 @@ fi
 
 ```shell
 cd /bin
+
 if test -e ./bash
 then
     echo '文件已存在!'
@@ -1397,6 +1451,7 @@ fi
 
 ```shell
 cd /bin
+
 if test -e ./notFile -o -e ./bash
 then
     echo '至少有一个文件存在!'
@@ -1413,23 +1468,11 @@ fi
 
 # 流程控制
 
-和Java、PHP等语言不一样，sh的流程控制不可为空，如(以下为PHP流程控制写法)：
-
-```shell
-<?php
-if (isset($_GET["q"])) {
-    search(q);
-}
-else {
-    // 不做任何事情
-}
-```
-
-在sh/bash里可不能这么写，如果else分支没有语句执行，就不要写这个else。
+在sh/bash里，如果else分支没有语句执行，就不要写这个else。
 
 ## if else
 
->if
+### if
 
 if 语句语法格式：
 
@@ -1451,7 +1494,7 @@ if [ $(ps -ef | grep -c "ssh") -gt 1 ]; then echo "true"; fi
 
 末尾的fi就是if倒过来拼写，后面还会遇到类似的。
 
->if else
+### if else
 
 if else 语法格式：
 
@@ -1467,7 +1510,7 @@ else
 fi
 ```
 
->if else-if else
+### if else-if else
 
 if else-if else 语法格式：
 
@@ -1602,6 +1645,7 @@ done
 
 ```shell
 #!/bin/bash
+
 int=1
 while(( $int<=5 ))
 do
@@ -1620,9 +1664,8 @@ done
 5
 ```
 
-以上实例使用了 Bash let 命令，它用于执行一个或多个表达式，变量计算中不需要加上 $ 来表示变量，具体可查阅：Bash let 命令
+以上实例使用了 Bash let 命令，它用于执行一个或多个表达式，变量计算中不需要加上 $ 来表示变量，具体可查阅：Bash let 命令。
 
-。
 while循环可用于读取键盘信息。下面的例子中，输入信息被设置为变量FILM，按<Ctrl-D>结束循环。
 
 ```shell
@@ -1685,7 +1728,7 @@ do
 done
 ```
 
-condition 一般为条件表达式，如果返回值为 false，则继续执行循环体内的语句，否则跳出循环。
+condition 一般为条件表达式，**如果返回值为 false，则继续执行循环体内的语句，否则跳出循环**。
 
 以下实例我们使用 until 命令来输出 0 ~ 9 的数字：
 
@@ -1775,7 +1818,7 @@ esac
 ## 跳出循环
 在循环过程中，有时候需要在未达到循环结束条件时强制跳出循环，Shell使用两个命令来实现该功能：break和continue。
 
-> break命令
+### break命令
 
 break命令允许跳出所有循环（终止执行后面的所有循环）。
 
@@ -1806,7 +1849,7 @@ done
 你输入的数字不是 1 到 5 之间的! 游戏结束
 ```
 
->continue
+### continue
 
 continue命令与break命令类似，只有一点差别，它不会跳出所有循环，仅仅跳出当前循环。
 
@@ -1902,18 +1945,18 @@ shell中函数的定义格式如下：
 
 说明：
 
-- 1、可以带function fun() 定义，也可以直接fun() 定义,不带任何参数。
-- 2、参数返回，可以显示加：return 返回，如果不加，将以最后一条命令运行结果，作为返回值。 return后跟数值n(0-255
+- 可以带function fun() 定义，也可以直接fun() 定义,不带任何参数。
+- 参数返回，可以显示加：return 返回，如果不加，将以最后一条命令运行结果，作为返回值。 return后跟数值n(0-255）
+
 下面的例子定义了一个函数并进行调用：
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
 
 demoFun(){
     echo "这是我的第一个 shell 函数!"
 }
+
 echo "-----函数开始执行-----"
 demoFun
 echo "-----函数执行完毕-----"
@@ -1931,8 +1974,6 @@ echo "-----函数执行完毕-----"
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
 
 funWithReturn(){
     echo "这个函数会对输入的两个数字进行相加运算..."
@@ -1943,6 +1984,7 @@ funWithReturn(){
     echo "两个数字分别为 $aNum 和 $anotherNum !"
     return $(($aNum+$anotherNum))
 }
+
 funWithReturn
 echo "输入的两个数字之和为 $? !"
 ```
@@ -1963,7 +2005,7 @@ echo "输入的两个数字之和为 $? !"
 
 注意：所有函数在使用前必须定义。这意味着必须将函数放在脚本开始部分，直至shell解释器首次发现它时，才可以使用。调用函数仅使用其函数名即可。
 
->函数参数
+## 函数参数
 
 在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表示第一个参数，$2表示第二个参数...
 
@@ -1971,8 +2013,6 @@ echo "输入的两个数字之和为 $? !"
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
 
 funWithParam(){
     echo "第一个参数为 $1 !"
@@ -1983,6 +2023,7 @@ funWithParam(){
     echo "参数总数有 $# 个!"
     echo "作为一个字符串输出所有参数 $* !"
 }
+
 funWithParam 1 2 3 4 5 6 7 8 9 34 73
 ```
 
@@ -1998,7 +2039,7 @@ funWithParam 1 2 3 4 5 6 7 8 9 34 73
 作为一个字符串输出所有参数 1 2 3 4 5 6 7 8 9 34 73 !
 ```
 
-注意，$10 不能获取第十个参数，获取第十个参数需要${10}。当n>=10时，需要使用${n}来获取参数。
+注意，\$10 不能获取第十个参数，获取第十个参数需要\${10}。当n>=10时，需要使用${n}来获取参数。
 
 另外，还有几个特殊字符用来处理参数：
 
@@ -2032,7 +2073,7 @@ n <\& m	|将输入文件 m 和 n 合并。
 
 需要注意的是文件描述符 0 通常是标准输入（STDIN），1 是标准输出（STDOUT），2 是标准错误输出（STDERR）。
 
-> 输出重定向
+## 输出重定向
 
 重定向一般通过在命令间插入特定的符号来实现。特别的，这些符号的语法如下所示:
 
@@ -2040,11 +2081,8 @@ n <\& m	|将输入文件 m 和 n 合并。
 command1 > file1
 ```
 
-上面这个命令执行command1然后将输出的内容存入file1。
+上面这个命令执行command1然后将输出的内容存入file1。注意任何file1内的已经存在的内容将被新内容替代。如果要将新内容添加在文件末尾，请使用>>操作符。
 
-注意任何file1内的已经存在的内容将被新内容替代。如果要将新内容添加在文件末尾，请使用>>操作符。
-
-实例
 执行下面的 who 命令，它将命令的完整的输出重定向在用户文件中(users):
 
 ```shell
@@ -2057,6 +2095,9 @@ $ who > users
 
 ```shell
 $ cat users
+```
+
+```
 _mbsetupuser console  Oct 31 17:35 
 tianqixin    console  Oct 31 17:35 
 tianqixin    ttys000  Dec  1 11:33 
@@ -2067,8 +2108,10 @@ tianqixin    ttys000  Dec  1 11:33
 ```shell
 $ echo "菜鸟教程：www.runoob.com" > users
 $ cat users
+```
+
+```
 菜鸟教程：www.runoob.com
-$
 ```
 
 如果不希望文件内容被覆盖，可以使用 >> 追加到文件末尾，例如：
@@ -2076,12 +2119,16 @@ $
 ```shell
 $ echo "菜鸟教程：www.runoob.com" >> users
 $ cat users
-菜鸟教程：www.runoob.com
-菜鸟教程：www.runoob.com
-$
 ```
 
->输入重定向
+```
+菜鸟教程：www.runoob.com
+菜鸟教程：www.runoob.com
+```
+
+
+
+## 输入重定向
 
 和输出重定向一样，Unix 命令也可以从文件获取输入，语法为：
 
@@ -2091,9 +2138,6 @@ command1 < file1
 
 这样，本来需要从键盘获取输入的命令会转移到文件读取内容。
 
-注意：输出重定向是大于号(>)，输入重定向是小于号(<)。
-
-实例
 接着以上实例，我们需要统计 users 文件的行数,执行以下命令：
 
 ```shell
@@ -2116,7 +2160,8 @@ command1 < infile > outfile
 
 同时替换输入和输出，执行command1，从文件infile读取内容，然后将输出写入到outfile中。
 
->重定向深入讲解
+## 重定向深入讲解
+
 一般情况下，每个 Unix/Linux 命令运行时都会打开三个文件：
 
 - 标准输入文件(stdin)：stdin的文件描述符为0，Unix程序默认从stdin读取数据。
@@ -2143,9 +2188,7 @@ $ command 2 >> file
 
 ```shell
 $ command > file 2>&1
-
-或者
-
+# 或者
 $ command >> file 2>&1
 ```
 
@@ -2157,7 +2200,8 @@ $ command < file1 >file2
 
 command 命令将 stdin 重定向到 file1，将 stdout 重定向到 file2。
 
->Here Document
+## Here Document
+
 Here Document 是 Shell 中的一种特殊的重定向方式，用来将输入重定向到一个交互式 Shell 脚本或程序。
 
 它的基本的形式如下：
@@ -2174,7 +2218,6 @@ delimiter
 - 结尾的delimiter 一定要顶格写，前面不能有任何字符，后面也不能有任何字符，包括空格和 tab 缩进。
 - 开始的delimiter前后的空格会被忽略掉。
 
-实例
 在命令行中通过 wc -l 命令计算 Here Document 的行数：
 
 ```shell
@@ -2183,16 +2226,16 @@ $ wc -l << EOF
     菜鸟教程
     www.runoob.com
 EOF
+```
+
+```
 3          # 输出结果为 3 行
-$
 ```
 
 我们也可以将 Here Document 用在脚本中，例如：
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
 
 cat << EOF
 欢迎来到
@@ -2209,7 +2252,7 @@ EOF
 www.runoob.com
 ```
 
-> /dev/null 文件
+## /dev/null 文件
 
 如果希望执行某个命令，但又不希望在屏幕上显示输出结果，那么可以将输出重定向到 /dev/null：
 
@@ -2237,18 +2280,16 @@ Shell 文件包含的语法格式如下：
 . filename   # 注意点号(.)和文件名中间有一空格
 
 或
+
 source filename
 ```
 
-实例
 创建两个 shell 脚本文件。
 
 test1.sh 代码如下：
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
 
 url="http://www.runoob.com"
 ```
@@ -2257,8 +2298,6 @@ test2.sh 代码如下：
 
 ```shell
 #!/bin/bash
-# author:菜鸟教程
-# url:www.runoob.com
 
 #使用 . 号来引用test1.sh 文件
 . ./test1.sh
@@ -2274,6 +2313,9 @@ echo "菜鸟教程官网地址：$url"
 ```shell
 $ chmod +x test2.sh 
 $ ./test2.sh 
+```
+
+```
 菜鸟教程官网地址：http://www.runoob.com
 ```
 
