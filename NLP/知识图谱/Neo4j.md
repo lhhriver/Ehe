@@ -728,8 +728,6 @@ Neo4j驱动程序最核心的对象是：Driver对象，Session对象和Transact
 
 Neo4j通过Driver对象来连接图形数据库，在创建Driver对象时，需要服务器的连接地址（即bolt监听地址，地址格式是"**bolt://host:7687**"）和身份验证信息：user和password。
 
-
-
 ```java
 private readonly IDriver Driver;
 
@@ -758,8 +756,6 @@ public void AddPerson(string name)
     }
 }
 ```
-
-
 
 在Neo4j的驱动程序中，发送到Neo4j数据库引擎的Cypher查询语句包含两部分：Query和Parameters，其中，Query是在数据库中执行的Cypher语句，Parameters是传递引擎的参数，在Query中以paraname格式来引用参数，在Parameters中，参数的名词和paraname格式来引用参数，在Parameters中，参数的名词和para_name中的para_name保持一致。
 
@@ -790,8 +786,6 @@ Cypher支持参数化查询，在Cypher语句中，使用参数替代表达式�
 **1、使用参数创建节点**
 
 在执行事务之后，Session返回数据库执行的结果，通过result.Summary查看Cypher语句执行的结果。
-
-
 
 ```java
 public bool CreateSingleNode(string lable,string name)
@@ -892,8 +886,6 @@ public void MatchNodes(string lable, string name)
 
 例如，通过位置索引来选择记录：
 
-
-
 ```java
 public List<string> GetPeople()
 {
@@ -936,8 +928,6 @@ Content-Type: application/json
 ```
 
 注意：在HTTP API中，引用参数的格式是：{param}。
-
-
 
 ```json
 {
@@ -1272,8 +1262,6 @@ MATCH (n) WHERE 21 < n.age AND n.age <= 30 RETURN n
 ```
 
  
-
-
 
 # Neo4j：模式（Pattern）
 
@@ -2207,8 +2195,6 @@ RETURN a.array, filter(x IN a.array WHERE size(x)= 3)
 - labels(node)：节点标签的列表
 - nodes(path)：从路径中获取所有节点的列表
 - relationships(path)：从路径中获得所有的关系
-
-
 
 ```cypher
 MATCH (a)

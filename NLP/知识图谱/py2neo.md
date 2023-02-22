@@ -608,6 +608,7 @@ print(list(person.knows))
 ```
 
 这样我们就完成了Node和Relationship的添加，同时由于设置了primarykey为name，所以不会重复添加。
+
 但是注意此时数据库并没有更新，只是对象更新了，如果要更新到数据库中还需要调用Graph对象的push()或pull()方法，添加如下代码即可：
 
 ```python
