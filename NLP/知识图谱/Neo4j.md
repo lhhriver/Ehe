@@ -326,10 +326,10 @@ CREATE INDEX ON :Person(firstname, surname)
 
 在图形数据库中，能够创建四种类型的约束：
 
-- 节点属性值**唯一约束**（Unique node property）：如果节点具有指定的标签和指定的属性，那么这些节点的属性值是唯一的
-- 节点属性**存在约束**（Node property existence）：创建的节点必须存在标签和指定的属性
-- 关系属性**存在约束**（Relationship property existence）：创建的关系存在类型和指定的属性
-- **节点键**约束（Node Key）：在指定的标签中的节点中，指定的属性必须存在，并且属性值的组合是唯一的
+- 节点属性值**唯一约束**（Unique node property）：如果节点具有指定的标签和指定的属性，那么这些节点的属性值是唯一的。
+- 节点属性**存在约束**（Node property existence）：创建的节点必须存在标签和指定的属性。
+- 关系属性**存在约束**（Relationship property existence）：创建的关系存在类型和指定的属性。
+- **节点键**约束（Node Key）：在指定的标签中的节点中，指定的属性必须存在，并且属性值的组合是唯一的。
 
 例如，使用Cypher创建约束：
 
