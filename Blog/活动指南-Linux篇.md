@@ -1784,6 +1784,8 @@ cat /proc/meminfo
 
 ```shell
 cat /etc/redhat-release  # centos
+cat /etc/lsb-release  # ubuntu存在/etc/lsb-release这个文件 
+
 lsb_release -a  # Ubuntu
 cat /etc/issue
 ```
