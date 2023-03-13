@@ -252,16 +252,19 @@ table th {
   color: var(--color-Blue);
   font-weight: 800;
   background-color: var(--color-Wheat);
-  
+  font-size: 20px;
   padding: 8px;
-  line-height: 1.5rem;
+  line-height: 130%;
   border: 1px solid var(--color-Red); 
+  text-align:center;
 }
 
 table td {
 	padding: 8px;
-	line-height: 1.5rem;
+    font-size: 16px;
+	line-height: 110%;
 	border: 1px solid var(--color-Red); 
+	text-align:center;
 }
 
 table tr:nth-child(even) {

@@ -207,6 +207,7 @@ table th {
   line-height: 130%;
   border: 1px solid #3c3c3c;
   vertical-align: middle;
+  text-align:center;
 }
 
 table td {
@@ -214,6 +215,7 @@ table td {
   font-size: 16px;
   line-height: 110%;
   border: 0.5px solid #3c3c3c;
+  text-align:center;
 }
 
 table tr:nth-child(even) {
