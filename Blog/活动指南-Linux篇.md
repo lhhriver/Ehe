@@ -819,7 +819,7 @@ umount -f /data1/img
 fdisk -l
 ```
 
-```
+```shell
 Disk /dev/sdb: 2399.9 GB, 2399913639936 bytes, 4687331328 sectors
 Units = sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 4096 bytes
