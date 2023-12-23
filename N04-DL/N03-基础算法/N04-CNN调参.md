@@ -68,7 +68,7 @@
 
 # 激活函数
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N04-CNN调参-20201215-224442-828038.png)
+![](./images/N04-CNN调参/N04-CNN调参-20201215-224442-828038-1703348255168-648.png)
 
 - Sigmoid：
 

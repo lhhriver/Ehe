@@ -16,7 +16,7 @@ FreeSWITCH内部使用线程模型来处理并发请求，每个连接都在单�
 
 FreeSWITCH的核心是Core，它包含了关键的数据结构和复杂的代码、状态机、数据库等，这些代码只出现在核心中，并保持了最大限度的抽象和重用。外围模块只能通过核心代码提供的公共应用程序接口（Public API）调用核心的功能，因而核心运行在一个受保护的环境中，核心代码都是经过了精心编写和严格测试的，最大限度地保证了系统整体的稳定。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-962858.png)
+![](./images/第05章 FreeSWITCH架构/FreeSwitch权威指南-20211225-182222-962858-1703349140278-1257.png)
 
 <center>图5-1　FreeSWITCH架构示意图</center>
 
@@ -129,7 +129,7 @@ fs_cli> /event plain CUSTOM sofia::register
 
 <center>表5-1　FreesSWITCH目录结构</center>
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-977854.png)
+![](./images/第05章 FreeSWITCH架构/FreeSwitch权威指南-20211225-182222-977854.png)
 
 一般来说，大部分的目录结构都是扁平的，没有什么子目录。比较例外的有以下几个：
 
@@ -410,7 +410,7 @@ vars.xml主要通过X-PRE-PROCESS指令定义了一些全局变量，如：
 
 <center>表5-2　系统自动设置的变量</center>
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-991855.png)
+![](./images/第05章 FreeSWITCH架构/FreeSwitch权威指南-20211225-182222-991855.png)
 
 在实际使用中，可以使用global_getvar或这个API命令来查看这些变量的值，如：
 
@@ -603,7 +603,7 @@ variables则定义了一些公共变量，在用户主叫或被叫时，这些�
 
 为了便于说明，我们假定A与B不在同一台交换机（服务器）上（如在PSTN通话中可能不在同一座城市），中间需要经过两台交换机中转，如图5-2所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-007856.png)
+![](./images/第05章 FreeSWITCH架构/FreeSwitch权威指南-20211225-182223-007856.png)
 
 <center>图5-2　A与B通过两台交换机通话</center>
 

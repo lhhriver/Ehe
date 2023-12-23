@@ -71,7 +71,7 @@ class Generator(nn.Module):
 
 Transformer的整体结构如下图所示，在Encoder和Decoder中都使用了Self-attention, Point-wise和全连接层。Encoder和decoder的大致结构分别如下图的左半部分和右半部分所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/NLP-20220308-171040-905031.png)
+![](./images/Transformer-C/NLP-20220308-171040-905031.png)
 
 ## Encoder
 
@@ -216,7 +216,7 @@ plt.imshow(subsequent_mask(20)[0])
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/NLP-20220308-171040-831033.png)
+![](./images/Transformer-C/NLP-20220308-171040-831033.png)
 
 ## Attention
 
@@ -224,7 +224,7 @@ Attention函数可以将Query和一组Key-Value对映射到输出，其中Query�
 
 我们称这种特殊的Attention机制为"Scaled Dot-Product Attention"。输入包含维度为$d_k$的Query和Key，以及维度为$d_v$的Value。 我们首先分别计算Query与各个Key的点积，然后将每个点积除以$\sqrt {d_k}$，最后使用Softmax函数来获得Key的权重。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/NLP-20220308-171040-920219.png)
+![](./images/Transformer-C/NLP-20220308-171040-920219.png)
 
 在具体实现时，我们可以以矩阵的形式进行并行运算，这样能加速运算过程。具体来说，将所有的Query、Key和Value向量分别组合成矩阵$Q$、$K$和$V$，这样输出矩阵可以表示为：
 $$
@@ -249,7 +249,7 @@ def attention(query, key, value, mask=None, dropout=None):
 
 虽然对于较小的 $d_k$， 这两种机制的表现相似，但在不放缩较大的 $d_k$时，加和Attention要优于点 积Attention[14]。我们怀疑，对于较大的 $d_k$，点积大幅增大, 将Softmax函数推向具有极小梯度 的区域（为了阐明点积变大的原因，假设$q$和 $k$是独立的随机变量, 平均值为 0，方差为 1，这样他们的点积为 $q \cdot k = \sum_{i=1}^{d_k} q_ik_i$，同样是均值 0为方差为 $d_k$）。为了抵消这种影响，我们用$\frac{1}{\sqrt{d_k}}$来缩放点积。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/NLP-20220308-171040-935464.png)
+![](./images/Transformer-C/NLP-20220308-171040-935464.png)
 
 “多头”机制能让模型考虑到不同位置的Attention，另外“多头”Attention可以在不同的子空间表示不一样的关联关系，使用单个Head的Attention一般达不到这种效果。
 $$
@@ -393,7 +393,7 @@ plt.legend(["dim %d" % p for p in [4, 5, 6, 7]])
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/NLP-20220308-171040-845042.png)
+![](./images/Transformer-C/NLP-20220308-171040-845042.png)
 
 我们也尝试了使用预学习的位置Embedding，但是发现这两个版本的结果基本是一样的。我们选择正弦曲线版本的实现，因为使用此版本能让模型能够处理大于训练语料中最大序了使用列长度的序列。
 
@@ -581,7 +581,7 @@ plt.legend(["512:4000", "512:8000", "256:4000"])
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/NLP-20220308-171040-860042.png)
+![](./images/Transformer-C/NLP-20220308-171040-860042.png)
 
 ## 标签平滑
 
@@ -629,7 +629,7 @@ plt.imshow(crit.true_dist)
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/NLP-20220308-171040-875048.png)
+![](./images/Transformer-C/NLP-20220308-171040-875048.png)
 
 如果对给定的选择非常有信心，标签平滑实际上会开始惩罚模型。
 
@@ -651,7 +651,7 @@ plt.plot(np.arange(1, 100), [loss(x) for x in range(1, 100)])
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/NLP-20220308-171040-890033.png)
+![](./images/Transformer-C/NLP-20220308-171040-890033.png)
 
 # 一个例子
 

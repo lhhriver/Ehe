@@ -94,7 +94,7 @@ print(output)
 
 不带 bn 层的网络，并且使用 kaiming 初始化权值，训练过程如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-092718.png)
+![](./images/N0602-Normalization/深度之眼PyTorch框架班-20201215-224441-092718-1703351681830-3954.png)
 
 可以看到训练过程中，训练集的 loss 在中间激增到 1.4，不够稳定。
 
@@ -142,7 +142,7 @@ class LeNet_bn(nn.Module):
 
 带 bn 层的网络，并且不使用 kaiming 初始化权值，训练过程如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-096751.png)
+![](./images/N0602-Normalization/深度之眼PyTorch框架班-20201215-224441-096751.png)
 
 虽然训练过程中，训练集的 loss 也有激增，但只是增加到 0.4，非常稳定。
 
@@ -191,7 +191,7 @@ torch.nn.BatchNorm1d(num_features,
 
 数据如下图：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-102762.png)
+![](./images/N0602-Normalization/深度之眼PyTorch框架班-20201215-224441-102762.png)
 
 
 代码如下所示：
@@ -269,7 +269,7 @@ iteration:1, 第二个特征的running var:0.48999999999999994
 
 网络还没进行前向传播之前，断点查看 bn 层的属性如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-098778.png)
+![](./images/N0602-Normalization/深度之眼PyTorch框架班-20201215-224441-098778.png)
 
 
 ## nn.BatchNorm2d()
@@ -278,7 +278,7 @@ iteration:1, 第二个特征的running var:0.48999999999999994
 
 数据如下图：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-105785.png)
+![](./images/N0602-Normalization/深度之眼PyTorch框架班-20201215-224441-105785.png)
 
 
 代码如下：
@@ -329,7 +329,7 @@ iter:1, bias: [0. 0. 0.]
 
 数据如下图：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-137393.png)
+![](./images/N0602-Normalization/深度之眼PyTorch框架班-20201215-224441-137393.png)
 
 
 代码如下：
@@ -385,7 +385,7 @@ iter:1, bias.shape: torch.Size([3])
 - 不再有 running_mean 和 running_var
 - $\gamma$和 $\beta$为逐样本的
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-140135.png)
+![](./images/N0602-Normalization/深度之眼PyTorch框架班-20201215-224441-140135.png)
 
 
 
@@ -476,7 +476,7 @@ torch.nn.InstanceNorm1d(num_features,
 
 下面代码中，输入数据的形状是 $B \times C \times 2D\_feature$，(3, 3, 2, 2)，表示一个 mini-batch 有 3 个样本，每个样本有 3 个特征，每个特征的维度是 22。那么就会计算 33 个均值和方差，分别对应每个样本的每个特征。如下图所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-143119.png)
+![](./images/N0602-Normalization/深度之眼PyTorch框架班-20201215-224441-143119.png)
 
 
 下面是代码：

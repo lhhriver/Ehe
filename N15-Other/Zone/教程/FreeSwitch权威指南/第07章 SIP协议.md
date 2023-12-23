@@ -94,7 +94,7 @@ SIP协议也与HTTP协议类似，如果你熟悉其中的一种，可以对比�
 
 言归正传，我们回到SIP。SIP是一个对等的协议，类似P2P。它和HTTP不一样，其不是客户端服务器结构的 [11]；也不像传统电话那样必须有一个中心的交换机，它可以在不需要服务器的情况下进行通信，只要通信双方都彼此知道对方地址（或者只有一方知道另一方的地址）即可，这种情况称为点对点通信。如图7-1所示，Bob给Alice发送一个INVITE请求，说“Hi,一起吃饭吧…”，Alice说“好的，OK”，电话就接通了。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-111853.png)
+![](./images/第07章 SIP协议/FreeSwitch权威指南-20211225-182223-111853-1703349181084-1281.png)
 
 <center>图7-1　SIP点对点通信</center>
 
@@ -108,7 +108,7 @@ SIP协议也与HTTP协议类似，如果你熟悉其中的一种，可以对比�
 
 为了理解B2BUA，我们来看上述故事的另一个版本。M和W是一对恩爱夫妻。M认识Bob而W认识Alice。M和W有意撮合两个年轻人，但见面时由于两人太腼腆而互相没留电话号码。事后Bob想知道Alice对他感觉如何，于是打电话问M，M不认识Alice，就转身问爱人W（注意这次M没有直接把W的电话给Bob），W紧接着打电话给Alice，Alice说印象还不错，W就把这句话告诉M，M又转过身告诉Bob。这样，M和W一个面向Bob，一个对着Alice，他们两个合在一起，称为B2BUA。在这里，Bob是UAC，因为他发起请求；M是UAS，因为他接受Bob的请求并为他服务；我们把M和W看做一个整体，他们背靠着背（站着、坐着、躺着都行），W是UAC，因为她又向Alice发起了请求，最后Alice是UAS。其实这里UAC和UAS的概念也不是那么重要，重要的是要理解这个背靠背的用户代理。因为事情还没有完，Bob一听说Alice对他印象还不错，开心得不得了，便想请抽空请Alice吃饭，他将这一想法告诉M，M告诉W，W又告诉Alice。然后Alice问去哪里吃啊，W又只好问M，M再问Bob……在这对年轻人挂断电话之前，M和W只能“背对背”不停地工作，如图7-2所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-127855.png)
+![](./images/第07章 SIP协议/FreeSwitch权威指南-20211225-182223-127855.png)
 
 <center>图7-2　B2BUA</center>
 
@@ -116,7 +116,7 @@ SIP协议也与HTTP协议类似，如果你熟悉其中的一种，可以对比�
 
 此外，还有一个概念，称为边界会话控制器（Session Border Controller，SBC）。它主要位于一堆SIP服务器的边界，用于隐藏内部服务器的拓扑结构、抵御外来攻击等。SBC可能是一个代理服务器，也可能是一个B2BUA。其应用位置和拓扑结构如图7-3所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-156854.png)
+![](./images/第07章 SIP协议/FreeSwitch权威指南-20211225-182223-156854.png)
 
 <center>图7-3　SBC示意图</center>
 
@@ -128,7 +128,7 @@ SIP定义了6种基本方法，如表7-1所示。
 
 <center>表7-1　SIP的6种基本方法</center>
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-172855.png)
+![](./images/第07章 SIP协议/FreeSwitch权威指南-20211225-182223-172855.png)
 
 除此之外，SIP还定义了一些扩展方法，如SUBSCRIBE、NOTIFY、MESSAGE、REFER、INFO等，等到我们用到时会简单介绍。
 
@@ -138,7 +138,7 @@ SIP定义了6种基本方法，如表7-1所示。
 
 <center>表7-2　SIP必须包含的头域</center>
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-187854.png)
+![](./images/第07章 SIP协议/FreeSwitch权威指南-20211225-182223-187854.png)
 
 [1] 参见http://tools.ietf.org/html/rfc2543。 
 
@@ -168,7 +168,7 @@ SIP定义了6种基本方法，如表7-1所示。
 
 通常的注册流程是，Alice向FreeSWITCH发起注册（REGISTER）请求，FreeSWITCH返回401消息对Alice发起Challenge（挑战），Alice将自己的用户名密码信息与收到的Challenge信息进行计算，并将计算结果以加密的形式附加到下一个REGISTER请求上，重新发起注册，FreeSWITCH收到后对本地数据库中保存的Alice的信息使用同样的算法进行计算和加密，并将其与Alice发过来的计算结果相比较。如果计算结果相匹配，则认证通过，Alice便可以正常注册。交互流程如图7-4所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-201855.png)
+![](./images/第07章 SIP协议/FreeSwitch权威指南-20211225-182223-201855.png)
 
 <center>图7-4　SIP注册流程</center>
 
@@ -321,13 +321,13 @@ Content-Length: 0
 
 前面我们讲过，SIP的UA都是平等的，如果一方知道另一方的地址，就可以通信。我们先来做一个实验。在笔者的机器上，启动了两个软电话（UA），一个是Bob的X-Lite（左），另一个是Alice的Zoiper。它们的IP地址都是192.168.4.4，而端口号分别是26000和5090，当Bob呼叫Alice时，它只需直接呼叫Alice的SIP地址sip:Alice@192.168.4.4:5090 [1]。如图7-5所示，Alice的电话正在振铃。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-216856.png)
+![](./images/第07章 SIP协议/FreeSwitch权威指南-20211225-182223-216856.png)
 
 <center>图7-5　SIP UA间直接呼叫</center>
 
 详细的呼叫流程如图7-6所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-231853.png)
+![](./images/第07章 SIP协议/FreeSwitch权威指南-20211225-182223-231853.png)
 
 <center>图7-6　SIP UA间直接呼叫流程图</center>
 
@@ -771,13 +771,13 @@ Content-Length: 0
 
 上面描述的是一个典型的通过FreeSWITCH进行呼叫的流程。虽然有点长，但是并不复杂，图7-7所示可以很形象地描述出了FreeSWITCH的两条“腿”——a-leg和b-leg。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-246853.png)
+![](./images/第07章 SIP协议/FreeSwitch权威指南-20211225-182223-246853.png)
 
 <center>图7-7　B2BUA的两条腿</center>
 
 完整的呼叫流程如图7-8所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-262856.png)
+![](./images/第07章 SIP协议/FreeSwitch权威指南-20211225-182223-262856.png)
 
 <center>图7-8　SIP B2BUA接呼叫流程图</center>
 
@@ -793,7 +793,7 @@ Content-Length: 0
 
 上面我们介绍了一些FreeSWITCH的基本概念，并通过一个真正的呼叫流程讲解了SIP。由于实验中所有UA都运行在一台机器上，这可能会引起读者的不解，如果我们有三台机器，其中192.168.1.9是FreeSWITCH服务器，而Bob和Alice分别在另外两台机器上，那么情况可能是图7-9所示的样子。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-276854.png)
+![](./images/第07章 SIP协议/FreeSwitch权威指南-20211225-182223-276854.png)
 
 <center>图7-9　SIP URI</center>
 
@@ -811,7 +811,7 @@ SIP负责建立和释放会话，一般来说，会话会包含相关的媒体�
 
 这里我们来看一个FreeSWITCH参与的单腿呼叫的例子。客户端607呼叫FreeSWITCH默认的服务echo，它是一个回声服务，呼通后，主叫用户不仅能听到自己的声音，还能看到自己的视频（如果有的话）。在此，为了显示直观一些，我们使用了Wireshark抓包并进行分析，图7-10显示了该SIP呼叫的流程（关于Wireshark的用法我们将在第12章讨论）。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-292855.png)
+![](./images/第07章 SIP协议/FreeSwitch权威指南-20211225-182223-292855.png)
 
 <center>图7-10　带SDP的SIP呼叫</center>
 
@@ -912,7 +912,7 @@ a=rtpmap:123 H264/90000
 
 3PCC的实现关键就在于控制者如何使用SOA在会话双方之间使用SDP消息协商即将建立的会话。RFC3725 [7]描述了几种实现3PCC的方法，我们在此以第一种为例简单介绍一下。详细了解3PCC已超出本书的范围，在此笔者仅以此为例帮助读者理解不带SDP的INVITE呼叫的交互流程，而对3PCC则避重就轻。一个典型的3PCC呼叫如图7-11所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-306856.png)
+![](./images/第07章 SIP协议/FreeSwitch权威指南-20211225-182223-306856.png)
 
 <center>图7-11　一个简单的3PCC呼叫</center>
 

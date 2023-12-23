@@ -25,7 +25,7 @@
 
 **数据分析法**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-235582.png)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-235582-1703351291840-3698.png)
 
 
 **常用的数据分析工具** ： Excel、Acess、SPSS、SAS、Python
@@ -118,7 +118,7 @@
 
 ## AARRR模型
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-737940)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-737940.png)
 
 ## 留存
 
@@ -175,61 +175,61 @@
 	- S：构成社会文化环境的关键指标有：人口规模、性别比例、年龄结构、出生率、死亡率、种族结构、妇女生育率、生活方式、购买习惯、教育状况、城市特点、宗教信仰状况等因素。
 	- T：构成技术环境的关键指标有：新技术的发明和进展、折旧和报废速度、技术更新速度、技术传播速度、技术商品化速度、国家重点支持项目、国家投入的研发费用、专利个数、专利保护情况等因素
 
-	![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-940131)
+	![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-940131.png)
 
 - 波特五力模型： 竞争环境分析（直接竞争者、潜在进入者、购买者、替代品、供应商）
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-955481)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-955481.png)
 
 - 兰查斯特战略模式：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-753475)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-753475.png)
 
 - SWOT模型：竞争对手分析
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-769279)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-769279.png)
 
 - GE矩阵：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-785093)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-785093.png)
 
 - 德尔菲分析法：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-800794)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-800794.png)
 
 - 回归分析：双方的影响方向是正向的还是负向的
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-816221)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-816221.png)
 
 - 时间序列（趋势、季节的波动、周期的变动、不规则的变动）
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-832251)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-832251.png)
 
 - 4P：主要用于公司整体经营情况分析。
 
 4P，即产品（Product）、价格（Price）、渠道（Place）、促销（Promotion）
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-848104)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-848104.png)
 
  
 
 - 聚类分析：类内间距最小化。内间间距最大化。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-894167)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-894167.png)
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-863288)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-863288.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-878788)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-878788.png)
 
 - kano模型：需求功能排序
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-909164)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-909164.png)
 
 - PSM模型：定价模型
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-925030)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-925030.png)
 
 - 用户使用行为：用途较为单一，就是用于用户行为的研究分析。
 
@@ -239,13 +239,13 @@
 
 **用户使用行为的完整过程**：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-708313)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-708313.png)
 
 可以利用用户使用行为理论，梳理产品分析的各关键指标之间的逻辑关系，构建符合公司实际业务的产品分析指标体系。
 
 eg：仅作举例，不代表只考虑这几点因素
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-722708)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-722708.png)
 
  
 
@@ -267,7 +267,7 @@ a 、清楚自己要分析什么很重要！！！（场景）
 
 **用户画像的意义**：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-971304)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-971304.png)
 
 - 战略分析（业务经营收入、收入分析、竞争分析、用户维护）
 - 完善产品运营，提升用户体验（业务运营监控、用户体验优化）
@@ -277,36 +277,36 @@ a 、清楚自己要分析什么很重要！！！（场景）
 
 `用户构建的难度`：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135301-986535)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135301-986535.png)
 
  
 
 `用户画像的微观事例`：
 
- ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-002543)
+ ![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-002543.png)
 
 
 
 `用户画像的标签建模`：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-017814)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-017814.png)
 
 `用户画像的数据架构`：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-033169)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-033169.png)
 
 `用户画像的个性化运营`：
 
 - 用户画像的3种形态：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-048645)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-048645.png)
 
 - 个性化运营的价值【增加长尾内容的曝光、提高站内用户体验、提高网站转化率、提高订客单价和销售额】
 - 个性化推荐的在线应用（根据用户浏览数据的个性化推荐；根据购买数据的个性化运营；根据搜索数据的个性化运营；根据用户复合数据的个性化运营）
 - 个性化网站运营的离线应用（根据在线事件的个性化触发、根据离线规则的个性化触发）
 - 个性化网站运营的实现
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-063469)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-063469.png)
 
 - 个性化运营遇到的问题：底层系统绑架问题、内部利益协调问题、推荐系统本身存在的问题
 
@@ -328,7 +328,7 @@ a 、清楚自己要分析什么很重要！！！（场景）
 `工具的选择`：
 （1）整体解决方案的能力
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-078975)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-078975.png)
 
 
 （2）产品的易用性（IT部门、业务部门）
@@ -341,7 +341,7 @@ a 、清楚自己要分析什么很重要！！！（场景）
 
 `增值服务价值`：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-094931)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-094931.png)
 
 `推荐工具`：
 
@@ -367,15 +367,15 @@ a 、清楚自己要分析什么很重要！！！（场景）
 
 ## 数据可视化工具：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-110889)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-110889.png)
 
 ## 数据可视化步骤：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-126502)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-126502.png)
 
 ## 图表呈现4步骤
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-142427)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-142427.png)
 
 - 柱状图：二维数据、小规模数据集、区分个体变量间的差异；
 - 曲线图：二维、大数据集、变化趋势
@@ -388,17 +388,17 @@ a 、清楚自己要分析什么很重要！！！（场景）
 - 信息图：图标表现的形式
 - 地图：空间位置的数据集
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-157615)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-157615.png)
 
 ## 制作图表
 
 - 格式要完整（信息标题、图标标题、坐标标题、数字标签、单位、标签、图例、资料来源、脚注）
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-173145)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-173145.png)
 
 - 制作要真实
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-188806)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-188806.png)
 
 - 信息要清晰：
 	- （1）减少文字描述；
@@ -416,11 +416,11 @@ a 、清楚自己要分析什么很重要！！！（场景）
 
 - 报告的准备
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-204547)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-204547.png)
 
 - 报告的结构
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/PART0--数据分析综合-20210110-135302-220444)
+![](./images/PART0--数据分析综合/PART0--数据分析综合-20210110-135302-220444.png)
 
 - 报告的论述
 	- （1）数据可靠，界定严谨；

@@ -18,7 +18,7 @@
 
 # PyTorch 实现模型训练的 5 大要素
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-649080.png)
+![](./images/N0101-PyTorch 简介与安装/深度之眼PyTorch框架班-20201215-224441-649080-1703350601779-2587.png)
 
 
 
@@ -34,7 +34,7 @@
 
 在开发过程中可能会有多个项目同时进行，不同项目之间使用的 Python 版本和一些库的版本不一样，这就会导致冲突。因此这里使用 Anaconda 来管理多个 Python 虚拟环境。Anaconda 是为了方便使用 Python 而建立的一个软件包，包含常用 的 250 多个工具包，多个版本的 Python 解释器和强大的虚拟环境管理工具。各个环境之间相互独立，可任意切换。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-438285.png)
+![](./images/N0101-PyTorch 简介与安装/深度之眼PyTorch框架班-20201215-224439-438285.png)
 
 
 
@@ -42,14 +42,14 @@
 
 - 到官网 https://www.anaconda.com/products/individual 选择适合自己系统的 64 位安装包，注意选择 Python3 以上的版本。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-455299.png)
+![](./images/N0101-PyTorch 简介与安装/深度之眼PyTorch框架班-20201215-224439-455299.png)
 
 
 
 - 安装时记得勾选`Add Anaconda to my PATH environment variable` 添加到环境变量中。
 - 安装完成后打开`cmd`，输入`conda`回车出现如下信息，即为安装成功。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-473048.png)
+![](./images/N0101-PyTorch 简介与安装/深度之眼PyTorch框架班-20201215-224439-473048.png)
 
 - 接着添加中科大镜像或者清华镜像，在安装库的时候实现加速下载。
 
@@ -58,7 +58,7 @@
 - 检查是否有支持 CUDA 的 GPU，若有，需要安装 CUDA 和CuDNN。
 - 进入 PyTorch 官方网站 https://pytorch.org/get-started/locally/选择自己需要安装的 PyTorch 对应的命令，在本地 cmd 中输入安装命令即可。这里我本机选择使用 conda 安装不支持 GPU 的 1.5 版本：`conda install pytorch torchvision cpuonly -c pytorch`。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-477033.png)
+![](./images/N0101-PyTorch 简介与安装/深度之眼PyTorch框架班-20201215-224439-477033.png)
 
 
 
@@ -78,23 +78,23 @@ cu92/torch-1.5.0%2Bcu92-cp37-cp37m-linux_x86_64.whl
 
 首先点击齿轮图标，点击弹出的`add`，
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-487010.png)
+![](./images/N0101-PyTorch 简介与安装/深度之眼PyTorch框架班-20201215-224439-487010.png)
 
 
 
 接着在弹出的窗口中选择`Conda Environment`，`Conda execute` 选择你安装好的 Anaconda 的文件夹下的`Scripts\conda.exe`。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-489412.png)
+![](./images/N0101-PyTorch 简介与安装/深度之眼PyTorch框架班-20201215-224439-489412.png)
 
 
 
 最后在`Python Interpreter`给当前项目选择刚刚创建的 Python 环境即可。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-502418.png)
+![](./images/N0101-PyTorch 简介与安装/深度之眼PyTorch框架班-20201215-224439-502418.png)
 
 如果安装的是 GPU 版本，安装完成之后可以使用`print(torch.cuda.is_available())`语句来查看安装好的 PyTorch 是否支持 GPU。这里我是用的是 CPU 版本。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-513389.png)
+![](./images/N0101-PyTorch 简介与安装/深度之眼PyTorch框架班-20201215-224439-513389.png)
 
 
 

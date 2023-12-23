@@ -29,7 +29,7 @@ Doubango [1]是一个不错的开源框架，它跟电信业务走得比较近�
 
 下面我们以Mac平台上的iDoubs为例，讲一下它往FreeSWITCH上注册的方法。图14-1是笔者使用Mac版的iDoubs注册时的参数设置，在其他平台上可以参考使用。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-952910.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182223-952910-1703349261536-1381.png)
 
 <center>图14-1　iDoubs注册设置</center>
 
@@ -183,7 +183,7 @@ originate sofia/gateway/ims/0186xxxxxxxx &echo
 
 普通电话机是模拟的，通过一根模拟线连接到距离最近的电话交换机上。根据所处位置的不同，这个交换机可能是处在运营商机房的交换机，也可能是运营商设在用户小区的一个模块局中的交换机，还可能是本企业自己建设的用户小交换机。近几年，为响应国家光进铜退的号召，有些运营商就直接将光纤拉到用户家里，通过一个“小盒子”（因特网接入设备，称为IAD）将光纤接口转成普通的以太网口和模拟电话接口，然后再在模拟电话接口上接电话机。总之，我们的普通电话都要通过一根电话线连接到某个设备上。该设备提供一个模拟电话线的接入端口，在技术上，称为FXS口。同时，我们的电话机上也有一个模拟线的接口，称为FXO（在物理上，就是一个RJ11接口 [1]）。FXS和FXO的连接方式如图14-2所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-967855.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182223-967855.png)
 
 <center>图14-2　FXS和FXO连接示意图</center>
 
@@ -197,7 +197,7 @@ originate sofia/gateway/ims/0186xxxxxxxx &echo
 
 有了上述基本概念以后，我们就可以来看一下要解决我们的问题需要的拓扑结构了。如图14-3所示，我们把图14-2中的电话线从中间截断，中间放上FreeSWITCH。FreeSWITCH提供一个FXO接口用于连接原来的交换机；另外提供一个FXS接口用于连接原来的模拟电话。此外，其他的SIP话机也可以通过以太网(Ethernet）口接进来，以实现互相通信。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-981855.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182223-981855.png)
 
 <center>图14-3　FreeSWITCH连接FXS及FXO的拓扑结构</center>
 
@@ -210,7 +210,7 @@ FreeSWITCH本身是一个软件，因而它是不能提供FXO和FXS硬件接口�
 
 增加了网关后的拓扑结构如图14-4所示。与图14-3比较起来，相当于在FreeSWITCH中把内置的板卡换成了外置的网关设备。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-996853.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182223-996853.png)
 
 <center>图14-4　FreeSWITCH通过网关连接模拟话机及电话线</center>
 
@@ -224,7 +224,7 @@ FreeSWITCH本身是一个软件，因而它是不能提供FXO和FXS硬件接口�
 
 该网关有一个简单的Web配置界面 [7]，如图14-5所示。首先切换到“FXS PORT”配置界面，通过相关配置，可以令其向网关注册。在图中可以看到，它其实跟图3-13中亿联话机的账号配置界面是类似的（因为该网关的功能就相当于一个SIP话机）。其中，Primary SIP Server填入我们FreeSWITCH服务器的IP地址；Failover SIP Server是一个备份服务器，用于在Primary SIP服务器出现故障的时候自动倒换到Failover指定的服务器上，在这里我们不使用，可以不填；SIP User ID即我们注册的账号，在这里我们使用FreeSWITCH默认提供的账号1000；Authenticate ID为认证ID，跟账号一样；Authenticate Password即密码，填入1234，Name为SIP中的显示的名字，可以随便起一个；其他的都保留默认配置就可以了。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-012855.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182224-012855.png)
 
 <center>图14-5　HT701的配置</center>
 
@@ -240,7 +240,7 @@ MX8网关FXS接口的功能和配置跟我们上面讲到的潮流HT701差不多
 
 配置好SIP服务器的地址后，再转到“线路配置”→“用户线功能”页面，如图14-6所示。在线路号码中选择一个FXS接口，如FXS-1；电话号码即我们的SIP注册账号，图所示的例子中我们使用1007，勾选“注册”复选框，然后在密码栏中输入“1234”，提交后，就可以成功注册到我们的SIP服务器上了。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-026855.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182224-026855.png)
 
 <center>图14-6　MX8网关FXS口的配置</center>
 
@@ -279,7 +279,7 @@ MX8网关FXS接口的功能和配置跟我们上面讲到的潮流HT701差不多
 
 FXO接口可以连接运营商提供的电话线（我们称为外线）与外界通话。在MX8中，连接到FXO接口的电话线称为中继线（见2.1.2节中的模拟中继线部分）。切换到“线路配置”→“中继线功能”可以看到如图14-7所示的界面。在这里，在线路号码中选择一个端口，如FXO-1；外线号码填入运营商给我们分配的电话号码（实际上在这里可以是任意号码，它只是作为一个标志使用）；我们不像FXS那样使用注册方式向FreeSWITCH注册，而是使用“中继对接”方式与FreeSWITCH对接，因此我们不选注册复选框；接入方式选择“绑定”，并输入绑定号码（该绑定号码一般应该是运营商提供给我们的电话号码，但同样，也可以是做任意值，我们这里以88888888为例）。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-042854.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182224-042854.png)
 
 <center>图14-7　MX8网关FXO接口配置</center>
 
@@ -601,7 +601,7 @@ session: (none)
 
 打开浏览器，进入管理界面，选择添加一个PRI中继，如图14-8所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-057855.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182224-057855.png)
 
 <center>图14-8　添加PRI中继</center>
 
@@ -609,7 +609,7 @@ session: (none)
 
 单击“确定”按钮后保存设置。然后可以转到状态页面查看E1中继端口的状态。如图14-9所示，如果看到端口状态变成绿色的（状态是Actived）则表示链路正常了。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-071854.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182224-071854.png)
 
 <center>图14-9　E1中继状态</center>
 
@@ -621,7 +621,7 @@ session: (none)
 
 如图14-10所示。在管理界面上选择添加SIP中继，中继编码使用默认的0；中继名称为FS-SIP；对端地址输入我们FS2的IP地址，在这里是192.168.1.119；对端端口使用5080，以防止对该网关设备进行鉴权，简化配置。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-086854.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182224-086854.png)
 
 <center>图14-10　添加SIP中继</center>
 
@@ -633,7 +633,7 @@ session: (none)
 
 首先，我们添加一条路由，将从E1端口进来的通话路由到SIP中继上去。在MTG1000的管理界面上选择添加PSTN-IP路由，如图14-11所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-101863.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182224-101863.png)
 
 <center>图14-11　添加PSTN到SIP路由</center>
 
@@ -643,7 +643,7 @@ session: (none)
 
 用类似的方法可以配置一条SIP到E1的中继，让从SIP侧过来的通话能送到E1上去。如图14-12所示，参数的含义与上面的类似，在这里就不多介绍了。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-116855.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182224-116855.png)
 
 <center>图14-12　添加SIP到PSTN路由</center>
 
@@ -667,7 +667,7 @@ session: (none)
 
 我们上面配置了FS1、MTG1000网关及FS2，下面可以进行拨打测试了。如果FS1上的用户1000想呼叫FS2上的用户1001，则拨打0加上对方的号码，如01001；电话在FS1上进行路由时被叫号码最前面的0会被Dialplan“吃”掉，并将剩下的1001送到E1中继网关MTG1000上；MTG1000在收到来自E1中继的来话后，查找本地的路由表，并将该电话送到配置好的SIP中继上，实际上就是送到我们的FS2的5080端口上；FS2在5080端口上接收到来话后，即查找本public Dialplan，将最终向本地用户1000振铃，1000接起电话后就可以进行通话了。呼叫流程如图14-13所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-131856.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182224-131856.png)
 
 <center>图14-13　呼叫流程</center>
 
@@ -754,7 +754,7 @@ freeswitch> originate freetdm/1/5/1000 &echo
 
 MX100-TG的配置界面与MX8类似。打开浏览器，进入管理界面，选择ISDN，便看到如图14-14所示的配置界面。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-162856.png)
+![](./images/第14章 FreeSWITCH与其他设备或系统对接/FreeSwitch权威指南-20211225-182224-162856.png)
 
 <center>图14-14　添加ISDN中继</center>
 

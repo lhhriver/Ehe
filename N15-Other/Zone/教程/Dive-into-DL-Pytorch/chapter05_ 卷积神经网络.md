@@ -17,7 +17,7 @@
 
 我们用一个具体例子来解释二维互相关运算的含义。如图5.1所示，输入是一个高和宽均为3的二维数组。我们将该数组的形状记为$3 \times 3$或（3，3）。核数组的高和宽分别为2。该数组在卷积计算中又称卷积核或过滤器（filter）。卷积核窗口（又称卷积窗口）的形状取决于卷积核的高和宽，即$2 \times 2$。图5.1中的阴影部分为第一个输出元素及其计算所使用的输入和核数组元素：$0\times0+1\times1+3\times2+4\times3=19$。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter05_CNN-20210112-190211-608454.svg)
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-608454.svg)
 
 <div align=center>图5.1 二维互相关运算</div>
 
@@ -206,7 +206,7 @@ $$(n_h-k_h+1) \times (n_w-k_w+1).$$
 
 填充（padding）是指在输入高和宽的两侧填充元素（通常是0元素）。图5.2里我们在原输入高和宽的两侧分别添加了值为0的元素，使得输入高和宽从3变成了5，并导致输出高和宽由2增加到4。图5.2中的阴影部分为第一个输出元素及其计算所使用的输入和核数组元素：$0\times0+0\times1+0\times2+0\times3=0$。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter05_CNN-20210112-190211-631083.svg)
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-631083.svg)
 
 <div align=center>图5.2 在输入的高和宽两侧分别填充了0元素的二维互相关计算</div>
 
@@ -262,7 +262,7 @@ torch.Size([8, 8])
 
 目前我们看到的例子里，在高和宽两个方向上步幅均为1。我们也可以使用更大步幅。图5.3展示了在高上步幅为3、在宽上步幅为2的二维互相关运算。可以看到，输出第一列第二个元素时，卷积窗口向下滑动了3行，而在输出第一行第二个元素时卷积窗口向右滑动了2列。当卷积窗口在输入上再向右滑动2列时，由于输入元素无法填满窗口，无结果输出。图5.3中的阴影部分为输出元素及其计算所使用的输入和核数组元素：$0\times0+0\times1+1\times2+2\times3=8$、$0\times0+6\times1+0\times2+0\times3=6$。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter05_CNN-20210112-190211-642053.svg)
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-642053.svg)
 
 <div align=center>图5.3 高和宽上步幅分别为3和2的二维互相关运算</div>
 
@@ -318,7 +318,7 @@ torch.Size([2, 2])
 
 图5.4展示了含2个输入通道的二维互相关计算的例子。在每个通道上，二维输入数组与二维核数组做互相关运算，再按通道相加即得到输出。图5.4中阴影部分为第一个输出元素及其计算所使用的输入和核数组元素：$(1\times1+2\times2+4\times3+5\times4)+(0\times0+1\times1+3\times2+4\times3)=56$。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter05_CNN-20210112-190211-672076.svg)
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-672076.svg)
 
 <div align=center>图5.4 含2个输入通道的互相关计算</div>
 
@@ -395,7 +395,7 @@ tensor([[[ 56.,  72.],
 
 最后我们讨论卷积窗口形状为$1\times 1$（$k_h=k_w=1$）的多通道卷积层。我们通常称之为$1\times 1$卷积层，并将其中的卷积运算称为$1\times 1$卷积。因为使用了最小窗口，$1\times 1$卷积失去了卷积层可以识别高和宽维度上相邻元素构成的模式的功能。实际上，$1\times 1$卷积的主要计算发生在通道维上。图5.5展示了使用输入通道数为3、输出通道数为2的$1\times 1$卷积核的互相关计算。值得注意的是，输入和输出具有相同的高和宽。输出中的每个元素来自输入中在高和宽上相同位置的元素在不同通道之间的按权重累加。假设我们将通道维当作特征维，将高和宽维度上的元素当成数据样本，**那么$1\times 1$卷积层的作用与全连接层等价**。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter05_CNN-20210112-190211-656046.svg)
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-656046.svg)
 
 <div align=center>图5.5 1x1卷积核的互相关计算。输入和输出具有相同的高和宽</div>
 
@@ -450,7 +450,7 @@ True
 
 同卷积层一样，池化层每次对输入数据的一个固定形状窗口（又称池化窗口）中的元素计算输出。不同于卷积层里计算输入和核的互相关性，池化层直接计算池化窗口内元素的最大值或者平均值。该运算也分别叫做最大池化或平均池化。在二维最大池化中，池化窗口从输入数组的最左上方开始，按从左往右、从上往下的顺序，依次在输入数组上滑动。当池化窗口滑动到某一位置时，窗口中的输入子数组的最大值即输出数组中相应位置的元素。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter05_CNN-20210112-190211-687447.svg)
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-687447.svg)
 
 <div align=center>图5.6 池化窗口形状为 2 x 2 的最大池化</div>
 
@@ -624,7 +624,7 @@ tensor([[[[ 5.,  7.],
 
 卷积神经网络就是含卷积层的网络。本节里我们将介绍一个早期用来识别手写数字图像的卷积神经网络：LeNet [1]。这个名字来源于LeNet论文的第一作者Yann LeCun。LeNet展示了通过梯度下降训练卷积神经网络可以达到手写数字识别在当时最先进的结果。这个奠基性的工作第一次将卷积神经网络推上舞台，为世人所知。LeNet的网络结构如下图所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter05_CNN-20210112-190211-703407.png)
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-703407.png)
 
 <div align=center>LeNet网络结构</div>
 
@@ -831,7 +831,7 @@ epoch 5, loss 0.0024, train acc 0.759, test acc 0.759, time 1.7 sec
 
 2012年，AlexNet横空出世。这个模型的名字来源于论文第一作者的姓名Alex Krizhevsky [1]。AlexNet使用了8层卷积神经网络，并以很大的优势赢得了ImageNet 2012图像识别挑战赛。它首次证明了学习到的特征可以超越手工设计的特征，从而一举打破计算机视觉研究的前状。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter05_CNN-20210112-190211-719567.png)
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-719567.png)
 
 <div align=center>AlexNet网络结构</div>
 
@@ -1192,7 +1192,7 @@ epoch 5, loss 0.0035, train acc 0.919, test acc 0.918, time 153.9 sec
 
 我们知道，卷积层的输入和输出通常是四维数组（样本，通道，高，宽），而全连接层的输入和输出则通常是二维数组（样本，特征）。如果想在全连接层后再接上卷积层，则需要将全连接层的输出变换为四维。回忆在5.3节（多输入通道和多输出通道）里介绍的$1\times 1$卷积层。它可以看成全连接层，其中空间维度（高和宽）上的每个元素相当于样本，通道相当于特征。因此，NiN使用$1\times 1$卷积层来替代全连接层，从而使空间信息能够自然传递到后面的层中去。图5.7对比了NiN同AlexNet和VGG等网络在结构上的主要区别。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter05_CNN-20210112-190211-734904.svg)
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-734904.svg+xml)
 
 <div align=center>图5.7 左图是AlexNet和VGG的网络结构局部，右图是NiN的网络结构局部</div>
 
@@ -1716,7 +1716,7 @@ epoch 5, loss 0.0013, train acc 0.889, test acc 0.734, time 1.8 sec
 
 让我们聚焦于神经网络局部。如图5.9所示，设输入为$\boldsymbol{x}$。假设我们希望学出的理想映射为$f(\boldsymbol{x})$，从而作为图5.9上方激活函数的输入。左图虚线框中的部分需要直接拟合出该映射$f(\boldsymbol{x})$，而右图虚线框中的部分则需要拟合出有关恒等映射的残差映射$f(\boldsymbol{x})-\boldsymbol{x}$。残差映射在实际中往往更容易优化。以本节开头提到的恒等映射作为我们希望学出的理想映射$f(\boldsymbol{x})$。我们只需将图5.9中右图虚线框内上方的加权运算（如仿射）的权重和偏差参数学成0，那么$f(\boldsymbol{x})$即为恒等映射。实际中，当理想映射$f(\boldsymbol{x})$极接近于恒等映射时，残差映射也易于捕捉恒等映射的细微波动。图5.9右图也是ResNet的基础块，即残差块（residual block）。在残差块中，输入可通过跨层的数据线路更快地向前传播。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter05_CNN-20210112-190211-577159.svg)
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-577159.svg+xml)
 
 <div align=center>图5.9 普通的网络结构（左）与加入残差连接的网络结构（右）</div>
 
@@ -1882,9 +1882,8 @@ epoch 5, loss 0.0006, train acc 0.944, test acc 0.926, time 31.5 sec
 
 ResNet中的跨层连接设计引申出了数个后续工作。本节我们介绍其中的一个：稠密连接网络（DenseNet） [1]。 它与ResNet的主要区别如图5.10所示。
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter05_CNN-20210112-190211-593108.svg)
-</div>
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-593108.svg+xml)
+
 <div align=center>图5.10 ResNet（左）与DenseNet（右）在跨层连接上的主要区别：使用相加和使用连结</div>
 
 图5.10中将部分前后相邻的运算抽象为模块$A$和模块$B$。与ResNet的主要区别在于，DenseNet里模块$B$的输出不是像ResNet那样和模块$A$的输出相加，而是在通道维上连结。这样模块$A$的输出可以直接传入模块$B$后面的层。在这个设计里，模块$A$直接跟模块$B$后面的所有层连接在了一起。这也是它被称为“稠密连接”的原因。

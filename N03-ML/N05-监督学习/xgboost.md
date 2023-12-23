@@ -16,13 +16,13 @@
 
 举个例子，我们要预测一家人对电子游戏的喜好程度，考虑到年轻和年老相比，年轻更可能喜欢电子游戏，以及男性和女性相比，男性更喜欢电子游戏，故先根据年龄大小区分小孩和大人，然后再通过性别区分开是男是女，逐一给各人在电子游戏喜好程度上打分，如下图所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-566470.png)
+![](./images/xgboost/xgboost-20201215-223658-566470-1703346927246-125.png)
 
 
 
 就这样，训练出了2棵树tree1和tree2，类似之前gbdt的原理，两棵树的结论累加起来便是最终的结论，所以小孩的预测分数就是两棵树中小孩所落到的结点的分数相加：2 + 0.9 = 2.9。爷爷的预测分数同理：-1 + （-0.9）= -1.9。具体如下图所示
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-586422.png)
+![](./images/xgboost/xgboost-20201215-223658-586422.png)
 
 事实上，如果不考虑工程实现、解决问题上的一些差异，xgboost与gbdt比较大的不同就是目标函数的定义。
 
@@ -119,7 +119,7 @@ $$
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-601172.png)
+![](./images/xgboost/xgboost-20201215-223658-601172.png)
 
 
 
@@ -189,7 +189,7 @@ $$
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-610151.png)
+![](./images/xgboost/xgboost-20201215-223658-610151.png)
 
 
 
@@ -226,7 +226,7 @@ $$
 > 具体如何分裂呢？举个简单的年龄特征的例子如下，假设我们选择年龄这个 特征的值a作为决策树的分裂标准，则可以得到左子树2个人，右子树3个人，这样可以分别计算出左右子树的一阶和二阶导数和，进而求出最终的上式的值。
 >
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-619589.png)
+![](./images/xgboost/xgboost-20201215-223658-619589.png)
 
 
 
@@ -374,7 +374,7 @@ $$
 
 具体公式如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-626572.png)
+![](./images/xgboost/xgboost-20201215-223658-626572.png)
 
 
 
@@ -604,29 +604,29 @@ XGBoost在训练的过程中给出各个特征的评分，从而表明每个特�
 
 # 李文哲公开课
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-365779.png)
+![](./images/xgboost/xgboost-20201215-223658-365779.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-373767.png)
+![](./images/xgboost/xgboost-20201215-223658-373767.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-383749.png)
+![](./images/xgboost/xgboost-20201215-223658-383749.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-402307.png)
+![](./images/xgboost/xgboost-20201215-223658-402307.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-420263.png)
+![](./images/xgboost/xgboost-20201215-223658-420263.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-434234.png)
+![](./images/xgboost/xgboost-20201215-223658-434234.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-450200.png)
+![](./images/xgboost/xgboost-20201215-223658-450200.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-467156.png)
+![](./images/xgboost/xgboost-20201215-223658-467156.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-485123.png)
+![](./images/xgboost/xgboost-20201215-223658-485123.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-504390.png)
+![](./images/xgboost/xgboost-20201215-223658-504390.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-515364.png)
+![](./images/xgboost/xgboost-20201215-223658-515364.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/xgboost-20201215-223658-532044.png)
+![](./images/xgboost/xgboost-20201215-223658-532044.png)
 
 
 

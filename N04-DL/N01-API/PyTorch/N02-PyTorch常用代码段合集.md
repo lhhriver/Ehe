@@ -69,7 +69,7 @@ nvidia-smi --gpu-reset -i [gpu_id]
 
 PyTorch有9种CPU张量类型和9种GPU张量类型。
 
-![image-20220415082604322](https://gitee.com/liuhuihe/Ehe/raw/master/images/image-20220415082604322.png)
+![image-20220415082604322](./images/N02-PyTorch常用代码段合集/image-20220415082604322.png)
 
 ## **张量基本信息**
 

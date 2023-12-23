@@ -82,7 +82,7 @@ F_{X}(x) \triangleq P(X \leq x)
 $$
 通过使用这个函数，我们可以计算任意事件发生的概率。图1显示了一个样本**CDF**函数。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Math-20210110-133245-291344.png)
+![](./images/Prob/Math-20210110-133245-291344.png)
 
 <center>图1：一个累计分布函数(CDF)</center>
 
@@ -228,7 +228,7 @@ $$
 
 一些随机变量的概率密度函数和累积分布函数的形状如图2所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Math-20210110-133245-275671.png)
+![](./images/Prob/Math-20210110-133245-275671.png)
 
 <center>图2：一些随机变量的概率密度函数(PDF)和累积分布函数(CDF)</center>
 下表总结了这些分布的一些特性：

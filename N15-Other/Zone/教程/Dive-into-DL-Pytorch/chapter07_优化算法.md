@@ -64,7 +64,7 @@ d2l.plt.xlabel('x')
 d2l.plt.ylabel('f(x)');
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190211-970932.svg)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190211-970932.svg)
 
 
 
@@ -88,7 +88,7 @@ fig.axes.annotate('saddle point', xy=(0, -0.2), xytext=(-0.52, -5.0),
 d2l.plt.xlabel('x')
 d2l.plt.ylabel('f(x)');
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190211-986957.svg)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190211-986957.svg)
 
 
 再举个定义在二维空间的函数的例子，例如：
@@ -111,7 +111,7 @@ ax.set_zticks(ticks)
 d2l.plt.xlabel('x')
 d2l.plt.ylabel('y');
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-002795.svg)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-002795.svg)
 
 
 在图的鞍点位置，目标函数在$x$轴方向上是局部最小值，但在$y$轴方向上是局部最大值。
@@ -210,7 +210,7 @@ def show_trace(res):
 
 show_trace(res)
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-017921.svg)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-017921.svg)
 
 ###  学习率
 
@@ -225,7 +225,7 @@ show_trace(gd(0.05))
 ```
 epoch 10, x: 3.4867844009999995
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-033229.svg)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-033229.svg)
 
 
 如果使用过大的学习率，$\left|\eta f'(x)\right|$可能会过大从而使前面提到的一阶泰勒展开公式不再成立：这时我们无法保证迭代$x$会降低$f(x)$的值。
@@ -239,7 +239,7 @@ show_trace(gd(1.1))
 ```
 epoch 10, x: 61.917364224000096
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-048323.svg)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-048323.svg)
 
 ###  多维梯度下降
 
@@ -302,7 +302,7 @@ show_trace_2d(f_2d, train_2d(gd_2d))
 ```
 epoch 20, x1 -0.057646, x2 -0.000073
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-063819.svg)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-063819.svg)
 
 ###  随机梯度下降
 
@@ -339,7 +339,7 @@ show_trace_2d(f_2d, train_2d(sgd_2d))
 ```
 epoch 20, x1 -0.047150, x2 -0.075628
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-078994.svg)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-078994.svg)
 
 
 可以看到，随机梯度下降中自变量的迭代轨迹相对于梯度下降中的来说更为曲折。这是由于实验所添加的噪声使模拟的随机梯度的准确度下降。在实际中，这些噪声通常指训练数据集中的无意义的干扰。
@@ -469,7 +469,7 @@ train_sgd(1, 1500, 6)
 ```
 loss: 0.243605, 0.014335 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-095928.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-095928.png)
 
 
 当批量大小为1时，优化使用的是随机梯度下降。为了简化实现，有关（小批量）随机梯度下降的实验中，我们未对学习率进行自我衰减，而是直接采用较小的常数学习率。随机梯度下降中，每处理一个样本会更新一次自变量（模型参数），一个迭代周期里会对自变量进行1,500次更新。可以看到，目标函数值的下降在1个迭代周期后就变得较为平缓。
@@ -481,7 +481,7 @@ train_sgd(0.005, 1)
 ```
 loss: 0.243433, 0.270011 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-110853.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-110853.png)
 
 
 
@@ -496,7 +496,7 @@ train_sgd(0.05, 10)
 ```
 loss: 0.242805, 0.078792 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-126810.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-126810.png)
 
 ###  简洁实现
 
@@ -547,7 +547,7 @@ train_pytorch_ch7(optim.SGD, {"lr": 0.05}, features, labels, 10)
 ```
 loss: 0.245491, 0.044150 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-142767.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-142767.png)
 
 `小结`
 
@@ -595,7 +595,7 @@ d2l.show_trace_2d(f_2d, d2l.train_2d(gd_2d))
 epoch 20, x1 -0.943467, x2 -0.000073
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-158725.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-158725.png)
 
 
 可以看到，同一位置上，目标函数在竖直方向（$x_2$轴方向）比在水平方向（$x_1$轴方向）的斜率的绝对值更大。因此，给定学习率，梯度下降迭代自变量时会使自变量在竖直方向比在水平方向移动幅度更大。那么，我们需要一个较小的学习率从而避免自变量在竖直方向上越过目标函数最优解。然而，这会造成自变量在水平方向上朝最优解移动变慢。
@@ -610,7 +610,7 @@ d2l.show_trace_2d(f_2d, d2l.train_2d(gd_2d))
 ```
 epoch 20, x1 -0.387814, x2 -1673.365109
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-174682.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-174682.png)
 
 ###  动量法
 
@@ -640,7 +640,7 @@ d2l.show_trace_2d(f_2d, d2l.train_2d(momentum_2d))
 ```
 epoch 20, x1 -0.062843, x2 0.001202
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-190641.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-190641.png)
 
 
 可以看到使用较小的学习率$\eta=0.4$和动量超参数$\gamma=0.5$时，动量法在竖直方向上的移动更加平滑，且在水平方向上更快逼近最优解。下面使用较大的学习率$\eta=0.6$，此时自变量也不再发散。
@@ -653,7 +653,7 @@ d2l.show_trace_2d(f_2d, d2l.train_2d(momentum_2d))
 ```
 epoch 20, x1 0.007188, x2 0.002553
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-206597.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-206597.png)
 
 ####  指数加权移动平均
 
@@ -719,7 +719,7 @@ d2l.train_ch7(sgd_momentum, init_momentum_states(),
 ```
 loss: 0.245518, 0.042304 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-222554.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-222554.png)
 
 
 将动量超参数`momentum`增大到0.9，这时依然可以看成是特殊的小批量随机梯度下降：其小批量随机梯度为最近10个时间步的10倍小批量梯度的加权平均。我们先保持学习率0.02不变。
@@ -733,7 +733,7 @@ d2l.train_ch7(sgd_momentum, init_momentum_states(),
 ```
 loss: 0.252046, 0.095708 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-238511.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-238511.png)
 
 
 可见目标函数值在后期迭代过程中的变化不够平滑。直觉上，10倍小批量梯度比2倍小批量梯度大了5倍，我们可以试着将学习率减小到原来的1/5。此时目标函数值在下降了一段时间后变化更加平滑。
@@ -747,7 +747,7 @@ d2l.train_ch7(sgd_momentum, init_momentum_states(),
 ```
 loss: 0.242905, 0.073496 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-253472.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-253472.png)
 
 ###  简洁实现
 
@@ -761,7 +761,7 @@ d2l.train_pytorch_ch7(torch.optim.SGD, {'lr': 0.004, 'momentum': 0.9},
 ```
 loss: 0.253280, 0.060247 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-269429.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-269429.png)
 
 `小结`
 
@@ -830,7 +830,7 @@ d2l.show_trace_2d(f_2d, d2l.train_2d(adagrad_2d))
 epoch 20, x1 -2.382563, x2 -0.158591
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-285240.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-285240.png)
 
 
 下面将学习率增大到2。可以看到自变量更为迅速地逼近了最优解。
@@ -843,7 +843,7 @@ d2l.show_trace_2d(f_2d, d2l.train_2d(adagrad_2d))
 ```
 epoch 20, x1 -0.002295, x2 -0.000000
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-300195.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-300195.png)
 
 ###  从零开始实现
 
@@ -875,7 +875,7 @@ d2l.train_ch7(adagrad, init_adagrad_states(), {'lr': 0.1}, features, labels)
 loss: 0.243675, 0.049749 sec per epoch
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-315694.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-315694.png)
 
 ###  简洁实现
 
@@ -889,7 +889,7 @@ d2l.train_pytorch_ch7(torch.optim.Adagrad, {'lr': 0.1}, features, labels)
 loss: 0.243147, 0.040675 sec per epoch
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-331472.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-331472.png)
 
 `小结`
 
@@ -951,7 +951,7 @@ d2l.show_trace_2d(f_2d, d2l.train_2d(rmsprop_2d))
 ```
 epoch 20, x1 -0.010599, x2 0.000000
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-346674.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-346674.png)
 
 ###  从零开始实现
 
@@ -983,7 +983,7 @@ d2l.train_ch7(rmsprop, init_rmsprop_states(), {'lr': 0.01, 'gamma': 0.9},
 ```
 loss: 0.243452, 0.049984 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-361893.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-361893.png)
 
 ###  简洁实现
 
@@ -998,7 +998,7 @@ d2l.train_pytorch_ch7(torch.optim.RMSprop, {'lr': 0.01, 'alpha': 0.9},
 ```
 loss: 0.243676, 0.043637 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-377891.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-377891.png)
 
 `小结`
 
@@ -1075,7 +1075,7 @@ d2l.train_ch7(adadelta, init_adadelta_states(), {'rho': 0.9}, features, labels)
 ```
 loss: 0.243728, 0.062991 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-393870.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-393870.png)
 
 ###  简洁实现
 
@@ -1089,7 +1089,7 @@ d2l.train_pytorch_ch7(torch.optim.Adadelta, {'rho': 0.9}, features, labels)
 ```
 loss: 0.242104, 0.047702 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-408918.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-408918.png)
 
 `小结`
 
@@ -1175,7 +1175,7 @@ d2l.train_ch7(adam, init_adam_states(), {'lr': 0.01, 't': 1}, features, labels)
 ```
 loss: 0.245370, 0.065155 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-424884.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-424884.png)
 
 
 
@@ -1190,7 +1190,7 @@ d2l.train_pytorch_ch7(torch.optim.Adam, {'lr': 0.01}, features, labels)
 ```
 loss: 0.242066, 0.056867 sec per epoch
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter07_optimization-20210112-190212-440063.png)
+![](./images/chapter07_优化算法/chapter07_optimization-20210112-190212-440063.png)
 
 `小结`
 

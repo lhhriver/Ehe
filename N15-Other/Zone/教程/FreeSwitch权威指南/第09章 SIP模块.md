@@ -156,7 +156,7 @@ inbound-bypass-media用于设置入局呼叫是否启用“媒体绕过（Bypass
 
 如图9-1所示，Bob和Alice通过FreeSWITCH使用SIP接通了电话，他们谈话的语音（或视频）数据要通过RTP包传送。RTP可以像SIP一样经过FreeSWITCH转发。但是，RTP与SIP相比占用很大的带宽，如果FreeSWITCH不需要“偷听（或录音）”他们谈话，为了节省带宽，完全可以让RTP直接在两者之间点对点传送，这种情况对FreeSWITCH来讲就是没有媒体的，在FreeSWITCH中就称为Bypass Media（媒体绕过）。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-457856.png)
+![](./images/第09章 SIP模块/FreeSwitch权威指南-20211225-182223-457856-1703349209294-1329.png)
 
 <center>图9-1　Bypass Media</center>
 
@@ -247,7 +247,7 @@ external.xml是另一个UA配置文件，它定义了另一个名为“external�
 
 如图9-2所示，本地用户1000注册到5060端口上，每次它向外打电话时（呼叫本地用户1001时也一样），它向FreeSWITCH的5060端口发送INVITE请求，FreeSWITCH对其鉴权，验证通过后（可以是IP地址验证或Digest验证），才允许通话继续进行─如果呼叫1001，则FreeSWITCH继续向用户1001发送INVITE请求；如果呼叫外部电话，则通过端口5080向外部网关发送INVITE请求。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-472872.png)
+![](./images/第09章 SIP模块/FreeSwitch权威指南-20211225-182223-472872.png)
 
 <center>图9-2　FreeSWITCH的端口连接</center>
 
@@ -526,7 +526,7 @@ Total items returned: 0
 
 FreeSWITCH内置了Homer Capture Agent用于SIP抓包。Homer [1]是一个使用HEP、HEP2和IPIP协议的抓包分析工具。它逻辑上由Capture Agent、Capture Node（又称Capture Server）和webHomer三部分组成。其中，Captuer Agent运行于FreeSWITCH内部，用于将收到的SIP包进行封装并通过HEP/HEP2或IPIP协议发送到远端的Capture Node上。Capture Node收到封装后的SIP包以后，进行分析并将分析结果存储到数据库中。然后，技术人员就可以使用webHomer在浏览器中查看各种统计和分析结果了，如图9-3所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-487858.png)
+![](./images/第09章 SIP模块/FreeSwitch权威指南-20211225-182223-487858.png)
 
 <center>图9-3　Homer示意图</center>
 
@@ -673,7 +673,7 @@ freeswitch> sofia_presence_data list 1000@192.168.1.123
 
 图9-4所示为一个典型的NAT结构。其中，路由器有两个网络接口，一个用于连接外网，其IP是1.2.3.4，一个用于连接内网，其IP是192.168.0.1。内网的主机IP从192.168.0.2到192.168.0.5，它们把192.168.0.1作为一个网关，即所有与外网的通信都需要经过192.168.0.1转发。如果内网主机要与外界通信，路由器会将内网主机的请求转换成外网的IP地址，因而不管是哪个内网的主机与外界通信，外界的主机看起来都是从1.2.3.4这个路由器的外网IP发出的。同时，路由器会维护一个地址与内网主机间的映射关系，以保证回来的IP能到达相应的主机。这个映射关系是在内网主机首次向外网发包时建立的，此后外网的主机才可以向内网的主机发送信息。建立该映射关系的过程好像是在NAT设备上打了一个“洞”（因而该技术也称为UDP Hole Punching，即打洞），通过该“洞”进行内外网的通信。该洞是有生命周期的，如果在一段时间内没有数据通过，则洞会自动消失。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-501854.png)
+![](./images/第09章 SIP模块/FreeSwitch权威指南-20211225-182223-501854.png)
 
 <center>图9-4　NAT示意图</center>
 
@@ -712,7 +712,7 @@ NAT有三种类型：静态NAT（Static NAT）、动态地址NAT（Pooled NAT）
 
 FreeSWITCH一般有三种拓扑结构，如图9-5所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-516854.png)
+![](./images/第09章 SIP模块/FreeSwitch权威指南-20211225-182223-516854.png)
 
 <center>图9-5　常见FreeSWITCH NAT网络拓扑结构</center>
 

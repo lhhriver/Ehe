@@ -57,9 +57,8 @@ d2l.show_trace_2d(f_2d, d2l.train_2d(adagrad_2d))
 epoch 20, x1 -2.382563, x2 -0.158591
 ```
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/优化器-20201215-224441-953835.png)
-</div>
+![](./images/N05-AdaGrad算法/优化器-20201215-224441-953835-1703348039323-568.png)
+
 
 下面将学习率增大到2。可以看到自变量更为迅速地逼近了最优解。
 
@@ -71,9 +70,8 @@ d2l.show_trace_2d(f_2d, d2l.train_2d(adagrad_2d))
 ```
 epoch 20, x1 -0.002295, x2 -0.000000
 ```
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/优化器-20201215-224442-379227.png)
-</div>
+![](./images/N05-AdaGrad算法/优化器-20201215-224442-379227.png)
+
 
 ## 7.5.3 从零开始实现
 
@@ -105,9 +103,8 @@ d2l.train_ch7(adagrad, init_adagrad_states(), {'lr': 0.1}, features, labels)
 loss: 0.243675, 0.049749 sec per epoch
 ```
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/优化器-20201215-224442-449385.png)
-</div>
+![](./images/N05-AdaGrad算法/优化器-20201215-224442-449385.png)
+
 
 ## 7.5.4 简洁实现
 
@@ -121,9 +118,8 @@ d2l.train_pytorch_ch7(torch.optim.Adagrad, {'lr': 0.1}, features, labels)
 loss: 0.243147, 0.040675 sec per epoch
 ```
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/优化器-20201215-224442-452375.png)
-</div>
+![](./images/N05-AdaGrad算法/优化器-20201215-224442-452375.png)
+
 
 ## 小结
 

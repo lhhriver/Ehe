@@ -42,7 +42,7 @@ TensorBoard 1.9.0 at http://LAPTOP-DPDNNJSU:6006 (Press CTRL+C to quit)
 
 在浏览器中打开，显示如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-741625.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-741625-1703350782602-2765.png)
 
 
 
@@ -50,7 +50,7 @@ TensorBoard 1.9.0 at http://LAPTOP-DPDNNJSU:6006 (Press CTRL+C to quit)
 
 右上角有一些功能设置
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-757416.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-757416.png)
 
 
 
@@ -58,31 +58,31 @@ TensorBoard 1.9.0 at http://LAPTOP-DPDNNJSU:6006 (Press CTRL+C to quit)
 
 左边的菜单栏如下，点击`Show data download links`可以展示每个图的下载按钮，如果一个图中有多个数据，需要选中需要下载的曲线，然后下载，格式有 `csv`和`json`可选。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-770195.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-770195.png)
 
 
 
 第二个选项`Ignore outliers in chart scaling`可以设置是否忽略离群点，在`y_pow_2_x`中，数据的尺度达到了 10181018，勾选`Ignore outliers in chart scaling`后yy轴的尺度下降到10171017。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-772190.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-772190.png)
 
 
 
 Soothing 是对图像进行平滑，下图中，颜色较淡的阴影部分才是真正的曲线数据，Smoothing 设置为了 0.6，进行了平滑才展示为颜色较深的线。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-788463.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-788463.png)
 
 
 
 Smoothing 设置为 0，没有进行平滑，显示如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-792475.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-792475.png)
 
 
 
 Smoothing 设置为 1，则平滑后的线和xx轴重合，显示如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-805476.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-805476.png)
 
 
 
@@ -90,12 +90,12 @@ Smoothing 设置为 1，则平滑后的线和xx轴重合，显示如下：
 
 `runs`显示所有的 event file，可以选择展示某些 event file 的图像，其中正方形按钮是多选，圆形按钮是单选。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-811275.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-811275.png)
 
 
 上面的搜索框可以根据 tags 来搜索数据对应的图像
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-814258.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-814258.png)
 
 
 # optimizer 的属性
@@ -151,13 +151,13 @@ writer.close()
 
 运行后会生成`train_log/test_log_dir`文件夹，里面的 event file 文件名后缀是`12345678`。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-817218.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-817218.png)
 
 
 
 但是我们指定了`log_dir`，`comment`参数没有生效。如果想要`comment`参数生效，把`SummaryWriter`的初始化改为`writer = SummaryWriter(comment='_scalars', filename_suffix="12345678")`，生成的文件夹如下，`runs`里的子文件夹后缀是`_scalars`。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-827229.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-827229.png)
 
 
 # add_scalar
@@ -198,12 +198,12 @@ writer.close()
 
 运行后生成 event file，然后使用 TensorBoard 来查看如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-741625.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-741625-1703350782608-2776.png)
 
 
 每个图像下面都有 3 个按钮，中间的按钮是以对数形式展示 y 轴。如对`y=pow_2_x`曲线的 y 轴取对数展示如下，变成了直线。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-829215.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-829215.png)
 
 
 # add_histogram
@@ -239,11 +239,11 @@ writer.close()
 
 `matplotlib`画图显示如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-831214.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-831214.png)
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-845024.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-845024.png)
 
 
 
@@ -251,23 +251,23 @@ TensorBoard 显示结果如下。
 
 正态分布显示如下，每个子图分别对应一个 global_step：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-851834.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-851834.png)
 
 
 
 均匀分布显示如下，显示曲线的原因和`bins`参数设置有关，默认是`tensorflow`：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-854826.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-854826.png)
 
 
 
 除此之外，还会得到`DISTRIBUTIONS`，这是多分位折线图，纵轴有 9 个折线，表示数据的分布区间，某个区间的颜色越深，表示这个区间的数所占比例越大。横轴是 global_step。这个图的作用是观察数方差的变化情况。显示如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-857572.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-857572.png)
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-868011.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-868011.png)
 
 
 # 模型指标监控
@@ -307,31 +307,31 @@ for name, param in net.named_parameters():
 
 在训练还没结束时，就可以启动 TensorBoard 可视化，Accuracy 的可视化如下，颜色较深的是训练集的 Accuracy，颜色较浅的是 验证集的样本：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-871835.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-871835.png)
 
 
 
 Loss 的可视化如下，其中验证集的 Loss 是从第 10 个 epoch 才开始记录的，并且 验证集的 Loss 是所有验证集样本的 Loss 均值，所以曲线更加平滑；而训练集的 Loss 是 batch size 的数据，因此震荡幅度较大：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-874828.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-874828.png)
 
 
 
 上面的 Loss 曲线图与使用`matplotlib`画的图不太一样，因为 TensorBoard 默认会进行 Smoothing，我们把 Smoothing 系数设置为 0 后，显示如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-877835.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-877835.png)
 
 
 
 而记录权值以及权值梯度的 HISTOGRAMS 显示如下，记录了每一层的数据：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-880608.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-880608.png)
 
 
 
 展开查看第一层的权值和梯度。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-883592.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-883592.png)
 
 
 
@@ -386,13 +386,13 @@ writer.close()
 
 使用 TensorBoard 可视化如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-912341.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-912341.png)
 
 
 
 图片上面的`step`可以选择第几张图片，如选择第 3 张图片，显示如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-929330.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-929330.png)
 
 
 # torchvision.utils.make_grid
@@ -442,7 +442,7 @@ writer.close()
 
 TensorBoard 显示如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-940333.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-940333.png)
 
 
 # AlexNet 卷积核与特征图可视化
@@ -500,22 +500,22 @@ writer.close()
 
 这是根据输出的维度分批展示第一层卷积核的可视化
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-943329.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-943329.png)
 
 
 这是根据输出的维度分批展示第二层卷积核的可视化
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-946324.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-946324.png)
 
 
 这是整个第一层卷积核的可视化
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-949318.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-949318.png)
 
 
 这是整个第二层卷积核的可视化
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-953306.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-953306.png)
 
 
 
@@ -560,7 +560,7 @@ writer.close()
 
 使用 TensorBoard 可视化如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-957295.png)
+![](./images/N0501-TensorBoard 介绍/深度之眼PyTorch框架班-20201215-224440-957295.png)
 
 
 # add_graph

@@ -2,7 +2,7 @@
 
 2012年，AlexNet横空出世。这个模型的名字来源于论文第一作者的姓名Alex Krizhevsky [1]。AlexNet使用了8层卷积神经网络，并以很大的优势赢得了ImageNet 2012图像识别挑战赛。它首次证明了学习到的特征可以超越手工设计的特征，从而一举打破计算机视觉研究的前状。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-AlexNet-20201215-224442-855771.png)
+![](./images/N06-AlexNet/N06-AlexNet-20201215-224442-855771-1703348283808-656.png)
 
 AlexNet与LeNet的设计理念非常相似，但也有显著的区别。
 
@@ -129,7 +129,7 @@ AlexNet为8层深度网络，其中5层卷积层和3层全连接层，不计LRN�
 
 # 结构分析
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-AlexNet-20201215-224442-866744.png)
+![](./images/N06-AlexNet/N06-AlexNet-20201215-224442-866744.png)
 
 AlexNet每层的超参数如图所示，第一个卷积使用较大的核尺寸11\*11，步长为4，有96个卷积核；紧接着一层LRN层；然后是最大池化层，核为3\*3，步长为2。这之后的卷积层的核尺寸都比较小，5\*5或3\*3，并且步长为1，即扫描全图所有像素；而最大池化层依然为3\*3，步长为2。
 

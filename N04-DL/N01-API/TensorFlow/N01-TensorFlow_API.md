@@ -655,7 +655,7 @@ Function(softmax_cross_entropy_with_logits) result=
 
 Tensorflow 中文社区提供的展示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/TensorFlow_1.x-20210111-101528-730780.png)
+![](./images/N01-TensorFlow_API/TensorFlow_1.x-20210111-101528-730780.png)
 
 
 

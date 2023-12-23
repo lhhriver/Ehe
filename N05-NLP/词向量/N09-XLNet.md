@@ -22,9 +22,9 @@ AR语言模型的**优点**:
 
 1. 在于因为使用了单向的语言模型，所以其在文本生成之类（向前的方向）的 NLP 任务中便能取得不错的效果。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-XLNet-20201214-201043-605224.webp)
+![](./images/N09-XLNet/N09-XLNet-20201214-201043-605224-1703349521831-1671.webp)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-XLNet-20201214-201043-638986.webp)
+![](./images/N09-XLNet/N09-XLNet-20201214-201043-638986.webp)
 
 
 
@@ -41,7 +41,7 @@ AE 语言模型的**缺点**：
 1. 在于预训练中的 [MASK] token 不存在于下游的微调任务中，从而**导致了预训练与微调之间的差异**。
 2. 此外，[MASK] 的**另一个缺点**在于，对于给定了 [MASK] token，**模型假定其彼此相互独立**，这时就会出现一个问题，比如说 '2008 年全球金融危机'，假如我们 MASK 了金融和危机，AE 模型在预测时会假设两个 [MASK] 之间相互独立，但我们知道，这两个 [MASK] token 之间是有相关性的。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-XLNet-20201214-201043-741170.png)
+![](./images/N09-XLNet/N09-XLNet-20201214-201043-741170.png)
 
 而本文介绍的 XLNet 是一种新的 AR 语言模型，其既能学习上下文信息，又能避免了 AE 语言模型的缺点。
 
@@ -75,7 +75,7 @@ $$
 
 我们以长度为 4 的序列为例，那么就有 24 种可能，假设我们要预测 $x_3$，$x_3$ 的位置可以放在四个位置上，下图是其中几个排列：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-XLNet-20201214-201043-666400.png)
+![](./images/N09-XLNet/N09-XLNet-20201214-201043-666400.png)
 
 很直观地可以看到，即使是使用单向模型也可以获得 $x_3$ 的上下文信息。我们可以用公式表示**目标函数**：
 
@@ -86,7 +86,7 @@ $$
 
 当然我们不会真的去调整他们的顺序，而是分为**原本序列顺序**和**分解顺序**（Factorization Order）。我们只影响分解顺序，而不影响序列的顺序：预测的都是x3，第一个3之前没有，第二个3之前有2、4，所有连接2和4，第三个前面有1、4、2，.....同理。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-XLNet-20201214-201043-619218.png)
+![](./images/N09-XLNet/N09-XLNet-20201214-201043-619218.png)
 
 这样做的原因是因为在下游的微调阶段，模型训练的数据是有序的，所以我们还是需要保持原序列的顺序使得其可以和原本的位置编码一一对应。 
 
@@ -98,7 +98,7 @@ $$
 
 为了实现上面全排列的目标，作者设计一个**双流自注意力机制**（Two-Stream Self-Attention），这里的双流是指**内容流（Content Stream）**和**查询流（Query Stream）**：h包含内容和位置，g只包含位置。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-XLNet-20201214-201043-716322.png)
+![](./images/N09-XLNet/N09-XLNet-20201214-201043-716322.png)
 
 假设现在我们有一个分解顺序$\left[x_{3}, x_{2}, x_{4}, x_{1}\right]$ 。
 
@@ -120,7 +120,7 @@ $$
 
 Transformer-XL 有两个关键部分：**相对位置编码方案**和**分段递归机制**。相对位置编码很方便融合，而对于分段递归机制来说，就是要重用先前的隐藏状态。这个也很好解决，我们可以回头看下这张图，其中的 mem 就是分段递归机制中的 Memory，存放着先前片段的隐藏层状态。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-XLNet-20201214-201043-644007.png)
+![](./images/N09-XLNet/N09-XLNet-20201214-201043-644007.png)
 
 ## **Discussion**
 
@@ -142,11 +142,11 @@ $$
 
 与 BERT 的单挑：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-XLNet-20201214-201043-712979.png)
+![](./images/N09-XLNet/N09-XLNet-20201214-201043-712979.png)
 
 单挑其他模型：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-XLNet-20201214-201043-731453.png)
+![](./images/N09-XLNet/N09-XLNet-20201214-201043-731453.png)
 
 # Conclusion
 

@@ -18,12 +18,12 @@
 
 原图如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-248307.jpg)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-248307-1703350809967-2836.jpg)
 
 
 经过缩放之后，图片如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-606291.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-606291.png)
 
 
 # 裁剪
@@ -40,12 +40,12 @@ torchvision.transforms.CenterCrop(size)
 
 `transforms.CenterCrop(196)`的效果如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-734153.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-734153.png)
 
 
 如果裁剪的 size 比原图大，那么会填充值为 0 的像素。`transforms.CenterCrop(512)`的效果如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-716584.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-716584.png)
 
 
 ## transforms.RandomCrop
@@ -71,33 +71,33 @@ torchvision.transforms.RandomCrop(size, padding=None, pad_if_needed=False, fill=
 
 `transforms.RandomCrop(224, padding=16)`的效果如下，这里的 padding 为 16，所以会先在 4 边进行 16 的padding，默认填充 0，然后随机裁剪出 (224,224) 大小的图片，这里裁剪了左上角的区域。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-771915.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-771915.png)
 
 `transforms.RandomCrop(224, padding=(16, 64))`的效果如下，首先在左右进行 16 的 padding，上下进行 64 的 padding，然后随机裁剪出 (224,224) 大小的图片。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-784602.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-784602.png)
 
 
 `transforms.RandomCrop(224, padding=16, fill=(255, 0, 0))`的效果如下，首先在上下左右进行 16 的 padding，填充值为 (255, 0, 0)，然后随机裁剪出 (224,224) 大小的图片。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-900304.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-900304.png)
 
 `transforms.RandomCrop(512, pad_if_needed=True)`的效果如下，设置`pad_if_needed=True`，图片小于设置的 size，用 (0,0,0) 填充。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-938336.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-938336.png)
 
 
 `transforms.RandomCrop(224, padding=64, padding_mode='edge')`的效果如下，首先在上下左右进行 64 的 padding，使用边缘像素填充，然后随机裁剪出 (224,224) 大小的图片。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-952125.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-952125.png)
 
 `transforms.RandomCrop(224, padding=64, padding_mode='reflect')`的效果如下，首先在上下左右进行 64 的 padding，使用镜像填充，然后随机裁剪出 (224,224) 大小的图片。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-972199.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-972199.png)
 
 `transforms.RandomCrop(1024, padding=1024, padding_mode='symmetric')`的效果如下，首先在上下左右进行 1024 的 padding，使用镜像填充，然后随机裁剪出 (1024， 1024) 大小的图片。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-028285.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-028285.png)
 
 
 ## transforms.RandomResizedCrop
@@ -121,11 +121,11 @@ torchvision.transforms.RandomResizedCrop(size,
 
 `transforms.RandomResizedCrop(size=224, scale=(0.08, 1))`的效果如下，首先随机选择 (0.08, 1) 中 的一个比例缩放，然后随机裁剪出 (224， 224) 大小的图片。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-046269.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-046269.png)
 
 `transforms.RandomResizedCrop(size=224, scale=(0.5, 0.5))`的效果如下，首先缩放 0.5 倍，然后随机裁剪出 (224， 224) 大小的图片。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-377961.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-377961.png)
 
 
 ## transforms.FiveCrop(TenCrop)
@@ -174,7 +174,7 @@ plt.show()
 
 5 张图片分别是左上角，右上角，左下角，右下角，中心。图片如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-080748.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-080748.png)
 
 `transforms.TenCrop`的操作同理，只是返回的是 10 张图片，在`transforms.FiveCrop`的基础上多了镜像。
 
@@ -192,11 +192,11 @@ plt.show()
 
 `transforms.RandomHorizontalFlip(p=1)`，水平翻转的效果如下。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-098445.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-098445.png)
 
 `transforms.RandomVerticalFlip(p=1)`，垂直翻转的效果如下。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-112192.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-112192.png)
 
 ## transforms.RandomRotation
 
@@ -219,22 +219,22 @@ torchvision.transforms.RandomRotation(degrees,
 
 `transforms.RandomRotation(90)`的效果如下，shape 为 (224, 224)，原来图片的 4 个角有部分信息丢失。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-120276.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-120276.png)
 
 `transforms.RandomRotation((90), expand=True)`的效果如下，shape 大于 (224, 224)，具体的 shape 的大小会根据旋转角度和原图大小计算。原来图片的 4 个角都保留了下来。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-186003.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-186003.png)
 
 
 但是需要注意的是，如果设置 expand=True， batch size 大于 1，那么在一个 Batch 中，每张图片的 shape 都不一样了，会报错 `Sizes of tensors must match except in dimension 0`。所以如果 expand=True，那么还需要进行 resize 操作。
 
 `transforms.RandomRotation(30, center=(0, 0))`，设置旋转点为左上角，效果如下。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-394916.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-394916.png)
 
 `transforms.RandomRotation(30, center=(0, 0), expand=True)`的效果如下，如果旋转点不是中心，即使设置 expand = True，还是会有部分信息丢失。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-203454.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-203454.png)
 
 
 # 图像变换
@@ -256,20 +256,20 @@ torchvision.transforms.Pad(padding, fill=0, padding_mode='constant')
 
 `transforms.Pad(padding=32, fill=(255, 0, 0), padding_mode='constant')`的效果如下，上下左右的 padding 为 16，填充为 (255, 0, 0)。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-207459.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-207459.png)
 
 `transforms.Pad(padding=(8, 64), fill=(255, 0, 0), padding_mode='constant')`的效果如下，左右的 padding 为 8，上下的 padding 为 64，填充为 (255, 0, 0)。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-229500.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-229500.png)
 
 `transforms.Pad(padding=(8, 16, 32, 64), fill=(255, 0, 0), padding_mode='constant')`的效果如下，左、上、右、下的 padding 分别为 8、16、32、64，填充为 (255, 0, 0)。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-237496.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-237496.png)
 
 
 `transforms.Pad(padding=(8, 16, 32, 64), fill=(255, 0, 0), padding_mode='symmetric')`的效果如下，镜像填充。这时`padding_mode`属性不是`constant`， fill 属性不再生效。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-257500.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-257500.png)
 
 
 ## torchvision.transforms.ColorJitter
@@ -293,21 +293,21 @@ torchvision.transforms.ColorJitter(brightness=0,
 
 `transforms.ColorJitter(brightness=0.5)`的效果如下。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-627266.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-627266.png)
 
 
 `transforms.ColorJitter(contrast=0.5)`的效果如下。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-642258.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-642258.png)
 
 
 `transforms.ColorJitter(saturation=0.5)`的效果如下。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-653034.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-653034.png)
 
 `transforms.ColorJitter(hue=0.3)`的效果如下。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-665571.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-665571.png)
 
 
 ## transforms.Grayscale(RandomGrayscale)
@@ -331,7 +331,7 @@ torchvision.transforms.RandomGrayscale(p=0.1, num_output_channels=1)
 
 `transforms.Grayscale(num_output_channels=3)`的效果如下。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-677579.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-677579.png)
 
 
 ## transforms.RandomAffine
@@ -354,26 +354,26 @@ torchvision.transforms.RandomAffine(degrees, translate=None, scale=None, shear=N
 
 `transforms.RandomAffine(degrees=30)`的效果如下，中心旋转 30 度。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-685588.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-685588.png)
 
 
 `transforms.RandomAffine(degrees=0, translate=(0.2, 0.2)`的效果如下，设置水平和垂直的平移比例都为 0.2。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-689350.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-689350.png)
 
 
 `transforms.RandomAffine(degrees=0, scale=(0.7, 0.7))`的效果如下，设置宽和高的缩放比例都为 0.7。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-363998.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-363998.png)
 
 `transforms.RandomAffine(degrees=0, shear=(0, 0, 0, 45))`的效果如下，在 x 轴上不错切，在 y 轴上随机选择 (0, 45) 之间的角度进行错切。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-697785.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-697785.png)
 
 
 `transforms.RandomAffine(degrees=0, shear=90, fillcolor=(255, 0, 0))`的效果如下。在 x 轴上随机选择 (-90, 90) 之间的角度进行错切，在 y 轴上不错切。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-702616.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224439-702616.png)
 
 
 ## transforms.RandomErasing
@@ -395,12 +395,12 @@ torchvision.transforms.RandomErasing(p=0.5,
 
 `transforms.RandomErasing(p=1, scale=(0.02, 0.33), ratio=(0.3, 3.3), value=(254/255, 0, 0))`的效果如下，从`scale=(0.02, 0.33)`中随机选择遮挡面积的比例，从`ratio=(0.3, 3.3)`中随机选择一个遮挡区域的长宽比，value 设置的 RGB 值需要归一化到 0~1 之间。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-273788.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-273788.png)
 
 
 `transforms.RandomErasing(p=1, scale=(0.02, 0.33), ratio=(0.3, 3.3), value='fads43')`的效果如下，value 设置任意的字符串，就会使用随机的值填充遮挡区域。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-286765.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-286765.png)
 
 
 ## transforms.Lambda
@@ -500,7 +500,7 @@ class AddPepperNoise(object):
 
 `AddPepperNoise(0.9, p=0.5)`的效果如下。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-301207.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-301207.png)
 
 
 完整代码如下：
@@ -697,22 +697,22 @@ plt.close()
 
 比如下图中的数据集，训练集中的猫是居中，而测试集中的猫可能是偏左、偏上等位置的。这时可以使用平移来做训练集数据增强。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-314178.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-314178.png)
 
 
 在下图的数据集中，训练集中白猫比较多，测试集中黑猫比较多，这时可以对训练集的数做色彩方面的增强。而猫的姿态各异，所以可从仿射变换上做数据增强。还可以采用遮挡、填充等数据增强。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-328186.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-328186.png)
 
 
 我们在上个人民币二分类实验中，使用的是第四套人民币。但是在这个数据集上训练的模型不能够很准确地对第五套人民币进行分类。下图是 3 种图片的对比，第四套 1 元人民币和第五套 100 元人民币都比较偏红，因此容易把第五套 100 元人民币分类成 1 元人民币。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-345967.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-345967.png)
 
 
 而实际测试中，训练完的模型在第五套 100 元人民币上错误率高，第五套 100 元人民币分类成 1 元人民币。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-355146.png)
+![](./images/N0203-二十二种 transforms 图片数据预处理方法/深度之眼PyTorch框架班-20201215-224440-355146.png)
 
 
 

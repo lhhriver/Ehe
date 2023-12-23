@@ -4,7 +4,7 @@
 
 为了减少I/O次数，FP Tree算法引入了一些数据结构来临时存储数据。这个数据结构包括三部分，如下图所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223659-845557.png)
+![](./images/FP_Tree/FP_Tree-20201215-223659-845557-1703347018785-199.png)
 
 1. **项头表**，里面记录了所有的1项频繁集出现的次数，按照次数**降序**排列。比如上图中B在所有10组数据中出现了8次。
 2. **FP Tree**，它将我们的原始数据集映射到了内存中的一颗FP树，这个FP树比较难理解，它是怎么建立的呢？这个我们后面再讲。
@@ -26,7 +26,7 @@ FP树的建立需要首先依赖项头表的建立。首先我们看看怎么建
 
 **通过两次扫描，项头表已经建立，排序后的数据集也已经得到了**，下面我们再看看怎么建立FP树。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223659-859647.png)
+![](./images/FP_Tree/FP_Tree-20201215-223659-859647.png)
 
 # FP Tree的建立
 
@@ -38,29 +38,29 @@ FP树的建立需要首先依赖项头表的建立。首先我们看看怎么建
 
 首先，我们插入第一条数据ACEBF，如下图所示。此时FP树没有节点，因此ACEBF是一个独立的路径，所有节点计数为1, 项头表通过节点链表链接上对应的新增节点。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223659-875612.png)
+![](./images/FP_Tree/FP_Tree-20201215-223659-875612.png)
 
 接着我们插入数据ACG，如下图所示。由于ACG和现有的FP树可以有共有的祖先节点序列AC，因此只需要增加一个新节点G，将新节点G的计数记为1。同时A和C的计数加1成为2。当然，对应的G节点的节点链表要更新。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223659-888592.png)
+![](./images/FP_Tree/FP_Tree-20201215-223659-888592.png)
 
 同样的办法可以更新后面8条数据，如下8张图。由于原理类似，这里就不多文字讲解了，大家可以自己去尝试插入并进行理解对比。相信如果大家自己可以独立的插入这10条数据，那么FP树建立的过程就没有什么难度了。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223659-898570.png)
+![](./images/FP_Tree/FP_Tree-20201215-223659-898570.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223659-905550.png)
+![](./images/FP_Tree/FP_Tree-20201215-223659-905550.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223659-921526.png)
+![](./images/FP_Tree/FP_Tree-20201215-223659-921526.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223659-935492.png)
+![](./images/FP_Tree/FP_Tree-20201215-223659-935492.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223659-951460.png)
+![](./images/FP_Tree/FP_Tree-20201215-223659-951460.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223659-960530.png)
+![](./images/FP_Tree/FP_Tree-20201215-223659-960530.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223659-969512.png)
+![](./images/FP_Tree/FP_Tree-20201215-223659-969512.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223659-980490.png)
+![](./images/FP_Tree/FP_Tree-20201215-223659-980490.png)
 
 # FP Tree的挖掘
 
@@ -70,29 +70,29 @@ FP树的建立需要首先依赖项头表的建立。首先我们看看怎么建
 
 实在太抽象了，之前我看到这也是一团雾水。还是以上面的例子来讲解。我们看看先从最底下的F节点开始，我们先来寻找F节点的条件模式基，由于F在FP树中只有一个节点，因此候选就只有下图左所示的一条路径，对应{A:8,C:8,E:6,B:2, F:2}。我们接着将所有的祖先节点计数设置为叶子节点的计数，即FP子树变成{A:2,C:2,E:2,B:2, F:2}。一般我们的条件模式基可以不写叶子节点，因此最终的F的条件模式基如下图右所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223659-991469.png)
+![](./images/FP_Tree/FP_Tree-20201215-223659-991469.png)
 
 通过它，我们很容易得到F的频繁2项集为{A:2,F:2}, {C:2,F:2}, {E:2,F:2}, {B:2,F:2}。递归合并二项集，得到频繁三项集为{A:2,C:2,F:2}，{A:2,E:2,F:2},...还有一些频繁三项集，就不写了。当然一直递归下去，最大的频繁项集为**频繁5项集**，为{A:2,C:2,E:2,B:2,F:2}。
 
 F挖掘完了，我们开始挖掘D节点。D节点比F节点复杂一些，因为它有两个叶子节点，因此首先得到的FP子树如下图左。我们接着将所有的祖先节点计数设置为叶子节点的计数，即变成{A:2, C:2,E:1 G:1,D:1, D:1}此时E节点和G节点由于在条件模式基里面的支持度低于阈值，被我们删除，最终在去除低支持度节点并不包括叶子节点后D的条件模式基为{A:2, C:2}。通过它，我们很容易得到D的频繁2项集为{A:2,D:2}, {C:2,D:2}。递归合并二项集，得到频繁三项集为{A:2,C:2,D:2}。D对应的最大的频繁项集为**频繁3项集**。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223700-002444.png)
+![](./images/FP_Tree/FP_Tree-20201215-223700-002444.png)
 
 同样的方法可以得到B的条件模式基如下图右边，递归挖掘到B的最大频繁项集为**频繁4项集**{A:2, C:2, E:2,B:2}。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223700-008433.png)
+![](./images/FP_Tree/FP_Tree-20201215-223700-008433.png)
 
 继续挖掘G的频繁项集，挖掘到的G的条件模式基如下图右边，递归挖掘到G的最大频繁项集为**频繁4项集**{A:5, C:5, E:4,G:4}。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223700-013419.png)
+![](./images/FP_Tree/FP_Tree-20201215-223700-013419.png)
 
 　E的条件模式基如下图右边，递归挖掘到E的最大频繁项集为**频繁3项集**{A:6, C:6, E:6}。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223700-028390.png)
+![](./images/FP_Tree/FP_Tree-20201215-223700-028390.png)
 
 C的条件模式基如下图右边，递归挖掘到C的最大频繁项集为**频繁2项集**{A:8, C:8}
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FP_Tree-20201215-223700-046209.png)
+![](./images/FP_Tree/FP_Tree-20201215-223700-046209.png)
 
 至于A，由于它的条件模式基为空，因此可以不用去挖掘了。
 

@@ -11,7 +11,7 @@ $$
 
 以上计算公式可展开为如下**计算图**（无输出单元）：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-814056.png)
+![](./images/RNN/RNN-20201214-201033-814056.png)
 
 
 
@@ -31,7 +31,7 @@ $$
 
 即通常所说的RNN，这种结构会在每个时间步产生一个输出，所以通常用于“**Seq2Seq**”任务中，比如序列标注、机器翻译等。这些任务通常都比较复杂。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-787618.png)
+![](./images/RNN/RNN-20201214-201033-787618.png)
 $$
 h^{(t)}=\tanh(U_{h} x^{(t)}+W_{h}h^{(t-1)}+b_{h})
 $$
@@ -51,7 +51,7 @@ $$
 
 这种模型的表示能力弱于第一种，但是它**更容易训练**，因为每个时间步可以与其他时间步单独训练，从而实现**并行化**，具体来说，就是使用 $y(t)$代替$ o(t)$输入下一个时间步。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-798666.png)
+![](./images/RNN/RNN-20201214-201033-798666.png)
 
 $$
 h^{(t)}=\tanh(U_{h} x^{(t)}+W_{h}o^{(t-1)}+b_{h})
@@ -68,7 +68,7 @@ $$
 1. 第一种隐藏到隐藏的循环连接，我们在计算时刻 $t$ 的损失函数时，需要用到 $h(t-1)$, 即计算当前时刻t的损失必须先计算前一时刻的 $h$，这使得隐藏单元之间存在循环的网络不能并行化，只能一前一后的计算，虽然这种结构更强大，但它的计算代价很大。
 2. 第二种由输出到隐藏的循环连接的模型可以通过导师驱动过程进行训练。导师驱动过程适用于输出与下一时间步的隐藏之间存在循环连接的RNN，在训练的时候我们不再是将输出 $o$ 反馈到 $h$，而是将已知的正确值 $y$ (label)反馈给$h$，如图所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20210407-214609-360085.png)
+![](./images/RNN/RNN-20210407-214609-360085.png)
 
 左图是训练过程，在时刻 $t$ 接收时刻 $t-1$ 的真实值 $y(t)$ 作为输入。参考其他文章，解释的是我们的 $o$ 其实就是拟合真实值 $y$ 的，直接用 $y$ 代替 $o$ 作为输入，$y$ 是直接知道的，这样的话我们计算 $t$ 时刻就不再依赖于 $t-1$ 时刻的计算。
 
@@ -84,13 +84,13 @@ $$
 
 忽略模式1中的中间输出，即可得到这种网络，这种网络一般用于**概括序列**。具体来说，就是产生**固定大小的表示**，用于下一步处理，在一些“**Seq2One**”中简单任务中，这种网络用的比较多；因为这些任务只需要关注序列的全局特征。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-803774.png)
+![](./images/RNN/RNN-20201214-201033-803774.png)
 
 # RNN反向传播
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-776622.png)
+![](./images/RNN/RNN-20201214-201033-776622.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-752958.jpg)
+![](./images/RNN/RNN-20201214-201033-752958.jpg)
 $$
 \begin{align}
 \mathbf{s}_{t} &=f\left(U{*} x_{t}+W{*} s_{t-1}\right) \\
@@ -217,7 +217,7 @@ $$
 
 # RNN的梯度消失/梯度爆炸
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-819399.jpg)
+![](./images/RNN/RNN-20201214-201033-819399.jpg)
 
 假设时间序列只有三段，$S_0$是给定值，神经元没有激活函数，则RNN的前向传播过程如下：
 $$
@@ -273,7 +273,7 @@ $$
 \prod_{j=k+1}^{t} \frac{\partial S_{j}}{\partial S_{j-1}}=\prod_{j=k+1}^{t} \tanh ^{\prime} W_{s}
 $$
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-816413.png)
+![](./images/RNN/RNN-20201214-201033-816413.png)
 
 训练过程大部分情况下$tanh$的导数是小于1的，因为很少情况下会出现$W_xX_t + W_sS_{t-1}+b_1=0$
 

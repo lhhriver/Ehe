@@ -19,7 +19,7 @@ FreeSWITCH是一个开源的电话交换平台。官方给它的定义是——�
 - FreeSWITCH是免费的。它采用MPL 1.1 [3]协议授权，意味着任何人都可以免费使用并获取源代码，任何人都可以修改、发布甚至出售自己的应用。
 - FreeSWITCH支持SIP、H323、Skype、Google Talk等多种通信协议，并能很容易地与各种开源的PBX系统（如sipXecs、Call Weaver、Bayonne、YATE及Asterisk等）通信，它也可以与商用的交换系统（如华为、中兴的交换机或思科、Avaya的交换机等）互通，如图3-1所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-707879.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-707879-1703349115218-1221.png)
 
 <center>图3-1　FreeSWITCH支持多种协议</center>
 
@@ -28,7 +28,7 @@ FreeSWITCH是一个开源的电话交换平台。官方给它的定义是——�
 - FreeSWITCH支持宽带及窄带语音编码，电话会议桥可同时支持8、12、16、24、32及48kHz的语音。
 - 从技术上讲，FreeSWITCH是一个B2BUA[4]，它作为一个背靠背的用户代理用来帮助通信的双方进行实时的语音视频通信，如图3-2所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-721856.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-721856.png)
 
 
 
@@ -99,7 +99,7 @@ FreeSWITCH支持32位及64位的Linux、Mac OS X、BSD、Solaris、Windows等众
 
 Windows用户可以直接下载安装文件，下载地址为http://files.freeswitch.org/windows/installer/。然后根据自己的系统选择不同目录，32位系统的用户选择x86目录，64位系统的用户选择x64目录。freeswitch.msi是最新的安装程序，一般隔几天就会更新一次版本。笔者的测试环境是32位的Windows XP，下载界面如图3-3所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-737857.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-737857.png)
 
 <center>图3-3　下载FreeSWITCH Windows版</center>
 
@@ -107,7 +107,7 @@ Windows用户可以直接下载安装文件，下载地址为http://files.freesw
 
 如果安装过程中你没有修改默认安装路径的话，那么FreeSWITCH的实际安装路径是：c:\Program Files\FreeSWITCH，配置文件在该目录的conf目录下。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-751856.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-751856.png)
 
 <center>图3-4　Windows上的FreeSWITCH控制台界面</center>
 
@@ -124,13 +124,13 @@ Windows用户可以直接下载安装文件，下载地址为http://files.freesw
 - 将FreeSWITCH的源代码放到一个“干净”的目录下。为避免有时候遇到奇怪的问题，最好把代码放到一个比较不容易出问题的目录下，如可以放到C:\src\freeswitch或D:\src\freeswitch下，这两个都是比较好的目录。而像C:\My Documents（有空格）或C:\源代码中文目录\freeswitch（有中文）之类的则在编译或使用时可能会有问题。
 - Git相关的环境变量。Git是从UNIX系统上移植过来的一个命令行工具，因此需要一些相关的环境变量。在安装时有三个选项（见图3-5），笔者建议使用第三项，这样最省心。当然，第三项与Windows系统的命令会有少量冲突，如find等。但实际上，你可能永远不会用到Windows上的命令行工具，因此，在安装过程中果断选择第三项可以省去不少麻烦。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-766890.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-766890.png)
 
 <center>图3-5　安装Git时选择自动包含所有相关的环境变量</center>
 
 - 关闭Git的自动换行符转换。众所周知，Widows使用“回车+换行”（“\r\n”，又称作“CRLF”）做换行符，而UNIX仅使用“\n”。Git可以自动在不同的换行符间转换。但问题是，有时候自动转换不靠谱，尤其是对于FreeSWITCH这样大型的项目，所以笔者一般在安装Git时就关掉这一选项（否则在编译阶段可能会出奇怪的错误），如图3-6所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-782855.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-782855.png)
 
 <center>图3-6　不使用自动换行符转换功能</center>
 
@@ -172,13 +172,13 @@ Switched to a new branch 'v1.2.10'
 
 Tortoise Git也允许通过AutoCrlf复选框选择是否开启自动换行符转换，为避免它自动转换，我们应该保证该复选框是非选中状态的，如图3-7所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-796855.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-796855.png)
 
 <center>图3-7　Tortoise Git的CRLF设置</center>
 
 使用图形界面的方式对FreeSWITCH的源代码进行复制会比命令行方式直观一些，如图3-8所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-811856.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-811856.png)
 
 <center>图3-8　使用Tortoise Git复制FreeSWITCH代码库</center>
 
@@ -190,7 +190,7 @@ FreeSWITCH的源代码目录下有一个名为Freeswitch.express.2010.sln的Solu
 
 图3-9所示是使用VS2010正在编译FreeSWITCH源代码时的界面。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-826854.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-826854.png)
 
 <center>图3-9　在Windows上使用VS2010编译</center>
 
@@ -311,7 +311,7 @@ wget http://www.freeswitch.org.cn/Makefile && make install
 
 如果你想在Mac [4]系统上安装FreeSWITCH，则需要先下载安装Apple的Xcode工具（https://developer.apple.com/xcode/），并选择菜单Preferences->Downloads安装命令行工具（Command Line Tools） [5]，如图3-10所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-841854.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-841854.png)
 
 <center>图3-10　安装Apple Xcode及Command Line Tools</center>
 
@@ -512,11 +512,11 @@ Domain:
 
 值得一提的是，笔者使用的是一个旧版本的X-Lite，之所以这么做，是因为考虑到大家可能对这个版本的X-Lite更熟悉一些。新版本的X-Lite界面如图3-12所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-856886.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-856886.png)
 
 <center>图3-11　XLite软电话注册后</center>
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-871857.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-871857.png)
 
 <center>图3-12　XLite软电话（新版）</center>
 
@@ -524,7 +524,7 @@ Domain:
 
 <center>表3-1　默认号码及说明</center>
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-887854.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-887854.png)
 
 详情见http://wiki.freeswitch.org/wiki/Default_Dialplan_QRF。
 
@@ -534,7 +534,7 @@ Domain:
 
 亿联（Yealink [11]）话机是在国内能找到的质量比较好的话机，而且它有好多独有的特性。我们在后面的章节会讲到它的其他特性，这里我们先看看基本的配置。话机本身有一个液晶显示屏，并可以通过按键设置账号信息，但那样配置起来比较烦琐。在液晶屏上找到话机的IP地址以后 [12]，用浏览器打开，界面如图3-13所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-902856.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-902856.png)
 
 <center>图3-13　亿联话机的账号配置界面</center>
 
@@ -544,7 +544,7 @@ Domain:
 
 笔者使用这几款话机注册后相互拨打，彼此都能通，声音质量也很不错。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-917855.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-917855.png)
 
 <center>图3-14　潮流话机的账号配置界面</center>
 
@@ -580,9 +580,9 @@ FreeSWITCH配置文件默认放在conf/下，它由一系列XML配置文件组�
 
 <center>表3-2　配置文件的目录结构</center>
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-932854.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-932854.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-946871.png)
+![](./images/第03章 初识FreeSWITCH/FreeSwitch权威指南-20211225-182222-946871.png)
 
 下面我们先通过学习添加一个新的FreeSWITCH用户来简单熟悉一下FreeSWITCH的配置文件。
 

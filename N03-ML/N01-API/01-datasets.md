@@ -387,4 +387,4 @@ plt.scatter(data[:, 0], data[:, 1], c=label)
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-483906.png)
+![](./images/01-datasets/N01-API-20201215-223656-483906.png)

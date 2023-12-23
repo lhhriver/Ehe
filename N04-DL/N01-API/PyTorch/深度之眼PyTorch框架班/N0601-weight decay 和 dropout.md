@@ -18,7 +18,7 @@ Regularization 中文是正则化，可以理解为一种减少方差的策略�
 
 噪声则表达了在当前任务上学习任何算法所能达到的期望泛化误差的下界。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-002071.png)
+![](./images/N0601-weight decay 和 dropout/深度之眼PyTorch框架班-20201215-224441-002071-1703350761128-2741.png)
 
 
 
@@ -137,7 +137,7 @@ for epoch in range(max_iter):
 
 训练 2000 个 epoch 后，模型如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-021008.png)
+![](./images/N0601-weight decay 和 dropout/深度之眼PyTorch框架班-20201215-224441-021008.png)
 
 
 
@@ -145,7 +145,7 @@ for epoch in range(max_iter):
 
 下面是使用 Tensorboard 可视化的分析。首先查看不带 weight decay 的权值变化过程，第一层权值变化如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-032753.png)
+![](./images/N0601-weight decay 和 dropout/深度之眼PyTorch框架班-20201215-224441-032753.png)
 
 
 
@@ -153,7 +153,7 @@ for epoch in range(max_iter):
 
 然后查看带 weight decay 的权值变化过程，第一层权值变化如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-047767.png)
+![](./images/N0601-weight decay 和 dropout/深度之眼PyTorch框架班-20201215-224441-047767.png)
 
 
 
@@ -161,13 +161,13 @@ for epoch in range(max_iter):
 
 第二层不带 weight decay 的权值变化如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-057968.png)
+![](./images/N0601-weight decay 和 dropout/深度之眼PyTorch框架班-20201215-224441-057968.png)
 
 
 
 第二层带 weight decay 的权值变化如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-069970.png)
+![](./images/N0601-weight decay 和 dropout/深度之眼PyTorch框架班-20201215-224441-069970.png)
 
 
 
@@ -340,7 +340,7 @@ for epoch in range(max_iter):
 
 训练 2000 次后，模型的曲线如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-082749.png)
+![](./images/N0601-weight decay 和 dropout/深度之眼PyTorch框架班-20201215-224441-082749.png)
 
 
 
@@ -348,13 +348,13 @@ for epoch in range(max_iter):
 
 dropout =0 的权值变化如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-085732.png)
+![](./images/N0601-weight decay 和 dropout/深度之眼PyTorch框架班-20201215-224441-085732.png)
 
 
 
 dropout =0.5 的权值变化如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-088758.png)
+![](./images/N0601-weight decay 和 dropout/深度之眼PyTorch框架班-20201215-224441-088758.png)
 
 
 

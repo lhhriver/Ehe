@@ -113,7 +113,7 @@ hook(module, input, output)
 
 下面代码执行的功能是 3×3 的卷积和 2×2 的池化。我们使用`register_forward_hook()`记录中间卷积层输入和输出的 feature map。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-984268.png)
+![](./images/N0502-Hook 函数与 CAM 算法/深度之眼PyTorch框架班-20201215-224440-984268.png)
 
 
 
@@ -381,7 +381,7 @@ for layer_name, fmap_list in fmap_dict.items():
 
 使用 TensorBoard 进行可视化如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-987287.png)
+![](./images/N0502-Hook 函数与 CAM 算法/深度之眼PyTorch框架班-20201215-224440-987287.png)
 
 
 # CAM(class activation map, 类激活图)

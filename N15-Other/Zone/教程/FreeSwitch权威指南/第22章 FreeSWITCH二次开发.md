@@ -143,7 +143,7 @@ case SST_SHORT_DATE_TIME:
 
 具体的算法应该很直观。一个双声道混音的示意图如图22-1所示（其中“左”、“右”分代表左、右声道）。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-522858.png)
+![](./images/第22章 FreeSWITCH二次开发/FreeSwitch权威指南-20211225-182224-522858-1703349360564-1463.png)
 
 <center>图22-1　双声道混音</center>
 

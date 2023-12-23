@@ -24,7 +24,7 @@ DBSCAN是一种**基于密度的聚类算法**，这类密度聚类算法一般�
 
 从下图可以很容易看出理解上述定义，图中MinPts=5，红色的点都是核心对象，因为其ϵ-邻域至少有5个样本。黑色的样本是非核心对象。所有核心对象密度直达的样本在以红色核心对象为中心的超球体内，如果不在超球体内，则不能密度直达。图中用绿色箭头连起来的核心对象组成了密度可达的样本序列。在这些密度可达的样本序列的ϵ-邻域内所有的样本相互都是密度相连的。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/DBSCAN-20201215-223659-770256.png)
+![](./images/DBSCAN/DBSCAN-20201215-223659-770256-1703346998362-185.png)
 
 # DBSCAN密度聚类思想
 
@@ -142,7 +142,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/DBSCAN-20201215-223659-783229.png)
+![](./images/DBSCAN/DBSCAN-20201215-223659-783229.png)
 
 
 
@@ -156,7 +156,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/DBSCAN-20201215-223659-797228.png)
+![](./images/DBSCAN/DBSCAN-20201215-223659-797228.png)
 
 
 
@@ -170,7 +170,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/DBSCAN-20201215-223659-811176.png)
+![](./images/DBSCAN/DBSCAN-20201215-223659-811176.png)
 
 
 发现输出让我们很不满意，DBSCAN居然认为所有的数据都是一类！
@@ -186,7 +186,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/DBSCAN-20201215-223659-829595.png)
+![](./images/DBSCAN/DBSCAN-20201215-223659-829595.png)
 
 
 可以看到聚类效果有了改进，至少边上的那个簇已经被发现出来了。此时我们需要继续调参增加类别，有两个方向都是可以的，一个是继续减少eps，另一个是增加min_samples。我们现在将min_samples从默认的5增加到10，代码如下：
@@ -200,7 +200,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/DBSCAN-20201215-223659-841567.png)
+![](./images/DBSCAN/DBSCAN-20201215-223659-841567.png)
 
 
 可见现在聚类效果基本已经可以让我们满意了。

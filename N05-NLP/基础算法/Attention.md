@@ -2,7 +2,7 @@
 
 在深度学习领域，注意力机制模仿的是人类认知的过程。当人看到如下“美女伤心流泪”图时，细细想一下，人在做出图片中美女是在伤心流泪的过程，应该是先整体扫描该图片；然后将视觉注意力集中到美女的脸部；集中到脸部之后，再进一步将视觉注意力集中到眼睛部位。最后发现了眼泪，得出美女是在伤心流泪的结论。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-832160.png)
+![](./images/Attention/Attention-20201214-201032-832160-1703349841507-2215.png)
 
 人类在对信息进行处理的过程中，注意力不是平均分散的，而是有重点的分布。受此启发，做计算机视觉的朋友，开始在视觉处理过程中加入注意力机制(Attention)。随后，做自然语言处理的朋友们，也开始引入这个机制。在NLP的很多任务中，加入注意力机制后，都取得了非常好的效果。
 
@@ -10,7 +10,7 @@
 
 # seq2seq结构及其中的Attention
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-844386.png)
+![](./images/Attention/Attention-20201214-201032-844386.png)
 
 如上图所示，是标准的编解码(seq2seq)机制的结构图，在机器翻译、生成式聊天机器人、文本摘要等任务中均有应用。其处理流程是通过编码器对输入序列进行编码，生成一个**中间的语义编码向量C**，然后在解码器中，对语义编码向量C进行解码，得到想要的输出。例如，在中英文翻译的任务中，编码器的输入是中文序列，解码器的输出就是翻译出来的英文序列。
 
@@ -30,7 +30,7 @@ $$
 $$
 通常在解码时语义编码向量是固定的。**若要实现对齐机制，在解码时语义编码向量应该随着输入动态的变化**。鉴于此，《Neural Machine Translation By Jointly Learning To Align And Translate》提出来一种对齐机制，也就是**Attention机制**。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-853156.png)
+![](./images/Attention/Attention-20201214-201032-853156.png)
 
 如上图示，论文中采用双向RNN来进行语义的编码，这不是重点，我们先不关注。其对齐机制整体思想是：**编码时，记下来每一个时刻的RNN编码输出$(h_1,h_2,h_3,..h_n)$；解码时，根据前一时刻的解码状态，即$y_{i-1}$，计算出来一组权重$(a_1,a_2,..a_n)$，这组权重决定了在当前的解码时刻，$(h_1,h_2,h_3,..h_n)$分别对解码的贡献。这样就实现了，编解码的对齐。**
 
@@ -71,7 +71,7 @@ $$
 
 如下图所示:
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-857162.png)
+![](./images/Attention/Attention-20201214-201032-857162.png)
 
 
 
@@ -93,25 +93,25 @@ Attention 被广泛用于序列到序列（seq2seq）模型，这是一种深度
 
 一个典型的序列到序列（seq2seq）模型，接收的输入是一个（单词、字母、图像特征）序列，输出是另外一个序列。一个训练好的模型如下图所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-921248.gif)
+![](./images/Attention/Attention-20201214-201032-921248.gif)
 
 在神经机器翻译中，一个输入序列是指一连串的单词。类似地，输出也是一连串单词。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-939898.gif)
+![](./images/Attention/Attention-20201214-201032-939898.gif)
 
 ## 进一步理解细节
 
 模型是由编码器（Encoder）和解码器（Decoder）组成的。其中，编码器会处理输入序列中的每个元素，把这些信息转换为一个向量（称为上下文（context））。当我们处理完整个输入序列后，编码器把上下文（context）发送给解码器，解码器开始逐项生成输出序列中的元素。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-967962.gif)
+![](./images/Attention/Attention-20201214-201032-967962.gif)
 
 这种机制，同样适用于机器翻译。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-990948.gif)
+![](./images/Attention/Attention-20201214-201032-990948.gif)
 
 在机器翻译任务中，上下文（context）是一个向量（基本上是由数字组成的数组）。编码器和解码器一般都是循环神经网络（你可以看看 Luis Serrano写 的 [一篇关于循环神经网络](https://www.youtube.com/watch?v=UNmqTiOnRfg) 的精彩介绍）。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-789818.png)
+![](./images/Attention/Attention-20201214-201032-789818.png)
 
 上下文是一个浮点数向量。在下面，我们会可视化这些向量，使用更明亮的色彩来表示更大的值。
 
@@ -124,13 +124,13 @@ Attention 被广泛用于序列到序列（seq2seq）模型，这是一种深度
 
 这里提到的单词都需要表示为一个向量。为了把一个词转换为一个向量，我们使用一类称为**词嵌入**（Word Embedding） 的方法。这类方法把单词转换到一个向量空间，这种表示形式能够捕捉大量的单词的语义信息（例如，[king - man + woman = queen](http://p.migdal.pl/2017/01/06/king-man-woman-queen-why.html)）。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-808973.png)
+![](./images/Attention/Attention-20201214-201032-808973.png)
 
 我们在处理单词之前，需要把他们转换为向量。这个转换过程是使用 Word Embedding 算法来完成的。我们可以使用预训练好的词嵌入向量，或者在我们的数据集上训练自己的词嵌入向量。通常词嵌入向量长度是 200 或者 300，为了简单起见，我们这里的向量长度是 4。
 
 现在，我们已经介绍完了向量/张量的基础知识，让我们回顾一下 RNN 的运行机制，并可视化这些 RNN 模型：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-909003.gif)
+![](./images/Attention/Attention-20201214-201032-909003.gif)
 
 RNN 在每个时间步，采用上一个时间步的 hidden state（隐藏层状态） 和当前时间步的输入向量，来得到输出。在下文，我们会使用类似的动画，来说明这些向量在神经机器翻译模型里的运作机制。
 
@@ -138,13 +138,13 @@ RNN 在每个时间步，采用上一个时间步的 hidden state（隐藏层状
 
 让我们看下编码器的 hidden state（隐藏层状态）。注意，最后一个 hidden state（隐藏层状态）实际上是我们传给解码器的上下文（context）。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201033-012252.gif)
+![](./images/Attention/Attention-20201214-201033-012252.gif)
 
 同样地，解码器也持有 hidden state（隐藏层状态），而且也需要把 hidden state（隐藏层状态）从一个时间步传递到下一个时间步。我们现在关注的是 RNN 的主要处理过程，因此没有在上图中可视化解码器的 hidden state，因为这个过程和解码器是类似的。
 
 现在让我们用另一种方式来可视化序列到序列（seq2seq）模型。下面的动画会让我们更加容易理解模型。这种方法称为展开视图。其中，我们不只是显示一个解码器，而是在时间上展开，每个时间步都显示一个解码器。通过这种方式，我们可以看到每个时间步的输入和输出。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201033-053998.gif)
+![](./images/Attention/Attention-20201214-201033-053998.gif)
 
 
 
@@ -154,7 +154,7 @@ RNN 在每个时间步，采用上一个时间步的 hidden state（隐藏层状
 
 在 [Bahdanau et al., 2014](https://arxiv.org/abs/1409.0473) 和 [Luong et al., 2015](https://arxiv.org/abs/1508.04025) 两篇论文中，提出了一种解决方法。这 2 篇论文提出并改进了一种叫做注意力（Attention）的技术，它极大地提高了机器翻译的效果。注意力使得模型可以根据需要，关注到输入序列的相关部分。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-820334.png)
+![](./images/Attention/Attention-20201214-201032-820334.png)
 
 
 
@@ -164,7 +164,7 @@ RNN 在每个时间步，采用上一个时间步的 hidden state（隐藏层状
 
 **首先**，编码器会把更多的数据传递给解码器。编码器把所有时间步的 hidden state（隐藏层状态）传递给解码器，而不是只传递最后一个 hidden state（隐藏层状态）。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201033-076929.gif)
+![](./images/Attention/Attention-20201214-201033-076929.gif)
 
 
 
@@ -174,7 +174,7 @@ RNN 在每个时间步，采用上一个时间步的 hidden state（隐藏层状
 2. 给每个 hidden state（隐藏层状态）打一个分数（我们先不说明这个分数的计算过程）。
 3. 将每个 hidden state（隐藏层状态）乘以经过 softmax 归一化的对应分数，从而使得，得分高对应的 hidden state（隐藏层状态）会被放大，而得分低对应的 hidden state（隐藏层状态）会被缩小弱化。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-862126.gif)
+![](./images/Attention/Attention-20201214-201032-862126.gif)
 
 
 
@@ -190,17 +190,17 @@ RNN 在每个时间步，采用上一个时间步的 hidden state（隐藏层状
 6. 前馈神经网络的产生的输出表示这个时间步输出的单词。
 7. 在下一个时间步重复这个步骤。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-881731.gif)
+![](./images/Attention/Attention-20201214-201032-881731.gif)
 
 
 下图，我们使用另一种方式来可视化注意力，看看在每个解码的时间步中关注输入句子的哪些部分：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201033-104103.gif)
+![](./images/Attention/Attention-20201214-201033-104103.gif)
 
 
 请注意，注意力模型不是盲目地把输出的第一个单词对应到输入的第一个单词。实际上，它从训练阶段学习到了如何在两种语言中，找到对应单词的关系（在我们的例子中，是法语和英语）。下图展示了注意力机制的准确程度（图片来自于上面提到的论文）：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Attention-20201214-201032-830030.png)
+![](./images/Attention/Attention-20201214-201032-830030.png)
 
 
 

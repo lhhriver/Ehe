@@ -4,7 +4,7 @@
 
 在集成学习原理小结中，我们已经讲到了boosting算法系列的基本思想，如下图：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Adaboost-20201215-223657-912331.png)
+![](./images/Adaboost/Adaboost-20201215-223657-912331-1703346827337-53.png)
 
 
 
@@ -542,7 +542,7 @@ y = np.concatenate((y1, - y2 + 1))
 plt.scatter(X[:, 0], X[:, 1], marker='o', c=y)
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Adaboost-20201215-223657-929153.png)
+![](./images/Adaboost/Adaboost-20201215-223657-929153.png)
 
 
 可以看到数据有些混杂，我们现在用基于决策树的Adaboost来做分类拟合。
@@ -586,7 +586,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Adaboost-20201215-223657-946129.png)
+![](./images/Adaboost/Adaboost-20201215-223657-946129.png)
 
 
 

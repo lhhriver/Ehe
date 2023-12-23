@@ -330,7 +330,7 @@ str1.decode(encoding="utf-8")
 '我爱学习'
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/01-基础知识-20201215-230732-029239.jpg)
+![](./images/02-python内置类型/01-基础知识-20201215-230732-029239.jpg)
 
 
 

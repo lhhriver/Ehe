@@ -87,7 +87,7 @@ $$
 
 在深度学习中，我们可以使用神经网络图直观地表现模型结构。为了更清晰地展示线性回归作为神经网络的结构，图3.1使用神经网络图表示本节中介绍的线性回归模型。神经网络图隐去了模型参数权重和偏差。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-388025.svg)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-388025.svg+xml)
 
 <div align=center>图3.1 线性回归是一个单层神经网络</div>
 
@@ -288,7 +288,7 @@ def set_figsize(figsize=(3.5, 2.5)):
 set_figsize()
 plt.scatter(features[:, 1].numpy(), labels.numpy(), 1);
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-404224.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-404224.png)
 
 
 我们将上面的`plt`作图函数以及`use_svg_display`函数和`set_figsize`函数定义在`d2lzh_pytorch`包里。以后在作图时，我们将直接调用`d2lzh_pytorch.plt`。由于`plt`在`d2lzh_pytorch`包中是一个全局变量，我们在作图前只需要调用`d2lzh_pytorch.set_figsize()`即可打印矢量图并设置图的尺寸。
@@ -691,7 +691,7 @@ $$
 
 图3.2用神经网络图描绘了上面的计算。softmax回归同线性回归一样，也是一个单层神经网络。由于每个输出$o_1, o_2, o_3$的计算都要依赖于所有的输入$x_1, x_2, x_3, x_4$，softmax回归的输出层也是一个全连接层。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-419479.svg)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-419479.svg+xml)
 
 <div align=center> 图3.2 softmax回归是一个单层神经网络</div>
 
@@ -903,7 +903,7 @@ for i in range(10):
 show_fashion_mnist(X, get_fashion_mnist_labels(y))
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-435379.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-435379.png)
 
 ###  读取小批量
 
@@ -1167,7 +1167,7 @@ titles = [true + '\n' + pred for true, pred in zip(true_labels, pred_labels)]
 
 d2l.show_fashion_mnist(X[0:9], titles[0:9])
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-451504.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-451504.png)
 
 `小结`
 
@@ -1302,7 +1302,7 @@ epoch 5, loss 0.0019, train acc 0.838, test acc 0.823
 
 多层感知机在单层神经网络的基础上引入了一到多个隐藏层（hidden layer）。隐藏层位于输入层和输出层之间。图3.3展示了一个多层感知机的神经网络图，它含有一个隐藏层，该层中有5个隐藏单元。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-466854.svg)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-466854.svg+xml)
 
 <div align=center> 图3.3 带有隐藏层的多层感知机</div>
 
@@ -1365,7 +1365,7 @@ y = x.relu()
 xyplot(x, y, 'relu')
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-482880.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-482880.png)
 
 
 显然，当输入为负数时，ReLU函数的导数为0；当输入为正数时，ReLU函数的导数为1。尽管输入为0时ReLU函数不可导，但是我们可以取此处的导数为0。下面绘制ReLU函数的导数。
@@ -1374,7 +1374,7 @@ xyplot(x, y, 'relu')
 y.sum().backward()
 xyplot(x, x.grad, 'grad of relu')
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-498028.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-498028.png)
 
 ####  sigmoid函数
 
@@ -1388,7 +1388,7 @@ sigmoid函数在早期的神经网络中较为普遍，但它目前逐渐被更�
 y = x.sigmoid()
 xyplot(x, y, 'sigmoid')
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-513989.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-513989.png)
 
 
 依据链式法则，sigmoid函数的导数
@@ -1403,7 +1403,7 @@ x.grad.zero_()
 y.sum().backward()
 xyplot(x, x.grad, 'grad of sigmoid')
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-530742.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-530742.png)
 
 ####  tanh函数
 
@@ -1417,7 +1417,7 @@ $$\text{tanh}(x) = \frac{1 - \exp(-2x)}{1 + \exp(-2x)}.$$
 y = x.tanh()
 xyplot(x, y, 'tanh')
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-545942.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-545942.png)
 
 
 依据链式法则，tanh函数的导数
@@ -1431,7 +1431,7 @@ x.grad.zero_()
 y.sum().backward()
 xyplot(x, x.grad, 'grad of tanh')
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-561949.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-561949.png)
 
 ###  多层感知机
 
@@ -1668,7 +1668,7 @@ $$
 
 因为高阶多项式函数模型参数更多，模型函数的选择空间更大，所以高阶多项式函数比低阶多项式函数的复杂度更高。因此，高阶多项式函数比低阶多项式函数更容易在相同的训练数据集上得到更低的训练误差。给定训练数据集，模型复杂度和误差之间的关系通常如图3.4所示。给定训练数据集，如果模型的复杂度过低，很容易出现欠拟合；如果模型复杂度过高，很容易出现过拟合。应对欠拟合和过拟合的一个办法是针对数据集选择合适复杂度的模型。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-136105.svg)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-136105.svg+xml)
 
 <div align=center>图3.4 模型复杂度对欠拟合和过拟合的影响</div>
 
@@ -1781,7 +1781,7 @@ final epoch: train loss 0.00010175639908993617 test loss 9.790256444830447e-05
 weight: tensor([[ 1.1982, -3.3992,  5.6002]]) 
 bias: tensor([5.0014])
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-152062.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-152062.png)
 
 
 
@@ -1799,7 +1799,7 @@ final epoch: train loss 249.35157775878906 test loss 168.37705993652344
 weight: tensor([[19.4123]]) 
 bias: tensor([0.5805])
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-168020.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-168020.png)
 
 ####  训练样本不足（过拟合）
 
@@ -1815,7 +1815,7 @@ final epoch: train loss 1.198514699935913 test loss 166.037109375
 weight: tensor([[1.4741, 2.1198, 2.5674]]) 
 bias: tensor([3.1207])
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-183977.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-183977.png)
 
 
 我们将在接下来的两个小节继续讨论过拟合问题以及应对过拟合的方法。
@@ -1958,7 +1958,7 @@ fit_and_plot(lambd=0)
 ```
 L2 norm of w: 15.114808082580566
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-199935.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-199935.png)
 
 ####  使用权重衰减
 
@@ -1972,7 +1972,7 @@ fit_and_plot(lambd=3)
 ```
 L2 norm of w: 0.035220853984355927
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-215892.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-215892.png)
 
 ###  简洁实现
 
@@ -2016,7 +2016,7 @@ fit_and_plot_pytorch(0)
 ```
 L2 norm of w: 12.86785888671875
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-231755.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-231755.png)
 
 
 ``` python
@@ -2027,7 +2027,7 @@ fit_and_plot_pytorch(3)
 ```
 L2 norm of w: 0.09631537646055222
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-246713.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-246713.png)
 
 `小结`
 
@@ -2068,7 +2068,7 @@ $$
 
 即**丢弃法不改变其输入的期望值**。让我们对图3.3中的隐藏层使用丢弃法，一种可能的结果如图3.5所示，其中$h_2$和$h_5$被清零。这时输出值的计算不再依赖$h_2$和$h_5$，在反向传播时，与这两个隐藏单元相关的权重的梯度均为0。由于在训练中隐藏层神经元的丢弃是随机的，即$h_1, \ldots, h_5$都有可能被清零，输出层的计算无法过度依赖$h_1, \ldots, h_5$中的任一个，从而在训练模型时起到正则化的作用，并可以用来应对过拟合。在测试模型时，我们为了拿到更加确定性的结果，一般不使用丢弃法。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-262649.svg)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-262649.svg+xml)
 
 <div align=center> 图3.5 隐藏层使用了丢弃法的多层感知机</div>
 
@@ -2283,7 +2283,7 @@ $$J = L + s.$$
 
 我们通常绘制计算图来可视化运算符和变量在计算中的依赖关系。图3.6绘制了本节中样例模型正向传播的计算图，其中左下角是输入，右上角是输出。可以看到，图中箭头方向大多是向右和向上，其中方框代表变量，圆圈代表运算符，箭头表示从输入到输出之间的依赖关系。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-278082.svg)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-278082.svg+xml)
 
 <div align=center> 图3.6 正向传播的计算图</div>
 
@@ -2417,13 +2417,13 @@ $$U\left(-\sqrt{\frac{6}{a+b}}, \sqrt{\frac{6}{a+b}}\right).$$
 
 [Kaggle](https://www.kaggle.com)是一个著名的供机器学习爱好者交流的平台。图3.7展示了Kaggle网站的首页。为了便于提交结果，需要注册Kaggle账号。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-311098.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-311098.png)
 
 <div align=center> 图3.7 Kaggle网站首页</div>
 
 我们可以在房价预测比赛的网页上了解比赛信息和参赛者成绩，也可以下载数据集并提交自己的预测结果。该比赛的网页地址是 https://www.kaggle.com/c/house-prices-advanced-regression-techniques 。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-294149.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-294149.png)
 
 <div align=center> 图3.8 房价预测比赛的网页信息。比赛数据集可通过点击“Data”标签获取</div>
 
@@ -2476,7 +2476,7 @@ test_data.shape # 输出 (1459, 80)
 ``` python
 train_data.iloc[0:4, [0, 1, 2, 3, -3, -2, -1]]
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-341150.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-341150.png)
 
 可以看到第一个特征是Id，它能帮助模型记住每个训练样本，但难以推广到测试样本，所以我们不使用它来训练。我们将所有的训练数据和测试数据的79个特征按样本连结。
 
@@ -2619,7 +2619,7 @@ fold 3, train rmse 0.168698, valid rmse 0.154873
 fold 4, train rmse 0.163213, valid rmse 0.183080
 5-fold validation: avg train rmse 0.165849, avg valid rmse 0.170905
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-356917.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-356917.png)
 
 ###  模型选择
 
@@ -2660,11 +2660,11 @@ train_and_pred(train_features, test_features, train_labels, test_data, num_epoch
 ```
 train rmse 0.162085
 ```
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-372025.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-372025.png)
 
 上述代码执行完之后会生成一个submission.csv文件。这个文件是符合Kaggle比赛要求的提交格式的。这时，我们可以在Kaggle上提交我们预测得出的结果，并且查看与测试数据集上真实房价（标签）的误差。具体来说有以下几个步骤：登录Kaggle网站，访问房价预测比赛网页，并点击右侧“Submit Predictions”或“Late Submission”按钮；然后，点击页面下方“Upload Submission File”图标所在的虚线框选择需要提交的预测结果文件；最后，点击页面最下方的“Make Submission”按钮就可以查看结果了，如图3.9所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter03_DL-basics-20210112-190211-325963.png)
+![](./images/chapter03_深度学习基础/chapter03_DL-basics-20210112-190211-325963.png)
 
 <div align=center> 图3.9 Kaggle预测房价比赛的预测结果提交页面</div>
 

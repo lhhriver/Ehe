@@ -1,6 +1,6 @@
 **本文主要内容概览：**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/CatBoost-20201215-223658-022619.jpg)
+![](./images/CatBoost/CatBoost-20201215-223658-022619-1703346846547-61.jpg)
 
 # **CatBoost简介**
 
@@ -59,7 +59,7 @@ $$
 - 第三，考虑使用categorical features的不同组合。例如颜色和种类组合起来，可以构成类似于blue dog这样的特征。当需要组合的categorical features变多时，CatBoost只考虑一部分combinations。在选择第一个节点时，只考虑选择一个特征，例如A。在生成第二个节点时，考虑A和任意一个categorical feature的组合，选择其中最好的。就这样使用贪心算法生成combinations。
 - 第四，除非向gender这种维数很小的情况，不建议自己生成One-hot编码向量，最好交给算法来处理。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/CatBoost-20201215-223657-973444.jpg)
+![](./images/CatBoost/CatBoost-20201215-223657-973444.jpg)
 
 # **克服梯度偏差**
 
@@ -75,7 +75,7 @@ CatBoost和所有标准梯度提升算法一样，都是通过构建新树来拟
 
 设$F_i$为构建$i$棵树后的模型， $g^{i}\left(X_{k}, Y_{k}\right)$为构建$i$棵树后第$k$个训练样本上面的梯度值。为了使得$g^{i}\left(X_{k}, Y_{k}\right)$无偏于模型$F_i$，我们需要在没有$X_k$参与的情况下对模型$F_i$进行训练。由于我们需要对所有训练样本计算无偏的梯度估计，乍看起来对于$F_i$的训练不能使用任何样本，貌似无法实现的样子。我们运用下面这个技巧来处理这个问题：对于每一个样本$X_k$，我们训练一个单独的模型$M_k$ ，且该模型从不使用基于该样本的梯度估计进行更新。我们使用$M_k$来估计$X_k$上的梯度，并使用这个估计对结果树进行评分。用伪码描述如下，其中 $Loss(y_j,a)$是需要优化的损失函数，$y$是标签值， $a$是公式计算值。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/CatBoost-20201215-223657-953844.jpg)
+![](./images/CatBoost/CatBoost-20201215-223657-953844.jpg)
 
 #  预测偏移和排序提升
 
@@ -116,7 +116,7 @@ $$
 
 为了克服预测偏移问题，CatBoost提出了一种新的叫做Ordered boosting的算法。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/CatBoost-20201215-223658-008104.jpg)
+![](./images/CatBoost/CatBoost-20201215-223658-008104.jpg)
 
 由上图的Ordered boosting算法可知，为了得到无偏梯度估计, CatBoost对每一个样本$x_i$都会训练一个单独的模型$M_i$ ，模型$M_i$由使用不包含样本$x_i$的训练集训练得到。我们使用$M_I$来得到关于样本的梯度估计，并使用该梯度来训练基学习器并得到最终的模型。
 

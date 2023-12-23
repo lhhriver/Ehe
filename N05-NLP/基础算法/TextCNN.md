@@ -1,10 +1,10 @@
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/TextCNN-20201214-201034-110672.png)
+![](./images/TextCNN/TextCNN-20201214-201034-110672-1703350176966-2325.png)
 
 # TextCNN 是什么
 
  我们之前提前CNN时，通常会认为是属于CV领域，用于计算机视觉方向的工作，但是在2014年，Yoon Kim针对CNN的输入层做了一些变形，提出了文本分类模型TextCNN。与传统图像的CNN网络相比, TextCNN 在网络结构上没有任何变化(甚至更加简单了), 从图一可以看出TextCNN 其实只有一层卷积,一层max-pooling, 最后将输出外接softmax 来n分类。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/TextCNN-20201214-201034-166986.png)
+![](./images/TextCNN/TextCNN-20201214-201034-166986.png)
 
 <center>图一TextCNN 网络结构</center>
 
@@ -30,7 +30,7 @@ TextCNN的成功, 不是网络结构的成功, 而是通过引入已经训练好
 
 如图二所示, textCNN 首先将 "今天天气很好,出来玩" 分词成"今天/天气/很好/，/出来/玩, 通过word2vec或者GLOV 等embedding 方式将每个词成映射成一个5维(维数可以自己指定)词向量, 如 "今天" -> [0,0,0,0,1], "天气" ->[0,0,0,1,0], "很好" ->[0,0,1,0,0]等等。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/TextCNN-20201214-201034-158158.png)
+![](./images/TextCNN/TextCNN-20201214-201034-158158.png)
 
 <center>图二 Word Embedding</center>
 
@@ -40,7 +40,7 @@ TextCNN的成功, 不是网络结构的成功, 而是通过引入已经训练好
 
 ## Convolution 卷积
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/TextCNN-20201214-201034-184044.png)
+![](./images/TextCNN/TextCNN-20201214-201034-184044.png)
 
 <center>图三 卷积示意图</center>
 
@@ -98,7 +98,7 @@ feature_map 便是卷积之后的输出, 通过卷积操作 将输入的6\*5 矩
 
 ## 关于channel 的说明
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/TextCNN-20201214-201034-207170.png)
+![](./images/TextCNN/TextCNN-20201214-201034-207170.png)
 
 <center>图四 channel 说明</center>
 
@@ -110,7 +110,7 @@ CNN 中常常会提到一个词channel, 图三 中 深红矩阵与 浅红矩阵 
 
 对于channel在textCNN 是否有用, 从论文的实验结果来看多channels**并没有明显提升模型的分类能力**, 七个数据集上的五个数据集 单channel 的textCNN 表现都要优于 多channels的textCNN。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/TextCNN-20201214-201034-215103.png)
+![](./images/TextCNN/TextCNN-20201214-201034-215103.png)
 
 <center>图五 textCNN 实验</center>
 
@@ -125,7 +125,7 @@ CNN 中常常会提到一个词channel, 图三 中 深红矩阵与 浅红矩阵 
 
 ## max-pooling
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/TextCNN-20201214-201034-222340.png)
+![](./images/TextCNN/TextCNN-20201214-201034-222340.png)
 
 <center>图六: max-pooling 说明</center>
 
@@ -140,7 +140,7 @@ max-pooling的原理主要是从多个值中取一个最大值，做不到这一
 
 ## 使用softmax k分类
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/TextCNN-20201214-201034-248138.png)
+![](./images/TextCNN/TextCNN-20201214-201034-248138.png)
 
 <center>图六：softmax 示意图</center>
 

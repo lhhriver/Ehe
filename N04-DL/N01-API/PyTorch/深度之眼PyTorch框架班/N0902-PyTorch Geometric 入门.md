@@ -20,7 +20,7 @@ Graph Neural Networks 简称 GNN，称为图神经网络，是深度学习中近
 
 下面一个例子是未加权无向图 ( 未加权指边上没有权值 )，包括 3 个节点和 4 条边。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-373847.png)
+![](./images/N0902-PyTorch Geometric 入门/深度之眼PyTorch框架班-20201215-224440-373847.png)
 
 
 
@@ -72,7 +72,7 @@ data = dataset[0]
 
 在一个图中，由`edge_index`和`edge_attr`可以决定所有节点的邻接矩阵。PyG 通过创建稀疏的对角邻接矩阵，并在节点维度中连接特征矩阵和 label 矩阵，实现了在 mini-batch 的并行化。PyG 允许在一个 mini-batch 中的每个`Data` (图) 使用不同数量的节点和边。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224440-376841.png)
+![](./images/N0902-PyTorch Geometric 入门/深度之眼PyTorch框架班-20201215-224440-376841.png)
 
 
 

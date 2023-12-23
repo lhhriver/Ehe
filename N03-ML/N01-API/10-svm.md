@@ -74,7 +74,7 @@ C衡量了误分类点的重要性，C越大则误分类点越重要。
 
 为了便于观察将x轴以对数表示。可以看到当C较小时，误分类点重要性较低，此时误分类点较多，分类器性能较差。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-704269.png)
+![](./images/10-svm/N01-API-20201215-223656-704269.png)
 
 ```python
 from sklearn.svm import LinearSVC
@@ -571,11 +571,12 @@ class sklearn.svm.LinearSVR(epsilon=0.0,
 5.下面的示例给出了不同的$\epsilon$值对模型预测能力的影响。
 
 为了方便观看将x轴转换成对数坐标。可以看到预测准确率随着$\epsilon$下降。
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-731639.png)
+![](./images/10-svm/N01-API-20201215-223656-731639.png)
+
 6. 下面的示例给出了不同的 C 值对模型预测能力的影响。
 
 为了方便观看将x轴转换成对数坐标。可以看到预测准确率随着$C$增大而上升。说明越看重误分类点，则预测的越准确。
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-717299.png)
+![](./images/10-svm/N01-API-20201215-223656-717299.png)
 
 ## NuSVR
 

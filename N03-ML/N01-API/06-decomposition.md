@@ -78,7 +78,7 @@ sklearn.decomposition.PCA(n_components=None, copy=True, whiten=False)
 5.示例：鸢尾花数据集中，n_components_=4 ；explained_variance_ratio_=[ 0.92461621 0.05301557 0.01718514 0.00518309] 。
 
 降到2维的结果为：
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-809114.png)
+![](./images/06-decomposition/N01-API-20201215-223656-809114-1703350956777-3046.png)
 
 
 ```python
@@ -314,16 +314,16 @@ sklearn.decomposition.KernelPCA(
 4. 示例：
 
 不同的核函数降维后的数据分布：
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-648381.png)
+![](./images/06-decomposition/N01-API-20201215-223656-648381.png)
 
 不同参数的多项式核函数降维后的数据分布：
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-662352.png)
+![](./images/06-decomposition/N01-API-20201215-223656-662352.png)
 
 不同参数的高斯核函数降维后的数据分布：
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-676322.png)
+![](./images/06-decomposition/N01-API-20201215-223656-676322.png)
 
 不同参数的sigmoid核函数降维后的数据分布：
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-683314.png)
+![](./images/06-decomposition/N01-API-20201215-223656-683314.png)
 
 ## DictionaryLearning
 
@@ -525,4 +525,3 @@ sklearn.decomposition.FastICA(
 - transform(X)：执行独立成分分离，返回独立因子数据集。
 - fit_transform(X[, y])：训练模型并执行独立成分分离，返回独立因子数据集。
 - inverse_transform(X)：执行独立成分分离的逆运算，返回混合之后的观测数据集。
-  

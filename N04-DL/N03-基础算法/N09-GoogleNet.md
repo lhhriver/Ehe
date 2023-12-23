@@ -8,7 +8,7 @@
 
 GoogLeNet中的基础卷积块叫作Inception块，得名于同名电影《盗梦空间》（Inception）。与上一节介绍的NiN块相比，这个基础块在结构上更加复杂，如图5.8所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-GoogleNet-20201215-224442-967190.svg)
+![](./images/N09-GoogleNet/N09-GoogleNet-20201215-224442-967190.svg)
 
 <div align=center>图5.8 Inception块的结构</div>
 
@@ -168,7 +168,7 @@ Googe Inception Net首次出现在ILSVRC2014的比赛中(和VGGNet同年)，以�
 
 稀疏网络虽然减少了参数但没有减少计算量
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-GoogleNet-20201215-224443-012913.png)
+![](./images/N09-GoogleNet/N09-GoogleNet-20201215-224443-012913.png)
 
 # V1结构
 
@@ -176,13 +176,13 @@ Inception V1中精心设计的Inception Module提高了参数的利用率；在�
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-GoogleNet-20201215-224443-038238.png)
+![](./images/N09-GoogleNet/N09-GoogleNet-20201215-224443-038238.png)
 
 
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-GoogleNet-20201215-224443-068055.png)
+![](./images/N09-GoogleNet/N09-GoogleNet-20201215-224443-068055.png)
 
 ![](https://ws4.sinaimg.cn/large/006tNc79gy1fmprivb2hxj30dn09dwef.jpg)
 
@@ -208,15 +208,15 @@ Inception优势
 
 ## V1结构的卷积计算量
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-GoogleNet-20201215-224443-255311.png)
+![](./images/N09-GoogleNet/N09-GoogleNet-20201215-224443-255311.png)
 
 参数个数
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-GoogleNet-20201215-224443-267593.png)
+![](./images/N09-GoogleNet/N09-GoogleNet-20201215-224443-267593.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-GoogleNet-20201215-224443-281658.png)
+![](./images/N09-GoogleNet/N09-GoogleNet-20201215-224443-281658.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-GoogleNet-20201215-224442-970785.png)
+![](./images/N09-GoogleNet/N09-GoogleNet-20201215-224442-970785.png)
 
 # V2结构
 
@@ -233,7 +233,7 @@ BN在用于神经网络某层时，会对每一个mini-batch数据的内部进�
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-GoogleNet-20201215-224443-107396.png)
+![](./images/N09-GoogleNet/N09-GoogleNet-20201215-224443-107396.png)
 
 用两个3×3替换5×5
 
@@ -242,17 +242,17 @@ BN在用于神经网络某层时，会对每一个mini-batch数据的内部进�
 引入了Factorization into small convolutions的思想，将一个较大的二维卷积拆成两个较小的一位卷积，比如将7*7卷积拆成1*7卷积和7*1卷积（下图是3*3拆分为1*3和3*1的示意图）。 一方面节约了大量参数，加速运算并减去过拟合，同时增加了一层非线性扩展模型表达能力。论文中指出，这样非对称的卷积结构拆分，结果比对称地拆分为几个相同的小卷积核效果更明显，可以处理更多、更丰富的空间特征、增加特征多样性。
 ​另一方面，Inception V3优化了Inception Module的结构，现在Inception Module有35*35、17*17和8*8三种不同的结构，如下图。这些Inception Module只在网络的后部出现，前部还是普通的卷积层。并且还在Inception Module的分支中还使用了分支。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-GoogleNet-20201215-224443-137906.png)
+![](./images/N09-GoogleNet/N09-GoogleNet-20201215-224443-137906.png)
 
 用一个1×3和一个3×1替换3×3
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-GoogleNet-20201215-224443-171647.png)
+![](./images/N09-GoogleNet/N09-GoogleNet-20201215-224443-171647.png)
 
 # V4结构
 
 Inception V4相比V3主要是结合了微软的ResNet。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N09-GoogleNet-20201215-224443-239146.png)
+![](./images/N09-GoogleNet/N09-GoogleNet-20201215-224443-239146.png)
 
 # GoogLeNet思想
 

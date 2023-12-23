@@ -12,7 +12,7 @@
 
 如前所述，本文将创建 90 个不同的绘图示例。这些示例分布在 11 种不同的样式图中：散点图，折线图，一维直方图，二维直方图，边际图，条形图，箱形图，小提琴图，饼图，极坐标图，地理投影，3D图和轮廓图。可以通过 图1 大致了解本文的内容。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-437369)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-437369-1703351277772-3653.jpeg)
 
 图1. Matplotlib 中生成的各种图
 
@@ -44,7 +44,7 @@ pip show matplotlib
 
 如果要在 Jupyter Notebook（以下称为 Jupyter）中进行检查，则可以通过下面的代码来进行检查，如图2所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-691000)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-691000.jpeg)
 
 图2. 在 Jupyter 中检查 Matplotlib 的版本
 
@@ -106,7 +106,7 @@ plt.scatter(x, y)
 
 上面的内容很简单，结果如图3所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-318208)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-318208.jpeg)
 
 图3. Matplotlib中的默认散点图
 
@@ -165,7 +165,7 @@ plt.savefig('scatter2.png', dpi = 300, bbox_inches = 'tight', facecolor='w')
 
 创建的散点图如 图4 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-640408)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-640408.jpeg)
 
 图4. 修改后的散点图
 
@@ -185,7 +185,7 @@ marker = 'x'
 
 图5 是更改为十字后的结果：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-461331)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-461331.jpeg)
 
 图5. 修改样式后的散点图
 
@@ -195,7 +195,7 @@ https://matplotlib.org/api/markers_api.html
 
 如果你已阅读以上文档，则可以意识到可以将字母用作标记样式。下面将展示将字母用作标记的示例，如 图6 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-294908)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-294908.jpeg)
 
 图6. Matplotlib 中使用字母为标记样式
 
@@ -226,7 +226,7 @@ plt.tight_layout()
 
 这里将展示如何为每个数据创建大小不同的散点图，如 图7 所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-707642)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-707642.jpeg)
 
 图7. 自定义散点图中数据点的大小
 
@@ -301,7 +301,7 @@ plt.colorbar()
 
 得到的结果如 图8 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-819482)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-819482.jpeg)
 
 图8. 不同颜色标注的散点图
 
@@ -344,7 +344,7 @@ https://matplotlib.org/3.3.2/tutorials/colors/colormaps.html
 
 在本文中，通过组合蓝色和橙色的颜色图创建了自己的颜色图，如 图9 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-791522)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-791522.jpeg)
 
 图9. 自定义颜色图
 
@@ -369,7 +369,7 @@ https://towardsdatascience.com/creating-colormaps-in-matplotlib-4d4de78a04b8
 
 要应用它，只需更改颜色参数 `c = orange_blue` ，可以在 图11 中检查结果：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-402085)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-402085.jpeg)
 
 图11. 自定义颜色
 
@@ -426,7 +426,7 @@ plt.plot(x, y)
 
 上面的代码将生成一个图形，如 图12 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-388771)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-388771.jpeg)
 
 图12. Matplotlib 中默认的线形图
 
@@ -480,7 +480,7 @@ https://towardsdatascience.com/customizing-multiple-subplots-in-matplotlib-a3e1c
 
 上面代码运行后的结果如 图13 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-677686)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-677686.jpeg)
 
 图13. 自定义线条样式
 
@@ -498,7 +498,7 @@ lw = 2.0
 
 四种不同宽度的线条图，如 图14 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-449351)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-449351.jpeg)
 
 图14. 自定义线条宽度
 
@@ -533,7 +533,7 @@ plt.savefig('line3.png', dpi = 300, bbox_inches = 'tight', facecolor='w')
 
 这里将创建间隔标记（mark every）。为了理解它，将首先显示结果，如 图15 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-575835)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-575835.jpeg)
 
 图15. Matplotlib 中创建间隔标记
 
@@ -575,7 +575,7 @@ color = 'royalblue'
 
 下面将展示如何使用循环生成 4 种不同的颜色和 4 种不同的标记，如 图16 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-652389)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-652389.jpeg)
 
 图16. 自定义线条颜色
 
@@ -625,7 +625,7 @@ plt.errorbar(x, y, yerr = noise_y)
 
 包含误差的线条图，如 图17 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-377456)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-377456.jpeg)
 
 图17. 创建添加误差的线形图
 
@@ -656,7 +656,7 @@ xerr = noise_x
 
 可以看到在 图18 的 x 和 y 轴上插入误差线的示例：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-472652)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-472652.jpeg)
 
 图18. 创建添加误差线的线形图
 
@@ -712,7 +712,7 @@ plt.savefig('line8.png', dpi = 300, bbox_inches = 'tight', facecolor='w')
 
 效果如 图19 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-804834)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-804834.jpeg)
 
 图19. 自定义创建误差线
 
@@ -746,7 +746,7 @@ plt.savefig('line9.png', dpi = 300, bbox_inches = 'tight', facecolor='w')
 
 上述代码运行后，结果如 图20 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-736268)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-736268.jpeg)
 
 图20. 创建填充区域
 
@@ -763,7 +763,7 @@ plt.vlines(2, ymin = -3, ymax = 3)
 
 图21 是添加了水平线和垂直线的示例：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-587814)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-587814.jpeg)
 
 图21. 水平线和垂直线
 
@@ -793,7 +793,7 @@ plt.savefig('line10.png', dpi = 300, bbox_inches = 'tight', facecolor='w')
 
 下面将在两条垂直线之间绘制一个填充区域，如 图22 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-425387)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-425387.jpeg)
 
 创建 图22 的完整代码如下：
 
@@ -836,7 +836,7 @@ plt.hist(x)
 
 结果如 图23 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-508600)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-508600.jpeg)
 
 图23. Matplotlib 中默认的一维直方图
 
@@ -848,7 +848,7 @@ bins = 40
 
 将 `bins` 设置为 40 后，结果如 图24 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-533895)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-533895.jpeg)
 
 图24. 修改后的一维直方图
 
@@ -873,7 +873,7 @@ range = (12, 18)
 
 该参数将使直方图仅显示 12 到 18 之间的数据，如 图25 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-563851)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-563851.jpeg)
 
 图25. 限制范围的一维直方图
 
@@ -899,7 +899,7 @@ plt.savefig('hist3.png', dpi = 300, bbox_inches = 'tight', facecolor='w')
 
 可以创建一个水平直方图，如 图26 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-413404)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-413404.jpeg)
 
 图25. 水平直方图
 
@@ -933,7 +933,7 @@ edgecolor = 'k'
 
 将直方图边框设为黑色，如 图26 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-549206)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-549206.jpeg)
 
 图26. 自定义直方图的边框
 
@@ -957,7 +957,7 @@ plt.savefig('hist5.png', dpi = 300, bbox_inches = 'tight', facecolor='w')
 
 可以在一个图中显示许多个直方图，如 图27 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-520583)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-520583.jpeg)
 
 图27. 创建重叠的直方图
 
@@ -992,7 +992,7 @@ plt.savefig('hist6.png', dpi = 300, bbox_inches = 'tight', facecolor='w')
 
 可以通过更改直方图的透明度使其更美观，如 图28 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-366804)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-366804.jpeg)
 
 图28. 更改直方图的透明度
 
@@ -1082,7 +1082,7 @@ plt.legend(bbox_to_anchor=(1.33, 1.03))
 
 运行代码后，结果如 图29 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-776876)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-776876.jpeg)
 
 图29. 创建多个直方图
 
@@ -1094,7 +1094,7 @@ plt.legend(bbox_to_anchor=(1.33, 1.03))
 
 可以使用 Matplotlib 生成 2D 直方图，如 图30 所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-599798)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-599798.jpeg)
 
 图30. 二维直方图
 
@@ -1122,7 +1122,7 @@ bins = (25, 25)
 
 可以在 图31 中看到二维直方图的修改效果：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-496614)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-496614.jpeg)
 
 图31. 修改二维直方图的bins值
 
@@ -1164,7 +1164,7 @@ plt.savefig('hist12.png', dpi = 300, bbox_inches = 'tight', facecolor='w')
 
 运行上述代码，结果如 图32 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-748918)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-748918.jpeg)
 
 图32. 修改二维直方图的颜色
 
@@ -1192,7 +1192,7 @@ cb.set_label('counts each bin', labelpad = 10)
 
 这里使用 “jet” 颜色图，颜色条的下限等于 5 ，上限为 25 。结果如 图33 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-664370)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-664370.jpeg)
 
 图33. 直方图中设置限制范围
 
@@ -1213,7 +1213,7 @@ cb.set_label('counts each bin', labelpad = 10)
 
 结果如 图34 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-330190)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-330190.jpeg)
 
 图34. 使用 Matplotlib 可视化二维直方图中的正态分布
 
@@ -1225,7 +1225,7 @@ cb.set_label('counts each bin', labelpad = 10)
 
 这里将介绍如何创建边际分布，如 图35 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-763561)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-763561.jpeg)
 
 图35. 散点图和直方图的边际图
 
@@ -1257,7 +1257,7 @@ for i in range(columns):
     plt.xlabel('column ' + str(i), labelpad = 15)
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-306227)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-306227.jpeg)
 
 图36. 多子图
 
@@ -1328,7 +1328,7 @@ plt.hist(y, bins = 30, orientation='horizontal', color = 'royalblue', alpha = .7
 
 接下来，将使用二维直方图更改第二个网格中的散点图，如 图37 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-625762)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-625762.jpeg)
 
 图37. 边际图
 
@@ -1384,7 +1384,7 @@ plt.bar(name, math, alpha = .7)
 
 添加一些信息之后，生成了一个条形图，如 图38 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-342839)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-342839.jpeg)
 
 图38. 创建条形图
 
@@ -1415,7 +1415,7 @@ chemistry = np.random.randint(60, 100, N)
 
 也可以使用 Pandas 创建一个表（在 Python 中，我们称为 DataFrame ）。从模拟数据创建的 DataFrame 如 图39 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-723620)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-723620.jpeg)
 
 图39. Pandas 中的 DataFrame 数据
 
@@ -1423,7 +1423,7 @@ chemistry = np.random.randint(60, 100, N)
 
 然后，将其可视化，如 图40 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-612447)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-612447.jpeg)
 
 图40. 创建多个条形图
 
@@ -1517,7 +1517,7 @@ for i in range(len(course_name)):
 
 运行上面的代码后，将获得结果，如 图41 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-484633)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-484633.jpeg)
 
 图41. 水平条形图
 
@@ -1531,7 +1531,7 @@ plt.barh(name, course, xerr = noise)
 
 这里使用 1 到 3 之间的整数随机数创建了误差，如变量 noise 中所述。在为水平条形图添加一些元素之后，将其显示出来，如 图42 所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Matplotlib 实操干货-20220302-135335-355487)
+![](./images/Matplotlib 实操干货/Matplotlib 实操干货-20220302-135335-355487.jpeg)
 
 图42. 添加了误差的水平条形图
 

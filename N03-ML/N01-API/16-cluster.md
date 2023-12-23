@@ -215,7 +215,7 @@ plt.show()
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-594487.png)
+![](./images/16-cluster/N01-API-20201215-223656-594487.png)
 
 
 
@@ -261,11 +261,11 @@ plt.title('Selecting k with the Elbow Method')
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-602475.png)
+![](./images/16-cluster/N01-API-20201215-223656-602475.png)
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-613454.png)
+![](./images/16-cluster/N01-API-20201215-223656-613454.png)
 
 
 
@@ -454,7 +454,7 @@ class sklearn.cluster.DBSCAN(
 - ARI指数随着$\epsilon$的增长，先上升后保持平稳最后断崖下降。断崖下降是因为产生的训练样本的间距比较小，最远的两个样本点之间的距离不超过 30。当$\epsilon$过大时，所有的点都在一个邻域中。
 
 - 核心样本数量随着$\epsilon$的增长而上升。这是因为随着$\epsilon$的增长，样本点的邻域在扩展，则样本点邻域内的样本会更多，这就产生了更多满足条件的核心样本点。但是样本集中的样本数量有限，因此核心样本点数量的增长到一定数目后稳定。
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-397253.png)
+![](./images/16-cluster/N01-API-20201215-223656-397253.png)
 
 5. 考察$MinPts$参数的影响：
 

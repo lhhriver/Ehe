@@ -241,13 +241,13 @@ sns.kdeplot(data, shade=True,color="#FF0000")
 
 **直方图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-347677.jpg)
+![](./images/random/02-常用模块-20201215-230732-347677-1703351646483-3902.jpg)
 
 
 
 **密度图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-257135.jpg)
+![](./images/random/02-常用模块-20201215-230732-257135.jpg)
 
 
 
@@ -270,13 +270,13 @@ sns.kdeplot(data, shade=True,color="#FF0000")
 
 **直方图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-317471.jpg)
+![](./images/random/02-常用模块-20201215-230732-317471.jpg)
 
 
 
 **密度图**无法显示
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-302164.jpg)
+![](./images/random/02-常用模块-20201215-230732-302164.jpg)
 
 
 
@@ -296,13 +296,13 @@ sns.kdeplot(data, shade=True,color="#FF0000")
 
 **直方图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-286485.jpg)
+![](./images/random/02-常用模块-20201215-230732-286485.jpg)
 
 
 
 **密度图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-253145.jpg)
+![](./images/random/02-常用模块-20201215-230732-253145.jpg)
 
 
 
@@ -322,13 +322,13 @@ sns.kdeplot(data, shade=True,color="#FF0000")
 
 **直方图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-391147.jpg)
+![](./images/random/02-常用模块-20201215-230732-391147.jpg)
 
 
 
 **密度图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-244169.jpg)
+![](./images/random/02-常用模块-20201215-230732-244169.jpg)
 
 
 
@@ -348,13 +348,13 @@ sns.kdeplot(data, shade=True,color="#FF0000")
 
 **直方图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-332429.jpg)
+![](./images/random/02-常用模块-20201215-230732-332429.jpg)
 
 
 
 **密度图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-343214.jpg)
+![](./images/random/02-常用模块-20201215-230732-343214.jpg)
 
 
 
@@ -374,13 +374,13 @@ sns.kdeplot(data, shade=True,color="#FF0000")
 
 **直方图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-294186.jpg)
+![](./images/random/02-常用模块-20201215-230732-294186.jpg)
 
 
 
 **密度图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-270838.jpg)
+![](./images/random/02-常用模块-20201215-230732-270838.jpg)
 
 
 
@@ -400,13 +400,13 @@ sns.kdeplot(data, shade=True,color="#FF0000")
 
 **直方图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-290197.jpg)
+![](./images/random/02-常用模块-20201215-230732-290197.jpg)
 
 
 
 **密度图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-371207.jpg)
+![](./images/random/02-常用模块-20201215-230732-371207.jpg)
 
 
 
@@ -430,13 +430,13 @@ sns.kdeplot(data, shade=True,color="#FF0000")
 
 **直方图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-339226.jpg)
+![](./images/random/02-常用模块-20201215-230732-339226.jpg)
 
 
 
 **密度图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-298177.jpg)
+![](./images/random/02-常用模块-20201215-230732-298177.jpg)
 
 
 
@@ -456,7 +456,7 @@ sns.kdeplot(data, shade=True,color="#FF0000")
 
 **直方图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-352417.jpg)
+![](./images/random/02-常用模块-20201215-230732-352417.jpg)
 
 
 
@@ -464,7 +464,7 @@ sns.kdeplot(data, shade=True,color="#FF0000")
 
 **密度图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-335450.jpg)
+![](./images/random/02-常用模块-20201215-230732-335450.jpg)
 
 
 
@@ -484,10 +484,10 @@ sns.kdeplot(data, shade=True,color="#FF0000")
 
 **直方图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-374192.jpg)
+![](./images/random/02-常用模块-20201215-230732-374192.jpg)
 
 
 
 **密度图**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-356402.jpg)
+![](./images/random/02-常用模块-20201215-230732-356402.jpg)

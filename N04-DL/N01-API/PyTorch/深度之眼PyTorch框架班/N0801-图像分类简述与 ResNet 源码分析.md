@@ -8,7 +8,7 @@
 
 在`torchvision.model`中，有很多封装好的模型。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-409344.png)
+![](./images/N0801-图像分类简述与 ResNet 源码分析/深度之眼PyTorch框架班-20201215-224439-409344-1703350742268-2719.png)
 
 
 可以分类 3 类：
@@ -245,7 +245,7 @@ if __name__ == "__main__":
 
 以 ResNet 为例：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-186368.png)
+![](./images/N0801-图像分类简述与 ResNet 源码分析/深度之眼PyTorch框架班-20201215-224441-186368.png)
 
 
 
@@ -258,7 +258,7 @@ if __name__ == "__main__":
 
 两种结构如下图所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-636312.png)
+![](./images/N0801-图像分类简述与 ResNet 源码分析/深度之眼PyTorch框架班-20201215-224441-636312.png)
 
 `ResNet` 中，使用了上面 2 种 `shortcut`。
 
@@ -268,7 +268,7 @@ if __name__ == "__main__":
 
 ResNet 有很多变种，包括 `ResNet 18`、`ResNet 34`、`ResNet 50`、`ResNet 101`、`ResNet 152`，网络结构对比如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-620362.png)
+![](./images/N0801-图像分类简述与 ResNet 源码分析/深度之眼PyTorch框架班-20201215-224441-620362.png)
 
 
 `ResNet` 的各个变种，数据处理大致流程如下：
@@ -803,7 +803,7 @@ def forward(self, x):
 
 下面是 `ResNet 18` ，使用的是 `BasicBlock` 的 `layer1`，特点是没有进行降采样，卷积层的 `stride = 1`，不会降采样。在进行 `shortcut` 连接时，也没有经过 `downsample` 层。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-465325.png)
+![](./images/N0801-图像分类简述与 ResNet 源码分析/深度之眼PyTorch框架班-20201215-224441-465325.png)
 
 
 
@@ -811,7 +811,7 @@ def forward(self, x):
 
 而 `layer2`，`layer3`，`layer4` 的结构图如下，每个 `layer` 包含 2 个 `BasicBlock`，但是第 1 个 `BasicBlock` 的第 1 个卷积层的 `stride = 2`，会进行降采样。**在进行 `shortcut` 连接时，会经过 `downsample` 层，进行降采样和降维**。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-477288.png)
+![](./images/N0801-图像分类简述与 ResNet 源码分析/深度之眼PyTorch框架班-20201215-224441-477288.png)
 
 
 
@@ -821,7 +821,7 @@ def forward(self, x):
 
 在 `layer1` 中，首先第一个 `Bottleneck` 只会进行升维，不会降采样。`shortcut` 连接前，会经过 `downsample` 层升维处理。第二个 `Bottleneck` 的 `shortcut` 连接不会经过 `downsample` 层。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-495341.png)
+![](./images/N0801-图像分类简述与 ResNet 源码分析/深度之眼PyTorch框架班-20201215-224441-495341.png)
 
 
 
@@ -829,7 +829,7 @@ def forward(self, x):
 
 而 `layer2`，`layer3`，`layer4` 的结构图如下，每个 `layer` 包含多个 `Bottleneck`，但是第 1 个 `Bottleneck` 的 3333 卷积层的 `stride = 2`，会进行降采样。**在进行 `shortcut` 连接时，会经过 `downsample` 层，进行降采样和降维**。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-513299.png)
+![](./images/N0801-图像分类简述与 ResNet 源码分析/深度之眼PyTorch框架班-20201215-224441-513299.png)
 
 
 

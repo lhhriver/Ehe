@@ -8,7 +8,7 @@ Tensor 中文为张量。张量的意思是一个多维数组，它是标量、�
 
 标量可以称为 0 维张量，向量可以称为 1 维张量，矩阵可以称为 2 维张量，RGB 图像可以表示 3 维张量。你可以把张量看作多维数组。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-515393.png)
+![](./images/N0102-Tensor(张量)介绍/深度之眼PyTorch框架班-20201215-224439-515393-1703350851096-2932.png)
 
 
 
@@ -22,7 +22,7 @@ Tensor 中文为张量。张量的意思是一个多维数组，它是标量、�
 4. **requires_grad**: 指示是否需要梯度，并不是所有的张量都需要计算梯度。
 5. **is_leaf**: 指示是否叶子节点(张量)，叶子节点的概念在计算图中会用到，后面详细介绍。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-522404.png)
+![](./images/N0102-Tensor(张量)介绍/深度之眼PyTorch框架班-20201215-224439-522404.png)
 
 在 PyTorch 0.4.0 之后，Variable 并入了 Tensor。在之后版本的 Tensor 中，除了具有上面 Variable 的 5 个属性，还有另外 3 个属性。
 
@@ -30,7 +30,7 @@ Tensor 中文为张量。张量的意思是一个多维数组，它是标量、�
 7. **shape**: 张量的形状。如 (64, 3, 224, 224)
 8. **device**: 张量所在设备 (CPU/GPU)，GPU 是加速计算的关键。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-525401.png)
+![](./images/N0102-Tensor(张量)介绍/深度之眼PyTorch框架班-20201215-224439-525401.png)
 
 关于 dtype，PyTorch 提供了 9 种数据类型，共分为 3 大类：
 
@@ -40,7 +40,7 @@ Tensor 中文为张量。张量的意思是一个多维数组，它是标量、�
 
 模型参数和数据用的最多的类型是 **float-32-bit**。label 常用的类型是 **integer-64-bit**。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-537601.png)
+![](./images/N0102-Tensor(张量)介绍/深度之眼PyTorch框架班-20201215-224439-537601.png)
 
 
 
@@ -90,7 +90,7 @@ tensor([[1., 1., 1.],
 
 从 numpy 创建 tensor。利用这个方法创建的 tensor 和原来的 ndarray **共享内存**，当修改其中一个数据，另外一个也会被改动。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-540614.png)
+![](./images/N0102-Tensor(张量)介绍/深度之眼PyTorch框架班-20201215-224439-540614.png)
 
 
 代码示例：

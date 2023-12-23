@@ -6,11 +6,11 @@
 
 DenseNet 和 ResNet 不同在于 ResNet 是跨层求和，而 DenseNet 是跨层将特征在通道维度进行拼接，下面可以看看他们两者的图示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N12-DenseNet-20201215-224443-689921.jpg)
+![](./images/N12-DenseNet/N12-DenseNet-20201215-224443-689921-1703348470222-730.jpg)
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N12-DenseNet-20201215-224443-719869.jpg)
+![](./images/N12-DenseNet/N12-DenseNet-20201215-224443-719869.jpg)
 
 
 

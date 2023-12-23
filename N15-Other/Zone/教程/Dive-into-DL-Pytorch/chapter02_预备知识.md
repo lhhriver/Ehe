@@ -20,7 +20,7 @@ Anaconda是Python的一个开源发行版本，主要面向科学计算。我们
 
 在没有notebook之前，在IT领域是这样工作的：在普通的 Python shell 或者在IDE（集成开发环境）如Pycharm中写代码，然后在word中写文档来说明你的项目。这个过程很繁琐，通常是写完代码，再写文档的时候我还的重头回顾一遍代码。最蛋疼的地方在于，有些数据分析的中间结果，还得重新跑代码，然后把结果弄到文档里给客户看。有了notebook之后，世界突然美好了许多，因为notebook可以直接在代码旁写出叙述性文档，而不是另外编写单独的文档。也就是它可以能将代码、文档等这一切集中到一处，让用户一目了然。如下图所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter02_prerequisite-20210112-190211-120148.jpg)
+![](./images/chapter02_预备知识/chapter02_prerequisite-20210112-190211-120148-1703348790001-911.jpg)
 
 
 Jupyter Notebook 已迅速成为数据分析，机器学习的必备工具。因为它可以让数据分析师集中精力向用户解释整个分析过程。

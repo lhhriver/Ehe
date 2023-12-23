@@ -28,7 +28,7 @@ word2vec也使用了CBOW与Skip-Gram来训练模型与得到词向量，但是�
 
 ## one hot representation
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N02-Word2vec-20201214-201036-299732.png)
+![](./images/N03-Word2vec/N02-Word2vec-20201214-201036-299732-1703349418469-1471.png)
 
 最早的词向量是很冗长的，它使用是词向量维度大小为整个词汇表的大小，对于每个具体的词汇表中的词，将对应的位置置为1。
 
@@ -48,11 +48,11 @@ Distributed representation可以解决One hot representation的问题，它的�
 
 当然在实际情况中，我们并不能对词向量的每个维度做一个很好的解释。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N02-Word2vec-20201214-201036-317413.png)
+![](./images/N03-Word2vec/N02-Word2vec-20201214-201036-317413.png)
 
 有了用Distributed Representation表示的较短的词向量，我们就可以较容易的分析词之间的关系了，比如我们将词的维度降维到2维，有一个有趣的研究表明，用下图的词向量表示我们的词时，我们可以发现：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N02-Word2vec-20201214-201036-330303.png)
+![](./images/N03-Word2vec/N02-Word2vec-20201214-201036-330303.png)
 $$
 \begin{align}
 \vec {King} - \vec {Man} + \vec {Woman} = \vec {Queen}
@@ -76,7 +76,7 @@ CBOW模型的训练输入是某一个特征词的上下文相关的词对应的�
 
 比如下面这段话，我们的上下文大小取值为4，特定的这个词是"Learning"，也就是我们需要的输出词向量,上下文对应的词有8个，前后各4个，这8个词是我们模型的输入。由于CBOW使用的是**词袋模型**，因此这8个词都是平等的，也就是**不考虑他们和我们关注的词之间的距离大小，只要在我们上下文之内即可**。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N02-Word2vec-20201214-201036-346334.png)
+![](./images/N03-Word2vec/N02-Word2vec-20201214-201036-346334.png)
 
 这样我们这个CBOW的例子里，我们的输入是8个词向量，**输出是所有词的softmax概率**（训练的目标是期望训练样本特定词对应的softmax概率最大）
 
@@ -132,9 +132,9 @@ word2vec也使用了CBOW与Skip-Gram来训练模型与得到词向量，但是�
 
 下面我们用一个具体的例子来说明霍夫曼树建立的过程，我们有(a,b,c,d,e,f)共6个节点，节点的权值分布是(20, 4, 8, 6, 16, 3)。首先是最小的b和f合并，得到的新树根节点权重是7。此时森林里5棵树，根节点权重分别是20,8,6,16,7。此时根节点权重最小的6,7合并，得到新子树，依次类推，最终得到下面的霍夫曼树。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N02-Word2vec-20201214-201036-362110.png)
+![](./images/N03-Word2vec/N02-Word2vec-20201214-201036-362110.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N02-Word2vec-20201214-201036-368127.png)
+![](./images/N03-Word2vec/N02-Word2vec-20201214-201036-368127.png)
 
 ## 霍夫曼树有什么好处
 
@@ -160,7 +160,7 @@ word2vec也使用了CBOW与Skip-Gram来训练模型与得到词向量，但是�
 
 这个模型如下图所示,其中$V$是词汇表的大小。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N02-Word2vec-20201214-201036-386659.png)
+![](./images/N03-Word2vec/N02-Word2vec-20201214-201036-386659.png)
 
 
 
@@ -182,7 +182,7 @@ word2vec对这个模型做了改进，首先，对于从输入层到隐藏层的
 
 由于我们把之前所有都要计算的从输出softmax层的概率计算变成了一颗二叉霍夫曼树，那么我们的softmax概率计算只需要沿着树形结构进行就可以了。如下图所示，我们可以沿着霍夫曼树从根节点一直走到我们的叶子节点的词$w_2$。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N02-Word2vec-20201214-201036-389774.png)
+![](./images/N03-Word2vec/N02-Word2vec-20201214-201036-389774.png)
 
 和之前的神经网络语言模型相比，我们的霍夫曼树的所有**内部节点就类似之前神经网络隐藏层的神经元**。其中，**根节点的词向量对应我们的投影后的词向量**。而所有**叶子节点就类似于之前神经网络softmax输出层的神经元**，叶子节点的个数就是词汇表的大小。在霍夫曼树中，隐藏层到输出层的softmax映射不是一下子完成的，而是沿着霍夫曼树一步步完成的，因此这种softmax取名为`Hierarchical Softmax`。
 
@@ -425,7 +425,7 @@ $$
 
 在采样前，我们将这段长度为$1$的线段划分成$M$等份，这里$M>>V$，这样可以保证每个词对应的线段都会划分成对应的小块。而$M$份中的每一份都会落在某一个词对应的线段上。在采样的时候，我们只需要从$M$个位置中采样出$neg$个位置就行，此时采样到的每一个位置对应到的线段所属的词就是我们的负例词。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N02-Word2vec-20201214-201036-392683.png)
+![](./images/N03-Word2vec/N02-Word2vec-20201214-201036-392683.png)
 
 在word2vec中，M取值默认为$10^8$。
 

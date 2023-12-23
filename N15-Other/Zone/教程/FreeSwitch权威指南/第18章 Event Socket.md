@@ -35,7 +35,7 @@ Event Socket [1]有两种模式：内连（Inbound）模式和外连（Outbound�
 
 如图18-1所示，FreeSWITCH作为一个TCP客户端连接到一个TCP Server上。那么这个TCP Server是谁呢？它是需要用户自己去实现的，实际上这就是用户需要开发的部分。在这个服务器里，用户可以实现自己的业务逻辑，以及连接数据库获取数据帮助决策等。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-446853.png)
+![](./images/第18章 Event Socket/FreeSwitch权威指南-20211225-182224-446853-1703349308293-1449.png)
 
 <center>图18-1　Outbound ESL示意图</center>
 
@@ -59,7 +59,7 @@ Bob挂机后，与TCP Server的连接也会断开，并释放资源。读到这�
 
 内边模式如图18-2所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-551853.png)
+![](./images/第18章 Event Socket/FreeSwitch权威指南-20211225-182224-551853.png)
 
 <center>图18-2　Inbound ESL示意图</center>
 
@@ -614,7 +614,7 @@ Hello 1002
 
 笔者使用Bria注册的SIP客户端收到消息的界面如图18-3所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182224-477857.png)
+![](./images/第18章 Event Socket/FreeSwitch权威指南-20211225-182224-477857.png)
 
 <center>图18-3　Bria收到SIP MESSAGE后的显示</center>
 

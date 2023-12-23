@@ -789,7 +789,7 @@ True
 'nohtyp'
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/03-Python实例-20201215-230732-413116)
+![](./images/Python100题/03-Python实例-20201215-230732-413116.webp)
 
 ### 52 使用time模块打印当前时间
 

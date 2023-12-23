@@ -682,7 +682,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-537787.png)
+![](./images/07-metrics/N01-API-20201215-223656-537787.png)
 
 
 
@@ -854,7 +854,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-549578.png)
+![](./images/07-metrics/N01-API-20201215-223656-549578.png)
 
 
 ## classification_report
@@ -1084,11 +1084,11 @@ silhouette_score(x, cluster.labels_)  #与上面一样
 #silhouette_samples(x,y_pred)   # 返回每个样本自己的轮廓系数
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-564542.png)
+![](./images/07-metrics/N01-API-20201215-223656-564542.png)
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-577526.png)
+![](./images/07-metrics/N01-API-20201215-223656-577526.png)
 
 
 

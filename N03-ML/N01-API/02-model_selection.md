@@ -515,7 +515,7 @@ ax.legend(loc='best')
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-520305.png)
+![](./images/02-model_selection/N01-API-20201215-223656-520305.png)
 
 
 
@@ -674,7 +674,7 @@ plt.show()
      0.83539476 0.83236446]
     Optimal number of features 7
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-496391.png)
+![](./images/02-model_selection/N01-API-20201215-223656-496391.png)
 
 
 
@@ -841,7 +841,7 @@ sklearn.model_selection.GridSearchCV(
 2. 属性：
 
 - cv_results_：一个数组的字典。可以直接用于生成pandas DataFrame 。其中键为超参数名，值为超参数的数组。
-另外额外多了一些键：
+  另外额外多了一些键：
   - mean_fit_time、mean_score_time 、std_fit_time、std_score_time：给出了训练时间、评估时间的均值和方差，单位为秒。
   - xx_score：给出了各种评估得分。
 - best_estimator_：一个学习器对象，代表了根据候选参数组合筛选出来的最佳的学习器。
@@ -945,7 +945,7 @@ sklearn.model_selection.RandomizedSearchCV(
 - param_distributions：字典或者字典的列表。每个字典都给出了学习器的一个参数，其中：
   - 字典的键就是参数名。
   - 字典的值是一个分布类，分布类必须提供.rvs方法。
-通常你可以使用scipy.stats模块中提供的分布类，比如scipy.expon(指数分布)、scipy.gamma(gamma分布)、scipy.uniform(均匀分布)、randint等等。
+  通常你可以使用scipy.stats模块中提供的分布类，比如scipy.expon(指数分布)、scipy.gamma(gamma分布)、scipy.uniform(均匀分布)、randint等等。
   - 字典的值也可以是一个数值序列，此时就在该序列中均匀采样。
 - n_iter：一个整数，指定每个参数采样的数量。通常该值越大，参数优化的效果越好。但是参数越大，运行时间也更长。
 - 其它参数参考GridSearchCV 。

@@ -23,7 +23,7 @@
 早在17世纪，[雅各比·伯努利（1655--1705）](https://en.wikipedia.org/wiki/Jacob_Bernoulli)提出了描述只有两种结果的随机过程（如抛掷一枚硬币）的伯努利分布。大约一个世纪之后，[卡尔·弗里德里希·高斯（1777--1855）](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss)发明了今日仍广泛用在从保险计算到医学诊断等领域的最小二乘法。概率论、统计学和模式识别等工具帮助自然科学的实验学家们从数据回归到自然定律，从而发现了如欧姆定律（描述电阻两端电压和流经电阻电流关系的定律）这可以用线性模型完美表达的一系列自然法则。
 即使是在中世纪，数学家也热衷于利用统计学来做出估计。例如，在[雅各比·科贝尔（1460--1533）](https://www.maa.org/press/periodicals/convergence/mathematical-treasures-jacob-kobels-geometry)的几何书中记载了使用16名男子的平均脚长来估计男子的平均脚长。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter01_DL-intro-20210112-190211-106186.jpg)
+![](./images/chapter01_深度学习简介/chapter01_DL-intro-20210112-190211-106186-1703348777947-907.jpg)
 
 
 <center>图1.1 在中世纪，16名男子的平均脚长被用来估计男子的平均脚长</center>

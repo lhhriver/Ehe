@@ -26,7 +26,7 @@
 
 几年前笔者曾经使用FreeSWITCH通过VoIP做过在线一对一的网络英语口语教学，由于需要连接Skype及Google Talk。就曾经在同一台主机上做过这样的部署，如图13-1所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-861855.png)
+![](./images/第13章 FreeSWITCH与FreeSWITCH对接/FreeSwitch权威指南-20211225-182223-861855-1703349250819-1367.png)
 
 <center>图13-1　一个网络教学的FreeSWICH部署结构</center>
 
@@ -171,7 +171,7 @@ B在5080端口上收到INVITE请求后，由于5080端口默认走public Dialpla
 
 为了解决这一问题，A、B、C、D开会讨论。D主动说：“我精力比较旺盛，给你们3个提供转接服务吧，你们就不用费心了”。这时候，D就成了一个汇接局，为A、B、C之间的通话做转接服务。A、B、C就称为端局，因为他们只有终端用户（本地用户）。拓扑结构如图13-2所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-877855.png)
+![](./images/第13章 FreeSWITCH与FreeSWITCH对接/FreeSwitch权威指南-20211225-182223-877855.png)
 
 <center>图13-2　汇接局模式</center>
 
@@ -235,7 +235,7 @@ B在5080端口上收到INVITE请求后，由于5080端口默认走public Dialpla
 
 这样就可以把E上的路由规则配置得跟D上一模一样。但每个端局都同时连接到两个汇接局上。一旦其中一个出现故障，则另一个可以接替工作。这种拓扑方式就称为双归属（每个端局都归属于两个汇接局）。端局的配置如下（仍以A为例，注意，由于“192.168.1”太长了，为了排版方便，我们以“IP.”代替它，读者知道它是一个IP地址就行了）：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-891854.png)
+![](./images/第13章 FreeSWITCH与FreeSWITCH对接/FreeSwitch权威指南-20211225-182223-891854.png)
 
 <center>图13-3　双汇接局双归属网络拓扑</center>
 
@@ -273,7 +273,7 @@ B在5080端口上收到INVITE请求后，由于5080端口默认走public Dialpla
 
 一般来说，一个地级市的电话网络有两个汇接局就够用了。如果需要在不同的地级市间打长途电话，上面需再建设长途局，以便与其他地级市的长途局互通。有了长途局的网络拓扑结构如图13-4所示（我们将另外一个地级市的名称全部以小写字母表示）。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-907858.png)
+![](./images/第13章 FreeSWITCH与FreeSWITCH对接/FreeSwitch权威指南-20211225-182223-907858.png)
 
 <center>图13-4　有长途局的网络拓扑</center>
 
@@ -334,7 +334,7 @@ ACL是在conf/autoload_configs/acl.conf.xml中配置的，其中domains的默认
 
 FreeSWITCH的配置就是一个全功能的PBX。假设我们有了A上1000这个用户账号，我们以前是接了一个SIP软电话往外打电话的。现在，我们把它换成FreeSWITCH（我们称为F），并且在FreeSWITCH上创建600～619这20个用户 [1]，这时候的拓扑结构如图13-5所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-922857.png)
+![](./images/第13章 FreeSWITCH与FreeSWITCH对接/FreeSwitch权威指南-20211225-182223-922857.png)
 
 <center>图13-5　FreeSWITCH作为PBX</center>
 
@@ -571,7 +571,7 @@ data="${regex(${sofia_contact(internal/1005@$${domain})}|^(.*)sip:gw\+xyt@(.*)|%
 
 下面我们来看另外一种场景。如图13-6所示，假设A是运行在公网上的FreeSWITCH，而F是运行在私网上的PBX（也是FreeSWITCH），F仍然使用1000这个号码向A注册，并且F上自己带了600～619之间的分机用户。另外，F上还可以通过另外的一个网关G与外界沟通。在现实场景中，G就可能是一个连接模拟线的模拟网关，该网关一端跟FS通过SIP相连，另一端则通过模拟电话线连接PSTN交换机。由于我们运行在公网上的A可能没有对外的中继，因而它上面的用户1000～1019可能也希望通过F上的网关G对外呼出。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182223-936854.png)
+![](./images/第13章 FreeSWITCH与FreeSWITCH对接/FreeSwitch权威指南-20211225-182223-936854.png)
 
 <center>图13-6　PBX上带网关的结构图</center>
 

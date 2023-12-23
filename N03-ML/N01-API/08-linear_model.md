@@ -329,7 +329,7 @@ plt.show();
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-443306.png)
+![](./images/08-linear_model/N01-API-20201215-223656-443306.png)
 
 
 
@@ -415,7 +415,7 @@ model.get_params()
 
 >事实上，当 C 太大时，正则化项接近于0，此时容易发生过拟合，预测准确率会下降。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-466185.png)
+![](./images/08-linear_model/N01-API-20201215-223656-466185.png)
 
 
 ```python
@@ -977,7 +977,7 @@ class sklearn.linear_model.Ridge(
 
 但是预测预测性能非常差，因为对所有的未知样本，模型都预测为同一个常数$b$。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-821921.png)
+![](./images/08-linear_model/N01-API-20201215-223656-821921.png)
 
 ```python
 from sklearn.preprocessing import PolynomialFeatures

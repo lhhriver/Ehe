@@ -17,7 +17,7 @@ GloVe的全称叫Global Vectors for Word Representation，它是一个基于**�
 
 我们可以得到一个**共现矩阵**(对称矩阵)：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N03-Glove-20201214-201036-471817.png)
+![](./images/N04-Glove/N03-Glove-20201214-201036-471817-1703349436334-1491.png)
 
 中间的每个格子表示的是行和列组成的词组在词典中共同出现的次数，也就体现了**共现**的特性。
 
@@ -68,7 +68,7 @@ $$
 
 这个函数图像如下所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N03-Glove-20201214-201036-466831.jpg)
+![](./images/N04-Glove/N03-Glove-20201214-201036-466831.jpg)
 
 
 
@@ -80,7 +80,7 @@ $$
 
 最终学习得到的是两个vector是$v$和$\tilde{v}_j$，因为$X$是对称的（symmetric），所以从原理上讲$v$和$\tilde{v}_j$是也是对称的，他们唯一的区别是初始化的值不一样，而导致最终的值不一样。所以这两者其实是等价的，都可以当成最终的结果来使用。**但是为了提高鲁棒性，我们最终会选择两者之和$v + \tilde{v}_j$作为最终的vector（两者的初始化不同相当于加了不同的随机噪声，所以能提高鲁棒性）**。在训练了400亿个token组成的语料后，得到的实验结果如下图所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N03-Glove-20201214-201036-488961.jpg)
+![](./images/N04-Glove/N03-Glove-20201214-201036-488961.jpg)
 
 这个图一共采用了三个指标：语义准确度，语法准确度以及总体准确度。那么我们不难发现Vector Dimension在300时能达到最佳，而context Windows size大致在6到10之间。
 
@@ -105,7 +105,7 @@ $ratio_{i,j,k}$这个指标是有规律的，规律统计在下表：
 
 很简单的规律，但是有用。有了这些定义之后，我们来看一个表格：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N03-Glove-20201214-201036-486912.png)
+![](./images/N04-Glove/N03-Glove-20201214-201036-486912.png)
 
 理解这个表格的重点在最后一行，它表示的是两个概率的比值（ratio），**我们可以使用它观察出两个单词$i$和$j$相对于单词$k$哪个更相关（relevant）。**
 

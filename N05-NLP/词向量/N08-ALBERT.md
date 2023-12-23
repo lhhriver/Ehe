@@ -25,7 +25,7 @@ ALBERT 架构的主干和 BERT 类似，都使用了基于**GELU的非线性激�
 
 以下图为例可以看到模型的参数主要集中在两块，一块是 Token embedding projection block，另一块是 Attention feed-forward block，前者占有 20% 的参数量，后者占有 80% 的参数量。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N08-ALBERT-20201214-201043-587008.png)
+![](./images/N08-ALBERT/N08-ALBERT-20201214-201043-587008-1703349506590-1647.png)
 
 ## **Factorized embedding parameterization**
 
@@ -33,11 +33,11 @@ ALBERT 架构的主干和 BERT 类似，都使用了基于**GELU的非线性激�
 
 在 BERT 中，Token Embedding 的参数矩阵大小为 $V*H$，其中 V 表示**词汇表长度**，H 为隐藏层大小。即：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N08-ALBERT-20201214-201043-470822.png)
+![](./images/N08-ALBERT/N08-ALBERT-20201214-201043-470822.png)
 
 而 ALBERT 为了减少参数数量，**在映射中间加入一个大小为 E 的隐藏层**，这样矩阵的参数大小就从$O(V \times H)$ 降低为 $O(V \times E+E \times H)$，而 $E<<h$ 。即：<="" p="">
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N08-ALBERT-20201214-201043-482865.png)
+![](./images/N08-ALBERT/N08-ALBERT-20201214-201043-482865.png)
 
 之所以可以这样做是因为每次反向传播时都只会更新一个 Token 相关参数，其他参数都不会变。而且在第一次投影的过程中，词与词之间是不会进行交互的，只有在后面的 Attention 过程中才会做交互，我们称为 Sparsely updated。如果词不做交互的话，完全没有必要用一个很高维度的向量去表示，所以就引入一个小的隐藏层。
 
@@ -51,7 +51,7 @@ ALBERT 的**参数共享主要是针对所有子模块内部进行的**，这样
 
 ALBERT 之所以这样做是因为，考虑到**每次层其实学习到内容非常相似**，所以尝试了将其进行参数共享。下图为不同层 Attention 学到的东西：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N08-ALBERT-20201214-201043-498729.png)
+![](./images/N08-ALBERT/N08-ALBERT-20201214-201043-498729.png)
 
 这样变完成了参数降低的第二个模块。
 
@@ -71,31 +71,31 @@ BERT 设计了 NSP 来保证句子的连续性，即用两个连续的句子对�
 
 下图为 BERT 和 ALBERT 的参数对比：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N08-ALBERT-20201214-201043-413139.png)
+![](./images/N08-ALBERT/N08-ALBERT-20201214-201043-413139.png)
 
 下图为模型的参数、精度、速度的对比，可以看到模型的参数变小了，但是速度下降很多。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N08-ALBERT-20201214-201043-515206.png)
+![](./images/N08-ALBERT/N08-ALBERT-20201214-201043-515206.png)
 
 下图对比了模型共享参数下的精度和参数大小：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N08-ALBERT-20201214-201043-534234.png)
+![](./images/N08-ALBERT/N08-ALBERT-20201214-201043-534234.png)
 
 下图为 SOP 相对 NSP 的提升：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N08-ALBERT-20201214-201043-559112.png)
+![](./images/N08-ALBERT/N08-ALBERT-20201214-201043-559112.png)
 
 下图为 ALBERT 的刷榜结果：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N08-ALBERT-20201214-201043-546346.png)
+![](./images/N08-ALBERT/N08-ALBERT-20201214-201043-546346.png)
 
 下图为去掉 dropout 前后的精度。这里解释一下：dropout 对于防止过拟合来说具有非常好的效果，但是对于 Masked Language Model 来说，其学习本身就比较困难，所以不用担心过拟合）：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N08-ALBERT-20201214-201043-577974.png)
+![](./images/N08-ALBERT/N08-ALBERT-20201214-201043-577974.png)
 
 另外加入 dropout 后会增加很多临时变量，删掉 dropout 后可以提升内存的利用率。此外 ALBERT 还加了十倍的数据量= =：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N08-ALBERT-20201214-201043-562106.png)
+![](./images/N08-ALBERT/N08-ALBERT-20201214-201043-562106.png)
 
 # Conclusion
 

@@ -101,7 +101,7 @@ Valid:	 Epoch[024/025] Iteration[010/010] Loss: 0.5923 Acc:70.59%
 
 训练的 loss 曲线如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-146110.png)
+![](./images/N0702-模型 Finetune/深度之眼PyTorch框架班-20201215-224441-146110.png)
 
 
 
@@ -177,7 +177,7 @@ Valid:	 Epoch[024/025] Iteration[010/010] Loss: 0.1808 Acc:96.08%
 
 训练的 loss 曲线如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-183378.png)
+![](./images/N0702-模型 Finetune/深度之眼PyTorch框架班-20201215-224441-183378.png)
 
 
 

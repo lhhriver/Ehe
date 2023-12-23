@@ -65,9 +65,8 @@ d2l.train_ch7(adadelta, init_adadelta_states(), {'rho': 0.9}, features, labels)
 ```
 loss: 0.243728, 0.062991 sec per epoch
 ```
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/优化器-20201215-224442-482128.png)
-</div>
+![](./images/N07-AdaDelta算法/优化器-20201215-224442-482128.png)
+
 
 ## 7.7.3 简洁实现
 
@@ -81,9 +80,8 @@ d2l.train_pytorch_ch7(torch.optim.Adadelta, {'rho': 0.9}, features, labels)
 ```
 loss: 0.242104, 0.047702 sec per epoch
 ```
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/优化器-20201215-224442-501156.png)
-</div>
+![](./images/N07-AdaDelta算法/优化器-20201215-224442-501156.png)
+
 
 ## 小结
 

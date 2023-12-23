@@ -42,17 +42,17 @@ Sepp Hochreiter和Jürgen Schmidhuber指出可以选择恒等函数作为激活�
 
 传统的RNN的结构，内部有一个tanh层
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LSTM-20201214-201033-369454.png)
+![](./images/LSTM/LSTM-20201214-201033-369454.png)
 
 LSTM和传统RNN结构类似，然而内部结构却有所不同
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LSTM-20201214-201033-384758.png)
+![](./images/LSTM/LSTM-20201214-201033-384758.png)
 
 水平线就是LSTM中的**状态信息**，可以把这个理解为记忆(memory)。 
 
 细胞状态$C_t$横向穿过，看起来像一条传送带，只是经过了少量的线性变化，因此状态容易保持下来。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LSTM-20201214-201033-396557.png)
+![](./images/LSTM/LSTM-20201214-201033-396557.png)
 $$
 \begin{align}
 f_{t} &=\sigma\left(W_{f} \cdot\left[h_{t-1}, x_{t}\right]+b_{f}\right) \\
@@ -66,7 +66,7 @@ $$
 
 ## 遗忘门
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LSTM-20201214-201033-399699.png)
+![](./images/LSTM/LSTM-20201214-201033-399699.png)
 $$
 f_{t}=\sigma\left(W_{f} \cdot\left[h_{t-1}, x_{t}\right]+b_{f}\right)
 $$
@@ -79,7 +79,7 @@ $$
 
 1. 第一步，根据输入信息，用tanh产生该时刻需要更新到细胞状态中的**内容**，用sigmoid函数产生更新的**比例**。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LSTM-20201214-201033-401828.png)
+![](./images/LSTM/LSTM-20201214-201033-401828.png)
 
 $$
 \begin{aligned} i_{t} &=\sigma\left(W_{i} \cdot\left[h_{t-1}, x_{t}\right]+b_{i}\right) \\ \tilde{C} _{t} &=\tanh \left(W _{C} \cdot\left[h _{t-1}, x _{t}\right]+b _{C}\right) \end{aligned}
@@ -89,7 +89,7 @@ $$
 
 2. 第二步，将需要更新的内容更新到细胞状态中去，生成$C_t$。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LSTM-20201214-201033-403738.png)
+![](./images/LSTM/LSTM-20201214-201033-403738.png)
 
 $$
 C_{t}=f_{t} * C_{t-1}+i_{t} * \tilde{C}_{t}
@@ -101,7 +101,7 @@ $$
 
 根据新的细胞状态和输入信息，产生新的输出$h_t$。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LSTM-20201214-201033-406370.png)
+![](./images/LSTM/LSTM-20201214-201033-406370.png)
 $$
 \begin{aligned} o_{t} &=\sigma\left(W_{o}\left[h_{t-1}, x_{t}\right]+b_{o}\right) \\ h_{t} &=o_{t} * \tanh \left(C_{t}\right) \end{aligned}
 $$
@@ -134,7 +134,7 @@ LSTM提出之后，在语音处理、机器翻译、实体识别等NLP领域迅�
 
 ## 增加peephole connections
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LSTM-20201214-201033-409360.png)
+![](./images/LSTM/LSTM-20201214-201033-409360.png)
 $$
 \begin{aligned} f_{t} &=\sigma\left(W_{f} \cdot\left[C_{t-1}, h_{t-1}, x_{t}\right]+b_{f}\right) \\ i_{t} &=\sigma\left(W_{i} \cdot\left[C_{t-1}, h_{t-1}, x_{t}\right]+b_{i}\right) \\ o_{t} &=\sigma\left(W_{o} \cdot\left[\boldsymbol{C}_{t}, h_{t-1}, x_{t}\right]+b_{o}\right) \end{aligned}
 $$
@@ -144,7 +144,7 @@ $$
 
 ## 耦合遗忘门和输入门
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LSTM-20201214-201033-411353.png)
+![](./images/LSTM/LSTM-20201214-201033-411353.png)
 $$
 C_{t}=f_{t} * C_{t-1}+\left(1-f_{t}\right) * \tilde{C}_{t}
 $$
@@ -154,7 +154,7 @@ $$
 
 循环门单元（Gated Recurrent Unit，GRU）,它组合了遗忘门和输入门到一个单独的**更新门**中。它也合并了cell state和hidden state，并且做了一些其他的改变。结果模型比标准LSTM模型更简单，并且正越来越受欢迎。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LSTM-20201214-201033-361017.png)
+![](./images/LSTM/LSTM-20201214-201033-361017.png)
 $$
 \begin{array}{l}{z_{t}=\sigma\left(W_{z} \cdot\left[h_{t-1}, x_{t}\right]\right)} \\ {r_{t}=\sigma\left(W_{r} \cdot\left[h_{t-1}, x_{t}\right]\right)} \\ {\tilde{h}_{t}=\tanh \left(W \cdot\left[r_{t} * h_{t-1}, x_{t}\right]\right)} \\ {h_{t}=\left(1-z_{t}\right) * h_{t-1}+z_{t} * \tilde{h}_{t}}\end{array}
 $$

@@ -2,30 +2,30 @@
 
 精度损失在可控的范围内，大幅度减少计算量
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N13-MobileNet-20201215-224443-734834.png)
+![](./images/N13-MobileNet/N13-MobileNet-20201215-224443-734834-1703348497988-736.png)
 
 用右边深度可分离结构代替左边普通卷积
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N13-MobileNet-20201215-224443-738131.png)
+![](./images/N13-MobileNet/N13-MobileNet-20201215-224443-738131.png)
 
 分组卷积
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N13-MobileNet-20201215-224443-742110.png)
+![](./images/N13-MobileNet/N13-MobileNet-20201215-224443-742110.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N13-MobileNet-20201215-224443-792013.png)
+![](./images/N13-MobileNet/N13-MobileNet-20201215-224443-792013.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N13-MobileNet-20201215-224443-796002.png)
+![](./images/N13-MobileNet/N13-MobileNet-20201215-224443-796002.png)
 
 
 ```python
 
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N13-MobileNet-20201215-224443-754086.png)
+![](./images/N13-MobileNet/N13-MobileNet-20201215-224443-754086.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N13-MobileNet-20201215-224443-767056.png)
+![](./images/N13-MobileNet/N13-MobileNet-20201215-224443-767056.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N13-MobileNet-20201215-224443-781037.png)
+![](./images/N13-MobileNet/N13-MobileNet-20201215-224443-781037.png)
 
 x: 计算量
 y: 准确率

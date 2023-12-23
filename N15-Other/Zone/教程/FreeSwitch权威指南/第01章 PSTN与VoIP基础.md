@@ -18,7 +18,7 @@ PSTN（Public Switched Telephone Network，公共交换电话网）就是我们�
 
 由于每对通话的个体之间都需要单独的物理线路，如果整个电话网上有10个人，而某人想与另外9个人通话，他就需要铺设9对电话线。同时整个电话网上就需要10×(10–1)/2=45对电话线，如图1-1所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-422855.png)
+![](./images/第01章 PSTN与VoIP基础/FreeSwitch权威指南-20211225-182222-422855-1703349082847-1179.png)
 
 <center> 图1-1　电话网上有10个人通话的情况</center>
 
@@ -26,7 +26,7 @@ PSTN（Public Switched Telephone Network，公共交换电话网）就是我们�
 
 随着时代的发展，对电话有需求的用户越来越多，甚至普通家庭都希望拥有自己的电话。但是，为每对欲通话的家庭之间都铺设电话线是不可能的。因此，一种称为交换机（Switch，又称Exchange）的设备诞生了。它位于整个电话网的中心，用于连接每个用户。用户想打电话时，先拿起电话连接到管理交换机的接线员，由接线员负责接通到对方的线路。这便是最早的电话交换网（见图1-2），交换接续工作全部由人工完成。通过使用交换机，交换网上需要的线路大大减少了。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-437856.png)
+![](./images/第01章 PSTN与VoIP基础/FreeSwitch权威指南-20211225-182222-437856.png)
 
 <center>图1-2　人工电话交换网</center>
 
@@ -34,7 +34,7 @@ PSTN（Public Switched Telephone Network，公共交换电话网）就是我们�
 
 1889年到1891年期间，美国阿尔蒙·B·史端乔（Almon B Strowger）发明了步进式自动电话交换机。有趣的是，他发明自动交换机的目的并不是为了把接线员从繁忙的人工交换机上解放下来，而是来源于另外一则故事：他本是一个殡仪馆老板。他发觉每当城里发生死亡事件，用户给“殡仪馆”打电话时，不知接线员是有意还是无意的，总会把电话接到另一家殡仪馆。这使史端乔非常郁闷，发誓要将电话交换自动化。功夫不负有心人，史端乔凭他那过人的聪明和毅力，终于发明了一种步进式的自动电话交换机，并申请了专利。人们为了纪念他，故又称这种电话交换机为“史端乔交换机”（见图1-3）。这种交换机的特点是由用户话机的拨号脉冲直接控制交换机的动作，属于“直接控制”方式。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-451856.png)
+![](./images/第01章 PSTN与VoIP基础/FreeSwitch权威指南-20211225-182222-451856.png)
 
 <center>图1-3　步进式交换机4位拨号电话中继示意图</center>
 
@@ -44,11 +44,11 @@ PSTN（Public Switched Telephone Network，公共交换电话网）就是我们�
 
 瑞典和美国分别在1926年和1938年开通了纵横制交换机，接着，法国、日本和英国也相继生产出纵横制交换机。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-467854.png)
+![](./images/第01章 PSTN与VoIP基础/FreeSwitch权威指南-20211225-182222-467854.png)
 
 <center>图1-4　旋转式交换机</center>
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-481856.png)
+![](./images/第01章 PSTN与VoIP基础/FreeSwitch权威指南-20211225-182222-481856.png)
 
 <center>图1-5　纵横接线器交叉点示意图</center>
 
@@ -194,7 +194,7 @@ PSTN（Public Switched Telephone Network，公共交换电话网）就是我们�
 
 数字（Digital）信号是不连续的（离散的），是按一定的时间间隔（单位时间内抽样的次数称为频率）对模拟信号进行抽样（见图1-6）得出的一些离散值。然后通过量化和编码过程就可将这些离散值变成数字信号。根据抽样定理 [4]，当抽样频率是模拟信号最高频率的2倍时，就能够完全还原原来的模拟信号。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-496857.png)
+![](./images/第01章 PSTN与VoIP基础/FreeSwitch权威指南-20211225-182222-496857.png)
 
 <center>图1-6　抽样</center>
 
@@ -240,7 +240,7 @@ PCM通常有两种压缩方式：A律和μ律。其中北美使用μ律，我国
 
 图1-7所示的主体部分为我国一地级市固定电话网（称为本地网）的结构。通常，用户话机（如A、B、C、D）通过一对电话线连接到距离最近的交换机上，该交换机称为端局交换机（一般以区或县为单位）。端局交换机通过局间中继线连接到汇接局 [1]。长途电话需要通过所在长途局与其他长途局相连。但根据话务量要求，汇接局也可以直接与其他长途局开通高速直达中继（未画出）。为节省用户线，在一些人口比较集中的地方（如学校、小区），会在端局下再设模块局或接入网，用户话机（如a、b、c、d、e）则就近接入到模块局（或接入网）上。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-512855.png)
+![](./images/第01章 PSTN与VoIP基础/FreeSwitch权威指南-20211225-182222-512855.png)
 
 <center>图1-7　我国固定电话网结构</center>
 
@@ -318,7 +318,7 @@ PCM通常有两种压缩方式：A律和μ律。其中北美使用μ律，我国
 
 在此，我们先来看一次简单的固定电话的通话流程。如图1-8所示，用户a摘机，与其相连的交换机A根据电压、电流的变化检测到a摘机后，即向a发送拨号音，同时启动收号程序。a听到拨号音后开始拨号，待交换机A收齐号码后，即查找路由，发送IAM（Initial Address Message，初始地址消息）给交换机B。B向A发ACM（Adress Complete Message，地址全消息）并通知用户b（b的话机）振铃，A向a送回铃音。这时如果b接听电话，则B向A发送ANC（Answer Charge，应答计费消息），a与b开始通话，同时A对a进行计费 [2]。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-527859.png)
+![](./images/第01章 PSTN与VoIP基础/FreeSwitch权威指南-20211225-182222-527859.png)
 
 <center>图1-8　七号信令局间呼叫流程</center>
 
@@ -328,7 +328,7 @@ PCM通常有两种压缩方式：A律和μ律。其中北美使用μ律，我国
 
 上面在交换机A与B之间传递的为七号信令中的TUP（Telephone User Part，电话用户部分）。目前，由于ISUP（ISDN User Part，ISDN用户部分）能与ISDN互联并提供比TUP更多的能力和服务，故其已基本取代TUP成为我国七号信令网采用的主要信令方式。ISUP信令与TUP互通时的对应关系如图1-9所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-542854.png)
+![](./images/第01章 PSTN与VoIP基础/FreeSwitch权威指南-20211225-182222-542854.png)
 
 <center>图1-9　ISUP与TUP互通信令流程</center>
 
@@ -336,7 +336,7 @@ PCM通常有两种压缩方式：A律和μ律。其中北美使用μ律，我国
 
 在上一节中我们提到了ISDN PRI信令，出于完整性的考虑，这里我们也来看一下ISUP与ISDN PRI信令互通的例子。ISDN PRI使用SETUP/CONNECT/RELEASE消息分别对应ISUP中的IAM/ANM/REL消息，如图1-10所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-557857.png)
+![](./images/第01章 PSTN与VoIP基础/FreeSwitch权威指南-20211225-182222-557857.png)
 
 <center>图1-10　ISUP与ISDN互通的信令流程</center>
 
@@ -359,7 +359,7 @@ H.323和SIP设计之初都是作为多媒体通信的应用层控制（信令）
 
 关于SIP信令我们将在第8章详细讲解，读者可以先在这里参考一下图1-11所示的ISUP与SIP间的信令转换关系图，以便建立一个直观的印象。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-571854.png)
+![](./images/第01章 PSTN与VoIP基础/FreeSwitch权威指南-20211225-182222-571854.png)
 
 <center>图1-11　ISUP与SIP互通的信令流程</center>
 
@@ -440,7 +440,7 @@ IP多媒体的全套解决方案是由终端、GERAN（GSM EDGE Radio Access Net
 
 IMS网元众多，其核心网络基本架构如图1-12所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-587856.png)
+![](./images/第01章 PSTN与VoIP基础/FreeSwitch权威指南-20211225-182222-587856.png)
 
 <center>图1-12　IMS基本架构</center>
 
@@ -544,7 +544,7 @@ IMS网络中使用SIP协议的主要参考点如表1-1所示。
 
 <center>表1-1　SIP主要参考点</center>
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/FreeSwitch权威指南-20211225-182222-604856.png)
+![](./images/第01章 PSTN与VoIP基础/FreeSwitch权威指南-20211225-182222-604856.png)
 
 [1] 参见http://zh.wikipedia.org/zh-cn/IP多媒体子系统。 
 

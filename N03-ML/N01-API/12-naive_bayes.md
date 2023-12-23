@@ -103,7 +103,7 @@ class sklearn.naive_bayes.MultinomialNB(alpha=1.0, fit_prior=True, class_prior=N
 为了便于观察将x轴设置为对数坐标。可以看到随着$\alpha>100$之后，随着$\alpha$的增长，预测准确率在下降。
 
 这是因为，当$\alpha \rightarrow \infty$时，$p\left(x_{j}=a_{j, t} | y=c_{k}\right)=\frac{N_{k, j, t}+\alpha}{N_{k}+\alpha n} \rightarrow \frac{1}{n}$。即对任何类型的特征、该类型特征的任意取值，出现的概率都是$\frac{1}{n}$。它完全忽略了各个特征之间的差别，也忽略了每个特征内部的分布。
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-805065.png)
+![](./images/12-naive_bayes/N01-API-20201215-223656-805065.png)
 
 <font color=bleu size=5>参数详解</font>
 

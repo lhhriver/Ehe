@@ -236,7 +236,7 @@ y.backward()
 
 逻辑回归是线性的二分类模型。模型表达式 $y=f(z)=\frac{1}{1+e^{-z}}$，其中 $z=WX+b$。$f(z)$ 称为 sigmoid 函数，也被称为 Logistic 函数。函数曲线如下：(横坐标是 $z$，而 $z=WX+b$，纵坐标是 $y$)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-572377.png)
+![](./images/N0105-autograd 与逻辑回归/深度之眼PyTorch框架班-20201215-224439-572377.png)
 
 
 分类原则如下：$=\left\{\begin{array}{ll}0, & 0.5>y \\ 1 & 0.5 \leq y\end{array}\right.$。当 $y<0.5$ 时，类别为 0；当 $0.5≤y$时，类别为 1。
@@ -268,7 +268,7 @@ $$
 
 ## PyTorch 实现逻辑回归
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-649080.png)
+![](./images/N0105-autograd 与逻辑回归/深度之眼PyTorch框架班-20201215-224441-649080.png)
 
 
 PyTorch 构建模型需要 5 大步骤：
@@ -373,7 +373,7 @@ for iteration in range(1000):
 
 训练的分类直线的可视化如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224441-589080.gif)
+![](./images/N0105-autograd 与逻辑回归/深度之眼PyTorch框架班-20201215-224441-589080.gif)
 
 
 

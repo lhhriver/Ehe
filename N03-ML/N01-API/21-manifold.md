@@ -46,7 +46,7 @@ sklearn.manifold.MDS(
 该指标并不能用于判定降维的效果的好坏，它只是一个中性指标。
 
 降到2维的样本分布图：
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-793118.png)
+![](./images/21-manifold/N01-API-20201215-223656-793118-1703351031162-3088.png)
 
 # Isomap
 
@@ -103,10 +103,10 @@ neighbors_algorithm='auto')
 该指标并不能用于判定降维的效果的好坏，它只是一个中性指标。
 
 不同的k 降维到2维后的样本的分布图如下所示。可以看到 k=1 时，近邻范围过小，此时发生断路现象。本应该相连的区域限制被认定为不相连。
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-624432.png)
+![](./images/21-manifold/N01-API-20201215-223656-624432.png)
 
 不同的k 降维到1维后的样本的分布图如下所示。
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-640398.png)
+![](./images/21-manifold/N01-API-20201215-223656-640398.png)
 
 
 ## LocallyLinearEmbedding
@@ -166,10 +166,10 @@ random_state=None)
 该指标并不能用于判定降维的效果的好坏，它只是一个中性指标。
 
 不同的k 降维到2维后的样本的分布图如下所示。可以看到 k=1,5 时，近邻范围过小，同样发生了断路现象。
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-744619.png)
+![](./images/21-manifold/N01-API-20201215-223656-744619.png)
 
 不同的k 降维到1维后的样本的分布图如下所示。
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N01-API-20201215-223656-761272.png)
+![](./images/21-manifold/N01-API-20201215-223656-761272.png)
 
 # t-SNE
 

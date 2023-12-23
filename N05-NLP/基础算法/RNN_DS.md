@@ -103,9 +103,8 @@ $$
 
 图6.1展示了循环神经网络在3个相邻时间步的计算逻辑。**在时间步$t$，隐藏状态的计算可以看成是将输入$\boldsymbol{X}_t$和前一时间步隐藏状态$\boldsymbol{H}_{t-1}$连结后输入一个激活函数为$\phi$的全连接层**。该全连接层的输出就是当前时间步的隐藏状态$\boldsymbol{H}_t$，且模型参数为$\boldsymbol{W}_{xh}$与$\boldsymbol{W}_{hh}$的连结，偏差为$\boldsymbol{b}_h$。当前时间步$t$的隐藏状态$\boldsymbol{H}_t$将参与下一个时间步$t+1$的隐藏状态$\boldsymbol{H}_{t+1}$的计算，并输入到当前时间步的全连接输出层。
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-576606.svg)
-</div>
+![](./images/RNN_DS/RNN-20201214-201033-576606.svg+xml)
+
 <div align=center>图6.1 含隐藏状态的循环神经网络</div>
 
 我们刚刚提到，隐藏状态中$\boldsymbol{X}_t \boldsymbol{W}_{xh} + \boldsymbol{H}_{t-1} \boldsymbol{W}_{hh}$的计算等价于$\boldsymbol{X}_t$与$\boldsymbol{H}_{t-1}$连结后的矩阵乘以$\boldsymbol{W}_{xh}$与$\boldsymbol{W}_{hh}$连结后的矩阵。接下来，我们用一个具体的例子来验证这一点。首先，我们构造矩阵`X`、`W_xh`、`H`和`W_hh`，它们的形状分别为(3, 1)、(1, 4)、(3, 4)和(4, 4)。将`X`与`W_xh`、`H`与`W_hh`分别相乘，再把两个乘法运算的结果相加，得到形状为(3, 4)的矩阵。
@@ -146,9 +145,8 @@ tensor([[ 5.2633, -3.2288,  0.6037, -1.3321],
 
 **在训练时，我们对每个时间步的输出层输出使用softmax运算，然后使用交叉熵损失函数来计算它与标签的误差**。在图6.2中，由于隐藏层中隐藏状态的循环计算，时间步3的输出$\boldsymbol{O}_3$取决于文本序列“想”“要”“有”。 由于训练数据中该序列的下一个词为“直”，时间步3的损失将取决于该时间步基于序列“想”“要”“有”生成下一个词的概率分布与该时间步的标签“直”。
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-560453.svg)
-</div>
+![](./images/RNN_DS/RNN-20201214-201033-560453.svg)
+
 <div align=center>图6.2 基于字符级循环神经网络的语言模型。</div>
 
 
@@ -699,9 +697,8 @@ rnn_layer = nn.RNN(input_size=vocab_size, hidden_size=num_hiddens)
 
 对于像长短期记忆（LSTM），隐藏状态是一个元组(h, c)，即hidden state和cell state。我们会在本章的后面介绍长短期记忆和深度循环神经网络。关于循环神经网络（以LSTM为例）的输出，可以参考下图（[图片来源](https://stackoverflow.com/questions/48302810/whats-the-difference-between-hidden-and-output-in-pytorch-lstm/48305882)）。
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-590788.png)
-</div>
+![](./images/RNN_DS/RNN-20201214-201033-590788-1703351766156-3990.png)
+
 <div align=center>循环神经网络（以LSTM为例）的输出</div>
 
 
@@ -908,9 +905,8 @@ $$
 
 为了可视化循环神经网络中模型变量和参数在计算中的依赖关系，我们可以绘制模型计算图，如图6.3所示。例如，时间步3的隐藏状态$\boldsymbol{h}_3$的计算依赖模型参数$\boldsymbol{W}_{hx}$、$\boldsymbol{W}_{hh}$、上一时间步隐藏状态$\boldsymbol{h}_2$以及当前时间步输入$\boldsymbol{x}_3$。
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-598068.svg)
-</div>
+![](./images/RNN_DS/RNN-20201214-201033-598068.svg+xml)
+
 <div align=center>图6.3 时间步数为3的循环神经网络模型计算中的依赖关系。方框代表变量（无阴影）或参数（有阴影），圆圈代表运算符</div>
 
 ## 方法
@@ -994,9 +990,8 @@ $$
 
 如图6.4所示，门控循环单元中的重置门和更新门的输入均为当前时间步输入$\boldsymbol{X}_t$与上一时间步隐藏状态$\boldsymbol{H}_{t-1}$，输出由激活函数为sigmoid函数的全连接层计算得到。
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-614444.svg)
-</div>
+![](./images/RNN_DS/RNN-20201214-201033-614444.svg+xml)
+
 <div align=center>图6.4 门控循环单元中重置门和更新门的计算</div>
 
 
@@ -1015,9 +1010,8 @@ $$
 
 接下来，门控循环单元将计算候选隐藏状态来辅助稍后的隐藏状态计算。如图6.5所示，我们将当前时间步重置门的输出与上一时间步隐藏状态做按元素乘法（符号为$\odot$）。如果重置门中元素值接近0，那么意味着重置对应隐藏状态元素为0，即丢弃上一时间步的隐藏状态。如果元素值接近1，那么表示保留上一时间步的隐藏状态。然后，将按元素乘法的结果与当前时间步的输入连结，再通过含激活函数tanh的全连接层计算出候选隐藏状态，其所有元素的值域为$[-1, 1]$。
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-627109.svg)
-</div>
+![](./images/RNN_DS/RNN-20201214-201033-627109.svg+xml)
+
 <div align=center>图6.5 门控循环单元中候选隐藏状态的计算</div>
 
 具体来说，时间步$t$的候选隐藏状态$\tilde{\boldsymbol{H}}_t \in \mathbb{R}^{n \times h}$的计算为
@@ -1036,10 +1030,8 @@ $$
 \boldsymbol{H}_t = \boldsymbol{Z}_t \odot \boldsymbol{H}_{t-1}  + (1 - \boldsymbol{Z}_t) \odot \tilde{\boldsymbol{H}}_t.
 $$
 
+![](./images/RNN_DS/RNN-20201214-201033-643225.svg+xml)
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-643225.svg)
-</div>
 <div align=center>图6.6 门控循环单元中隐藏状态的计算</div>
 
 
@@ -1211,9 +1203,8 @@ LSTM 中引入了3个门，即输入门（input gate）、遗忘门（forget gat
 
 与门控循环单元中的重置门和更新门一样，如图6.7所示，长短期记忆的门的输入均为当前时间步输入$\boldsymbol{X}_t$与上一时间步隐藏状态$\boldsymbol{H}_{t-1}$，输出由激活函数为sigmoid函数的全连接层计算得到。如此一来，这3个门元素的值域均为$[0,1]$。
 
-<div align=center>
 ![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-656204.svg)
-</div>
+
 <div align=center>图6.7 长短期记忆中输入门、遗忘门和输出门的计算</div>
 
 具体来说，假设隐藏单元个数为$h$，给定时间步$t$的小批量输入$\boldsymbol{X}_t \in \mathbb{R}^{n \times d}$（样本数为$n$，输入个数为$d$）和上一时间步隐藏状态$\boldsymbol{H}_{t-1} \in \mathbb{R}^{n \times h}$。
@@ -1232,9 +1223,8 @@ $$
 
 接下来，长短期记忆需要计算候选记忆细胞$\tilde{\boldsymbol{C}}_t$。它的计算与上面介绍的3个门类似，但使用了值域在$[-1, 1]$的tanh函数作为激活函数，如图6.8所示。
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-671220.svg)
-</div>
+![](./images/RNN_DS/RNN-20201214-201033-671220.svg)
+
 <div align=center>图6.8 长短期记忆中候选记忆细胞的计算</div>
 
 
@@ -1252,12 +1242,10 @@ $$
 
 $$\boldsymbol{C}_t = \boldsymbol{F}_t \odot \boldsymbol{C}_{t-1} + \boldsymbol{I}_t \odot \tilde{\boldsymbol{C}}_t.$$
 
-
 如图6.9所示，遗忘门控制上一时间步的记忆细胞$\boldsymbol{C}_{t-1}$中的信息是否传递到当前时间步，而输入门则控制当前时间步的输入$\boldsymbol{X}_t$通过候选记忆细胞$\tilde{\boldsymbol{C}}_t$如何流入当前时间步的记忆细胞。如果遗忘门一直近似1且输入门一直近似0，过去的记忆细胞将一直通过时间保存并传递至当前时间步。这个设计可以应对循环神经网络中的梯度衰减问题，并更好地捕捉时间序列中时间步距离较大的依赖关系。
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-688520.svg)
-</div>
+![](./images/RNN_DS/RNN-20201214-201033-688520.svg+xml)
+
 <div align=center>图6.9 长短期记忆中记忆细胞的计算</div>
 
 ### 隐藏状态
@@ -1269,9 +1257,8 @@ $$
 $$
 这里的tanh函数确保隐藏状态元素值在-1到1之间。需要注意的是，当输出门近似1时，记忆细胞信息将传递到隐藏状态供输出层使用；当输出门近似0时，记忆细胞信息只自己保留。图6.10展示了长短期记忆中隐藏状态的计算。
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-701509.svg)
-</div>
+![](./images/RNN_DS/RNN-20201214-201033-701509.svg+xml)
+
 <div align=center>图6.10 长短期记忆中隐藏状态的计算</div>
 
 ## 读取数据集
@@ -1429,9 +1416,8 @@ epoch 160, perplexity 1.017492, time 1.42 sec
 
 本章到目前为止介绍的循环神经网络只有一个单向的隐藏层，在深度学习应用里，我们通常会用到含有多个隐藏层的循环神经网络，也称作深度循环神经网络。图6.11演示了一个有$L$个隐藏层的深度循环神经网络，每个隐藏状态不断传递至当前层的下一时间步和当前时间步的下一层。
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-718040.svg)
-</div>
+![](./images/RNN_DS/RNN-20201214-201033-718040.svg+xml)
+
 <div align=center>图6.11 深度循环神经网络的架构</div>
 
 
@@ -1472,9 +1458,8 @@ $$
 
 之前介绍的循环神经网络模型都是假设当前时间步是由前面的较早时间步的序列决定的，因此它们都将信息通过隐藏状态从前往后传递。有时候，当前时间步也可能由后面时间步决定。例如，当我们写下一个句子时，可能会根据句子后面的词来修改句子前面的用词。双向循环神经网络通过增加从后往前传递信息的隐藏层来更灵活地处理这类信息。图6.12演示了一个含单隐藏层的双向循环神经网络的架构。
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/RNN-20201214-201033-540038.svg)
-</div>
+![](./images/RNN_DS/RNN-20201214-201033-540038.svg+xml)
+
 <div align=center>图6.12 双向循环神经网络的架构</div>
 
 下面我们来介绍具体的定义。

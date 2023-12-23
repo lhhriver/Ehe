@@ -38,23 +38,23 @@ biLSTM，指的是双向LSTM；CRF指的是条件随机场。
 
 其次，BiLSTM-CRF的输入是词嵌入向量，输出是每个单词对应的预测标签。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-401262.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-401262-1703349682748-2053.jpg)
 
 如下图所示，BiLSTM层的输入表示该单词对应各个类别的分数。如W0，BiLSTM节点的输出是:1.5 (B-Person), 0.9 (I-Person), 0.1 (B-Organization), 0.08 (I-Organization) and 0.05 (O)。这些分数将会是CRF层的输入。 所有的经BiLSTM层输出的分数将作为CRF层的输入，类别序列中分数最高的类别就是我们预测的最终结果。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-316223.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-316223.jpg)
 
 ##  如果没有CRF层会是什么样
 
  即使没有CRF层，我们照样可以训练一个基于BiLSTM的命名实体识别模型，如下图所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-524222.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-524222.jpg)
 
 因为BiLSTM模型的结果是单词对应各类别的分数，我们可以选择分数最高的类别作为预测结果。如W0，“B-Person”的分数最高（1.5），那么我们可以选定“B-Person”作为预测结果。同样的，w1是“I-Person”, w2是“O”,w3是 “B-Organization” ，w4是 “O”。
 
 尽管我们在该例子中得到了正确的结果，但实际情况并不总是这样：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-306571.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-306571.jpg)
 
 显然，这次的分类结果并不准确。
 
@@ -82,13 +82,13 @@ CRF层中的损失函数包括两种类型的分数，而理解这两类分数�
 
 第一个类型的分数是**发射分数**（状态分数）。这些状态分数**来自BiLSTM层的输出**，在这里就是word预测为某个标签的概率。如下图所示，w0被预测为B-Person的分数是1.5。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-316223.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-316223.jpg)
 
  
 
 为方便起见，我们给每个类别一个索引，如下表所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-454091.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-454091.jpg)
 
  
 
@@ -112,7 +112,7 @@ $$
 
 下表是加上START和END标签的转移分数矩阵。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-433616.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-433616.jpg)
 
 如上表格所示，转移矩阵已经学习到一些有用的约束条件：
 
@@ -134,7 +134,7 @@ CRF损失函数由两部分组成，**真实路径的分数** 和 **所有路径
 
 例如，数据集中有如下几种类别：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-472688.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-472688.jpg)
 
  
 
@@ -234,13 +234,13 @@ $$
 
 状态分数如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-687537.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-687537.jpg)
 
  
 
 转移矩阵如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-529966.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-529966.jpg)
 
  
 
@@ -431,7 +431,7 @@ tensorflow 1.2
 
 首先是将预测数据进行处理，转成模型能够识别的数字。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-286265.png)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-286265.png)
 
 **数据原格式**
 
@@ -439,7 +439,7 @@ tensorflow 1.2
 
 我从训练文本中，抽取频数在前5000的字，实际只抽取到了4830左右个字。加入'<PAD>','<UNK>','<NUM>'，分别表示填充字符，未知字符，数字字符。一起存入字典。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-264745.png)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-264745.png)
 
 **字典**
 
@@ -452,7 +452,7 @@ tag2label = {"O": 0, "B-PER": 1, "I-PER": 2, "B-LOC": 3, "I-LOC": 4, "B-ORG": 5,
 
  依据字典与标签字典，将文字与标签分别转成数字。第一行是文本，第二行是标签。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-189140.png)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-189140.png)
 
 **文本与标签**
 
@@ -528,7 +528,7 @@ self.logits就是需要输入CRF层中的数据。代码的第三行，对output
 
 训练时，共进行12次迭代，每迭代4次，将训练得到的结果，保存到checkpoints；loss的情况，保留到tensorboard中；每100个batch,输出此时的训练结果与测试结果。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-202292.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-202292.jpg)
 
 模型训练
 
@@ -538,7 +538,7 @@ self.logits就是需要输入CRF层中的数据。代码的第三行，对output
 
 我从1998年的人民网的新闻素材中，随机抽取了几条语句。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-234099.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-234099.jpg)
 
 ORG表示组织名词，LOC表示地理名词,PER表示人名。从验证结果上看，模型在命名实体识别上，效果还可以。
 
@@ -552,9 +552,9 @@ x=[w_0,w_1,w_2]
 $$
 并且，我们已经从我们的模型中得到了发射分数和转移分数，如下：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-624239.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-624239.jpg)
 
- 转移矩阵：![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-457663.jpg)
+ 转移矩阵：![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-457663.jpg)
 
  
 
@@ -572,7 +572,7 @@ Alpha0 是历史最佳的分数 ，alpha1 是最佳分数所对应的类别索�
 
  
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/命名实体识别-20201214-201032-716922.jpg)
+![](./images/BiLSTM-CRF模型理解/命名实体识别-20201214-201032-716922.jpg)
 
  
 

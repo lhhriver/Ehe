@@ -4,7 +4,7 @@
 
 LeNet5诞生于1998年，是最早的卷积神经网络之一，并且推动了深度学习领域的发展。自从1988年开始，在许多次成功的迭代后，这项由 Yann LeCun 完成的开拓性成果被命名为 LeNet5。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N05-LeNet5-20201215-224442-842885.png)
+![](./images/N05-LeNet5/N05-LeNet5-20201215-224442-842885-1703348270244-652.png)
 
 
 

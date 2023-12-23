@@ -46,7 +46,7 @@ LightGBM提出的主要原因就是为了解决GBDT在海量数据遇到的问�
 
 Histogram algorithm应该翻译为直方图算法，直方图算法的基本思想是：**先把连续的浮点特征值离散化成$k$个整数，同时构造一个宽度为$k$的直方图。在遍历数据的时候，根据离散化后的值作为索引在直方图中累积统计量，当遍历一次数据后，直方图累积了需要的统计量，然后根据直方图的离散值，遍历寻找最优的分割点。**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-271967.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-271967-1703346911053-91.jpg)
 
 <center>图：直方图算法</center>
 
@@ -56,7 +56,7 @@ Histogram algorithm应该翻译为直方图算法，直方图算法的基本思�
 
 - **内存占用更小：**直方图算法不仅不需要额外存储预排序的结果，而且可以只保存特征离散化后的值，而这个值一般用8位整型存储就足够了，内存消耗可以降低为原来的1/8。也就是说XGBoost需要用32位的浮点数去存储特征值，并用32位的整形去存储索引，而 LightGBM只需要用8位去存储直方图，内存相当于减少为1/8；
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-159402.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-159402.jpg)
 
 <center>图：内存占用优化为预排序算法的1/8</center>
 
@@ -68,7 +68,7 @@ Histogram algorithm应该翻译为直方图算法，直方图算法的基本思�
 
 LightGBM另一个优化是Histogram（直方图）做差加速。一个叶子的直方图可以由它的父亲节点的直方图与它兄弟的直方图做差得到，在速度上可以提升一倍。通常构造直方图时，需要遍历该叶子上的所有数据，但直方图做差仅需遍历直方图的k个桶。在实际构建树的过程中，LightGBM还可以先计算直方图小的叶子节点，然后利用直方图做差来获得直方图大的叶子节点，这样就可以用非常微小的代价得到它兄弟叶子的直方图。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-283945.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-283945.jpg)
 
 <center>图：直方图做差</center>
 
@@ -80,13 +80,13 @@ LightGBM另一个优化是Histogram（直方图）做差加速。一个叶子的
 
 XGBoost 采用 Level-wise 的增长策略，该策略遍历一次数据可以同时分裂同一层的叶子，容易进行多线程优化，也好控制模型复杂度，不容易过拟合。但实际上Level-wise是一种低效的算法，因为它不加区分的对待同一层的叶子，实际上很多叶子的分裂增益较低，没必要进行搜索和分裂，因此带来了很多没必要的计算开销。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-186335.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-186335.jpg)
 
 <center>图：按层生长的决策树</center>
 
 LightGBM采用Leaf-wise的增长策略，该策略每次从当前所有叶子中，找到分裂增益最大的一个叶子，然后分裂，如此循环。因此同Level-wise相比，Leaf-wise的优点是：在分裂次数相同的情况下，Leaf-wise可以降低更多的误差，得到更好的精度；Leaf-wise的缺点是：可能会长出比较深的决策树，产生过拟合。因此LightGBM会在Leaf-wise之上增加了一个最大深度的限制，在保证高效率的同时防止过拟合。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-315878.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-315878.jpg)
 
 <center>图：按叶子生长的决策树</center>
 
@@ -98,7 +98,7 @@ AdaBoost中，样本权重是数据重要性的指标。然而在GBDT中没有�
 
 GOSS是一个样本的采样算法，目的是丢弃一些对计算信息增益没有帮助的样本留下有帮助的。根据计算信息增益的定义，梯度大的样本对信息增益有更大的影响。因此，GOSS在进行数据采样的时候只保留了梯度较大的数据，但是如果直接将所有梯度较小的数据都丢弃掉势必会影响数据的总体分布。所以，GOSS首先将要进行分裂的特征的所有取值按照绝对值大小降序排序（XGBoost一样也进行了排序，但是LightGBM不用保存排序后的结果），选取绝对值最大的a \* 100% 个数据。然后在剩下的较小梯度数据中随机选择b \*100%个数据。接着将这b \* 100%个数据乘以一个常数$\frac{1-a}{b}$，这样算法就会更关注训练不足的样本，而不会过多改变原数据集的分布。最后使用这(a+b) \* 100%个数据来计算信息增益。下图是GOSS的具体算法。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-190331.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-190331.jpg)
 
 <center>图：单边梯度采样算法</center>
 
@@ -121,7 +121,7 @@ GOSS是一个样本的采样算法，目的是丢弃一些对计算信息增益�
 
 算法允许两两特征并不完全互斥来增加特征捆绑的数量，通过设置最大冲突比率$\gamma$来平衡算法的精度和效率。EFB 算法的伪代码如下所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-146961.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-146961.jpg)
 
 <center>图：贪心绑定算法</center>
 
@@ -131,7 +131,7 @@ GOSS是一个样本的采样算法，目的是丢弃一些对计算信息增益�
 
 特征合并算法，其关键在于原始特征能从合并的特征中分离出来。绑定几个特征在同一个bundle里需要保证绑定前的原始特征的值可以在bundle中识别，考虑到histogram-based算法将连续的值保存为离散的bins，我们可以使得不同特征的值分到bundle中的不同bin（箱子）中，这可以通过在特征值中加一个偏置常量来解决。比如，我们在bundle中绑定了两个特征A和B，A特征的原始取值为区间[0,10)，B特征的原始取值为区间[0,20），我们可以在B特征的取值上加一个偏置常量10，将其取值范围变为[10,30），绑定后的特征取值范围为 [0, 30），这样就可以放心的融合特征A和B了。具体的特征合并算法如下所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-287957.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-287957.jpg)
 
 <center>图：特征合并算法</center>
 
@@ -146,7 +146,7 @@ GOSS是一个样本的采样算法，目的是丢弃一些对计算信息增益�
 1. 会产生样本切分不平衡问题，导致切分增益非常小（即浪费了这个特征）。使用 one-hot编码，意味着在每一个决策节点上只能使用one vs rest（例如是不是狗，是不是猫等）的切分方式。例如，动物类别切分后，会产生是否狗，是否猫等一系列特征，这一系列特征上只有少量样本为 1，大量样本为 0，这时候切分样本会产生不平衡，这意味着切分增益也会很小。较小的那个切分样本集，它占总样本的比例太小，无论增益多大，乘以该比例之后几乎可以忽略；较大的那个拆分样本集，它几乎就是原始的样本集，增益几乎为零。比较直观的理解就是不平衡的切分和不切分没有区别。
 2. 会影响决策树的学习。因为就算可以对这个类别特征进行切分，独热编码也会把数据切分到很多零散的小空间上，如下图左边所示。而决策树学习时利用的是统计信息，在这些数据量小的空间上，统计信息不准确，学习效果会变差。但如果使用下图右边的切分方法，数据会被切分到两个比较大的空间，进一步的学习也会更好。下图右边叶子节点的含义是X=A或者X=C放到左孩子，其余放到右孩子。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-243023.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-243023.jpg)
 
 <center>图：左图为基于 one-hot 编码进行分裂，右图为 LightGBM 基于 many-vs-many 进行分裂</center>
 
@@ -154,7 +154,7 @@ GOSS是一个样本的采样算法，目的是丢弃一些对计算信息增益�
 
 算法流程如下图所示，在枚举分割点之前，先把直方图按照每个类别对应的label均值进行排序；然后按照排序的结果依次枚举最优分割点。从下图可以看到，$\frac{Sum(y)}{Count(y)}$为类别的均值。当然，这个方法很容易过拟合，所以LightGBM里面还增加了很多对于这个方法的约束和正则化。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-301908.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-301908.jpg)
 
 <center>图：LightGBM求解类别特征的最优切分算法</center>
 
@@ -168,7 +168,7 @@ GOSS是一个样本的采样算法，目的是丢弃一些对计算信息增益�
 
 LightGBM 则不进行数据垂直划分，而是在每台机器上保存全部训练数据，在得到最佳划分方案后可在本地执行划分而减少了不必要的通信。具体过程如下图所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-174363.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-174363.jpg)
 
 <center>图：特征并行</center>
 
@@ -178,7 +178,7 @@ LightGBM 则不进行数据垂直划分，而是在每台机器上保存全部�
 
 LightGBM在数据并行中使用分散规约 (Reduce scatter) 把直方图合并的任务分摊到不同的机器，降低通信和计算，并利用直方图做差，进一步减少了一半的通信量。具体过程如下图所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-329853.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-329853.jpg)
 
 <center>图：数据并行</center>
 
@@ -191,7 +191,7 @@ LightGBM在数据并行中使用分散规约 (Reduce scatter) 把直方图合并
 1. 本地找出 Top K 特征，并基于投票筛选出可能是最优分割点的特征；
 2. 合并时只合并每个机器选出来的特征。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-255996.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-255996.jpg)
 
 <center>图：投票并行</center>
 
@@ -199,7 +199,7 @@ LightGBM在数据并行中使用分散规约 (Reduce scatter) 把直方图合并
 
 XGBoost对cache优化不友好，如下图所示。在预排序后，特征对梯度的访问是一种随机访问，并且不同的特征访问的顺序不一样，无法对cache进行优化。同时，在每一层长树的时候，需要随机访问一个行索引到叶子索引的数组，并且不同特征访问的顺序也不一样，也会造成较大的cache miss。为了解决缓存命中率低的问题，XGBoost 提出了缓存访问算法进行改进。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-232231.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-232231.jpg)
 
 <center>图：随机访问会造成cache miss</center>
 
@@ -208,7 +208,7 @@ XGBoost对cache优化不友好，如下图所示。在预排序后，特征对�
 1. 首先，所有的特征都采用相同的方式获得梯度（区别于XGBoost的不同特征通过不同的索引获得梯度），只需要对梯度进行排序并可实现连续访问，大大提高了缓存命中率；
 2. 其次，因为不需要存储行索引到叶子索引的数组，降低了存储消耗，而且也不存在 Cache Miss的问题。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-216269.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-216269.jpg)
 
 <center>图：LightGBM增加缓存命中率</center>
 
@@ -438,7 +438,7 @@ print("Mean Absolute Error : " + str(mean_absolute_error(predictions, test_y)))
 
 在上一部分中，LightGBM模型的参数有一部分进行了简单的设置，但大都使用了模型的默认参数，但默认参数并不是最好的。要想让LightGBM表现的更好，需要对LightGBM模型进行参数微调。下图展示的是回归模型需要调节的参数，分类模型需要调节的参数与此类似。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/LightGBM-20201215-223658-203300.jpg)
+![](./images/LightGBM/LightGBM-20201215-223658-203300.jpg)
 
 # 关于LightGBM若干问题的思考
 

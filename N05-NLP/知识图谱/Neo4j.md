@@ -14,7 +14,7 @@
 
 Neo4j是基于Java运行环境的图形数据库，因此，必须向系统中安装JAVA SE（Standard Editon）的JRE。从Oracle官方网站下载 [Java SE JRE](https://www.oracle.com/technetwork/java/javase/downloads/index.html)，当前的版本是JRE 8。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-469232.png)
+![](./images/Neo4j/Neo4j-20210510-173452-469232-1703349733042-2107.png)
 
 > JDK和JRE是有区别的，JDK（Java Development Kit）是包括Java运行环境（JRE）和Java开发工具；而JRE（Java Runtime Environment）是运行Java程序时必须安装的环境。如果只是运行Java程序，那么只需要安装JRE即可；如果希望开发Java程序，那么必须安装JDK。
 
@@ -22,15 +22,15 @@ Neo4j是基于Java运行环境的图形数据库，因此，必须向系统中�
 
 - 第一步，新建JAVA_HOME变量，变量值填写jdk的安装目录，默认的安装目录是：C:\Program Files\Java\jre1.8.0_211
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-015723.png)
+![](./images/Neo4j/Neo4j-20210510-173453-015723.png)
 
 - 第二步，编辑Path变量，在Path变量值的最后输入：%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-031408.png)
+![](./images/Neo4j/Neo4j-20210510-173453-031408.png)
 
 检查配置是否成功，运行cmd，输入java -version，如果显示java的版本信息，说明Java的安装和配置成功。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-171382.png)
+![](./images/Neo4j/Neo4j-20210510-173453-171382.png)
 
 **2，下载Neo4j安装文件**
 
@@ -47,7 +47,7 @@ Neo4j应用程序有如下主要的目录结构：
 
 创建主目录环境变量NEO4J_HOME，并把主目录设置为变量值。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-501101.png)
+![](./images/Neo4j/Neo4j-20210510-173452-501101.png)
 
 ## Neo4j的配置
 
@@ -90,11 +90,11 @@ neo4j支持三种网络协议，默认情况下，不需要配置就可以在本
 
 Neo4j支持三种网络协议（Protocol），分别是Bolt，HTTP和HTTPS，默认的连接器配置有三种，为了使用这三个端口，需要在Windows防火墙中创建Inbound Rules，允许通过端口7687，7474和7473访问本机。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-516061.png)
+![](./images/Neo4j/Neo4j-20210510-173452-516061.png)
 
 **2、连接器的可选属性**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-531347.png)
+![](./images/Neo4j/Neo4j-20210510-173452-531347.png)
 
 **listen_address**：设置Neo4j监听的链接，由两部分组成：IP地址和端口号（Port）组成，格式是：<ip-address>:<port-number>
 
@@ -143,7 +143,7 @@ neo4j.bat console
 
 如果看到以下消息，说明neo4j已经开始运行：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-547270.png)
+![](./images/Neo4j/Neo4j-20210510-173452-547270.png)
 
 **2、把Neo4j安装为服务（Windows Services）**
 
@@ -169,11 +169,11 @@ Neo4j服务器具有一个集成的浏览器，在启动neo4j服务之后，可�
 
 在一个运行neo4j服务器主机上访问 “http://localhost:7474/”，显示以下的界面：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-046743.png)
+![](./images/Neo4j/Neo4j-20210510-173453-046743.png)
 
 默认的host是bolt://localhost:7687，默认的用户是neo4j，默认的密码是：neo4j，第一次成功connect到Neo4j服务器之后，需要重置密码。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-062609.png)
+![](./images/Neo4j/Neo4j-20210510-173453-062609.png)
 
 访问Graph Database需要输入身份验证，Host是Bolt协议标识的主机。
 
@@ -193,23 +193,23 @@ match(n:Person{name:"Vic"}),(m:Person{name:"Andres"}) create (n)<-[r:Friend]-(m)
 
 在$ 命令行中，编写Cypher脚本代码，点击Play按钮，在图数据库中创建第一个节点：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-563203.png)
+![](./images/Neo4j/Neo4j-20210510-173452-563203.png)
 
 在节点创建之后，在Graph模式下，能够看到创建的图形，继续执行Cypher脚本，创建其他节点：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-078475.png)
+![](./images/Neo4j/Neo4j-20210510-173453-078475.png)
 
 **2、创建节点之间的关系**
 
 创建节点之间的边和创建节点的操作相同，例如，创建Person节点之间（Vic-> Andres之间的Friend关系），由于Friend关系是双向的，可以继续创建Andres和Vic之间的Friend关系：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-093485.png)
+![](./images/Neo4j/Neo4j-20210510-173453-093485.png)
 
 **3、查看节点之间的关系**
 
 在创建完两个节点和关系之后，查看数据库中的图形：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-109031.png)
+![](./images/Neo4j/Neo4j-20210510-173453-109031.png)
 
 
 
@@ -257,7 +257,7 @@ Neo4j图形数据库的查询语言是Cypher，用于操作和查询属性图，
 
 在下面的图中，存在三个节点和两个关系共5个实体，其中 Person和Movie是Lable，ACTED_ID和DIRECTED是关系类型，name，title，roles等是节点和关系的属性键。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-485175.png)
+![](./images/Neo4j/Neo4j-20210510-173452-485175.png)
 
 实体包括节点和关系，节点有标签和属性，关系是有向的，链接两个节点，具有属性和关系类型。
 
@@ -265,7 +265,7 @@ Neo4j图形数据库的查询语言是Cypher，用于操作和查询属性图，
 
 在示例图形中，包含3个节点和2个关系，这3个节点分别有2个属性：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-578558.png)
+![](./images/Neo4j/Neo4j-20210510-173452-578558.png)
 
 这2个关系分别是：
 
@@ -273,7 +273,7 @@ Neo4j图形数据库的查询语言是Cypher，用于操作和查询属性图，
 - 两个关系：ACTED_IN关系（连接name='Tom Hank'的节点和Movie节点），DIRECTED关系（连接name='Forrest Gump'的节点和Movie节点），
 - 其中关系ACTED_IN包含一个属性 roles，属性值是一个List
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-594533.png)
+![](./images/Neo4j/Neo4j-20210510-173452-594533.png)
 
 **2、标签（Lable）**
 
@@ -281,7 +281,7 @@ Neo4j图形数据库的查询语言是Cypher，用于操作和查询属性图，
 
 在示例图形中，有两个标签Person和Movie，两个节点是Person，一个节点是Movie，标签有点像节点的类型，每个节点可以有多个标签。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-610649.png)
+![](./images/Neo4j/Neo4j-20210510-173452-610649.png)
 
 **3、属性（Property）**
 
@@ -289,11 +289,11 @@ Neo4j图形数据库的查询语言是Cypher，用于操作和查询属性图，
 
 在示例图形中，Person节点有两个属性name和born，Movie节点有两个属性：title和released，
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-610649.png)
+![](./images/Neo4j/Neo4j-20210510-173452-610649.png)
 
 关系ACTED_IN有一个属性：roles，该属性值是一个List，而关系DIRECTED没有属性：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-625837.png)
+![](./images/Neo4j/Neo4j-20210510-173452-625837.png)
 
 ## 遍历（Traversal）
 
@@ -301,7 +301,7 @@ Neo4j图形数据库的查询语言是Cypher，用于操作和查询属性图，
 
 在示例图形中，查找Tom Hanks参演的电影，遍历的过程是：从Tom Hanks节点开始，沿着ACTED_IN关系，寻找标签为Movie的目标节点。遍历的路径如图：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-641000.png)
+![](./images/Neo4j/Neo4j-20210510-173452-641000.png)
 
 
 
@@ -365,7 +365,7 @@ Neo4j把执行计划被缓存起来，在统计信息变化之前，执行计划
 
 Neo4j使用Cypher查询图形数据，Cypher是描述性的图形查询语言，语法简单，功能强大，由于Neo4j在图形数据库家族中处于绝对领先的地位，拥有众多的用户基数，使得Cypher成为图形查询语言的事实上的标准。本文作为入门级的教程，我不会试图分析Cypher语言的全部内容，本文的目标是循序渐进地使用Cypher语言执行简单的CRUD操作，为了便于演示，本文在Neo4j Browser中执行Cypher示例代码。以下图形包含三个节点和两个关系，本文会一步一步讲解如何利用Cypher语言创建以下图形。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-657020.png)
+![](./images/Neo4j/Neo4j-20210510-173452-657020.png)
 
 
 
@@ -404,7 +404,7 @@ return b;
 create (n:Person { name: 'Tom Hanks', born: 1956 }) return n;
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-672982.png)
+![](./images/Neo4j/Neo4j-20210510-173452-672982.png)
 
 继续创建其他节点：
 
@@ -425,11 +425,11 @@ match(n) return n;
 
 在图形数据库中，有三个节点，Person标签有连个节点，Movie有1个节点
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-689089.png)
+![](./images/Neo4j/Neo4j-20210510-173452-689089.png)
 
 点击节点，查看节点的属性，如图，Neo4j自动为节点设置ID值，本例中，Forrest Gump节点的ID值是5，
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-704399.png)
+![](./images/Neo4j/Neo4j-20210510-173452-704399.png)
 
 **2、查询born属性小于1955的节点**
 
@@ -439,7 +439,7 @@ where n.born<1955
 return n;
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-719943.png)
+![](./images/Neo4j/Neo4j-20210510-173452-719943.png)
 
 **3、查询具有指定Lable的节点**
 
@@ -448,7 +448,7 @@ match(n:Movie)
 return n;
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-734751.png)
+![](./images/Neo4j/Neo4j-20210510-173452-734751.png)
 
 **4、查询具有指定属性的节点**
 
@@ -457,7 +457,7 @@ match(n{name:'Tom Hanks'})
 return n;
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-749874.png)
+![](./images/Neo4j/Neo4j-20210510-173452-749874.png)
 
 ## 创建关系
 
@@ -472,7 +472,7 @@ CREATE (a)-[r:DIRECTED]->(b)
 RETURN r;
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-781567.png)
+![](./images/Neo4j/Neo4j-20210510-173452-781567.png)
 
 **2、创建关系，并设置关系的属性**
 
@@ -483,7 +483,7 @@ CREATE (a)-[r:ACTED_IN { roles:['Forrest'] }]->(b)
 RETURN r;
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-766281.png)
+![](./images/Neo4j/Neo4j-20210510-173452-766281.png)
 
 ## 查询关系
 
@@ -491,7 +491,7 @@ RETURN r;
 
 **1、查询整个数据图形**
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-797604.png)
+![](./images/Neo4j/Neo4j-20210510-173452-797604.png)
 
 **2、查询跟指定节点有关系的节点**
 
@@ -502,7 +502,7 @@ match(n)--(m:Movie)
 return n;
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-812980.png)
+![](./images/Neo4j/Neo4j-20210510-173452-812980.png)
 
 **3、查询有向关系的节点**
 
@@ -511,7 +511,7 @@ MATCH (:Person { name: 'Tom Hanks' })-->(movie)
 RETURN movie;
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-828522.png)
+![](./images/Neo4j/Neo4j-20210510-173452-828522.png)
 
 **4、为关系命名，通过[r]为关系定义一个变量名，通过函数type获取关系的类型**
 
@@ -520,7 +520,7 @@ MATCH (:Person { name: 'Tom Hanks' })-[r]->(movie)
 RETURN r,type(r);
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-844219.png)
+![](./images/Neo4j/Neo4j-20210510-173452-844219.png)
 
 **4，查询特定的关系类型，通过[Variable:RelationshipType{Key:Value}]指定关系的类型和属性**
 
@@ -529,7 +529,7 @@ MATCH (:Person { name: 'Tom Hanks' })-[r:ACTED_IN{roles:'Forrest'}]->(movie)
 RETURN r,type(r);
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-860276.png)
+![](./images/Neo4j/Neo4j-20210510-173452-860276.png)
 
 ## 更新图形
 
@@ -546,7 +546,7 @@ RETURN p
 
 变量neo代表的节点没有任何属性，但是，其有一个ID值，通过ID值为该节点设置属性和标签。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-876237.png)
+![](./images/Neo4j/Neo4j-20210510-173452-876237.png)
 
 **2、为节点增加属性**
 
@@ -568,7 +568,7 @@ set n:Company
 return n;
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-891713.png)
+![](./images/Neo4j/Neo4j-20210510-173452-891713.png)
 
 **4、为关系增加属性**
 
@@ -579,7 +579,7 @@ set r.team='Azure'
 return n;
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-906974.png)
+![](./images/Neo4j/Neo4j-20210510-173452-906974.png)
 
 ## 跟实体相关的函数
 
@@ -676,7 +676,7 @@ p = (a)-[*3..5]->(b)
 
 以下示例图有6个节点，每个节点都有一个属性name，节点之间存在关系，关系类型是KNOWS，如图：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-999898.png)
+![](./images/Neo4j/Neo4j-20210510-173452-999898.png)
 
 查询模式是：查找跟Filipa有关系的人，路径长度为1或2，查询的结果是："Dilshad"和"Anders"
 
@@ -696,21 +696,21 @@ RETURN remote_friend.name
 
 官方的.NET 驱动程序使用的是Blot协议，目前更新到1.72版本，依赖.NET Framework 4.5.2及以上版本
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-124895.png)
+![](./images/Neo4j/Neo4j-20210510-173453-124895.png)
 
 **1、依赖.NET Framework 4.6版本**
 
 创建Neo4jApp工程，配置工程的熟悉，设置目标架构（Target Framework）为.NET Framework 4.6
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-140051.png)
+![](./images/Neo4j/Neo4j-20210510-173453-140051.png)
 
 **2、安装驱动程序**
 
 点击工具（Tools）菜单，通过NuGet Package Manager的控制台命令安装Neo4j的.NET驱动程序，选用1.3.0版本的原因是项目较赶，暂时没有时间去学习最新的版本。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-155686.png)
+![](./images/Neo4j/Neo4j-20210510-173453-155686.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-921888.png)
+![](./images/Neo4j/Neo4j-20210510-173452-921888.png)
 
 在C#中引用驱动程序的命名空间：
 
@@ -826,7 +826,7 @@ public bool CreateRelationship(string RelationshipType,string SourceNodeName,str
 
 向Neo4j数据库发送请求，返回的是数据结构是一个表格，Title是return子句的投影的字段。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-937509.png)
+![](./images/Neo4j/Neo4j-20210510-173452-937509.png)
 
 如示例图所示，查询返回的结构是表格（行-列）式的，列值主要分为两种，要么是节点的属性列表，以JSON结构显示，要么是标量值。
 
@@ -878,11 +878,11 @@ public void MatchNodes(string lable, string name)
 
  驱动程序把编程语言翻译成Cypher的类型系统，为了处理数据，需要了解编程语言的类型和Cypher的类型系统的映射。图的特有类型是：Node、Relationship和Path，基础类型：Boolean、Integer、Float、String、List、Map，对.NET的类型映射是：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-218690.png)
+![](./images/Neo4j/Neo4j-20210510-173453-218690.png)
 
 语句执行的结果是由记录流（record stream）构成，结果通常由接收应用程序在到达时处理。一个记录是一个由Key/Value对构成的有序字典（Map），记录可以通过位置索引（0-based整数）和键（key，字符串）来访问。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-233904.png)
+![](./images/Neo4j/Neo4j-20210510-173453-233904.png)
 
 例如，通过位置索引来选择记录：
 
@@ -974,19 +974,19 @@ Neo4j Browser是Neo4j内置的浏览器，用于管理数据库，更新数据�
 
 在Neo4j Browser中，输入第一个命令，通过:param 命令定义参数，
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-953361.png)
+![](./images/Neo4j/Neo4j-20210510-173452-953361.png)
 
 **2、通过$param引用参数**
 
 紧接着，输入Cypher语句，通过$param引用参数
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-968265.png)
+![](./images/Neo4j/Neo4j-20210510-173452-968265.png)
 
 **3、查看创建的图形**
 
 参数是一个列表格式的数据，在参数events中，两个event的year属性都是2014，因此，MERGE子句只会创建一个Year节点；由于两个event的id属性不同，因此MERGE子句会创建两个Event节点，并创建Year节点和Event节点之间的关系，图形如下图：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173452-983486.png)
+![](./images/Neo4j/Neo4j-20210510-173452-983486.png)
 
 ## 使用Neo4jClient批量更新数据
 
@@ -1376,7 +1376,7 @@ p = (a)-[*3..5]->(b)
 
 有如下的有向图数据，按照有向图来计算路径，最长的路径长度是2；按照无向图来计算路径，最长的路径长度是6。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-187610.png)
+![](./images/Neo4j/Neo4j-20210510-173453-187610.png)
 
 分析以下Cypher查询，在路径模式中，路径是无向的，路径的长度是1或2，关系的类型是KNOWS，节点Filipa和节点remote_friend在同一条路径中。
 
@@ -1462,7 +1462,7 @@ WHERE foaf > 1
 RETURN otherPerson.name
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Neo4j-20210510-173453-203513.png)
+![](./images/Neo4j/Neo4j-20210510-173453-203513.png)
 
 **2、限制返回的结果**
 

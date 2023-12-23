@@ -75,9 +75,8 @@ d2l.train_ch7(adam, init_adam_states(), {'lr': 0.01, 't': 1}, features, labels)
 ```
 loss: 0.245370, 0.065155 sec per epoch
 ```
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/优化器-20201215-224442-503145.png)
-</div>
+![](./images/N08-Adam算法/优化器-20201215-224442-503145.png)
+
 
 
 ## 7.8.3 简洁实现
@@ -91,9 +90,8 @@ d2l.train_pytorch_ch7(torch.optim.Adam, {'lr': 0.01}, features, labels)
 ```
 loss: 0.242066, 0.056867 sec per epoch
 ```
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/优化器-20201215-224442-505143.png)
-</div>
+![](./images/N08-Adam算法/优化器-20201215-224442-505143.png)
+
 
 ## 小结
 

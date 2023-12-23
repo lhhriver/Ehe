@@ -39,7 +39,7 @@ X =(X_1,X_2,...X_n),\;\;Y=(Y_1,Y_2,...Y_n)
 $$
 我们一般考虑如下图所示的结构：**$X$和$Y$有相同的结构的CRF就构成了线性链条件随机场**(Linear chain Conditional Random Fields,以下简称 linear-CRF)。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/CRF-20201214-201033-151480.png)
+![](./images/CRF/CRF-20201214-201033-151480.png)
 
 在我们的十个词的句子的词性标记中，词有十个，词性也是十个，因此，如果我们假设它是一个马尔科夫随机场，那么它也就是一个linear-CRF。
 

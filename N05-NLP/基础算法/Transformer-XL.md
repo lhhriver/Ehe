@@ -28,11 +28,11 @@ Transformer-XL 采用了一种 **segment-level 的递归方法**，不仅解决�
 
 还有一种可行但是比较粗糙的方法是将整个语料库**分为多个大小相同的片段**（segment），然后只在每个片段上训练而忽视所有的上下文信息，这种方法我们称为 Vanilla Transformer：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Transformer-XL-20210913-170114-438894.gif)
+![](./images/Transformer-XL/Transformer-XL-20210913-170114-438894.gif)
 
 在预测过程中，Vanilla Transformer 也采用与训练相同大小的片段来预测最后一个位置，然后每次基于滑动窗口向右移动一个位置：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Transformer-XL-20201214-201035-134840.gif)
+![](./images/Transformer-XL/Transformer-XL-20201214-201035-134840.gif)
 
 这种方法一定程度上确保了在预测过程中尽可能大的利用上下文，缓解了上下文碎片问题，但由于每次移动，新的片段都需要重新计算一次，所以其**计算代价昂贵**。
 
@@ -42,7 +42,7 @@ Transformer-XL 采用了一种 **segment-level 的递归方法**，不仅解决�
 
 为了解决固定长度上下文的带来的问题，作者建议在 Transformer 架构中引入**递归机制**（Recurrence Mechanism）。**在训练过程中，前一段计算出来的隐藏层状态会被固定并缓存下来，当模型处理下一个新段时作为扩展上下文而被重用**：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Transformer-XL-20201214-201035-108011.gif)
+![](./images/Transformer-XL/Transformer-XL-20201214-201035-108011.gif)
 
 这种附加的连接可以随着网络深度的增加而增大依赖项的最大长度（想不通的可以想一下 GCN 的一阶领域）。除此之外，这种递归机制还可以解决上下文碎片问题，为新段前端的令牌提供必要的上下文信息。
 
@@ -74,7 +74,7 @@ $\boldsymbol{q}_{\tau}^{n}, \boldsymbol{k}_{\tau}^{n}, \boldsymbol{v}_{\tau}^{n}
 
 由于这是递归机制，所以层数越高，所能依赖到的范围越大，最大可能依赖长度为$O(N \times L)$ ，如下图阴影部分所示：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Transformer-XL-20201214-201035-157997.jpg)
+![](./images/Transformer-XL/Transformer-XL-20201214-201035-157997.jpg)
 
 除了**实现超长的上下文依赖**和**解决碎片问题外**，递归机制的另一个好处就是显著加快了计算速度。具体来说，Vanilla Transformer 每次都需要重新计算，而现在可以重用以前的片段，只要 GPU 内存允许，我们可以尽可能多的缓存之前的片段，并重用之前的片段以作为额外的上下文。
 
@@ -153,21 +153,21 @@ $$
 
 模型在不同数据集下的表现：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Transformer-XL-20201214-201035-145828.jpg)
+![](./images/Transformer-XL/Transformer-XL-20201214-201035-145828.jpg)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Transformer-XL-20201214-201035-115766.jpg)
+![](./images/Transformer-XL/Transformer-XL-20201214-201035-115766.jpg)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Transformer-XL-20201214-201035-182466.jpg)
+![](./images/Transformer-XL/Transformer-XL-20201214-201035-182466.jpg)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Transformer-XL-20201214-201035-190181.jpg)
+![](./images/Transformer-XL/Transformer-XL-20201214-201035-190181.jpg)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Transformer-XL-20201214-201035-204084.jpg)
+![](./images/Transformer-XL/Transformer-XL-20201214-201035-204084.jpg)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Transformer-XL-20201214-201035-169118.jpg)
+![](./images/Transformer-XL/Transformer-XL-20201214-201035-169118.jpg)
 
 各模型的相对有效长度（最长依赖长度）
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Transformer-XL-20201214-201035-141111.webp)
+![](./images/Transformer-XL/Transformer-XL-20201214-201035-141111.webp)
 
 # Conclusion
 

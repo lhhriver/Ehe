@@ -6,7 +6,7 @@
 
 Seq2Seq模型是输出的长度不确定时采用的模型，这种情况一般是在机器翻译的任务中出现，将一句中文翻译成英文，那么这句英文的长度有可能会比中文短，也有可能会比中文长，所以输出的长度就不确定了。如下图所，输入的中文长度为4，输出的英文长度为2。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Seq2Seq-20201214-201033-993819.png)
+![](./images/Seq2Seq/Seq2Seq-20201214-201033-993819-1703350155691-2309.png)
 
 <center>seq2seq模型</center>
 
@@ -16,7 +16,7 @@ Seq2Seq模型是输出的长度不确定时采用的模型，这种情况一般�
 
 举个简单的例子，当我们使用机器翻译时：输入(Hello) --->输出(你好)。再比如在人机对话中，我们问机器：“你是谁？”，机器会返回答案“我是某某某”。如下图所示为一个简单的邮件对话的场景，发送方问：“你明天是否有空”；接收方回答：“有空，怎么了？”。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Seq2Seq-20201214-201033-913164.png)
+![](./images/Seq2Seq/Seq2Seq-20201214-201033-913164.png)
 
 <center>邮箱对话</center>
 
@@ -26,19 +26,19 @@ Seq2Seq模型是输出的长度不确定时采用的模型，这种情况一般�
 
 seq2seq属于encoder-decoder结构的一种，这里看看常见的encoder-decoder结构，基本思想就是利用两个RNN，一个RNN作为encoder，另一个RNN作为decoder。**encoder负责将输入序列压缩成指定长度的向量**，这个向量就可以看成是这个序列的语义，这个过程称为`编码`，如下图，**获取语义向量最简单的方式就是直接将最后一个输入的隐状态作为语义向量C**。也可以对最后一个隐含状态做一个变换得到语义向量，还可以将输入序列的所有隐含状态做一个变换得到语义变量。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Seq2Seq-20201214-201033-936719.png)
+![](./images/Seq2Seq/Seq2Seq-20201214-201033-936719.png)
 
 <center>RNN网络</center>
 
 而**decoder则负责根据语义向量生成指定的序列**，这个过程也称为`解码`，如下图，最简单的方式是将encoder得到的语义变量作为初始状态输入到decoder的RNN中，得到输出序列。可以看到上一时刻的输出会作为当前时刻的输入，而且其中语义向量C只作为初始状态参与运算，后面的运算都与语义向量C无关。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Seq2Seq-20201214-201033-838726.png)
+![](./images/Seq2Seq/Seq2Seq-20201214-201033-838726.png)
 
 <center>语义向量只作初始化参数参与运算</center>
 
 decoder处理方式还有另外一种，就是语义向量**C参与了序列所有时刻的运算**，如下图，上一时刻的输出仍然作为当前时刻的输入，但语义向量C会参与所有时刻的运算。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Seq2Seq-20201214-201033-997094.png)
+![](./images/Seq2Seq/Seq2Seq-20201214-201033-997094.png)
 
 <center>语义向量参与解码的每一个过程</center>
 
@@ -75,7 +75,7 @@ V=\left[\begin{array}{l}
 $$
 很明显，Softmax 的输出表征了不同类别之间的相对概率。我们可以清晰地看出，S1 = 0.8390，对应的概率最大，则更清晰地可以判断预测为第1类的可能性更大。Softmax 将连续数值转化成相对概率，更有利于我们理解。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Seq2Seq-20201214-201033-929387.png)
+![](./images/Seq2Seq/Seq2Seq-20201214-201033-929387.png)
 
 <center>RNN模型</center>
 
@@ -87,7 +87,7 @@ $$
 
 那么整个序列的概率就为$p(x)=\Pi_{t-1}^{T} p\left(x_{t} | x 1, \ldots, x_{t-1}\right)$
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/Seq2Seq-20201214-201033-991824.png)
+![](./images/Seq2Seq/Seq2Seq-20201214-201033-991824.png)
 
 <center>Seq2Seq模型</center>
 

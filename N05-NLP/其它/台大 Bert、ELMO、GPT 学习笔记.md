@@ -30,11 +30,11 @@ They stood on the river bank to fish.
 
 两个 RNN 训练完成后，取中间的 Hidden state，并拼接起来，得到最终的 Embedding，这个 Embedding 包含了上下文的信息。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/其它-20201214-201035-370964.png)
+![](./images/台大 Bert、ELMO、GPT 学习笔记/其它-20201214-201035-370964-1703349654797-1971.png)
 
 上面的图中只有一层 RNN，在实际中，可以设置多层的 RNN ，这样就会得到多个层对应的 Embedding。那这时应该选择哪些层的 Embedding 呢？ELMO 的做法是这些 Embedding 全都要，将每一层的 Embedding 加权求和，得到最终的 Embedding。这里的权值，是和具体的 NLP 任务一起训练得到的，比如 Coreference(找出指代词对应的词)、SQuAD(问答系统)、SST-5(文本情感分类)。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/其它-20201214-201035-373956.png)
+![](./images/台大 Bert、ELMO、GPT 学习笔记/其它-20201214-201035-373956.png)
 
 
 
@@ -46,7 +46,7 @@ Bert 就是 Transformer 的 Encoder 部分，全称是 Bidirectional Encoder Rep
 
 所以，BERT 的作用也是训练得到每个词的 Embedding。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/其它-20201214-201035-376847.png)
+![](./images/台大 Bert、ELMO、GPT 学习笔记/其它-20201214-201035-376847.png)
 
 训练 BERT 的方法包括两个：Masked LM 和 Next Sentence Prediction。
 
@@ -58,7 +58,7 @@ Bert 就是 Transformer 的 Encoder 部分，全称是 Bidirectional Encoder Rep
 - 然后把整句话输入到 BERT，得到每个词的 Embedding。
 - 把 MASK 位置的 Embedding，输入一个线性的分类器，根据 Embedding 预测这个位置的词是哪一个。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/其它-20201214-201035-393943.png)
+![](./images/台大 Bert、ELMO、GPT 学习笔记/其它-20201214-201035-393943.png)
 
 
 
@@ -70,7 +70,7 @@ Bert 就是 Transformer 的 Encoder 部分，全称是 Bidirectional Encoder Rep
 
 你可能有 一个疑问，为什么 CLS 的位置要放在句子的最开始，而不是最后面。这是因为 BERT 内部的 Self-Attention 可以连接整个上下文的信息。因此，CLS 放在句子的前面还是后面，是没有影响的。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/其它-20201214-201035-406883.png)
+![](./images/台大 Bert、ELMO、GPT 学习笔记/其它-20201214-201035-406883.png)
 
 在实际中，Bert 是可以和具体的任务，一起训练的。
 
@@ -84,7 +84,7 @@ BERT 可以用来做情感分类，文档分类等任务。
 
 具体是在文档最前面添加一个 CLS 的 token，然后整个文档经过 BERT 得到 Embedding，把 CLS 位置的 Embedding 输入到一个线性分类器做分类。其中 BERT 的网络可以使用别人已经训练好的参数做 fine-tune。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/其它-20201214-201035-414985.png)
+![](./images/台大 Bert、ELMO、GPT 学习笔记/其它-20201214-201035-414985.png)
 
 
 
@@ -92,7 +92,7 @@ BERT 可以用来做情感分类，文档分类等任务。
 
 在 Slot filling 中，每个词都有一个类别。只需要把句子经过 BERT 得到的每一个 Embedding 都输入到线性分类器中，对每一个词做分类。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/其它-20201214-201035-418846.png)
+![](./images/台大 Bert、ELMO、GPT 学习笔记/其它-20201214-201035-418846.png)
 
 
 
@@ -102,7 +102,7 @@ BERT 可以用来做情感分类，文档分类等任务。
 
 和第一个问题类似，也是在句子前面添加一个 CLS 的 token，然后把 CLS 位置的 Embedding 输入一个线性分类器。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/其它-20201214-201035-428916.png)
+![](./images/台大 Bert、ELMO、GPT 学习笔记/其它-20201214-201035-428916.png)
 
 
 
@@ -118,7 +118,7 @@ BERT 可以用来做情感分类，文档分类等任务。
 
 那么最终的答案就是 A=={ds,...,de}A=={ds,...,de}。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/其它-20201214-201035-491777.png)
+![](./images/台大 Bert、ELMO、GPT 学习笔记/其它-20201214-201035-491777.png)
 
 
 
@@ -139,7 +139,7 @@ BERT 可以用来做情感分类，文档分类等任务。
 
 论文地址：https://arxiv.org/abs/1904.09223
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/其它-20201214-201035-441959.png)
+![](./images/台大 Bert、ELMO、GPT 学习笔记/其它-20201214-201035-441959.png)
 
 
 
@@ -147,7 +147,7 @@ BERT 可以用来做情感分类，文档分类等任务。
 
 GPT 是 Generative Pre-Training，是 Transformer 的 Decoder 部分。也就是根据前一个词生成下一个词。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/其它-20201214-201035-523155.gif)
+![](./images/台大 Bert、ELMO、GPT 学习笔记/其它-20201214-201035-523155.gif)
 
 
 

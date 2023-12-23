@@ -45,9 +45,8 @@ d2l.show_trace_2d(f_2d, d2l.train_2d(rmsprop_2d))
 ```
 epoch 20, x1 -0.010599, x2 0.000000
 ```
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/优化器-20201215-224442-455367.png)
-</div>
+![](./images/N06-RMSProp算法/优化器-20201215-224442-455367-1703348085973-578.png)
+
 
 ## 7.6.2 从零开始实现
 
@@ -79,9 +78,8 @@ d2l.train_ch7(rmsprop, init_rmsprop_states(), {'lr': 0.01, 'gamma': 0.9},
 ```
 loss: 0.243452, 0.049984 sec per epoch
 ```
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/优化器-20201215-224442-459420.png)
-</div>
+![](./images/N06-RMSProp算法/优化器-20201215-224442-459420.png)
+
 
 ## 7.6.3 简洁实现
 
@@ -96,9 +94,8 @@ d2l.train_pytorch_ch7(torch.optim.RMSprop, {'lr': 0.01, 'alpha': 0.9},
 ```
 loss: 0.243676, 0.043637 sec per epoch
 ```
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/优化器-20201215-224442-462413.png)
-</div>
+![](./images/N06-RMSProp算法/优化器-20201215-224442-462413.png)
+
 
 ## 小结
 

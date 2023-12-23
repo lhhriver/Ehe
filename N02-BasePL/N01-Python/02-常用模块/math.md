@@ -604,7 +604,7 @@ math.radians(180)
 
 双曲函数 是基于双曲线而非圆来对三角函数进行模拟。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/02-常用模块-20201215-230732-377276.jpg)
+![](./images/math/02-常用模块-20201215-230732-377276.jpg)
 
 
 

@@ -13,7 +13,7 @@
 - 数据读取：对应于PyTorch 的 DataLoader。其中 DataLoader 包括 Sampler 和 DataSet。Sampler 的功能是生成索引， DataSet 是根据生成的索引读取样本以及标签。
 - 数据预处理：对应于 PyTorch 的 transforms。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-586341.png)
+![](./images/N0201-DataLoader 与 DataSet/深度之眼PyTorch框架班-20201215-224439-586341.png)
 
 
 # DataLoader 与 DataSet
@@ -310,13 +310,13 @@ def fetch(self, possibly_batched_index):
 
 PyTorch 数据读取流程图
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-589375.png)
+![](./images/N0201-DataLoader 与 DataSet/深度之眼PyTorch框架班-20201215-224439-589375.png)
 
 首先在 for 循环中遍历`DataLoader`，然后根据是否采用多进程，决定使用单进程或者多进程的`DataLoaderIter`。在`DataLoaderIter`里调用`Sampler`生成`Index`的 list，再调用`DatasetFetcher`根据`index`获取数据。在`DatasetFetcher`里会调用`Dataset`的`__getitem__()`方法获取真正的数据。这里获取的数据是一个 list，其中每个元素是 (img, label) 的元组，再使用 `collate_fn()`函数整理成一个 list，里面包含两个元素，分别是 img 和 label 的`tenser`。
 
 下图是我们的训练过程的 loss 曲线：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/深度之眼PyTorch框架班-20201215-224439-603299.png)
+![](./images/N0201-DataLoader 与 DataSet/深度之眼PyTorch框架班-20201215-224439-603299.png)
 
 
 **参考资料**

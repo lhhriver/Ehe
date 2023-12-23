@@ -26,9 +26,9 @@ VGGNet有A-E七种结构，从A-E网络逐步变深，但是参数量并没有�
 
 其中，D和E是常说的VGGNet-16和VGGNet-19。C很有意思，相比于B多了几个1×1的卷积层，1×1卷积的意义在于线性变换，而输入的通道数和输出的通道数不变，没有发生降维。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N07-VGGNet-20201215-224442-916353.png)
+![](./images/N07-VGGNet/N07-VGGNet-20201215-224442-916353-1703348295840-662.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N07-VGGNet-20201215-224442-934675.png)
+![](./images/N07-VGGNet/N07-VGGNet-20201215-224442-934675.png)
 
 **VGGNet网络配置情况：**   
 
@@ -81,11 +81,11 @@ VGGNet有A-E七种结构，从A-E网络逐步变深，但是参数量并没有�
 
 # 补充
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N07-VGGNet-20201215-224442-871522.png)
+![](./images/N07-VGGNet/N07-VGGNet-20201215-224442-871522.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N07-VGGNet-20201215-224442-885403.png)
+![](./images/N07-VGGNet/N07-VGGNet-20201215-224442-885403.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N07-VGGNet-20201215-224442-906376.png)
+![](./images/N07-VGGNet/N07-VGGNet-20201215-224442-906376.png)
 
         将5*5*3 换成 1*1 * n 相当于通道降维
     

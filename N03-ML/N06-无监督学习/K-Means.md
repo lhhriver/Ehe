@@ -36,7 +36,7 @@ $$
 
 K-Means采用的启发式方式很简单，用下面一组图就可以形象的描述。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/K-Means-20201215-223700-060272.png)
+![](./images/K-Means/K-Means-20201215-223700-060272-1703347036572-237.png)
 
 上图a表达了初始的数据集，假设k=2。在图b中，我们随机选择了两个k类所对应的类别质心，即图中的红色质心和蓝色质心，然后分别求样本中所有点到这两个质心的距离，并标记每个样本的类别为和该样本距离最小的质心的类别，如图c所示，经过计算样本和红色质心和蓝色质心的距离，我们得到了所有样本点的第一轮迭代后的类别。此时我们对我们当前标记为红色和蓝色的点分别求其新的质心，如图4所示，新的红色质心和蓝色质心的位置已经发生了变动。图e和图f重复了我们在图c和图d的过程，即将所有点的类别标记为距离最近的质心的类别并求新的质心。最终我们得到的两个类别如图f。
 
@@ -216,7 +216,7 @@ plt.scatter(X[:, 0], X[:, 1], marker='o')
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/K-Means-20201215-223700-074446.png)
+![](./images/K-Means/K-Means-20201215-223700-074446.png)
 
 
 
@@ -230,7 +230,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/K-Means-20201215-223700-093274.png)
+![](./images/K-Means/K-Means-20201215-223700-093274.png)
 
 
 
@@ -259,7 +259,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/K-Means-20201215-223700-108327.png)
+![](./images/K-Means/K-Means-20201215-223700-108327.png)
 
 
 
@@ -289,7 +289,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/K-Means-20201215-223700-122278.png)
+![](./images/K-Means/K-Means-20201215-223700-122278.png)
 
 
 
@@ -335,7 +335,7 @@ plt.show()
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/K-Means-20201215-223700-132319.png)
+![](./images/K-Means/K-Means-20201215-223700-132319.png)
 
 
 可见使用MiniBatchKMeans的聚类效果也不错，当然由于使用Mini Batch的原因，同样是k=4最优，KMeans类的Calinski-Harabasz Index分数为5924.05,而MiniBatchKMeans的分数稍微低一些，为5921.45。这个差异损耗并不大。

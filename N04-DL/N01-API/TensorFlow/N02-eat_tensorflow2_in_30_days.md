@@ -189,7 +189,7 @@ hello tensorflow2
 
 如果有想要获取本书的jupyter notebook源代码的小伙伴，也可以关注公众号，在后台回复关键字：**tf**，获取本书全部代码和数据集下载链接。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-319372.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-319372-1703347173952-393.jpg)
 
 
 
@@ -245,7 +245,7 @@ dftest_raw = pd.read_csv('https://gitee.com/liuhuihe/Ehe/raw/master/images/titan
 dftrain_raw.head(10)
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-073259.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-073259.jpg)
 
 
 字段说明：
@@ -280,7 +280,7 @@ ax.set_xlabel('Survived',fontsize = 15)
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-010591.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-010591.jpg)
 
 
 年龄分布情况
@@ -299,7 +299,7 @@ ax.set_xlabel('Age',fontsize = 15)
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-041162.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-041162.jpg)
 
 
 年龄和label的相关性
@@ -317,7 +317,7 @@ ax.set_xlabel('Age',fontsize = 15)
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-057168.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-057168.jpg)
 
 
 下面为正式的数据预处理
@@ -473,13 +473,13 @@ def plot_metric(history, metric):
 plot_metric(history,"loss")
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-026038.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-026038.jpg)
 
 ```python
 plot_metric(history,"AUC")
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084848-994879.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084848-994879.jpg)
 
 
 我们再看一下模型在测试集上的效果.
@@ -625,7 +625,7 @@ cifar2任务的目标是训练一个模型来对飞机airplane和机动车automo
 
 我们准备的Cifar2数据集的文件结构如下所示。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-975773.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-975773.jpg)
 
 
 
@@ -689,7 +689,7 @@ for i,(img,label) in enumerate(ds_train.unbatch().take(9)):
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-210945.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-210945.jpg)
 
 ```python
 for x,y in ds_train.take(1):
@@ -816,7 +816,7 @@ notebook.start("--logdir https://gitee.com/liuhuihe/Ehe/raw/master/images/keras_
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-195711.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-195711.jpg)
 
 ```python
 import pandas as pd 
@@ -828,7 +828,7 @@ dfhistory.index.name = 'epoch'
 dfhistory
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-165288.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-165288.jpg)
 
 ```python
 %matplotlib inline
@@ -853,13 +853,13 @@ def plot_metric(history, metric):
 plot_metric(history,"loss")
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-180703.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-180703.jpg)
 
 ```python
 plot_metric(history,"accuracy")
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-149319.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-149319.jpg)
 
 ```python
 #可以使用evaluate对数据进行评估
@@ -976,7 +976,7 @@ https://zhuanlan.zhihu.com/p/67697840
 我们此处介绍第二种方法。
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-832086.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-832086.jpg)
 
 ```python
 import numpy as np 
@@ -1347,7 +1347,7 @@ array([[0.7864823 ],
 本篇文章将利用TensorFlow2.0建立时间序列RNN模型，对国内的新冠肺炎疫情结束时间进行预测。
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-848310.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-848310.png)
 
 ### 准备数据
 
@@ -1356,7 +1356,7 @@ array([[0.7864823 ],
 
 《https://zhuanlan.zhihu.com/p/109556102》
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-305380.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-305380.png)
 
 
 
@@ -1377,7 +1377,7 @@ df.plot(x = "date",y = ["confirmed_num","cured_num","dead_num"],figsize=(10,6))
 plt.xticks(rotation=60)
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-352450.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-352450.png)
 
 ```python
 dfdata = df.set_index("date")
@@ -1389,7 +1389,7 @@ plt.xticks(rotation=60)
 dfdiff = dfdiff.drop("date",axis = 1).astype("float32")
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-320405.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-320405.png)
 
 ```python
 #用某日前8天窗口数据作为输入预测该日数据
@@ -1559,7 +1559,7 @@ def plot_metric(history, metric):
 plot_metric(history,"loss")
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-289241.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-289241.png)
 
 ### 使用模型
 
@@ -1572,7 +1572,7 @@ dfresult = dfdiff[["confirmed_num","cured_num","dead_num"]].copy()
 dfresult.tail()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-336443.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-336443.png)
 
 ```python
 #预测此后100天的新增走势,将其结果添加到dfresult中
@@ -1590,7 +1590,7 @@ dfresult.query("confirmed_num==0").head()
 # 注：该预测偏乐观
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-399935.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-399935.png)
 
 ```python
 
@@ -1603,7 +1603,7 @@ dfresult.query("cured_num==0").head()
 # 注: 该预测偏悲观，并且存在问题，如果将每天新增治愈人数加起来，将超过累计确诊人数。
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-383875.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-383875.png)
 
 ```python
 
@@ -1616,7 +1616,7 @@ dfresult.query("dead_num==0").head()
 # 该预测较为合理
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-368526.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-368526.png)
 
 ### 保存模型
 
@@ -1918,7 +1918,7 @@ print(id(v))
 
 - **虚线**通常可以表示控制依赖，即执行先后顺序。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-505772.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-505772.png)
 
 ### 静态计算图
 
@@ -2093,7 +2093,7 @@ with writer.as_default():
 %tensorboard --logdir https://gitee.com/liuhuihe/Ehe/raw/master/images/autograph/
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-506254.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-506254.jpg)
 
 
 
@@ -2347,7 +2347,7 @@ TensorFlow的层次结构从低到高可以分成如下五层。
 	如果把模型比作一个房子，那么第五层API就是模型本身，即【模型之屋】。
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-552178.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-552178.jpg)
 
 
 
@@ -2421,7 +2421,7 @@ def train(epoches):
 train(5000)
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-584455.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-584455.jpg)
 
 ```python
 ##使用autograph机制转换成静态图加速
@@ -2451,7 +2451,7 @@ def train(epoches):
 train(5000)
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-599715.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-599715.jpg)
 
 
 
@@ -2531,7 +2531,7 @@ def train(epoches):
 train(500)
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-678052.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-678052.jpg)
 
 
 
@@ -2573,7 +2573,7 @@ linear.add(layers.Dense(1,input_shape =(2,)))
 linear.summary()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-773623.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-773623.jpg)
 
 ```python
 ### 使用fit方法进行训练
@@ -2585,7 +2585,7 @@ tf.print("w = ",linear.layers[0].kernel)
 tf.print("b = ",linear.layers[0].bias)
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-757545.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-757545.jpg)
 
 
 
@@ -2656,7 +2656,7 @@ model.build(input_shape =(None,2))
 model.summary()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-789127.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-789127.jpg)
 
 ```python
 ### 自定义训练循环(专家教程)
@@ -2721,7 +2721,7 @@ train_model(model,ds_train,ds_valid,400)
 
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-804876.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-804876.jpg)
 
 
 
@@ -4608,7 +4608,7 @@ demo2.addprint(tf.constant(5.0))
 !saved_model_cli show --dir https://gitee.com/liuhuihe/Ehe/raw/master/images/demo/1 --all
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-785062.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-785062.jpg)
 
 
 
@@ -4652,7 +4652,7 @@ notebook.list()
 notebook.start("--logdir https://gitee.com/liuhuihe/Ehe/raw/master/images/demomodule/")
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-052414.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-052414.jpg)
 
 
 
@@ -4982,7 +4982,7 @@ for i,(img,label) in enumerate(ds3.unbatch().take(9)):
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-884440.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-884440.jpg)
 
 
 
@@ -5070,7 +5070,7 @@ for i,(img,label) in enumerate(ds6.map(load_image).take(2)):
     plt.yticks([])
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-850726.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-850726.jpg)
 
 
 
@@ -5128,7 +5128,7 @@ for i,(img,label) in enumerate(ds7.take(9)):
 plt.show()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-866716.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-866716.jpg)
 
 
 
@@ -5708,7 +5708,7 @@ tf.print(tf.constant("end vector transformation..."))
 注意：所有的Catogorical Column类型最终都要通过indicator_column转换成Dense Column类型才能传入模型！
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-816117.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-816117.jpg)
 
 
 * numeric_column 数值列，最常用。
@@ -5943,7 +5943,7 @@ _________________________________________________________________
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-898180.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-898180.jpg)
 
 
 
@@ -5967,39 +5967,39 @@ _________________________________________________________________
 
 1. tf.nn.sigmoid：将实数压缩到0到1之间，一般只在二分类的最后输出层使用。主要缺陷为存在梯度消失问题，计算复杂度高，输出不以0为中心。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-443065.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-443065.png)
 
 2. tf.nn.softmax：sigmoid的多分类扩展，一般只在多分类问题的最后输出层使用。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-489513.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-489513.jpg)
 
 3. tf.nn.tanh：将实数压缩到-1到1之间，输出期望为0。主要缺陷为存在梯度消失问题，计算复杂度高。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-537002.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-537002.png)
 
 4. tf.nn.relu：修正线性单元，最流行的激活函数。一般隐藏层使用。主要缺陷是：输出不以0为中心，输入小于0时存在梯度消失问题(死亡relu)。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-396741.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-396741.png)
 
 5. tf.nn.leaky_relu：对修正线性单元的改进，解决了死亡relu问题。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-239827.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-239827.png)
 
 6. tf.nn.elu：指数线性单元。对relu的改进，能够缓解死亡relu问题。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-068530.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-068530.png)
 
 7. tf.nn.selu：扩展型指数线性单元。在权重用tf.keras.initializers.lecun_normal初始化前提下能够对神经网络进行自归一化。不可能出现梯度爆炸或者梯度消失问题。需要和Dropout的变种AlphaDropout一起使用。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-412287.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-412287.png)
 
 8. tf.nn.swish：自门控激活函数。谷歌出品，相关研究指出用swish替代relu将获得轻微效果提升。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-521818.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-521818.png)
 
 9. gelu：高斯误差线性单元激活函数。在Transformer中表现最好。tf.nn模块尚没有实现该函数。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-099992.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-099992.png)
 
 
 
@@ -6424,7 +6424,7 @@ TPR曲线实际上就是正样本的累积分布曲线(CDF)，FPR曲线实际上
 
 KS指标就是正样本和负样本累积分布曲线差值的最大值。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-223853.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-223853.png)
 
 ```python
 import numpy as np
@@ -6800,7 +6800,7 @@ TensorFlow的高阶API主要是tensorflow.keras.models.
 
 如果对本书内容理解上有需要进一步和作者交流的地方，欢迎在公众号"Python与算法之美"下留言。作者时间和精力有限，会酌情予以回复。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-319372.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-319372-1703347173964-443.jpg)
 ## 构建模型的3种方法
 
 可以使用以下3种方式构建模型：使用Sequential按层顺序构建模型，使用函数式API构建任意结构模型，继承Model基类构建自定义模型。
@@ -6871,7 +6871,7 @@ model.compile(optimizer='Nadam',
 model.summary()
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-427502.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-427502.png)
 
 ```python
 import datetime
@@ -6909,7 +6909,7 @@ plot_metric(history,"AUC")
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-944785.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-944785.jpg)
 
 
 
@@ -6994,7 +6994,7 @@ ________________________________________________________________________________
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-084302.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-084302.png)
 
 ```python
 import datetime
@@ -7025,7 +7025,7 @@ Epoch 6/6
 plot_metric(history,"AUC")
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-914037.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-914037.jpg)
 
 
 
@@ -7135,7 +7135,7 @@ Non-trainable params: 0
 _________________________________________________________________
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-271969.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-271969.png)
 
 
 
@@ -7169,7 +7169,7 @@ Epoch 6/6
 plot_metric(history,"AUC")
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084849-929330.jpg)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-929330.jpg)
 
 
 
@@ -8481,7 +8481,7 @@ linear.save(export_path+version, save_format="tf")
 
 模型文件信息中这些标红的部分都是后面有可能会用到的。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-800334.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-800334.png)
 
 
 
@@ -8550,7 +8550,7 @@ Array(Array(3.019596), Array(3.9878292))
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-597073.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-597073.png)
 
 
 
@@ -8611,7 +8611,7 @@ Array(Array(3.019596), Array(3.9264367), Array(7.8607616), Array(15.974984))
 ```
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/eat_tensorflow2_in_30_days-20210118-084850-613118.png)
+![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-613118.png)
 
 
 

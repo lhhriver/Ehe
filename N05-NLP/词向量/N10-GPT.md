@@ -1,6 +1,6 @@
 OpenAI 2018 年的论文《Improving Language Understanding by Generative Pre-Training》，截止目前共有 600 多引用。在这篇论文中，作者提出了一种**半监督学习方法**——**Generative Pre-Training**（以下简称 GPT），**GPT 采用无监督学习的 Pre-training 充分利用大量未标注的文本数据，利用监督学习的 Fine-tuning 来适配具体的具体的 NLP 任务（如机器翻译）**，并在 12 个 NLP 任务中刷新了 9 个记录。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-GPT-20201214-201039-065771.jpg)
+![](./images/N10-GPT/N06-GPT-20201214-201039-065771-1703349535417-1691.jpg)
 
 # Introduction
 
@@ -21,7 +21,7 @@ GPT 训练过程分为两个阶段：
 
 下图为 GPT 的架构图：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-GPT-20201214-201041-093034.png)
+![](./images/N10-GPT/N06-GPT-20201214-201041-093034.png)
 
 ## **Pre-training**
 
@@ -80,7 +80,7 @@ $$
 
 对输入转换可以避免了兼容不同任务，防止对模型进行大量更改，所有的转换包括添加随机初始化的开始标记（<s\>）和结束标记(<e\>)。下图提供了一个可视化说明：
 
-![image-20220419142510453](https://gitee.com/liuhuihe/Ehe/raw/master/2022/image-20220419142510453.png)
+![image-20220419142510453](./images/N10-GPT/image-20220419142510453.png)
 
 上图是对不同任务进行微调的输入转换。将所有的结构化输入转换为 Token 序列，然后使用预训练模型（Transformer）进行处理，最后使用线性和 Softmax 层完成特定的监督学习任务。
 
@@ -99,19 +99,19 @@ $$
 
 下图展示了推理任务的实验结果：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-GPT-20201214-201039-075340.jpg)
+![](./images/N10-GPT/N06-GPT-20201214-201039-075340.jpg)
 
 下图展示了问题回答和常识推理的实验结果：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-GPT-20201214-201039-293823.jpg)
+![](./images/N10-GPT/N06-GPT-20201214-201039-293823.jpg)
 
 下图展示了语义相似度和分类的实验结果：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-GPT-20201214-201039-795903.jpg)
+![](./images/N10-GPT/N06-GPT-20201214-201039-795903.jpg)
 
 下图左边展示的预训练语言模型中 Transformer 层数对结果的影响；右图展示了预训练不用 Fine-tuning 而直接使用预训练网络来解决多种类型任务的结果，横坐标为更新次数，纵坐标为模型相对表现：
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-GPT-20201214-201040-415718.jpg)
+![](./images/N10-GPT/N06-GPT-20201214-201040-415718.jpg)
 
 
 

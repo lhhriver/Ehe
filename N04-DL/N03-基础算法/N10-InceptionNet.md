@@ -5,11 +5,11 @@
 
 # V1结构
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N10-InceptionNet-20201215-224443-294681.png)
+![](./images/N10-InceptionNet/N10-InceptionNet-20201215-224443-294681-1703348390214-698.png)
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N10-InceptionNet-20201215-224443-315730.png)
+![](./images/N10-InceptionNet/N10-InceptionNet-20201215-224443-315730.png)
 
 Inception优势
 
@@ -18,37 +18,37 @@ Inception优势
 
 ## V1结构的卷积计算量
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N10-InceptionNet-20201215-224443-619106.png)
+![](./images/N10-InceptionNet/N10-InceptionNet-20201215-224443-619106.png)
 
 参数个数
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N10-InceptionNet-20201215-224443-624044.png)
+![](./images/N10-InceptionNet/N10-InceptionNet-20201215-224443-624044.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N10-InceptionNet-20201215-224443-636018.png)
+![](./images/N10-InceptionNet/N10-InceptionNet-20201215-224443-636018.png)
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N10-InceptionNet-20201215-224443-424714.png)
+![](./images/N10-InceptionNet/N10-InceptionNet-20201215-224443-424714.png)
 
 # V2结构
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N10-InceptionNet-20201215-224443-464852.png)
+![](./images/N10-InceptionNet/N10-InceptionNet-20201215-224443-464852.png)
 
 用两个3×3替换5×5
 
 # V3结构
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N10-InceptionNet-20201215-224443-543202.png)
+![](./images/N10-InceptionNet/N10-InceptionNet-20201215-224443-543202.png)
 
 用一个1×3和一个3×1替换3×3
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N10-InceptionNet-20201215-224443-583121.png)
+![](./images/N10-InceptionNet/N10-InceptionNet-20201215-224443-583121.png)
 
 # V4结构
 
 inceptionNet和ResNet组合
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N10-InceptionNet-20201215-224443-602083.png)
+![](./images/N10-InceptionNet/N10-InceptionNet-20201215-224443-602083.png)
 
 # 基于TensorFlow的V1结构代码实现
 
