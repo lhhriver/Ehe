@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="static/img/ehe.jpg">
+    <title>DV</title>
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+            cursor: url(static/img/cursor.ico), auto;
+        }
+
+        span {
+            display: block;
+            font-size: 1000%;
+            line-height: normal;
+            width: 100%;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script> -->
+    <script src="static/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        var wl = new Array(
+            "AD$模拟设计工程师",
+            "ADC$模拟信号到数字信号的转换电路，同A/D",
+            "ADC-Analog to Digital Convert$模拟信号到数字信号的转换电路",
+            "AHB/APB/ASB/AXI$ARM公司推出的总线规范",
+            "AHB-Advanced High Performance Bus$ARM公司推出的AMBA总线规范之一，主要用于高性能模块(如CPU、DMA和DSP等)之间的连接",
+            "ALU$arithmetic and logic unit，算术逻辑单元",
+            "APR$Auto Place and Route，自动布局布线",
+            "ARM-Acorn RISC Machine$英国ARM公司",
+            "ASIC$Application Specific Integrated Circuit，专用集成电路",
+            "ASIC-Application Special Integrated Circuit$专用集成电路",
+            "ATPG$Auto Test Pattern Generator，测试向量自动生成工具，是DFT中的常见流程",
+            "ATPG-Auto Test Pattern Generator$测试向量自动生成工具",
+            "AXI-Advanced eXtensible Interface$ARM公司推出的AMBA总线规范之一",
+            "BE$Back End，IC设计中的后端流程",
+            "Binary$二进制",
+            "BIST$Build in System Test，内建自测试，在芯片内部产生测试码，对测试的结果进行分析。",
+            "CAD$计算机辅助设计工具",
+            "CAN$Controller Area Network，是ISO国际标准化的串行通信协议",
+            "CDC$跨时钟域检查",
+            "CDC-clock domain crossing$异步时钟时序检查",
+            "CDM$元件充电模型",
+            "Chip$芯片",
+            "Chiplet$芯粒，是指预先制造好、具有特定功能、可组合集成的晶片",
+            "CIN$（Carry INput）进位输入",
+            "CMOS$制造大规模集成电路芯片用的一种技术或用这种技术制造出来的芯片",
+            "counter_top$顶层",
+            "COUT$（Carry OUTput）进位输出",
+            "COVERAGE$覆盖率，数字验证常用术语，主要有代码覆盖率和功能覆盖率等",
+            "CP$Circuit Probing、Chip Probing，晶圆测试",
+            "CPLD$复杂可编程器件",
+            "CPU$中央处理器",
+            "CTS$时序树综合",
+            "CVD$化学气相沉积",
+            "DAC$数字信号到模拟信号的转换电路，同D/A",
+            "DC$Synopsys公司的数字综合工具",
+            "DC-design compiler$synopsys公司的数字综合工具",
+            "DE$数字设计工程师",
+            "Decimal$十进制",
+            "Delay$延迟，指元器件的延迟，也可用来指项目进度的延迟",
+            "Design house$芯片设计公司",
+            "Design service$芯片设计服务公司",
+            "DFT$芯片可测性设计",
+            "DMA-Direct Memory Access$直接内存存取",
+            "DRAM$动态随机存取存储器",
+            "DRAM-Dynamic Random Access Memory$动态随机存取存储器,最为常见的系统内存",
+            "DRC$设计规则检查",
+            "DRC-Design Rule Check$生成版图后检查其是否符合工艺厂提供的设计规则,如宽度、间距、面积等。",
+            "DSP$数字信号处理",
+            "DUT/DUV$待测试的设计模块",
+            "DUT-design under test$待测试的设计模块",
+            "DUV$深紫外光刻",
+            "DUV-design under verification$和DUT的意思类似",
+            "DV$数字验证工程师",
+            "DVE$可视化仿真环境",
+            "EDA$电子设计自动化工具",
+            "EDA-Electronic Design Automation$电子设计自动化",
+            "EE$设备工程师",
+            "ERC$电气规则检查",
+            "EUV$极深紫外光刻",
+            "Fabless$芯片设计公司，也叫DesignHouse",
+            "FE$IC设计中的前端流程",
+            "FinFET$鳍式场效应晶体管",
+            "Flash$闪存",
+            "Flip-Flop$触发器",
+            "FM$形式验证",
+            "FM-forma$形式验证，网表与verilog进行比较",
+            "Foundry$指芯片制造加工厂的代工业务，负责将设计完成的芯片生产出来",
+            "FPGA$现场可编程逻辑门阵列，由PAL/GAL等早期可编程逻辑器件发展而来",
+            "FPGA-Field Programmable Gate Array$现场可编程门阵列，与ASIC流程相对应",
+            "FSDB$数字IC设计中常用的波形文件格式",
+            "FSM-Finite state machine$数字逻辑设计中的有限自动状态机",
+            "FT$Final Test，芯片在封装完成以后最终的功能和性能测试",
+            "Full Mask$全掩膜，一种流片方式",
+            "FULLCHIP-fullchip level$常用于数字前端设计和验证，指系统级和芯片级",
+            "GAA$Gate-All-Around FET，全环绕栅极晶体管",
+            "GDSII$版图layout的文件格式",
+            "GLS$gate-level simulation，数字验证中的门级仿真",
+            "GLS-gate level simulation$指数字验证中的门级仿真",
+            "GPIO$通用输入/输出，总线扩展器",
+            "GPIO-General Purpose Input Output$通用输入/输出，总线扩展器",
+            "GPU$图形处理器",
+            "HDL$Hardware Description Language，硬件描述语言",
+            "HDMI$高清晰度多媒体接口",
+            "Hex$十六进制",
+            "HVL$Hardware Verification Language，硬件验证语言",
+            "I/O$数据在内部存储器和外部存储器或其他周边设备之间的输入和输出",
+            "I2C$Philips公司开发的一种简单、双向二线制同步串行总线",
+            "I2C-Inter-Integrated Circuit$IIC是一种常用的多向控制总线，简单，只有两根线",
+            "IC$集成电路",
+            "ICC$Synopsys公司的自动布局布线软件",
+            "ICC-IC Compiler$synopsys公司用于自动布局布线的一款软件",
+            "IC-Integrated Circuit$集成电路",
+            "IDM$半导体垂直整合型公司",
+            "IEEE$电气与电子工程师协会",
+            "IEEE-Institute of Electrical and Electronics Engineers$电气和电子工程师协会",
+            "IGBT$绝缘栅双极型晶体管",
+            "INNOVUS$cadence公司的数字版图实现工具",
+            "IP$网络协议",
+            "IP core$知识产权核，特指IC中硬件描述语言程序为基础的电路",
+            "IP Vendor$IP供应商",
+            "IP-Intellectual Property$知识产权，数字IC设计中一般将最小的设计模块成为IP",
+            "ISSCC$集成电路设计领域最高级别会议",
+            "JTAG$国际标准测试协议（IEEE 1149.1），主要用于芯片内部测试。",
+            "Layout$版图",
+            "LPS$低功耗仿真",
+            "LSI$Large Scale Integration，大规模集成电路，逻辑门1011k个或晶体管1,00110k个。",
+            "LSI-Large-scale intergrated circuit$大规模集成电路",
+            "LUT$Look-Up-Table，显示查找表，本质上是一个RAM",
+            "LUT-Look Up Table$查找表，用于存一些数据，本质就是一个RAM",
+            "LVS$版图与电路图一致性检查",
+            "MCDF$多通道数据整形器",
+            "MCU$单片微型计算机",
+            "MCU-Microcontroller unit$微控制器，主控模块",
+            "Memory$内存",
+            "MEMS$Micro-Electro-Mechanical System，微机电系统、传感器",
+            "MIPI -Mobile Industry Processor Interface$移动产业处理器接口",
+            "MIPS$一种基于RISC指令架构",
+            "Modelsim$mentor公司的数字前端仿真工具，也叫QUESTASIM",
+            "Module$模块",
+            "MOS$MOSFET，金属-氧化物半导体场效应晶体管",
+            "MPW$多项目晶圆，一种流片形式，把多个使用相同工艺的集成电路设计放在同一晶圆片上流片",
+            "MPW-Multiple Project Wafer$多项目晶圆投片，指在同一种工艺的不同芯片放在同一块晶圆(Wafer)上流片，是小公司节省成本的有效手段",
+            "MSB-Most Significant Bit$一个多bit数据的最高有效位，相对应的概念是LSB",
+            "MSI$Medium Scale Integration，中型集成电路，逻辑门11100个或晶体管1011k个。",
+            "MUX$数据选择器(multiplexer)",
+            "NCSIM$cadence公司的数字前端仿真工具",
+            "NDR-Non-Default Route$非默认连线规则，版图实现中的重要概念",
+            "Netlist$门级网表",
+            "NFC$一种近距离无线通讯技术",
+            "NoC$Network on Chip，片上网络，在单个芯片上实现的基于网络通信的电子系统",
+            "NRE$集成电路生产成本中非经常性发生的开支",
+            "OCP-Open Core Protocol$一个高效的、总线独立的、可配置和高度可扩展的接口协议",
+            "Octal$八进制",
+            "OPC$光刻工艺修正",
+            "PAD$指芯片的input/output 端口",
+            "PAE$process antenna effect，天线效应，芯片制造过程中产生的效应",
+            "PBA-Path-based analyze$基于路径的时序分析",
+            "PCIe-Peripheral Component Interconnect Express$外设组件互连标准，一种常见的总线标准",
+            "PD$Physical design，物理设计，一般指数字后端的版图设计",
+            "PD-Physical design$物理设计，一般指数字后端的版图设计",
+            "Perl$数字IC设计中常用的脚本语言",
+            "PLL$Phase Locked Loop，锁相环，一般用于时钟性倍频电路",
+            "PLL-Phase Locked Loop$锁相环，一般用于时钟性倍频电路，用来产生时钟clock",
+            "PMIC$Power Management IC，电源管理集成电路",
+            "Power$功率",
+            "PT$Synopsys公司的静态时序分析工具",
+            "PT-prime time$synopsys公司的静态时序分析工具",
+            "PV$Physical verification，物理验证，数字版图实现后需要做的验证",
+            "PV-Physical verification$物理验证，数字版图实现后需要做的验证",
+            "Python$常用的脚本语言",
+            "RAM$随机存取存储器",
+            "RAM-Random Access Memory$随机存储器",
+            "REGRESSION$回归测试，简单来说就是讲所有的测试用例不断的重复的跑，直到没有错误稳定一段时间",
+            "RF$发射频率，简称射频",
+            "RISC$精简指令集",
+            "RISC-V$一种基于RISC开源指令架构",
+            "ROM$只读存储器",
+            "ROM-Read Only Memory$只读存储器，具有非易失性。",
+            "RTL$Real Time Logistics，寄存器转换级电路",
+            "RTL-Register Transformation Level$寄存器传输级，多指使用verilog来描述的层次",
+            "SCAN$扫描测试，检测芯片制造过程中经常会出现的失效问题。",
+            "Shell$数字IC设计常用的一种脚本语言",
+            "SI$信号完整性",
+            "SI -Signal Integrity$信号完整性",
+            "signoff$验收机制，验收标准",
+            "Simulation$仿真",
+            "SoC$系统级芯片",
+            "SoC-System on Chip$片上系统，一般指规模比较大的芯片，大多含有CPU/MCU等",
+            "Spec$芯片规格说明书",
+            "SPEC-specification$说明书，规范，每个岗位工程师都要写相应的spec",
+            "SPI-Serial Peripheral Interface$串行外设接口，是一种高速的，全双工，同步的通信总线",
+            "SRAM$静态随机存取存储器",
+            "SRAM-Static Random Access Memory$静态随机存取存储器",
+            "SSI$Small Scale Integration，小型集成电路，逻辑门10个以下或 晶体管100个以下。",
+            "STA$静态时序分析",
+            "STA-Static Timing Analysis$静态时序分析，数字IC设计流程中的重要环节",
+            "SV$System Verilog，芯片验证语言",
+            "SV-systemverilog$主流的数字验证语言",
+            "Tapout$流片，将最终的版图文件送到工艺厂去生产",
+            "TCL$数字IC设计端会用到的一种脚本语言",
+            "TCL-Tool Command Language$工具命令语言。数字端设计中常用的脚本语言",
+            "tessent$mentor公司的DFT工具，市场占有率很高",
+            "Test case$测试用例",
+            "Testbench$测试平台，数字验证搭建用来测试的平台",
+            "Test-bench$数字验证搭建用来测试的平台",
+            "TTL-Transistor-Transistor Logic$TTL电平标准，规定+5V等价于逻辑1，0V等价于逻辑0",
+            "UART$通用异步收发传输器",
+            "UART-Universal Asynchronous Receiver/Transmitter$通用异步收发传输器，一种常见的IP模块",
+            "ULSI$Ultra Large Scale Integration，极大规模集成电路，逻辑门10,0011M个或晶体管100,00110M个。",
+            "USB$通用串行总线",
+            "USB-Universal Serial Bus$通用串行总线，一种高速的连接外设的总线协议",
+            "UVM$主流的数字验证方法学",
+            "UVM-Universal Verification Methodology$主流的数字验证方法学，基于systemverilog",
+            "VCD-value change dump$一个通用的波形文件格式，信息详细，但文件较大",
+            "VCS$synopsys公司的数字前端仿真工具",
+            "Verdi$synopsys公司的数字前端debug工具",
+            "Verification$芯片功能验证",
+            "Verilog$常用的硬件描述语言",
+            "VHDL$硬件描述语言，与Verilog相似，但不常用",
+            "VHDL-VHSIC(Very High Speed IC) Hardware Description Language$一种硬件描述语言，和verilog类似",
+            "Vivado-Vivado$FPGA厂商赛灵思公司2012年发布的集成设计环境",
+            "VLSI$Very large scale integration，超大规模集成电路",
+            "VLSI-Very-large-scale integrated circuit$超大规模集成电路",
+            "Wafer$晶圆",
+            "WAT$Wafer Acception Test，晶圆可接受度测试",
+            "Yield$良率"
+        );
+    </script>
+
+    <script type="text/javascript">
+        var len = wl.length;
+        var a_idx = 0;
+
+        jQuery(document).ready(function ($) {
+            $("body").click(function (e) {
+                var a_idx = Math.floor((Math.random() * len));
+                var str = wl[a_idx];
+                var word_len = str.indexOf('$');
+                var str_a = str.substring(0, word_len);
+                var str_b = str.substring(word_len + 1);
+                var $i = $("<span></span>").text(str_a);
+                var $j = $("<span></span>").text(str_b);
+
+                //var dx = $(window).width(); //定义视图宽度
+                //var dy = $(window).height(); //定义视图高度
+                //var x = dx * 0.1 + Math.random() * dx * 0.8;
+                //var y = dy * 0.1 + Math.random() * dy * 0.9;
+                var x = e.pageX, y = e.pageY;
+
+                $i.css({
+                    "z-index": 9999,
+                    "top": y - 100,
+                    "left": x - 6 * str_a.length,  // 左移
+                    "position": "absolute",
+                    "font-weight": "bold",
+                    "font-size": 26,
+                    "color": "rgb(" + ~~(200 * Math.random()) + "," + ~~(200 * Math.random()) + "," + ~~(200 * Math.random()) + ")"
+                });
+
+                $j.css({
+                    "z-index": 9999,
+                    "top": y - 60, //上移
+                    "left": x - 6 * str_a.length,  // 右移
+                    "position": "absolute",
+                    "font-weight": "bold",
+                    "font-size": 26,
+                    "color": "rgb(" + ~~(200 * Math.random()) + "," + ~~(200 * Math.random()) + "," + ~~(200 * Math.random()) + ")"
+                });
+
+                $("body").append($i);
+                $("body").append($j);
+
+                $i.animate({
+                    "top": y - 200,
+                    "opacity": 0
+                },
+                    2000 + 200 * word_len,
+                    function () {
+                        $i.remove();
+                    });
+
+                $j.animate({
+                    "top": y - 180,
+                    "opacity": 0
+                },
+                    2000 + 200 * word_len,
+                    function () {
+                        $j.remove();
+                    });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var minSize = 10; //最小字体
+            var maxSize = 20;//最大字体
+            var newOne = 1000 + Math.random() * 3000; //生成雪花间隔
+            var flakColor = "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+            var a = new Array("🐉", "🎸", "💯", "🐇", "💘", "🚲", "🚤", "🚁", "🚀", "🍉", "🏡", "🔥", "💰", "🍀", "🌹", "🌕", "🌙", "🌛", "🌜", "☀", "🌝", "🌞", "⭐", "🌟", "☁", "⛅", "⚡", "🔥", "❄");
+            var a_idx = Math.floor((Math.random() * a.length));
+            var flak = $("<div></div>").css({ position: "absolute", "top": "0px" }).html(a[a_idx]);
+            var dhight = $(window).height(); //定义视图高度
+            var dw = $(window).width(); //定义视图宽度
+            setInterval(function () {
+                var sizeflak = minSize + Math.random() * maxSize; //产生大小不等的雪花
+                var startLeft = Math.random() * dw; //雪花生成是随机的left值
+                var startOpacity = 0.7 + Math.random() * 0.3; //随机透明度
+                var endTop = Math.random() * dhight; //雪花停止top的位置
+                var endLeft = Math.random() * dw; //雪花停止的left位置
+                var durationfull = 5000 + Math.random() * 3000; //雪花飘落速度不同
+                flak.clone().appendTo($("body")).css({
+                    "left": startLeft,
+                    "opacity": startOpacity,
+                    "font-size": sizeflak,
+                    "color": flakColor
+                }).animate({
+                    "top": endTop,
+                    "left": endLeft,
+                    "apacity": 0.1
+                },
+                    durationfull, function () {
+                        $(this).remove()
+                    });
+            },
+                newOne);
+        }
+    </script>
+</head>
+
+<body>
+    <!-- <script src="https://blog-static.cnblogs.com/files/zouwangblog/mouse-click.js"></script> -->
+    <script src="static/js/mouse-click.js"></script>
+    <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 2147483647; pointer-events: none;"></canvas>
+</body>
+
+</html>

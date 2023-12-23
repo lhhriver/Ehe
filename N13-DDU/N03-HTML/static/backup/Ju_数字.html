@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="static/img/ehe.jpg">
+    <title>数字</title>
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+            cursor: url(static/img/cursor.ico),auto;
+        }
+
+        span {
+            display: block;
+            font-size: 1000%;
+            line-height: normal;
+            width: 100%;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script> -->
+    <script src="static/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        var wl = new Array(
+            "1$一",
+            "2$二",
+            "3$三",
+            "4$四",
+            "5$五",
+            "6$六",
+            "7$七",
+            "8$八",
+            "9$九",
+            "0$零"
+        );
+    </script>
+
+    <script type="text/javascript">
+        var len = wl.length;
+        var a_idx = 0;
+
+        jQuery(document).ready(function ($) {
+            $("body").click(function (e) {
+                var a_idx = Math.floor((Math.random() * len));
+                var str = wl[a_idx];
+                var word_len = str.indexOf('$');
+                var str_a = str.substring(0, word_len);
+                var str_b = str.substring(word_len + 1);
+                var $i = $("<span></span>").text(str_a);
+                var $j = $("<span></span>").text(str_b);
+
+                //var dx = $(window).width(); //定义视图宽度
+                //var dy = $(window).height(); //定义视图高度
+                //var x = dx * 0.1 + Math.random() * dx * 0.8;
+                //var y = dy * 0.1 + Math.random() * dy * 0.9;
+                var x = e.pageX, y = e.pageY;
+
+                $i.css({
+                    "z-index": 9999,
+                    "top": y - 80,
+                    "left": x - 80 * str_a.length,  // 左移
+                    "position": "absolute",
+                    "font-weight": "bold",
+                    "font-size": 68,
+                    "color": "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+                });
+
+                $j.css({
+                    "z-index": 9999,
+                    "top": y - 80, //上移
+                    "left": x + 10 * str_a.length,  // 右移
+                    "position": "absolute",
+                    "font-weight": "bold",
+                    "font-size": 68,
+                    "color": "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+                });
+
+                $("body").append($i);
+                $("body").append($j);
+
+                $i.animate({
+                    "top": y - 180,
+                    "opacity": 0
+                },
+                    2000 + 200 * word_len,
+                    function () {
+                        $i.remove();
+                    });
+
+                $j.animate({
+                    "top": y - 180,
+                    "opacity": 0
+                },
+                    2000 + 200 * word_len,
+                    function () {
+                        $j.remove();
+                    });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var minSize = 10; //最小字体
+            var maxSize = 20;//最大字体
+            var newOne = 1000 + Math.random() * 3000; //生成雪花间隔
+            var flakColor = "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+            var a = new Array("🐉", "🎸", "💯", "🐇", "💘", "🚲", "🚤", "🚁", "🚀", "🍉", "🏡", "🔥", "💰", "🍀", "🌹", "🌕", "🌙", "🌛", "🌜", "☀", "🌝", "🌞", "⭐", "🌟", "☁", "⛅", "⚡", "🔥", "❄");
+            var a_idx = Math.floor((Math.random() * a.length));
+            var flak = $("<div></div>").css({ position: "absolute", "top": "0px" }).html(a[a_idx]);
+            var dhight = $(window).height(); //定义视图高度
+            var dw = $(window).width(); //定义视图宽度 -Math.random()*6
+            setInterval(function () {
+                var sizeflak = minSize + Math.random() * maxSize; //产生大小不等的雪花
+                var startLeft = Math.random() * dw; //雪花生成是随机的left值
+                var startOpacity = 0.7 + Math.random() * 0.3; //随机透明度
+                var endTop = Math.random() * dhight; //雪花停止top的位置 -Math.random()*6
+                var endLeft = Math.random() * dw; //雪花停止的left位置
+                var durationfull = 5000 + Math.random() * 3000; //雪花飘落速度不同
+                flak.clone().appendTo($("body")).css({
+                    "left": startLeft,
+                    "opacity": startOpacity,
+                    "font-size": sizeflak,
+                    "color": flakColor
+                }).animate({
+                    "top": endTop,
+                    "left": endLeft,
+                    "apacity": 0.1
+                },
+                    durationfull, function () {
+                        $(this).remove()
+                    });
+            },
+                newOne);
+        }
+    </script>
+</head>
+
+<body>
+    <!-- <script src="https://blog-static.cnblogs.com/files/zouwangblog/mouse-click.js"></script> -->
+    <script src="static/js/mouse-click.js"></script>
+    <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 2147483647; pointer-events: none;"></canvas>
+</body>
+
+</html>

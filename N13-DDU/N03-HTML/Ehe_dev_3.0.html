@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="static/img/ehe.jpg">
+    <title>🔖 天天向上</title>
+
+    <style>
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 28px;
+            /* 设置滚动条宽度 */
+        }
+
+        /* 滚动条轨道样式 */
+        ::-webkit-scrollbar-track {
+            background-color: #ffff;
+            /* 设置滚动条的轨道颜色 */
+        }
+
+        /* 滚动条滑块样式 */
+        ::-webkit-scrollbar-thumb {
+            background-color: #ffff;
+            /* 设置滚动条的滑块颜色 */
+            border-radius: 5px;
+            /* 设置滚动条滑块的圆角半径 */
+        }
+
+        /* 鼠标悬停时滚动条滑块样式 */
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #5a5555;
+            /* 设置鼠标悬停时滚动条的滑块颜色 */
+        }
+
+        /* 滚动条按钮样式 */
+        ::-webkit-scrollbar-button {
+            display: none;
+            /* 隐藏滚动条按钮 */
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+            background-color: #ffff;
+            /*#1e1e1e、#ffff*/
+            cursor: url(static/img/cursor.ico), auto;
+            overflow-X: hidden;
+        }
+
+        div {
+            font-size: 18px;
+            color: darkslategrey;
+            /*margin-left: 4em;*/
+        }
+
+        .left-container {
+            position: relative;
+            float: left;
+            z-index: 99999;
+            /* 要在$i 之上， mouse之下*/
+            margin-left: 0em;
+        }
+
+        .dropdown-container {
+            position: relative;
+            float: right;
+            z-index: 99999;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hide {
+            visibility: hidden;
+        }
+    </style>
+
+    <!-- <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script> -->
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="static/data/all_data_code.js"></script>
+
+    <script type="text/javascript">
+        var cls = "words";
+        var s = 1;
+        var e = 0;
+        var top_i = 0;
+        var top_j = 0;
+        var left_i = 0;
+        var left_j = 0;
+        var fontsize_i = 0;
+        var fontsize_j = 0;
+        var animate_top_i = 0;
+        var animate_top_j = 0;
+        var conf = {};
+        var cls_dt = new Map();  // 类别说明，具体个数
+        var cls_value_all = []  // 单个类别所以数据
+        var cls_value = new Map();  // 点击展示范围
+        var entries = [];  // 本次展示范围
+
+        // 数据更新函数+++++++++++++++++++++++++++++++++++++++
+        function UpdateData() {
+            // 坐标纵向偏移量
+            conf = all_data[cls].info;
+            top_i = conf.top[0];
+            top_j = conf.top[1];
+
+            // 坐标横向偏移量
+            left_i = conf.left[0];
+            left_j = conf.left[1];
+
+            // 字体大小
+            fontsize_i = conf.fontsize[0];
+            fontsize_j = conf.fontsize[1];
+
+            // 消失坐标纵向偏移量
+            animate_top_i = conf.animate_top[0];
+            animate_top_j = conf.animate_top[1];
+
+            for (var c in all_data) { // 类型信息
+                var info_li = []
+                info_li[0] = all_data[c].info.desc;  // 中文说明
+
+                var _size = 0;
+                for (var key in all_data[c].value) {
+                    _size++;
+                }
+                info_li[1] = _size;  // 个数
+
+                cls_dt.set(c, info_li); // cls_dt[c] = info_li; 无法使用has
+            }
+
+            cls_value_all = all_data[cls].value; // 类别对应的内容，搜索范围
+
+            if (e == 0) {
+                e = Object.keys(cls_value_all).length;  // 设置默认值
+            }
+
+            // 根据指定的范围进行展示
+            cls_value = {};
+            if (s >= 1 && e >= s) {
+                var slice_ = 0;
+                for (i in cls_value_all) {
+                    if (slice_ >= s - 1 && slice_ < e) {
+                        cls_value[i] = cls_value_all[i];
+                    }
+                    slice_ += 1;
+                }
+            }
+            else {
+                cls_value = cls_value_all;
+            }
+
+            // 如果为空，则展示全部
+            if (Object.keys(cls_value).length == 0) {
+                cls_value = cls_value_all;
+            }
+
+            // 展示的内容
+            entries = []; // 需要清空
+            for (i in cls_value) {
+                entries.push([i, cls_value[i]]);
+            }
+
+            console.log(cls, s, e);
+            console.log("数据已更新，本次数据数量为：", entries.length);
+        }
+    </script>
+
+    <script type="text/javascript">
+        UpdateData(); // 首次获取数据
+    </script>
+
+    <script type="text/javascript">
+        var num_click = 0;
+        var $i;
+        var $j;
+        var $b;
+
+        $(document).ready(function ($) {
+            $("body").click(function (e) {
+                var target = $(e.target);
+
+                // 判断点击的是文本框还是页面空白处
+                if (target.is("input[type='text']") || (target.is("span") && target.attr("id") === "mySpan1") || (target.is("span") && target.attr("id") === "mySpan2")) {
+                    return
+                };
+
+                if (num_click > 0) {  // 避免第一次点击异常
+                    $prev_b.animate({
+                        "top": $prev_b.position().top - 300,
+                        "opacity": 0
+                    },
+                        1000 + 500 * ($prev_b.find("span").length),
+                        function () {
+                            // $prev_b.remove();
+                        });
+                }
+
+                num_click += 1;
+                randomIndex = Math.floor(Math.random() * entries.length);  // 随机数
+                randomEntry = entries[randomIndex];  // [内容a：[内容b1,内容b2,内容b3 .....]]
+
+
+                $b = $("<div></div>")
+
+                if (show_flag) { // 多行展示
+                    $i = $("<div></div>").text(randomEntry[0]);
+                    $j = $("<div></div>");
+
+                    for (let i = 0; i < randomEntry[1].length; i++) {
+                        newSpan = $("<span></span>").text(randomEntry[1][i]);
+                        $j.append(newSpan);
+
+                        if (i < randomEntry[1].length - 1) {
+                            $j.append("<br>");
+                        }
+                    }
+
+                } else {  // 单行展示
+                    var entry_all = randomEntry[0]
+                    for (let i = 0; i < randomEntry[1].length; i++) {
+                        entry_all += "   "
+                        entry_all += randomEntry[1][i];
+                    }
+                    $i = $("<div></div>").text(entry_all);
+                    $j = $("<div></div>");
+                }
+
+                $b.append($i);
+                $b.append($j);
+                $("body").append($b);
+                $prev_b = $b;
+
+                var x = e.pageX, y = e.pageY;
+
+                var height = $b.height();
+                var top = y - height - 30;
+                if (top < 0) {
+                    top = 20;
+                }
+
+                left = x - 60;
+                if (left < 0) {
+                    left = 20;
+                }
+
+                $i.css({  // 控制大小，颜色
+                    "font-size": fontsize_i,
+                    "color": "rgb(" + ~~(200 * Math.random()) + "," + ~~(200 * Math.random()) + "," + ~~(200 * Math.random()) + ")"
+                });
+
+                $j.css({
+                    "font-size": fontsize_j,
+                    "color": "rgb(" + ~~(200 * Math.random()) + "," + ~~(200 * Math.random()) + "," + ~~(200 * Math.random()) + ")"
+                });
+
+                $b.css({  // 控制位置
+                    "z-index": 9999,
+                    "top": top, //y + top_i,  // 上移
+                    "left": left,  // 左移
+                    "display": "block",
+                    "position": "absolute",
+                    //"white-space": "break-word",  // 换行
+                    "font-weight": "bold",
+                    "max-width": "800px",
+                    "overflow-wrap": "break-word"
+                });
+
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var minSize = 10; //最小字体
+            var maxSize = 20;//最大字体
+            var newOne = 1000 + Math.random() * 3000; //生成雪花间隔
+            var a = new Array("🎸", "💯", "🐇", "💘", "🚲", "🚤", "🚁", "🚀", "🍉", "🏡", "💰", "🍀", "🌹", "🌕", "🌙", "🌛", "🌜", "☀", "🌝", "🌞", "⭐", "🌟", "☁", "⛅", "⚡", "🔥", "❄");
+            var dhight = $(window).height(); //定义视图高度
+            var dw = $(window).width(); //定义视图宽度 -Math.random()*6
+            // 定时器
+            setInterval(function () {
+                var flakColor = "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+                var a_idx = Math.floor((Math.random() * a.length));
+                var flak = $("<div></div>").css({ position: "absolute", "top": "0px" }).html(a[a_idx]);
+                var sizeflak = minSize + Math.random() * maxSize; // 产生大小不等的雪花
+                var startLeft = Math.random() * dw; // 雪花生成是随机的left值
+                var startOpacity = 0.7 + Math.random() * 0.3; // 随机透明度
+                var endTop = Math.random() * dhight; // 雪花停止top的位置 -Math.random()*6
+                var endLeft = Math.random() * dw; // 雪花停止的left位置
+                var durationfull = 6000 + Math.random() * 2000; // 雪花飘落速度不同
+
+                if (flak_flag) {  // 控制是否雪花飘
+                    flak.clone().appendTo($("body")).css({
+                        "left": startLeft,
+                        "opacity": startOpacity,
+                        "font-size": sizeflak,
+                        "color": flakColor
+                    }).animate({
+                        "top": endTop,
+                        "left": endLeft,
+                        "apacity": 0.1
+                    },
+                        durationfull,
+                        function () {
+                            $(this).remove()
+                        }
+                    );
+                };
+
+            },
+                newOne);
+        }
+    </script>
+
+    <script> // 文本框自动隐藏功能
+        var mouse_flag = false;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // left
+            var leftContainer = document.getElementsByClassName("left-container")[0];
+            var left_dropdown = leftContainer.getElementsByClassName("dropdown")[0];
+
+            // right
+            var rightContainer = document.getElementsByClassName("dropdown-container")[0];
+            var right_dropdown = rightContainer.getElementsByClassName("dropdown")[0];
+
+            // left ----------------------------------------------------------
+            leftContainer.addEventListener("mouseenter", function () {
+                left_dropdown.classList.remove("hide");
+                mouse_flag = true;
+            });
+
+            leftContainer.addEventListener("mouseleave", function () {
+                mouse_flag = false;
+                setTimeout(function () {
+                    console.log('15秒后');
+                    if (!mouse_flag) {
+                        left_dropdown.classList.add("hide");
+                    }
+                }, 15000);
+            });
+
+            // right ------------------------------------------------------------
+            rightContainer.addEventListener("mouseenter", function () {
+                right_dropdown.classList.remove("hide");
+                mouse_flag = true;
+            });
+
+            rightContainer.addEventListener("mouseleave", function () {
+                mouse_flag = false;
+                setTimeout(function () {
+                    console.log('15秒后');
+                    if (!mouse_flag) {
+                        right_dropdown.classList.add("hide");
+                    }
+                }, 15000);
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <!-- 左上角文本框 -->
+    <div class="left-container">
+        <div class="dropdown hide" style="margin-left:1em; margin-top: 6px;">
+            <span style="font-size:26px; font-weight:bold; margin-left:0em; color:green">🧣</span>
+            <input style="font-size:20px; font-weight:bold; color:green" type="text" id="input" placeholder="💯">
+        </div>
+    </div>
+
+    <!-- 右上角文本框 -->
+    <div class="dropdown-container">
+        <div class="dropdown hide" style="margin-top: 6px;">
+            <span id="mySpan1" style="font-size:26px; font-weight:bold; margin-left:1em; color:green">🍀</span>
+            <input style="font-size:20px; font-weight:bold; color:green; width:200px" type="text" id="input1"
+                placeholder="cls=" value=oneday>
+            <input style="font-size:20px; font-weight:bold; color:green; width:100px" type="text" id="input2"
+                placeholder="s=" value=1>
+            <input style="font-size:20px; font-weight:bold; color:green; width:100px" type="text" id="input3"
+                placeholder="e=" value=10000>
+            <span id="mySpan2" style="font-size:26px; font-weight:bold; margin-right:2em; color:green">🌀</span>
+        </div>
+    </div>
+
+    <!-- 输出框 -->
+    <div id="output" style="margin-left:4em;"></div>
+
+    <script> // 取消多行展示、雪花票效果----------------------
+        var show_flag = true;
+        var flak_flag = true;
+        var mySpan1 = document.getElementById('mySpan1');
+        var mySpan2 = document.getElementById('mySpan2');
+
+        document.addEventListener("DOMContentLoaded", function () {
+            mySpan1.addEventListener('click', function (event) {
+                show_flag = !show_flag;
+                console.log("多行展示吗？", show_flag)
+            });
+
+            mySpan2.addEventListener('click', function (event) {
+                flak_flag = !flak_flag;
+                console.log("雪花飘飘吗？", flak_flag)
+            });
+        })
+    </script>
+
+    <script>
+        $(document).ready(function () {  // 左上角文本框输入++++++++++++++++++++++
+            $("#input").keydown(function (event) {
+                if (event.keyCode == 13) { // 回车，搜索
+
+                    var num = 0;
+                    var in_s = input.value;
+                    input.value = ""; // 清空文本框的值
+
+                    // 1、帮助 ++++++++++++++++++++++++++++++++++++++++++++++++
+                    if (in_s == "??" | in_s == "？？") {
+                        var outHtml = '<br><br><br>';
+
+                        for (const [key, value] of cls_dt) {
+                            num += 1;
+                            var res = key + "：" + value[0] + "，" + value[1];
+                            outHtml += "&nbsp&nbsp" + num + ".&nbsp&nbsp " + res + '<br>';
+                        }
+
+                        outHtml += "<br>" + "&nbsp&nbsp参数示例：" + "?cls=words&se=1,20";
+                        document.getElementById('output').innerHTML = outHtml;
+                        return
+                    }
+
+                    // 2、按索引范围展示 ++++++++++++++++++++++++++++++++++
+                    // se=1,100
+                    if (in_s.includes("se=")) {
+                        if (in_s.includes(",")) {
+                            var s1 = in_s.substring(3, in_s.indexOf(","));
+                            var e1 = in_s.substring(in_s.indexOf(",") + 1);
+                            s1 = parseInt(s1);
+                            e1 = parseInt(e1);
+                        }
+                        else {
+                            s1 = 1;
+                            e1 = Object.keys(all_data[cls].value).length;
+                        }
+
+                        // 根据指定的范围进行展示
+                        if (s1 >= 1 && e1 >= s1) {
+                            var cls_value_s = new Map();  // 点击展示范围
+                            var slice_1 = 0;
+
+                            for (i in cls_value_all) {
+                                if (slice_1 >= s1 - 1 && slice_1 < e1) {
+                                    cls_value_s[i] = cls_value_all[i];
+                                }
+                                slice_1 += 1;
+                            }
+                        }
+                        else {
+                            var cls_value_s = cls_value_all;
+                        }
+
+                        var outHtml = '<br><br><br>';
+
+                        // 如果为空
+                        if (Object.keys(cls_value_s).length == 0) {
+                            outHtml += "没有搜索到任何信息，请重新输入···";
+                            document.getElementById('output').innerHTML = outHtml;
+                            return
+                        }
+                        else {
+                            num = num + parseInt(s1);
+                            for (i in cls_value_s) {
+                                var res = i + "&nbsp&nbsp&nbsp&nbsp&nbsp" + cls_value_s[i];
+                                if (num < 10) {  // 1位结果补空格
+                                    outHtml += "&nbsp&nbsp" + num + ".&nbsp&nbsp " + res + '<br>';
+                                }
+                                else {
+                                    outHtml += num + ".&nbsp&nbsp " + res + '<br>';
+                                }
+                                num += 1;
+                            }
+
+                            document.getElementById('output').innerHTML = outHtml;
+                            return
+                        }
+                    }
+
+                    // 3、更新类别 +++++++++++++++++++++++++++++++++++++++++++
+                    // 示例：cls=words
+                    if (in_s.includes("cls=")) {
+                        cls = in_s.substring(4);
+
+                        if (!cls_dt.has(cls)) {  // 异常类别判断
+                            cls = "words";
+                            var outHtml = '<br><br><br>';
+                            outHtml += "！请输入正确的类型···";
+                            document.getElementById('output').innerHTML = outHtml;
+                            console.log("！请输入正确的类型···");
+                            return
+                        }
+
+                        UpdateData();
+                        return
+                    }
+
+                    // 4、搜索功能 +++++++++++++++++++++++++++++++++++++++++++
+                    if (in_s.length > 0) {
+                        var outHtml = '<br><br><br>';
+                        for (i in cls_value_all) {
+                            var res_s = i + cls_value_all[i];  // k,v 拼起来用于搜索
+                            var res = i + "&nbsp&nbsp&nbsp&nbsp&nbsp" + cls_value_all[i];  // 展示用
+                            if (num < 36) {
+                                if (res_s.includes(in_s)) {
+                                    num += 1;
+                                    if (num < 10) {
+                                        outHtml += "&nbsp&nbsp" + num + ".&nbsp&nbsp " + res + '<br>';
+                                    }
+                                    else {
+                                        outHtml += num + ".&nbsp&nbsp " + res + '<br>';
+                                    }
+                                }
+                            }
+                            else {
+                                outHtml += "<br>" + "搜索结果超过36条···" + '<br>';
+                                break;
+                            }
+                        }
+
+                        // 输出数据是否为空判断
+                        if (num == 0) {
+                            var outHtml = '<br><br><br>';
+                            outHtml += "没有搜索到任何信息，请重新输入···";
+                            document.getElementById('output').innerHTML = outHtml;
+                        }
+                        else {
+                            document.getElementById('output').innerHTML = outHtml;
+                        }
+                    }
+                    else { // 没有输入搜索内容
+                        var outHtml = '<br><br><br>';
+                        outHtml += "请输入查询内容···";
+                        document.getElementById('output').innerHTML = outHtml;
+                    }
+
+                    // 5、...
+
+                }
+            });
+        });
+
+        // 右上角 cls,s,e文本框输入, 控制点击展示内容范围 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        $(document).ready(function () {
+            $("#input1, #input2, #input3").keydown(function (event) {
+                if (event.keyCode == 13) { // 回车，搜索
+
+                    if (input1.value === "") { // cls ---------------------
+                        console.log("input 1 valus is null");
+                        cls = "words";
+                    }
+                    else {
+                        cls = input1.value;
+
+                        if (!cls_dt.has(cls)) {  // 异常类型识别
+                            cls = "words";
+                            var outHtml = '<br><br><br>';
+                            outHtml += "！请输入正确的类型···";
+                            document.getElementById('output').innerHTML = outHtml;
+                            console.log("！请输入正确的类型···");
+                            return
+                        }
+                    }
+
+                    if (input2.value === "") { // s ------------------
+                        console.log("input 2 valus is null");
+                        s = 1;
+                    }
+                    else {
+                        s = parseInt(input2.value);
+                    }
+
+                    if (input3.value === "") {  // e ------------------
+                        console.log("input 3 valus is null");
+                        e = Object.keys(all_data[cls].value).length;
+                    }
+                    else {
+                        e = parseInt(input3.value);
+                    }
+
+                    // 判断异常
+                    if (s > e) {
+                        s = 0;
+                        var outHtml = '<br><br><br>';
+                        outHtml += "!输入s大于e, 请重新输入···";
+                        document.getElementById('output').innerHTML = outHtml;
+                        return
+                    }
+
+                    UpdateData();  // ---------------------
+
+                    // 输出参数情况--------------
+                    var outHtml = '<br><br><br>';
+                    outHtml += "1、专题名称：" + cls + "<br>2、起始索引：" + s + "<br>3、终止索引：" + e;
+                    document.getElementById('output').innerHTML = outHtml;
+
+                    setTimeout(function () { // 参数情况清空
+                        var outHtml = '<br><br><br>';
+                        document.getElementById('output').innerHTML = outHtml;
+                    }, 3000);
+
+                    return
+                }
+            });
+
+        });
+
+        // 清空搜索结果
+        $(document).ready(function () {
+            $("body").keydown(function (event) {
+                if (event.keyCode == 32) { // 空格，清空内容
+                    var outHtml = '<br><br><br>';
+                    // outHtml += "请输入查询内容···";
+
+                    document.getElementById('output').innerHTML = outHtml;
+
+                    $prev_b.empty();
+                    $("body").append($prev_b);
+                }
+            });
+        })
+    </script>
+
+    <!-- <script src="https://blog-static.cnblogs.com/files/zouwangblog/mouse-click.js"></script> -->
+    <script src="static/js/mouse-click.js"></script>
+    <canvas width=100% height=100%
+        style="position: fixed; left: 0px; top: 0px; z-index: 2147483647; pointer-events: none;"></canvas>
+</body>
+
+</html>
