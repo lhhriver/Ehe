@@ -83,7 +83,7 @@ fun();
 #![图片](https://img-blog.csdn.net/20150312214024150)
 ```
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/03-编码工具-20201215-234146-948981)
+![](./images/N01-jupyter notebook/03-编码工具-20201215-234146-948981.png)
 
 
 

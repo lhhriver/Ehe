@@ -1,9 +1,9 @@
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/03-编码工具-20201215-231056-031252.png)
+![](./images/N04-Pycharm/03-编码工具-20201215-231056-031252-1703346257971-19.png)
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/03-编码工具-20201215-231055-886336.png)
+![](./images/N04-Pycharm/03-编码工具-20201215-231055-886336.png)
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/03-编码工具-20201215-231055-866692.png)
+![](./images/N04-Pycharm/03-编码工具-20201215-231055-866692.png)

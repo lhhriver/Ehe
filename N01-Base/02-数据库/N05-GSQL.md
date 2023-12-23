@@ -10,7 +10,7 @@
 
 许多人把数据实体称为节点；在泰格图，我们称它为顶点。复数是顶点。我们称连接为边。顶点和边都可以有属性或属性。下图是一个包含7个顶点(以圆圈表示)和7条边(以直线表示)的图的可视化表示。
 
-![img](D:\Gitee\Ehe\2022\v2-9f339a4a5ccb24caacdc4056c647790a_720w.jpg)
+![img](./images/N05-GSQL/v2-9f339a4a5ccb24caacdc4056c647790a_720w-1703346160168-8.jpg)
 
 <center>图1 友谊社交图
 
@@ -18,7 +18,7 @@
 
 模式图看起来像一个小图，除了每个节点代表一种顶点类型，每个链接代表一种边类型。
 
-![img](D:\Gitee\Ehe\2022\v2-c5ac75034abf33dbaf5f452c8181f1f4_720w.jpg)
+![img](./images/N05-GSQL/v2-c5ac75034abf33dbaf5f452c8181f1f4_720w.jpg)
 
 <center>图2  友谊社交图模式
 
@@ -741,7 +741,7 @@ GSQL提供了经典的模式匹配语法，这比较容易掌握。除此以外�
 
 ## 什么是累加器
 
-![img](D:\Gitee\Ehe\2022\v2-6fc6706cb56aeb206687860d6487ef6d_720w.jpg)
+![img](./images/N05-GSQL/v2-6fc6706cb56aeb206687860d6487ef6d_720w.jpg)
 
 <center>图1.左侧框是用不同类型的累加器进行累加的GSQL代码。右侧框显示各累加器变量的最终结果。
 
@@ -771,15 +771,15 @@ GSQL提供了经典的模式匹配语法，这比较容易掌握。除此以外�
 
 **@前缀用于声明局部累加器变量**。它必须与查询块中的顶点别名一起使用。例如，v.@cnt += 1，其中v是SELECT-FROM-WHERE查询块的FROM子句中所指定的顶点别名。
 
-![img](D:\Gitee\Ehe\2022\v2-0d95345bc844139f35695c7d63dd23d9_720w.jpg)
+![img](./images/N05-GSQL/v2-0d95345bc844139f35695c7d63dd23d9_720w.jpg)
 
 <center>图2.这个社交关系图由7个“人”类型的顶点和7条“朋友关系”的边组成
 
 现在看一个简易版的社交关系图如图2，它由“人”类型的顶点和“人-人”友谊关系类型的边构成。下面我们编写一个查询，输入为一个“人”类型的顶点，然后从这个顶点向它的邻居做一跳遍历。我们使用@@global_edge_cnt这个累加器来统计共遍历了多少边，使用@vertex_cnt向所有邻居顶点写入一个整数1。
 
-![img](D:\Gitee\Ehe\2022\v2-97356fe31249454d65ebb4c3b0bf350b_720w.jpg)
+![img](./images/N05-GSQL/v2-97356fe31249454d65ebb4c3b0bf350b_720w.jpg)
 
-![img](D:\Gitee\Ehe\2022\v2-cedf4feba9593045010d57f85d30931c_720w.jpg)
+![img](./images/N05-GSQL/v2-cedf4feba9593045010d57f85d30931c_720w.jpg)
 
 图3上一个框是一段查询语句，输入一个人，将其朋友关系的边进行计数，输入到@@global_edge_cnt中，再对所有朋友，累加1到朋友的@vertex_cnt中去。下面的框展示了计算结果。
 
@@ -798,7 +798,6 @@ ACCUM和POST-ACCUM子句分步骤执行。在SELECT-FROM-WHERE查询块中，首
 我们已经解释了累加器的机制、它们的类型以及两个不同的范围——全局范围和局部范围。我们还阐述了ACCUM和POST-ACCUM子句的语义。一旦你掌握了这些基础知识，剩下的就是多练习了。我们已经提供了46个基于LDBC的模式的查询。这46个查询分为三组。
 
 [新版](https://github.com/tigergraph/ecosys/tree/ldbc/ldbc_benchmark/tigergraph/queries_v3)
-
 
 
 

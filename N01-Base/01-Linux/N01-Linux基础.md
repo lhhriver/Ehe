@@ -108,7 +108,7 @@ netstat -an
 
 
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/01-Linux-20201215-231055-625176.png)
+![](./images/N01-Linux基础/01-Linux-20201215-231055-625176.png)
 
 
 
