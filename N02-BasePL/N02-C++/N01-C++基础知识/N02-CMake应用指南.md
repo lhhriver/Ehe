@@ -1681,7 +1681,7 @@ target_link_libraries(demo math)
 
 最后，使用一个表格总结一下本文的核心内容。 GCC编译过程使用的`gcc`参数和`CMake`命令之间的对应关系表：
 
-![img](D:\Gitee\Ehe\2022\v2-50fe7e1b02eb0bdc91f07cfe73d2afaa_720w.jpg)
+![img](./images/N02-CMake应用指南/v2-50fe7e1b02eb0bdc91f07cfe73d2afaa_720w.jpg)
 
 # 合并静态库的最佳实践
 

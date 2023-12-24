@@ -432,11 +432,11 @@ add_executable(cmake_task main.cpp swap.cpp)
 
 ## task.json
 
-![在这里插入图片描述](D:\Gitee\Ehe\2022\a5e95c62b795438dabf8aa878724e5da.png)
+![在这里插入图片描述](./images/N03-VScode C++环境搭建/a5e95c62b795438dabf8aa878724e5da.png)
 
-![在这里插入图片描述](D:\Gitee\Ehe\2022\13227e4dbd534cd9a2700a8475e80287.png)
+![在这里插入图片描述](./images/N03-VScode C++环境搭建/13227e4dbd534cd9a2700a8475e80287.png)
 
-![在这里插入图片描述](D:\Gitee\Ehe\2022\61113f53a266456295d448fbcf8c2862.png)
+![在这里插入图片描述](./images/N03-VScode C++环境搭建/61113f53a266456295d448fbcf8c2862.png)
 
 ```json
 {
