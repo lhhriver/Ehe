@@ -240,8 +240,8 @@ import matplotlib.pyplot as plt
 import tensorflow as tf 
 from tensorflow.keras import models,layers
 
-dftrain_raw = pd.read_csv('https://gitee.com/liuhuihe/Ehe/raw/master/images/titanic/train.csv')
-dftest_raw = pd.read_csv('https://gitee.com/liuhuihe/Ehe/raw/master/images/titanic/test.csv')
+dftrain_raw = pd.read_csv('./titanic/train.csv')
+dftest_raw = pd.read_csv('./titanic/test.csv')
 dftrain_raw.head(10)
 ```
 
@@ -546,12 +546,12 @@ array([[0],
 
 ```python
 # 保存模型结构及权重
-model.save('https://gitee.com/liuhuihe/Ehe/raw/master/images/keras_model.h5')  
+model.save('./keras_model.h5')  
 
 del model  #删除现有模型
 
 # identical to the previous one
-model = models.load_model('https://gitee.com/liuhuihe/Ehe/raw/master/images/keras_model.h5')
+model = models.load_model('./keras_model.h5')
 model.evaluate(x_test,y_test)
 ```
 
@@ -569,7 +569,7 @@ model_json = models.model_from_json(json_str)
 
 ```python
 #保存模型权重
-model.save_weights('https://gitee.com/liuhuihe/Ehe/raw/master/images/keras_model_weight.h5')
+model.save_weights('./keras_model_weight.h5')
 
 # 恢复模型结构？？？
 model_json = models.model_from_json(json_str)
@@ -580,7 +580,7 @@ model_json.compile(
     )
 
 # 加载权重
-model_json.load_weights('https://gitee.com/liuhuihe/Ehe/raw/master/images/keras_model_weight.h5')
+model_json.load_weights('./keras_model_weight.h5')
 model_json.evaluate(x_test,y_test)
 ```
 
@@ -594,15 +594,15 @@ model_json.evaluate(x_test,y_test)
 
 ```python
 # 保存权重，该方式仅仅保存权重张量
-model.save_weights('https://gitee.com/liuhuihe/Ehe/raw/master/images/tf_model_weights.ckpt',save_format = "tf")
+model.save_weights('./tf_model_weights.ckpt',save_format = "tf")
 ```
 
 ```python
 # 保存模型结构与模型参数到文件,该方式保存的模型具有跨平台性便于部署
-model.save('https://gitee.com/liuhuihe/Ehe/raw/master/images/tf_model_savedmodel', save_format="tf")
+model.save('./tf_model_savedmodel', save_format="tf")
 print('export saved model.')
 
-model_loaded = tf.keras.models.load_model('https://gitee.com/liuhuihe/Ehe/raw/master/images/tf_model_savedmodel')
+model_loaded = tf.keras.models.load_model('./tf_model_savedmodel')
 model_loaded.evaluate(x_test,y_test)
 ```
 
@@ -662,12 +662,12 @@ def load_image(img_path,size = (32,32)):
 
 ```python
 #使用并行化预处理num_parallel_calls 和预存数据prefetch来提升性能
-ds_train = tf.data.Dataset.list_files("https://gitee.com/liuhuihe/Ehe/raw/master/images/cifar2/train/*/*.jpg") 
+ds_train = tf.data.Dataset.list_files("./Ehe/raw/master/images/cifar2/train/*/*.jpg") 
            .map(load_image, num_parallel_calls=tf.data.experimental.AUTOTUNE) 
            .shuffle(buffer_size = 1000).batch(BATCH_SIZE) 
            .prefetch(tf.data.experimental.AUTOTUNE)  
 
-ds_test = tf.data.Dataset.list_files("https://gitee.com/liuhuihe/Ehe/raw/master/images/cifar2/test/*/*.jpg") 
+ds_test = tf.data.Dataset.list_files("./cifar2/test/*/*.jpg") 
            .map(load_image, num_parallel_calls=tf.data.experimental.AUTOTUNE) 
            .batch(BATCH_SIZE).prefetch(tf.data.experimental.AUTOTUNE)  
 ```
@@ -766,7 +766,7 @@ _________________________________________________________________
 ```python
 import datetime
 
-logdir = "https://gitee.com/liuhuihe/Ehe/raw/master/images/keras_model/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+logdir = "./Ehe/raw/master/images/keras_model/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 tensorboard_callback = tf.keras.callbacks.TensorBoard(logdir, histogram_freq=1)
 
 model.compile(
@@ -801,7 +801,7 @@ Epoch 10/10
 
 ```python
 #%load_ext tensorboard
-#%tensorboard --logdir https://gitee.com/liuhuihe/Ehe/raw/master/images/keras_model
+#%tensorboard --logdir ./Ehe/raw/master/images/keras_model
 ```
 
 ```python
@@ -811,7 +811,7 @@ notebook.list()
 
 ```python
 #在tensorboard中查看模型
-notebook.start("--logdir https://gitee.com/liuhuihe/Ehe/raw/master/images/keras_model")
+notebook.start("--logdir ./keras_model")
 ```
 
 
@@ -932,15 +932,15 @@ tf.Tensor(
 
 ```python
 # 保存权重，该方式仅仅保存权重张量
-model.save_weights('https://gitee.com/liuhuihe/Ehe/raw/master/images/tf_model_weights.ckpt',save_format = "tf")
+model.save_weights('./tf_model_weights.ckpt',save_format = "tf")
 ```
 
 ```python
 # 保存模型结构与模型参数到文件,该方式保存的模型具有跨平台性便于部署
-model.save('https://gitee.com/liuhuihe/Ehe/raw/master/images/tf_model_savedmodel', save_format="tf")
+model.save('./tf_model_savedmodel', save_format="tf")
 print('export saved model.')
 
-model_loaded = tf.keras.models.load_model('https://gitee.com/liuhuihe/Ehe/raw/master/images/tf_model_savedmodel')
+model_loaded = tf.keras.models.load_model('./tf_model_savedmodel')
 model_loaded.evaluate(ds_test)
 ```
 
@@ -987,8 +987,8 @@ from tensorflow.keras import models,layers,preprocessing,optimizers,losses,metri
 from tensorflow.keras.layers.experimental.preprocessing import TextVectorization
 import re,string
 
-train_data_path = "https://gitee.com/liuhuihe/Ehe/raw/master/images/imdb/train.csv"
-test_data_path =  "https://gitee.com/liuhuihe/Ehe/raw/master/images/imdb/test.csv"
+train_data_path = "./imdb/train.csv"
+test_data_path =  "./imdb/test.csv"
 
 MAX_WORDS = 10000  # 仅考虑最高频的10000个词
 MAX_LEN = 200  # 每个样本保留200个词的长度
@@ -1316,10 +1316,10 @@ tf.Tensor(
 推荐使用TensorFlow原生方式保存模型。
 
 ```python
-model.save('https://gitee.com/liuhuihe/Ehe/raw/master/images/tf_model_savedmodel', save_format="tf")
+model.save('./tf_model_savedmodel', save_format="tf")
 print('export saved model.')
 
-model_loaded = tf.keras.models.load_model('https://gitee.com/liuhuihe/Ehe/raw/master/images/tf_model_savedmodel')
+model_loaded = tf.keras.models.load_model('./tf_model_savedmodel')
 model_loaded.predict(ds_test)
 ```
 
@@ -1372,7 +1372,7 @@ from tensorflow.keras import models,layers,losses,metrics,callbacks
 %matplotlib inline
 %config InlineBackend.figure_format = 'svg'
 
-df = pd.read_csv("https://gitee.com/liuhuihe/Ehe/raw/master/images/covid-19.csv",sep = "\t")
+df = pd.read_csv("./Ehe/raw/master/images/covid-19.csv",sep = "\t")
 df.plot(x = "date",y = ["confirmed_num","cured_num","dead_num"],figsize=(10,6))
 plt.xticks(rotation=60)
 ```
@@ -1502,7 +1502,7 @@ import datetime
 optimizer = tf.keras.optimizers.Adam(learning_rate=0.01)
 model.compile(optimizer=optimizer,loss=MSPE(name = "MSPE"))
 
-logdir = "https://gitee.com/liuhuihe/Ehe/raw/master/images/keras_model/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+logdir = "./Ehe/raw/master/images/keras_model/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 
 tb_callback = tf.keras.callbacks.TensorBoard(logdir, histogram_freq=1)
 #如果loss在100个epoch后没有提升，学习率减半。
@@ -1624,12 +1624,12 @@ dfresult.query("dead_num==0").head()
 推荐使用TensorFlow原生方式保存模型。
 
 ```python
-model.save('https://gitee.com/liuhuihe/Ehe/raw/master/images/tf_model_savedmodel', save_format="tf")
+model.save('./tf_model_savedmodel', save_format="tf")
 print('export saved model.')
 ```
 
 ```python
-model_loaded = tf.keras.models.load_model('https://gitee.com/liuhuihe/Ehe/raw/master/images/tf_model_savedmodel',compile=False)
+model_loaded = tf.keras.models.load_model('./tf_model_savedmodel',compile=False)
 optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
 model_loaded.compile(optimizer=optimizer,loss=MSPE(name = "MSPE"))
 model_loaded.predict(ds_train)
@@ -2069,7 +2069,7 @@ import datetime
 
 # 创建日志
 stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-logdir = 'https://gitee.com/liuhuihe/Ehe/raw/master/images/autograph/%s' % stamp
+logdir = './Ehe/raw/master/images/autograph/%s' % stamp
 writer = tf.summary.create_file_writer(logdir)
 
 #开启autograph跟踪
@@ -2090,7 +2090,7 @@ with writer.as_default():
 
 ```python
 #启动tensorboard
-%tensorboard --logdir https://gitee.com/liuhuihe/Ehe/raw/master/images/autograph/
+%tensorboard --logdir ./Ehe/raw/master/images/autograph/
 ```
 
 ![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084849-506254.jpg)
@@ -4587,13 +4587,13 @@ demo.submodules
 ```python
 #使用tf.saved_model 保存模型，并指定需要跨平台部署的方法
 tf.saved_model.save(demo,
-                    "https://gitee.com/liuhuihe/Ehe/raw/master/images/demo/1",
+                    "./Ehe/raw/master/images/demo/1",
                     signatures = {"serving_default":demo.addprint})
 ```
 
 ```python
 #加载模型
-demo2 = tf.saved_model.load("https://gitee.com/liuhuihe/Ehe/raw/master/images/demo/1")
+demo2 = tf.saved_model.load("./demo/1")
 demo2.addprint(tf.constant(5.0))
 ```
 
@@ -4605,7 +4605,7 @@ demo2.addprint(tf.constant(5.0))
 
 ```python
 # 查看模型文件相关信息，红框标出来的输出信息在模型部署和跨平台使用时有可能会用到
-!saved_model_cli show --dir https://gitee.com/liuhuihe/Ehe/raw/master/images/demo/1 --all
+!saved_model_cli show --dir ./demo/1 --all
 ```
 
 ![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-785062.jpg)
@@ -4619,7 +4619,7 @@ import datetime
 
 # 创建日志
 stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-logdir = 'https://gitee.com/liuhuihe/Ehe/raw/master/images/demomodule/%s' % stamp
+logdir = './demomodule/%s' % stamp
 writer = tf.summary.create_file_writer(logdir)
 
 #开启autograph跟踪
@@ -4649,7 +4649,7 @@ notebook.list()
 ```
 
 ```python
-notebook.start("--logdir https://gitee.com/liuhuihe/Ehe/raw/master/images/demomodule/")
+notebook.start("--logdir ./demomodule/")
 ```
 
 ![](./images/N02-eat_tensorflow2_in_30_days/eat_tensorflow2_in_30_days-20210118-084850-052414.jpg)
@@ -4694,16 +4694,16 @@ print(mymodule.variables)
 ```python
 #使用tf.saved_model 保存模型
 tf.saved_model.save(mymodule,
-                    "https://gitee.com/liuhuihe/Ehe/raw/master/images/mymodule",
+                    "./mymodule",
                     signatures = {"serving_default":mymodule.addprint})
 
 #加载模型
-mymodule2 = tf.saved_model.load("https://gitee.com/liuhuihe/Ehe/raw/master/images/mymodule")
+mymodule2 = tf.saved_model.load("./mymodule")
 mymodule2.addprint(tf.constant(5.0))
 ```
 
 ```
-INFO:tensorflow:Assets written to: https://gitee.com/liuhuihe/Ehe/raw/master/images/mymodule/assets
+INFO:tensorflow:Assets written to: ./mymodule/assets
 5
 ```
 
@@ -4954,7 +4954,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 # 定义一个从文件中读取图片的generator
 image_generator = ImageDataGenerator(rescale=1.0/255).flow_from_directory(
-                    "https://gitee.com/liuhuihe/Ehe/raw/master/images/cifar2/test/",
+                    "./cifar2/test/",
                     target_size=(32, 32),
                     batch_size=20,
                     class_mode='binary')
@@ -5099,7 +5099,7 @@ def create_tfrecords(inpath,outpath):
             writer.write(example.SerializeToString())
     writer.close()
     
-create_tfrecords("https://gitee.com/liuhuihe/Ehe/raw/master/images/cifar2/test/","https://gitee.com/liuhuihe/Ehe/raw/master/images/cifar2_test.tfrecords/")
+create_tfrecords("./cifar2/test/","./cifar2_test.tfrecords/")
 ```
 
 ```python
@@ -5114,7 +5114,7 @@ def parse_example(proto):
     label = example["label"]
     return(img,label)
 
-ds7 = tf.data.TFRecordDataset("https://gitee.com/liuhuihe/Ehe/raw/master/images/cifar2_test.tfrecords").map(parse_example).shuffle(3000)
+ds7 = tf.data.TFRecordDataset("./cifar2_test.tfrecords").map(parse_example).shuffle(3000)
 
 %matplotlib inline
 %config InlineBackend.figure_format = 'svg'
@@ -5527,7 +5527,7 @@ tf.print(tf.constant("end training..."))
 **2. 使用 interleave 方法可以让数据读取过程多进程执行,并将不同来源数据夹在一起。**
 
 ```python
-ds_files = tf.data.Dataset.list_files("https://gitee.com/liuhuihe/Ehe/raw/master/images/titanic/*.csv")
+ds_files = tf.data.Dataset.list_files("./titanic/*.csv")
 ds = ds_files.flat_map(lambda x:tf.data.TextLineDataset(x).skip(1))
 for line in ds.take(4):
     print(line)
@@ -5541,7 +5541,7 @@ tf.Tensor(b'192,0,2,"Carbines, Mr. William",male,19.0,0,0,28424,13.0,,S', shape=
 ```
 
 ```python
-ds_files = tf.data.Dataset.list_files("https://gitee.com/liuhuihe/Ehe/raw/master/images/titanic/*.csv")
+ds_files = tf.data.Dataset.list_files("./titanic/*.csv")
 ds = ds_files.interleave(lambda x:tf.data.TextLineDataset(x).skip(1))
 for line in ds.take(8):
     print(line)
@@ -5563,7 +5563,7 @@ tf.Tensor(b'192,0,2,"Carbines, Mr. William",male,19.0,0,0,28424,13.0,,S', shape=
 **3. 使用 map 时设置num_parallel_calls 让数据转换过程多进行执行。**
 
 ```python
-ds = tf.data.Dataset.list_files("https://gitee.com/liuhuihe/Ehe/raw/master/images/cifar2/train/*/*.jpg")
+ds = tf.data.Dataset.list_files("./cifar2/train/*/*.jpg")
 def load_image(img_path,size = (32,32)):
     label = 1 if tf.strings.regex_full_match(img_path,".*/automobile/.*") else 0
     img = tf.io.read_file(img_path)
@@ -5765,8 +5765,8 @@ def printlog(info):
 printlog("step1: prepare dataset...")
 
 
-dftrain_raw = pd.read_csv("https://gitee.com/liuhuihe/Ehe/raw/master/images/titanic/train.csv")
-dftest_raw = pd.read_csv("https://gitee.com/liuhuihe/Ehe/raw/master/images/titanic/test.csv")
+dftrain_raw = pd.read_csv("./titanic/train.csv")
+dftest_raw = pd.read_csv("./titanic/test.csv")
 
 dfraw = pd.concat([dftrain_raw,dftest_raw])
 
@@ -6742,7 +6742,7 @@ import tensorflow.keras.backend as K
 # 示范使用LambdaCallback编写较为简单的回调函数
 
 import json
-json_log = open('https://gitee.com/liuhuihe/Ehe/raw/master/images/keras_log.json', mode='wt', buffering=1)
+json_log = open('./keras_log.json', mode='wt', buffering=1)
 json_logging_callback = callbacks.LambdaCallback(
     on_epoch_end=lambda epoch, logs: json_log.write(
         json.dumps(dict(epoch = epoch,**logs)) + '\n'),
@@ -6821,8 +6821,8 @@ from tqdm import tqdm
 from tensorflow.keras import *
 
 
-train_token_path = "https://gitee.com/liuhuihe/Ehe/raw/master/images/imdb/train_token.csv"
-test_token_path = "https://gitee.com/liuhuihe/Ehe/raw/master/images/imdb/test_token.csv"
+train_token_path = "./imdb/train_token.csv"
+test_token_path = "./imdb/test_token.csv"
 
 MAX_WORDS = 10000  # We will only consider the top 10,000 words in the dataset
 MAX_LEN = 200  # We will cut reviews after 200 words
@@ -6876,7 +6876,7 @@ model.summary()
 ```python
 import datetime
 baselogger = callbacks.BaseLogger(stateful_metrics=["AUC"])
-logdir = "https://gitee.com/liuhuihe/Ehe/raw/master/images/keras_model/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+logdir = "./keras_model/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 tensorboard_callback = tf.keras.callbacks.TensorBoard(logdir, histogram_freq=1)
 history = model.fit(ds_train,
                     validation_data = ds_test,
@@ -6998,7 +6998,7 @@ ________________________________________________________________________________
 
 ```python
 import datetime
-logdir = "https://gitee.com/liuhuihe/Ehe/raw/master/images/keras_model/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+logdir = "./keras_model/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 tensorboard_callback = tf.keras.callbacks.TensorBoard(logdir, histogram_freq=1)
 history = model.fit(ds_train,
                     validation_data = ds_test,
@@ -8218,7 +8218,7 @@ tf.print("w = ",linear.layers[1].kernel)
 tf.print("b = ",linear.layers[1].bias)
 
 ## 将模型保存成pb格式文件
-export_path = "https://gitee.com/liuhuihe/Ehe/raw/master/images/linear_model/"
+export_path = "./linear_model/"
 version = "1"       #后续可以通过版本号进行模型版本迭代与管理
 linear.save(export_path+version, save_format="tf") 
 ```
@@ -8354,7 +8354,7 @@ docker pull tensorflow/serving
 
 ```python
 !docker run -t --rm -p 8501:8501 \
-    -v "/Users/..https://gitee.com/liuhuihe/Ehe/raw/master/images/linear_model/" \
+    -v "/Users/linear_model/" \
     -e MODEL_NAME=linear_model \
     tensorflow/serving & >server.log 2>&1
 ```
@@ -8460,7 +8460,7 @@ tf.print("w = ",linear.layers[1].kernel)
 tf.print("b = ",linear.layers[1].bias)
 
 ## 将模型保存成pb格式文件
-export_path = "https://gitee.com/liuhuihe/Ehe/raw/master/images/linear_model/"
+export_path = "./linear_model/"
 version = "1"       #后续可以通过版本号进行模型版本迭代与管理
 linear.save(export_path+version, save_format="tf") 
 

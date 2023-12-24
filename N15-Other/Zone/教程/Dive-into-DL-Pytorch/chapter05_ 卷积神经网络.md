@@ -1192,7 +1192,7 @@ epoch 5, loss 0.0035, train acc 0.919, test acc 0.918, time 153.9 sec
 
 我们知道，卷积层的输入和输出通常是四维数组（样本，通道，高，宽），而全连接层的输入和输出则通常是二维数组（样本，特征）。如果想在全连接层后再接上卷积层，则需要将全连接层的输出变换为四维。回忆在5.3节（多输入通道和多输出通道）里介绍的$1\times 1$卷积层。它可以看成全连接层，其中空间维度（高和宽）上的每个元素相当于样本，通道相当于特征。因此，NiN使用$1\times 1$卷积层来替代全连接层，从而使空间信息能够自然传递到后面的层中去。图5.7对比了NiN同AlexNet和VGG等网络在结构上的主要区别。
 
-![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-734904.svg+xml)
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-734904.svg)
 
 <div align=center>图5.7 左图是AlexNet和VGG的网络结构局部，右图是NiN的网络结构局部</div>
 
@@ -1318,9 +1318,8 @@ epoch 5, loss 0.0034, train acc 0.839, test acc 0.831, time 151.0 sec
 
 GoogLeNet中的基础卷积块叫作Inception块，得名于同名电影《盗梦空间》（Inception）。与上一节介绍的NiN块相比，这个基础块在结构上更加复杂，如图5.8所示。
 
-<div align=center>
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/chapter05_CNN-20210112-190211-750735.svg)
-</div>
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-750735.svg)
+
 <div align=center>图5.8 Inception块的结构</div>
 
 由图5.8可以看出，Inception块里有4条并行的线路。前3条线路使用窗口大小分别是$1\times 1$、$3\times 3$和$5\times 5$的卷积层来抽取不同空间尺寸下的信息，其中中间2个线路会对输入先做$1\times 1$卷积来减少输入通道数，以降低模型复杂度。第四条线路则使用$3\times 3$最大池化层，后接$1\times 1$卷积层来改变通道数。4条线路都使用了合适的填充来使输入与输出的高和宽一致。最后我们将每条线路的输出在通道维上连结，并输入接下来的层中去。
@@ -1716,7 +1715,7 @@ epoch 5, loss 0.0013, train acc 0.889, test acc 0.734, time 1.8 sec
 
 让我们聚焦于神经网络局部。如图5.9所示，设输入为$\boldsymbol{x}$。假设我们希望学出的理想映射为$f(\boldsymbol{x})$，从而作为图5.9上方激活函数的输入。左图虚线框中的部分需要直接拟合出该映射$f(\boldsymbol{x})$，而右图虚线框中的部分则需要拟合出有关恒等映射的残差映射$f(\boldsymbol{x})-\boldsymbol{x}$。残差映射在实际中往往更容易优化。以本节开头提到的恒等映射作为我们希望学出的理想映射$f(\boldsymbol{x})$。我们只需将图5.9中右图虚线框内上方的加权运算（如仿射）的权重和偏差参数学成0，那么$f(\boldsymbol{x})$即为恒等映射。实际中，当理想映射$f(\boldsymbol{x})$极接近于恒等映射时，残差映射也易于捕捉恒等映射的细微波动。图5.9右图也是ResNet的基础块，即残差块（residual block）。在残差块中，输入可通过跨层的数据线路更快地向前传播。
 
-![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-577159.svg+xml)
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-577159.svg)
 
 <div align=center>图5.9 普通的网络结构（左）与加入残差连接的网络结构（右）</div>
 
@@ -1882,7 +1881,7 @@ epoch 5, loss 0.0006, train acc 0.944, test acc 0.926, time 31.5 sec
 
 ResNet中的跨层连接设计引申出了数个后续工作。本节我们介绍其中的一个：稠密连接网络（DenseNet） [1]。 它与ResNet的主要区别如图5.10所示。
 
-![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-593108.svg+xml)
+![](./images/chapter05_ 卷积神经网络/chapter05_CNN-20210112-190211-593108.svg)
 
 <div align=center>图5.10 ResNet（左）与DenseNet（右）在跨层连接上的主要区别：使用相加和使用连结</div>
 

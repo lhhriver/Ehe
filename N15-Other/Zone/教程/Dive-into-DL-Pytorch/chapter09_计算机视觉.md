@@ -267,7 +267,7 @@ epoch 10, loss 0.0433, train acc 0.851, test acc 0.754, time 123.1 sec
 3. 为目标模型添加一个输出大小为目标数据集类别个数的输出层，并随机初始化该层的模型参数。
 4. 在目标数据集（如椅子数据集）上训练目标模型。我们将从头训练输出层，而其余层的参数都是基于源模型的参数微调得到的。
 
-![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-704633.svg+xml)
+![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-704633.svg)
 
 <div align=center>图9.1 微调</div>
 
@@ -662,7 +662,7 @@ $$J(\mathcal{A},\mathcal{B}) = \frac{\left|\mathcal{A} \cap \mathcal{B}\right|}{
 
 实际上，我们可以把边界框内的像素区域看成是像素的集合。如此一来，我们可以用两个边界框的像素集合的Jaccard系数衡量这两个边界框的相似度。当衡量两个边界框的相似度时，我们通常将Jaccard系数称为交并比（Intersection over Union，IoU），即两个边界框相交面积与相并面积之比，如图9.2所示。交并比的取值范围在0和1之间：0表示两个边界框无重合像素，1表示两个边界框相等。
 
-![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-783577.svg+xml)
+![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-783577.svg)
 
 <div align=center>图9.2 交并比是两个边界框相交面积与相并面积之比</div>
 
@@ -729,7 +729,7 @@ def compute_jaccard(set_1, set_2):
 
 如图9.3（左）所示，假设矩阵$\boldsymbol{X}$中最大值为$x_{23}$，我们将为锚框$A_2$分配真实边界框$B_3$。然后，丢弃矩阵中第2行和第3列的所有元素，找出剩余阴影部分的最大元素$x_{71}$，为锚框$A_7$分配真实边界框$B_1$。接着如图9.3（中）所示，丢弃矩阵中第7行和第1列的所有元素，找出剩余阴影部分的最大元素$x_{54}$，为锚框$A_5$分配真实边界框$B_4$。最后如图9.3（右）所示，丢弃矩阵中第5行和第4列的所有元素，找出剩余阴影部分的最大元素$x_{92}$，为锚框$A_9$分配真实边界框$B_2$。之后，我们只需遍历除去$A_2, A_5, A_7, A_9$的剩余锚框，并根据阈值判断是否为剩余锚框分配真实边界框。
 
-![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-767470.svg+xml)
+![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-767470.svg)
 
 <div align=center>图9.3 为锚框分配真实边界框</div>
 
@@ -1346,7 +1346,7 @@ for ax, bb in zip(axes, bboxes):
 
 R-CNN首先对图像选取若干提议区域（如锚框也是一种选取方法）并标注它们的类别和边界框（如偏移量）。然后，用卷积神经网络对每个提议区域做前向计算抽取特征。之后，我们用每个提议区域的特征预测类别和边界框。图9.5描述了R-CNN模型。
 
-![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-971649.svg+xml)
+![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-971649.svg)
 
 <div align=center>图9.5 R-CNN模型</div>
 
@@ -1365,7 +1365,7 @@ R-CNN的主要性能瓶颈在于需要对每个提议区域独立抽取特征。
 
 图9.6描述了Fast R-CNN模型。
 
-![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-924657.svg+xml)
+![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-924657.svg)
 
 <div align=center>图9.6 Fast R-CNN模型</div>
 
@@ -1380,7 +1380,7 @@ Fast R-CNN中提出的兴趣区域池化层跟我们在5.4节（池化层）中�
 
 图9.7中，我们在$4 \times 4$的输入上选取了左上角的$3\times 3$区域作为兴趣区域。对于该兴趣区域，我们通过$2\times 2$兴趣区域池化层得到一个$2\times 2$的输出。4个划分后的子窗口分别含有元素0、1、4、5（5最大），2、6（6最大），8、9（9最大），10。
 
-![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-987118.svg+xml)
+![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-987118.svg)
 
 <div align=center>图9.7 2×2兴趣区域池化层</div>
 
@@ -1425,7 +1425,7 @@ tensor([[[[ 5.,  6.],
 
 Fast R-CNN通常需要在选择性搜索中生成较多的提议区域，以获得较精确的目标检测结果。Faster R-CNN提出将选择性搜索替换成区域提议网络（region proposal network），从而减少提议区域的生成数量，并保证目标检测的精度。
 
-![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-940374.svg+xml)
+![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-940374.svg)
 
 <div align=center>图9.8 Faster R-CNN模型</div>
 
@@ -1444,7 +1444,7 @@ Fast R-CNN通常需要在选择性搜索中生成较多的提议区域，以获�
 
 如果训练数据还标注了每个目标在图像上的像素级位置，那么Mask R-CNN能有效利用这些详尽的标注信息进一步提升目标检测的精度。
 
-![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-955879.svg+xml)
+![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-955879.svg)
 
 <div align=center>图9.9 Mask R-CNN模型</div>
 
@@ -1478,7 +1478,7 @@ Fast R-CNN通常需要在选择性搜索中生成较多的提议区域，以获�
 
 在前几节讨论的目标检测问题中，我们一直使用方形边界框来标注和预测图像中的目标。本节将探讨语义分割（semantic segmentation）问题，它关注如何将图像分割成属于不同语义类别的区域。值得一提的是，这些语义区域的标注和预测都是像素级的。图9.10展示了语义分割中图像有关狗、猫和背景的标签。可以看到，与目标检测相比，语义分割标注的像素级的边框显然更加精细。
 
-![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190213-033521.svg+xml)
+![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190213-033521.svg)
 
 <div align=center>图9.10 语义分割中图像有关狗、猫和背景的标签</div>
 
@@ -1743,7 +1743,7 @@ torch.uint8 torch.Size([64, 320, 480])
 
 在本节中，我们将介绍如何使用卷积神经网络自动将某图像中的样式应用在另一图像之上，即样式迁移（style transfer）[1]。这里我们需要两张输入图像，一张是内容图像，另一张是样式图像，我们将使用神经网络修改内容图像使其在样式上接近样式图像。图9.12中的内容图像为本书作者在西雅图郊区的雷尼尔山国家公园（Mount Rainier National Park）拍摄的风景照，而样式图像则是一副主题为秋天橡树的油画。最终输出的合成图像在保留了内容图像中物体主体形状的情况下应用了样式图像的油画笔触，同时也让整体颜色更加鲜艳。
 
-![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-533031.svg+xml)
+![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-533031.svg)
 
 <div align=center>图9.12 输入内容图像和样式图像，输出样式迁移后的合成图像</div>
 
@@ -1751,7 +1751,7 @@ torch.uint8 torch.Size([64, 320, 480])
 
 图9.13用一个例子来阐述基于卷积神经网络的样式迁移方法。首先，我们初始化合成图像，例如将其初始化成内容图像。该合成图像是样式迁移过程中唯一需要更新的变量，即样式迁移所需迭代的模型参数。然后，我们选择一个预训练的卷积神经网络来抽取图像的特征，其中的模型参数在训练中无须更新。深度卷积神经网络凭借多个层逐级抽取图像的特征。我们可以选择其中某些层的输出作为内容特征或样式特征。以图9.13为例，这里选取的预训练的神经网络含有3个卷积层，其中第二层输出图像的内容特征，而第一层和第三层的输出被作为图像的样式特征。接下来，我们通过正向传播（实线箭头方向）计算样式迁移的损失函数，并通过反向传播（虚线箭头方向）迭代模型参数，即不断更新合成图像。样式迁移常用的损失函数由3部分组成：内容损失（content loss）使合成图像与内容图像在内容特征上接近，样式损失（style loss）令合成图像与样式图像在样式特征上接近，而总变差损失（total variation loss）则有助于减少合成图像中的噪点。最后，当模型训练结束时，我们输出样式迁移的模型参数，即得到最终的合成图像。
 
-![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-455394.svg+xml)
+![](./images/chapter09_计算机视觉/chapter09_computer-vision-20210112-190212-455394.svg)
 
 <div align=center>图9.13 基于卷积神经网络的样式迁移。实线箭头和虚线箭头分别表示正向传播和反向传播</div>
 

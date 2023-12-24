@@ -33,7 +33,7 @@
 
 实际上，GPT3 每次只输出一个 `token`， 我们可以认为，一个 `token` 就是一个词。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-GPT-20201214-201036-819429.gif)
+![](./images/N10-GPT图解-3/N06-GPT-20201214-201036-819429.gif)
 
 请注意，这篇文章只是讨论 GPT3 的工作原理，而不是讨论它的新颖之处（因为这个话题涉及到非常多的东西）。GPT3 的架构是一个基于 `Transformer` 的 `Decoder`，而 `Transformer` 来源于这篇论文： [Attention Is All You Need](https://arxiv.org/abs/1706.03762)。
 
@@ -51,7 +51,7 @@ GPT3 非常巨大，包括 1750 亿个数字（称为参数）。这些参数用
 
 GPT3 的宽度是 2048 个 token。这就是模型的”上下文窗口“（context window）。这意味着，它有 2048 个轨道来处理这些输入的 token。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-GPT-20201214-201036-966841.gif)
+![](./images/N10-GPT图解-3/N06-GPT-20201214-201036-966841.gif)
 
 现在，让我们跟着上图中紫色的轨道，看看系统是如何处理 `robotics` 这个词，并输出 `A`的。
 
@@ -79,13 +79,13 @@ GPT2 和 GPT3 的不同，就是密集注意力层和稀疏注意力层的交替
 
 下图是 GPT3 内部输出和输出（“Okay human”）的过程。注意看下每个 token 是如何通过所有层的。我们不关心第一个词的输出。当输入数据全部处理完了，我们才开始产生输出。然后我们把输出的每个词又输入到模型中。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-GPT-20201214-201037-227659.gif)
+![](./images/N10-GPT图解-3/N06-GPT-20201214-201037-227659.gif)
 
 在 [React 代码生成](https://twitter.com/sharifshameem/status/1284421499915403264) 的例子中，首先输入 2 句描述文字和对应的代码，然后第三句只输入描述。模型会输出一个个的 token（用粉色表示），表示对应的 React 代码。
 
 我的假设是，将例子和描述作为输入，用特定的 token 将例子和结果分开，然后输入到模型。
 
-![](https://gitee.com/liuhuihe/Ehe/raw/master/images/N06-GPT-20201214-201037-422067.gif)
+![](./images/N10-GPT图解-3/N06-GPT-20201214-201037-422067.gif)
 
 这种运作方式令人印象深刻。因为你只要等到 GPT3 的微调推出，它的可能性将更加惊人。
 

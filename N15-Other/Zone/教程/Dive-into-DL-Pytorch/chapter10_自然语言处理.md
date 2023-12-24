@@ -1354,7 +1354,7 @@ DATA_ROOT = "/S1/CSCL/tangss/Datasets"
 
 在介绍模型前我们先来解释一维卷积层的工作原理。与二维卷积层一样，一维卷积层使用一维的互相关运算。在一维互相关运算中，卷积窗口从输入数组的最左方开始，按从左往右的顺序，依次在输入数组上滑动。当卷积窗口滑动到某一位置时，窗口中的输入子数组与核数组按元素相乘并求和，得到输出数组中相应位置的元素。如图10.4所示，输入是一个宽为7的一维数组，核数组的宽为2。可以看到输出的宽度为$7-2+1=6$，且第一个元素是由输入的最左边的宽为2的子数组与核数组按元素相乘后再相加得到的：$0\times1+1\times2=2$。
 
-![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-189547.svg+xml)
+![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-189547.svg)
 
 <div align=center>图10.4 一维互相关运算</div>
 
@@ -1382,7 +1382,7 @@ tensor([ 2.,  5.,  8., 11., 14., 17.])
 
 多输入通道的一维互相关运算也与多输入通道的二维互相关运算类似：在每个通道上，将核与相应的输入做一维互相关运算，并将通道之间的结果相加得到输出结果。图10.5展示了含3个输入通道的一维互相关运算，其中阴影部分为第一个输出元素及其计算所使用的输入和核数组元素：$0\times1+1\times2+1\times3+2\times4+2\times(-1)+3\times(-3)=2$。
 
-![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-174587.svg+xml)
+![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-174587.svg)
 
 <div align=center>图10.5 含3个输入通道的一维互相关运算</div>
 
@@ -1406,7 +1406,7 @@ tensor([ 2.,  8., 14., 20., 26., 32.])
 
 由二维互相关运算的定义可知，多输入通道的一维互相关运算可以看作单输入通道的二维互相关运算。如图10.6所示，我们也可以将图10.5中多输入通道的一维互相关运算以等价的单输入通道的二维互相关运算呈现。这里核的高等于输入的高。图10.6中的阴影部分为第一个输出元素及其计算所使用的输入和核数组元素：$2\times(-1)+3\times(-3)+1\times3+2\times4+0\times1+1\times2=2$。
 
-![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-158630.svg+xml)
+![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-158630.svg)
 
 <div align=center>图10.6 单输入通道的二维互相关运算</div>
 
@@ -1454,7 +1454,7 @@ textCNN模型主要使用了一维卷积层和时序最大池化层。假设输�
 
 图10.7用一个例子解释了textCNN的设计。这里的输入是一个有11个词的句子，每个词用6维词向量表示。因此输入序列的宽为11，输入通道数为6。给定2个一维卷积核，核宽分别为2和4，输出通道数分别设为4和5。因此，一维卷积计算后，4个输出通道的宽为$11-2+1=10$，而其他5个通道的宽为$11-4+1=8$。尽管每个通道的宽不同，我们依然可以对各个通道做时序最大池化，并将9个通道的池化输出连结成一个9维向量。最终，使用全连接将9维向量变换为2维输出，即正面情感和负面情感的预测。
 
-![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-205641.svg+xml)
+![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-205641.svg)
 
 <div align=center>图10.7 textCNN的设计</div>
 
@@ -1571,7 +1571,7 @@ d2l.predict_sentiment(net, vocab, ['this', 'movie', 'is', 'so', 'bad']) # negati
 
 图10.8描述了使用编码器—解码器将上述英语句子翻译成法语句子的一种方法。在训练数据集中，我们可以在每个句子后附上特殊符号“&lt;eos&gt;”（end of sequence）以表示序列的终止。编码器每个时间步的输入依次为英语句子中的单词、标点和特殊符号“&lt;eos&gt;”。图10.8中使用了编码器在最终时间步的隐藏状态作为输入句子的表征或编码信息。解码器在各个时间步中使用输入句子的编码信息和上个时间步的输出以及隐藏状态作为输入。我们希望解码器在各个时间步能正确依次输出翻译后的法语单词、标点和特殊符号"&lt;eos&gt;"。需要注意的是，解码器在最初时间步的输入用到了一个表示序列开始的特殊符号"&lt;bos&gt;"（beginning of sequence）。
 
-![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-220486.svg+xml)
+![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-220486.svg)
 
 <div align=center>图10.8 使用编码器—解码器将句子由英语翻译成法语。编码器和解码器分别为循环神经网络</div>
 
@@ -1655,14 +1655,14 @@ $$
 
 下面来看一个例子。假设输出词典里面有“A”“B”“C”和“&lt;eos&gt;”这4个词。图10.9中每个时间步下的4个数字分别代表了该时间步生成“A”“B”“C”和“&lt;eos&gt;”这4个词的条件概率。在每个时间步，贪婪搜索选取条件概率最大的词。因此，图10.9中将生成输出序列“A”“B”“C”“&lt;eos&gt;”。该输出序列的条件概率是$0.5\times0.4\times0.4\times0.6 = 0.048$。
 
-![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-065436.svg+xml)
+![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-065436.svg)
 
 <div align=center>图10.9 在每个时间步，贪婪搜索选取条件概率最大的词</div>
 
 
 接下来，观察图10.10演示的例子。与图10.9中不同，图10.10在时间步2中选取了条件概率第二大的词“C”。由于时间步3所基于的时间步1和2的输出子序列由图10.9中的“A”“B”变为了图10.10中的“A”“C”，图10.10中时间步3生成各个词的条件概率发生了变化。我们选取条件概率最大的词“B”。此时时间步4所基于的前3个时间步的输出子序列为“A”“C”“B”，与图10.9中的“A”“B”“C”不同。因此，图10.10中时间步4生成各个词的条件概率也与图10.9中的不同。我们发现，此时的输出序列“A”“C”“B”“&lt;eos&gt;”的条件概率是$0.5\times0.3\times0.6\times0.6=0.054$，大于贪婪搜索得到的输出序列的条件概率。因此，贪婪搜索得到的输出序列“A”“B”“C”“&lt;eos&gt;”并非最优输出序列。
 
-![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-081453.svg+xml)
+![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-081453.svg)
 
 <div align=center>图10.10 在时间步2选取条件概率第二大的词“C”</div>
 
@@ -1676,7 +1676,7 @@ $$
 
 束搜索（beam search）是对贪婪搜索的一个改进算法。它有一个束宽（beam size）超参数。我们将它设为$k$。在时间步1时，选取当前时间步条件概率最大的$k$个词，分别组成$k$个候选输出序列的首词。在之后的每个时间步，基于上个时间步的$k$个候选输出序列，从$k\left|\mathcal{Y}\right|$个可能的输出序列中选取条件概率最大的$k$个，作为该时间步的候选输出序列。最终，我们从各个时间步的候选输出序列中筛选出包含特殊符号“&lt;eos&gt;”的序列，并将它们中所有特殊符号“&lt;eos&gt;”后面的子序列舍弃，得到最终候选输出序列的集合。
 
-![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-049479.svg+xml)
+![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-049479.svg)
 
 <div align=center>图10.11 束搜索的过程。束宽为2，输出序列最大长度为3。候选输出序列有A、C、AB、CE、ABD和CED</div>
 
@@ -1719,7 +1719,7 @@ $$\boldsymbol{s}_{t'} = g(\boldsymbol{y}_{t'-1}, \boldsymbol{c}_{t'}, \boldsymbo
 
 我们先描述第一个关键点，即计算背景变量。图10.12描绘了注意力机制如何为解码器在时间步2计算背景变量。首先，函数$a$根据解码器在时间步1的隐藏状态和编码器在各个时间步的隐藏状态计算softmax运算的输入。softmax运算输出概率分布并对编码器各个时间步的隐藏状态做加权平均，从而得到背景变量。
 
-![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-097410.svg+xml)
+![](./images/chapter10_自然语言处理/chapter10_natural-language-processing-20210112-190213-097410.svg)
 
 <div align=center>图10.12 编码器—解码器上的注意力机制</div>
 
