@@ -22,7 +22,7 @@ CMake是一个开源、跨平台的编译、测试和打包工具，它使用比
 
 它们的大致关系如下图：
 
-![img](D:\Gitee\Ehe\2022\v2-3ecb8a9d9cc86895b3ab639ce3ff0418_720w.jpg)
+![img](./images/N02-CMake应用指南/v2-3ecb8a9d9cc86895b3ab639ce3ff0418_720w.jpg)
 
 这里的GCC只是示例，也可以是其他的编译工具。这里的Bin表示目标文件，可以是可执行文件或者库文件。
 
@@ -1333,7 +1333,7 @@ install(DIRECTORY dirs...
 
 安装目录必须执行安装的目录类型`TYPE`或者安装的目标路径`DESTINATION`，但是又不可以同时指定；可以使用`TYPE`指定安装的目录中的文件类型，然后CMake会自动按照类型分配安装目录，不同类型对应的安装路径如下图：
 
-![img](D:\Gitee\Ehe\2022\v2-6916aafb864affe08f92c13cd3a9a35b_720w.jpg)
+![img](./images/N02-CMake应用指南/v2-6916aafb864affe08f92c13cd3a9a35b_720w.jpg)
 
 当然，开发者也可以选择只使用`DESTINATION`显式指定安装的目录。
 
@@ -1526,7 +1526,7 @@ cd -
 
 以上便是关于安装和打包的介绍，关于构建脚本开头`set`命令的几个参数，可参看往期这篇文章：
 
-[很酷的程序员：编写安全的shell脚本1 赞同 · 0 评论文章![img](D:\Gitee\Ehe\2022\v2-e38f18cb0c22d2bf01a5c905f0647e42_180x120.jpg)](https://zhuanlan.zhihu.com/p/360880840)
+[很酷的程序员：编写安全的shell脚本1 赞同 · 0 评论文章![img](./images/N02-CMake应用指南/v2-e38f18cb0c22d2bf01a5c905f0647e42_180x120.jpg)](https://zhuanlan.zhihu.com/p/360880840)
 
 > 原文首发于公众号：**很酷的程序员**，欢迎关注留言，共同进步
 
@@ -1546,7 +1546,7 @@ CMake和编译的过程是有对应关系的，理解了编译构建的过程，
 
 其实，对于构建的每一个目标，都是树形的结构，以本系列的开源项目**[https://gitee.com/RealCoolEngineer/cmake-template](https://link.zhihu.com/?target=https%3A//gitee.com/RealCoolEngineer/cmake-template)**为例(当前commit id: `ca0e593`)，构建目标、源文件/`.o`文件和`.a`文件之间构成一棵"构建树"（Build Tree）：
 
-![img](D:\Gitee\Ehe\2022\v2-47c50d195fe338ce6beb8c9541b69a16_720w.jpg)
+![img](./images/N02-CMake应用指南/v2-47c50d195fe338ce6beb8c9541b69a16_720w.jpg)
 
 对于最终的可执行文件(demo)来说，必须能够找到所有需要的函数的实现，这些实现可能包含在单个`.o`文件（demo.o，crtn.o等等）、或者打包好的库文件（其实就是`.o`文件的集合，比如libmath.a，libm.a），所以它会是构建树的根。
 
@@ -1563,7 +1563,7 @@ GCC的编译的具体过程其实是**通过`gcc`命令的参数进行控制的�
 
 在**GCC编译过程概述**文中，介绍了`gcc`命令的常用参数（下面补充了`-D`和`-O`）：
 
-![img](D:\Gitee\Ehe\2022\v2-f03d8e0e28adeda3250301feecd21511_720w.jpg)
+![img](./images/N02-CMake应用指南/v2-f03d8e0e28adeda3250301feecd21511_720w.jpg)
 
 GCC的编译过程大概是：
 

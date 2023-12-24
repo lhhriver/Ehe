@@ -63,7 +63,7 @@ g++ main.cpp
 ./a.exe
 ```
 
-![image-20220718110235490](D:\Gitee\Ehe\2022\image-20220718110235490.png)
+![image-20220718110235490](./images/N03-VScode C++环境搭建/image-20220718110235490.png)
 
 2. 带调试信息
 
@@ -77,7 +77,7 @@ g++ -g main.cpp -o my_single_swap
 .\my_single_swap.exe
 ```
 
-![image-20220718110337028](D:\Gitee\Ehe\2022\image-20220718110337028.png)
+![image-20220718110337028](./images/N03-VScode C++环境搭建/image-20220718110337028.png)
 
 
 
@@ -137,7 +137,7 @@ g++ -g main.cpp swap.cpp -o my_multi_swap
 .\my_mult_swap.exe
 ```
 
-![image-20220718142936868](D:\Gitee\Ehe\2022\image-20220718142936868.png)
+![image-20220718142936868](./images/N03-VScode C++环境搭建/image-20220718142936868.png)
 
 
 
@@ -386,11 +386,11 @@ add_executable(cmake_task main.cpp swap.cpp)
 
 ## launch.json
 
-![在这里插入图片描述](D:\Gitee\Ehe\2022\822bd1587d7a45ac95a6910359f4320f.png)
+![在这里插入图片描述](./images/N03-VScode C++环境搭建/822bd1587d7a45ac95a6910359f4320f.png)
 
-![在这里插入图片描述](D:\Gitee\Ehe\2022\0c406af4d6e34453b5cc0eba7be60776.png)
+![在这里插入图片描述](./images/N03-VScode C++环境搭建/0c406af4d6e34453b5cc0eba7be60776.png)
 
-![在这里插入图片描述](D:\Gitee\Ehe\2022\783e126b31944651a46a888cd06ccdd6.png)
+![在这里插入图片描述](./images/N03-VScode C++环境搭建/783e126b31944651a46a888cd06ccdd6.png)
 
 
 
