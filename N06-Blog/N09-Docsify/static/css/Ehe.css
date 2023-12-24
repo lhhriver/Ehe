@@ -1320,10 +1320,11 @@ ol {
   margin: 0px 0px 0px 2.5em;
 }
 
-li.md-list-item::marker {
+li::marker { /*.md-list-item*/
   color: #0451a5;
   font-weight: 1000;
 }
+
 
 .sidebar ul {
   margin: 0 0 0 20px;
