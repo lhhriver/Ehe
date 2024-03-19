@@ -1,6 +1,6 @@
 # ALL
 
-[🔖 N00-all_in_one](N06-Blog/N09-Docsify/IDEhe/N00-all_in_one.md)
+[🔖 N08-all_in_one](N13-DDU/N04-Docsify/IDEhe/N08-all_in_one.md)
 
 # N06-Blog
 

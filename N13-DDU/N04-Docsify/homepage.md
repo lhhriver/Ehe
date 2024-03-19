@@ -1,16 +1,10 @@
-
-
 ![](./images/ds.jpg)
-
-
 
 <font color=bleu size=20 face=雅黑><center>💻</center></font>
 
-<font color=bleu size=6><center>顿河</center></font>
+<font color=bleu size=6><center>你好，顿河</center></font>
 
 <font color=bleu size=6><center>好好学习，天天向上</center></font>
-
-
 
 # N01-Base
 
@@ -77,8 +71,6 @@
 [🔖 N05-基本命令](N01-Base/05-其它/N05-基本命令.md)
 
 [🔖 N06-Typora](N01-Base/05-其它/N06-Typora.md)
-
-[🔖 tmp](N01-Base/05-其它/tmp.md)
 
 ### Typora主题
 
@@ -626,6 +618,8 @@
 
 ### 优化器
 
+[🔖 优化器](N04-DL/N02-DL_base/优化器/优化器.md)
+
 [🔖 N01-优化器介绍](N04-DL/N02-DL_base/优化器/N01-优化器介绍.md)
 
 [🔖 N02-梯度下降和随机梯度下降](N04-DL/N02-DL_base/优化器/N02-梯度下降和随机梯度下降.md)
@@ -641,8 +635,6 @@
 [🔖 N07-AdaDelta算法](N04-DL/N02-DL_base/优化器/N07-AdaDelta算法.md)
 
 [🔖 N08-Adam算法](N04-DL/N02-DL_base/优化器/N08-Adam算法.md)
-
-[🔖 优化器](N04-DL/N02-DL_base/优化器/优化器.md)
 
 ## N03-基础算法
 
@@ -714,8 +706,6 @@
 
 [🔖 RNN_DS](N05-NLP/基础算法/RNN_DS.md)
 
-[🔖 Seq2Seq](N05-NLP/基础算法/Seq2Seq.md)
-
 [🔖 SeqGAN](N05-NLP/基础算法/SeqGAN.md)
 
 [🔖 TextCNN](N05-NLP/基础算法/TextCNN.md)
@@ -730,15 +720,17 @@
 
 [🔖 Transformer-图解](N05-NLP/基础算法/Transformer-图解.md)
 
+[🔖 Seq2Seq](N05-NLP/基础算法/Seq2Seq.md)
+
 ## 知识图谱
 
 [🔖 graph_TMP](N05-NLP/知识图谱/graph_TMP.md)
 
-[🔖 Neo4j](N05-NLP/知识图谱/Neo4j.md)
+[🔖 知识图谱技术综述](N05-NLP/知识图谱/知识图谱技术综述.md)
 
 [🔖 py2neo](N05-NLP/知识图谱/py2neo.md)
 
-[🔖 知识图谱技术综述](N05-NLP/知识图谱/知识图谱技术综述.md)
+[🔖 Neo4j](N05-NLP/知识图谱/Neo4j.md)
 
 ## 词向量
 
@@ -796,34 +788,6 @@
 
 [🔖 面试指南-Python篇](N06-Blog/N01-STB/面试指南-Python篇.md)
 
-## N09-Docsify
-
-[🔖 coverpage](N06-Blog/N09-Docsify/coverpage.md)
-
-[🔖 homepage](N06-Blog/N09-Docsify/homepage.md)
-
-[🔖 navbar](N06-Blog/N09-Docsify/navbar.md)
-
-[🔖 sidebar](N06-Blog/N09-Docsify/sidebar.md)
-
-### IDEhe
-
-[🔖 N00-all_in_one](N06-Blog/N09-Docsify/IDEhe/N00-all_in_one.md)
-
-[🔖 N01-DigitalCircuit](N06-Blog/N09-Docsify/IDEhe/N01-DigitalCircuit.md)
-
-[🔖 N02-Verilog](N06-Blog/N09-Docsify/IDEhe/N02-Verilog.md)
-
-[🔖 N03-SystemVerilog](N06-Blog/N09-Docsify/IDEhe/N03-SystemVerilog.md)
-
-[🔖 N04-UVM](N06-Blog/N09-Docsify/IDEhe/N04-UVM.md)
-
-[🔖 N09-Others](N06-Blog/N09-Docsify/IDEhe/N09-Others.md)
-
-[🔖 编程基础](N06-Blog/N09-Docsify/IDEhe/编程基础.md)
-
-[🔖 自然语言处理](N06-Blog/N09-Docsify/IDEhe/自然语言处理.md)
-
 # N07-Algorithmes
 
 ## ASR
@@ -868,9 +832,9 @@
 
 [🔖 0-排序算法](N07-Algorithmes/Sorting-Algorithm/0-排序算法.md)
 
-[🔖 1.bubbleSort](N07-Algorithmes/Sorting-Algorithm/1.bubbleSort.md)
+[🔖 常用算法复杂度速查表](N07-Algorithmes/Sorting-Algorithm/常用算法复杂度速查表.md)
 
-[🔖 10.radixSort](N07-Algorithmes/Sorting-Algorithm/10.radixSort.md)
+[🔖 1.bubbleSort](N07-Algorithmes/Sorting-Algorithm/1.bubbleSort.md)
 
 [🔖 2.selectionSort](N07-Algorithmes/Sorting-Algorithm/2.selectionSort.md)
 
@@ -888,7 +852,7 @@
 
 [🔖 9.bucketSort](N07-Algorithmes/Sorting-Algorithm/9.bucketSort.md)
 
-[🔖 常用算法复杂度速查表](N07-Algorithmes/Sorting-Algorithm/常用算法复杂度速查表.md)
+[🔖 10.radixSort](N07-Algorithmes/Sorting-Algorithm/10.radixSort.md)
 
 # N09-Notebook
 
@@ -910,6 +874,10 @@
 
 [🔖 N04-图计算论文](N09-Notebook/TaskMD/N01-图计算/基础理论/N04-图计算论文.md)
 
+#### 学习笔记
+
+[🔖 基础知识](N09-Notebook/TaskMD/N01-图计算/学习笔记/基础知识.md)
+
 #### 开发笔记
 
 [🔖 N01-函数编译及功能说明](N09-Notebook/TaskMD/N01-图计算/开发笔记/N01-函数编译及功能说明.md)
@@ -928,9 +896,9 @@
 
 #### 项目实践
 
-[🔖 N01-基于图计算的潮流计算说明](N09-Notebook/TaskMD/N01-图计算/项目实践/N01-基于图计算的潮流计算说明.md)
-
 [🔖 潮流计算的基本算法](N09-Notebook/TaskMD/N01-图计算/项目实践/潮流计算的基本算法.md)
+
+[🔖 N01-基于图计算的潮流计算说明](N09-Notebook/TaskMD/N01-图计算/项目实践/N01-基于图计算的潮流计算说明.md)
 
 ### N02-语音识别
 
@@ -938,19 +906,11 @@
 
 #### ASR_tmp
 
-[🔖 【finetune】e2e声学模型finetune-在线](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【finetune】e2e声学模型finetune-在线.md)
-
-[🔖 【finetune】e2e声学模型finetune-离线](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【finetune】e2e声学模型finetune-离线.md)
-
 [🔖 【其它】在线识别详细设计说明书](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【其它】在线识别详细设计说明书.md)
 
 [🔖 【安装】在线语音识别系统安装手册](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【安装】在线语音识别系统安装手册.md)
 
 [🔖 【安装】语音识别引擎安装配置手册](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【安装】语音识别引擎安装配置手册.md)
-
-[🔖 【引擎】e2e引擎详解-在线](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【引擎】e2e引擎详解-在线.md)
-
-[🔖 【引擎】e2e引擎详解-离线](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【引擎】e2e引擎详解-离线.md)
 
 [🔖 【授权】在线语音识别系统授权](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【授权】在线语音识别系统授权.md)
 
@@ -970,10 +930,6 @@
 
 [🔖 【编译】在线代码编译及服务集成](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【编译】在线代码编译及服务集成.md)
 
-[🔖 【训练】e2e在线模型训练源码详解](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【训练】e2e在线模型训练源码详解.md)
-
-[🔖 【训练】e2e离线模型训练源码详解](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【训练】e2e离线模型训练源码详解.md)
-
 [🔖 【运维】声学模型&语言模型替换](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【运维】声学模型&语言模型替换.md)
 
 [🔖 【运维】语音识别引擎部署文档-在线](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【运维】语音识别引擎部署文档-在线.md)
@@ -981,6 +937,18 @@
 [🔖 【运维】语音识别引擎部署文档-离线](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【运维】语音识别引擎部署文档-离线.md)
 
 [🔖 【验证】ASR实操记录](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【验证】ASR实操记录.md)
+
+[🔖 【finetune】e2e声学模型finetune-在线](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【finetune】e2e声学模型finetune-在线.md)
+
+[🔖 【finetune】e2e声学模型finetune-离线](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【finetune】e2e声学模型finetune-离线.md)
+
+[🔖 【引擎】e2e引擎详解-在线](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【引擎】e2e引擎详解-在线.md)
+
+[🔖 【引擎】e2e引擎详解-离线](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【引擎】e2e引擎详解-离线.md)
+
+[🔖 【训练】e2e在线模型训练源码详解](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【训练】e2e在线模型训练源码详解.md)
+
+[🔖 【训练】e2e离线模型训练源码详解](N09-Notebook/TaskMD/N02-语音识别/ASR_tmp/【训练】e2e离线模型训练源码详解.md)
 
 #### 声学模型
 
@@ -990,13 +958,9 @@
 
 ###### 在线引擎
 
-[🔖 【在线-finetune】e2e声学模型finetune](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/在线引擎/【在线-finetune】e2e声学模型finetune.md)
-
 [🔖 【在线-安装】在线语音识别系统安装手册](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/在线引擎/【在线-安装】在线语音识别系统安装手册.md)
 
 [🔖 【在线-安装】语音识别引擎安装配置手册](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/在线引擎/【在线-安装】语音识别引擎安装配置手册.md)
-
-[🔖 【在线-引擎】e2e引擎详解](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/在线引擎/【在线-引擎】e2e引擎详解.md)
 
 [🔖 【在线-授权】在线语音识别系统授权](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/在线引擎/【在线-授权】在线语音识别系统授权.md)
 
@@ -1005,8 +969,6 @@
 [🔖 【在线-流程图】在线识别流程图](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/在线引擎/【在线-流程图】在线识别流程图.md)
 
 [🔖 【在线-编译】在线代码编译及服务集成](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/在线引擎/【在线-编译】在线代码编译及服务集成.md)
-
-[🔖 【在线-训练】e2e在线模型训练源码详解](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/在线引擎/【在线-训练】e2e在线模型训练源码详解.md)
 
 [🔖 【在线-部署】语音识别引擎部署文档](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/在线引擎/【在线-部署】语音识别引擎部署文档.md)
 
@@ -1018,19 +980,19 @@
 
 [🔖 【记录】ASR实操记录](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/在线引擎/【记录】ASR实操记录.md)
 
+[🔖 【在线-finetune】e2e声学模型finetune](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/在线引擎/【在线-finetune】e2e声学模型finetune.md)
+
+[🔖 【在线-引擎】e2e引擎详解](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/在线引擎/【在线-引擎】e2e引擎详解.md)
+
+[🔖 【在线-训练】e2e在线模型训练源码详解](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/在线引擎/【在线-训练】e2e在线模型训练源码详解.md)
+
 ###### 离线引擎
 
-[🔖 【离线-finetune】e2e声学模型finetune](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/离线引擎/【离线-finetune】e2e声学模型finetune.md)
-
 [🔖 【离线-安装】语音识别引擎安装配置手册](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/离线引擎/【离线-安装】语音识别引擎安装配置手册.md)
-
-[🔖 【离线-引擎】e2e引擎详解](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/离线引擎/【离线-引擎】e2e引擎详解.md)
 
 [🔖 【离线-模型替换】声学模型&语言模型替换](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/离线引擎/【离线-模型替换】声学模型&语言模型替换.md)
 
 [🔖 【离线-流程图】离线识别流程图](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/离线引擎/【离线-流程图】离线识别流程图.md)
-
-[🔖 【离线-训练】e2e离线模型训练源码详解](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/离线引擎/【离线-训练】e2e离线模型训练源码详解.md)
 
 [🔖 【离线-部署】语音识别引擎部署文档](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/离线引擎/【离线-部署】语音识别引擎部署文档.md)
 
@@ -1043,6 +1005,12 @@
 [🔖 【离线】离线转写结果融合](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/离线引擎/【离线】离线转写结果融合.md)
 
 [🔖 【离线】语音格式转换](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/离线引擎/【离线】语音格式转换.md)
+
+[🔖 【离线-finetune】e2e声学模型finetune](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/离线引擎/【离线-finetune】e2e声学模型finetune.md)
+
+[🔖 【离线-引擎】e2e引擎详解](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/离线引擎/【离线-引擎】e2e引擎详解.md)
+
+[🔖 【离线-训练】e2e离线模型训练源码详解](N09-Notebook/TaskMD/N02-语音识别/声学模型/e2e/离线引擎/【离线-训练】e2e离线模型训练源码详解.md)
 
 #### 实践记录
 
@@ -1074,17 +1042,45 @@
 
 [🔖 N01-基于广东数据的潮流计算](N09-Notebook/TaskMD/N03-任务记录/潮流计算/N01-基于广东数据的潮流计算.md)
 
+# N13-DDU
+
+## N04-Docsify
+
+[🔖 coverpage](N13-DDU/N04-Docsify/coverpage.md)
+
+[🔖 homepage](N13-DDU/N04-Docsify/homepage.md)
+
+[🔖 navbar](N13-DDU/N04-Docsify/navbar.md)
+
+[🔖 sidebar](N13-DDU/N04-Docsify/sidebar.md)
+
+### IDEhe
+
+[🔖 N00-all_in_one](N13-DDU/N04-Docsify/IDEhe/N00-all_in_one.md)
+
+[🔖 编程基础](N13-DDU/N04-Docsify/IDEhe/编程基础.md)
+
+[🔖 N01-编程基础](N13-DDU/N04-Docsify/IDEhe/N01-编程基础.md)
+
+[🔖 N02-机器学习](N13-DDU/N04-Docsify/IDEhe/N02-机器学习.md)
+
+[🔖 N03-深度学习](N13-DDU/N04-Docsify/IDEhe/N03-深度学习.md)
+
+[🔖 N04-自然语言处理](N13-DDU/N04-Docsify/IDEhe/N04-自然语言处理.md)
+
+[🔖 N09-Others](N13-DDU/N04-Docsify/IDEhe/N09-Others.md)
+
 # N15-Other
 
 ## Zone
 
 ### TMP
 
-[🔖 H1](N15-Other/Zone/TMP/H1.md)
-
 [🔖 zb](N15-Other/Zone/TMP/zb.md)
 
 [🔖 zp](N15-Other/Zone/TMP/zp.md)
+
+[🔖 H1](N15-Other/Zone/TMP/H1.md)
 
 ### 幸福汇
 
