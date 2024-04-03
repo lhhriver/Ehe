@@ -34,9 +34,9 @@ GPT 训练过程分为两个阶段：
 $$
 \text { maximize } L_{1}(U)=\sum_{i} \log P\left(u_{i} | u_{i-k}, \ldots, u_{i-1} ; \Theta\right)
 $$
-其中，$k$ 是上下文窗口的大小，$P$ 为条件概率，$\Theta$ 为条件概率的参数，参数更新采用 SGD。
+其中，$k$ 是上下文窗口的大小，$P$ 为条件概率，$\Theta$ 为条件概率的参数，参数更新采用SGD。
 
-GPT 输入文本和位置 Embedding（采用使用 one-hot 编码），经过 12 层的 Transformer 的 Decoder 后通过 Softmax 得到输出：
+GPT 输入文本和位置 Embedding（采用使用 one-hot 编码），经过12层的 Transformer 的 Decoder 后通过 Softmax 得到输出：
 
 $$
 \begin{aligned}

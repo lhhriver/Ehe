@@ -55,7 +55,7 @@ BERT的论文中介绍了2种版本：
 
 ![](./images/N07-Bert/N07-Bert-20201214-201042-799189.png)
 
-输入的**第一个字符为[CLS]**，在这里字符[CLS]表达的意思很简单 - Classification （分类）。
+输入的**第一个字符为[CLS]**，在这里字符[CLS]表达的意思很简单 - Classification（分类）。
 
 BERT与Transformer 的编码方式一样。**将固定长度的字符串作为输入，数据由下而上传递计算，每一层都用到了self-attention，并通过前馈神经网络传递其结果，将其交给下一个编码器**。
 
@@ -65,7 +65,7 @@ BERT与Transformer 的编码方式一样。**将固定长度的字符串作为�
 
 # 模型输出
 
-每个位置返回的输出都是一个**隐藏层大小**的向量（基本版本BERT为768）。以文本分类为例，我们**重点关注第一个位置上的输出**（第一个位置是分类标识[CLS]） 。如下图
+每个位置返回的输出都是一个**隐藏层大小**的向量（基本版本BERT为768）。以文本分类为例，我们**重点关注第一个位置上的输出**（第一个位置是分类标识[CLS]） 。如下图：
 
 ![](./images/N07-Bert/N07-Bert-20201214-201042-812775.png)
 
@@ -213,7 +213,7 @@ BERT自信回答道：“我们会用masks”
 
 BERT的论文为我们介绍了几种BERT可以处理的NLP任务：
 
-1. 短文本相似 
+1. 短文本相似
 2. 文本分类
 3. QA机器人
 4. 语义标注
@@ -243,8 +243,6 @@ BERT的论文为我们介绍了几种BERT可以处理的NLP任务：
 2. run_classifier.py是微调过程的一个示例。它还构建了监督模型的分类层。如果要构建自己的分类器，请查看该文件中的create_model()方法。
 3. 可以下载几种预先训练的模型。涵盖102种语言的多语言模型，这些语言都是在维基百科的数据基础上训练而成的。
 4. BERT不会将单词视为tokens。相反，它注重WordPieces。 tokenization.py是将你的单词转换为适合BERT的wordPieces的tokensizer。
-
-
 
 您还可以查看[BERT的PyTorch实现](https://github.com/huggingface/pytorch-pretrained-BERT)。[ AllenNLP](https://github.com/allenai/allennlp)库使用此实现允许将BERT嵌入与任何模型一起使用。
 
