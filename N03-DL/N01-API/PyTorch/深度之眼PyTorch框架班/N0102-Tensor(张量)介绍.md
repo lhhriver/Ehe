@@ -141,7 +141,7 @@ torch.zeros(*size,
 
 - size: 张量的形状。
 - out: **输出的张量，如果指定了 out，那么torch.zeros()返回的张量和 out 指向的是同一个地址**。
-- layout: 内存中布局形式，有 strided，sparse_coo 等。当是稀疏矩阵时，设置为 sparse_coo 可以减少内存占用。
+- layout: 内存中布局形式，有 strided，sparse_coo 等。当是**稀疏矩阵**时，设置为 sparse_coo 可以减少内存占用。
 - device: 所在设备，cuda/cpu。
 - requires_grad: 是否需要梯度。
 
