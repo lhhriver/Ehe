@@ -2092,7 +2092,7 @@ print(x, x.dtype)
 y = i.type(torch.float)
 print(y, y.dtype) 
 
-#使用type_as方法转换成某个Tensor相同类型
+# 使用type_as方法转换成某个Tensor相同类型
 z = i.type_as(x)
 print(z, z.dtype) 
 ```
