@@ -15,9 +15,13 @@ TransformerEncoderLayer
 TransformerEncoder
 ```
 
-# torch.nn.init
+## torch.nn.init
 
-# torch.nn.functional
+## torch.nn.functional
+
+## nn.Parameter
+
+## nn.Module
 
 # torch.optim
 

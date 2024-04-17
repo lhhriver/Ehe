@@ -2006,7 +2006,7 @@ Pytorch的基本数据结构是张量Tensor。张量即多维数组。Pytorch的
 
 ### 张量的数据类型
 
-> 张量的数据类型和numpy.array基本一一对应，但是不支持str类型，包括:
+> 张量的数据类型和numpy.array基本一一对应，但是不支持str类型，包括：
 >
 > 1. torch.float64(torch.double)
 > 2. torch.float32(torch.float)
