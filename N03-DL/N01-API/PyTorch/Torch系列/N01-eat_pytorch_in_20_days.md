@@ -1,18 +1,16 @@
 # Eat Pytorch in 20 days
 
-`《20天吃掉那只Pytorch》`
+《20天吃掉那只Pytorch》
 
 *  [github项目地址](https://github.com/lyhue1991/eat_pytorch_in_20_days)
 *  [和鲸专栏地址](https://www.kesci.com/home/column/5f2ac5d8af3980002cb1bc08) 
 
-`《30天吃掉那只TensorFlow2》`
+《30天吃掉那只TensorFlow2》
 
 *  [github项目地址](https://github.com/lyhue1991/eat_tensorflow2_in_30_days)
 *  [和鲸专栏地址](https://www.kesci.com/home/column/5d8ef3c3037db3002d3aa3a0) 
 
 ## Pytorch or TensorFlow2
-
-`先说结论`:
 
 - 如果是工程师，应该优先选TensorFlow2。
 - 如果是学生或者研究人员，应该优先选择Pytorch。
@@ -20,11 +18,13 @@
 
 
 
-`理由如下`：
+**理由如下：**
 
 1. **在工业界最重要的是模型落地，目前国内的大部分互联网企业只支持TensorFlow模型的在线部署，不支持Pytorch。** 并且工业界更加注重的是模型的高可用性，许多时候使用的都是成熟的模型架构，调试需求并不大。
 2. **研究人员最重要的是快速迭代发表文章，需要尝试一些较新的模型架构。而Pytorch在易用性上相比TensorFlow2有一些优势，更加方便调试。** 并且在2019年以来在学术界占领了大半壁江山，能够找到的相应最新研究成果更多。
 3. TensorFlow2和Pytorch实际上整体风格已经非常相似了，学会了其中一个，学习另外一个将比较容易。两种框架都掌握的话，能够参考的开源模型案例更多，并且可以方便地在两种框架之间切换。
+
+
 
 ## 本书面向读者
 
@@ -41,6 +41,8 @@
 3. 神经网络入门。
 4. 机器学习基础。
 
+
+
 ## 本书写作风格
 
 **本书是一本对人类用户极其友善的Pytorch入门工具书，Don't let me think是本书的最高追求。**
@@ -50,6 +52,8 @@
 本书按照内容难易程度、读者检索习惯和Pytorch自身的层次结构设计内容，循序渐进，层次清晰，方便按照功能查找相应范例。
 
 本书在范例设计上尽可能简约化和结构化，增强范例易读性和通用性，大部分代码片段在实践中可即取即用。
+
+
 
 ## 本书学习方案
 
@@ -112,6 +116,8 @@ torch version: 1.5.0
 我们在实践中通常会遇到的数据类型包括结构化数据，图片数据，文本数据，时间序列数据。
 
 我们将分别以titanic生存预测问题，cifar2图片分类问题，imdb电影评论分类问题，国内新冠疫情结束时间预测问题为例，演示应用Pytorch对这四类数据的建模方法。
+
+
 
 ## **结构化数据**建模流程范例
 
@@ -5945,14 +5951,14 @@ os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
 Pytorch和神经网络相关的功能组件大多都封装在 torch.nn模块下。这些功能组件的绝大部分既有函数形式实现，也有类形式实现。其中nn.functional(一般引入后改名为F)有各种功能组件的函数实现。例如：
 
-1. 激活函数
+### 激活函数
 
 * F.relu 
 * F.sigmoid
 * F.tanh
 * F.softmax
 
-2. 模型层
+### 模型层
 
 * F.linear
 * F.conv2d
@@ -5960,24 +5966,26 @@ Pytorch和神经网络相关的功能组件大多都封装在 torch.nn模块下�
 * F.dropout2d
 * F.embedding
 
-3. 损失函数
+### 损失函数
 
 * F.binary_cross_entropy
 * F.mse_loss
 * F.cross_entropy
 
+
+
 ## nn.Module
 
 为了便于对参数进行管理，一般通过继承 nn.Module 转换成为类的实现形式，并直接封装在 nn 模块下。例如：
 
-1. 激活函数
+### 激活函数
 
 * nn.ReLU
 * nn.Sigmoid
 * nn.Tanh
 * nn.Softmax
 
-2. 模型层
+### 模型层
 
 * nn.Linear
 * nn.Conv2d
@@ -5985,7 +5993,7 @@ Pytorch和神经网络相关的功能组件大多都封装在 torch.nn模块下�
 * nn.Dropout2d
 * nn.Embedding
 
-3. 损失函数
+### 损失函数
 
 * nn.BCELoss
 * nn.MSELoss
