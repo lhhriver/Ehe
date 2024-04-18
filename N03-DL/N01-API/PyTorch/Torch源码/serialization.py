@@ -456,27 +456,6 @@ class _open_zipfile_reader(_opener):
         super().__init__(torch._C.PyTorchFileReader(name_or_buffer))
 
 
-class _open_zipfile_writer_file(_opener):
-    def __init__(self, name) -> None:
-        self.file_stream = None
-        self.name = str(name)
-        try:
-            self.name.encode('ascii')
-        except UnicodeEncodeError:
-            # PyTorchFileWriter only supports ascii filename.
-            # For filenames with non-ascii characters, we rely on Python
-            # for writing out the file.
-            self.file_stream = io.FileIO(self.name, mode='w')
-            super().__init__(torch._C.PyTorchFileWriter(self.file_stream))
-        else:
-            super().__init__(torch._C.PyTorchFileWriter(self.name))
-
-    def __exit__(self, *args) -> None:
-        self.file_like.write_end_of_file()
-        if self.file_stream is not None:
-            self.file_stream.close()
-
-
 class _open_zipfile_writer_buffer(_opener):
     def __init__(self, buffer) -> None:
         if not callable(getattr(buffer, "write", None)):
@@ -507,6 +486,27 @@ def _is_compressed_file(f) -> bool:
         return f.__module__ in compress_modules
     except AttributeError:
         return False
+
+
+class _open_zipfile_writer_file(_opener):
+    def __init__(self, name) -> None:
+        self.file_stream = None
+        self.name = str(name)
+        try:
+            self.name.encode('ascii')
+        except UnicodeEncodeError:
+            # PyTorchFileWriter only supports ascii filename.
+            # For filenames with non-ascii characters, we rely on Python
+            # for writing out the file.
+            self.file_stream = io.FileIO(self.name, mode='w')
+            super().__init__(torch._C.PyTorchFileWriter(self.file_stream))
+        else:
+            super().__init__(torch._C.PyTorchFileWriter(self.name))
+
+    def __exit__(self, *args) -> None:
+        self.file_like.write_end_of_file()
+        if self.file_stream is not None:
+            self.file_stream.close()
 
 
 def _should_read_directly(f):
