@@ -8264,7 +8264,7 @@ from torchkeras import summary
 
 
 
-### 继承nn.Module基类构建自定义模型
+### 继承**nn.Module**基类构建自定义模型
 
 
 以下是继承nn.Module基类构建自定义模型的一个范例。模型中的用到的层一般在`__init__`函数中定义，然后在`forward`方法中定义模型的正向传播逻辑。
@@ -8357,7 +8357,7 @@ Estimated Total Size (MB): 0.578388
 
 
 
-### 使用nn.Sequential按层顺序构建模型
+### 使用**nn.Sequential**按层顺序构建模型
 
 
 使用nn.Sequential按层顺序构建模型无需定义forward方法。仅仅适合于简单的模型。
