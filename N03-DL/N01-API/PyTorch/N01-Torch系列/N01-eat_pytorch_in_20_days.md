@@ -16,8 +16,6 @@
 - 如果是学生或者研究人员，应该优先选择Pytorch。
 - 如果时间足够，最好TensorFlow2和Pytorch都要学习掌握。
 
-
-
 **理由如下：**
 
 1. **在工业界最重要的是模型落地，目前国内的大部分互联网企业只支持TensorFlow模型的在线部署，不支持Pytorch。** 并且工业界更加注重的是模型的高可用性，许多时候使用的都是成熟的模型架构，调试需求并不大。
@@ -427,7 +425,7 @@ from sklearn.metrics import accuracy_score
 
 loss_func = nn.BCELoss()
 optimizer = torch.optim.Adam(params=net.parameters(), lr = 0.01)
-metric_func = lambda y_pred,y_true: accuracy_score(y_true.data.numpy(),y_pred.data.numpy()>0.5)
+metric_func = lambda y_pred, y_true: accuracy_score(y_true.data.numpy(), y_pred.data.numpy()>0.5)
 metric_name = "accuracy"
 ```
 
@@ -440,7 +438,7 @@ print("Start Training...")
 nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 print("=========="*8 + "%s" % nowtime)
 
-for epoch in range(1,epochs+1):  
+for epoch in range(1, epochs+1):  
 
     # 1，训练循环-------------------------------------------------
     net.train()
@@ -454,8 +452,8 @@ for epoch in range(1,epochs+1):
 
         # 正向传播求损失
         predictions = net(features)
-        loss = loss_func(predictions,labels)
-        metric = metric_func(predictions,labels)
+        loss = loss_func(predictions, labels)
+        metric = metric_func(predictions, labels)
         
         # 反向传播求梯度
         loss.backward()
@@ -479,8 +477,9 @@ for epoch in range(1,epochs+1):
         # 关闭梯度计算
         with torch.no_grad():
             predictions = net(features)
-            val_loss = loss_func(predictions,labels)
-            val_metric = metric_func(predictions,labels)
+            val_loss = loss_func(predictions, labels)
+            val_metric = metric_func(predictions, labels)
+
         val_loss_sum += val_loss.item()
         val_metric_sum += val_metric.item()
 
@@ -504,7 +503,7 @@ Start Training...
 [step = 30] loss: 0.703, accuracy: 0.583
 [step = 60] loss: 0.629, accuracy: 0.675
 
-EPOCH = 1, loss = 0.643,accuracy  = 0.673, val_loss = 0.621, val_accuracy = 0.725
+EPOCH = 1, loss = 0.643, accuracy  = 0.673, val_loss = 0.621, val_accuracy = 0.725
 
 ================================================================================2020-06-17 20:53:49
 [step = 30] loss: 0.653, accuracy: 0.662
