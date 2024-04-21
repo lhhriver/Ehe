@@ -1,8 +1,0 @@
-   * [7.1_optimization-intro](宝典\01-动手学深度学习\docs\chapter07_optimization/7.1_optimization-intro.md)
-   * [7.2_gd-sgd](宝典\01-动手学深度学习\docs\chapter07_optimization/7.2_gd-sgd.md)
-   * [7.3_minibatch-sgd](宝典\01-动手学深度学习\docs\chapter07_optimization/7.3_minibatch-sgd.md)
-   * [7.4_momentum](宝典\01-动手学深度学习\docs\chapter07_optimization/7.4_momentum.md)
-   * [7.5_adagrad](宝典\01-动手学深度学习\docs\chapter07_optimization/7.5_adagrad.md)
-   * [7.6_rmsprop](宝典\01-动手学深度学习\docs\chapter07_optimization/7.6_rmsprop.md)
-   * [7.7_adadelta](宝典\01-动手学深度学习\docs\chapter07_optimization/7.7_adadelta.md)
-   * [7.8_adam](宝典\01-动手学深度学习\docs\chapter07_optimization/7.8_adam.md)

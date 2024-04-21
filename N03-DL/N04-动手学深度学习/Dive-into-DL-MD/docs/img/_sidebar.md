@@ -1,8 +1,0 @@
-   * [chapter01](宝典\01-动手学深度学习\docs\img/chapter01/_sidebar.md)
-   * [chapter02](宝典\01-动手学深度学习\docs\img/chapter02/_sidebar.md)
-   * [chapter03](宝典\01-动手学深度学习\docs\img/chapter03/_sidebar.md)
-   * [chapter05](宝典\01-动手学深度学习\docs\img/chapter05/_sidebar.md)
-   * [chapter06](宝典\01-动手学深度学习\docs\img/chapter06/_sidebar.md)
-   * [chapter07](宝典\01-动手学深度学习\docs\img/chapter07/_sidebar.md)
-   * [chapter09](宝典\01-动手学深度学习\docs\img/chapter09/_sidebar.md)
-   * [chapter10](宝典\01-动手学深度学习\docs\img/chapter10/_sidebar.md)
