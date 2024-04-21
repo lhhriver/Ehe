@@ -1,0 +1,6 @@
+   * [9.1_image-augmentation](宝典\01-动手学深度学习\docs\chapter09_computer-vision/9.1_image-augmentation.md)
+   * [9.2_fine-tuning](宝典\01-动手学深度学习\docs\chapter09_computer-vision/9.2_fine-tuning.md)
+   * [9.3_bounding-box](宝典\01-动手学深度学习\docs\chapter09_computer-vision/9.3_bounding-box.md)
+   * [9.4_anchor](宝典\01-动手学深度学习\docs\chapter09_computer-vision/9.4_anchor.md)
+   * [9.5_multiscale-object-detection](宝典\01-动手学深度学习\docs\chapter09_computer-vision/9.5_multiscale-object-detection.md)
+   * [9.6_object-detection-dataset](宝典\01-动手学深度学习\docs\chapter09_computer-vision/9.6_object-detection-dataset.md)

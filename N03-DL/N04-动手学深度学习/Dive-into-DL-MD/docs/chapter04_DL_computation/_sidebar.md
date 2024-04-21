@@ -1,0 +1,6 @@
+   * [4.1_model-construction](宝典\01-动手学深度学习\docs\chapter04_DL_computation/4.1_model-construction.md)
+   * [4.2_parameters](宝典\01-动手学深度学习\docs\chapter04_DL_computation/4.2_parameters.md)
+   * [4.3_deferred-init](宝典\01-动手学深度学习\docs\chapter04_DL_computation/4.3_deferred-init.md)
+   * [4.4_custom-layer](宝典\01-动手学深度学习\docs\chapter04_DL_computation/4.4_custom-layer.md)
+   * [4.5_read-write](宝典\01-动手学深度学习\docs\chapter04_DL_computation/4.5_read-write.md)
+   * [4.6_use-gpu](宝典\01-动手学深度学习\docs\chapter04_DL_computation/4.6_use-gpu.md)

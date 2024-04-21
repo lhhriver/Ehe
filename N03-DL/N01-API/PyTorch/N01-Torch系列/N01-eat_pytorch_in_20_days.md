@@ -339,7 +339,7 @@ tensor([[  0.0000,   0.0000,   1.0000,   0.0000,   1.0000,   0.0000,   1.0000,
 
 
 
-### 定义模型-nn.Sequential
+### 定义模型-**nn.Sequential**
 
 使用Pytorch通常有三种方式构建模型：
 
@@ -407,7 +407,7 @@ Estimated Total Size (MB): 0.003090
 
 
 
-### 训练模型-脚本形式
+### 训练模型-**脚本形式**
 
 
 Pytorch通常需要用户编写自定义训练循环，训练循环的代码风格因人而异。
@@ -418,7 +418,7 @@ Pytorch通常需要用户编写自定义训练循环，训练循环的代码风�
 2. 函数形式训练循环
 3. 类形式训练循环
 
-此处介绍一种较通用的脚本形式。
+此处介绍一种较通用的**脚本形式**。
 
 ```python
 from sklearn.metrics import accuracy_score
@@ -427,9 +427,7 @@ loss_func = nn.BCELoss()
 optimizer = torch.optim.Adam(params=net.parameters(), lr = 0.01)
 metric_func = lambda y_pred, y_true: accuracy_score(y_true.data.numpy(), y_pred.data.numpy()>0.5)
 metric_name = "accuracy"
-```
 
-```python
 epochs = 10
 log_step_freq = 30
 
@@ -464,8 +462,7 @@ for epoch in range(1, epochs+1):
         metric_sum += metric.item()
         
         if step % log_step_freq == 0:
-            print(("[step = %d] loss: %.3f, "+metric_name+": %.3f") %
-                  (step, loss_sum/step, metric_sum/step))
+            print(("[step = %d] loss: %.3f, " + metric_name + ": %.3f") % (step, loss_sum/step, metric_sum/step))
     
     # 2，验证循环-------------------------------------------------
     net.eval()
@@ -488,12 +485,10 @@ for epoch in range(1, epochs+1):
     dfhistory.loc[epoch-1] = info
     
     # 打印epoch级别日志
-    print(("\nEPOCH = %d, loss = %.3f,"+ metric_name + \
-          "  = %.3f, val_loss = %.3f, "+"val_"+ metric_name+" = %.3f") 
-          %info)
+    print(("\nEPOCH = %d, loss = %.3f,"+ metric_name + "  = %.3f, val_loss = %.3f, "+"val_"+ metric_name+" = %.3f") % info)
     nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print("\n"+"=========="*8 + "%s"%nowtime)
-        
+    print("\n"+"=========="*8 + "%s" % nowtime)
+
 print('Finished Training...')
 ```
 
@@ -554,7 +549,8 @@ def plot_metric(dfhistory, metric):
     epochs = range(1, len(train_metrics) + 1)
     plt.plot(epochs, train_metrics, 'bo--')
     plt.plot(epochs, val_metrics, 'ro-')
-    plt.title('Training and validation '+ metric)
+    
+    plt.title('Training and validation ' + metric)
     plt.xlabel("Epochs")
     plt.ylabel(metric)
     plt.legend(["train_"+metric, 'val_'+metric])
@@ -600,9 +596,7 @@ tensor([[0.0119],
 
 ```python
 #预测类别
-y_pred = torch.where(y_pred_probs>0.5,
-                     torch.ones_like(y_pred_probs),
-                     torch.zeros_like(y_pred_probs))
+y_pred = torch.where(y_pred_probs>0.5, torch.ones_like(y_pred_probs), torch.zeros_like(y_pred_probs))
 y_pred
 ```
 
@@ -621,7 +615,7 @@ tensor([[0.],
 
 
 
-### 保存模型-两种方式
+### 保存模型
 
 Pytorch 有两种保存模型的方式，都是通过调用pickle序列化方法实现的。
 
@@ -632,7 +626,7 @@ Pytorch 有两种保存模型的方式，都是通过调用pickle序列化方法
 
 
 
-**1. 保存模型参数(推荐)**
+#### 保存模型参数(推荐)
 
 ```python
 print(net.state_dict().keys())
@@ -667,7 +661,7 @@ tensor([[0.0119],
 
 
 
-**2. 保存完整模型(不推荐)**
+#### 保存完整模型(不推荐)
 
 ```python
 torch.save(net, './data/net_model.pkl')
@@ -805,7 +799,7 @@ torch.Size([50, 3, 32, 32]) torch.Size([50, 1])
 
 
 
-### 定义模型-继承nn.Module
+### 定义模型-继承**nn.Module**
 
 使用Pytorch通常有三种方式构建模型：
 
@@ -816,9 +810,9 @@ torch.Size([50, 3, 32, 32]) torch.Size([50, 1])
 此处选择通过继承nn.Module基类构建自定义模型。
 
 ```python
-#测试AdaptiveMaxPool2d的效果
+# 测试AdaptiveMaxPool2d的效果
 pool = nn.AdaptiveMaxPool2d((1,1))
-t = torch.randn(10,8,32,32)
+t = torch.randn(10, 8, 32, 32)
 pool(t).shape 
 ```
 
@@ -833,15 +827,15 @@ class Net(nn.Module):
     
     def __init__(self):
         super(Net, self).__init__()
-        self.conv1 = nn.Conv2d(in_channels=3,out_channels=32,kernel_size = 3)
+        self.conv1 = nn.Conv2d(in_channels=3, out_channels=32, kernel_size = 3)
         self.pool = nn.MaxPool2d(kernel_size = 2,stride = 2)
-        self.conv2 = nn.Conv2d(in_channels=32,out_channels=64,kernel_size = 5)
+        self.conv2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size = 5)
         self.dropout = nn.Dropout2d(p = 0.1)
-        self.adaptive_pool = nn.AdaptiveMaxPool2d((1,1))
+        self.adaptive_pool = nn.AdaptiveMaxPool2d(output_size=(1, 1))
         self.flatten = nn.Flatten()
-        self.linear1 = nn.Linear(64,32)
+        self.linear1 = nn.Linear(64, 32)
         self.relu = nn.ReLU()
-        self.linear2 = nn.Linear(32,1)
+        self.linear2 = nn.Linear(32, 1)
         self.sigmoid = nn.Sigmoid()
         
     def forward(self,x):
@@ -880,7 +874,7 @@ Net(
 ```python
 import torchkeras
 
-torchkeras.summary(net,input_shape= (3,32,32))
+torchkeras.summary(net, input_shape= (3, 32, 32))
 ```
 
 ```
@@ -912,7 +906,7 @@ Estimated Total Size (MB): 0.578388
 
 
 
-### 训练模型-函数形式
+### 训练模型-**函数形式**
 
 
 Pytorch通常需要用户编写自定义训练循环，训练循环的代码风格因人而异。
@@ -954,7 +948,7 @@ def train_step(model,features,labels):
     # 反向传播求梯度
     loss.backward()
     model.optimizer.step()
-    return loss.item(),metric.item()
+    return loss.item(), metric.item()
 
 
 def valid_step(model,features,labels):
@@ -1369,7 +1363,7 @@ dl_test = DataLoader(test_iter)
 
 
 
-### 定义模型-torchkeras.Model
+### 定义模型-**torchkeras.Model**
 
 > 使用Pytorch通常有三种方式构建模型：
 >
@@ -1470,7 +1464,7 @@ Estimated Total Size (MB): 0.443531
 
 
 
-### 训练模型-类形式
+### 训练模型-**类形式**
 
 
 训练Pytorch通常需要用户编写自定义训练循环，训练循环的代码风格因人而异。
@@ -1488,14 +1482,14 @@ Estimated Total Size (MB): 0.443531
 # 准确率
 def accuracy(y_pred, y_true):
     y_pred = torch.where(y_pred>0.5,
-                         torch.ones_like(y_pred,dtype = torch.float32),
-                         torch.zeros_like(y_pred,dtype = torch.float32))
-    acc = torch.mean(1-torch.abs(y_true-y_pred))
+                         torch.ones_like(y_pred, dtype = torch.float32),
+                         torch.zeros_like(y_pred, dtype = torch.float32))
+    acc = torch.mean(1 - torch.abs(y_true - y_pred))
     return acc
 
 model.compile(loss_func = nn.BCELoss(),
-              optimizer= torch.optim.Adagrad(model.parameters(),lr = 0.02),
-              metrics_dict={"accuracy":accuracy})
+              optimizer = torch.optim.Adagrad(model.parameters(), lr = 0.02),
+              metrics_dict = {"accuracy" : accuracy})
 ```
 
 ```python
@@ -1639,7 +1633,7 @@ model_clone = Net()
 model_clone.load_state_dict(torch.load("./data/model_parameter.pkl"))
 
 model_clone.compile(loss_func = nn.BCELoss(),
-                    optimizer= torch.optim.Adagrad(model.parameters(),lr = 0.02),
+                    optimizer= torch.optim.Adagrad(model.parameters(), lr = 0.02),
                     metrics_dict={"accuracy":accuracy})
 
 # 评估模型
@@ -1710,9 +1704,9 @@ dfdata = df.set_index("date")
 dfdiff = dfdata.diff(periods=1).dropna()
 dfdiff = dfdiff.reset_index("date")
 
-dfdiff.plot(x = "date",y = ["confirmed_num","cured_num","dead_num"],figsize=(10,6))
+dfdiff.plot(x = "date",y = ["confirmed_num", "cured_num", "dead_num"], figsize=(10, 6))
 plt.xticks(rotation=60)
-dfdiff = dfdiff.drop("date",axis = 1).astype("float32")
+dfdiff = dfdiff.drop("date", axis = 1).astype("float32")
 ```
 
 ![](./images/N01-eat_pytorch_in_20_days/eat_pytorch_in_20_days-20220302-125625-545281.png)
@@ -1737,7 +1731,7 @@ torch.utils.data.Dataset是一个抽象类，用户想要加载自定义的数�
 ```python
 import torch 
 from torch import nn 
-from torch.utils.data import Dataset,DataLoader,TensorDataset
+from torch.utils.data import Dataset, DataLoader, TensorDataset
 
 
 #用某日前8天窗口数据作为输入预测该日数据
@@ -1791,7 +1785,7 @@ class Block(nn.Module):
         super(Block, self).__init__()
     
     def forward(self,x,x_input):
-        x_out = torch.max((1+x)*x_input[:,-1,:], torch.tensor(0.0))
+        x_out = torch.max((1+x) * x_input[:, -1, :], torch.tensor(0.0))
         return x_out
     
 class Net(nn.Module):
@@ -1802,11 +1796,11 @@ class Net(nn.Module):
                             hidden_size = 3,
                             num_layers = 5,
                             batch_first = True)
-        self.linear = nn.Linear(3,3)
+        self.linear = nn.Linear(3, 3)
         self.block = Block()
         
     def forward(self,x_input):
-        x = self.lstm(x_input)[0][:,-1,:]
+        x = self.lstm(x_input)[0][:, -1, :]
         x = self.linear(x)
         y = self.block(x,x_input)
         return y
@@ -1859,14 +1853,14 @@ Estimated Total Size (MB): 0.002197
 
 ```python
 def mspe(y_pred,y_true):
-    err_percent = (y_true - y_pred)**2/(torch.max(y_true**2,torch.tensor(1e-7)))
+    err_percent = (y_true - y_pred)**2 / (torch.max(y_true**2, torch.tensor(1e-7)))
     return torch.mean(err_percent)
 
-model.compile(loss_func = mspe,optimizer = torch.optim.Adagrad(model.parameters(),lr = 0.1))
+model.compile(loss_func = mspe, optimizer = torch.optim.Adagrad(model.parameters(), lr = 0.1))
 ```
 
 ```python
-dfhistory = model.fit(100,dl_train,log_step_freq=10)
+dfhistory = model.fit(100, dl_train, log_step_freq=10)
 ```
 
 
@@ -2079,7 +2073,7 @@ print(b, b.dtype)
 ```
 tensor([5], dtype=torch.int32) torch.int32
 tensor(2.) torch.float32
-tensor([ True, False,  True, False]) torch.bool
+tensor([True, False, True, False]) torch.bool
 ```
 
 
@@ -2332,15 +2326,15 @@ tensor([[ 0,  6,  1,  7],
 ### 张量和numpy数组
 
 
-可以用numpy方法从Tensor得到numpy数组，也可以用torch.from_numpy从numpy数组得到Tensor。
+可以用numpy方法从Tensor得到numpy数组，也可以用torch.**from_numpy**从numpy数组得到Tensor。
 
 这两种方法关联的Tensor和numpy数组是共享数据内存的。
 
 如果改变其中一个，另外一个的值也会发生改变。
 
-如果有需要，可以用张量的clone方法拷贝张量，中断这种关联。
+如果有需要，可以用张量的**clone**方法拷贝张量，中断这种关联。
 
-此外，还可以使用item方法从**标量张量**得到对应的Python数值。使用tolist方法从张量得到对应的Python数值列表。
+此外，还可以使用**item**方法从**标量张量**得到对应的Python数值。使用**tolist**方法从张量得到对应的Python数值列表。
 
 
 ```python
@@ -2348,16 +2342,18 @@ import numpy as np
 import torch 
 ```
 
+#### from_numpy
+
 ```python
 #torch.from_numpy函数从numpy数组得到Tensor
 arr = np.zeros(3)
-tensor = torch.from_numpy(arr)
+tensor = torch.from_numpy(arr)  # +++
 print("before add 1:")
 print(arr)
 print(tensor)
 
 print("\nafter add 1:")
-np.add(arr,1, out = arr) #给 arr增加1，tensor也随之改变
+np.add(arr, 1, out = arr) #给 arr增加1，tensor也随之改变
 print(arr)
 print(tensor)
 ```
@@ -2372,22 +2368,22 @@ after add 1:
 tensor([1., 1., 1.], dtype=torch.float64)
 ```
 
-
+#### numpy
 
 ```python
 # numpy方法从Tensor得到numpy数组
 
 tensor = torch.zeros(3)
-arr = tensor.numpy()
+arr = tensor.numpy()  # +++
 print("before add 1:")
 print(tensor)
 print(arr)
 
 print("\nafter add 1:")
 
-#使用带下划线的方法表示计算结果会返回给调用 张量
+# 使用带下划线的方法表示计算结果会返回给调用 张量
 tensor.add_(1) #给 tensor增加1，arr也随之改变 
-#或： torch.add(tensor,1,out = tensor)
+# 或：torch.add(tensor, 1, out = tensor)
 print(tensor)
 print(arr)
 ```
@@ -2402,7 +2398,7 @@ tensor([1., 1., 1.])
 [1. 1. 1.]
 ```
 
-
+#### clone、data.numpy
 
 ```python
 # 可以用clone() 方法拷贝张量，中断这种关联
@@ -2431,6 +2427,8 @@ after add 1:
 tensor([1., 1., 1.])
 [0. 0. 0.]
 ```
+
+#### item、tolist
 
 ```python
 # item方法和tolist方法可以将张量转换成Python数值和数值列表
@@ -2473,7 +2471,7 @@ backward 方法通常在一个标量张量上调用，该方法求得的梯度�
 
 如果调用的张量非标量，则要传入一个和它同形状 的gradient参数张量。相当于用该gradient参数张量与调用张量作向量点乘，得到的标量结果再反向传播。
 
-**1. 标量的反向传播**
+#### 标量的反向传播
 
 ```python
 import numpy as np 
@@ -2498,7 +2496,7 @@ tensor(-2.)
 
 
 
-**2. 非标量的反向传播**
+#### 非标量的反向传播
 
 ```python
 import numpy as np 
@@ -2536,9 +2534,7 @@ x_grad:
         [ 0.,  2.]])
 ```
 
-
-
-**3. 非标量的反向传播可以用标量的反向传播实现**
+**非标量的反向传播可以用标量的反向传播实现**：
 
 ```python
 import numpy as np 
@@ -2701,11 +2697,13 @@ Pytorch中的计算图是动态图。这里的动态主要有两重含义。
 
 ```python
 import torch 
+
 w = torch.tensor([[3.0,
                    1.0]],
                  requires_grad=True)
 b = torch.tensor([[3.0]],
                  requires_grad=True)
+
 X = torch.randn(10,2)
 Y = torch.randn(10,1)
 Y_hat = X@w.t() + b  # Y_hat定义后其正向传播被立即执行，与其后面的loss创建语句无关
@@ -3000,6 +2998,8 @@ Pytorch的层次结构从低到高可以分成如下五层。
 4. 第四层为Python实现的模型组件，对低级API进行了函数封装，主要包括各种模型层，损失函数，优化器，数据管道等等。如torch.nn.Linear,torch.nn.BCE,torch.optim.Adam,torch.utils.data.DataLoader。如果把模型比作一个房子，那么第四层API就是【模型之墙】。
 5. 第五层为Python实现的模型接口。Pytorch没有官方的高阶API。为了便于训练模型，作者仿照keras中的模型接口，使用了不到300行代码，封装了Pytorch的高阶模型接口torchkeras.Model。如果把模型比作一个房子，那么第五层API就是模型本身，即【模型之屋】。
 
+
+
 ## 低阶API示范
 
 下面的范例使用Pytorch的低阶API实现线性回归模型和DNN二分类模型。
@@ -3010,12 +3010,12 @@ Pytorch的层次结构从低到高可以分成如下五层。
 import os
 import datetime
 
-#打印时间
+# 打印时间
 def printbar():
     nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print("\n"+"=========="*8 + "%s"%nowtime)
 
-#mac系统上pytorch和matplotlib在jupyter中同时跑需要更改环境变量
+# mac系统上pytorch和matplotlib在jupyter中同时跑需要更改环境变量
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE" 
 ```
 
@@ -3035,10 +3035,10 @@ from torch import nn
 n = 400
 
 # 生成测试用数据集
-X = 10*torch.rand([n,2])-5.0  # torch.rand是均匀分布 
-w0 = torch.tensor([[2.0],[-3.0]])
+X = 10*torch.rand([n, 2])-5.0  # torch.rand是均匀分布 
+w0 = torch.tensor([[2.0], [-3.0]])
 b0 = torch.tensor([[10.0]])
-Y = X@w0 + b0 + torch.normal(0.0, 2.0, size=[n,1])  # @表示矩阵乘法,增加正态扰动
+Y = X@w0 + b0 + torch.normal(0.0, 2.0, size=[n, 1])  # @表示矩阵乘法,增加正态扰动
 ```
 
 ```python
@@ -3562,10 +3562,10 @@ dl = DataLoader(ds,
 **2. 定义模型**
 
 ```python
-model = nn.Linear(2,1) #线性层
+model = nn.Linear(2, 1) #线性层
 
 model.loss_func = nn.MSELoss()
-model.optimizer = torch.optim.SGD(model.parameters(),lr = 0.01)
+model.optimizer = torch.optim.SGD(model.parameters(), lr = 0.01)
 ```
 
 
@@ -3576,15 +3576,15 @@ model.optimizer = torch.optim.SGD(model.parameters(),lr = 0.01)
 def train_step(model, features, labels):
     
     predictions = model(features)
-    loss = model.loss_func(predictions,labels)
+    loss = model.loss_func(predictions, labels)
     loss.backward()
     model.optimizer.step()
     model.optimizer.zero_grad()
     return loss.item()
 
 # 测试train_step效果
-features,labels = next(iter(dl))
-train_step(model,features,labels)
+features, labels = next(iter(dl))
+train_step(model, features, labels)
 ```
 
 ```
@@ -3606,6 +3606,7 @@ def train_model(model, epochs):
             print("epoch =",epoch,"loss = ",loss)
             print("w =",w)
             print("b =",b)
+            
 train_model(model,epochs = 200)
 ```
 
@@ -3720,9 +3721,9 @@ dl = DataLoader(ds, batch_size = 10, shuffle=True, num_workers=2)
 class DNNModel(nn.Module):
     def __init__(self):
         super(DNNModel, self).__init__()
-        self.fc1 = nn.Linear(2,4)
-        self.fc2 = nn.Linear(4,8) 
-        self.fc3 = nn.Linear(8,1)
+        self.fc1 = nn.Linear(2, 4)
+        self.fc2 = nn.Linear(4, 8) 
+        self.fc3 = nn.Linear(8, 1)
 
     # 正向传播
     def forward(self,x):
@@ -3738,9 +3739,9 @@ class DNNModel(nn.Module):
     # 评估函数(准确率)
     def metric_func(self,y_pred,y_true):
         y_pred = torch.where(y_pred>0.5,
-                             torch.ones_like(y_pred,dtype = torch.float32),
-                             torch.zeros_like(y_pred,dtype = torch.float32))
-        acc = torch.mean(1-torch.abs(y_true-y_pred))
+                             torch.ones_like(y_pred, dtype = torch.float32),
+                             torch.zeros_like(y_pred, dtype = torch.float32))
+        acc = torch.mean(1 - torch.abs(y_true - y_pred))
         return acc
     
     # 优化器
@@ -3777,8 +3778,8 @@ def train_step(model, features, labels):
     
     # 正向传播求损失
     predictions = model(features)
-    loss = model.loss_func(predictions,labels)
-    metric = model.metric_func(predictions,labels)
+    loss = model.loss_func(predictions, labels)
+    metric = model.metric_func(predictions, labels)
     
     # 反向传播求梯度
     loss.backward()
@@ -3815,7 +3816,7 @@ def train_model(model,epochs):
 
         if epoch%100==0:
             printbar()
-            print("epoch =",epoch,"loss = ",loss,"metric = ",metric)
+            print("epoch =", epoch, "loss = ", loss, "metric = ", metric)
         
 train_model(model,epochs = 300)
 ```
@@ -3860,7 +3861,7 @@ Pytorch没有官方的高阶API，一般需要用户自己实现训练循环、�
 
 作者通过仿照tf.keras.Model的功能对Pytorch的nn.Module进行了封装，
 
-实现了 fit, validate，predict, summary 方法，相当于用户自定义高阶API。
+实现了 **fit, validate，predict, summary** 方法，相当于用户自定义高阶API。
 
 并在其基础上实现线性回归模型和DNN二分类模型。
 
@@ -3944,6 +3945,7 @@ dl_valid = DataLoader(ds_valid,batch_size = 10,num_workers=2)
 ```python
 # 继承用户自定义模型
 from torchkeras import Model
+
 class LinearRegression(Model):
     def __init__(self):
         super(LinearRegression, self).__init__()
@@ -3984,10 +3986,10 @@ Estimated Total Size (MB): 0.000027
 ### 使用fit方法进行训练
 
 def mean_absolute_error(y_pred,y_true):
-    return torch.mean(torch.abs(y_pred-y_true))
+    return torch.mean(torch.abs(y_pred - y_true))
 
 def mean_absolute_percent_error(y_pred,y_true):
-    absolute_percent_error = (torch.abs(y_pred-y_true)+1e-7)/(torch.abs(y_true)+1e-7)
+    absolute_percent_error = (torch.abs(y_pred - y_true) + 1e-7) / (torch.abs(y_true) + 1e-7)
     return torch.mean(absolute_percent_error)
 
 model.compile(loss_func = nn.MSELoss(),
@@ -3995,7 +3997,7 @@ model.compile(loss_func = nn.MSELoss(),
               metrics_dict={"mae":mean_absolute_error,
                             "mape":mean_absolute_percent_error})
 
-dfhistory = model.fit(200,dl_train = dl_train, dl_val = dl_valid,log_step_freq = 20)
+dfhistory = model.fit(200, dl_train = dl_train, dl_val = dl_valid, log_step_freq = 20)
 ```
 
 ```
@@ -4054,7 +4056,7 @@ Finished Training...
 %matplotlib inline
 %config InlineBackend.figure_format = 'svg'
 
-w,b = model.state_dict()["fc.weight"],model.state_dict()["fc.bias"]
+w,b = model.state_dict()["fc.weight"], model.state_dict()["fc.bias"]
 
 plt.figure(figsize = (12,5))
 ax1 = plt.subplot(121)
@@ -4189,27 +4191,26 @@ import torchkeras
 %matplotlib inline
 %config InlineBackend.figure_format = 'svg'
 
-#正负样本数量
+# 正负样本数量
 n_positive,n_negative = 2000,2000
 
-#生成正样本, 小圆环分布
+# 生成正样本, 小圆环分布
 r_p = 5.0 + torch.normal(0.0,1.0,size = [n_positive,1]) 
 theta_p = 2*np.pi*torch.rand([n_positive,1])
 Xp = torch.cat([r_p*torch.cos(theta_p),r_p*torch.sin(theta_p)],axis = 1)
 Yp = torch.ones_like(r_p)
 
-#生成负样本, 大圆环分布
+# 生成负样本, 大圆环分布
 r_n = 8.0 + torch.normal(0.0,1.0,size = [n_negative,1]) 
 theta_n = 2*np.pi*torch.rand([n_negative,1])
 Xn = torch.cat([r_n*torch.cos(theta_n),r_n*torch.sin(theta_n)],axis = 1)
 Yn = torch.zeros_like(r_n)
 
-#汇总样本
+# 汇总样本
 X = torch.cat([Xp,Xn],axis = 0)
 Y = torch.cat([Yp,Yn],axis = 0)
 
-
-#可视化
+# 可视化
 plt.figure(figsize = (6,6))
 plt.scatter(Xp[:,0],Xp[:,1],c = "r")
 plt.scatter(Xn[:,0],Xn[:,1],c = "g")
@@ -4467,7 +4468,7 @@ import torch
 #### torch.tensor
 
 ```python
-a = torch.tensor([1,2,3], dtype = torch.float)
+a = torch.tensor([1, 2, 3], dtype = torch.float)
 print(a)
 ```
 
@@ -4478,7 +4479,7 @@ tensor([1., 2., 3.])
 #### torch.arange
 
 ```python
-b = torch.arange(1,10,step = 2)
+b = torch.arange(1, 10, step = 2)
 print(b)
 ```
 
@@ -4501,7 +4502,7 @@ tensor([0.0000, 0.6978, 1.3956, 2.0933, 2.7911, 3.4889, 4.1867, 4.8844, 5.5822,
 #### torch.zeros
 
 ```python
-d = torch.zeros((3,3))
+d = torch.zeros((3, 3))
 print(d)
 ```
 
@@ -4514,7 +4515,7 @@ tensor([[0., 0., 0.],
 #### torch.ones
 
 ```python
-a = torch.ones((3,3), dtype = torch.int)
+a = torch.ones((3, 3), dtype = torch.int)
 b = torch.zeros_like(a, dtype = torch.float)
 print(a)
 print(b)
@@ -4532,7 +4533,7 @@ tensor([[0., 0., 0.],
 
 
 ```python
-torch.fill_(b,5)
+torch.fill_(b, 5)
 print(b)
 ```
 
@@ -4547,8 +4548,8 @@ tensor([[5., 5., 5.],
 ```python
 # 均匀随机分布
 torch.manual_seed(0)
-minval,maxval = 0,10
-a = minval + (maxval-minval)*torch.rand([5])
+minval, maxval = 0, 10
+a = minval + (maxval - minval)*torch.rand([5])
 print(a)
 ```
 
@@ -4559,9 +4560,9 @@ tensor([4.9626, 7.6822, 0.8848, 1.3203, 3.0742])
 #### torch.normal
 
 ```python
-#正态分布随机
-b = torch.normal(mean = torch.zeros(3,3), 
-                 std = torch.ones(3,3))
+# 正态分布随机
+b = torch.normal(mean = torch.zeros(3, 3), 
+                 std = torch.ones(3, 3))
 print(b)
 ```
 
@@ -4574,9 +4575,9 @@ tensor([[-1.3836,  0.2459, -0.1312],
 #### torch.randn
 
 ```python
-#正态分布随机
-mean,std = 2, 5
-c = std*torch.randn((3,3)) + mean
+# 正态分布随机
+mean, std = 2, 5
+c = std * torch.randn((3, 3)) + mean
 print(c)
 ```
 
@@ -4589,21 +4590,20 @@ tensor([[  8.7204,  13.9161,  -0.8323],
 #### torch.randperm
 
 ```python
-#整数随机排列
+# 整数随机排列
 d = torch.randperm(20)
 print(d)
 ```
 
 ```
-tensor([ 5, 15, 19, 10,  7, 17,  0,  4, 12, 16, 14, 13,  1,  3,  9,  6, 18,  2,
-         8, 11])
+tensor([ 5, 15, 19, 10, 7, 17, 0,  4, 12, 16, 14, 13, 1, 3, 9, 6, 18, 2, 8, 11])
 ```
 
 #### torch.eye
 
 ```python
-#特殊矩阵
-I = torch.eye(3,3) #单位矩阵
+# 特殊矩阵
+I = torch.eye(3, 3) # 单位矩阵
 print(I)
 ```
 
@@ -4616,7 +4616,7 @@ tensor([[1., 0., 0.],
 #### torch.diag
 
 ```python
-t = torch.diag(torch.tensor([1,2,3])) #对角矩阵
+t = torch.diag(torch.tensor([1, 2, 3])) # 对角矩阵
 print(t)
 ```
 
@@ -4635,15 +4635,15 @@ tensor([[1, 0, 0],
 
 可以通过索引和切片对部分元素进行修改。
 
-此外，对于不规则的切片提取,可以使用torch.index_select, torch.masked_select, torch.take
+此外，对于不规则的切片提取，可以使用torch.index_select, torch.masked_select, torch.take
 
 如果要通过修改张量的某些元素得到新的张量，可以使用torch.where, torch.masked_fill, torch.index_fill
 
 ```python
-#均匀随机分布
+# 均匀随机分布
 torch.manual_seed(0)
 minval, maxval = 0, 10
-t = torch.floor(minval + (maxval-minval)*torch.rand([5,5])).int()
+t = torch.floor(minval + (maxval - minval) * torch.rand([5, 5])).int()
 print(t)
 ```
 
@@ -4655,10 +4655,10 @@ tensor([[4, 7, 0, 1, 3],
         [6, 9, 3, 8, 4]], dtype=torch.int32)
 ```
 
-
+#### 普通切片
 
 ```python
-#第0行
+# 第0行
 print(t[0])
 ```
 
@@ -4669,7 +4669,7 @@ tensor([4, 7, 0, 1, 3], dtype=torch.int32)
 
 
 ```python
-#倒数第一行
+# 倒数第一行
 print(t[-1])
 ```
 
@@ -4681,7 +4681,7 @@ tensor([6, 9, 3, 8, 4], dtype=torch.int32)
 
 ```python
 # 第1行第3列
-print(t[1,3])
+print(t[1, 3])
 print(t[1][3])
 ```
 
@@ -4694,7 +4694,7 @@ tensor(4, dtype=torch.int32)
 
 ```python
 # 第1行至第3行
-print(t[1:4,:])
+print(t[1:4, :])
 ```
 
 ```
@@ -4707,7 +4707,7 @@ tensor([[6, 4, 8, 4, 6],
 
 ```python
 # 第1行至最后一行，第0列到最后一列每隔两列取一列
-print(t[1:4,:4:2])
+print(t[1:4, :4:2])
 ```
 
 ```
@@ -4720,11 +4720,12 @@ tensor([[6, 8],
 
 ```python
 # 可以使用索引和切片修改部分元素
-x = torch.tensor([[1,2],
-                  [3,4]],
+x = torch.tensor([[1, 2],
+                  [3, 4]],
                  dtype = torch.float32,
                  requires_grad=True)
-x.data[1,:] = torch.tensor([0.0,0.0])
+
+x.data[1, :] = torch.tensor([0.0, 0.0])
 x
 ```
 
@@ -4736,7 +4737,7 @@ tensor([[1., 2.],
 
 
 ```python
-a = torch.arange(27).view(3,3,3)
+a = torch.arange(27).view(3, 3, 3)
 print(a)
 ```
 
@@ -4758,7 +4759,7 @@ tensor([[[ 0,  1,  2],
 
 ```python
 # 省略号可以表示多个冒号
-print(a[...,1])
+print(a[..., 1])
 ```
 
 ```
@@ -4769,7 +4770,7 @@ tensor([[ 1,  4,  7],
 
 
 
-以上切片方式相对规则，对于不规则的切片提取,可以使用torch.index_select, torch.take, torch.gather, torch.masked_select.
+以上切片方式相对规则，对于不规则的切片提取，可以使用torch.index_select, torch.take, torch.gather, torch.masked_select.
 
 考虑班级成绩册的例子，有4个班级，每个班级10个学生，每个学生7门科目成绩。可以用一个4×10×7的张量来表示。
 
@@ -4777,7 +4778,7 @@ tensor([[ 1,  4,  7],
 ```python
 minval=0
 maxval=100
-scores = torch.floor(minval + (maxval-minval)*torch.rand([4,10,7])).int()
+scores = torch.floor(minval + (maxval - minval)*torch.rand([4, 10, 7])).int()
 print(scores)
 ```
 
@@ -4829,11 +4830,59 @@ tensor([[[55, 95,  3, 18, 37, 30, 93],
 
 #### torch.index_select
 
+>   `torch.index_select` 是 PyTorch 中的一个函数，用于根据索引从输入张量中选择元素。这个函数对于操作大型张量和进行高效索引非常有用。它可以应用于张量的任意维度。
+>
+>   函数的基本用法如下：
+>
+>   ```python
+>   torch.index_select(input, dim, index, out=None)
+>   ```
+>
+>   参数说明：
+>   - `input` (Tensor): 输入张量。
+>   - `dim` (int): 要索引的维度。
+>   - `index` (LongTensor): 包含要索引元素的索引的1D张量。
+>   - `out` (Tensor, optional): 可选的输出张量，用于存储结果。
+>
+>   返回值：
+>   - 返回一个新的张量，其在指定维度`dim`上根据`index`选择的元素。
+>
+>   这里有一个简单的例子，演示如何使用 `torch.index_select`：
+>
+>   ```python
+>   import torch
+>   
+>   # 创建一个示例张量
+>   x = torch.tensor([[1, 2, 3],
+>                     [4, 5, 6],
+>                     [7, 8, 9]])
+>   
+>   # 定义要索引的维度和索引张量
+>   dim = 0  # 选择行
+>   index = torch.tensor([1, 2])  # 选择第二行和第三行
+>   
+>   # 使用torch.index_select进行索引选择
+>   result = torch.index_select(x, dim, index)
+>   
+>   print(result)
+>   ```
+>
+>   输出将会是：
+>
+>   ```
+>   tensor([[4, 5, 6],
+>           [7, 8, 9]])
+>   ```
+>
+>   在这个例子中，我们选择了原始张量 `x` 的第二行和第三行。`torch.index_select` 函数在指定的维度（这里是行，`dim=0`）上根据提供的索引（`index=[1, 2]`）从输入张量中选择元素。
+>
+>   需要注意的是，`torch.index_select` 只接受长整型张量（`LongTensor`）作为索引，因此如果索引是其他数据类型，需要先将其转换为长整型。此外，从 PyTorch 0.4 开始，`index_select` 已经被重命名为 `index_select`，但为了保持向后兼容性，旧的函数名仍然可以使用。
+
 ```python
-#抽取每个班级第0个学生，第5个学生，第9个学生的全部成绩
+# 抽取每个班级第0个学生，第5个学生，第9个学生的全部成绩
 torch.index_select(scores,
                    dim = 1,
-                   index = torch.tensor([0,5,9]))
+                   index = torch.tensor([0, 5, 9]))
 ```
 
 ```
@@ -7478,19 +7527,17 @@ import torch
 from torch import nn 
 import torch.nn.functional as F 
 
-
-y_pred = torch.tensor([[10.0,0.0,-10.0],[8.0,8.0,8.0]])
-y_true = torch.tensor([0,2])
+y_pred = torch.tensor([[10.0, 0.0, -10.0], [8.0, 8.0, 8.0]])
+y_true = torch.tensor([0, 2])
 
 # 直接调用交叉熵损失
-ce = nn.CrossEntropyLoss()(y_pred,y_true)
+ce = nn.CrossEntropyLoss()(y_pred, y_true)
 print(ce)
 
 # 等价于先计算nn.LogSoftmax激活，再调用NLLLoss
 y_pred_logsoftmax = nn.LogSoftmax(dim = 1)(y_pred)
-nll = nn.NLLLoss()(y_pred_logsoftmax,y_true)
+nll = nn.NLLLoss()(y_pred_logsoftmax, y_true)
 print(nll)
-
 ```
 
 ```
@@ -7514,27 +7561,27 @@ tensor(0.5493)
 
 **均方误差损失**，也叫做L2损失，用于回归
 
-#### nn.L1Loss 
+#### nn.L1Loss
 
 **L1损失**，也叫做绝对值误差损失，用于回归
 
-#### nn.SmoothL1Loss 
+#### nn.SmoothL1Loss
 
 **平滑L1损失**，当输入在-1到1之间时，平滑为L2损失，用于回归
 
-#### nn.BCELoss 
+#### nn.BCELoss
 
 **二元交叉熵**，用于二分类，输入已经过nn.Sigmoid激活，对不平衡数据集可以用weigths参数调整类别权重。
 
-#### nn.BCEWithLogitsLoss 
+#### nn.BCEWithLogitsLoss
 
 **二元交叉熵**，用于二分类，输入未经过nn.Sigmoid激活
 
-#### nn.CrossEntropyLoss 
+#### nn.CrossEntropyLoss
 
 **交叉熵**，用于多分类，要求label为稀疏编码，输入未经过nn.Softmax激活，对不平衡数据集可以用weigths参数调整类别权重。
 
-#### nn.NLLLoss 
+#### nn.NLLLoss
 
 **负对数似然损失**，用于多分类，要求label为稀疏编码，输入经过nn.LogSoftmax激活。
 
@@ -7542,7 +7589,7 @@ tensor(0.5493)
 
 **余弦相似度**，可用于多分类。
 
-#### nn.AdaptiveLogSoftmaxWithLoss 
+#### nn.AdaptiveLogSoftmaxWithLoss
 
 **一种适合非常多类别且类别分布很不均衡的损失函数**，会自适应地将多个小类别合成一个cluster。
 
@@ -7870,6 +7917,16 @@ optimizer = torch.optim.SGD([{'params': weight_params, 'weight_decay': 1e-5},
 ```
 
 ## 优化器
+
+### torch.optim.Adam
+
+
+
+### torch.optim.Adagrad
+
+
+
+###  torch.optim.SGD
 
 
 
