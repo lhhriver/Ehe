@@ -614,6 +614,7 @@ diagonal_elements = torch.diag(matrix)
 **（3）**参数说明
 
 **torch.diag** 函数的参数是：
+
 - 输入张量：可以是一维或二维的。如果是一维的，将创建对角矩阵；如果是二维的，将提取对角线元素。
 
 **（4）**注意事项
@@ -628,11 +629,13 @@ diagonal_elements = torch.diag(matrix)
 
 **torch.diag** 是一个简单但功能强大的函数，它为创建对角矩阵或提取对角线元素提供了方便。在需要处理对角线特性的矩阵运算中，这个函数非常有用。
 
+
+
 ## **索引切片**
 
 ### torch.index_select
 
-**torch.index_select** 是 PyTorch 中的一个函数，用于根据索引从输入张量中选择元素。这个函数对于操作大型张量和进行高效索引非常有用。它可以应用于张量的任意维度。
+**torch.index_select** 是 PyTorch 中的一个函数，**用于根据索引从输入张量中选择元素**。这个函数对于操作大型张量和进行高效索引非常有用。它可以应用于张量的任意维度。
 
 函数的基本用法如下：
 
@@ -680,54 +683,74 @@ tensor([[4, 5, 6],
 
 需要注意的是，**torch.index_select** 只接受长整型张量（**LongTensor**）作为索引，因此如果索引是其他数据类型，需要先将其转换为长整型。此外，从 PyTorch 0.4 开始，**index_select** 已经被重命名为**index_select**，但为了保持向后兼容性，旧的函数名仍然可以使用。
 
+
+
 ### torch.take
 
-**torch.take** 是 PyTorch 中的一个函数，它用于根据提供的索引从一个张量中提取元素。这个函数与 **torch.index_select** 相似，但有一些关键的区别。**torch.take** 直接从一个张量的元素中按索引提取，而 **torch.index_select** 则是根据索引重新构造张量的一部分。
+torch.take 是 PyTorch 中的一个函数，用于根据提供的索引从一个张量中提取元素。这个函数可以用来替代 Python 的索引操作，特别是在需要索引操作的数组较大或者索引较为复杂时，使用torch.take 可以提高代码的可读性和效率。
 
-函数的基本用法如下：
+（1）基本用法
 
-```python
-torch.take(input, index, out=None)
-```
+以下是 torch.take 的一些基本用法示例：
 
-参数说明：
-- **input** (Tensor): 输入张量。
-- **index** (LongTensor): 包含要提取元素的索引的1D张量。
-- **out** (Tensor, optional): 可选的输出张量，用于存储结果。
-
-返回值：
-- 返回一个新的张量，它包含了根据 **index** 索引从 **input** 中提取的元素。
-
-这里有一个简单的例子，演示如何使用 **torch.take**：
+- 从一维张量中按索引取值
 
 ```python
 import torch
 
-# 创建一个示例张量
-x = torch.tensor([[1, 2, 3],
-                  [4, 5, 6],
-                  [7, 8, 9]])
+# 创建一个一维张量
+tensor = torch.tensor([1, 2, 3, 4, 5])
 
-# 定义要提取的元素索引
-indices = torch.tensor([0, 2])  # 选择第一列和第三列
+# 创建一个包含要提取元素索引的张量
+indices = torch.tensor([1, 3])
 
-# 使用torch.take提取元素
-result = torch.take(x, indices)
+# 使用 torch.take 按索引提取元素
+selected_elements = torch.take(tensor, indices)
 
-print(result)
+print(selected_elements)  # 输出: tensor([2, 4])
 ```
 
-输出将会是：
+- 从多维张量中按索引取值
+
+```python
+import torch
+
+# 创建一个二维张量
+tensor = torch.tensor([[1, 2, 3],
+                       [4, 5, 6]])
+
+# 创建一个包含要提取元素索引的张量
+indices = torch.tensor([0, 2, 4])
+
+# 使用 torch.take 按索引提取元素
+selected_elements = torch.take(tensor, indices)
+
+print(selected_elements) 
+```
 
 ```
-tensor([1, 3, 6, 9])
+tensor([1, 3, 5])
 ```
 
-在这个例子中，我们选择了原始张量 **x** 的第一列和第三列的所有元素。**torch.take** 函数按照 **indices** 中的索引直接提取了这些元素。
+（2）参数说明
 
-需要注意的是，**torch.take** 接受长整型张量（**LongTensor**）作为索引，如果索引是其他数据类型，需要先将其转换为长整型。此外，**torch.take** 可以用于多维张量，但提取操作是沿着输入张量的第一个维度（通常是批次维度）进行的。
+**torch.take** 函数的参数是：
+- **tensor**：要从中提取元素的原始张量。
+- **index**：一个一维张量，包含了要提取的元素的索引。
 
-与 **torch.index_select** 相比，**torch.take** 更简单，不涉及对张量的重塑或扩展，因此通常在只需要提取特定元素时使用。而 **torch.index_select** 更适合于需要根据索引重新构造张量的一部分的场景。
+（3）注意事项
+
+- **torch.take** 只能根据一维索引张量来提取元素，如果需要从多维张量中提取元素，需要先将多维索引展平为一维。
+- 返回的张量是原始张量中指定位置元素的副本。
+
+（4）应用场景
+
+- **数据抽样**：在需要从数据集中随机或按照特定规则抽取样本时。
+- **索引操作**：在进行复杂的索引操作，或者需要避免使用 Python 层级索引时。
+
+**torch.take** 是一个简单但实用的函数，它为根据索引提取张量中的元素提供了方便。在需要进行索引操作的场合，这个函数非常有用。
+
+
 
 ### torch.masked_select
 
@@ -778,6 +801,8 @@ tensor([1, 3, 5, 7, 9])
 
 需要注意的是，**torch.masked_select** 接受的掩码张量必须是8位整数类型（即 **ByteTensor**），其中包含的值只能是0或1。此外，**mask** 张量必须与 **input** 张量有相同的形状，以便逐元素地进行比较。返回的结果是一个1D张量，包含了所有满足掩码条件的元素。
 
+
+
 ### torch.where
 
 **torch.where** 是 PyTorch 中的一个函数，它根据条件张量返回输入张量中满足条件的元素的索引。这个函数非常有用，因为它可以方便地找到满足特定条件的元素的位置。
@@ -798,6 +823,8 @@ torch.where(condition, x, y)
 
 这里有一个简单的例子，演示如何使用 **torch.where**：
 
+- 找出满足条件的元素的索引
+
 ```python
 import torch
 
@@ -812,27 +839,52 @@ condition = x > 2
 # 使用torch.where根据条件选择元素
 indices, values = torch.where(condition)
 
+print("condition：", condition)
 print("Indices: ", indices)
 print("Values: ", values)
+```
+
+```
+condition： tensor([[False, False,  True],
+                     [ True,  True,  True],
+                     [ True,  True,  True]])
+Indices:  tensor([0, 1, 1, 1, 2, 2, 2])
+Values:  tensor([2, 0, 1, 2, 0, 1, 2])
+```
+
+- 根据条件从两个张量中选择元素
+
+```python
+import torch
+
+# 创建两个张量
+x = torch.tensor([1, 2, 3, 4])
+y = torch.tensor([5, 6, 7, 8])
+
+# 定义一个条件
+condition = x > 3
+
+# 使用 torch.where 根据条件选择元素
+result = torch.where(condition, x, y)
+
+print("Result:", result)
 ```
 
 输出将会是：
 
 ```
-Indices:  tensor([[1, 2],
-        [2, 0],
-        [2, 1],
-        [2, 2]])
-Values:  tensor([3, 4, 5, 6, 7, 8, 9])
+Result: tensor([5, 6, 7, 4])
 ```
 
 在这个例子中，我们定义了一个条件：选择原始张量 **x** 中所有大于2的元素。**torch.where** 函数返回了两个张量，**indices** 包含了满足条件的元素的索引，而 **values** 包含了满足条件的元素本身。
 
 需要注意的是，**torch.where** 返回的索引张量是一个2D张量，每一行代表一个满足条件的元素的索引，第一列是行索引，第二列是列索引。此外，**condition** 必须是一个布尔类型的张量，其中的元素只能是 0（表示 **False**）或 1（表示 **True**）。
 
+
+
 ### torch.index_fill
 
-**torch.index_fill** 是 PyTorch 中的一个函数，它用于根据提供的索引将输入张量的某些位置的值更新为一个给定的值。这个函数在需要在张量中进行条件性赋值时非常有用，特别是当你知道要更新哪些具体位置的时候。
+**torch.index_fill** 是 PyTorch 中的一个函数，它用于**根据提供的索引将输入张量的某些位置的值更新为一个给定的值**。这个函数在需要在张量中进行条件性赋值时非常有用，特别是当你知道要更新哪些具体位置的时候。
 
 函数的基本用法如下：
 
@@ -867,27 +919,32 @@ col_indices = torch.tensor([1, 2])
 value_to_fill = 0
 
 # 使用torch.index_fill更新张量
-x = torch.index_fill(x, 0, row_indices, value_to_fill)
-x = torch.index_fill(x, 1, col_indices, value_to_fill)
+x1 = torch.index_fill(x, 0, row_indices, value_to_fill)
+x2 = torch.index_fill(x, 1, col_indices, value_to_fill)
 
-print(x)
+print(x1)
+print(x2)
 ```
 
 输出将会是：
 
 ```
 tensor([[0, 0, 0],
-        [4, 0, 6],
+        [4, 5, 6],
+        [0, 0, 0]])
+        
+tensor([[1, 0, 0],
+        [4, 0, 0],
         [7, 0, 0]])
 ```
 
-在这个例子中，我们首先使用 **torch.index_fill** 根据行索引 **row_indices** 更新了第一行和第三行的所有元素为0。然后，我们再次使用 **torch.index_fill**，这次是根据列索引 **col_indices** 更新了第二列和第三列的所有元素为0。
-
 需要注意的是，**torch.index_fill** 不返回一个新的张量，而是直接在原始张量上进行修改。**index** 必须是一个长整型张量（**LongTensor**），而 **value** 是一个标量，表示要赋给指定位置的值。此外，**dim** 参数用于指定是沿着哪个维度进行索引，0通常表示行，1表示列。
+
+
 
 ### torch.masked_fill
 
-**torch.masked_fill** 是 PyTorch 中的一个函数，它用于根据一个布尔掩码（mask）将输入张量的某些位置的值更新为一个给定的值。这个函数在需要根据条件对张量进行批量赋值时非常有用。
+**torch.masked_fill** 是 PyTorch 中的一个函数，它用于**根据一个布尔掩码（mask）将输入张量的某些位置的值更新为一个给定的值**。这个函数在需要根据条件对张量进行批量赋值时非常有用。
 
 函数的基本用法如下：
 
@@ -939,6 +996,8 @@ tensor([[0, 2, 0],
 
 需要注意的是，**torch.masked_fill** 接受的掩码张量必须是8位整数类型（即 **ByteTensor**），其中包含的值只能是0或1。此外，**mask** 张量必须与 **input** 张量有相同的形状，以便逐元素地进行比较和更新。返回的结果是一个修改后的张量，其中所有满足掩码条件的位置已经被指定的值更新。
 
+
+
 ## **维度变换**
 
 ### torch.reshape
@@ -983,9 +1042,11 @@ reshaped_tensor_3 = original_tensor.reshape(-1, 2)
 
 **torch.reshape** 是一个非常灵活的函数，它为改变张量的形状提供了方便，是深度学习框架中常用的函数之一。
 
+
+
 ### torch.squeeze
 
-**torch.squeeze** 是 PyTorch 中的一个函数，用于从张量中去除所有长度为 1 的维度。这个操作通常用于减少张量的维度，使张量的形状更加简洁，尤其是在处理具有单维度的张量时。
+**torch.squeeze** 是 PyTorch 中的一个函数，用于从张量中去**除所有长度为 1 的维度**。这个操作通常用于减少张量的维度，使张量的形状更加简洁，尤其是在处理具有单维度的张量时。
 
 **（1）**基本用法
 
@@ -1001,12 +1062,25 @@ tensor = torch.randn(1, 3, 1)
 squeezed_tensor = torch.squeeze(tensor)
 
 # 输出 squeezed_tensor 的形状，将会是 (3,)
+print(tensor)
+print(squeezed_tensor)
 print(squeezed_tensor.shape)
+```
+
+```
+tensor([[[1.2537],
+         [1.9305],
+         [0.9522]]])
+         
+tensor([1.2537, 1.9305, 0.9522])
+
+torch.Size([3])
 ```
 
 **（2）**参数说明
 
 **torch.squeeze** 函数有一个可选参数：
+
 - **dim**：一个整数，指定要去除的维度。如果不指定，则去除所有长度为 1 的维度。
 
 **（3）**注意事项
@@ -1021,9 +1095,11 @@ print(squeezed_tensor.shape)
 
 **torch.squeeze** 是一个简单但实用的函数，它为去除张量中的单维度提供了方便。在深度学习和其他数值计算任务中，这个函数经常被用到。
 
+
+
 ### torch.unsqueeze
 
-**torch.unsqueeze** 是 PyTorch 中的一个函数，用于在指定位置为张量添加一个新的维度，其大小为 1。这个操作通常用于增加张量的维度，例如，将一维张量转换为二维张量，或者为广播（broadcasting）操作添加维度。
+**torch.unsqueeze** 是 PyTorch 中的一个函数，用于**在指定位置为张量添加一个新的维度，其大小为 1**。这个操作通常用于增加张量的维度，例如，将一维张量转换为二维张量，或者为广播（broadcasting）操作添加维度。
 
 **（1）**基本用法
 
@@ -1040,6 +1116,20 @@ unsqueezed_tensor = torch.unsqueeze(tensor, dim=0)
 
 # 在第二个维度位置添加一个大小为 1 的维度
 unsqueezed_tensor_2 = torch.unsqueeze(tensor, dim=1)
+
+print(tensor)
+print(unsqueezed_tensor)
+print(unsqueezed_tensor_2)
+```
+
+```
+tensor([1, 2, 3])
+
+tensor([[1, 2, 3]])
+
+tensor([[1],
+        [2],
+        [3]])
 ```
 
 **（2）**参数说明
@@ -1059,9 +1149,11 @@ unsqueezed_tensor_2 = torch.unsqueeze(tensor, dim=1)
 
 **torch.unsqueeze** 是一个简单但实用的函数，它为在张量中添加单维度提供了方便。在深度学习和其他数值计算任务中，这个函数经常被用到。
 
+
+
 ### torch.transpose
 
-**torch.transpose** 是 PyTorch 中的一个函数，用于交换张量的两个维度。这是在进行矩阵运算或需要重新排列张量维度时非常有用的操作。
+**torch.transpose** 是 PyTorch 中的一个函数，**用于交换张量的两个维度**。这是在进行矩阵运算或需要重新排列张量维度时非常有用的操作。
 
 **（1）**基本用法
 
@@ -1071,13 +1163,33 @@ unsqueezed_tensor_2 = torch.unsqueeze(tensor, dim=1)
 import torch
 
 # 创建一个形状为 (3, 4) 的二维张量
-tensor = torch.randn(3, 4)
+tensor = torch.arange(12).reshape(3, 4)
 
 # 交换第一个和第二个维度，结果形状为 (4, 3)
 transposed_tensor = torch.transpose(tensor, dim0=0, dim1=1)
 
 # 使用简写方式交换维度，结果形状同样为 (4, 3)
 transposed_tensor_short = tensor.transpose(0, 1)
+
+print(tensor)
+print(transposed_tensor)
+print(transposed_tensor_short)
+```
+
+```
+tensor([[ 0,  1,  2,  3],
+        [ 4,  5,  6,  7],
+        [ 8,  9, 10, 11]])
+        
+tensor([[ 0,  4,  8],
+        [ 1,  5,  9],
+        [ 2,  6, 10],
+        [ 3,  7, 11]])
+        
+tensor([[ 0,  4,  8],
+        [ 1,  5,  9],
+        [ 2,  6, 10],
+        [ 3,  7, 11]])
 ```
 
 **（2）**参数说明
@@ -1103,11 +1215,13 @@ transposed_tensor_t = tensor.t()
 
 **torch.transpose** 是一个基础且常用的函数，它为交换张量的两个维度提供了方便。在深度学习和科学计算中，这个函数经常用于矩阵和张量的转换操作。
 
+
+
 ## **合并分割**
 
 ### torch.cat
 
-**torch.cat** 是 PyTorch 中用于将多个张量拼接在一起的函数。它根据指定的维度将张量序列合并成一个张量。这个函数在处理数据时非常有用，尤其是在需要将多个数据批次合并为一个批次进行批处理操作时。
+**torch.cat** 是 PyTorch 中用于**将多个张量拼接在一起**的函数。它根据指定的维度将张量序列合并成一个张量。这个函数在处理数据时非常有用，尤其是在需要将多个数据批次合并为一个批次进行批处理操作时。
 
 **（1）**基本用法
 
@@ -1147,9 +1261,11 @@ concatenated_tensor_dim1 = torch.cat((tensor1, tensor2, tensor3), dim=1)
 
 **torch.cat** 是一个简单但功能强大的函数，它为合并多个张量提供了方便。在深度学习和其他数值计算任务中，这个函数经常被用到。
 
+
+
 ### torch.stack
 
-**torch.stack** 是 PyTorch 中用于将一系列相同形状的张量沿着一个新的维度拼接起来的函数。与 **torch.cat** 不同，**torch.stack** 不是将张量在现有维度上拼接，而是增加一个新的维度。
+**torch.stack** 是 PyTorch 中用于**将一系列相同形状的张量沿着一个新的维度拼接起来**的函数。与 **torch.cat** 不同，**torch.stack** 不是将张量在现有维度上拼接，而是增加一个新的维度。
 
 **（1）**基本用法
 
@@ -1158,7 +1274,7 @@ concatenated_tensor_dim1 = torch.cat((tensor1, tensor2, tensor3), dim=1)
 ```python
 import torch
 
-# 创建几个形状相同的张量
+# 创建几个形状相同的张量，形状为(3), torch.Size([3])
 tensor1 = torch.tensor([1, 2, 3])
 tensor2 = torch.tensor([4, 5, 6])
 tensor3 = torch.tensor([7, 8, 9])
@@ -1194,9 +1310,11 @@ stacked_matrices = torch.stack((matrix1, matrix2, matrix3), dim=0)
 
 **torch.stack** 是一个在组织数据时非常有用的函数，特别是在需要创建新的维度来区分不同的数据集或特征时。
 
+
+
 ### torch.split
 
-**torch.split** 是 PyTorch 中的一个函数，用于将一个张量分割成多个较小的张量，这些较小的张量在指定的维度上具有相同的尺寸。这个函数在处理数据时非常有用，尤其是在需要将单个数据张量分割成多个批次或需要对张量进行分组处理时。
+**torch.split** 是 PyTorch 中的一个函数，用于**将一个张量分割成多个较小的张量，这些较小的张量在指定的维度上具有相同的尺寸**。这个函数在处理数据时非常有用，尤其是在需要将单个数据张量分割成多个批次或需要对张量进行分组处理时。
 
 **（1）**基本用法
 
@@ -1206,29 +1324,55 @@ stacked_matrices = torch.stack((matrix1, matrix2, matrix3), dim=0)
 import torch
 
 # 创建一个形状为 (6, 3) 的张量
-tensor = torch.randn(6, 3)
+tensor = torch.arange(18).reshape(6, 3)
 
 # 在第一个维度上将张量分割成两部分，每部分的大小为 (3, 3)
-parts = torch.split(tensor, split_size=3, dim=0)
+parts1 = torch.split(tensor, split_size_or_sections=3, dim=0)
 
 # 在第一个维度上将张量分割成三部分，每部分的大小为 (2, 3)
-parts = torch.split(tensor, split_size=2, dim=0)
+parts2 = torch.split(tensor, split_size_or_sections=2, dim=0)
+
+parts3 = torch.split(tensor, split_size_or_sections=[1, 5], dim=0)
 
 # 输出分割后的张量部分
-for i, part in enumerate(parts):
-    print(f"Part {i}: {part}")
+print(parts1)
+print(parts2)
+print(parts3)
+```
+
+```
+(tensor([[0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8]]), 
+   tensor([[ 9, 10, 11],
+        [12, 13, 14],
+        [15, 16, 17]]))
+        
+(tensor([[0, 1, 2],
+        [3, 4, 5]]), 
+   tensor([[ 6,  7,  8],
+        [ 9, 10, 11]]), 
+    tensor([[12, 13, 14],
+        [15, 16, 17]]))
+        
+(tensor([[0, 1, 2]]), 
+   tensor([[ 3,  4,  5],
+        [ 6,  7,  8],
+        [ 9, 10, 11],
+        [12, 13, 14],
+        [15, 16, 17]]))
 ```
 
 **（2）**参数说明
 
 **torch.split** 函数的参数是：
 - **tensor**：要分割的原始张量。
-- **split_size**：一个整数，指定每个分割出来的张量在指定维度上的大小。
+- **split_size_or_sections**：一个整数，指定每个分割出来的张量在指定维度上的大小。
 - **dim**：一个整数，指定沿着哪个维度进行分割。
 
 **（3）**注意事项
 
-- **split_size** 必须能够整除原张量在 **dim** 维度上的大小。
+- **split_size_or_sections** 必须能够整除原张量在 **dim** 维度上的大小。
 - 分割操作不会改变原始张量，而是返回一个新的列表，其中包含了分割出来的张量。
 
 **（4）**应用场景
@@ -1238,6 +1382,8 @@ for i, part in enumerate(parts):
 - **特征分割**：在特征工程中，可能需要将不同的特征分割开来，分别进行不同的处理。
 
 **torch.split** 是一个简单但实用的函数，它为分割张量提供了方便。在深度学习和其他数值计算任务中，这个函数经常被用到。
+
+
 
 # 张量的数学运算
 
@@ -1263,6 +1409,10 @@ sqrt_tensor = torch.sqrt(tensor)
 print(sqrt_tensor)
 ```
 
+```
+tensor([1., 2., 3., 4.])
+```
+
 **（2）**参数说明
 
 **torch.sqrt** 函数的参数是：
@@ -1280,6 +1430,8 @@ print(sqrt_tensor)
 - **物理和工程模拟**：在模拟中，平方根函数常用于计算距离或处理与平方根相关的关系。
 
 **torch.sqrt** 是一个基础的数学函数，它为计算张量元素的平方根提供了方便。在需要进行平方根运算的场合，这个函数非常有用。
+
+
 
 ### torch.max
 
@@ -1303,6 +1455,10 @@ max_value = torch.max(tensor)
 print(max_value)
 ```
 
+```
+tensor(16)
+```
+
 **（3）**计算张量沿指定维度的最大值
 
 ```python
@@ -1311,11 +1467,28 @@ import torch
 # 创建一个形状为 (4, 2) 的张量
 tensor = torch.tensor([[1, 2], [3, 4], [5, 6], [7, 8]])
 
-# 计算每一列的最大值，结果是一个形状为 (4,) 的张量
+# 计算每一行的最大值，结果是一个形状为 (4,) 的张量
+max_values_per_row = torch.max(tensor, dim=0)
+
+# 计算每一列的最大值，结果是一个形状为 (2,) 的张量
 max_values_per_column = torch.max(tensor, dim=1)
 
-# 计算每一行的最大值，结果是一个形状为 (2,) 的张量
-max_values_per_row = torch.max(tensor, dim=0)
+print(tensor)
+print(tensor.shape)
+print(max_values_per_column)
+print(max_values_per_row)
+```
+
+```
+tensor([[1, 2],
+        [3, 4],
+        [5, 6],
+        [7, 8]])
+      
+torch.Size([4, 2])
+
+torch.return_types.max(values=tensor([2, 4, 6, 8]), indices=tensor([1, 1, 1, 1]))
+torch.return_types.max(values=tensor([7, 8]),  indices=tensor([3, 3]))
 ```
 
 **（4）**参数说明
@@ -1345,6 +1518,8 @@ max_values_per_row = torch.max(tensor, dim=0)
 
 **torch.max** 是一个基础的函数，它为快速找到张量中元素的最大值提供了方便。
 
+
+
 ### torch.min
 
 **torch.min** 是 PyTorch 中的一个函数，用于计算张量中元素的最小值。它可以沿着指定的维度找到最小值，或者返回张量中所有元素的最小值。这个函数在数据分析、科学计算以及机器学习中非常有用，尤其是在需要找到数值范围的下限时。
@@ -1367,19 +1542,34 @@ min_value = torch.min(tensor)
 print(min_value)
 ```
 
+```
+tensor(1)
+```
+
 **（3）**计算张量沿指定维度的最小值
 
 ```python
 import torch
 
 # 创建一个形状为 (4, 2) 的张量
-tensor = torch.tensor([[10, 2], [3, 4], [5, -6], [7, 8]])
+tensor = torch.tensor([[10, 2], 
+                       [3, 4], 
+                       [5, -6], 
+                       [7, 8]])
 
 # 计算每一列的最小值，结果是一个形状为 (2,) 的张量
 min_values_per_column = torch.min(tensor, dim=0)
 
 # 计算每一行的最小值，结果是一个形状为 (4,) 的张量
 min_values_per_row = torch.min(tensor, dim=1)
+
+print(min_values_per_column)
+print(min_values_per_row)
+```
+
+```
+torch.return_types.min(values=tensor([ 3, -6]), indices=tensor([1, 2]))
+torch.return_types.min(values=tensor([ 2,  3, -6,  7]), indices=tensor([1, 0, 1, 0]))
 ```
 
 **（4）**参数说明
@@ -1409,6 +1599,8 @@ min_values_per_row = torch.min(tensor, dim=1)
 
 **torch.min** 是一个基础的函数，它为快速找到张量中元素的最小值提供了方便。
 
+
+
 ### torch.round
 
 **torch.round** 是 PyTorch 中的一个函数，用于对张量中的每个元素进行四舍五入操作，即将浮点数元素转换为最接近的整数。这个函数在数据后处理、数值分析以及机器学习模型中经常用到，尤其是在需要将连续值转换为离散值时。
@@ -1429,6 +1621,10 @@ rounded_tensor = torch.round(tensor)
 print(rounded_tensor)
 ```
 
+```
+tensor([1., 2., 3., 5.])
+```
+
 **（2）**参数说明
 
 **torch.round** 函数的参数是：
@@ -1446,6 +1642,8 @@ print(rounded_tensor)
 - **机器学习模型**：在某些类型的模型中，如整数编程或离散选择模型，可能需要将连续输出四舍五入为整数。
 
 **torch.round** 是一个基础的数学函数，它为对张量元素进行四舍五入提供了方便。在需要进行四舍五入运算的场合，这个函数非常有用。
+
+
 
 ### torch.floor
 
@@ -1484,6 +1682,8 @@ print(floored_tensor)
 
 **torch.floor** 是一个基础的数学函数，它为对张量元素进行向下取整提供了方便。在需要进行向下取整运算的场合，这个函数非常有用。
 
+
+
 ### torch.ceil
 
 **torch.ceil** 是 PyTorch 中的一个函数，用于对张量中的每个元素执行向上取整操作，即将浮点数元素转换为不小于该数的最小整数。这个函数在数据预处理、数值分析以及机器学习模型中经常用到，尤其是在需要将连续值转换为不小于原数的最大整数值时。
@@ -1520,6 +1720,8 @@ print(ceiled_tensor)
 - **机器学习模型**：在某些类型的模型中，可能需要将输出转换为整数，如在推荐系统中将预测的评分转换为星级。
 
 **torch.ceil** 是一个基础的数学函数，它为对张量元素进行向上取整提供了方便。在需要进行向上取整运算的场合，这个函数非常有用。
+
+
 
 ### torch.trunc
 
@@ -1559,9 +1761,11 @@ print(truncated_tensor)
 
 **torch.trunc** 是一个基础的数学函数，它为对张量元素进行截断提供了方便。在需要去除浮点数小数部分的场合，这个函数非常有用。
 
+
+
 ### torch.fmod
 
-**torch.fmod** 是 PyTorch 中的一个函数，用于计算两个数对应元素的模运算结果，即每个元素的“取余”结果。模运算通常用于计算除法的余数，特别是在数值分析和科学计算中。
+**torch.fmod** 是 PyTorch 中的一个函数，用于计算**两个数对应元素的模运算结果**，即每个元素的“取余”结果。模运算通常用于计算除法的余数，特别是在数值分析和科学计算中。
 
 **（1）**基本用法
 
@@ -1584,6 +1788,10 @@ fmod_result = torch.fmod(tensor, scalar)
 print(fmod_result)
 ```
 
+```
+tensor([2., 1., 0.])
+```
+
 **（3）**计算两个张量的模
 
 ```python
@@ -1597,6 +1805,10 @@ tensor2 = torch.tensor([2.0, 3.0, 4.0])
 fmod_result = torch.fmod(tensor1, tensor2)
 
 print(fmod_result)
+```
+
+```
+tensor([1., 1., 3.])
 ```
 
 **（4）**参数说明
@@ -1618,9 +1830,11 @@ print(fmod_result)
 
 **torch.fmod** 是一个基础的数学函数，它为执行模运算提供了方便。在需要进行模运算的场合，这个函数非常有用。
 
+
+
 ### torch.remainder
 
-**torch.remainder** 是 PyTorch 中的一个函数，它与 **torch.fmod** 类似，用于计算两个数对应元素的余数。余数是指两个数相除后留下的部分，不同于 **torch.fmod** 的是，**torch.remainder** 的行为遵循 Python 中 **%** 操作符的规则。
+**torch.remainder** 是 PyTorch 中的一个函数，它与 **torch.fmod** 类似，**用于计算两个数对应元素的余数**。余数是指两个数相除后留下的部分，不同于 **torch.fmod** 的是，**torch.remainder** 的行为遵循 Python 中 **%** 操作符的规则。
 
 **（1）**基本用法
 
@@ -1643,6 +1857,10 @@ remainder_result = torch.remainder(tensor, scalar)
 print(remainder_result)
 ```
 
+```
+tensor([2., 1., 0.])
+```
+
 **（3）**计算两个张量的余数
 
 ```python
@@ -1656,6 +1874,10 @@ tensor2 = torch.tensor([2.0, 3.0, 4.0])
 remainder_result = torch.remainder(tensor1, tensor2)
 
 print(remainder_result)
+```
+
+```
+tensor([1., 1., 3.])
 ```
 
 **（4）**参数说明
@@ -1677,9 +1899,11 @@ print(remainder_result)
 
 **torch.remainder** 是一个基础的数学函数，它为执行余数计算提供了方便。在需要进行余数运算的场合，这个函数非常有用。
 
+
+
 ### torch.clamp
 
-**torch.clamp** 是 PyTorch 中的一个函数，用于将张量的元素值限制在指定的范围内。具体来说，它将张量中的每个元素值设置为最小值和最大值之间的值，如果元素值已经在该范围内，则保持不变。这个函数在梯度裁剪、数据标准化以及确保中间层输出在一定范围内时非常有用。
+**torch.clamp** 是 PyTorch 中的一个函数，**用于将张量的元素值限制在指定的范围内**。具体来说，它将张量中的每个元素值设置为最小值和最大值之间的值，如果元素值已经在该范围内，则保持不变。这个函数在梯度裁剪、数据标准化以及确保中间层输出在一定范围内时非常有用。
 
 **（1）**基本用法
 
@@ -1695,6 +1919,10 @@ tensor = torch.tensor([-1.0, 2.0, 3.0, -5.0])
 clamped_tensor = torch.clamp(tensor, min=-1.5, max=1.5)
 
 print(clamped_tensor)
+```
+
+```
+tensor([-1.0000,  1.5000,  1.5000, -1.5000])
 ```
 
 **（2）**参数说明
@@ -1716,6 +1944,8 @@ print(clamped_tensor)
 - **数据预处理**：在数据加载或标准化步骤中，**torch.clamp** 可以用来将输入数据限制在特定的数值范围内。
 
 **torch.clamp** 是一个实用的函数，它为数据的值限制提供了方便。在需要控制数值范围的场合，这个函数非常有用。
+
+
 
 ## **向量运算**
 
@@ -1741,6 +1971,10 @@ total_sum = torch.sum(tensor)
 print(total_sum)
 ```
 
+```
+tensor(15)
+```
+
 - 计算张量沿指定维度的和
 
 ```python
@@ -1756,6 +1990,14 @@ row_sums = torch.sum(tensor, dim=1)
 
 # 计算每一列的元素总和，结果形状为 (4,)
 column_sums = torch.sum(tensor, dim=0)
+
+print(row_sums)
+print(column_sums)
+```
+
+```
+tensor([10, 26, 42])
+tensor([15, 18, 21, 24])
 ```
 
 **（2）**参数说明
@@ -1777,6 +2019,8 @@ column_sums = torch.sum(tensor, dim=0)
 - **数据聚合**：在数据聚合操作中，**torch.sum** 可以用来快速计算特定维度的总和。
 
 **torch.sum** 是一个基础的函数，它为计算张量的元素和提供了方便。在需要进行元素和计算的场合，这个函数非常有用。
+
+
 
 ### torch.mean
 
@@ -1808,13 +2052,21 @@ import torch
 # 创建一个形状为 (3, 4) 的二维张量
 tensor = torch.tensor([[1, 2, 3, 4],
                        [5, 6, 7, 8],
-                       [9, 10, 11, 12]])
+                       [9, 10, 11, 12]], dtype=torch.float32)
 
 # 计算每一行的元素均值，结果形状为 (3,)
 row_means = torch.mean(tensor, dim=1)
 
 # 计算每一列的元素均值，结果形状为 (4,)
 column_means = torch.mean(tensor, dim=0)
+
+print(row_means)
+print(column_means)
+```
+
+```
+tensor([ 2.5000,  6.5000, 10.5000])
+tensor([5., 6., 7., 8.])
 ```
 
 **（2）**参数说明
@@ -1836,6 +2088,8 @@ column_means = torch.mean(tensor, dim=0)
 - **数据标准化**：在数据预处理中，**torch.mean** 可以用来计算均值，进而进行零均值标准化。
 
 **torch.mean** 是一个基础的函数，它为计算张量的元素均值提供了方便。在需要进行元素均值计算的场合，这个函数非常有用。
+
+
 
 ### torch.max
 
@@ -1859,6 +2113,10 @@ max_value = torch.max(tensor)
 print(max_value.item())  # 使用 .item() 来打印出标量值
 ```
 
+```
+5
+```
+
 - 计算张量沿指定维度的最大值
 
 ```python
@@ -1874,6 +2132,14 @@ row_maxes = torch.max(tensor, dim=1)
 
 # 计算每一列的最大值，结果是一个形状为 (4,) 的张量
 column_maxes = torch.max(tensor, dim=0)
+
+print(row_maxes)
+print(column_maxes)
+```
+
+```
+torch.return_types.max(values=tensor([ 4,  8, 12]), indices=tensor([3, 3, 3]))
+torch.return_types.max(values=tensor([ 9, 10, 11, 12]), indices=tensor([2, 2, 2, 2]))
 ```
 
 **（2）**参数说明
@@ -1902,6 +2168,8 @@ column_maxes = torch.max(tensor, dim=0)
 - **损失函数**：在机器学习模型中，尤其是在定义损失函数时，可能需要找到最大值。
 
 **torch.max** 是一个基础的函数，它为快速找到张量中元素的最大值提供了方便。
+
+
 
 ### torch.min
 
@@ -1940,6 +2208,15 @@ row_mins = torch.min(tensor, dim=1)
 
 # 计算每一列的最小值，结果是一个形状为 (4,) 的张量
 column_mins = torch.min(tensor, dim=0)
+
+print(row_mins)
+print(column_mins)
+```
+
+```
+torch.return_types.min(values=tensor([  1,  -7, -12]), indices=tensor([0, 2, 3]))
+
+torch.return_types.min(values=tensor([ -5,   2,  -7, -12]),  indices=tensor([1, 0, 1, 2]))
 ```
 
 **（2）**参数说明
@@ -1969,9 +2246,11 @@ column_mins = torch.min(tensor, dim=0)
 
 **torch.min** 是一个基础的函数，它为快速找到张量中元素的最小值提供了方便。
 
+
+
 ### touch.prod
 
-在 PyTorch 中，要计算张量的乘积，使用的函数是 **torch.prod** 而不是 **touch.prod**。**torch.prod** 会计算张量中所有元素的乘积。
+在 PyTorch 中，要计算张量的乘积。**torch.prod** 会计算张量中所有元素的乘积。
 
 **（1）**基本用法
 
@@ -1991,24 +2270,38 @@ product = torch.prod(tensor)
 print(product.item())  # 使用 .item() 来打印出标量值
 ```
 
+```
+120
+```
+
 - 计算张量沿指定维度的乘积
 
 ```python
 import torch
 
 # 创建一个形状为 (2, 3) 的二维张量
-tensor = torch.tensor([[1, 2, 3], [4, 5, 6]])
+tensor = torch.tensor([[1, 2, 3], 
+                       [4, 5, 6]])
 
 # 计算每一行的元素乘积，结果形状为 (2,)
 row_products = torch.prod(tensor, dim=1)
 
 # 计算每一列的元素乘积，结果形状为 (3,)
 column_products = torch.prod(tensor, dim=0)
+
+print(row_products)
+print(column_products)
+```
+
+```
+tensor([  6, 120])
+tensor([ 4, 10, 18])
 ```
 
 **（2）**参数说明
 
 **torch.prod** 函数的参数是：
+
 - **input**：要计算乘积的张量。
 - **dim**：一个整数，指定要沿着哪个维度计算乘积。如果不指定，则计算所有元素的乘积。
 - **keepdim**：一个布尔值，如果为 **True**，则输出张量会保留计算乘积的维度，即使它的大小为 1。
@@ -2026,9 +2319,11 @@ column_products = torch.prod(tensor, dim=0)
 
 **torch.prod** 是一个基础的函数，它为计算张量的元素乘积提供了方便。在需要进行元素乘积计算的场合，这个函数非常有用。
 
+
+
 ### torch.std
 
-**torch.std** 是 PyTorch 中用于计算张量的标准差的函数。它可以计算整个张量的标准差，或者沿着指定的维度计算标准差。标准差是衡量数据集中数值分散程度的一个统计量，它是方差的平方根。
+**torch.std** 是 PyTorch 中用于计算张量的**标准差**的函数。它可以计算整个张量的标准差，或者沿着指定的维度计算标准差。标准差是衡量数据集中数值分散程度的一个统计量，它是方差的平方根。
 
 **（1）**基本用法
 
@@ -2087,9 +2382,11 @@ column_stds = torch.std(tensor, dim=0)
 
 **torch.std** 是一个基础的统计函数，它为计算张量的元素标准差提供了方便。在需要进行标准差计算的场合，这个函数非常有用。
 
+
+
 ### torch.var
 
-**torch.var** 是 PyTorch 中用于计算张量方差的函数。方差是衡量数据集中数值分散程度的一个统计量，它是各数据点与均值差的平方的平均值。
+**torch.var** 是 PyTorch 中用于计算张量**方差**的函数。方差是衡量数据集中数值分散程度的一个统计量，它是各数据点与均值差的平方的平均值。
 
 **（1）**基本用法
 
@@ -2148,7 +2445,37 @@ column_variances = torch.var(tensor, dim=0)
 
 **torch.var** 是一个基础的统计函数，它为计算张量的元素方差提供了方便。在需要进行方差计算的场合，这个函数非常有用。
 
+
+
 ### torch.median
+
+**torch.median**函数用于计算张量沿指定维度的中位数值。下面是一个使用示例：
+
+```python
+import torch
+
+# 创建一个示例张量
+x = torch.tensor([[1, 2, 3],
+                  [4, 5, 6],
+                  [7, 8, 9]])
+
+# 计算沿指定维度的中位数值
+median_values, median_indices = torch.median(x, dim=1)
+
+print("Median values along dimension 1: ", median_values)
+print("Indices of median values along dimension 1: ", median_indices)
+```
+
+这个示例演示了如何使用**torch.median**函数来计算张量 **x** 沿着指定的维度（这里是维度1）的中位数值。在这个示例中，**x** 是一个3x3的张量。通过指定 **dim=1**，我们计算了每行的中位数。结果将会是每行的中位数值以及对应的索引。
+
+运行这段代码，你会得到类似以下的输出：
+
+```
+Median values along dimension 1:  tensor([2, 5, 8])
+Indices of median values along dimension 1:  tensor([1, 1, 1])
+```
+
+这表示每行的中位数值分别为 2、5 和 8，它们在各自行中的索引分别为 1、1 和 1。
 
 
 
@@ -2167,16 +2494,21 @@ import torch
 tensor = torch.tensor([1, 2, 3, 4])
 
 # 计算张量的累积和
-cumulative_sum = torch.cumsum(tensor)
+cumulative_sum = torch.cumsum(tensor, dim=0)
 
 print(cumulative_sum)
+```
+
+```
+tensor([ 1,  3,  6, 10])
 ```
 
 **（2）**参数说明
 
 **torch.cumsum** 函数的参数是：
+
 - **input**：要计算累积和的张量。
-- **dim**：一个整数，指定要沿着哪个维度计算累积和。如果不指定，默认沿着第一个维度（通常是维度 0）。
+- **dim**：一个整数，指定要沿着哪个维度计算累积和。
 
 **（3）**注意事项
 
@@ -2190,9 +2522,11 @@ print(cumulative_sum)
 
 **torch.cumsum** 是一个基础的函数，它为计算张量的累积和提供了方便。在需要进行累积和运算的场合，这个函数非常有用。
 
+
+
 ### torch.cumprod
 
-**torch.cumprod** 是 PyTorch 中的一个函数，用于计算张量的累积积（cumulative product），即它将返回一个新的张量，其中每个元素是原始张量中从开始到当前位置元素的乘积。
+**torch.cumprod** 是 PyTorch 中的一个函数，用于计算张量的**累积积**（cumulative product），即它将返回一个新的张量，其中每个元素是原始张量中从开始到当前位置元素的乘积。
 
 **（1）**基本用法
 
@@ -2205,16 +2539,20 @@ import torch
 tensor = torch.tensor([1, 2, 3, 4])
 
 # 计算张量的累积积
-cumulative_product = torch.cumprod(tensor)
+cumulative_product = torch.cumprod(tensor, dim=0)
 
 print(cumulative_product)
+```
+
+```
+tensor([ 1,  2,  6, 24])
 ```
 
 **（2）**参数说明
 
 **torch.cumprod** 函数的参数是：
 - **input**：要计算累积积的张量。
-- **dim**：一个整数，指定要沿着哪个维度计算累积积。如果不指定，默认沿着第一个维度（通常是维度 0）。
+- **dim**：一个整数，指定要沿着哪个维度计算累积积。
 
 **（3）**注意事项
 
@@ -2229,13 +2567,50 @@ print(cumulative_product)
 
 **torch.cumprod** 是一个基础的函数，它为计算张量的累积积提供了方便。在需要进行累积积运算的场合，这个函数非常有用。
 
+
+
 ### torch.cummax
+
+`torch.cummax`函数用于沿指定维度计算张量的累积最大值。下面是一个使用示例：
+
+```python
+import torch
+
+# 创建一个示例张量
+x = torch.tensor([[1, 3, 2],
+                  [4, 2, 6],
+                  [5, 1, 7]])
+
+# 计算沿指定维度的累积最大值
+cumulative_max, indices = torch.cummax(x, dim=1)
+
+print("Cumulative maximum values along dimension 1: ", cumulative_max)
+print("Indices of cumulative maximum values along dimension 1: ", indices)
+```
+
+这个示例演示了如何使用`torch.cummax`函数来计算张量 `x` 沿着指定的维度（这里是维度1）的累积最大值。在这个示例中，`x` 是一个3x3的张量。通过指定 `dim=1`，我们计算了每行的累积最大值。结果将会是每行的累积最大值以及对应的索引。
+
+运行这段代码，你会得到类似以下的输出：
+
+```
+Cumulative maximum values along dimension 1: 
+tensor([[1, 3, 3],
+        [4, 4, 6],
+        [5, 5, 7]])
+        
+Indices of cumulative maximum values along dimension 1:  
+tensor([[0, 0, 1],
+        [0, 0, 2],
+        [0, 0, 2]])
+```
+
+这表示每行的累积最大值分别为 [1, 3, 3]、[4, 4, 6] 和 [5, 5, 7]，它们在各自行中的索引分别为 [0, 0, 1]、[0, 0, 2] 和 [0, 0, 2]。
 
 
 
 ### tourch.topk
 
-在 PyTorch 中，**torch.topk** 函数用于找出张量中最大的 k 个元素。这个函数非常适用于选择数据集中的 top-k 值，例如在获取模型预测的前 k 个最可能的类别时。
+在 PyTorch 中，**torch.topk** 函数用于**找出张量中最大的 k 个元素**。这个函数非常适用于选择数据集中的 top-k 值，例如在获取模型预测的前 k 个最可能的类别时。
 
 **（1）**基本用法
 
@@ -2256,6 +2631,11 @@ print(top2_values)       # 输出最大的 2 个元素的值
 print(top2_indices)     # 输出最大的 2 个元素的索引
 ```
 
+```
+tensor([5, 4])
+tensor([3, 4])
+```
+
 - 沿着指定维度获取 top-k
 
 ```python
@@ -2271,6 +2651,16 @@ top1_values, top1_indices = torch.topk(tensor, k=1, dim=1)
 
 print(top1_values)       # 输出每一行最大的元素
 print(top1_indices)     # 输出每一行最大元素的索引
+```
+
+```
+tensor([[10],
+        [ 8],
+        [12]])
+        
+tensor([[0],
+        [3],
+        [3]])
 ```
 
 **（2）**参数说明
@@ -2292,7 +2682,7 @@ print(top1_indices)     # 输出每一行最大元素的索引
 - **分类问题**：在机器学习中，尤其是在分类问题中，获取模型预测的 top-k 结果。
 - **数据排名**：在需要对数据进行排名或选择时，找出 top-k 的元素。
 
-**torch.topk** 是一个非常有用的函数，它为快速找出张量中的 top-k 元素提供了方便。
+
 
 ### torch.sort
 
@@ -2317,6 +2707,11 @@ print(sorted_tensor)        # 输出排序后的张量
 print(sorted_indices)      # 输出原始张量中元素排序后的索引
 ```
 
+```
+tensor([1, 2, 3, 4])
+tensor([2, 3, 1, 0])
+```
+
 - 沿着指定维度对二维张量进行排序
 
 ```python
@@ -2332,6 +2727,15 @@ sorted_tensor_rows, sorted_indices_rows = torch.sort(tensor, dim=1)
 
 print(sorted_tensor_rows)       # 输出每一行排序后的张量
 print(sorted_indices_rows)     # 输出每一行原始张量中元素排序后的索引
+```
+
+```
+tensor([[ 2,  3,  4, 10],
+        [ 5,  6,  7,  8],
+        [ 1,  9, 11, 12]])
+tensor([[1, 2, 3, 0],
+        [0, 1, 2, 3],
+        [1, 0, 2, 3]])
 ```
 
 **（2）**参数说明
@@ -2354,6 +2758,8 @@ print(sorted_indices_rows)     # 输出每一行原始张量中元素排序后�
 
 **torch.sort** 是一个基础的函数，它为对张量进行排序提供了方便。在需要进行排序操作的场合，这个函数非常有用。
 
+
+
 ## **矩阵运算**
 
 ### torch.matmul
@@ -2370,13 +2776,20 @@ print(sorted_indices_rows)     # 输出每一行原始张量中元素排序后�
 import torch
 
 # 创建两个二维张量
-tensor1 = torch.tensor([[1, 2], [3, 4]])
-tensor2 = torch.tensor([[5, 6], [7, 8]])
+tensor1 = torch.tensor([[1, 2], 
+                        [3, 4]])
+tensor2 = torch.tensor([[5, 6], 
+                        [7, 8]])
 
 # 执行矩阵乘法
 result = torch.matmul(tensor1, tensor2)
 
 print(result)
+```
+
+```
+tensor([[19, 22],
+        [43, 50]])
 ```
 
 - 使用 **@** 操作符执行矩阵乘法
@@ -2404,9 +2817,11 @@ result = tensor1 @ tensor2
 
 **torch.matmul** 是一个基础的线性代数函数，它为执行矩阵乘法提供了方便。在需要进行矩阵乘法运算的场合，这个函数非常有用。
 
+
+
 ### torch.mm
 
-**torch.mm** 是 PyTorch 中的一个函数，用于执行两个张量的矩阵乘法。这个函数特别适用于至少有一个输入张量是二维的矩阵乘法场景。**torch.mm** 是 **matrix multiplication** 的缩写，它遵循传统的矩阵乘法规则，即如果 **tensor1** 的形状是 (m x n) 而 **tensor2** 的形状是 (n x p)，那么结果张量的形状将是 (m x p)。
+**torch.mm** 是 PyTorch 中的一个函数，用于执行两个张量的矩阵乘法。这个函数特别适用于至少有一个输入张量是**二维**的矩阵乘法场景。**torch.mm** 是 **matrix multiplication** 的缩写，它遵循传统的矩阵乘法规则，即如果 **tensor1** 的形状是 (m x n) 而 **tensor2** 的形状是 (n x p)，那么结果张量的形状将是 (m x p)。
 
 **（1）**基本用法
 
@@ -2416,13 +2831,20 @@ result = tensor1 @ tensor2
 import torch
 
 # 创建两个二维张量
-tensor1 = torch.tensor([[1, 2], [3, 4]])
-tensor2 = torch.tensor([[5, 6], [7, 8]])
+tensor1 = torch.tensor([[1, 2],
+                        [3, 4]])
+tensor2 = torch.tensor([[5, 6], 
+                        [7, 8]])
 
 # 执行矩阵乘法
 result = torch.mm(tensor1, tensor2)
 
 print(result)
+```
+
+```
+tensor([[19, 22],
+        [43, 50]])
 ```
 
 **（2）**参数说明
@@ -2442,9 +2864,11 @@ print(result)
 
 **torch.mm** 是一个专门用于矩阵乘法的函数，它为执行标准的矩阵乘法提供了方便。在需要进行矩阵乘法运算的场合，尤其是在确保两个输入都是二维的情况下，这个函数非常有用。
 
+
+
 ### torch.inverse
 
-**torch.inverse** 是 PyTorch 中用于计算一个方阵其逆矩阵的函数。一个矩阵的逆矩阵是另一个矩阵，使得当它们相乘时，结果为单位矩阵。需要注意的是，并非所有矩阵都有逆矩阵，只有方阵中行列式不为零的矩阵才具有逆矩阵。
+**torch.inverse** 是 PyTorch 中用于计算一个方阵其**逆矩阵**的函数。一个矩阵的逆矩阵是另一个矩阵，使得当它们相乘时，结果为单位矩阵。需要注意的是，并非所有矩阵都有逆矩阵，只有方阵中行列式不为零的矩阵才具有逆矩阵。
 
 **（1）**基本用法
 
@@ -2454,7 +2878,8 @@ print(result)
 import torch
 
 # 创建一个2x2的方阵
-matrix = torch.tensor([[1.0, 2.0], [3.0, 4.0]], dtype=torch.float32)
+matrix = torch.tensor([[1.0, 2.0], 
+                       [3.0, 4.0]], dtype=torch.float32)
 
 # 计算其逆矩阵
 try:
@@ -2462,6 +2887,11 @@ try:
     print(inverse_matrix)
 except RuntimeError as e:
     print(e)  # 如果矩阵不可逆，将抛出运行时错误
+```
+
+```
+tensor([[-2.0000,  1.0000],
+        [ 1.5000, -0.5000]])
 ```
 
 **（2）**参数说明
@@ -2481,9 +2911,11 @@ except RuntimeError as e:
 
 **torch.inverse** 是一个基础的线性代数函数，它为计算方阵的逆矩阵提供了方便。然而，在实际应用中，直接计算逆矩阵往往不是最高效或最稳定的方法，特别是在处理大规模矩阵或数值计算时。在这些情况下，更推荐使用分解方法或其他数值稳定的算法。
 
+
+
 ### torch.trace
 
-**torch.trace** 是 PyTorch 中的一个函数，用于计算一个方阵的主对角线元素的总和，也就是矩阵的迹（trace）。在数学中，迹是一个线性映射，它将一个 n×n 的方阵映射为其主对角线上元素的和。
+**torch.trace** 是 PyTorch 中的一个函数，用于**计算一个方阵的主对角线元素的总和，也就是矩阵的迹**（trace）。在数学中，迹是一个线性映射，它将一个 n×n 的方阵映射为其主对角线上元素的和。
 
 **（1）**基本用法
 
@@ -2503,6 +2935,10 @@ trace_value = torch.trace(matrix)
 print(trace_value)
 ```
 
+```
+tensor(15)
+```
+
 **（2）**参数说明
 
 **torch.trace** 函数的参数是：
@@ -2520,9 +2956,11 @@ print(trace_value)
 
 **torch.trace** 是一个基础的线性代数函数，它为计算方阵的迹提供了方便。在需要进行迹计算的场合，这个函数非常有用。
 
+
+
 ### torch.norm
 
-**torch.norm** 是 PyTorch 中的一个函数，用于计算张量的范数（也称为“欧几里得距离”或“长度”）。范数是衡量向量大小的一种方法，它在数学、物理学和工程学中非常重要，特别是在处理优化问题和数值稳定性分析时。
+**torch.norm** 是 PyTorch 中的一个函数，用于计算**张量的范数**（也称为“欧几里得距离”或“长度”）。范数是衡量向量大小的一种方法，它在数学、物理学和工程学中非常重要，特别是在处理优化问题和数值稳定性分析时。
 
 **（1）**基本用法
 
@@ -2534,12 +2972,16 @@ print(trace_value)
 import torch
 
 # 创建一个一维张量
-vector = torch.tensor([1, 2, 3])
+vector = torch.tensor([1, 2, 3], dtype=torch.float32)
 
 # 计算 L2 范数，默认参数 p=2
 norm_value = torch.norm(vector)
 
 print(norm_value)
+```
+
+```
+tensor(3.7417)
 ```
 
 - 计算二维张量的 Frobenius 范数
@@ -2548,12 +2990,17 @@ print(norm_value)
 import torch
 
 # 创建一个二维张量
-matrix = torch.tensor([[1, 2], [3, 4]])
+matrix = torch.tensor([[1, 2],
+                       [3, 4]], dtype=torch.float32)
 
 # 计算 Frobenius 范数，参数 p='fro'
 norm_value = torch.norm(matrix, p='fro')
 
 print(norm_value)
+```
+
+```
+tensor(5.4772)
 ```
 
 **（2）**参数说明
@@ -2576,9 +3023,11 @@ print(norm_value)
 
 **torch.norm** 是一个基础的函数，它为计算张量的范数提供了方便。在需要进行范数计算的场合，这个函数非常有用。
 
+
+
 ### torch.det
 
-**torch.det** 是 PyTorch 中用于计算方阵的行列式的函数。行列式是线性代数中的一个概念，它可以提供关于线性变换如何伸缩向量空间的信息。对于一个给定的方阵，其行列式是一个标量值，可以通过多种方式计算得到。
+**torch.det** 是 PyTorch 中用于计算方阵的**行列式**的函数。行列式是线性代数中的一个概念，它可以提供关于线性变换如何伸缩向量空间的信息。对于一个给定的方阵，其行列式是一个标量值，可以通过多种方式计算得到。
 
 **（1）**基本用法
 
@@ -2588,12 +3037,17 @@ print(norm_value)
 import torch
 
 # 创建一个 2x2 的方阵
-matrix = torch.tensor([[1, 2], [3, 4]], dtype=torch.float32)
+matrix = torch.tensor([[1, 2], 
+                       [3, 4]], dtype=torch.float32)
 
 # 计算方阵的行列式
 determinant = torch.det(matrix)
 
 print(determinant)
+```
+
+```
+tensor(-2.)
 ```
 
 **（2）**参数说明
@@ -2614,9 +3068,15 @@ print(determinant)
 
 **torch.det** 是一个基础的线性代数函数，它为计算方阵的行列式提供了方便。在需要进行行列式计算的场合，这个函数非常有用。然而，对于数值稳定性的考虑，有时候可能需要使用其他方法，如对数行列式（**torch.linalg.slogdet**）来避免数值问题。
 
-### torch.eig
 
-**torch.eig** 是 PyTorch 中用于计算方阵特征值和特征向量的函数。对于一个给定的方阵 \( A \)，特征值和特征向量满足方程 \( A \mathbf{v} = \lambda \mathbf{v} \)，其中 \( \lambda \) 是特征值，\( \mathbf{v} \) 是对应的特征向量。
+
+### torch.linalg.eig
+
+```
+RuntimeError: This function was deprecated since version 1.9 and is now removed. `torch.linalg.eig` returns complex tensors of dtype `cfloat` or `cdouble` rather than real tensors mimicking complex tensors.
+```
+
+**torch.eig** 是 PyTorch 中用于计算方阵特征值和特征向量的函数。对于一个给定的方阵 \( A \)，特征值和特征向量满足方程 $ A \mathbf{v} = \lambda \mathbf{v} $，其中 $ \lambda $ 是特征值，$ \mathbf{v} $ 是对应的特征向量。
 
 **（1）**基本用法
 
@@ -2626,18 +3086,26 @@ print(determinant)
 import torch
 
 # 创建一个 2x2 的方阵
-matrix = torch.tensor([[1, -2], [2, 3]], dtype=torch.float32)
+matrix = torch.tensor([[1, -2], 
+                       [2, 3]], dtype=torch.float32)
 
 # 计算方阵的特征值和特征向量
-eigenvalues, eigenvectors = torch.eig(matrix)
+eigenvalues, eigenvectors = torch.linalg.eig(matrix)
 
 print("特征值:", eigenvalues)
 print("特征向量:", eigenvectors)
 ```
 
+```
+特征值: tensor([2.0000+1.7321j, 2.0000-1.7321j])
+特征向量: tensor([[ 0.7071+0.0000j,  0.7071-0.0000j],
+        [-0.3536-0.6124j, -0.3536+0.6124j]])
+```
+
 **（2）**参数说明
 
 **torch.eig** 函数的参数是：
+
 - **input**：要计算特征值和特征向量的方阵张量。
 
 **（3）**返回值
@@ -2659,7 +3127,9 @@ print("特征向量:", eigenvectors)
 
 **torch.eig** 是一个基础的线性代数函数，它为计算方阵的特征值和特征向量提供了方便。在需要这些计算的场合，这个函数非常有用。然而，对于数值稳定性的考虑，有时候可能需要使用其他方法。
 
-### torch.qr
+
+
+### torch.linalg.qr
 
 **torch.qr** 是 PyTorch 中用于计算一个矩阵的 QR 分解的函数。QR 分解是将一个矩阵 \( A \) 分解为一个正交矩阵 \( Q \) 和一个上三角形矩阵 \( R \) 的乘积，即 \( A = QR \)。
 
@@ -2674,12 +3144,21 @@ import torch
 matrix_a = torch.tensor([[12, -51, 4], [6, 167, -68], [-4, 24, -41]], dtype=torch.float32)
 
 # 计算矩阵 A 的 QR 分解
-qr_result = torch.qr(matrix_a)
+qr_result = torch.linalg.qr(matrix_a)
 
 # 输出 Q 和 R
 Q, R = qr_result[0], qr_result[1]
 print("Q:", Q)
 print("R:", R)
+```
+
+```
+Q: tensor([[-0.8571,  0.3943,  0.3314],
+        [-0.4286, -0.9029, -0.0343],
+        [ 0.2857, -0.1714,  0.9429]])
+R: tensor([[ -14.0000,  -21.0000,   14.0000],
+        [   0.0000, -175.0000,   70.0000],
+        [   0.0000,    0.0000,  -35.0000]])
 ```
 
 **（2）**参数说明
@@ -2707,6 +3186,8 @@ print("R:", R)
 
 **torch.qr** 是一个基础的线性代数函数，它为计算矩阵的 QR 分解提供了方便。在需要进行 QR 分解的场合，这个函数非常有用。
 
+
+
 ### torch.svd
 
 **torch.svd** 是 PyTorch 中用于计算一个矩阵的奇异值分解（Singular Value Decomposition，简称 SVD）的函数。奇异值分解是将一个矩阵 \( A \) 分解为三个特定的矩阵相乘的形式：\( A = U \Sigma V^T \)，其中 \( U \) 和 \( V \) 是正交矩阵，\( \Sigma \) 是对角矩阵，对角线上的元素称为奇异值。
@@ -2729,6 +3210,15 @@ U, Sigma, Vh = svd_result
 print("U:", U)
 print("Sigma:", Sigma)
 print("V^T (Vh):", Vh)
+```
+
+```
+U: tensor([[-0.8184,  0.2128,  0.5338],
+        [-0.4709, -0.7808, -0.4107],
+        [ 0.3294, -0.5874,  0.7392]])
+Sigma: tensor([10.0567,  2.4214])
+V^T (Vh): tensor([[-0.9834, -0.1814],
+        [ 0.1814, -0.9834]])
 ```
 
 **（2）**参数说明
@@ -2756,6 +3246,8 @@ print("V^T (Vh):", Vh)
 - **信号处理**：在信号处理中，SVD 用于噪声降低、数据压缩和系统识别。
 
 **torch.svd** 是一个基础的线性代数函数，它为计算矩阵的奇异值分解提供了方便。在需要进行 SVD 分解的场合，这个函数非常有用。
+
+
 
 # nn.functional
 
@@ -2797,6 +3289,8 @@ tensor([0., 0., 1., 2.])
 
 除了 **F.relu**，PyTorch 还提供了其他激活函数的函数形式，如 **F.sigmoid**、**F.softmax**、**F.tanh** 等，它们都可以以类似的方式使用。使用 **torch.nn.functional** 中的函数而不是模块化的形式，可以让你在不创建模块实例的情况下快速应用这些函数。
 
+
+
 ### F.sigmoid
 
 在 PyTorch 中，**F.sigmoid** 是一个应用 sigmoid 激活函数的函数。Sigmoid 函数是一种将输入映射到 (0, 1) 区间的平滑函数，其数学表达式为：
@@ -2835,6 +3329,8 @@ Sigmoid 函数的特点是它在输入值很大或很小的时候，梯度会接
 
 除了 **F.sigmoid**，PyTorch 还提供了其他激活函数的函数形式，如 **F.relu**、**F.softmax**、**F.tanh** 等，它们都可以以类似的方式使用。使用 **torch.nn.functional** 中的函数而不是模块化的形式，可以让你在不创建模块实例的情况下快速应用这些函数。
 
+
+
 ### F.tanh
 
 在 PyTorch 中，**F.tanh** 是一个应用双曲正切（Hyperbolic Tangent）激活函数的函数。**tanh** 函数是一种将输入值线性映射到 (-1, 1) 区间的函数，其数学表达式为：
@@ -2864,7 +3360,7 @@ print(y)
 输出将会是：
 
 ```
-tensor([-0.7613,  0.0000,  0.7613,  0.9637])
+tensor([-0.7616,  0.0000,  0.7616,  0.9640])
 ```
 
 在这个例子中，**F.tanh** 被应用到张量 **x** 上，将所有的值映射到了 (-1, 1) 区间内。
@@ -2872,6 +3368,8 @@ tensor([-0.7613,  0.0000,  0.7613,  0.9637])
 与 **sigmoid** 函数类似，**tanh** 函数在输入值绝对值较大时也会遇到梯度消失的问题，因为当输入值的绝对值接近无穷大时，函数的梯度会接近于0。这可能会使得在反向传播过程中权重的更新非常缓慢，影响学习效率。
 
 除了 **F.tanh**，PyTorch 还提供了其他激活函数的函数形式，如 **F.relu**、**F.sigmoid**、**F.softmax** 等，它们都可以以类似的方式使用。使用 **torch.nn.functional** 中的函数而不是模块化的形式，可以让你在不创建模块实例的情况下快速应用这些函数。
+
+
 
 ### F.softmax
 
@@ -2915,6 +3413,8 @@ Softmax 函数通常用于神经网络的输出层，以生成类别的概率。
 
 除了 **F.softmax**，PyTorch 还提供了其他激活函数和函数形式，如 **F.relu**、**F.sigmoid**、**F.tanh** 等，它们都可以以类似的方式使用。使用 **torch.nn.functional** 中的函数而不是模块化的形式，可以让你在不创建模块实例的情况下快速应用这些函数。
 
+
+
 ## **模型层**
 
 ### F.linear
@@ -2936,10 +3436,12 @@ import torch
 import torch.nn.functional as F
 
 # 创建输入张量
-x = torch.tensor([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+x = torch.tensor([[1.0, 2.0, 3.0], 
+                   [4.0, 5.0, 6.0]])
 
 # 定义权重和偏置
-weight = torch.tensor([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+weight = torch.tensor([[1.0, 2.0, 3.0], 
+                        [4.0, 5.0, 6.0]])
 bias = torch.tensor([1.0, 2.0])
 
 # 应用 F.linear
@@ -2960,6 +3462,8 @@ tensor([[14., 33.],
 需要注意的是，**F.linear** 要求输入张量 **x** 至少有2个维度，且权重矩阵 **weight** 的第一个维度与 **x** 的最后一个维度相同。**F.linear** 通常用于实现简单的全连接层，但在构建复杂的神经网络时，推荐使用 **torch.nn.Linear** 模块，因为它可以更方便地集成到网络中，并自动管理权重和偏置的梯度。
 
 **F.linear** 是一个非常基础且重要的函数，因为它是构建任何全连接神经网络或其他需要线性变换的模型的基础。
+
+
 
 ### F.conv2d
 
@@ -3329,6 +3833,10 @@ output_data = linear_layer(input_data)
 print(output_data.shape)  # 输出形状将是 [3, 5]
 ```
 
+```
+torch.Size([3, 5])
+```
+
 在这个例子中，我们首先创建了一个 **nn.Linear** 实例，指定了输入特征的数量 **in_features** 和输出特征的数量 **out_features**。
 
 然后，我们创建了输入数据 **input_data**。接着，我们进行前向传播，得到输出数据 **output_data**。
@@ -3346,6 +3854,8 @@ print(output_data.shape)  # 输出形状将是 [3, 5]
 - **bias**: 形状为 **[out_features]** 的偏置项。偏置项是可选的，可以通过设置 **bias=False** 来禁用。
 
 全连接层是构建神经网络的基础，通常用于连接数据的输入和输出，或在卷积网络中连接卷积层和最终的输出层。在 PyTorch 中，**nn.Linear** 提供了一种简单而强大的方式来实现这一功能。
+
+
 
 ### nn.Flatten
 
