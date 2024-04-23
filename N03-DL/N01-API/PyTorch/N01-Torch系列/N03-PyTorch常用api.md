@@ -2571,7 +2571,7 @@ tensor([ 1,  2,  6, 24])
 
 ### torch.cummax
 
-`torch.cummax`函数用于沿指定维度计算张量的累积最大值。下面是一个使用示例：
+**torch.cummax**函数用于沿指定维度计算张量的累积最大值。下面是一个使用示例：
 
 ```python
 import torch
@@ -2588,7 +2588,7 @@ print("Cumulative maximum values along dimension 1: ", cumulative_max)
 print("Indices of cumulative maximum values along dimension 1: ", indices)
 ```
 
-这个示例演示了如何使用`torch.cummax`函数来计算张量 `x` 沿着指定的维度（这里是维度1）的累积最大值。在这个示例中，`x` 是一个3x3的张量。通过指定 `dim=1`，我们计算了每行的累积最大值。结果将会是每行的累积最大值以及对应的索引。
+这个示例演示了如何使用**torch.cummax**函数来计算张量 **x** 沿着指定的维度（这里是维度1）的累积最大值。在这个示例中，**x** 是一个3x3的张量。通过指定 **dim=1**，我们计算了每行的累积最大值。结果将会是每行的累积最大值以及对应的索引。
 
 运行这段代码，你会得到类似以下的输出：
 
@@ -3073,10 +3073,10 @@ tensor(-2.)
 ### torch.linalg.eig
 
 ```
-RuntimeError: This function was deprecated since version 1.9 and is now removed. `torch.linalg.eig` returns complex tensors of dtype `cfloat` or `cdouble` rather than real tensors mimicking complex tensors.
+RuntimeError: This function was deprecated since version 1.9 and is now removed. **torch.linalg.eig** returns complex tensors of dtype **cfloat** or **cdouble** rather than real tensors mimicking complex tensors.
 ```
 
-**torch.eig** 是 PyTorch 中用于计算方阵特征值和特征向量的函数。对于一个给定的方阵 \( A \)，特征值和特征向量满足方程 $ A \mathbf{v} = \lambda \mathbf{v} $，其中 $ \lambda $ 是特征值，$ \mathbf{v} $ 是对应的特征向量。
+**torch.eig** 是 PyTorch 中用于计算方阵特征值和特征向量的函数。对于一个给定的方阵 $ A $，特征值和特征向量满足方程 $ A \mathbf{v} = \lambda \mathbf{v} $，其中 $ \lambda $ 是特征值，$ \mathbf{v} $ 是对应的特征向量。
 
 **（1）**基本用法
 
@@ -3131,7 +3131,7 @@ print("特征向量:", eigenvectors)
 
 ### torch.linalg.qr
 
-**torch.qr** 是 PyTorch 中用于计算一个矩阵的 QR 分解的函数。QR 分解是将一个矩阵 \( A \) 分解为一个正交矩阵 \( Q \) 和一个上三角形矩阵 \( R \) 的乘积，即 \( A = QR \)。
+**torch.qr** 是 PyTorch 中用于计算一个矩阵的 QR 分解的函数。QR 分解是将一个矩阵 $ A $ 分解为一个正交矩阵 $ Q $ 和一个上三角形矩阵 $ R $ 的乘积，即 $ A = QR $。
 
 **（1）**基本用法
 
@@ -3174,8 +3174,8 @@ R: tensor([[ -14.0000,  -21.0000,   14.0000],
 
 **（4）**注意事项
 
-- 输入矩阵不需要是方阵，即使输入矩阵不是方阵，**torch.qr** 也能正确执行，此时 \( R \) 将是一个方阵。
-- **torch.qr** 默认返回的是经济模式（economic mode），即 \( Q \) 和 \( R \) 的形状将根据输入矩阵的行数和列数确定。
+- 输入矩阵不需要是方阵，即使输入矩阵不是方阵，**torch.qr** 也能正确执行，此时 $ R $ 将是一个方阵。
+- **torch.qr** 默认返回的是经济模式（economic mode），即 $ Q $ 和 $ R $ 的形状将根据输入矩阵的行数和列数确定。
 - 在某些情况下，QR 分解可能涉及数值不稳定，尤其是对于病态矩阵。
 
 **（5）**应用场景
@@ -3190,7 +3190,7 @@ R: tensor([[ -14.0000,  -21.0000,   14.0000],
 
 ### torch.svd
 
-**torch.svd** 是 PyTorch 中用于计算一个矩阵的奇异值分解（Singular Value Decomposition，简称 SVD）的函数。奇异值分解是将一个矩阵 \( A \) 分解为三个特定的矩阵相乘的形式：\( A = U \Sigma V^T \)，其中 \( U \) 和 \( V \) 是正交矩阵，\( \Sigma \) 是对角矩阵，对角线上的元素称为奇异值。
+**torch.svd** 是 PyTorch 中用于计算一个矩阵的奇异值分解（Singular Value Decomposition，简称 SVD）的函数。奇异值分解是将一个矩阵 $ A $ 分解为三个特定的矩阵相乘的形式：$ A = U \Sigma V^T $，其中 $ U $ 和 $ V $ 是正交矩阵，$ \Sigma $ 是对角矩阵，对角线上的元素称为奇异值。
 
 **（1）**基本用法
 
@@ -3225,14 +3225,14 @@ V^T (Vh): tensor([[-0.9834, -0.1814],
 
 **torch.svd** 函数的参数是：
 - **input**：要进行 SVD 分解的矩阵张量。
-- **some**：一个布尔值，如果为 **True**，则返回经济模式的 SVD 结果，即 \( U \) 和 \( V \) 的形状将根据输入矩阵的维度确定。如果为 **False**（默认值），则 \( U \) 和 \( V \) 将是方阵，且 \( \Sigma \) 是一个一维张量，包含所有的奇异值。
+- **some**：一个布尔值，如果为 **True**，则返回经济模式的 SVD 结果，即 $ U $ 和 $ V $ 的形状将根据输入矩阵的维度确定。如果为 **False**（默认值），则 $ U $ 和 $ V $ 将是方阵，且 $ \Sigma $ 是一个一维张量，包含所有的奇异值。
 
 **（3）**返回值
 
 **torch.svd** 返回一个元组，包含三个张量：
-- **U**：正交矩阵，其列向量是输入矩阵 \( A \) 的左奇异向量。
-- **Sigma**：对角矩阵，对角线上的元素是输入矩阵 \( A \) 的奇异值，从大到小排列。
-- **Vh**：正交矩阵 \( V \) 的转置，其列向量是输入矩阵 \( A \) 的右奇异向量。
+- **U**：正交矩阵，其列向量是输入矩阵 $ A $ 的左奇异向量。
+- **Sigma**：对角矩阵，对角线上的元素是输入矩阵 $ A $ 的奇异值，从大到小排列。
+- **Vh**：正交矩阵 $ V $ 的转置，其列向量是输入矩阵 $ A $ 的右奇异向量。
 
 **（4）**注意事项
 
@@ -3380,7 +3380,7 @@ Softmax 函数的数学表达式为：
 $$
 \text{softmax}(x_i) = \frac{e^{x_i}}{\sum_{j} e^{x_j}}
 $$
-这里，\( x_i \) 是输入向量的第 \( i \) 个元素，而分母是输入向量所有元素的指数函数值的总和，确保了输出的归一化。
+这里，$ x_i $ 是输入向量的第 $ i $ 个元素，而分母是输入向量所有元素的指数函数值的总和，确保了输出的归一化。
 
 **F** 是 **torch.nn.functional** 的别名，它包含了所有神经网络模块的函数形式。使用 **F.softmax** 可以方便地应用 softmax 函数，而不需要定义一个 **Softmax** 模块的实例。
 
@@ -3423,7 +3423,7 @@ Softmax 函数通常用于神经网络的输出层，以生成类别的概率。
 
 **F.linear** 的数学表达式为：
 $$
-\text{out} = \text{x} \cdot \text{weight} + \text{bias}
+out = x \cdot weight + bias
 $$
 这里，**x** 是输入张量，**weight** 是线性层的权重矩阵，**bias** 是偏置项。
 
@@ -3454,7 +3454,7 @@ print(out)
 
 ```
 tensor([[14., 33.],
-        [32., 91.]])
+         [32., 91.]])
 ```
 
 在这个例子中，**F.linear** 将输入张量 **x** 与权重矩阵 **weight** 相乘，并加上了偏置 **bias**。
@@ -3473,7 +3473,7 @@ tensor([[14., 33.],
 $$
 (x * w)_{i, j} = \sum_{m=0}^{M-1} \sum_{n=0}^{N-1} x_{i+m, j+n} \cdot w_{m, n}
 $$
-这里，\( x \) 是输入特征图（feature map），\( w \) 是卷积核（或滤波器），\( M \times N \) 是卷积核的尺寸，\( i \) 和 \( j \) 是输出特征图上的位置索引。
+这里，$ x $ 是输入特征图（feature map），$ w $ 是卷积核（或滤波器），$ M \times N $ 是卷积核的尺寸，$ i $ 和 $ j $ 是输出特征图上的位置索引。
 
 **F** 是 **torch.nn.functional** 的别名，它包含了所有神经网络模块的函数形式。使用 **F.conv2d** 可以方便地应用二维卷积，而不需要定义一个 **Conv2d** 模块的实例。
 
@@ -3498,11 +3498,17 @@ out = F.conv2d(x, weight, bias, padding=3, stride=2)
 print(out.size())  # 输出特征图的尺寸
 ```
 
+```
+torch.Size([1, 64, 112, 112])
+```
+
 输出特征图的尺寸取决于输入尺寸、卷积核尺寸、步长（stride）和填充（padding）。在这个例子中，我们使用了填充为3和步长为2的参数。
 
 需要注意的是，**F.conv2d** 要求输入特征图 **x** 至少有4个维度，且权重 **weight** 的第一个维度必须与 **x** 的第二个维度（通道数）相同。**F.conv2d** 通常用于实现简单的卷积层，但在构建复杂的卷积神经网络时，推荐使用 **torch.nn.Conv2d** 模块，因为它可以更方便地集成到网络中，并自动管理权重和偏置的梯度。
 
 **F.conv2d** 是实现卷积神经网络的基础函数之一，对于图像识别、视频分析以及其他需要空间层级结构建模的任务至关重要。
+
+
 
 ### F.max_pool2d
 
@@ -3513,7 +3519,7 @@ print(out.size())  # 输出特征图的尺寸
 $$
 (P_k(x))_{i, j} = \max_{m, n \in \Omega_{i, j}} x_{i+m, j+n}
 $$
-这里，\( P_k(x) \) 表示池化后的特征图，\( x \) 是输入特征图，\( m \) 和 \( n \) 表示池化窗口 \( k \) 在 \( i \) 和 \( j \) 位置的索引，\( \Omega_{i, j} \) 是以 \( (i, j) \) 为中心的窗口区域。
+这里，$ P_k(x) $ 表示池化后的特征图，$ x $ 是输入特征图，$ m $ 和 $ n $ 表示池化窗口 $ k $ 在 $ i $ 和 $ j $ 位置的索引，$ \Omega_{i, j} $ 是以 $ (i, j) $ 为中心的窗口区域。
 
 **F** 是 **torch.nn.functional** 的别名，它包含了所有神经网络模块的函数形式。使用 **F.max_pool2d** 可以方便地应用二维最大池化，而不需要定义一个 **MaxPool2d** 模块的实例。
 
@@ -3536,6 +3542,10 @@ out = F.max_pool2d(x, kernel_size=kernel_size, stride=stride)
 print(out.size())  # 输出特征图的尺寸
 ```
 
+```
+torch.Size([1, 1, 14, 14])
+```
+
 在这个例子中，我们使用了尺寸为2的最大池化窗口和步长为2，这意味着池化窗口每次移动2个像素，从输入特征图中提取2x2区域中的最大值。
 
 最大池化的输出尺寸可以通过以下公式计算：
@@ -3552,14 +3562,22 @@ $$
 
 最大池化有助于减少特征图的空间尺寸，降低计算量，同时通过选择最大值增强特征的表达能力。此外，最大池化还增加了网络对小的位置变化的鲁棒性。在构建卷积神经网络时，最大池化通常与卷积层交替使用。
 
+
+
 ### F.embedding
 
-在 PyTorch 中，**F.embedding** 或更准确地说是 **torch.nn.functional.embedding** 是一个函数，它用于将稀疏的整数索引转换成一个密集的嵌入向量形式。这在处理诸如单词、类别标签或其他离散数据时非常有用，特别是在自然语言处理（NLP）和分类问题中。
+在 PyTorch 中，**F.embedding** 或更准确地说是 **torch.nn.functional.embedding** 是一个函数，它用于**将稀疏的整数索引转换成一个密集的嵌入向量形式**。这在处理诸如单词、类别标签或其他离散数据时非常有用，特别是在自然语言处理（NLP）和分类问题中。
 
 **F.embedding** 的基本用法如下：
 
 ```python
-torch.nn.functional.embedding(input, weight, padding_idx=None, max_norm=None, norm_type=2, scale_grad_by_freq=False, sparse=False)
+torch.nn.functional.embedding(input, 
+                              weight, 
+                              padding_idx=None, 
+                              max_norm=None, 
+                              norm_type=2, 
+                              scale_grad_by_freq=False, 
+                              sparse=False)
 ```
 
 参数说明：
@@ -3580,7 +3598,8 @@ torch.nn.functional.embedding(input, weight, padding_idx=None, max_norm=None, no
 import torch
 
 # 假设我们有一些整数索引，可能代表单词的ID
-input_indices = torch.tensor([[1, 2, 3], [4, 5, 6]])
+input_indices = torch.tensor([[1, 2, 3], 
+                              [4, 5, 6]])
 
 # 定义嵌入层的权重，假设我们有10个单词的嵌入，每个嵌入维度为5
 embedding_weight = torch.randn(10, 5)
@@ -3591,8 +3610,6 @@ output = torch.nn.functional.embedding(input_indices, embedding_weight)
 print(output.size())  # 输出张量的大小
 ```
 
-输出将会是：
-
 ```
 torch.Size([2, 3, 5])
 ```
@@ -3600,6 +3617,8 @@ torch.Size([2, 3, 5])
 在这个例子中，**F.embedding** 根据提供的整数索引 **input_indices** 和嵌入权重矩阵 **embedding_weight** 生成了嵌入向量。输出张量的形状反映了输入的批次大小、序列长度和嵌入的维度。
 
 **F.embedding** 是实现词嵌入和其他类型的离散数据嵌入的关键函数，在构建需要处理离散输入的模型时非常有用。在 PyTorch 中，通常与 **torch.nn.Embedding** 模块一起使用，该模块是一个包含 **F.embedding** 调用和权重矩阵的类，可以更方便地集成到神经网络中。
+
+
 
 ## **损失函数**
 
@@ -3612,7 +3631,7 @@ torch.Size([2, 3, 5])
 $$
 \text{BCE}(x, y) = -\left[y \cdot \log(x) + (1 - y) \cdot \log(1 - x)\right]
 $$
-这里，\( x \) 是模型预测的概率（在 [0, 1] 范围内），\( y \) 是真实标签（0 或 1）。
+这里，$ x $ 是模型预测的概率（在 [0, 1] 范围内），$ y $ 是真实标签（0 或 1）。
 
 **F** 是 **torch.nn.functional** 的别名，它包含了所有神经网络模块的函数形式。使用 **F.binary_cross_entropy** 可以方便地计算二元交叉熵损失，而不需要定义一个损失函数模块的实例。
 
@@ -3640,6 +3659,8 @@ print(loss.item())
 
 **F.binary_cross_entropy** 是实现二元分类任务的关键函数，对于诸如垃圾邮件检测、二分类图像识别等任务至关重要。
 
+
+
 ### F.mse_loss
 
 在 PyTorch 中，**F.mse_loss** 是一个函数，用于计算均方误差（Mean Squared Error, MSE）损失。均方误差是回归问题中常用的损失函数，用于衡量模型预测值与真实值之间差异的平方的平均值。
@@ -3649,7 +3670,7 @@ print(loss.item())
 $$
 \text{MSE}(y, y') = \frac{1}{n} \sum_{i=1}^{n} (y_i - y'_i)^2
 $$
-这里，\( y \) 是真实值的向量，\( y' \) 是预测值的向量，\( n \) 是向量的长度。
+这里，$ y $ 是真实值的向量，$ y' $ 是预测值的向量，$ n $ 是向量的长度。
 
 **F** 是 **torch.nn.functional** 的别名，它包含了所有神经网络模块的函数形式。使用 **F.mse_loss** 可以方便地计算均方误差损失，而不需要定义一个损失函数模块的实例。
 
@@ -3669,6 +3690,10 @@ loss = F.mse_loss(pred_values, true_values)
 print(loss.item())
 ```
 
+```
+0.03666669502854347
+```
+
 在这个例子中，**F.mse_loss** 计算了预测值 **pred_values** 和真实值 **true_values** 之间的均方误差损失。
 
 **F.mse_loss** 函数在内部实际上会计算每个样本的平方误差然后求平均，因此输出的损失值是所有样本损失的平均值。
@@ -3676,6 +3701,8 @@ print(loss.item())
 均方误差损失对于每个错误的平方都是敏感的，因此对异常值（outliers）非常敏感。在某些情况下，可能更倾向于使用对异常值不太敏感的损失函数，如平均绝对误差（Mean Absolute Error, MAE）。
 
 **F.mse_loss** 是实现回归任务的关键函数，对于诸如预测房价、温度预测等连续值预测任务非常重要。
+
+
 
 ### F.cross_entropy
 
@@ -3686,7 +3713,7 @@ print(loss.item())
 $$
 H(y, y') = -\sum_{i} y_i \log(y'_i)
 $$
-这里，\( y \) 是一个独热编码（one-hot encoded）的真实标签向量，\( y' \) 是模型预测的概率分布（由 softmax 函数输出）。
+这里，$ y $ 是一个独热编码（one-hot encoded）的真实标签向量，$ y' $ 是模型预测的概率分布（由 softmax 函数输出）。
 
 **F** 是 **torch.nn.functional** 的别名，它包含了所有神经网络模块的函数形式。使用 **F.cross_entropy** 可以方便地计算交叉熵损失，而不需要分别定义 softmax 和交叉熵损失函数。
 
@@ -3722,7 +3749,7 @@ print(loss.item())
 
 在 PyTorch 中，**torch.utils.data.TensorDataset**、**Dataset**，和 **DataLoader** 是用于构建和管理数据集以及进行批量加载的组件。下面是每个组件的简要说明和用途：
 
-### 1. torch.utils.data.TensorDataset
+### torch.utils.data.TensorDataset
 
 **TensorDataset** 是 **torch.utils.data** 模块中的一个类，它将 PyTorch 张量（Tensor）封装为一个数据集。它适用于你已经有了预处理完成的数据和标签（target），并且想要快速创建一个可以直接用于训练或评估的数据集的情况。
 
@@ -3734,7 +3761,7 @@ from torch.utils.data import TensorDataset
 dataset = TensorDataset(data_tensor, target_tensor)
 ```
 
-### 2. torch.utils.data.Dataset
+### torch.utils.data.Dataset
 
 **Dataset** 是一个抽象基类，所有 PyTorch 数据集都应该继承这个类。它定义了数据集对象的接口，具体子类需要实现至少两个方法：**__len__** 和 **__getitem__**。
 
@@ -3756,7 +3783,7 @@ class MyDataset(Dataset):
         return self.data[idx], self.labels[idx]
 ```
 
-### 3. torch.utils.data.DataLoader
+### torch.utils.data.DataLoader
 
 **DataLoader** 是一个迭代器，它封装了 **Dataset** 对象，并提供了批量加载和洗牌数据的便捷方式。它还允许使用多线程进行数据加载，从而提高数据加载效率。
 
@@ -3811,9 +3838,9 @@ for data, targets in dataloader:
 $$
 \text{out} = \text{x} \cdot \text{weight} + \text{bias}
 $$
-这里，\( x \) 是输入向量，\( weight \) 是权重矩阵，\( bias \) 是偏置项。
+这里，$ x $ 是输入向量，$ weight $ 是权重矩阵，$ bias $ 是偏置项。
 
-**使用方法**
+**（1）**使用方法
 
 以下是 **nn.Linear** 的基本用法：
 
@@ -3841,12 +3868,12 @@ torch.Size([3, 5])
 
 然后，我们创建了输入数据 **input_data**。接着，我们进行前向传播，得到输出数据 **output_data**。
 
-**参数说明**
+**（2）**参数说明
 
 - **in_features** (int): 输入特征的数量。
 - **out_features** (int): 输出特征的数量。
 
-**权重和偏置**
+**（3）**权重和偏置
 
 **nn.Linear** 层有两个可学习参数：
 
@@ -3861,7 +3888,7 @@ torch.Size([3, 5])
 
 **（1）**nn.Flatten 简介
 
-**nn.Flatten** 是 PyTorch 中的一个模块，用于将多维输入张量展平（flatten）为一维或二维张量。这个操作通常用于准备数据输入到全连接层（如 **nn.Linear**），或者在模型的某些部分将非展平的数据转换为展平的形式。
+**nn.Flatten** 是 PyTorch 中的一个模块，用于**将多维输入张量展平（flatten）为一维或二维张量**。这个操作通常用于准备数据输入到全连接层（如 **nn.Linear**），或者在模型的某些部分将非展平的数据转换为展平的形式。
 
 **（2）**使用方法
 
@@ -3875,12 +3902,32 @@ import torch.nn as nn
 flatten = nn.Flatten()
 
 # 创建一个多维输入数据
-input_data = torch.randn(1, 3, 3, 2)  # 例如，一个 3x3 矩阵组成的 batch
+input_data = torch.arange(18).reshape(1, 3, 3, 2)  # 例如，一个 3x3 矩阵组成的 batch
 
 # 应用 Flatten 层
 output_data = flatten(input_data)
 
 print(output_data.shape)  # 输出形状将是 [1, 18]，一个展平后的一维张量
+print(input_data)
+print(output_data)
+```
+
+```
+torch.Size([1, 18])
+
+tensor([[[[ 0,  1],
+          [ 2,  3],
+          [ 4,  5]],
+
+         [[ 6,  7],
+          [ 8,  9],
+          [10, 11]],
+
+         [[12, 13],
+          [14, 15],
+          [16, 17]]]])
+          
+tensor([[ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17]])
 ```
 
 在这个例子中，**nn.Flatten** 将一个四维输入张量（例如，可能代表一个 batch 的 3x3 图像）展平成了一个二维张量，其中第二个维度是通过将输入张量的所有其他维度的大小相乘得到的。
@@ -3923,11 +3970,13 @@ class SimpleCNN(nn.Module):
 
 **nn.Flatten** 是一个非常实用的层，它使得在不同类型层之间转换数据格式变得容易，从而提高了构建复杂神经网络的灵活性。
 
+
+
 ### nn.BatchNorm1d
 
 **（1）**nn.BatchNorm1d 简介
 
-**nn.BatchNorm1d** 是 PyTorch 中的一个模块，实现了一维批量归一化（Batch Normalization）。批量归一化是一种在训练神经网络时常用的技术，旨在提高训练速度、稳定性和网络的泛化能力。它通过规范化（normalization）输入张量中的数值，减少内部协变量偏移（Internal Covariate Shift）。
+**nn.BatchNorm1d** 是 PyTorch 中的一个模块，实现了**一维批量归一化**（Batch Normalization）。批量归一化是一种在训练神经网络时常用的技术，旨在提高训练速度、稳定性和网络的泛化能力。它通过规范化（normalization）输入张量中的数值，减少内部协变量偏移（Internal Covariate Shift）。
 
 **（2）**基本原理
 
@@ -3959,6 +4008,10 @@ output = batch_norm(data)
 print(output.shape)  # 输出形状与输入相同 [10, 20, 1]
 ```
 
+```
+torch.Size([10, 20, 1])
+```
+
 在这个例子中，我们首先创建了一个 **nn.BatchNorm1d** 实例，指定了 **num_features** 参数，它是输入数据的特征数量。然后，我们将批量归一化应用于输入数据 **data**。
 
 **（4）**参数说明
@@ -3987,7 +4040,7 @@ print(output.shape)  # 输出形状与输入相同 [10, 20, 1]
 
 **（1）**nn.BatchNorm2d 简介
 
-**nn.BatchNorm2d** 是 PyTorch 中的一个模块，它实现了二维批量归一化（Batch Normalization），通常用于卷积神经网络（CNN）中。这种技术旨在提高训练速度、稳定性和网络的泛化能力，通过规范化输入张量中的数值，减少内部协变量偏移。
+**nn.BatchNorm2d** 是 PyTorch 中的一个模块，它实现了**二维批量归一化**（Batch Normalization），通常用于卷积神经网络（CNN）中。这种技术旨在提高训练速度、稳定性和网络的泛化能力，通过规范化输入张量中的数值，减少内部协变量偏移。
 
 **（2）**基本原理
 
@@ -4040,11 +4093,13 @@ print(output.shape)  # 输出形状与输入相同 [10, 3, 32, 32]
 
 批量归一化是一种强大的技术，可以在多种网络架构中使用，以提高模型的训练效率和性能。在 PyTorch 中，**nn.BatchNorm2d** 提供了一种简单而有效的方式来实现这一功能。
 
+
+
 ### nn.BatchNorm3d
 
 **（1）**nn.BatchNorm3d 简介
 
-**nn.BatchNorm3d** 是 PyTorch 中的一个模块，实现了三维批量归一化（Batch Normalization），这在处理具有三维数据的卷积神经网络（如视频帧或三维图像数据）中非常有用。与一维和二维批量归一化类似，它旨在提高训练速度、稳定性和网络的泛化能力。
+**nn.BatchNorm3d** 是 PyTorch 中的一个模块，实现了**三维批量归一化**（Batch Normalization），这在处理具有三维数据的卷积神经网络（如视频帧或三维图像数据）中非常有用。与一维和二维批量归一化类似，它旨在提高训练速度、稳定性和网络的泛化能力。
 
 **（2）**基本原理
 
@@ -4097,11 +4152,13 @@ print(output.shape)  # 输出形状与输入相同 [10, 3, 16, 32, 32]
 
 批量归一化是一种强大的技术，可以在多种网络架构中使用，以提高模型的训练效率和性能。在 PyTorch 中，**nn.BatchNorm3d** 提供了一种简单而有效的方式来实现这一功能，特别适用于处理三维数据。
 
+
+
 ### nn.Dropout
 
 **（1）**nn.Dropout 简介
 
-**nn.Dropout** 是 PyTorch 中的一个模块，实现了 Dropout 正则化技术。Dropout 是一种在训练神经网络时常用的技术，用于防止过拟合。它通过在训练过程中随机地将一些神经元的输出设置为零，从而强制网络学习更加鲁棒的特征。
+**nn.Dropout** 是 PyTorch 中的一个模块，实现了 Dropout 正则化技术。Dropout 是一种在训练神经网络时常用的技术，用于防止过拟合。它通过在训练过程中**随机地将一些神经元的输出设置为零**，从而强制网络学习更加鲁棒的特征。
 
 **（2）**基本原理
 
@@ -4127,9 +4184,16 @@ output_data = dropout(input_data)
 print(output_data)  # 输出将有大约一半的元素被设置为 0
 ```
 
+```
+tensor([[ 0.0000,  0.0000, -0.4683,  1.6608, -1.6166],
+         [ 0.0000,  0.5941,  0.8328, -0.0000,  0.0000],
+         [ 0.0000,  0.0447,  1.9145, -1.8022,  1.5477]])
+```
+
 在这个例子中，我们首先创建了一个 **nn.Dropout** 实例，指定了 **p=0.5**，这意味着每个元素有 50% 的概率被设置为零。然后，我们将 Dropout 应用于输入数据 **input_data**。
 
 **（4）**参数说明
+
 - **p** (float, 0 <= p <= 1): Dropout 概率。如果 **p=0**，则 Dropout 不会被应用。
 
 **（5）**训练和评估模式
@@ -4152,6 +4216,8 @@ Dropout 通常用于正则化神经网络，特别是在模型很大或数据集
 - Dropout 概率 **p** 是一个超参数，需要根据具体任务和数据集进行调整。
 
 Dropout 是一种简单而强大的正则化技术，在多种网络架构中广泛使用，以提高模型的泛化能力和防止过拟合。在 PyTorch 中，**nn.Dropout** 提供了一种简单而有效的方式来实现这一功能。
+
+
 
 ### nn.Dropout2d
 
@@ -4210,6 +4276,8 @@ print(output_data.shape)  # 输出形状与输入相同 [10, 3, 32, 32]
 
 **nn.Dropout2d** 是一种适用于二维数据的 Dropout 正则化技术，在 CNN 中广泛使用，以提高模型的泛化能力和防止过拟合。在 PyTorch 中，**nn.Dropout2d** 提供了一种简单而有效的方式来实现这一功能。
 
+
+
 ### nn.Dropout3d
 
 **（1）**nn.Dropout3d 简介
@@ -4267,62 +4335,13 @@ print(output_data.shape)  # 输出形状与输入相同 [10, 3, 16, 32, 32]
 
 **nn.Dropout3d** 是一种适用于三维数据的 Dropout 正则化技术，在处理视频或三维图像数据的卷积神经网络中广泛使用，以提高模型的泛化能力和防止过拟合。在 PyTorch 中，**nn.Dropout3d** 提供了一种简单而有效的方式来实现这一功能。
 
-### nn.Threshold
 
-**（1）**nn.Threshold 简介
-
-**nn.Threshold** 是 PyTorch 中的一个模块，它实现了阈值（Threshold）激活函数。这个函数是一个简单的非线性操作，用于将输入值限制在某个阈值以上或以下。**nn.Threshold** 通常用作一个激活函数，将输入张量中所有大于阈值的元素设置为另一个指定的值，而所有小于或等于阈值的元素则被设置为 0。
-
-**（2）**基本原理
-
-**nn.Threshold** 的工作原理是逐元素地对输入数据进行操作。对于每个元素，如果其值大于阈值，则输出为 **threshold_value**；如果其值小于或等于阈值，则输出为 0。数学表达式可以表示为：
-$$
-\text{out} = \begin{cases} 
-\text{threshold\_value} & \text{if } x > \text{threshold} \\
-0 & \text{if } x \leq \text{threshold}
-\end{cases}
-$$
-**（3）**使用方法
-
-以下是 **nn.Threshold** 的基本用法：
-
-```python
-import torch
-import torch.nn as nn
-
-# 创建 Threshold 层
-threshold = nn.Threshold(threshold=0.5, value=10.0)
-
-# 创建输入数据
-input_data = torch.tensor([-0.1, 0.2, 0.3, -0.4, 0.5])
-
-# 应用 Threshold 层
-output_data = threshold(input_data)
-
-print(output_data)  # 输出将会是 [-0., 10., 10., -0., 10.]
-```
-
-在这个例子中，我们创建了一个 **nn.Threshold** 实例，设置了阈值 **threshold=0.5** 和当输入超过阈值时的输出值 **value=10.0**。然后，我们将 **nn.Threshold** 应用于输入数据 **input_data**。
-
-**（4）**参数说明
-- **threshold** (float, 0 <= value): 阈值，输入值与该值比较。
-- **value** (float): 当输入超过阈值时的输出值。
-
-**（5）**使用场景
-
-**nn.Threshold** 可以作为简单的二值化操作，用于数据预处理或作为复杂网络中的一个组件。它在某些情况下可以作为更复杂激活函数的替代，尤其是在需要简化网络结构时。
-
-**（6）**注意事项
-- **nn.Threshold** 是一个非线性操作，可以引入非线性到网络中，有助于学习复杂的模式。
-- 阈值 **threshold** 和 **value** 是超参数，可以根据具体任务和数据集进行调整。
-
-**nn.Threshold** 是一个基本的激活函数，虽然在现代深度学习中不如 **ReLU** 或 **Sigmoid** 等其他激活函数常用，但它在某些特定的应用场景下可能非常有用。在 PyTorch 中，**nn.Threshold** 提供了一种简单而有效的方式来实现阈值操作。
 
 ### nn.ConstantPad2d
 
 **（1）**nn.ConstantPad2d 简介
 
-**nn.ConstantPad2d** 是 PyTorch 中的一个模块，它实现了对二维数据（如图像）进行常数填充（Padding）的操作。这种填充通常用于调整数据的空间维度，以满足网络层输入尺寸的要求，或者用于在图像处理中增加图像的边界。
+**nn.ConstantPad2d** 是 PyTorch 中的一个模块，它实现了对**二维数据（如图像）进行常数填充（Padding）的操作**。这种填充通常用于调整数据的空间维度，以满足网络层输入尺寸的要求，或者用于在图像处理中增加图像的边界。
 
 **（2）**基本原理
 
@@ -4370,11 +4389,13 @@ print(output_data.shape)  # 输出形状将反映填充后的尺寸 [1, 3, 10, 1
 
 **nn.ConstantPad2d** 是一个实用的层，可以在多种网络架构中使用，以调整数据的空间维度或增加图像的边界。在 PyTorch 中，**nn.ConstantPad2d** 提供了一种简单而有效的方式来实现二维常数填充。
 
+
+
 ### nn.ReplicationPad1d
 
 **（1）**nn.ReplicationPad1d 简介
 
-**nn.ReplicationPad1d** 是 PyTorch 中的一个模块，它实现了一维数据的复制填充（Replication Padding）。这种填充通过复制输入数据的边缘值来扩展数据，常用于调整数据的尺寸或在信号处理中模拟信号的边界效应。
+**nn.ReplicationPad1d** 是 PyTorch 中的一个模块，它实现了**一维数据的复制填充**（Replication Padding）。这种填充通过复制输入数据的边缘值来扩展数据，常用于调整数据的尺寸或在信号处理中模拟信号的边界效应。
 
 **（2）**基本原理
 
@@ -4418,11 +4439,13 @@ print(output_data)  # 输出将会是 [1., 1., 2., 3., 4., 4., 4.]
 
 **nn.ReplicationPad1d** 是一个实用的层，可以在多种网络架构中使用，以调整一维数据的尺寸或模拟信号的边界效应。在 PyTorch 中，**nn.ReplicationPad1d** 提供了一种简单而有效的方式来实现一维复制填充。
 
+
+
 ### nn.ZeroPad2d
 
 **（1）**nn.ZeroPad2d 简介
 
-**nn.ZeroPad2d** 是 PyTorch 中的一个模块，它实现了对二维数据（例如图像）进行零填充（Zero Padding）。这种填充通过在输入数据的边缘添加零值来扩展数据，常用于调整数据的空间维度，以满足网络层输入尺寸的要求。
+**nn.ZeroPad2d** 是 PyTorch 中的一个模块，它实现了对**二维数据（例如图像）进行零填充（Zero Padding）**。这种填充通过在输入数据的边缘添加零值来扩展数据，常用于调整数据的空间维度，以满足网络层输入尺寸的要求。
 
 **（2）**基本原理
 
@@ -4448,6 +4471,10 @@ output_data = padding_layer(input_data)
 print(output_data.shape)  # 输出形状将反映填充后的尺寸 [1, 3, 10, 11]
 ```
 
+```python
+torch.Size([1, 3, 11, 9])
+```
+
 在这个例子中，我们创建了一个 **nn.ZeroPad2d** 实例，设置了填充参数 **padding=(1, 2, 2, 3)**，这表示在输入数据的上边缘添加1行零值，在下边缘添加2行零值，在左边缘添加2列零值，在右边缘添加3列零值。然后，我们将零填充层应用于输入数据 **input_data**。
 
 **（4）**参数说明
@@ -4467,11 +4494,13 @@ print(output_data.shape)  # 输出形状将反映填充后的尺寸 [1, 3, 10, 1
 
 **nn.ZeroPad2d** 是一个实用的层，可以在多种网络架构中使用，以调整二维数据的空间维度。在 PyTorch 中，**nn.ZeroPad2d** 提供了一种简单而有效的方式来实现二维零填充。
 
+
+
 ### nn.GroupNorm
 
 **（1）**nn.GroupNorm 简介
 
-**nn.GroupNorm** 是 PyTorch 中的一个模块，它实现了组归一化（Group Normalization，GN）。组归一化是一种特征归一化技术，用于替代批量归一化（Batch Normalization），特别是在批量大小较小的情况下。它通过将输入特征分成多个组，并对每个组内的激活进行归一化，从而实现稳定的特征归一化。
+**nn.GroupNorm** 是 PyTorch 中的一个模块，它实现了**组归一化**（Group Normalization，GN）。组归一化是一种特征归一化技术，用于替代批量归一化（Batch Normalization），特别是在批量大小较小的情况下。它通过将输入特征分成多个组，并对每个组内的激活进行归一化，从而实现稳定的特征归一化。
 
 **（2）**基本原理
 
@@ -4497,6 +4526,10 @@ output_data = group_norm(input_data)
 print(output_data.shape)  # 输出形状与输入相同 [1, 4, 5, 5]
 ```
 
+```python
+torch.Size([1, 4, 5, 5])
+```
+
 在这个例子中，我们创建了一个 **nn.GroupNorm** 实例，指定了 **num_groups=2** 和 **num_channels=4**。然后，我们将组归一化应用于输入数据 **input_data**。
 
 **（4）**参数说明
@@ -4520,11 +4553,13 @@ print(output_data.shape)  # 输出形状与输入相同 [1, 4, 5, 5]
 
 **nn.GroupNorm** 是一种有效的特征归一化技术，可以在多种网络架构中使用，以提高模型的性能和稳定性。在 PyTorch 中，**nn.GroupNorm** 提供了一种简单而有效的方式来实现组归一化。
 
+
+
 ### nn.LayerNorm
 
 **（1）**nn.LayerNorm 简介
 
-**nn.LayerNorm** 是 PyTorch 中的一个模块，它实现了层归一化（Layer Normalization）。层归一化是一种特征归一化技术，用于对神经网络中的单个样本的激活进行归一化，通常作用于每个特征通道上。这种技术有助于加快训练速度，提高模型的稳定性和泛化能力。
+**nn.LayerNorm** 是 PyTorch 中的一个模块，它实现了**层归一化**（Layer Normalization）。层归一化是一种特征归一化技术，用于对神经网络中的单个样本的激活进行归一化，通常作用于每个特征通道上。这种技术有助于加快训练速度，提高模型的稳定性和泛化能力。
 
 **（2）**基本原理
 
@@ -4538,16 +4573,16 @@ print(output_data.shape)  # 输出形状与输入相同 [1, 4, 5, 5]
 import torch
 import torch.nn as nn
 
-# 创建 LayerNorm 层
-layer_norm = nn.LayerNormnormalized_shape=[2], elementwise_affine=True)
+# 假设我们有一个形状为 [batch_size, num_features] 的输入张量
+input = torch.randn(5, 10)  # 5个样本，每个样本10个特征
 
-# 创建输入数据
-input_data = torch.randn(1, 2, 4)  # 假设有 1 个样本，2 个特征通道，每个通道有 4 个元素
+# 创建一个LayerNorm层，num_features是输入张量的最后一个维度的大小
+ln = nn.LayerNorm(normalized_shape=10)
 
-# 前向传播，应用 LayerNorm
-output_data = layer_norm(input_data)
+# 前向传递
+output = ln(input)
 
-print(output_data.shape)  # 输出形状与输入相同 [1, 2, 4]
+print(output)  # 输出归一化后的张量
 ```
 
 在这个例子中，我们创建了一个 **nn.LayerNorm** 实例，指定了 **normalized_shape=[2]**，这表示归一化将在最后两个维度上进行，即每个特征通道。然后，我们将层归一化应用于输入数据 **input_data**。
@@ -4573,11 +4608,13 @@ print(output_data.shape)  # 输出形状与输入相同 [1, 2, 4]
 
 **nn.LayerNorm** 是一种有效的特征归一化技术，可以在多种网络架构中使用，以提高模型的性能和稳定性。在 PyTorch 中，**nn.LayerNorm** 提供了一种简单而有效的方式来实现层归一化。
 
+
+
 ### nn.InstanceNorm2d
 
 **（1）**nn.InstanceNorm2d 简介
 
-**nn.InstanceNorm2d** 是 PyTorch 中的一个模块，它实现了二维实例归一化（Instance Normalization）。这种技术通常用于风格迁移和图像到图像的翻译任务中，它对每个实例（即每个图像）的每个通道进行归一化，而不是对整个批次的数据进行归一化。
+**nn.InstanceNorm2d** 是 PyTorch 中的一个模块，它实现了**二维实例归一化**（Instance Normalization）。这种技术通常用于风格迁移和图像到图像的翻译任务中，它对每个实例（即每个图像）的每个通道进行归一化，而不是对整个批次的数据进行归一化。
 
 **（2）**基本原理
 
@@ -4628,13 +4665,15 @@ print(output_data.shape)  # 输出形状与输入相同 [1, 3, 64, 64]
 
 **nn.InstanceNorm2d** 是一种有效的特征归一化技术，可以在多种网络架构中使用，尤其是在处理图像数据时。在 PyTorch 中，**nn.InstanceNorm2d** 提供了一种简单而有效的方式来实现二维实例归一化。
 
+
+
 ## **卷积网络相关层**
 
 ### nn.Conv1d
 
 **（1）**nn.Conv1d 简介
 
-**nn.Conv1d** 是 PyTorch 中的一个模块，它实现了一维卷积（1D Convolution）。一维卷积通常用于处理一维序列数据，如时间序列数据或一维信号处理任务。**nn.Conv1d** 通过在输入数据上应用一系列可学习的滤波器（或称为卷积核），来提取数据中的特征。
+**nn.Conv1d** 是 PyTorch 中的一个模块，它实现了**一维卷积**（1D Convolution）。一维卷积通常用于处理一维序列数据，如时间序列数据或一维信号处理任务。**nn.Conv1d** 通过在输入数据上应用一系列可学习的滤波器（或称为卷积核），来提取数据中的特征。
 
 **（2）**基本原理
 
@@ -4659,6 +4698,10 @@ input_data = torch.randn(batch_size, in_channels, seq_length)
 output_data = conv1d(input_data)
 
 print(output_data.shape)  # 输出形状将反映卷积层的输出 [5, 2, 8]
+```
+
+```python
+torch.Size([5, 2, 8])
 ```
 
 在这个例子中，我们创建了一个 **nn.Conv1d** 实例，指定了输入通道数 **in_channels=3**，输出通道数 **out_channels=2**，卷积核大小 **kernel_size=3**，步长 **stride=1** 和填充 **padding=0**。然后，我们将一维卷积应用于输入数据 **input_data**。
@@ -4693,7 +4736,7 @@ $$
 
 **（1）**nn.Conv2d 简介
 
-**nn.Conv2d** 是 PyTorch 中的一个模块，它实现了二维卷积（2D Convolution），这是卷积神经网络（CNN）中的核心组件。二维卷积通常用于处理具有二维结构的数据，如图像。通过在输入数据上应用一系列可学习的滤波器（或称为卷积核），**nn.Conv2d** 能够提取数据中的局部特征。
+**nn.Conv2d** 是 PyTorch 中的一个模块，它实现了**二维卷积**（2D Convolution），这是卷积神经网络（CNN）中的核心组件。二维卷积通常用于处理具有二维结构的数据，如图像。通过在输入数据上应用一系列可学习的滤波器（或称为卷积核），**nn.Conv2d** 能够提取数据中的局部特征。
 
 **（2）**基本原理
 
@@ -4753,7 +4796,7 @@ $$
 
 **（1）**nn.Conv3d 简介
 
-**nn.Conv3d** 是 PyTorch 中的一个模块，它实现了三维卷积（3D Convolution），用于处理具有三维结构的数据，如视频帧序列或医学成像数据（例如 MRI 或 CT 扫描）。三维卷积通过在输入数据的三个维度上应用一系列可学习的滤波器（或称为卷积核），来提取数据中的特征。
+**nn.Conv3d** 是 PyTorch 中的一个模块，它实现了**三维卷积**（3D Convolution），用于处理具有三维结构的数据，如视频帧序列或医学成像数据（例如 MRI 或 CT 扫描）。三维卷积通过在输入数据的三个维度上应用一系列可学习的滤波器（或称为卷积核），来提取数据中的特征。
 
 **（2）**基本原理
 
@@ -4814,7 +4857,7 @@ $$
 
 **（1）**nn.MaxPool1d 简介
 
-**nn.MaxPool1d** 是 PyTorch 中的一个模块，它实现了一维最大池化（Max Pooling）。最大池化是一种在神经网络中常用的降采样技术，通过从输入数据的一个滑动窗口中选择最大值来实现。在一维卷积神经网络中，**nn.MaxPool1d** 通常用于减少数据的空间尺寸，同时保持重要的特征信息。
+**nn.MaxPool1d** 是 PyTorch 中的一个模块，它实现了**一维最大池化**（Max Pooling）。最大池化是一种在神经网络中常用的降采样技术，通过从输入数据的一个滑动窗口中选择最大值来实现。在一维卷积神经网络中，**nn.MaxPool1d** 通常用于减少数据的空间尺寸，同时保持重要的特征信息。
 
 **（2）**基本原理
 
@@ -4870,7 +4913,7 @@ $$
 
 **（1）**nn.MaxPool2d 简介
 
-**nn.MaxPool2d** 是 PyTorch 中的一个模块，它实现了二维最大池化（Max Pooling）。最大池化是一种在卷积神经网络（CNN）中常用的降采样技术，通过从输入数据的一个滑动窗口中选择最大值来实现。在图像处理等二维数据任务中，**nn.MaxPool2d** 用于减少数据的空间尺寸，同时保持重要的特征信息。
+**nn.MaxPool2d** 是 PyTorch 中的一个模块，它实现了**二维最大池化**（Max Pooling）。最大池化是一种在卷积神经网络（CNN）中常用的降采样技术，通过从输入数据的一个滑动窗口中选择最大值来实现。在图像处理等二维数据任务中，**nn.MaxPool2d** 用于减少数据的空间尺寸，同时保持重要的特征信息。
 
 **（2）**基本原理
 
@@ -4926,7 +4969,7 @@ $$
 
 **（1）**nn.MaxPool3d 简介
 
-**nn.MaxPool3d** 是 PyTorch 中的一个模块，它实现了三维最大池化（Max Pooling）。这种池化技术特别适用于处理具有三维结构的数据，例如医学成像数据（如 MRI 或 CT 扫描）或视频数据。与一维和二维最大池化类似，**nn.MaxPool3d** 通过从输入数据的一个滑动窗口中选择最大值来实现降采样，有助于减少数据的空间尺寸并保持重要的特征信息。
+**nn.MaxPool3d** 是 PyTorch 中的一个模块，它实现了**三维最大池化**（Max Pooling）。这种池化技术特别适用于处理具有三维结构的数据，例如医学成像数据（如 MRI 或 CT 扫描）或视频数据。与一维和二维最大池化类似，**nn.MaxPool3d** 通过从输入数据的一个滑动窗口中选择最大值来实现降采样，有助于减少数据的空间尺寸并保持重要的特征信息。
 
 **（2）**基本原理
 
@@ -4982,7 +5025,7 @@ $$
 
 **（1）**nn.AdaptiveMaxPool2d 简介
 
-**nn.AdaptiveMaxPool2d** 是 PyTorch 中的一个模块，它实现了二维自适应最大池化（Adaptive Max Pooling）。这种池化技术特别适用于处理二维数据（如图像），当你需要将特征图的尺寸缩放到特定的目标尺寸时非常有用。与最大池化不同，自适应最大池化不需要指定步长（stride），而是根据输出尺寸自动计算。
+**nn.AdaptiveMaxPool2d** 是 PyTorch 中的一个模块，它实现了**二维自适应最大池化**（Adaptive Max Pooling）。这种池化技术特别适用于处理二维数据（如图像），当你需要将特征图的尺寸缩放到特定的目标尺寸时非常有用。与最大池化不同，自适应最大池化不需要指定步长（stride），而是根据输出尺寸自动计算。
 
 **（2）**基本原理
 
@@ -5035,7 +5078,7 @@ print(output_data.shape)  # 输出形状将反映池化层的输出 [5, 3, 5, 5]
 
 **（1）**nn.FractionalMaxPool2d 简介
 
-**nn.FractionalMaxPool2d** 是 PyTorch 中的一个模块，它实现了二维分数最大池化（Fractional Max Pooling）。这种池化技术是一种随机池化方法，允许您对输入特征图进行非整数尺寸的降采样。它通过从一组随机大小的池化窗口中选择最大值来工作，这些窗口的大小是输入特征图尺寸的一个分数。
+**nn.FractionalMaxPool2d** 是 PyTorch 中的一个模块，它实现了**二维分数最大池化**（Fractional Max Pooling）。这种池化技术是一种随机池化方法，允许您对输入特征图进行非整数尺寸的降采样。它通过从一组随机大小的池化窗口中选择最大值来工作，这些窗口的大小是输入特征图尺寸的一个分数。
 
 **（2）**基本原理
 
@@ -5090,7 +5133,7 @@ print(output_data.shape)  # 输出形状将接近池化层的目标尺寸 [5, 3,
 
 **（1）**nn.AvgPool2d 简介
 
-**nn.AvgPool2d** 是 PyTorch 中的一个模块，它实现了二维平均池化（Average Pooling）。平均池化是一种在卷积神经网络（CNN）中常用的降采样技术，通过计算输入数据的一个滑动窗口中所有值的平均数来实现。在图像处理等二维数据任务中，**nn.AvgPool2d** 用于减少数据的空间尺寸，同时保留特征的统计信息。
+**nn.AvgPool2d** 是 PyTorch 中的一个模块，它实现了**二维平均池化**（Average Pooling）。平均池化是一种在卷积神经网络（CNN）中常用的降采样技术，通过计算输入数据的一个滑动窗口中所有值的平均数来实现。在图像处理等二维数据任务中，**nn.AvgPool2d** 用于减少数据的空间尺寸，同时保留特征的统计信息。
 
 **（2）**基本原理
 
@@ -5142,9 +5185,11 @@ $$
 
 **nn.AvgPool2d** 是一种有效的降采样技术，可以在多种网络架构中使用，以减少数据的空间尺寸并提取特征的统计信息。在 PyTorch 中，**nn.AvgPool2d** 提供了一种简单而有效的方式来实现二维平均池化。
 
+
+
 ### nn.AdaptiveAvgPool2d
 
-**nn.AdaptiveAvgPool2d** 是 PyTorch 深度学习框架中的一个模块，它用于对输入的二维特征图（2D feature map）执行自适应平均池化（adaptive average pooling）操作。这种池化操作可以调整输入特征图的尺寸，使其输出到一个指定的尺寸，而不需要像传统的平均池化那样固定池化窗口的大小。
+**nn.AdaptiveAvgPool2d** 是 PyTorch 深度学习框架中的一个模块，它用于对输入的二维特征图（2D feature map）执行**自适应平均池化**（adaptive average pooling）操作。这种池化操作可以调整输入特征图的尺寸，使其输出到一个指定的尺寸，而不需要像传统的平均池化那样固定池化窗口的大小。
 
 （1）基本原理
 
@@ -5185,13 +5230,13 @@ output_feature_map = adaptive_pool(input_feature_map)
 
 ### nn.ConvTranspose2d
 
-**nn.ConvTranspose2d** 是 PyTorch 中用于执行转置卷积（也称为反卷积或分数步长卷积）操作的模块。转置卷积是一种特殊的卷积操作，它通常用于将特征图的尺寸放大，这在某些类型的神经网络，如生成对抗网络（GANs）和自编码器中非常常见。
+**nn.ConvTranspose2d** 是 PyTorch 中用于执行**转置卷积**（也称为反卷积或分数步长卷积）操作的模块。转置卷积是一种特殊的卷积操作，它通常用于将特征图的尺寸放大，这在某些类型的神经网络，如生成对抗网络（GANs）和自编码器中非常常见。
 
-（1）基本原理
+**（1）**基本原理
 
 转置卷积的基本原理是将传统的卷积操作颠倒过来。在传统的卷积中，输入特征图通过卷积核进行卷积，输出特征图的尺寸通常小于输入特征图。而转置卷积则通过将输入特征图的尺寸放大来生成更大的输出特征图。
 
-（2）使用方法
+**（2）**使用方法
 
 **nn.ConvTranspose2d** 的使用方法如下：
 
@@ -5233,7 +5278,7 @@ output_feature_map = conv_transpose(input_feature_map)
 
 ### nn.Upsample
 
-**nn.Upsample** 是 PyTorch 中用于对输入特征图进行上采样（upsampling）的模块。上采样是一种将特征图的尺寸放大的操作，它通常用于在卷积神经网络（CNN）中恢复图像的分辨率，或者在生成对抗网络（GAN）中生成高分辨率的图像。
+**nn.Upsample** 是 PyTorch 中用于对输入特征图进行**上采样**（upsampling）的模块。上采样是一种将特征图的尺寸放大的操作，它通常用于在卷积神经网络（CNN）中恢复图像的分辨率，或者在生成对抗网络（GAN）中生成高分辨率的图像。
 
 （1）基本原理
 
@@ -5281,7 +5326,7 @@ output_feature_map = upsample(input_feature_map)
 
 ### nn.Unfold
 
-**nn.Unfold** 是 PyTorch 中的一个模块，用于将多维输入（如图像）转换为一维序列。它通常用于实现卷积操作的快速版本，特别是在处理图像数据时。**nn.Unfold** 模块会将输入数据分割成一系列固定大小的窗口，这些窗口可以被看作是卷积核在输入数据上滑动时覆盖的区域。
+**nn.Unfold** 是 PyTorch 中的一个模块，用于**将多维输入（如图像）转换为一维序列**。它通常用于实现卷积操作的快速版本，特别是在处理图像数据时。**nn.Unfold** 模块会将输入数据分割成一系列固定大小的窗口，这些窗口可以被看作是卷积核在输入数据上滑动时覆盖的区域。
 
 （1）基本原理
 
@@ -5324,7 +5369,7 @@ unfolded_feature_map = unfold(input_feature_map)
 
 ### nn.Fold
 
-**nn.Fold** 在 PyTorch 中是 **nn.Unfold** 的逆操作，它用于将一维序列重新组织成多维数据。这个操作通常用于在卷积网络中处理数据，例如在实现某些类型的卷积网络的逆过程或转置卷积（**ConvTranspose2d**）时使用。
+**nn.Fold** 在 PyTorch 中是 **nn.Unfold** 的逆操作，它用于**将一维序列重新组织成多维数据**。这个操作通常用于在卷积网络中处理数据，例如在实现某些类型的卷积网络的逆过程或转置卷积（**ConvTranspose2d**）时使用。
 
 （1）基本原理
 
@@ -5940,6 +5985,135 @@ print(attn_output.shape)  # 输出的形状将是 [sequence_length, batch_size, 
 
 多头注意力机制由于其能够捕捉输入数据在多个子空间中的信息，已经成为许多 NLP 任务中的一个强大工具。在 PyTorch 中，**nn.MultiheadAttention** 提供了一种方便的方式来实现这一机制。
 
+# 参数初始化
+
+## nn.Parameter
+
+在 PyTorch 中，**nn.Parameter** 是一个特殊类型的 **Tensor**，它用于表示模型的参数，如权重或偏置。当你创建一个 **nn.Module** 的子类并想要定义一个参数时，你可以将一个 **torch.Tensor** 赋值给一个 **nn.Parameter** 对象。这样做的好处是，PyTorch 的优化器会自动识别 **nn.Parameter** 对象并将它们作为优化目标。
+
+以下是 **nn.Parameter** 的一些关键特性：
+
+1. **自动注册**：当 **nn.Parameter** 被赋值给模型的属性时，PyTorch 会自动将它们注册为模块的参数，这意味着它们将被包含在模型的参数列表中，并且可以在训练过程中被优化器更新。
+
+2. **与普通 Tensor 的区别**：普通的 **torch.Tensor** 对象不会自动被注册为模型的参数，除非你明确地将它们添加到参数列表中。
+
+3. **使用方式**：通常，你会在定义模型的 **__init__** 方法时创建 **nn.Parameter** 对象，并在模型的 **forward** 方法中使用它们。
+
+下面是一个简单的示例，演示如何在自定义的 **nn.Module** 子类中使用 **nn.Parameter**：
+
+```python
+import torch
+import torch.nn as nn
+
+class MyModule(nn.Module):
+    def __init__(self, input_size, output_size):
+        super(MyModule, self).__init__()
+        # 使用 nn.Parameter 定义权重和偏置
+        self.weight = nn.Parameter(torch.randn(input_size, output_size))
+        self.bias = nn.Parameter(torch.randn(output_size))
+    
+    def forward(self, x):
+        # 在前向传播中使用定义的参数
+        return x @ self.weight + self.bias
+
+# 创建模块实例
+module = MyModule(input_size=5, output_size=3)
+
+# 打印模块的参数
+for name, param in module.named_parameters():
+    print(name, param.size())
+```
+
+在这个例子中，**MyModule** 有两个参数：**weight** 和 **bias**。它们都是通过将随机初始化的 **torch.Tensor** 对象赋值给 **nn.Parameter** 创建的。当我们创建 **MyModule** 的实例并打印其参数时，我们可以看到 **weight** 和 **bias** 都被正确注册并显示出来。
+
+使用 **nn.Parameter** 是定义模型参数推荐的方式，因为它确保了参数的自动注册和优化器的正确更新。
+
+
+
+## nn.UninitializedParameter
+
+在 PyTorch 中，并没有一个官方的 **nn.UninitializedParameter** 类。相反，如果你希望初始化一个参数，但暂时不赋予它具体的值，你可以使用 **nn.Parameter** 并传入一个未初始化的 **torch.Tensor**。在 PyTorch 中，当你创建一个 **torch.Tensor** 实例而不指定任何值时，它的值将不会被初始化，也就是说，它的数据是未定义的。
+
+下面是一个如何使用未初始化的 **Tensor** 作为 **nn.Parameter** 的例子：
+
+```python
+import torch
+import torch.nn as nn
+
+class MyModule(nn.Module):
+    def __init__(self, size):
+        super(MyModule, self).__init__()
+        # 创建一个未初始化的参数
+        self.uninitialized_param = nn.Parameter(torch.empty(size))
+
+    def forward(self, x):
+        # 这里你需要确保在进行任何操作之前参数已经被正确初始化
+        if self.uninitialized_param.nelement() != 0:
+            # 执行初始化逻辑
+            self.uninitialized_param.data = torch.randn_like(self.uninitialized_param)
+        # 使用未初始化的参数
+        return x + self.uninitialized_param
+
+# 创建模块实例
+module = MyModule(size=(3, 3))
+
+# 打印模块的参数
+for name, param in module.named_parameters():
+    print(name, param.size())
+
+# 进行一次前向传播以触发参数的初始化
+output = module(torch.randn(3, 3))
+print(output)
+```
+
+在这个例子中，**MyModule** 的构造函数中创建了一个大小为 **size** 的未初始化的 **torch.Tensor**，并将其包装在 **nn.Parameter** 中。在 **forward** 方法中，我们检查参数是否已经被初始化，如果没有，则在第一次使用之前进行初始化。
+
+请注意，使用未初始化的参数需要格外小心，因为未初始化的参数包含随机的垃圾值，这可能导致模型训练不稳定或不正确。通常，我们建议总是以一种确定性的方式初始化模型参数，以确保模型训练的可重复性和稳定性。
+
+如果你在某些文档或论坛中看到 **nn.UninitializedParameter**，这可能是一个自定义的实现，或者是一个错误的概念。在官方的 PyTorch API 中，你应该使用 **nn.Parameter** 并确保以适当的方式初始化参数。
+
+
+
+## nn.UninitializedBuffer
+
+在 PyTorch 中，**nn.UninitializedBuffer** 是一个特殊的类，它用于创建一个未初始化的缓冲区（buffer）。缓冲区是神经网络模块中的一种属性，通常用于存储中间计算结果或累积的梯度等，而不是像权重那样的参数。与参数（**nn.Parameter**）不同，缓冲区通常不直接参与梯度下降优化过程。
+
+**nn.UninitializedBuffer** 的主要用途是在模块的初始化阶段预留内存空间，但延迟实际的初始化过程，直到实际需要这些缓冲区的内容时才进行初始化。这在某些特定情况下是有用的，比如当你需要根据模型输入或其他动态因素来确定缓冲区的具体初始化值时。
+
+以下是 **nn.UninitializedBuffer** 的基本用法：
+
+```python
+import torch
+import torch.nn as nn
+
+class MyModule(nn.Module):
+    def __init__(self, size):
+        super(MyModule, self).__init__()
+        # 创建一个未初始化的缓冲区
+        self.uninitialized_buffer = nn.UninitializedBuffer(size)
+
+    def forward(self, input):
+        # 在模型的前向传播中，如果需要使用缓冲区，先检查是否已初始化
+        if self.uninitialized_buffer.nelement() == 0:
+            # 根据需要初始化缓冲区
+            self.uninitialized_buffer = self.uninitialized_buffer.new(input.shape).normal_()
+
+        # 使用缓冲区进行计算
+        result = input + self.uninitialized_buffer
+        return result
+
+# 创建模块实例
+module = MyModule(size=(3, 3))
+
+# 进行前向传播，这将触发缓冲区的初始化
+output = module(torch.randn(3, 3))
+print(output)
+```
+
+在这个例子中，**MyModule** 类在初始化时创建了一个未初始化的缓冲区 **uninitialized_buffer**。在 **forward** 方法中，我们检查缓冲区是否已经初始化，如果没有，则在第一次使用前进行初始化。这里使用了 **.normal_()** 方法来初始化缓冲区，当然，你可以根据需要使用其他方法进行初始化。
+
+请注意，**nn.UninitializedBuffer** 是一个相对较少使用的特性，大多数情况下，你会直接使用 **torch.nn.Parameter** 或者初始化好的 **torch.Tensor** 作为模块的缓冲区。只有在确实需要延迟初始化时，才考虑使用 **nn.UninitializedBuffer**。
+
 
 
 # 激活函数
@@ -6129,7 +6303,7 @@ Softmax 函数的数学表达式为：
 $$
 \text{softmax}(x_i) = \frac{e^{x_i}}{\sum_{j} e^{x_j}}
 $$
-这里，\( x_i \) 是输入向量的第 \( i \) 个元素，而分母是输入向量所有元素的指数函数值的总和，确保了输出的归一化。
+这里，$ x_i $ 是输入向量的第 $ i $ 个元素，而分母是输入向量所有元素的指数函数值的总和，确保了输出的归一化。
 
 以下是 **nn.Softmax** 的基本用法：
 
@@ -6174,7 +6348,58 @@ output = net(x)
 
 Softmax 函数通常用于神经网络的输出层，以生成类别的概率。在实际应用中，Softmax 函数经常与交叉熵损失函数（cross-entropy loss）一起使用，因为这种组合在计算上是稳定的。需要注意的是，当输入包含非常大的正值时，直接应用 softmax 可能会导致数值稳定性问题（例如数值溢出）。在这种情况下，通常会对输入进行规范化，例如通过减去最大值或者使用对数softmax。
 
+## nn.Threshold
 
+**（1）**nn.Threshold 简介
+
+**nn.Threshold** 是 PyTorch 中的一个模块，它实现了阈值（Threshold）激活函数。这个函数是一个简单的非线性操作，用于将输入值限制在某个阈值以上或以下。**nn.Threshold** 通常用作一个激活函数，将输入张量中所有大于阈值的元素设置为另一个指定的值，而所有小于或等于阈值的元素则被设置为 0。
+
+**（2）**基本原理
+
+**nn.Threshold** 的工作原理是逐元素地对输入数据进行操作。对于每个元素，如果其值大于阈值，则输出为 **threshold_value**；如果其值小于或等于阈值，则输出为 0。数学表达式可以表示为：
+$$
+\text{out} = \begin{cases} 
+\text{threshold\_value} & \text{if } x > \text{threshold} \\
+0 & \text{if } x \leq \text{threshold}
+\end{cases}
+$$
+**（3）**使用方法
+
+以下是 **nn.Threshold** 的基本用法：
+
+```python
+import torch
+import torch.nn as nn
+
+# 创建 Threshold 层
+threshold = nn.Threshold(threshold=0.5, value=10.0)
+
+# 创建输入数据
+input_data = torch.tensor([-0.1, 0.2, 0.3, -0.4, 0.5])
+
+# 应用 Threshold 层
+output_data = threshold(input_data)
+
+print(output_data)  # 输出将会是 [-0., 10., 10., -0., 10.]
+```
+
+在这个例子中，我们创建了一个 **nn.Threshold** 实例，设置了阈值 **threshold=0.5** 和当输入超过阈值时的输出值 **value=10.0**。然后，我们将 **nn.Threshold** 应用于输入数据 **input_data**。
+
+**（4）**参数说明
+
+- **threshold** (float, 0 <= value): 阈值，输入值与该值比较。
+- **value** (float): 当输入超过阈值时的输出值。
+
+**（5）**使用场景
+
+**nn.Threshold** 可以作为简单的二值化操作，用于数据预处理或作为复杂网络中的一个组件。它在某些情况下可以作为更复杂激活函数的替代，尤其是在需要简化网络结构时。
+
+**（6）**注意事项
+
+- **nn.Threshold** 是一个非线性操作，可以引入非线性到网络中，有助于学习复杂的模式。
+- 阈值 **threshold** 和 **value** 是超参数，可以根据具体任务和数据集进行调整。
+
+**nn.Threshold** 是一个基本的激活函数，虽然在现代深度学习中不如 **ReLU** 或 **Sigmoid** 等其他激活函数常用，但它在某些特定的应用场景下可能非常有用。在 PyTorch 中，**nn.Threshold** 提供了一种简单而有效的方式来实现阈值操作。
 
 # 损失函数
 
@@ -6187,7 +6412,7 @@ Softmax 函数通常用于神经网络的输出层，以生成类别的概率。
 $$
 \text{MSE}(y, y') = \frac{1}{n} \sum_{i=1}^{n} (y_i - y'_i)^2
 $$
-这里，\( y \) 是真实值的向量，\( y' \) 是预测值的向量，\( n \) 是向量的长度。
+这里，$ y $ 是真实值的向量，$ y' $ 是预测值的向量，$ n $ 是向量的长度。
 
 以下是 **nn.MSELoss** 的基本用法：
 
@@ -6264,7 +6489,7 @@ L1 损失的数学定义是：
 $$
 \text{L1Loss}(y, y') = \frac{1}{n} \sum_{i=1}^{n} |y_i - y'_i|
 $$
-这里，\( y \) 是真实值的向量，\( y' \) 是预测值的向量，\( n \) 是向量的长度。
+这里，$ y $ 是真实值的向量，$ y' $ 是预测值的向量，$ n $ 是向量的长度。
 
 以下是 **nn.L1Loss** 的基本用法：
 
@@ -6348,9 +6573,9 @@ $$
 |x - y| - 0.5 & \text{otherwise}
 \end{cases}
 $$
-这里，\( x \) 是预测值，\( y \) 是真实值。
+这里，$ x $ 是预测值，$ y $ 是真实值。
 
-平滑L1损失在 \( |x - y| < 1 \) 时表现为平方损失，这有助于精确地优化小的残差；当 \( |x - y| > 1 \) 时，它转变为线性损失，这有助于不过分惩罚大的残差，从而避免梯度爆炸问题。
+平滑L1损失在 $ |x - y| < 1 $ 时表现为平方损失，这有助于精确地优化小的残差；当 $ |x - y| > 1 $ 时，它转变为线性损失，这有助于不过分惩罚大的残差，从而避免梯度爆炸问题。
 
 以下是 **nn.SmoothL1Loss** 的基本用法：
 
@@ -6427,7 +6652,7 @@ for epoch in range(num_epochs):
 $$
 \text{BCELoss}(p, y) = -\left[ y \cdot \log(p) + (1 - y) \cdot \log(1 - p) \right]
 $$
-这里，\( p \) 是模型预测的概率（通常通过 sigmoid 函数获得），\( y \) 是真实标签（0 或 1）。
+这里，$ p $ 是模型预测的概率（通常通过 sigmoid 函数获得），$ y $ 是真实标签（0 或 1）。
 
 以下是 **nn.BCELoss** 的基本用法：
 
@@ -6503,7 +6728,7 @@ for epoch in range(num_epochs):
 $$
 \text{loss}(x, y) = - \left[ y \cdot \log(\sigma(x)) + (1 - y) \cdot \log(1 - \sigma(x)) \right]
 $$
-这里，\( x \) 是模型的原始输出（logits），\( y \) 是真实标签（0 或 1），\( \sigma(x) \) 是 sigmoid 函数。
+这里，$ x $ 是模型的原始输出（logits），$ y $ 是真实标签（0 或 1），$ \sigma(x) $ 是 sigmoid 函数。
 
 使用 **nn.BCEWithLogitsLoss** 的优势在于它提供了数值稳定性，因为它避免了在 sigmoid 函数应用前后对数值进行计算，从而减少了计算误差。
 
@@ -6582,7 +6807,7 @@ for epoch in range(num_epochs):
 $$
 H(y, y') = -\sum_{i} y_i \log(y'_i)
 $$
-这里，\( y \) 是一个独热编码（one-hot encoded）的真实标签向量，\( y' \) 是模型预测的概率分布（由 softmax 函数输出）。
+这里，$ y $ 是一个独热编码（one-hot encoded）的真实标签向量，$ y' $ 是模型预测的概率分布（由 softmax 函数输出）。
 
 以下是 **nn.CrossEntropyLoss** 的基本用法：
 
@@ -6665,7 +6890,7 @@ for epoch in range(num_epochs):
 $$
 \text{NLLLoss}(y, y') = -\log(y'_{y})
 $$
-这里，\( y \) 是一个包含类别索引的张量，\( y' \) 是模型预测的概率分布（由 softmax 函数输出）。
+这里，$ y $ 是一个包含类别索引的张量，$ y' $ 是模型预测的概率分布（由 softmax 函数输出）。
 
 以下是 **nn.NLLLoss** 的基本用法：
 
@@ -6742,7 +6967,7 @@ for epoch in range(num_epochs):
 $$
 \text{cosine\_similarity}(a, b) = \frac{a \cdot b}{\|a\| \|b\|}
 $$
-这里，\( a \) 和 \( b \) 是两个向量，\( a \cdot b \) 表示它们的点积，\( \|a\| \) 和 \( \|b\| \) 分别表示它们的范数（即向量的长度）。
+这里，$ a $ 和 $ b $ 是两个向量，$ a \cdot b $ 表示它们的点积，$ \|a\| $ 和 $ \|b\| $ 分别表示它们的范数（即向量的长度）。
 
 以下是 **nn.CosineSimilarity** 的基本用法：
 
