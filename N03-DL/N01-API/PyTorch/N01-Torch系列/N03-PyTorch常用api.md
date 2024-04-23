@@ -5413,7 +5413,7 @@ folded_tensor = fold(unfolded_tensor)
 
 ### nn.Embedding
 
-在 PyTorch 中，**nn.Embedding** 是一个模块，它用于将稀疏的离散数据表示为密集的嵌入向量（embeddings）。这种机制在处理诸如单词、类别标签或其他离散数据时非常有用，特别是在自然语言处理（NLP）和分类问题中。
+在 PyTorch 中，**nn.Embedding** 是一个模块，它用于**将稀疏的离散数据表示为密集的嵌入向量**（embeddings）。这种机制在处理诸如单词、类别标签或其他离散数据时非常有用，特别是在自然语言处理（NLP）和分类问题中。
 
 **（1）**基本原理
 
@@ -5440,6 +5440,13 @@ embedded_vectors = embedding(input_indices)
 print(embedded_vectors)
 ```
 
+```python
+tensor([[ 0.9421,  1.5418,  0.3536, -2.1268,  0.8306],
+        [-0.1762,  1.4240, -0.8000,  0.2338,  0.8933],
+        [-0.0155, -0.3976,  0.4728, -0.9458,  1.1887]],
+       grad_fn=<EmbeddingBackward0>)
+```
+
 在这个例子中，**nn.Embedding** 根据提供的整数索引 **input_indices** 生成了嵌入向量。输出的 **embedded_vectors** 是一个张量，其形状为 **[batch_size, embedding_dim]**，其中 **batch_size** 是输入索引的数量，**embedding_dim** 是嵌入向量的维度。
 
 **（3）**参数说明
@@ -5456,6 +5463,8 @@ print(embedded_vectors)
 - **sparse** (bool, optional): 确定权重矩阵是作为稀疏张量还是密集张量返回。
 
 **nn.Embedding** 是实现词嵌入和其他类型的离散数据嵌入的关键模块，在构建需要处理离散输入的模型时非常有用。在 PyTorch 中，它通常与 **torch.nn.EmbeddingBag** 结合使用，后者允许对输入序列进行平均或求和，这在处理变长序列时非常有用。
+
+
 
 ### nn.LSTM
 
@@ -5841,9 +5850,13 @@ dim_feedforward = 2048
 max_seq_length = 128
 
 # 创建模型实例
-model = TransformerModel(
-    src_vocab_size, tgt_vocab_size, d_model, nhead, num_encoder_layers, num_decoder_layers, dim_feedforward, max_seq_length
-)
+model = TransformerModel(src_vocab_size,     
+                         tgt_vocab_size, d_model, 
+                         nhead, 
+                         num_encoder_layers, 
+                         num_decoder_layers, 
+                         dim_feedforward, 
+                         max_seq_length)
 
 # 假设我们有一批源序列和目标序列
 src = torch.randint(0, src_vocab_size, (32, 10))  # 32个样本，每个样本10个词
