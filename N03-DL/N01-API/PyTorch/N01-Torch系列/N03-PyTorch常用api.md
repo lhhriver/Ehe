@@ -852,6 +852,12 @@ Indices:  tensor([0, 1, 1, 1, 2, 2, 2])
 Values:  tensor([2, 0, 1, 2, 0, 1, 2])
 ```
 
+在这个例子中，我们定义了一个条件：选择原始张量 **x** 中所有大于2的元素。**torch.where** 函数返回了两个张量，**indices** 包含了满足条件的元素的索引，而 **values** 包含了满足条件的元素本身。
+
+需要注意的是，**torch.where** 返回的索引张量是一个2D张量，每一行代表一个满足条件的元素的索引，第一列是行索引，第二列是列索引。此外，**condition** 必须是一个布尔类型的张量，其中的元素只能是 0（表示 **False**）或 1（表示 **True**）。
+
+
+
 - 根据条件从两个张量中选择元素
 
 ```python
@@ -875,10 +881,6 @@ print("Result:", result)
 ```
 Result: tensor([5, 6, 7, 4])
 ```
-
-在这个例子中，我们定义了一个条件：选择原始张量 **x** 中所有大于2的元素。**torch.where** 函数返回了两个张量，**indices** 包含了满足条件的元素的索引，而 **values** 包含了满足条件的元素本身。
-
-需要注意的是，**torch.where** 返回的索引张量是一个2D张量，每一行代表一个满足条件的元素的索引，第一列是行索引，第二列是列索引。此外，**condition** 必须是一个布尔类型的张量，其中的元素只能是 0（表示 **False**）或 1（表示 **True**）。
 
 
 
@@ -1890,7 +1892,7 @@ tensor([1., 1., 3.])
 
 - **torch.remainder** 执行的是逐元素的余数计算，即 **input** 中的每个元素都与 **other** 中的对应元素或 **other** 这个标量进行余数计算。
 - 如果 **other** 是一个张量，它必须与 **input** 具有相同的形状或者能够广播（broadcast）到 **input** 的形状。
-- 与 **torch.fmod** 不同，**torch.remainder** 的结果在处理负数时会有所不同。**torch.fmod** 总是返回非负结果，而 **torch.remainder** 会根据 **input** 的符号返回对应符号的余数。
+- 与 **torch.fmod** 不同，**torch.remainder** 的结果**在处理负数时会有所不同**。**torch.fmod** 总是返回非负结果，而 **torch.remainder** 会根据 **input** 的符号返回对应符号的余数。
 
 **（6）**应用场景
 
@@ -2335,12 +2337,16 @@ tensor([ 4, 10, 18])
 import torch
 
 # 创建一个张量
-tensor = torch.tensor([1, 2, 3, 4, 5])
+tensor = torch.tensor([1, 2, 3, 4, 5], dtype=torch.float32)
 
 # 计算张量的所有元素标准差
 std_value = torch.std(tensor)
 
 print(std_value)
+```
+
+```
+tensor(1.5811)
 ```
 
 - 计算张量沿指定维度的标准差
@@ -2351,13 +2357,21 @@ import torch
 # 创建一个形状为 (3, 4) 的二维张量
 tensor = torch.tensor([[1, 2, 3, 4],
                        [5, 6, 7, 8],
-                       [9, 10, 11, 12]])
+                       [9, 10, 11, 12]], dtype=torch.float32)
 
 # 计算每一行的元素标准差，结果形状为 (3,)
 row_stds = torch.std(tensor, dim=1)
 
 # 计算每一列的元素标准差，结果形状为 (4,)
 column_stds = torch.std(tensor, dim=0)
+
+print(row_stds)
+print(column_stds)
+```
+
+```
+tensor([1.2910, 1.2910, 1.2910])
+tensor([4., 4., 4., 4.])
 ```
 
 **（2）**参数说明
@@ -2764,7 +2778,7 @@ tensor([[1, 2, 3, 0],
 
 ### torch.matmul
 
-**torch.matmul** 是 PyTorch 中用于执行矩阵乘法的函数。它支持对两个张量进行逐元素的矩阵乘法，这在线性代数和机器学习中是一个基本操作。
+**torch.matmul** 是 PyTorch 中用于执行**矩阵乘法**的函数。它支持对两个张量进行逐元素的矩阵乘法，这在线性代数和机器学习中是一个基本操作。
 
 **（1）**基本用法
 
@@ -2783,7 +2797,6 @@ tensor2 = torch.tensor([[5, 6],
 
 # 执行矩阵乘法
 result = torch.matmul(tensor1, tensor2)
-
 print(result)
 ```
 
@@ -2931,7 +2944,6 @@ matrix = torch.tensor([[1, 2, 3],
 
 # 计算方阵的迹
 trace_value = torch.trace(matrix)
-
 print(trace_value)
 ```
 
@@ -2942,6 +2954,7 @@ tensor(15)
 **（2）**参数说明
 
 **torch.trace** 函数的参数是：
+
 - **input**：要计算迹的方阵张量。
 
 **（3）**注意事项
@@ -2976,7 +2989,6 @@ vector = torch.tensor([1, 2, 3], dtype=torch.float32)
 
 # 计算 L2 范数，默认参数 p=2
 norm_value = torch.norm(vector)
-
 print(norm_value)
 ```
 
@@ -3042,7 +3054,6 @@ matrix = torch.tensor([[1, 2],
 
 # 计算方阵的行列式
 determinant = torch.det(matrix)
-
 print(determinant)
 ```
 
@@ -3076,7 +3087,7 @@ tensor(-2.)
 RuntimeError: This function was deprecated since version 1.9 and is now removed. **torch.linalg.eig** returns complex tensors of dtype **cfloat** or **cdouble** rather than real tensors mimicking complex tensors.
 ```
 
-**torch.eig** 是 PyTorch 中用于计算方阵特征值和特征向量的函数。对于一个给定的方阵 $ A $，特征值和特征向量满足方程 $ A \mathbf{v} = \lambda \mathbf{v} $，其中 $ \lambda $ 是特征值，$ \mathbf{v} $ 是对应的特征向量。
+**torch.eig** 是 PyTorch 中用于**计算方阵特征值和特征向量**的函数。对于一个给定的方阵 $ A $，特征值和特征向量满足方程 $ A \mathbf{v} = \lambda \mathbf{v} $，其中 $ \lambda $ 是特征值，$ \mathbf{v} $ 是对应的特征向量。
 
 **（1）**基本用法
 
@@ -3131,7 +3142,7 @@ print("特征向量:", eigenvectors)
 
 ### torch.linalg.qr
 
-**torch.qr** 是 PyTorch 中用于计算一个矩阵的 QR 分解的函数。QR 分解是将一个矩阵 $ A $ 分解为一个正交矩阵 $ Q $ 和一个上三角形矩阵 $ R $ 的乘积，即 $ A = QR $。
+**torch.qr** 是 PyTorch 中用于计算一个矩阵的 **QR 分解**的函数。QR 分解是将一个矩阵 $ A $ 分解为一个正交矩阵 $ Q $ 和一个上三角形矩阵 $ R $ 的乘积，即 $ A = QR $。
 
 **（1）**基本用法
 
@@ -3190,7 +3201,7 @@ R: tensor([[ -14.0000,  -21.0000,   14.0000],
 
 ### torch.svd
 
-**torch.svd** 是 PyTorch 中用于计算一个矩阵的奇异值分解（Singular Value Decomposition，简称 SVD）的函数。奇异值分解是将一个矩阵 $ A $ 分解为三个特定的矩阵相乘的形式：$ A = U \Sigma V^T $，其中 $ U $ 和 $ V $ 是正交矩阵，$ \Sigma $ 是对角矩阵，对角线上的元素称为奇异值。
+**torch.svd** 是 PyTorch 中用于计算一个矩阵的**奇异值分解**（Singular Value Decomposition，简称 SVD）的函数。奇异值分解是将一个矩阵 $ A $ 分解为三个特定的矩阵相乘的形式：$ A = U \Sigma V^T $，其中 $ U $ 和 $ V $ 是正交矩阵，$ \Sigma $ 是对角矩阵，对角线上的元素称为**奇异值**。
 
 **（1）**基本用法
 
@@ -3262,7 +3273,7 @@ $$
 $$
 这意味着当输入 **x** 大于0时，输出就是 **x**；如果 **x** 小于或等于0，输出就是0。
 
-**F** 是 PyTorch 中的 **torch.nn.functional** 的别名，它包含了所有神经网络模块的函数形式。使用 **F.relu** 可以方便地应用 ReLU 激活函数，而不需要定义一个 **ReLU** 模块的实例。
+**F** 是 PyTorch 中的 **torch.nn.functional** 的别名，它包含了**所有神经网络模块的函数形式**。使用 **F.relu** 可以方便地应用 ReLU 激活函数，而不需要定义一个 **ReLU** 模块的实例。
 
 以下是 **F.relu** 的基本用法：
 
@@ -3333,7 +3344,7 @@ Sigmoid 函数的特点是它在输入值很大或很小的时候，梯度会接
 
 ### F.tanh
 
-在 PyTorch 中，**F.tanh** 是一个应用双曲正切（Hyperbolic Tangent）激活函数的函数。**tanh** 函数是一种将输入值线性映射到 (-1, 1) 区间的函数，其数学表达式为：
+在 PyTorch 中，**F.tanh** 是一个应用**双曲正切**（Hyperbolic Tangent）激活函数的函数。**tanh** 函数是一种将输入值线性映射到 (-1, 1) 区间的函数，其数学表达式为：
 
 $$
 \text{tanh}(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}
@@ -3373,7 +3384,7 @@ tensor([-0.7616,  0.0000,  0.7616,  0.9640])
 
 ### F.softmax
 
-在 PyTorch 中，**F.softmax** 是一个应用 softmax 函数的函数。Softmax 函数通常用于多分类问题中，将一个实数向量压缩成一个概率分布，使得所有输出值都是非负的，并且它们的和为1。
+在 PyTorch 中，**F.softmax** 是一个应用 softmax 函数的函数。Softmax 函数**通常用于多分类问题**中，将一个实数向量压缩成一个概率分布，使得所有输出值都是非负的，并且它们的和为1。
 
 Softmax 函数的数学表达式为：
 
@@ -3618,13 +3629,37 @@ torch.Size([2, 3, 5])
 
 **F.embedding** 是实现词嵌入和其他类型的离散数据嵌入的关键函数，在构建需要处理离散输入的模型时非常有用。在 PyTorch 中，通常与 **torch.nn.Embedding** 模块一起使用，该模块是一个包含 **F.embedding** 调用和权重矩阵的类，可以更方便地集成到神经网络中。
 
+```python
+print(embedding_weight)
+print(output)
+```
 
+```
+tensor([[ 1.0151, -0.4468,  0.0300, -0.5012, -1.0284],
+        [-1.1906,  0.5920,  0.0047,  0.1329,  0.2585],
+        [ 0.7400, -0.2472, -0.3951,  0.1465,  0.5017],
+        [ 0.7265,  0.3756,  0.8110, -0.4335, -0.5873],
+        [-0.3193,  0.2274,  0.9373,  0.9046, -1.8927],
+        [-0.1108, -2.7228, -0.2997,  0.0717, -0.8029],
+        [-0.5313, -0.7501, -0.6340, -0.8243,  1.2439],
+        [-0.2650,  0.0255,  1.7213,  2.7594, -0.3908],
+        [-0.4739,  0.5343, -0.6956,  0.9098,  0.0668],
+        [ 2.2044, -1.8256,  0.0467, -0.9729, -0.3841]])
+
+tensor([[[-1.1906,  0.5920,  0.0047,  0.1329,  0.2585],
+         [ 0.7400, -0.2472, -0.3951,  0.1465,  0.5017],
+         [ 0.7265,  0.3756,  0.8110, -0.4335, -0.5873]],
+
+        [[-0.3193,  0.2274,  0.9373,  0.9046, -1.8927],
+         [-0.1108, -2.7228, -0.2997,  0.0717, -0.8029],
+         [-0.5313, -0.7501, -0.6340, -0.8243,  1.2439]]])
+```
 
 ## **损失函数**
 
 ### F.binary_cross_entropy
 
-在 PyTorch 中，**F.binary_cross_entropy**（简称 BCE）是一个函数，用于计算二元交叉熵损失。这种损失函数常用于二分类问题，尤其是当模型的输出是概率分布（例如，使用 sigmoid 激活函数后的输出）时。
+在 PyTorch 中，**F.binary_cross_entropy**（简称 BCE）是一个函数，用于计算**二元交叉熵损失**。这种损失函数常用于**二分类问题**，尤其是当模型的输出是概率分布（例如，使用 sigmoid 激活函数后的输出）时。
 
 二元交叉熵损失的数学定义是：
 
@@ -3663,7 +3698,7 @@ print(loss.item())
 
 ### F.mse_loss
 
-在 PyTorch 中，**F.mse_loss** 是一个函数，用于计算均方误差（Mean Squared Error, MSE）损失。均方误差是回归问题中常用的损失函数，用于衡量模型预测值与真实值之间差异的平方的平均值。
+在 PyTorch 中，**F.mse_loss** 是一个函数，用于计算**均方误差**（Mean Squared Error, MSE）损失。均方误差是**回归问题**中常用的损失函数，用于衡量模型预测值与真实值之间差异的平方的平均值。
 
 均方误差损失的数学定义是：
 
@@ -3706,7 +3741,7 @@ print(loss.item())
 
 ### F.cross_entropy
 
-在 PyTorch 中，**F.cross_entropy** 是一个函数，用于计算交叉熵损失，这在多分类问题中非常常见。此函数结合了 softmax 激活函数和交叉熵损失的计算，一步完成分类问题中从 logits 到损失值的计算。
+在 PyTorch 中，**F.cross_entropy** 是一个函数，用于计算交叉熵损失，这在**多分类问题**中非常常见。此函数结合了 softmax 激活函数和交叉熵损失的计算，一步完成分类问题中从 logits 到损失值的计算。
 
 交叉熵损失的数学定义是：
 
@@ -3725,13 +3760,14 @@ import torch.nn.functional as F
 
 # 假设我们有以下模型预测的logits和对应的真实标签
 # logits 的形状通常是 [batch_size, num_classes]
-logits = torch.tensor([[1.0, 2.0, 3.0], [1.0, 5.0, 1.0]])
+logits = torch.tensor([[1.0, 2.0, 3.0], 
+                       [1.0, 5.0, 1.0]])
+
 # 真实标签的每个元素是一个表示类别的整数，从 0 到 num_classes - 1
 true_labels = torch.tensor([2, 1])
 
 # 计算交叉熵损失
 loss = F.cross_entropy(logits, true_labels)
-
 print(loss.item())
 ```
 
@@ -3747,7 +3783,9 @@ print(loss.item())
 
 ## torch.utils.data
 
-在 PyTorch 中，**torch.utils.data.TensorDataset**、**Dataset**，和 **DataLoader** 是用于构建和管理数据集以及进行批量加载的组件。下面是每个组件的简要说明和用途：
+在 PyTorch 中，**torch.utils.data.TensorDataset**、**Dataset**，和 **DataLoader** 是用于构建和管理数据集以及进行批量加载的组件。
+
+下面是每个组件的简要说明和用途：
 
 ### torch.utils.data.TensorDataset
 
@@ -4468,7 +4506,7 @@ input_data = torch.randn(1, 3, 6, 6)  # 假设是 1x3x6x6 的张量
 # 应用 ZeroPad2d 层
 output_data = padding_layer(input_data)
 
-print(output_data.shape)  # 输出形状将反映填充后的尺寸 [1, 3, 10, 11]
+print(output_data.shape)  # 输出形状将反映填充后的尺寸 
 ```
 
 ```python
@@ -4732,6 +4770,8 @@ $$
 
 **nn.Conv1d** 是处理一维序列数据的强大工具，由于其局部感受野和平移不变性，它在多种一维数据处理任务中得到了广泛应用。在 PyTorch 中，**nn.Conv1d** 提供了一种简单而有效的方式来实现一维卷积。
 
+
+
 ### nn.Conv2d
 
 **（1）**nn.Conv2d 简介
@@ -4766,6 +4806,7 @@ print(output_data.shape)  # 输出形状将反映卷积层的输出 [5, 32, 26, 
 在这个例子中，我们创建了一个 **nn.Conv2d** 实例，指定了输入通道数 **in_channels=1**，输出通道数 **out_channels=32**，卷积核大小 **kernel_size=3**，步长 **stride=1** 和填充 **padding=1**。然后，我们将二维卷积应用于输入数据 **input_data**。
 
 **（4）**参数说明
+
 - **in_channels** (int): 输入数据的通道数。
 - **out_channels** (int): 卷积层输出的通道数，也是滤波器的数量。
 - **kernel_size** (int 或 tuple): 卷积核的大小。可以是一个整数，表示正方形卷积核，或是一个元组，表示不同尺寸的卷积核。
@@ -4773,8 +4814,8 @@ print(output_data.shape)  # 输出形状将反映卷积层的输出 [5, 32, 26, 
 - **padding** (int 或 tuple, optional): 输入数据边缘的填充大小。可以是一个整数或元组。
 
 **（5）**卷积层的输出尺寸
-输出特征图的尺寸可以通过以下公式计算：
 
+输出特征图的尺寸可以通过以下公式计算：
 
 $$
 \text{output\_size} = \left\lfloor \frac{\text{input\_size} + 2 \times \text{padding} - \text{kernel\_size}}{\text{stride}} + 1 \right\rfloor
@@ -4791,6 +4832,8 @@ $$
 - 选择合适的填充 **padding** 可以控制输出特征图的尺寸，常用的填充策略有“同边缘填充”（相同大小的输出）和“零填充”（增加边缘的尺寸）。
 
 **nn.Conv2d** 是处理二维数据的强大工具，由于其局部感受野和平移不变性，它在多种图像处理任务中得到了广泛应用。在 PyTorch 中，**nn.Conv2d** 提供了一种简单而有效的方式来实现二维卷积。
+
+
 
 ### nn.Conv3d
 
@@ -5521,9 +5564,11 @@ print(cn.shape)    # [num_layers, batch_size, hidden_size]
 
 **nn.LSTM** 是处理序列数据的强大工具，由于其门控机制，它能够捕捉长期依赖关系，这在许多 NLP 任务和时间序列分析中非常有用。
 
+
+
 ### nn.GRU
 
-在 PyTorch 中，**nn.GRU** 是一个模块，它实现了门控循环单元（Gated Recurrent Unit，GRU）。GRU 是一种用于处理序列数据的循环神经网络（RNN）变种，它通过引入门控机制来解决传统 RNN 的梯度消失和梯度爆炸问题。
+在 PyTorch 中，**nn.GRU** 是一个模块，它实现了**门控循环单元**（Gated Recurrent Unit，GRU）。GRU 是一种用于处理序列数据的循环神经网络（RNN）变种，它通过引入门控机制来解决传统 RNN 的梯度消失和梯度爆炸问题。
 
 **（1）**GRU 的基本原理
 
@@ -5574,9 +5619,11 @@ print(hn.shape)     # [num_layers, batch_size, hidden_size]
 
 **nn.GRU** 是一种适用于处理序列数据的模型，特别是在自然语言处理（NLP）和时间序列分析等领域。由于其结构简单且计算效率高，GRU 在许多实际应用中非常流行。
 
+
+
 ### nn.RNN
 
-在 PyTorch 中，**nn.RNN** 是一个模块，它实现了基本的循环神经网络（Recurrent Neural Network，RNN）。RNN 能够处理序列数据，通过在序列的每个时间步上传递隐藏状态来捕捉时间动态。
+在 PyTorch 中，**nn.RNN** 是一个模块，它实现了基本的**循环神经网络**（Recurrent Neural Network，RNN）。RNN 能够处理序列数据，通过在序列的每个时间步上传递隐藏状态来捕捉时间动态。
 
 **（1）**RNN 的基本原理
 
@@ -5627,9 +5674,11 @@ print(hn.shape)     # [num_layers, batch_size, hidden_size]
 
 **nn.RNN** 可以用于处理序列数据，但由于其简单的结构，它可能不如 LSTM 或 GRU 在处理长序列时有效。在实践中，对于需要捕捉长期依赖关系的任务，通常推荐使用 LSTM 或 GRU。然而，对于某些任务，尤其是当序列较短或计算资源有限时，RNN 仍然是一个可行的选择。
 
+
+
 ### nn.LSTMCell
 
-在 PyTorch 中，**nn.LSTMCell** 是一个模块，它实现了长短期记忆单元（LSTM cell），这是构成 LSTM 网络的基本单元。与 **nn.LSTM** 不同，**nn.LSTMCell** 是单个的 LSTM 单元，不涉及堆叠多个层。它允许用户以更细粒度的方式构建和控制循环网络。
+在 PyTorch 中，**nn.LSTMCell** 是一个模块，它实现了**长短期记忆单元**（LSTM cell），这是构成 LSTM 网络的基本单元。与 **nn.LSTM** 不同，**nn.LSTMCell** 是单个的 LSTM 单元，不涉及堆叠多个层。它允许用户以更细粒度的方式构建和控制循环网络。
 
 **（1）**LSTM Cell 的基本原理
 
@@ -5678,9 +5727,11 @@ print(c1)  # 当前时间步的细胞状态
 
 **nn.LSTMCell** 提供了一种底层的方式来构建和控制 LSTM 网络。在某些情况下，你可能需要直接使用 LSTM cell，例如在自定义的循环网络结构中，或者当你需要逐个时间步地处理数据时。然而，对于大多数常见的用例，使用 **nn.LSTM** 可能更方便，因为它自动处理了多个时间步和层。
 
+
+
 ### nn.GRUCell
 
-在 PyTorch 中，**nn.GRUCell** 是一个模块，它实现了门控循环单元（Gated Recurrent Unit Cell，GRU Cell）。这是构成 GRU 网络的基本单元，用于处理序列数据。与 **nn.GRU** 不同，**nn.GRUCell** 是单个的 GRU 单元，不涉及堆叠多个层，提供了更细粒度的控制。
+在 PyTorch 中，**nn.GRUCell** 是一个模块，它实现了**门控循环单元**（Gated Recurrent Unit Cell，GRU Cell）。这是构成 GRU 网络的基本单元，用于处理序列数据。与 **nn.GRU** 不同，**nn.GRUCell** 是单个的 GRU 单元，不涉及堆叠多个层，提供了更细粒度的控制。
 
 **（1）**GRU Cell 的基本原理
 
@@ -5724,6 +5775,8 @@ print(h1)  # 当前时间步的隐藏状态
 - **h1** 是 GRU cell 的当前隐藏状态。
 
 **nn.GRUCell** 提供了一种底层的方式来构建和控制 GRU 网络。在某些情况下，你可能需要直接使用 GRU cell，例如在自定义的循环网络结构中，或者当你需要逐个时间步地处理数据时。然而，对于大多数常见的用例，使用 **nn.GRU** 可能更方便，因为它自动处理了多个时间步和层。
+
+
 
 ### nn.RNNCell
 
@@ -5998,6 +6051,8 @@ print(attn_output.shape)  # 输出的形状将是 [sequence_length, batch_size, 
 
 多头注意力机制由于其能够捕捉输入数据在多个子空间中的信息，已经成为许多 NLP 任务中的一个强大工具。在 PyTorch 中，**nn.MultiheadAttention** 提供了一种方便的方式来实现这一机制。
 
+
+
 # 参数初始化
 
 ## nn.Parameter
@@ -6249,6 +6304,8 @@ output = net(x)
 
 使用 **nn.Sigmoid** 作为模块可以在定义模型的 **forward** 方法时使代码更加清晰和易于管理。此外，由于 Sigmoid 的导数具有良好的性质，它在某些情况下比其他激活函数更容易优化。然而，也应注意 Sigmoid 函数可能会引起梯度消失问题，特别是在输入值绝对值较大时。
 
+
+
 ## nn.Tanh
 
 在 PyTorch 中，**nn.Tanh** 是一个模块，它实现了双曲正切（Hyperbolic Tangent）激活函数。**Tanh** 函数是一种将输入线性映射到 (-1, 1) 区间的函数，其数学表达式为：
@@ -6361,11 +6418,13 @@ output = net(x)
 
 Softmax 函数通常用于神经网络的输出层，以生成类别的概率。在实际应用中，Softmax 函数经常与交叉熵损失函数（cross-entropy loss）一起使用，因为这种组合在计算上是稳定的。需要注意的是，当输入包含非常大的正值时，直接应用 softmax 可能会导致数值稳定性问题（例如数值溢出）。在这种情况下，通常会对输入进行规范化，例如通过减去最大值或者使用对数softmax。
 
+
+
 ## nn.Threshold
 
 **（1）**nn.Threshold 简介
 
-**nn.Threshold** 是 PyTorch 中的一个模块，它实现了阈值（Threshold）激活函数。这个函数是一个简单的非线性操作，用于将输入值限制在某个阈值以上或以下。**nn.Threshold** 通常用作一个激活函数，将输入张量中所有大于阈值的元素设置为另一个指定的值，而所有小于或等于阈值的元素则被设置为 0。
+**nn.Threshold** 是 PyTorch 中的一个模块，它实现了**阈值（Threshold）激活函数**。这个函数是一个简单的非线性操作，用于将输入值限制在某个阈值以上或以下。**nn.Threshold** 通常用作一个激活函数，将输入张量中所有大于阈值的元素设置为另一个指定的值，而所有小于或等于阈值的元素则被设置为 0。
 
 **（2）**基本原理
 
@@ -6413,6 +6472,8 @@ print(output_data)  # 输出将会是 [-0., 10., 10., -0., 10.]
 - 阈值 **threshold** 和 **value** 是超参数，可以根据具体任务和数据集进行调整。
 
 **nn.Threshold** 是一个基本的激活函数，虽然在现代深度学习中不如 **ReLU** 或 **Sigmoid** 等其他激活函数常用，但它在某些特定的应用场景下可能非常有用。在 PyTorch 中，**nn.Threshold** 提供了一种简单而有效的方式来实现阈值操作。
+
+
 
 # 损失函数
 
@@ -6495,7 +6556,7 @@ for epoch in range(num_epochs):
 
 ## nn.L1Loss
 
-在 PyTorch 中，**nn.L1Loss** 是一个模块，它实现了 L1 损失（也称为平均绝对偏差损失，Mean Absolute Error Loss）函数。L1 损失计算的是模型预测值与真实值之间差的绝对值的平均。
+在 PyTorch 中，**nn.L1Loss** 是一个模块，它实现了 **L1 损失（也称为平均绝对偏差损失**，Mean Absolute Error Loss）函数。L1 损失计算的是模型预测值与真实值之间差的绝对值的平均。
 
 L1 损失的数学定义是：
 
@@ -6576,7 +6637,7 @@ for epoch in range(num_epochs):
 
 ## nn.SmoothL1Loss
 
-在 PyTorch 中，**nn.SmoothL1Loss** 是一个实现了平滑L1损失（Smooth L1 Loss）的模块，也称为Huber损失（Huber Loss）。平滑L1损失是一种结合了L1损失和L2损失的特性的损失函数，它在小误差时表现为L1损失，在大误差时表现为L2损失，从而在不同情况下都能提供良好的性能。
+在 PyTorch 中，**nn.SmoothL1Loss** 是一个实现了**平滑L1损失**（Smooth L1 Loss）的模块，也称为Huber损失（Huber Loss）。平滑L1损失是一种结合了L1损失和L2损失的特性的损失函数，它在小误差时表现为L1损失，在大误差时表现为L2损失，从而在不同情况下都能提供良好的性能。
 
 平滑L1损失的数学定义是：
 
@@ -6658,7 +6719,7 @@ for epoch in range(num_epochs):
 
 ## nn.BCELoss
 
-在 PyTorch 中，**nn.BCELoss** 是一个模块，它实现了二元交叉熵损失（Binary Cross Entropy Loss）函数。这种损失函数用于二元分类问题，即当输出是0或1的概率时。**nn.BCELoss** 计算的是模型输出和目标标签之间的二元交叉熵。
+在 PyTorch 中，**nn.BCELoss** 是一个模块，它实现了**二元交叉熵损失**（Binary Cross Entropy Loss）函数。这种损失函数用于二元分类问题，即当输出是0或1的概率时。**nn.BCELoss** 计算的是模型输出和目标标签之间的二元交叉熵。
 
 二元交叉熵损失的数学定义是：
 
@@ -6732,6 +6793,8 @@ for epoch in range(num_epochs):
 ```
 
 在这个例子中，我们首先对模型的输出应用了 **torch.sigmoid** 函数来获取预测概率，然后使用 **nn.BCELoss** 计算损失。使用 **nn.BCELoss** 作为模块可以在定义模型的损失计算时使代码更加清晰和易于管理。
+
+
 
 ## nn.BCEWithLogitsLoss
 
@@ -6813,7 +6876,7 @@ for epoch in range(num_epochs):
 
 ## nn.CrossEntropyLoss
 
-在 PyTorch 中，**nn.CrossEntropyLoss** 是一个模块，它实现了交叉熵损失函数，通常用于多分类问题。这个损失函数结合了 softmax 激活函数和交叉熵损失的计算，一步完成分类问题中从 logits 到损失值的计算。
+在 PyTorch 中，**nn.CrossEntropyLoss** 是一个模块，它实现了**交叉熵损失函数**，通常用于多分类问题。这个损失函数结合了 softmax 激活函数和交叉熵损失的计算，一步完成分类问题中从 logits 到损失值的计算。
 
 交叉熵损失的数学定义是：
 
@@ -6892,9 +6955,11 @@ for epoch in range(num_epochs):
 
 使用 **nn.CrossEntropyLoss** 作为模块可以在定义模型的损失计算时使代码更加清晰和易于管理。交叉熵损失由于其在多分类问题中的有效性，在深度学习中得到了广泛的应用。
 
+
+
 ## nn.NLLLoss
 
-在 PyTorch 中，**nn.NLLLoss**（Negative Log Likelihood Loss，负对数似然损失）是一个损失函数，通常与多分类问题结合使用。它计算的是输入数据的对数似然的负值，经常与 softmax 函数一起使用，特别是在分类问题中。
+在 PyTorch 中，**nn.NLLLoss**（Negative Log Likelihood Loss，**负对数似然损失**）是一个损失函数，通常与多分类问题结合使用。它计算的是输入数据的对数似然的负值，经常与 softmax 函数一起使用，特别是在分类问题中。
 
 **nn.NLLLoss** 通常用于以下场景：当你有一批独立的对象（不要求对象间的概率和为1），每个对象都有一个真实标签时。它结合了 log-likelihood 的计算和 softmax 函数。实际上，**nn.NLLLoss** 等价于 **nn.CrossEntropyLoss** 应用于每个样本独立，但没有对每个样本的输出求和。
 
@@ -7081,6 +7146,8 @@ print(loss.item())
 
 **nn.AdaptiveLogSoftmaxWithLoss** 通常用于处理具有大量类别的场景，如语言模型中的词汇预测，手写数字识别等。它通过减少计算和内存需求，使得在这些场景下的训练变得更加高效。
 
+
+
 # 优化器
 
 ## torch.optim.Adam
@@ -7174,7 +7241,7 @@ Adagrad 算法的一个特点是它将累积的梯度平方和加到学习率的
 
 ##  torch.optim.SGD
 
-在 PyTorch 中，**torch.optim.SGD** 是一个类，它实现了随机梯度下降（Stochastic Gradient Descent，SGD）优化算法。SGD 是一种基础且广泛使用的优化算法，用于通过调整模型参数来最小化损失函数。
+在 PyTorch 中，**torch.optim.SGD** 是一个类，它实现了**随机梯度下降**（Stochastic Gradient Descent，SGD）优化算法。SGD 是一种基础且广泛使用的优化算法，用于通过调整模型参数来最小化损失函数。
 
 以下是 **torch.optim.SGD** 的基本用法：
 
