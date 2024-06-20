@@ -3,7 +3,7 @@ Long Short-term Memory，长短期记忆网络  [github](http://colah.github.io/
 
 # LSTM的提出
 
-在LSTM提出之前，RNN的训练基于BPTT(Back-Propagation Through Time)或者RTRL(Real Time Recurrent Learning)。通过这两种方式对RNN进行训练时，当误差在序列内进行传播时，会出现梯度消失或者爆炸的情况。
+在LSTM提出之前，RNN的训练基于BPTT（Back-Propagation Through Time）或者RTRL（Real Time Recurrent Learning）。通过这两种方式对RNN进行训练时，当误差在序列内进行传播时，会出现梯度消失或者爆炸的情况。
 
 当出现梯度消失时，在训练时，权重会出现摇摆和震荡；梯度消失使得训练会耗费大量的时间，甚至干脆就停滞。
 
@@ -22,7 +22,7 @@ $$
 这样，梯度消失或者爆炸的问题是不是就可以解决了？
 
 
-因此，Sepp Hochreiter和Jürgen Schmidhuber提出了CEC(Constant Error Carrousel)，这也是LSTM的核心特点。
+因此，Sepp Hochreiter和Jürgen Schmidhuber提出了CEC（Constant Error Carrousel），这也是LSTM的核心特点。
 
 
 所谓CEC，就是令
@@ -48,7 +48,7 @@ LSTM和传统RNN结构类似，然而内部结构却有所不同
 
 ![](./images/LSTM/LSTM-20201214-201033-384758.png)
 
-水平线就是LSTM中的**状态信息**，可以把这个理解为记忆(memory)。 
+水平线就是LSTM中的**状态信息**，可以把这个理解为记忆（memory）。 
 
 细胞状态$C_t$横向穿过，看起来像一条传送带，只是经过了少量的线性变化，因此状态容易保持下来。
 

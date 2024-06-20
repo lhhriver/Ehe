@@ -142,7 +142,7 @@ list的尺寸是可以设置的超参，**通常是训练集的最长句子的�
 
 ![](./images/Tranformer/Tranformer-20201214-201034-609965.png)
 
-每个位置的词向量被送入self-attention模块，然后是前向网络(对每个向量都是完全相同的网络结构)
+每个位置的词向量被送入self-attention模块，然后是前向网络（对每个向量都是完全相同的网络结构）
 
 ## **Self-Attention at a High Level**
 

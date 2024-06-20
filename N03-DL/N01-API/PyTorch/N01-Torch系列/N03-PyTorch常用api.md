@@ -1219,6 +1219,78 @@ transposed_tensor_t = tensor.t()
 
 
 
+## 其它
+
+> 在PyTorch中，矩阵和张量的维度变化是常见的操作，以下是一些用于维度变化的方法：
+>
+> 1. **permute**：
+>    `permute` 方法用于重新排列张量的维度。你可以指定新的维度顺序，例如 `permute(1, 0, 2)` 会将张量的第0维和第1维交换位置。
+>
+>    ```python
+>    x = torch.randn(2, 3, 4)  # 原始形状为 [2, 3, 4]
+>    x = x.permute(1, 0, 2)    # 重新排列后形状变为 [3, 2, 4]
+>    ```
+>
+> 2. **transpose**：
+>    `transpose` 方法用于交换张量的最后两个维度。这是对二维张量（矩阵）的转置操作。对于更高维度的张量，你可以使用 `transpose` 来交换任意两个维度。
+>
+>    ```python
+>    x = torch.randn(2, 3)    # 原始形状为 [2, 3]
+>    x = x.transpose(0, 1)    # 转置后形状变为 [3, 2]
+>    ```
+>
+> 3. **view**：
+>    `view` 方法用于重塑张量，可以改变张量的形状而不改变其数据。使用 `-1` 可以自动计算该维度的大小以保持元素总数不变。
+>
+>    ```python
+>    x = torch.randn(2, 3, 4)  # 原始形状为 [2, 3, 4]
+>    x = x.view(-1, 4)        # 重塑后形状变为 [6, 4]
+>    ```
+>
+> 4. **reshape**（在最新版本的PyTorch中，推荐使用 `view` 代替 `reshape`）：
+>    `reshape` 方法也用于改变张量的形状，类似于 `view`，但它返回一个新的张量副本而不是原地修改。
+>
+>    ```python
+>    x = torch.randn(2, 3, 4)  # 原始形状为 [2, 3, 4]
+>    x = x.reshape(6, 4)        # 重塑后形状变为 [6, 4]
+>    ```
+>
+> 5. **squeeze**：
+>    `squeeze` 方法用于去除张量中大小为1的维度。你可以指定要压缩的维度，或者省略参数以压缩所有大小为1的维度。
+>
+>    ```python
+>    x = torch.randn(2, 1, 3, 1)  # 原始形状为 [2, 1, 3, 1]
+>    x = x.squeeze()               # 压缩后形状变为 [2, 3]
+>    ```
+>
+> 6. **unsqueeze**：
+>    `unsqueeze` 方法用于增加维度，你可以指定在哪个位置增加一个大小为1的维度。
+>
+>    ```python
+>    x = torch.randn(2, 3)        # 原始形状为 [2, 3]
+>    x = x.unsqueeze(0)           # 增加一维后形状变为 [1, 2, 3]
+>    ```
+>
+> 7. **flatten**（在最新版本的PyTorch中，`flatten` 被重命名为 `view`）：
+>    `flatten` 方法用于将张量展平为一维，或者展平从指定维度开始的所有维度。
+>
+>    ```python
+>    x = torch.randn(2, 3, 4)    # 原始形状为 [2, 3, 4]
+>    x = x.flatten(1)            # 展平后形状变为 [2, 12]
+>    ```
+>
+> 8. **roll**：
+>    `roll` 方法将张量的维度滚动到指定位置，不改变张量中元素的顺序。
+>
+>    ```python
+>    x = torch.randn(2, 2)        # 原始形状为 [2, 2]
+>    x = x.roll(1, dims=1)       # 沿着第1维滚动，形状不变，但元素顺序改变
+>    ```
+>
+> 这些方法可以组合使用，以实现复杂的张量变换，满足不同深度学习模型中对数据形状的要求。
+
+
+
 ## **合并分割**
 
 ### torch.cat
@@ -5526,11 +5598,14 @@ import torch
 import torch.nn as nn
 
 # 定义 LSTM 层
+# input_size=10：输入特征的维度。
+# hidden_size=20：隐藏状态的特征维度。
+# num_layers=2：LSTM堆叠的层数。
 lstm = nn.LSTM(input_size=10, hidden_size=20, num_layers=2, batch_first=True)
 
 # 创建输入数据
-sequence_length = 5
-batch_size = 3
+sequence_length = 5 # 序列的长度
+batch_size = 3 # 批次中序列的数量
 input_data = torch.randn(sequence_length, batch_size, 10)  # [sequence_length, batch_size, input_size]
 
 # 初始化隐藏状态和细胞状态
@@ -5861,6 +5936,7 @@ import torch.nn as nn
 class TransformerModel(nn.Module):
     def __init__(self, src_vocab_size, tgt_vocab_size, d_model, nhead, num_encoder_layers, num_decoder_layers, dim_feedforward, max_seq_length):
         super(TransformerModel, self).__init__()
+        
         self.encoder = nn.TransformerEncoder(
             nn.TransformerEncoderLayer(
                 d_model=d_model,
@@ -5869,6 +5945,7 @@ class TransformerModel(nn.Module):
             ),
             num_layers=num_encoder_layers,
         )
+        
         self.decoder = nn.TransformerDecoder(
             nn.TransformerDecoderLayer(
                 d_model=d_model,
@@ -5877,6 +5954,7 @@ class TransformerModel(nn.Module):
             ),
             num_layers=num_decoder_layers,
         )
+        
         self.src_embedding = nn.Embedding(src_vocab_size, d_model)
         self.tgt_embedding = nn.Embedding(tgt_vocab_size, d_model)
         self.output_linear = nn.Linear(d_model, tgt_vocab_size)
