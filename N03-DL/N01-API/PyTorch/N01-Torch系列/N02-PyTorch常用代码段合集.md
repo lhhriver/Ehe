@@ -1,6 +1,6 @@
 # 基本配置
 
-## **导入包和版本查询**
+## 导入包和版本查询
 
 ```python
 import torch
@@ -13,7 +13,14 @@ print(torch.backends.cudnn.version())
 print(torch.cuda.get_device_name(0))
 ```
 
-## **可复现性**
+```
+1.7.1+cu101
+10.1
+7604
+NVIDIA GeForce GTX 1660
+```
+
+## 可复现性
 
 在硬件设备（CPU、GPU）不同时，完全的可复现性无法保证，即使随机种子相同。但是，在同一个设备上，应该保证可复现性。具体做法是，在程序开始的时候固定torch的随机种子，同时也把numpy的随机种子固定。
 
@@ -26,7 +33,7 @@ torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
 ```
 
-## **显卡设置**
+## 显卡设置*
 
 如果只需要一张显卡
 
@@ -65,13 +72,13 @@ nvidia-smi --gpu-reset -i [gpu_id]
 
 # 张量（Tensor）处理
 
-## **张量的数据类型**
+## 张量的数据类型
 
 PyTorch有9种CPU张量类型和9种GPU张量类型。
 
 ![image-20220415082604322](./images/N02-PyTorch常用代码段合集/image-20220415082604322.png)
 
-## **张量基本信息**
+## 张量基本信息
 
 ```python
 tensor = torch.randn(3,4,5)
@@ -80,7 +87,13 @@ print(tensor.size())  # 张量的shape，是个元组
 print(tensor.dim())   # 维度的数量
 ```
 
-## **命名张量**
+```
+torch.FloatTensor
+torch.Size([3, 4, 5])
+3
+```
+
+## 命名张量
 
 张量命名是一个非常有用的方法，这样可以方便地使用维度的名字来做索引或其他操作，大大提高了可读性、易用性，防止出错。
 
@@ -102,7 +115,7 @@ tensor = torch.rand(3,4,1,2,names=('C', 'N', 'H', 'W'))
 tensor = tensor.align_to('N', 'C', 'H', 'W')
 ```
 
-## **数据类型转换**
+## 数据类型转换
 
 ```python
 # 设置默认类型，pytorch中的FloatTensor远远快于DoubleTensor
@@ -115,7 +128,7 @@ tensor = tensor.float()
 tensor = tensor.long()
 ```
 
-## **torch.Tensor与np.ndarray转换**
+## torch.Tensor与np.ndarray转换
 
 除了CharTensor，其他所有CPU上的张量都支持转换为numpy格式然后再转换回来。
 
@@ -125,7 +138,7 @@ tensor = torch.from_numpy(ndarray).float()
 tensor = torch.from_numpy(ndarray.copy()).float() # If ndarray has negative stride.
 ```
 
-## **Torch.tensor与PIL.Image转换**
+## Torch.tensor与PIL.Image转换
 
 ```python
 # pytorch中的张量默认采用[N, C, H, W]的顺序，并且数据范围在[0,1]，需要进行转置和规范化
@@ -138,20 +151,20 @@ tensor = torch.from_numpy(np.asarray(PIL.Image.open(path))).permute(2,0,1).float
 tensor = torchvision.transforms.functional.to_tensor(PIL.Image.open(path)) # Equivalently way
 ```
 
-## **np.ndarray与PIL.Image的转换**
+## np.ndarray与PIL.Image的转换
 
 ```python
 image = PIL.Image.fromarray(ndarray.astype(np.uint8))
 ndarray = np.asarray(PIL.Image.open(path))
 ```
 
-## **从只包含一个元素的张量中提取值**
+## 从只包含一个元素的张量中提取值
 
 ```python
 value = torch.rand(1).item()
 ```
 
-## **张量形变**
+## 张量形变
 
 ```python
 # 在将卷积层输入全连接层的情况下通常需要对张量做形变处理，
@@ -161,13 +174,13 @@ shape = (6, 4)
 tensor = torch.reshape(tensor, shape)
 ```
 
-## **打乱顺序**
+## 打乱顺序
 
 ```python
 tensor = tensor[torch.randperm(tensor.size(0))]  # 打乱第一个维度
 ```
 
-## **水平翻转**
+## 水平翻转
 
 ```python
 # pytorch不支持tensor[::-1]这样的负步长操作，水平翻转可以通过张量索引实现
@@ -175,7 +188,7 @@ tensor = tensor[torch.randperm(tensor.size(0))]  # 打乱第一个维度
 tensor = tensor[:,:,:,torch.arange(tensor.size(3) - 1, -1, -1).long()]
 ```
 
-## **复制张量**
+## 复制张量
 
 |       Operation       | New/Shared memory | Still in computation graph |
 | :-------------------: | :---------------: | :------------------------: |
@@ -183,7 +196,7 @@ tensor = tensor[:,:,:,torch.arange(tensor.size(3) - 1, -1, -1).long()]
 |    tensor.detach()    |      Shared       |             No             |
 | tensor.detach.clone() |        New        |             No             |
 
-## **张量拼接**
+## 张量拼接
 
 ```python
 '''
@@ -191,11 +204,12 @@ tensor = tensor[:,:,:,torch.arange(tensor.size(3) - 1, -1, -1).long()]
 而torch.stack会新增一维。例如当参数是3个10x5的张量，torch.cat的结果是30x5的张量，
 而torch.stack的结果是3x10x5的张量。
 '''
+
 tensor = torch.cat(list_of_tensors, dim=0)
 tensor = torch.stack(list_of_tensors, dim=0)
 ```
 
-## **将整数标签转为one-hot编码**
+## 将整数标签转为one-hot编码
 
 ```python
 # pytorch的标记默认从0开始
@@ -206,7 +220,7 @@ one_hot = torch.zeros(N, num_classes).long()
 one_hot.scatter_(dim=1, index=torch.unsqueeze(tensor, dim=1), src=torch.ones(N, num_classes).long())
 ```
 
-## **得到非零元素**
+## 得到非零元素
 
 ```python
 torch.nonzero(tensor)               # index of non-zero elements
@@ -215,14 +229,14 @@ torch.nonzero(tensor).size(0)       # number of non-zero elements
 torch.nonzero(tensor == 0).size(0)  # number of zero elements
 ```
 
-## **判断两个张量相等**
+## 判断两个张量相等
 
 ```python
 torch.allclose(tensor1, tensor2)  # float tensor
 torch.equal(tensor1, tensor2)     # int tensor
 ```
 
-## **张量扩展**
+## 张量扩展
 
 ```python
 # Expand tensor of shape 64*512 to shape 64*512*7*7.
@@ -230,7 +244,7 @@ tensor = torch.rand(64,512)
 torch.reshape(tensor, (64, 512, 1, 1)).expand(64, 512, 7, 7)
 ```
 
-## **矩阵乘法**
+## 矩阵乘法
 
 ```python
 # Matrix multiplcation: (m*n) * (n*p) * -> (m*p).
@@ -241,25 +255,26 @@ result = torch.bmm(tensor1, tensor2)
 result = tensor1 * tensor2
 ```
 
-## **计算两组数据之间的两两欧式距离**
+## 计算两组数据之间的两两欧式距离
 
 利用broadcast机制
 
 ```python
-dist = torch.sqrt(torch.sum((X1[:,None,:] - X2) ** 2, dim=2))
+dist = torch.sqrt(torch.sum((X1[:,None,:] - X2)  2, dim=2))
 ```
 
 
 
 # 模型定义和操作
 
-## **一个简单两层卷积网络的示例**
+## 一个简单两层卷积网络的示例
 
 ```python
 # convolutional neural network (2 convolutional layers)
 class ConvNet(nn.Module):    
     def __init__(self, num_classes=10):        
         super(ConvNet, self).__init__()        
+        
         self.layer1 = nn.Sequential(            
             nn.Conv2d(1, 16, kernel_size=5, stride=1, padding=2),            
             nn.BatchNorm2d(16),            
@@ -271,7 +286,7 @@ class ConvNet(nn.Module):
             nn.ReLU(),            
             nn.MaxPool2d(kernel_size=2, stride=2))        
         self.fc = nn.Linear(7*7*32, num_classes)
-        
+
     def forward(self, x):        
         out = self.layer1(x)        
         out = self.layer2(out)        
@@ -282,7 +297,7 @@ class ConvNet(nn.Module):
 model = ConvNet(num_classes).to(device)
 ```
 
-## **双线性汇合（bilinear pooling）**
+## 双线性汇合（bilinear pooling）
 
 ```python
 X = torch.reshape(N, D, H * W)                        # Assume X has shape N*D*H*W
@@ -293,7 +308,7 @@ X = torch.sign(X) * torch.sqrt(torch.abs(X) + 1e-5)   # Signed-sqrt normalizatio
 X = torch.nn.functional.normalize(X)                  # L2 normalization
 ```
 
-## **多卡同步 BN（Batch normalization）**
+## 多卡同步 BN（Batch normalization）
 
 当使用 torch.nn.DataParallel 将代码运行在多张 GPU 卡上时，PyTorch 的 BN 层默认操作是各卡上数据独立地计算均值和标准差，同步 BN 使用所有卡上的数据一起计算 BN 层的均值和标准差，缓解了当批量大小（batch size）比较小时对均值和标准差估计不准的情况，是在目标检测等任务中一个有效的提升性能的技巧。
 
@@ -301,7 +316,7 @@ X = torch.nn.functional.normalize(X)                  # L2 normalization
 sync_bn = torch.nn.SyncBatchNorm(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
 ```
 
-## **将已有网络的所有BN层改为同步BN层**
+## 将已有网络的所有BN层改为同步BN层
 
 ```python
 def convertBNtoSyncBN(module, process_group=None):    
@@ -329,7 +344,7 @@ def convertBNtoSyncBN(module, process_group=None):
                 return module
 ```
 
-## **类似 BN 滑动平均**
+## 类似 BN 滑动平均
 
 如果要实现类似 BN 滑动平均的操作，在 forward 函数中要使用原地（inplace）操作给滑动平均赋值。
 
@@ -344,13 +359,13 @@ class BN(torch.nn.Module)
         self.running_mean += momentum * (current - self.running_mean)
 ```
 
-## **计算模型整体参数量**
+## 计算模型整体参数量
 
 ```python
 num_parameters = sum(torch.numel(parameter) for parameter in model.parameters())
 ```
 
-## **查看网络中的参数**
+## 查看网络中的参数
 
 可以通过model.state_dict()或者model.named_parameters()函数查看现在的全部可训练参数（包括通过继承得到的父类中的参数）
 
@@ -361,7 +376,8 @@ print(name)
 print(param.grad)
 print('-------------------------------------------------')
 
-(name2, param2) = params[29]print(name2)
+(name2, param2) = params[29]
+print(name2)
 print(param2.grad)
 print('----------------------------------------------------')
 
@@ -370,15 +386,15 @@ print(name1)
 print(param1.grad)
 ```
 
-## **模型可视化（使用pytorchviz）**
+## 模型可视化（使用pytorchviz）
 
 szagoruyko/pytorchvizgithub.com
 
-## **类似 Keras 的 model.summary() 输出模型信息，使用pytorch-summary**
+## 类似 Keras 的 model.summary() 输出模型信息，使用pytorch-summary
 
 sksq96/pytorch-summarygithub.com
 
-## **模型权重初始化**
+## 模型权重初始化
 
 注意 model.modules() 和 model.children() 的区别：model.modules() 会迭代地遍历模型的所有子层，而 model.children() 只会遍历模型下的一层。
 
@@ -393,6 +409,7 @@ for layer in model.modules():
     elif isinstance(layer, torch.nn.BatchNorm2d):        
         torch.nn.init.constant_(layer.weight, val=1.0)        
         torch.nn.init.constant_(layer.bias, val=0.0)    
+        
     elif isinstance(layer, torch.nn.Linear):        
         torch.nn.init.xavier_normal_(layer.weight)        
         if layer.bias is not None:            
@@ -400,7 +417,7 @@ for layer in model.modules():
 # Initialization with given tensor.layer.weight = torch.nn.Parameter(tensor)
 ```
 
-## **提取模型中的某一层**
+## 提取模型中的某一层
 
 modules()会返回模型中所有模块的迭代器，它能够访问到最内层，比如self.layer1.conv1这个模块，还有一个与它们相对应的是name_children()属性以及named_modules(),这两个不仅会返回模块的迭代器，还会返回网络层的名字。
 
@@ -409,11 +426,11 @@ modules()会返回模型中所有模块的迭代器，它能够访问到最内�
 new_model = nn.Sequential(*list(model.children())[:2] 
 # 如果希望提取出模型中的所有卷积层，可以像下面这样操作：
 for layer in model.named_modules():    
-    if isinstance(layer[1],nn.Conv2d):         
-        conv_model.add_module(layer[0],layer[1])
+    if isinstance(layer[1], nn.Conv2d):         
+        conv_model.add_module(layer[0], layer[1])
 ```
 
-## **部分层使用预训练模型**
+## 部分层使用预训练模型
 
 注意如果保存的模型是 torch.nn.DataParallel，则当前的模型也需要是
 
@@ -421,13 +438,13 @@ for layer in model.named_modules():
 model.load_state_dict(torch.load('model.pth'), strict=False)
 ```
 
-## **将在 GPU 保存的模型加载到 CPU**
+## 将在 GPU 保存的模型加载到 CPU
 
 ```python
 model.load_state_dict(torch.load('model.pth', map_location='cpu'))
 ```
 
-## **导入另一个模型的相同部分到新的模型**
+## 导入另一个模型的相同部分到新的模型
 
 模型导入参数时，如果两个模型结构不一致，则直接导入参数会报错。用下面方法可以把另一个模型的相同的部分导入到新的模型中。
 
@@ -444,7 +461,7 @@ model_new.load_state_dict(model_new_dict)
 
 # 数据处理
 
-## **计算数据集的均值和标准差**
+## 计算数据集的均值和标准差
 
 ```python
 import os
@@ -458,14 +475,14 @@ def compute_mean_and_std(dataset):
     mean_r = 0    
     mean_g = 0    
     mean_b = 0
-    for img, _ in dataset:        
-        img = np.asarray(img) # change PIL Image to numpy array        
-        mean_b += np.mean(img[:, :, 0])        
-        mean_g += np.mean(img[:, :, 1])        
+    for img, _ in dataset:
+        img = np.asarray(img) # change PIL Image to numpy array
+        mean_b += np.mean(img[:, :, 0])
+        mean_g += np.mean(img[:, :, 1])
         mean_r += np.mean(img[:, :, 2])
         
-    mean_b /= len(dataset)    
-    mean_g /= len(dataset)    
+    mean_b /= len(dataset)
+    mean_g /= len(dataset)
     mean_r /= len(dataset)
     
     diff_r = 0    
@@ -492,7 +509,7 @@ def compute_mean_and_std(dataset):
     return mean, std
 ```
 
-## **得到视频数据基本信息**
+## 得到视频数据基本信息
 
 ```python
 import cv2
@@ -505,7 +522,7 @@ fps = int(video.get(cv2.CAP_PROP_FPS))
 video.release()
 ```
 
-## **TSN 每段（segment）采样一帧视频**
+## TSN 每段（segment）采样一帧视频
 
 ```python
 K = self._num_segments
@@ -529,7 +546,7 @@ assert frame_indices.size() == (K,)
 return [frame_indices[i] for i in range(K)]
 ```
 
-## **常用训练和验证数据预处理**
+## 常用训练和验证数据预处理
 
 其中 ToTensor 操作会将 PIL.Image 或形状为 H×W×D，数值范围为 [0, 255] 的 np.ndarray 转换为形状为 D×H×W，数值范围为 [0.0, 1.0] 的 torch.Tensor。
 
@@ -541,10 +558,10 @@ train_transform = torchvision.transforms.Compose([
     torchvision.transforms.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)), 
 ]) 
 
-val_transform = torchvision.transforms.Compose([    
-    torchvision.transforms.Resize(256),    
-    torchvision.transforms.CenterCrop(224),    
-    torchvision.transforms.ToTensor(),    
+val_transform = torchvision.transforms.Compose([
+    torchvision.transforms.Resize(256),
+    torchvision.transforms.CenterCrop(224),
+    torchvision.transforms.ToTensor(),
     torchvision.transforms.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),
 ])
 ```
@@ -553,7 +570,7 @@ val_transform = torchvision.transforms.Compose([
 
 # 模型训练和测试
 
-## **分类模型训练代码**
+## 分类模型训练代码
 
 ```python
 # Loss and optimizer
@@ -563,7 +580,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 # Train the model
 total_step = len(train_loader)
 for epoch in range(num_epochs):    
-    for i ,(images, labels) in enumerate(train_loader):        
+    for i, (images, labels) in enumerate(train_loader):        
         images = images.to(device)        
         labels = labels.to(device)
         
@@ -580,7 +597,7 @@ for epoch in range(num_epochs):
             print('Epoch: [{}/{}], Step: [{}/{}], Loss: {}'.format(epoch+1, num_epochs, i+1, total_step, loss.item()))
 ```
 
-## **分类模型测试代码**
+## 分类模型测试代码
 
 ```python
 # Test the model
@@ -601,7 +618,7 @@ with torch.no_grad():
     print('Test accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
 ```
 
-## **自定义loss**
+## 自定义loss
 
 继承torch.nn.Module类写自己的loss。
 
@@ -615,12 +632,13 @@ class MyLoss(torch.nn.Moudle):
         return loss
 ```
 
-## **标签平滑（label smoothing）**
+## 标签平滑（label smoothing）
 
 写一个label_smoothing.py的文件，然后在训练代码里引用，用LSR代替交叉熵损失即可。label_smoothing.py内容如下：
 
 ```python
-import torchimport torch.nn as nn
+import torch
+import torch.nn as nn
 
 class LSR(nn.Module):
     def __init__(self, e=0.1, reduction='mean'):        
@@ -711,7 +729,7 @@ for images, labels in train_loader:
     optimizer.step()
 ```
 
-## **Mixup训练**
+## Mixup训练
 
 ```python
 beta_distribution = torch.distributions.beta.Beta(alpha, alpha)
@@ -731,7 +749,7 @@ for images, labels in train_loader:
     optimizer.step()
 ```
 
-## **L1 正则化**
+## L1 正则化
 
 ```python
 l1_regularization = torch.nn.L1Loss(reduction='sum')
@@ -742,7 +760,7 @@ for param in model.parameters():
 loss.backward()
 ```
 
-## **不对偏置项进行权重衰减（weight decay）**
+## 不对偏置项进行权重衰减（weight decay）
 
 pytorch里的weight decay相当于l2正则
 
@@ -755,13 +773,13 @@ parameters = [{'parameters': bias_list, 'weight_decay': 0},
 optimizer = torch.optim.SGD(parameters, lr=1e-2, momentum=0.9, weight_decay=1e-4)
 ```
 
-## **梯度裁剪（gradient clipping）**
+## 梯度裁剪（gradient clipping）
 
 ```python
 torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=20)
 ```
 
-## **得到当前学习率**
+## 得到当前学习率
 
 ```python
 # If there is one global learning rate (which is the common case).
@@ -775,7 +793,7 @@ for param_group in optimizer.param_groups:
 
 另一种方法，在一个batch训练代码里，当前的lr是optimizer.param_groups[0]['lr']
 
-## **学习率衰减**
+## 学习率衰减
 
 ```python
 # Reduce learning rate when validation accuarcy plateau.
@@ -802,7 +820,7 @@ for t in range(0, 10):
     val(...)
 ```
 
-## **优化器链式更新**
+## 优化器链式更新
 
 从1.4版本开始，torch.optim.lr_scheduler 支持链式更新（chaining），即用户可以定义两个 schedulers，并交替在训练中使用。
 
@@ -823,14 +841,15 @@ for epoch in range(4):
     scheduler2.step()
 ```
 
-## **模型训练可视化**
+## 模型训练可视化
 
 PyTorch可以使用tensorboard来可视化训练过程。
 
 安装和运行TensorBoard。
 
 ```shell
-pip install tensorboardtensorboard --logdir=runs
+pip install tensorboard 
+tensorboard --logdir=runs
 ```
 
 使用SummaryWriter类来收集和可视化相应的数据，放了方便查看，可以使用不同的文件夹，比如'Loss/train'和'Loss/test'。
@@ -848,7 +867,7 @@ for n_iter in range(100):
     writer.add_scalar('Accuracy/test', np.random.random(), n_iter)
 ```
 
-## **保存与加载断点**
+## 保存与加载断点
 
 注意为了能够恢复训练，我们需要同时保存模型和优化器的状态，以及当前的训练轮数。
 
@@ -858,11 +877,13 @@ start_epoch = 0
 if resume: # resume为参数，第一次训练时设为0，中断再训练时设为1    
     model_path = os.path.join('model', 'best_checkpoint.pth.tar')    
     assert os.path.isfile(model_path)    
+    
     checkpoint = torch.load(model_path)    
     best_acc = checkpoint['best_acc']    
     start_epoch = checkpoint['epoch']    
     model.load_state_dict(checkpoint['model'])    
     optimizer.load_state_dict(checkpoint['optimizer'])    
+    
     print('Load checkpoint at epoch {}.'.format(start_epoch))    
     print('Best accuracy so far {}.'.format(best_acc))
     
@@ -889,7 +910,7 @@ for epoch in range(start_epoch, num_epochs):
         shutil.copy(model_path, best_model_path)
 ```
 
-## **提取 ImageNet 预训练模型某层的卷积特征**
+## 提取 ImageNet 预训练模型某层的卷积特征
 
 ```python
 # VGG-16 relu5-3 feature.
@@ -908,7 +929,7 @@ with torch.no_grad():
     conv_representation = model(image)
 ```
 
-## **提取 ImageNet 预训练模型多层的卷积特征**
+## 提取 ImageNet 预训练模型多层的卷积特征
 
 ```python
 class FeatureExtractor(torch.nn.Module):    
@@ -925,19 +946,19 @@ class FeatureExtractor(torch.nn.Module):
     >>> conv_representation = FeatureExtractor(pretrained_model=model, layers_to_extract={'layer1', 'layer2', 'layer3', 'layer4'})(image)    
     """    
     
-    def __init__(self, pretrained_model, layers_to_extract):        
-        torch.nn.Module.__init__(self)        
-        self._model = pretrained_model        
-        self._model.eval()        
+    def __init__(self, pretrained_model, layers_to_extract):
+        torch.nn.Module.__init__(self)
+        self._model = pretrained_model
+        self._model.eval()
         self._layers_to_extract = set(layers_to_extract)
-        
-    def forward(self, x):        
-        with torch.no_grad():            
-            conv_representation = []            
-            for name, layer in self._model.named_children():                
-                x = layer(x)                
-                if name in self._layers_to_extract:                    
-                    conv_representation.append(x)            
+
+    def forward(self, x):
+        with torch.no_grad():
+            conv_representation = []
+            for name, layer in self._model.named_children():  
+                x = layer(x) 
+                if name in self._layers_to_extract:     
+                    conv_representation.append(x) 
             return conv_representation
 ```
 
@@ -947,12 +968,12 @@ class FeatureExtractor(torch.nn.Module):
 model = torchvision.models.resnet18(pretrained=True)
 for param in model.parameters():    
     param.requires_grad = False
-    
+
 model.fc = nn.Linear(512, 100)  # Replace the last fc layer
 optimizer = torch.optim.SGD(model.fc.parameters(), lr=1e-2, momentum=0.9, weight_decay=1e-4)
 ```
 
-## **以较大学习率微调全连接层，较小学习率微调卷积层**
+## 以较大学习率微调全连接层，较小学习率微调卷积层
 
 ```python
 model = torchvision.models.resnet18(pretrained=True)
