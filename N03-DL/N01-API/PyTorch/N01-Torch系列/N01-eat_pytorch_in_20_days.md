@@ -1774,9 +1774,9 @@ Model类实际上继承自nn.Module类。
 
 ```python
 import torch
-from torch import nn 
-import importlib 
-import torchkeras 
+from torch import nn
+import importlib
+import torchkeras
 
 torch.random.seed()
 
@@ -1784,10 +1784,10 @@ class Block(nn.Module):
     def __init__(self):
         super(Block, self).__init__()
     
-    def forward(self,x,x_input):
+    def forward(self, x, x_input):
         x_out = torch.max((1+x) * x_input[:, -1, :], torch.tensor(0.0))
         return x_out
-    
+
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
@@ -8276,6 +8276,7 @@ for i in range(9):
     ax.set_title("label = %d"%label.item())
     ax.set_xticks([])
     ax.set_yticks([]) 
+    
 plt.show()
 ```
 
@@ -8305,8 +8306,6 @@ Pytorch没有官方的高阶API。一般通过nn.Module来构建模型并编写�
 * 训练模型的3种方法(脚本风格，函数风格，torchkeras.Model类风格)
 * 使用GPU训练模型(单GPU训练，多GPU训练)
 
-
-
 ## 构建模型的3种方法
 
 可以使用以下3种方式构建模型：
@@ -8325,8 +8324,6 @@ import torch
 from torch import nn
 from torchkeras import summary
 ```
-
-
 
 ### 继承**nn.Module**基类构建自定义模型
 
@@ -8364,7 +8361,6 @@ class Net(nn.Module):
         x = self.linear2(x)
         y = self.sigmoid(x)
         return y
-
 
 net = Net()
 print(net)
@@ -8669,7 +8665,6 @@ class Net(nn.Module):
         for layer in self.layers:
             x = layer(x)
         return x
-
 
 net = Net()
 print(net)
