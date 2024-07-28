@@ -465,24 +465,24 @@ tag2label = {"O": 0, "B-PER": 1, "I-PER": 2, "B-LOC": 3, "I-LOC": 4, "B-ORG": 5,
 采用双向LSTM对序列进行处理，将输出结果进行拼接。输入shape[batch,seq_Length,hidden_dim]，输出shape[batch,seq_length,2*hidden_dim]。
 
 ```php
-        with tf.name_scope('biLSTM'):
-            cell_fw = tf.nn.rnn_cell.LSTMCell(pm.hidden_dim)
-            cell_bw = tf.nn.rnn_cell.LSTMCell(pm.hidden_dim)
-            outputs, outstates = tf.nn.bidirectional_dynamic_rnn(cell_fw=cell_fw, cell_bw=cell_bw,inputs=self.embedding,
-                                                                 sequence_length=self.seq_length, dtype=tf.float32)
-            outputs = tf.concat(outputs, 2)#将双向RNN的结果进行拼接
-            #outputs三维张量，[batchsize,seq_length,2*hidden_dim]
+with tf.name_scope('biLSTM'):
+cell_fw = tf.nn.rnn_cell.LSTMCell(pm.hidden_dim)
+    cell_bw = tf.nn.rnn_cell.LSTMCell(pm.hidden_dim)
+    outputs, outstates = tf.nn.bidirectional_dynamic_rnn(cell_fw=cell_fw, cell_bw=cell_bw,inputs=self.embedding,
+                                                         sequence_length=self.seq_length, dtype=tf.float32)
+    outputs = tf.concat(outputs, 2)#将双向RNN的结果进行拼接
+    #outputs三维张量，[batchsize,seq_length,2*hidden_dim]
 ```
 
 我们从本文的第一幅图中，可以看出，整个biLSTM完整的输出格式是[batch,seq_length,num_tag]。num_tag是标签的数量，本实验中是标签数量是7。所以我们需要一个全连接层，将输出格式处理一下。
 
 ```jsx
-        with tf.name_scope('output'):
-            s = tf.shape(outputs)
-            output = tf.reshape(outputs, [-1, 2*pm.hidden_dim])
-            output = tf.layers.dense(output, pm.num_tags)
-            output = tf.contrib.layers.dropout(output, pm.keep_pro)
-            self.logits = tf.reshape(output, [-1, s[1], pm.num_tags])
+with tf.name_scope('output'):
+s = tf.shape(outputs)
+output = tf.reshape(outputs, [-1, 2*pm.hidden_dim])
+output = tf.layers.dense(output, pm.num_tags)
+output = tf.contrib.layers.dropout(output, pm.keep_pro)
+self.logits = tf.reshape(output, [-1, s[1], pm.num_tags])
 ```
 
 self.logits就是需要输入CRF层中的数据。代码的第三行，对output的变形，表示将[batch,seq_length,2*hidden_dim]变成[batch*seq_length,2*hidden_dim]，最后处理时再变形为[batch,seq_length,num_tag]。
@@ -490,14 +490,14 @@ self.logits就是需要输入CRF层中的数据。代码的第三行，对output
 下面就是CRF层的处理：
 
 ```php
-        with tf.name_scope('crf'):
-            log_likelihood, self.transition_params = crf_log_likelihood(inputs=self.logits, tag_indices=self.input_y, sequence_lengths=self.seq_length)
-            # log_likelihood是对数似然函数，transition_params是转移概率矩阵
-            #crf_log_likelihood{inputs:[batch_size,max_seq_length,num_tags],
-                                #tag_indices:[batchsize,max_seq_length],
-                                #sequence_lengths:[real_seq_length]
-            #transition_params: A [num_tags, num_tags] transition matrix
-            #log_likelihood: A scalar containing the log-likelihood of the given sequence of tag indices.
+with tf.name_scope('crf'):
+log_likelihood, self.transition_params = crf_log_likelihood(inputs=self.logits, tag_indices=self.input_y, sequence_lengths=self.seq_length)
+    # log_likelihood是对数似然函数，transition_params是转移概率矩阵
+    #crf_log_likelihood{inputs:[batch_size,max_seq_length,num_tags],
+    #tag_indices:[batchsize,max_seq_length],
+    #sequence_lengths:[real_seq_length]
+    #transition_params: A [num_tags, num_tags] transition matrix
+    #log_likelihood: A scalar containing the log-likelihood of the given sequence of tag indices.
 ```
 
 这一步，是调用from tensorflow.contrib.crf import crf_log_likelihood函数，求最大似然函数，以及求转移矩阵。最大似然函数前加上"-"，可以用梯度下降法求最小值；
