@@ -102,6 +102,7 @@ async def create_item(request: Request):
     torch_gc()  # 执行GPU内存清理
     return answer  # 返回响应
 
+
 # 主函数入口
 if __name__ == '__main__':
     # 加载预训练的分词器和模型

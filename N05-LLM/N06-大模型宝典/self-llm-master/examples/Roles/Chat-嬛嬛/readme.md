@@ -7,6 +7,7 @@
 Chat-甄嬛，实现了以《甄嬛传》为切入点，打造一套基于小说、剧本的**个性化 AI** 微调大模型完整流程，通过提供任一小说、剧本，指定人物角色，运行本项目完整流程，让每一位用户都基于心仪的小说、剧本打造一个属于自己的、契合角色人设、具备高度智能的个性化 AI。
 
 > *Chat-嬛嬛模型累计下载量 15.6k，Modelscope 地址：*[*Link*](https://www.modelscope.cn/models/kmno4zx/huanhuan-chat-internlm2)   
+>
 > *Chat-嬛嬛累计获得 500 star，huahuan-chat 项目地址：*[*Link*](https://github.com/KMnO4-zx/huanhuan-chat.git)，xlab-huanhuan-chat 项目地址：[*Link*](https://github.com/KMnO4-zx/xlab-huanhuan.git)  
 
 
@@ -81,7 +82,7 @@ pip install datasets==2.20.0
 比如《西游记白话文》，我们可以看到他的文本是这样的。对于这样的文本，那我们就需要借助大模型的能力，从文本中提取出角色和角色对应的对话。然后再筛选出我们需要的橘角色对话。
 
 > 可以借助一个小工具：[*extract-dialogue*](https://github.com/KMnO4-zx/extract-dialogue.git) 从文本中提取对话。
-    
+
 ```
 ......
 原来孙悟空走了以后，有一个混世魔王独占了水帘洞，并且抢走了许多猴子猴孙。孙悟空听到这些以后，气得咬牙跺脚。他问清了混世魔王的住处，决定找混世魔王报仇，便驾着筋斗云，朝北方飞去。
@@ -95,11 +96,12 @@ pip install datasets==2.20.0
 ```
 
 > chat-甄嬛 的原始数据：[*甄嬛传*](https://github.com/KMnO4-zx/huanhuan-chat/tree/master/dataset/input/huanhuan)  
+>
 > 西游记白话文原始数据：[*西游记*](https://github.com/KMnO4-zx/huanhuan-chat/blob/master/dataset/input/wukong/%E8%A5%BF%E6%B8%B8%E8%AE%B0%E7%99%BD%E8%AF%9D%E6%96%87.txt)
 
 最后再将其整理成 `json` 格式的数据，如下：
 
-```
+```json
 [
     {
         "instruction": "小姐，别的秀女都在求中选，唯有咱们小姐想被撂牌子，菩萨一定记得真真儿的——",
@@ -202,6 +204,7 @@ print('嬛嬛：',response)
 ```
 
 接下来，我们就可以使用这个嬛嬛模型进行对话了~   
+
 有兴趣的同学可以尝试使用 `self-llm` 中的其他模型进行微调，检验你的学习成果！
 
 ## 写在最后

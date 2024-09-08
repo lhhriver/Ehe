@@ -5,6 +5,7 @@
 由70亿个参数组成的高级语言模型 DeepSeek LLM。它是在一个包含2万亿个英文和中文代币的庞大数据集上从零开始训练的。为了促进研究，DeepSeek 已经为研究社区开放了DeepSeek LLM 7B/67B Base 和 DeepSeek LLM 7B/67B Chat。
 
 ## 环境准备
+
 在autodl平台中租一个3090等24G显存的显卡机器，如下图所示镜像选择PyTorch-->2.0.0-->3.8(ubuntu20.04)-->11.8（11.3版本以上的都可以）
 接下来打开刚刚租用服务器的JupyterLab， 图像 并且打开其中的终端开始环境配置、模型下载和运行演示。 
 ![Alt text](images/image-1.png)
@@ -30,7 +31,7 @@ pip install transformers_stream_generator==0.0.4
 
 在 /root/autodl-tmp 路径下新建 download.py 文件并在其中输入以下内容，粘贴代码后记得保存文件，如下图所示。并运行 python /root/autodl-tmp/download.py 执行下载，模型大小为15 GB，下载模型大概需要10~20分钟
 
-```
+```python
 import torch
 from modelscope import snapshot_download, AutoModel, AutoTokenizer
 from modelscope import GenerationConfig
@@ -40,7 +41,7 @@ model_dir = snapshot_download('deepseek-ai/deepseek-llm-7b-chat', cache_dir='/ro
 ## 代码准备 
 
 在/root/autodl-tmp路径下新建api.py文件并在其中输入以下内容，粘贴代码后记得保存文件。下面的代码有很详细的注释，大家如有不理解的地方，欢迎提出issue。
-```
+```python
 from fastapi import FastAPI, Request
 from transformers import AutoTokenizer, AutoModelForCausalLM, GenerationConfig
 import uvicorn
